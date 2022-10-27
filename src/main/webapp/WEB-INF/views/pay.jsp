@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- jQuery CDN --->
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 var chk = false;
@@ -137,10 +138,15 @@ $(document).ready(function(){
 	
 });
 
-
-
+function useCoupon(a) {
+	var amount= document.getElementById('amount').value;
+	var per=a;
+	var result =amount- (amount *(per/100));	
+	alert(result);
+// 	  document.getElementById('amount').value=amount;
+	}
 </script>
-
+<%@ include file="/header.jsp"%>
 </head>
 <body>
 <form name="fm">
@@ -151,7 +157,10 @@ $(document).ready(function(){
 	전화번호: <input type="text" name="buyer_tel" id="buyer_tel" placeholder="예시: 010-1111-2222"><br>
 	이메일: <input type="text" name="buyer_email" id="buyer_email" placeholder="이메일 입력"><br>
 <!-- 	주소: <input type="text" name="uaddr" id="uaddr" placeholder="주소 입력"><br> -->
-	금액: <input type="number" name="amount" id="amount" ><br>
+	금액: <input type="number" name="amount" id="amount" >
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+ 쿠폰적용
+</button><br>
 	결제고유ID<input type="text" name="p_id" id="p_id" >
 	상점거래ID<input type="text" name="p_mer" id="p_mer" >
 <!-- 	회원아이디<input type="text" name="mb_id" id="mb_id" > -->
@@ -171,5 +180,57 @@ $(document).ready(function(){
 	<p id="paylist"></p>
 </form>
 
+
+
+<!-- 쿠폰 -->
+<fmt:parseDate var="startDate_D"  value="${today }" pattern="yyyy-MM-dd"/>
+<fmt:parseNumber var="startDate_N" value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
+   <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">쿠폰 목록</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       		<div class="container">
+			<table class="table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+			<c:forEach items="${couponList}" var="coupon">
+			<fmt:parseDate var="endDate_D" value="${coupon.c_date }"  pattern="yyyy-MM-dd"/>
+			<fmt:parseNumber var="endDate_N" value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" /> 
+			
+				<tr>
+				  <td class="text-center">쿠폰명 : ${coupon.c_name}<br>
+				  할인율 : ${coupon.c_per}%<br>
+				  만료날짜 : ${coupon.c_date}
+					</td>
+				    <td class="text-center text-danger"> ${endDate_N-startDate_N}일 남음 </td>
+ 			<td class="text-center"><button id="${coupon.c_num}" class="btn btn-primary" onclick="useCoupon(${coupon.c_per});" >쓰기</button> </td>
+
+				</tr>
+</c:forEach>
+</table>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<script>
+		$('#testBtn').click(function(e){
+			e.preventDefault();
+			$('#testModal').modal("show");
+		});
+	
+	</script>
 </body>
 </html>

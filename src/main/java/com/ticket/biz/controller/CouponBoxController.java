@@ -73,7 +73,7 @@ public class CouponBoxController {
 		return "coupon/myCouponList";
 	}
 
-	
+
 	
 	}
 

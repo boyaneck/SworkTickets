@@ -1,7 +1,6 @@
 package com.ticket.biz.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -39,8 +38,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ticket.biz.common.PagingVO;
-import com.ticket.biz.coupon.CouponVO;
-import com.ticket.biz.member.MemberVO;
+import com.ticket.biz.couponbox.CouponBoxService;
+import com.ticket.biz.couponbox.CouponBoxVO;
 import com.ticket.biz.pay.PayService;
 import com.ticket.biz.pay.PayVO;
 
@@ -166,8 +165,35 @@ public class PayController {
    }
    
    //상품결제 폼 호출 (회원 결제)
+   @Autowired
+	private CouponBoxService couponBoxService;
+   
+   
       @RequestMapping(value={"/payUser"}, method=RequestMethod.GET)
-      public String pay1(HttpServletRequest request, Model model) {
+      public String pay1(HttpServletRequest request, Model model, String nowPageBtn, HttpSession session, CouponBoxVO vo) {
+    	  vo.setMb_id((String)session.getAttribute("userId")); 
+  		//총 목록 수
+  		int totalPageCnt = couponBoxService.myCouponListCnt(vo);
+  		//현재 페이지 설정
+  		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+  		System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+  		//한페이지당 보여줄 목록 수
+  		int onePageCnt = 10;
+  		//한 번에 보여질 버튼 수
+  		int oneBtnCnt = 5;
+
+  		PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+  		vo.setOffset(pvo.getOffset());
+
+  		Date now = new Date();
+  		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+  		 String today = sdf.format(now);
+  		
+  		
+  		model.addAttribute("today",today); 
+  		model.addAttribute("paging", pvo);
+  		model.addAttribute("couponList", couponBoxService.myCouponList(vo));
+    	  
          String nm = request.getParameter("unm");
          // 값은 아임포트의 가맹점 식별코드 입력
          model.addAttribute("impKey", "imp32470313"); 
@@ -351,7 +377,7 @@ public class PayController {
       return list; 
    } 
     
-    
+  
    
    
    // 아임포트 전체 목록 반환 

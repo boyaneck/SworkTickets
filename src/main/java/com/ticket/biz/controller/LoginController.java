@@ -17,7 +17,7 @@ public class LoginController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping(value = "/logincheck", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpSession session) {
 		System.out.println("로그인 인증 처리...");
 		if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
