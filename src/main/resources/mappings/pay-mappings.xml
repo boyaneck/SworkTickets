@@ -4,19 +4,29 @@
 
 <mapper namespace="PayDAO">
 
+	<insert id="insertPay">
+		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT) 
+		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount})
+	</insert>
+
 <!-- 	<select id="getPay" resultType="pay"> -->
 <!-- 		SELECT * FROM COUPON WHERE C_NUM= #{c_num} -->
 <!-- 	</select> -->
 
 	<select id="getPayList" resultType="pay">
-		SELECT * FROM PAY P, MEMBER MB
-<!-- 		, exhibition e -->
+		SELECT e.EXH_TITLE, AMOUNT, BUYER, BUYER_TEL, P_DATE, P_ID, P_MER FROM PAY P, MEMBER MB
+		, exhibition e
 		WHERE 1=1 AND P.MB_ID=MB.MB_ID
-<!-- 		AND P.MB_ID = #{mb_id} -->
-<!-- 		AND p.EXH_NO=e.EXH_NO; -->
-
-
+		AND P.MB_ID = #{mb_id}
+		AND p.EXH_TITLE = e.EXH_TITLE
+		ORDER BY P_DATE DESC
 	</select>
+
+<update id="updatePay">
+	UPDATE Pay
+	SET P_CHK = 1
+	WHERE P_MER = #{p_mer}  
+</update>
 
 <!-- 	<select id="totalPayListCnt" resultType="_int"> -->
 <!-- 		SELECT COUNT(*) FROM COUPON WHERE 1=1 -->

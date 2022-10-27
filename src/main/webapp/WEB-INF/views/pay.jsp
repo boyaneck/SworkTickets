@@ -18,25 +18,29 @@ $(document).ready(function(){
 // 			pay_method: 'card',
 			merchant_uid: 'merchant_' + new Date().getTime(),
 			name: '너구리',// 상품명
+			mid : $("#mb_id").val(),
 			amount: $("#amount").val(),//가격
-			buyer_email: $("#umail").val() ,//이메일
-			buyer_name: $("#unm").val() ,//주문자명
-			buyer_tel: $("#utel").val() ,//폰번
-			buyer_addr: $("#uaddr").val() ,//주소
-			buyer_postcode: '123-456',//우편번호
+			buyer_email: $("#buyer_email").val() ,//이메일
+			buyer_name: $("#buyer").val() ,//주문자명
+			buyer_tel: $("#buyer_tel").val() ,//폰번
+			paid_at: $("#p_date").val() ,
+// 			buyer_addr: $("#uaddr").val() ,//주소
+// 			buyer_postcode: '123-456',//우편번호
 			m_redirect_url: 'http://localhost:8090/payments/complete'//내 url 
 			}, function (rsp) {
 				console.log(rsp);
 				if (rsp.success) {
 					var msg = '결제가 완료되었습니다.';
+					$('#p_id').val(rsp.imp_uid);//test
+					$('#p_mer').val(rsp.merchant_uid);
+// 					$('#mb_id').val(userId);
+					$('#p_date').val(rsp.paid_at);
+					$('#exh_title').val(rsp.name);
 					msg += '\n고유ID : ' + rsp.imp_uid;
 					msg += '\n상점 거래ID : ' + rsp.merchant_uid;
 					msg += '\n결제 금액 : ' + rsp.paid_amount;
-					msg += '\n카드 승인번호 : ' + rsp.apply_num;
 					
-					$("#imp_uid").val(rsp.imp_uid);
-					$("#merchant_uid").val(rsp.merchant_uid);
-					chk = true;
+					chk = true;					
 				} else {
 					var msg = '결제에 실패하였습니다.';
 					msg += '\n에러내용 : ' + rsp.error_msg;
@@ -46,6 +50,13 @@ $(document).ready(function(){
 		});
 	});
 	
+	function orderList(){
+		alert('주문내역 처리할 곳. 컨트롤러 호출');
+		let fm = document.fm;
+		fm.action ="payUserDB";
+		fm.method="post";
+		fm.submit();
+	}
 	
 	$("#cancel_module").click(function () {
 		$.ajax({
@@ -117,7 +128,6 @@ $(document).ready(function(){
 					$("#paylist").append("<br>취소시각: "+v.cancelled_at+"<hr><br>" );
 					
 				});
-				
 			},
 			error :  function(request, status){
 				alert("목록 가져오기를 할 수 없습니다.");
@@ -127,13 +137,7 @@ $(document).ready(function(){
 	
 });
 
-function orderList(){
-	alert('주문내역 처리할 곳. 컨트롤러 호출');
-	let fm = document.fm;
-	fm.action ="pay";
-	fm.method="post";
-	fm.submit();
-}
+
 
 </script>
 
@@ -143,21 +147,26 @@ function orderList(){
 <div style="position:sticky;top:0;left:0;background-color:#fff;padding-bottom:20px;border-bottom:1px solid #000;">
 	<h2>아임 서포트 결제 모듈 테스트 해보기</h2><br>
 	<h2>결제하기</h2>
-	이름: <input type="text" name="unm" id="unm" placeholder="이름 입력"><br>
-	전화번호: <input type="text" name="utel" id="utel" placeholder="예시: 010-1111-2222"><br>
-	이메일: <input type="text" name="umail" id="umail" placeholder="이메일 입력"><br>
-	주소: <input type="text" name="uaddr" id="uaddr" placeholder="주소 입력"><br>
-	금액: <input type="number" name="amount" id="amount" ><br>	
+	이름: <input type="text" name="buyer" id="buyer" placeholder="이름 입력"><br>
+	전화번호: <input type="text" name="buyer_tel" id="buyer_tel" placeholder="예시: 010-1111-2222"><br>
+	이메일: <input type="text" name="buyer_email" id="buyer_email" placeholder="이메일 입력"><br>
+<!-- 	주소: <input type="text" name="uaddr" id="uaddr" placeholder="주소 입력"><br> -->
+	금액: <input type="number" name="amount" id="amount" ><br>
+	결제고유ID<input type="text" name="p_id" id="p_id" >
+	상점거래ID<input type="text" name="p_mer" id="p_mer" >
+<!-- 	회원아이디<input type="text" name="mb_id" id="mb_id" > -->
+	결제일시<input type="text" name="p_date" id="p_date">
+	상품명<input type="text" name="exh_title" id="exh_title" >
 	<button id="check_module" type="button">결제하기</button>
-	<br><hr>	
-	
-	<h2>결제내역 관련</h2>
-<!-- 	imp_uid: <input type="text" name="imp_uid" id="imp_uid" placeholder="imp_uid 입력"><br> -->
-	merchant_uid: <input type="text" name="merchant_uid" id="merchant_uid" placeholder="merchant_uid 입력"><br>
-	<button id="cancel_module" type="button">취소하기</button>
-	<button id="list_module" type="button">결제완료목록조회</button>
-	<button id="all_module" type="button">모든목록조회</button>
-</div>
+	<br><hr>
+
+			<h2>결제내역 관련</h2>
+			<!-- 	imp_uid: <input type="text" name="imp_uid" id="imp_uid" placeholder="imp_uid 입력"><br> -->
+			merchant_uid: <input type="text" name="merchant_uid" id="merchant_uid" placeholder="merchant_uid 입력"><br>
+			<button id="cancel_module" type="button">취소하기</button>
+			<button id="list_module" type="button">결제완료목록조회</button>
+			<button id="all_module" type="button">모든목록조회</button>
+		</div>
 	
 	<p id="paylist"></p>
 </form>
