@@ -5,8 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="/header.jsp"%>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 var chk = false;
@@ -145,11 +147,15 @@ function useCoupon(a) {
 	var result =amount- (amount *(per/100));	
 	alert(result);
 	$('#amount').val(result);
-	
-// 	  document.getElementById('amount').value=amount;
 	}
+	
+$('#testBtn').click(function(e){
+	e.preventDefault();
+	$('#testModal').modal("show");
+});
+
 </script>
-<%@ include file="/header.jsp"%>
+
 </head>
 <body>
 <form name="fm">
@@ -231,12 +237,6 @@ function useCoupon(a) {
   </div>
 </div>
 
-	<script>
-		$('#testBtn').click(function(e){
-			e.preventDefault();
-			$('#testModal').modal("show");
-		});
 	
-	</script>
 </body>
 </html>
