@@ -20,8 +20,8 @@ $(document).ready(function(){
          pg: 'html5_inicis.INIpayTest', // 자신이 설정한 pg사 설정
 //          pay_method: 'card',
          merchant_uid: 'merchant_' + new Date().getTime(),
-         name: '너구리',// 상품명
-         mid : $("#mb_id").val(),
+         name: $('#exh_title').val(),// 상품명
+         mid : $("#mb_id").val(),//사용자
          amount: $("#amount").val(),//가격
          buyer_email: $("#buyer_email").val() ,//이메일
          buyer_name: $("#buyer").val() ,//주문자명
@@ -141,12 +141,14 @@ $(document).ready(function(){
    
 });
 
-function useCoupon(a) {
+function useCoupon(a,b) {
    var amount= document.getElementById('result').value;
    var per=a;
+   var cb_id=b;
    var result =amount- (amount *(per/100));   
    alert(result);
    $('#amount').val(result);
+   $('#cb_id').val(cb_id);
    }
    
 $('#testBtn').click(function(e){
@@ -162,22 +164,27 @@ $('#testBtn').click(function(e){
 <div style="position:sticky;top:0;left:0;background-color:#fff;padding-bottom:20px;border-bottom:1px solid #000;">
    <h2>아임 서포트 결제 모듈 테스트 해보기</h2><br>
    <h2>결제하기</h2>
-   이름: <input type="text" name="buyer" id="buyer" placeholder="이름 입력"><br>
-   전화번호: <input type="text" name="buyer_tel" id="buyer_tel" placeholder="예시: 010-1111-2222"><br>
-   이메일: <input type="text" name="buyer_email" id="buyer_email" placeholder="이메일 입력"><br>
+   상품명<input type="text" name="exh_title" id="exh_title" value='${exh_title}' readonly="readonly"><br>
+   이름: <input type="text" name="buyer" id="buyer" placeholder="이름 입력" value="${member.mb_name}"><br>
+   전화번호: <input type="text" name="buyer_tel" id="buyer_tel" placeholder="예시: 010-1111-2222" value='${member.mb_phone}'><br>
+   이메일: <input type="text" name="buyer_email" id="buyer_email" placeholder="이메일 입력" value='${member.mb_email}'><br>
 <!--    주소: <input type="text" name="uaddr" id="uaddr" placeholder="주소 입력"><br> -->
-    원금액:<input type="text" name="result" id="result" >
-   결제금액:<input type="text" name="amount" id="amount" readonly="readonly">
+   <input type="hidden" name="result" id="result" value='${amount}' >
+   결제금액:<input type="text" name="amount" id="amount" value='${amount}' readonly="readonly">
    
    
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
  쿠폰적용
 </button><br>
-   결제고유ID<input type="text" name="p_id" id="p_id" >
-   상점거래ID<input type="text" name="p_mer" id="p_mer" >
+    <input type="hidden" name="md_id" id="md_id" value='${md_id}' style="display:none;"><br>
+<!--    결제고유ID -->
+   <input type=hidden name="p_id" id="p_id" >
+<!--    상점거래ID -->
+   <input type="hidden" name="p_mer" id="p_mer" >
 <!--    회원아이디<input type="text" name="mb_id" id="mb_id" > -->
-   결제일시<input type="text" name="p_date" id="p_date">
-   상품명<input type="text" name="exh_title" id="exh_title" >
+<!--    결제일시 -->
+   <input type="hidden" name="p_date" id="p_date">
+   <input type="hidden" name="cb_id" id="cb_id" >
    <button id="check_module" type="button">결제하기</button>
    <br><hr>
 
@@ -223,7 +230,8 @@ $('#testBtn').click(function(e){
               만료날짜 : ${coupon.c_date}
                </td>
                 <td class="text-center text-danger"> ${endDate_N-startDate_N}일 남음 </td>
-          <td class="text-center"><button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per});" >적용하기</button> </td>
+          <td class="text-center">
+          <button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button> </td>
 
             </tr>
 </c:forEach>

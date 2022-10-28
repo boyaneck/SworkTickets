@@ -40,6 +40,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.couponbox.CouponBoxService;
 import com.ticket.biz.couponbox.CouponBoxVO;
+import com.ticket.biz.member.MemberService;
+import com.ticket.biz.member.MemberVO;
 import com.ticket.biz.pay.PayService;
 import com.ticket.biz.pay.PayVO;
 
@@ -167,11 +169,15 @@ public class PayController {
    //상품결제 폼 호출 (회원 결제)
    @Autowired
    private CouponBoxService couponBoxService;
+   @Autowired
+   private MemberService memberService;
    
-   
-      @RequestMapping(value={"/payUser"}, method=RequestMethod.GET)
-      public String pay1(HttpServletRequest request, Model model, String nowPageBtn, HttpSession session, CouponBoxVO vo) {
+      @RequestMapping(value={"/payUser"}, method=RequestMethod.POST)
+      public String pay1(HttpServletRequest request, Model model, String nowPageBtn, HttpSession session, CouponBoxVO vo, MemberVO mem_vo) {
          vo.setMb_id((String)session.getAttribute("mb_Id")); 
+         String amount=request.getParameter("amount");
+         String exh_title=request.getParameter("exh_title");
+       
         //총 목록 수
         int totalPageCnt = couponBoxService.myCouponListCnt(vo);
         //현재 페이지 설정
@@ -181,15 +187,16 @@ public class PayController {
         int onePageCnt = 10;
         //한 번에 보여질 버튼 수
         int oneBtnCnt = 5;
-
         PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
         vo.setOffset(pvo.getOffset());
 
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
          String today = sdf.format(now);
-        
-        
+         mem_vo.setMb_id((String)session.getAttribute("mb_Id")); 
+        model.addAttribute("member", memberService.getMember(mem_vo));
+        model.addAttribute("amount",amount);
+        model.addAttribute("exh_title",exh_title);
         model.addAttribute("today",today); 
         model.addAttribute("paging", pvo);
         model.addAttribute("couponList", couponBoxService.myCouponList(vo));
@@ -204,7 +211,7 @@ public class PayController {
    
    //결제 진행 폼=> 이곳에서 DB저장 로직도 추가하기
    @RequestMapping(value="/payUserDB", method=RequestMethod.POST)
-   public String payment(HttpServletRequest request, HttpSession session, HttpServletResponse response, Model model,PayVO vo) throws IOException {
+   public String payment(HttpServletRequest request, HttpSession session, HttpServletResponse response, Model model,PayVO vo,CouponBoxVO cb_vo) throws IOException {
       String nm = request.getParameter("buyer");
       String p_id = request.getParameter("p_id");
       String amount = request.getParameter("amount");
@@ -216,8 +223,10 @@ public class PayController {
       String p_date = request.getParameter("p_date");
       String exh_title = request.getParameter("exh_title");  
       String p_mer = request.getParameter("p_mer");
-      
-      
+      int cb_id= Integer.parseInt(request.getParameter("cb_id"));
+      cb_vo.setCb_id(cb_id);
+      couponBoxService.updateCouponBox(cb_vo);
+
       String unixTimeStamp = p_date;
       
       long timestamp = Long.parseLong(unixTimeStamp);
