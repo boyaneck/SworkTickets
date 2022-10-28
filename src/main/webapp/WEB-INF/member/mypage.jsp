@@ -49,7 +49,7 @@ if (session.getAttribute("mb_Id") == null) {
 
                <div class="mb-3">
                   <label for="pw2">*비밀번호 확인</label> <input type="password"
-                     class="form-control" name="mb_pw" id="pw2" value="${member.mb_pw}" minlength="4" maxlength="8" readonly
+                     class="form-control" name="mb_pw2" id="pw2" value="${member.mb_pw}" minlength="4" maxlength="8" readonly
                      >
                      <font id="checkPw" size="2">비밀번호는 4~8글자입니다</font>
                </div>

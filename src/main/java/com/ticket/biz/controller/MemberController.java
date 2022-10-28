@@ -48,6 +48,17 @@ public class MemberController {
 //	      System.out.println("1111111"+memberService.getMember(vo));
 	      return "member/mypage";
 	   }
+	   
+	   // 회원 수정
+	   @RequestMapping("/updateMember")
+	   public String updateBoard(@ModelAttribute("member") MemberVO vo, HttpSession session) {
+	      if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())||session.getAttribute("mb_Id").equals("admin")) {
+	         memberService.updateMember(vo);
+	         return "member/mypage";
+	      } else {
+	         return "redirect:member/mypage?error=1";
+	      }
+	   }
 
 	//멤버등록
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)

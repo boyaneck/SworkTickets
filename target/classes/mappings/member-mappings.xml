@@ -9,7 +9,7 @@
 	</insert>
 	<!-- 로그인 -->
 	<select id="login" resultType="member">
-		SELECT * FROM MEMBER WHERE MB_ID = #{mb_id} AND MB_PW = #{mb_pw}
+		SELECT * FROM MEMBER WHERE MB_ID = #{mb_id} AND MB_PW = #{mb_pw} AND MB_YN = 'Y'
 	</select>
 	<!-- 멤버조회 -->
 	<select id="getMemberList" resultType="member">
@@ -31,9 +31,16 @@
 	</select>
 
 	<!-- 멤버수정 -->
+	 <update id="updateMember">
+      UPDATE MEMBER
+      SET
+      MB_NAME=#{mb_name}
+      WHERE
+      MB_ID = #{mb_id}
+   </update>
 	<!-- 멤버삭제 -->
 	<delete id="deleteMember">
-		DELETE FROM MEMBER WHERE MB_ID = #{mb_id}
+		UPDATE MEMBER SET MB_YN = 'N' WHERE MB_ID = #{mb_id}
 	</delete>
 
 	<!-- 마이페이지 회원조회 -->
