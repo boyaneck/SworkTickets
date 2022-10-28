@@ -25,11 +25,12 @@ WHERE C_NUM= #{c_num}
 AND MB_ID=#{mb_id};
 </select>
 
- <select id="myCouponList" resultType="coupon">
+ <select id="myCouponList" resultType="couponBox">
       SELECT * FROM C_BOX cb, COUPON c
 		 WHERE 1=1
 		 AND CB.C_NUM= C.C_NUM 
 		 AND CB.MB_ID=#{mb_id}
+		 AND CB.CB_CHECK=0
       ORDER BY 
       c.C_NUM DESC
       LIMIT 10 OFFSET #{offset}
@@ -39,6 +40,7 @@ AND MB_ID=#{mb_id};
 		 WHERE 1=1
 		 AND CB.C_NUM= C.C_NUM 
 		 AND CB.MB_ID=#{mb_id}
+		 AND CB.CB_CHECK=0
       ORDER BY 
       c.C_NUM DESC
       LIMIT 10 OFFSET #{offset}
