@@ -39,7 +39,7 @@ public class MemberController {
 		conditionMap.put("이메일", "MB_EMAIL");
 		return conditionMap;
 	}
-	
+
 	   // 회원 마이페이지
 	   @RequestMapping(value="/mypage")
 	   public String getMyPage(MemberVO vo, Model model) {
@@ -55,7 +55,7 @@ public class MemberController {
 		memberService.insertMember(vo);
 		return "redirect:index.jsp";
 	}
-	
+
 	// 회원탈퇴
 	/* @ResponseBody */
 		@RequestMapping(value="/deleteMember")

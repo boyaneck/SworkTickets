@@ -10,9 +10,9 @@ public class PayVO {
 	private String buyer_tel;//주문자 연락처
 	private String exh_title;//전시명
 	private int amount;//가격
-	
-	
-	
+
+
+
 	public String getExh_title() {
 		return exh_title;
 	}
@@ -73,7 +73,7 @@ public class PayVO {
 				+ buyer + ", buyer_email=" + buyer_email + ", buyer_tel=" + buyer_tel + ", exh_title=" + exh_title
 				+ ", amount=" + amount + "]";
 	}
-	
-	
-	
+
+
+
 }

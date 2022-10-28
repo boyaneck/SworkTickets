@@ -31,7 +31,7 @@ public class ExhibitionController {
 			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "admin/ExhibitionInsert";
 		}
-	
+
 	// 전시 등록
 	@PostMapping("/insertExhibition")
 	// public String insertBoard(MultipartHttpServletRequest request, ExhibitionVO vo) throws IllegalStateExcetion, IOException {
@@ -75,12 +75,12 @@ public class ExhibitionController {
 		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 		return "admin/ExhibitionDetail";
 	}
-	
+
 	// 전시 목록 조회
 	@RequestMapping("/getExhibitionList")
 	public String getExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
-		
-		
+
+
 		//총 목록 수
 				int totalPageCnt = exhibitionService.totalExhibitionListCnt(vo);
 				//현재 페이지 설정
@@ -98,14 +98,14 @@ public class ExhibitionController {
 				model.addAttribute("exhibitionList", exhibitionService.getExhibitionList(vo));
 				return "admin/ExhibitionList";
 	}
-	
+
 	// 유저 전시 상세 조회
 		@RequestMapping("/getUserExhibition")
 		public String getUserExhibition(ExhibitionVO vo, Model model) {
 			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "exhibition/UserExhibitionDetail";
 		}
-	
+
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")
 		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
@@ -121,10 +121,10 @@ public class ExhibitionController {
 
 					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 					vo.setOffset(pvo.getOffset());
-					
+
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
-					
+
 					return "exhibition/getUserExhibitionList";
 		}
 }

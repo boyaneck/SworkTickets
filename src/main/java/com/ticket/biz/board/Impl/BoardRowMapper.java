@@ -19,12 +19,12 @@ public class BoardRowMapper implements RowMapper<BoardVO>{
 	board.setNoti_category(rs.getString("noti_category"));
 	board.setNoti_modify(rs.getDate("noti_modify"));
 	board.setNoti_secret(rs.getBoolean("noti_secret"));
-	
+
 		return board;
 	}
-	
-	
 
-	
-	
+
+
+
+
 }

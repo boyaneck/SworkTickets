@@ -5,14 +5,14 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ExhibitionVO {
-	
+
 	private int exh_no;
 	private String exh_title;
 	private int exh_price;
-	private Date exh_st_date; 
-	private Date exh_end_date; 
-	private Date exh_rge_date; 
-	private Date exh_mdf_date; 
+	private Date exh_st_date;
+	private Date exh_end_date;
+	private Date exh_rge_date;
+	private Date exh_mdf_date;
 	private String exh_location;
 	private String exh_hall;
 	private String exh_content;
@@ -24,22 +24,22 @@ public class ExhibitionVO {
 	private float exh_place_x;
 	private float exh_place_y;
 	private String exh_local_name;
-	
+
 	private String searchKeyword;
-	
-	private MultipartFile uploadFile;	
-	
+
+	private MultipartFile uploadFile;
+
 	private int offset;
 
-	
+
 	private int exh_common_no;
 	private String exh_cs_phone;
 	private int exh_fee;
 	private String exh_shipping_info;
 	private String exh_period_use;
 	private String exh_refund_info;
-	
-	
+
+
 	public int getExh_common_no() {
 		return exh_common_no;
 	}
@@ -77,8 +77,8 @@ public class ExhibitionVO {
 		this.exh_refund_info = exh_refund_info;
 	}
 
-	
-	
+
+
 	public int getExh_no() {
 		return exh_no;
 	}
@@ -246,6 +246,6 @@ public class ExhibitionVO {
 	public void setOffset(int offset) {
 		this.offset = offset;
 	}
-	
-	
+
+
 }

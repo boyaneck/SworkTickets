@@ -1,7 +1,6 @@
 package com.ticket.biz.member.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -43,12 +42,12 @@ public class MemberServiceImpl implements MemberService {
 	public int totalMemberListCnt(MemberVO vo) {
 		return memberDAO.totalMemberListCnt(vo);
 	}
-	
+
 	@Override
 	public int deleteMember(MemberVO vo) {
 		return memberDAO.deleteMember(vo);
 	}
-	
+
 	   @Override
 	   public MemberVO getMember(MemberVO vo) {
 	      System.out.println(vo.getMb_id());

@@ -10,7 +10,7 @@ import com.ticket.biz.board.BoardVO;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService{
-	
+
 	@Autowired
 	private BoardDAOMybatis boardDAO;
 
@@ -38,7 +38,8 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		return boardDAO.getBoardList(vo);
 	}
-	
+
+	@Override
 	public int totalBoardListCnt(BoardVO vo) {
 		return boardDAO.totalBoardListCnt(vo);
 	}

@@ -284,9 +284,6 @@ html, body {
 </script>
 </head>
 <body>
-	<!-- 	<div class="jumbotron member-jumbo">
-		<h1>멤버등록</h1>
-	</div> -->
 	<div class="container">
 		<div class="form-body">
 			<div class="row">
@@ -311,11 +308,11 @@ html, body {
 									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
 
 								</div>
-								
-									<div class="col-md-12">
+
+								<div class="col-md-12">
 									<input type="text" class="form-control" name="mb_name"
 										placeholder="이름" required>
-<!-- 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
+									<!-- 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
 									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
  -->
 								</div>
@@ -347,8 +344,9 @@ html, body {
 									<div class="text_box" id="cert">
 										<input id='emailCheck' class='text_box' type='text' required
 											disabled>
-										<button type="button" id='check' class='btn btn-primary btn-sm'
-											onclick='qweemailCheck(); return false;' >인증확인</button>
+										<button type="button" id='check'
+											class='btn btn-primary btn-sm'
+											onclick='qweemailCheck(); return false;'>인증확인</button>
 									</div>
 								</div>
 
@@ -360,6 +358,7 @@ html, body {
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 </body>
 </html>

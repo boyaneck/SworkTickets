@@ -13,8 +13,6 @@
 <div>
 <input type="checkbox" name="noti_secret" >
 <label>비밀글 설정</label>
-
-
 <select name="noti_category">
 <option value="회원">회원</option>
 <option value="결제">결제</option>
@@ -26,7 +24,6 @@
 <input type="textarea" placeholder="내용을 입력하세요" name="noti_content">
 
 <button>새글 등록</button>
-
 </div>
 </form>
 </body>

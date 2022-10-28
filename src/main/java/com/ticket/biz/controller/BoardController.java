@@ -26,31 +26,31 @@ import com.ticket.biz.common.PagingVO;
 @Controller
 @SessionAttributes("board")
 public class BoardController {
-	
+
 	@Autowired
 	private BoardService boardService;
 	//검색
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<String, String>();
+		Map<String, String> conditionMap = new HashMap<>();
 		conditionMap.put("내용", "CONTENT");
 		conditionMap.put("제목", "TITLE");
 		return conditionMap;
 	}
-	
+
 	//글 등록
-	
+
 	@RequestMapping("/insertBoard")
-	
+
 	public String insertBoard(BoardVO vo ,Model model , HttpSession session) {
 //		if(vo.isNoti_secret()==true & vo.getNoti_writer()== session.getAttribute("mb_id"))
 
-		boardService.insertBoard(vo);	
+		boardService.insertBoard(vo);
 		return "redirect:getBoardList";
-		
+
 	}
 
-	//"uploadFile" 추가시 
+	//"uploadFile" 추가시
 //	@PostMapping(value = "/insertBoard")
 ////	public String insertBoard(MultipartHttpServletRequest request, BoardVO vo) throws IllegalStateException, IOException {
 //	public String insertBoard(BoardVO vo) throws IllegalStateException, IOException {
@@ -72,13 +72,13 @@ public class BoardController {
 	public String updateBoard(@ModelAttribute("board") BoardVO vo, HttpSession session) {
 		System.out.println("글 수정 기능 전");
 		if( vo.getNoti_writer().equals(session.getAttribute("mb_Id").toString()) ){
-			
+
 			boardService.updateBoard(vo);
 			return "redirect:getBoardList";
 		}else {
 			return "getBoard?error=1";
 		}
-		
+
 	}
 
 	// 글 삭제
@@ -89,7 +89,7 @@ public class BoardController {
 		if( vo.getNoti_writer().equals(session.getAttribute("mb_id").toString()) ) {
 			if(vo.getFilename()!=null) {
 				System.out.println("파일삭제: "+realPath + vo.getFilename());
-				File f = new File(realPath + vo.getFilename());		
+				File f = new File(realPath + vo.getFilename());
 				f.delete();
 			}
 			boardService.deleteBoard(vo);
@@ -112,24 +112,24 @@ public class BoardController {
 	@RequestMapping("/getBoardList")
 	public String getBoardListPost(BoardVO vo, String nowPageBtn, Model model) {
 		System.out.println("글 목록 검색 처리gg");
-		
-		//총 목록 수 
+
+		//총 목록 수
 		int totalPageCnt = boardService.totalBoardListCnt(vo);
 		System.out.println("totalboardListCnt 수행 완료");
-		//현재 페이지 설정 
+		//현재 페이지 설정
 		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
 		System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
-		
+
 		//한페이지당 보여줄 목록 수
 		int onePageCnt = 10;
-		
+
 		//한 번에 보여질 버튼 수
 		int oneBtnCnt = 5;
 		System.out.println("페이징처리전 ");
 		PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 		vo.setOffset(pvo.getOffset());
-		
-		
+
+
 		model.addAttribute("paging", pvo);
 		System.out.println("modelAttribute getboardList");
 		model.addAttribute("boardList", boardService.getBoardList(vo));
@@ -137,26 +137,26 @@ public class BoardController {
 		System.out.println("modelAttribute getBoardList 기능 실행 후 ");
 		return "board/boardList";
 	}
-	
+
 	//파일다운로드
 	@GetMapping(value="/download")
-    public void fileDownLoad(@RequestParam(value="filename", required=false) String filename, 
+    public void fileDownLoad(@RequestParam(value="filename", required=false) String filename,
     		HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println("파일 다운로드");
 		if (!(filename == null || filename.equals(""))) {
 	        //요청파일 정보 불러오기
 	        String realPath = "c:/swork/eleven/src/main/webapp/img/" ;
 //		    String realPath = request.getSession().getServletContext().getRealPath("/img/");
-	        File file = new File(realPath+filename);        
-	
+	        File file = new File(realPath+filename);
+
 			//한글은 http 헤더에 사용할 수 없기 때문에 파일명은 영문으로 인코딩하여 헤더에 적용한다
 			String fn = new String(file.getName().getBytes(), "iso_8859_1");
-			
+
 			//ContentType설정
 			byte[] bytes = org.springframework.util.FileCopyUtils.copyToByteArray(file);
 			response.setHeader("Content-Disposition", "attachment; filename=\""+ fn + "\"");
 			response.setContentLength(bytes.length);
-	//			response.setContentType("image/jpeg");	        
+	//			response.setContentType("image/jpeg");
 			response.getOutputStream().write(bytes);
 	        response.getOutputStream().flush();
 	        response.getOutputStream().close();
