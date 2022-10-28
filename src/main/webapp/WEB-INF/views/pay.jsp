@@ -55,7 +55,7 @@ $(document).ready(function(){
    });
    
    function orderList(){
-      alert('주문내역 처리할 곳. 컨트롤러 호출');
+//       alert('주문내역 처리할 곳. 컨트롤러 호출');
       let fm = document.fm;
       fm.action ="payUserDB";
       fm.method="post";
@@ -188,15 +188,8 @@ $('#testBtn').click(function(e){
    <button id="check_module" type="button">결제하기</button>
    <br><hr>
 
-         <h2>결제내역 관련</h2>
-         <!--    imp_uid: <input type="text" name="imp_uid" id="imp_uid" placeholder="imp_uid 입력"><br> -->
-         merchant_uid: <input type="text" name="merchant_uid" id="merchant_uid" placeholder="merchant_uid 입력"><br>
-         <button id="cancel_module" type="button">취소하기</button>
-         <button id="list_module" type="button">결제완료목록조회</button>
-         <button id="all_module" type="button">모든목록조회</button>
       </div>
    
-   <p id="paylist"></p>
 </form>
 
 
