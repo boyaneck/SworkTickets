@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <%@ include file="/header.jsp"%>
 </head>
@@ -23,8 +24,16 @@
 	상점거래ID : ${myPayList.p_mer}<br>
 
 		<form action="paycan" method="POST">
-			<input type="hidden" name="mid" id="merchant_uid" value="${myPayList.p_mer}">
-			<button id="cancel_module" type="submit">취소하기</button>
+			<input type="hidden" name="mid" id="merchant_uid"
+				value="${myPayList.p_mer}">
+			<c:choose>
+				<c:when test="${myPayList.p_chk eq 1}">
+					<button id="cancel_module" type="submit">취소하기</button>
+				</c:when>
+				<c:otherwise>
+					<button type="button">환불완료</button>
+				</c:otherwise>
+			</c:choose>
 		</form>
 		<hr>
 		<!-- 	이메일: <input type="hidden" name="buyer_email" id="buyer_email" placeholder="이메일 입력"><br> -->

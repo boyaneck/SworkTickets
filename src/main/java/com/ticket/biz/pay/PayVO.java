@@ -10,9 +10,15 @@ public class PayVO {
 	private String buyer_tel;//주문자 연락처
 	private String exh_title;//전시명
 	private int amount;//가격
+	private int p_chk;
 	
 	
-	
+	public int getP_chk() {
+		return p_chk;
+	}
+	public void setP_chk(int p_chk) {
+		this.p_chk = p_chk;
+	}
 	public String getExh_title() {
 		return exh_title;
 	}

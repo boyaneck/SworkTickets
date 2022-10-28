@@ -113,8 +113,7 @@ public class PayController {
     
    // 결제취소
    @RequestMapping(value="/paycan" , method = RequestMethod.POST)
-   @ResponseBody
-   public int cancelPayment(@RequestParam String mid, PayVO vo) {
+   public String cancelPayment(@RequestParam String mid, PayVO vo) {
       String token = getImportToken();
       HttpClient client = HttpClientBuilder.create().build();
       HttpPost post = new HttpPost(IMPORT_CANCEL_URL); 
@@ -138,11 +137,11 @@ public class PayController {
       }
       if (asd.equals("null")) {
          System.err.println("환불실패");
-         return -1;
+         return "redirect:getPayList";
       } else {
          payService.updatePay(vo);
          System.err.println("환불성공");
-         return 1; 
+         return "redirect:getPayList"; 
       } 
    }
    
