@@ -37,6 +37,7 @@ $(document).ready(function(){
 // 					$('#mb_id').val(userId);
 					$('#p_date').val(rsp.paid_at);
 					$('#exh_title').val(rsp.name);
+					
 					msg += '\n고유ID : ' + rsp.imp_uid;
 					msg += '\n상점 거래ID : ' + rsp.merchant_uid;
 					msg += '\n결제 금액 : ' + rsp.paid_amount;
@@ -139,10 +140,12 @@ $(document).ready(function(){
 });
 
 function useCoupon(a) {
-	var amount= document.getElementById('amount').value;
+	var amount= document.getElementById('result').value;
 	var per=a;
 	var result =amount- (amount *(per/100));	
 	alert(result);
+	$('#amount').val(result);
+	
 // 	  document.getElementById('amount').value=amount;
 	}
 </script>
@@ -157,7 +160,10 @@ function useCoupon(a) {
 	전화번호: <input type="text" name="buyer_tel" id="buyer_tel" placeholder="예시: 010-1111-2222"><br>
 	이메일: <input type="text" name="buyer_email" id="buyer_email" placeholder="이메일 입력"><br>
 <!-- 	주소: <input type="text" name="uaddr" id="uaddr" placeholder="주소 입력"><br> -->
-	금액: <input type="number" name="amount" id="amount" >
+	 원금액:<input type="text" name="result" id="result" >
+	결제금액:<input type="text" name="amount" id="amount" readonly="readonly">
+	
+	
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
  쿠폰적용
 </button><br>
@@ -211,7 +217,7 @@ function useCoupon(a) {
 				  만료날짜 : ${coupon.c_date}
 					</td>
 				    <td class="text-center text-danger"> ${endDate_N-startDate_N}일 남음 </td>
- 			<td class="text-center"><button id="${coupon.c_num}" class="btn btn-primary" onclick="useCoupon(${coupon.c_per});" >쓰기</button> </td>
+ 			<td class="text-center"><button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per});" >적용하기</button> </td>
 
 				</tr>
 </c:forEach>
