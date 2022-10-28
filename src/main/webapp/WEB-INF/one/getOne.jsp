@@ -27,39 +27,39 @@
 		out.println("</div>");
 	}
 %>
-  <form name="update" action="updateBoard" method="post">
-  <input type="hidden" name="noti_no" value="${board.noti_no}">
+  <form name="update" action="updateOne" method="post">
+  <input type="hidden" name="one_no" value="${one.one_no}">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">제목</span>
       </div>
-      <input type="text" class="form-control innm" name="noti_title" value="${board.noti_title}" <%=sts %>>      
+      <input type="text" class="form-control innm" name="one_title" value="${one.one_title}" <%=sts %>>      
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">작성자</span>
       </div>
-<%--       <input type="text" class="form-control innm" name="writer" value="${board.writer}" readonly <%=sts %>>       --%>
-      <input type="text" class="form-control innm" value="${board.noti_writer}" readonly <%=sts %>>      
+<%--       <input type="text" class="form-control innm" name="writer" value="${one.writer}" readonly <%=sts %>>       --%>
+      <input type="text" class="form-control innm" name="one_writer" value="${one.one_writer}" readonly <%=sts %>>      
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">내용</span>
       </div>
-      <textarea class="form-control innm" rows="10" id="comment" name="content" <%=sts %>>${board.noti_content}</textarea>      
+      <textarea class="form-control innm" rows="10" id="comment" name="one_content" <%=sts %>>${one.one_content}</textarea>      
     </div>  
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">파일</span>
       </div>
-   		<c:if test="${board.filename ne NULL}">
+   		<c:if test="${one.filename ne NULL}">
    			<span style="cursor:pointer;padding:0 20px;" onclick="seeImg()">[파일보기]</span>
    			<script>
 // 	        	function seeImg(){
 // 	        		$("#imgBox").show();
 // 	        	}
 <!-- 	        </script> -->
-<%--    			<span style="cursor:pointer;" onclick="downloadFile('${board.filename}')">[파일다운]</span> --%>
+<%--    			<span style="cursor:pointer;" onclick="downloadFile('${one.filename}')">[파일다운]</span> --%>
 <!--    			<script> -->
 // 	   			function downloadFile(filename){
 // 	   			    window.location ='download.do?filename='+filename;
@@ -71,19 +71,19 @@
       <div class="input-group-prepend">
         <span class="input-group-text">등록일</span>
       </div>
-<%--       <input type="text" class="form-control innm" name="regDate" value="${board.regdate}" readonly <%=sts %>>       --%>
+<%--       <input type="text" class="form-control innm" name="regDate" value="${one.regdate}" readonly <%=sts %>>       --%>
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">조회수</span>
       </div>
-<%--       <input type="text" class="form-control innm" name="cnt" value="${board.cnt}" readonly <%=sts %>>       --%>
+<%--       <input type="text" class="form-control innm" name="cnt" value="${one.cnt}" readonly <%=sts %>>       --%>
     </div>
     <div id="footer">
-	  	<a href="updateBoard"<%=sts %>>글수정</a>
+	  	<a href="updateOne"<%=sts %>>글수정</a>
 	  	<a href="write.jsp" <%=sts %>>글쓰기</a>
-	  	<a href="deleteBoard"<%=sts %>>글삭제</a>
-	  	<a href="getBoardList">글목록</a>
+	  	<a href="deleteOne"<%=sts %>>글삭제</a>
+	  	<a href="getOneList">글목록</a>
 	</div>
   </form>  
 </div>
@@ -98,7 +98,7 @@
         	}
         </script>
 		</div>
-		<img id="imgBoxImg" src="img/${board.filename}">
+		<img id="imgBoxImg" src="img/${one.filename}">
 	</div>
 </div>
 <!-- 클릭시 보이는 이미지 end -->

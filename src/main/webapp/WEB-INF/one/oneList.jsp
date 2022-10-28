@@ -11,8 +11,8 @@ div#btnBox{text-align:center;}
 </style>
 <script>
 
-function getboard(val){
-	location.href="getBoard?noti_no="+val;
+function getone(val){
+	location.href="getOne?one_no="+val;
 
 }
 </script>
@@ -22,7 +22,7 @@ function getboard(val){
 </div>
 <%-- <%@ include file="../../menu.jsp" %> --%>
 <nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
-  <form class="form-inline" action="getBoardList.do" method="post">
+  <form class="form-inline" action="getOneList.do" method="post">
   	<select class="form-control" id="sel1" name="searchCondition" style="display:inline-block!important;margin-right:10px;">
         <c:forEach items="${conditionMap}" var="option">
 	        <option value="${option.value}">${option.key}</option>
@@ -47,13 +47,13 @@ function getboard(val){
     </thead>
     <tbody>
    
-<c:forEach items="${boardList}" var="board">
-	<c:if test="${board.noti_secret eq 'true'}">
+<c:forEach items="${oneList}" var="one">
+	<c:if test="${one.one_secret eq 'true'}">
 	<c:choose>
-	<c:when test="${board.noti_writer eq session.getAtrribute('mb_Id') or session.getAttribute('mb_Id') eq 'admin'}">
-		<td >${board.noti_no }</td>
+	<c:when test="${one.one_writer eq session.getAtrribute('mb_Id') or session.getAttribute('mb_Id') eq 'admin'}">
+		<td >${one.one_no }</td>
 	
-	  <td>${board.noti_title}</td>
+	  <td>${one.one_title}</td>
 	  </c:when>
 	  <c:otherwise>
 	  <tr><td>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td></tr>
@@ -62,12 +62,12 @@ function getboard(val){
 	 
 	  </c:if>
 	  
-	  <c:if test="${board.noti_secret eq 'false'}">
+	  <c:if test="${one.one_secret eq 'false'}">
 	
-	 <td>${board.noti_title}</td>
-	  <tr onclick="getboard(${board.noti_no})" style="cursor:pointer;">
-	  <td class="tdCenter">${board.noti_no}</td>
-	  <td class="tdCenter">${board.noti_writer}</td>
+	 <td>${one.one_title}</td>
+	  <tr onclick="getone(${one.one_no})" style="cursor:pointer;">
+	  <td class="tdCenter">${one.one_no}</td>
+	  <td class="tdCenter">${one.one_writer}</td>
 
 	</tr>
 		
@@ -79,7 +79,7 @@ function getboard(val){
   <div id="btnBox">
   <!-- 반복처리할 태그 시작-->
   <c:if test="${paging.nowPageBtn > 1 }">
-  	<a href ="getBoardList.do?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+  	<a href ="getOneList.do?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
   </c:if>
   <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i" >
   <c:choose>
@@ -87,12 +87,12 @@ function getboard(val){
   	  	<a class="aSel">${i}</a>
 	  </c:when>
 	  <c:otherwise>
-		<a href ="getBoardList.do?nowPageBtn=${i}">${i}</a>
+		<a href ="getOneList.do?nowPageBtn=${i}">${i}</a>
 	  </c:otherwise>
   </c:choose>
   </c:forEach>
   <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-  	<a href ="getBoardList.do?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+  	<a href ="getOneList.do?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
   </c:if>
   <!-- 반복처리할 태그 끝 -->
   </div><br><br>

@@ -22,6 +22,7 @@
 <title>헤더입니다.</title>
 </head>
 
+<!-- 회원 -->
 <nav class="navbar navbar-expand-sm navbar-light header-navbar"
 	data-toggle="affix">
 	<a class="navbar-brand logoimg" href="index.jsp"> <img
@@ -46,21 +47,17 @@
 				<div class="dropdown-menu header-menu" aria-labelledby="searchtotal">
 					<a class="dropdown-item header-item" href="#">공지사항</a>
 					<a class="dropdown-item header-item" href="#">자주묻는질문</a>
-					<a class="dropdown-item header-item" href="/getBoardList">1:1 문의</a>
+					<a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
 				</div>
 			</li>
 		</ul>
-	
-	
-	
-	
 	
 	<ul class="nav navbar-nav navbar-right">
 		<c:choose>
 			<c:when test='${mb_Id ne NULL}'>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="nav-item dropdown header-title">
-					<a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/getBoardList" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
+					<a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
 					<div class="dropdown-menu header-menu" aria-labelledby="searchtotal">
 					<a class="dropdown-item header-item" href="mypage?mb_id=${mb_Id}">&nbsp마이페이지</a>
 					<a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
@@ -71,7 +68,17 @@
 					<a class="nav-link header-logout" href="/logoutGo">로그아웃</a>
 			</c:when>
 			<c:otherwise>
-				<a href="login.jsp">로그인</a>
+			<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item dropdown header-title">
+				<a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 로그인 </a>
+					<div class="dropdown-menu header-menu" aria-labelledby="searchtotal">
+				<a class="dropdown-item header-item" href="login.jsp">&nbsp로그인</a>
+				<a class="dropdown-item header-item" href="/login_kakao">&nbsp카카오로그인</a>
+				<a class="dropdown-item header-item" href="insertMember.jsp">&nbsp회원가입</a>
+				
+				</div>
+				</li>
+				</ul>
 			</c:otherwise>
 		</c:choose>
 	</ul>

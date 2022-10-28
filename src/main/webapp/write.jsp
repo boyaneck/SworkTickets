@@ -9,21 +9,21 @@
 </head>
 <body>
 ㅇㅇ
-<form action="insertBoard">
+<form action="insertOne">
 <div>
-<input type="checkbox" name="noti_secret" >
+<input type="checkbox" name="one_secret" >
 <label>비밀글 설정</label>
 
 
-<select name="noti_category">
+<select name="one_category">
 <option value="회원">회원</option>
 <option value="결제">결제</option>
 </select>
-<input type="text" name="noti_writer" placeholder="작성자 아이디값 받아오기" value="<%= session.getAttribute("mb_Id") %>" readonly>
+<input type="text" name="one_writer" placeholder="작성자 아이디값 받아오기" value="<%= session.getAttribute("mb_Id") %>" readonly>
  
-<input type="text" placeholder="제목을 입력하세요" name="noti_title" >
+<input type="text" placeholder="제목을 입력하세요" name="one_title" >
 
-<input type="textarea" placeholder="내용을 입력하세요" name="noti_content">
+<input type="textarea" placeholder="내용을 입력하세요" name="one_content">
 
 <button>새글 등록</button>
 

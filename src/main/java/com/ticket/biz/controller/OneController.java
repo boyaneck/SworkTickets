@@ -19,16 +19,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.ticket.biz.board.BoardService;
-import com.ticket.biz.board.BoardVO;
 import com.ticket.biz.common.PagingVO;
+import com.ticket.biz.one.OneService;
+import com.ticket.biz.one.OneVO;
 
 @Controller
-@SessionAttributes("board")
-public class BoardController {
+@SessionAttributes("one")
+public class OneController {
 	
 	@Autowired
-	private BoardService boardService;
+	private OneService oneService;
 	//검색
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
@@ -40,20 +40,21 @@ public class BoardController {
 	
 	//글 등록
 	
-	@RequestMapping("/insertBoard")
+	@RequestMapping("/insertOne")
 	
-	public String insertBoard(BoardVO vo ,Model model , HttpSession session) {
-//		if(vo.isNoti_secret()==true & vo.getNoti_writer()== session.getAttribute("mb_id"))
-
-		boardService.insertBoard(vo);	
-		return "redirect:getBoardList";
+	public String insertOne(OneVO vo ,Model model , HttpSession session) {
+//		if(vo.isOne_secret()==true & vo.getOne_writer()== session.getAttribute("mb_id"))
+		System.out.println("확인" + vo.toString());
+		
+		oneService.insertOne(vo);	
+		return "redirect:getOneList";
 		
 	}
 
 	//"uploadFile" 추가시 
-//	@PostMapping(value = "/insertBoard")
-////	public String insertBoard(MultipartHttpServletRequest request, BoardVO vo) throws IllegalStateException, IOException {
-//	public String insertBoard(BoardVO vo) throws IllegalStateException, IOException {
+//	@PostMapping(value = "/insertOne")
+////	public String insertOne(MultipartHttpServletRequest request, OneVO vo) throws IllegalStateException, IOException {
+//	public String insertOne(OneVO vo) throws IllegalStateException, IOException {
 //		MultipartFile uplodFile = vo.getUploadFile();
 //		//realPath 추가
 ////	    String realPath = request.getSession().getServletContext().getRealPath("/img/");
@@ -63,59 +64,59 @@ public class BoardController {
 //			vo.setFilename(fileName);
 //			uplodFile.transferTo(new File(realPath+fileName));
 //		}
-//		boardService.insertBoard(vo);
-//		return "getBoardList";
+//		oneService.insertOne(vo);
+//		return "getOneList";
 //	}
 
 	// 글 수정
-	@RequestMapping("/updateBoard")
-	public String updateBoard(@ModelAttribute("board") BoardVO vo, HttpSession session) {
+	@RequestMapping("/updateOne")
+	public String updateOne(@ModelAttribute("one") OneVO vo, HttpSession session) {
 		System.out.println("글 수정 기능 전");
-		if( vo.getNoti_writer().equals(session.getAttribute("mb_Id").toString()) ){
+		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString()) ){
 			
-			boardService.updateBoard(vo);
-			return "redirect:getBoardList";
+			oneService.updateOne(vo);
+			return "redirect:getOneList";
 		}else {
-			return "getBoard?error=1";
+			return "getOne?error=1";
 		}
 		
 	}
 
 	// 글 삭제
-	@RequestMapping("/deleteBoard")
-	public String deleteBoard(BoardVO vo, HttpSession session) {
+	@RequestMapping("/deleteOne")
+	public String deleteOne(OneVO vo, HttpSession session) {
 		String realPath = "c:/swork/eleven/src/main/webapp/img/" ;
-		vo = boardService.getBoard(vo);
-		if( vo.getNoti_writer().equals(session.getAttribute("mb_id").toString()) ) {
+		vo = oneService.getOne(vo);
+		if( vo.getOne_writer().equals(session.getAttribute("mb_id").toString()) ) {
 			if(vo.getFilename()!=null) {
 				System.out.println("파일삭제: "+realPath + vo.getFilename());
 				File f = new File(realPath + vo.getFilename());		
 				f.delete();
 			}
-			boardService.deleteBoard(vo);
-			return "getBoardList";
+			oneService.deleteOne(vo);
+			return "getOneList";
 		}else {
-			return "getBoard?error=1";
+			return "getOne?error=1";
 		}
 	}
 
 	// 글 상세 조회
-	@RequestMapping("/getBoard")
-	public String getBoard(BoardVO vo, Model model) {
+	@RequestMapping("/getOne")
+	public String getOne(OneVO vo, Model model) {
 		System.out.println("글상세조회");
-		model.addAttribute("board", boardService.getBoard(vo));
+		model.addAttribute("one", oneService.getOne(vo));
 		System.out.println("글상세조회 수행");
-		return "board/getBoard";
+		return "one/getOne";
 	}
 
 	// 글 목록
-	@RequestMapping("/getBoardList")
-	public String getBoardListPost(BoardVO vo, String nowPageBtn, Model model) {
+	@RequestMapping("/getOneList")
+	public String getOneListPost(OneVO vo, String nowPageBtn, Model model) {
 		System.out.println("글 목록 검색 처리gg");
 		
 		//총 목록 수 
-		int totalPageCnt = boardService.totalBoardListCnt(vo);
-		System.out.println("totalboardListCnt 수행 완료");
+		int totalPageCnt = oneService.totalOneListCnt(vo);
+		System.out.println("totaloneListCnt 수행 완료");
 		//현재 페이지 설정 
 		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
 		System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
@@ -131,11 +132,11 @@ public class BoardController {
 		
 		
 		model.addAttribute("paging", pvo);
-		System.out.println("modelAttribute getboardList");
-		model.addAttribute("boardList", boardService.getBoardList(vo));
-		List<BoardVO> boardlist =boardService.getBoardList(vo);
-		System.out.println("modelAttribute getBoardList 기능 실행 후 ");
-		return "board/boardList";
+		System.out.println("modelAttribute getoneList");
+		model.addAttribute("oneList", oneService.getOneList(vo));
+		List<OneVO> onelist =oneService.getOneList(vo);
+		System.out.println("modelAttribute getOneList 기능 실행 후 ");
+		return "one/oneList";
 	}
 	
 	//파일다운로드
