@@ -29,7 +29,7 @@ public class CouponBoxController {
 	//쿠폰 등록
 	@GetMapping(value = "/insertCouponBox")
 	public String insertCoupon(CouponBoxVO vo,HttpSession session, HttpServletResponse response) throws IllegalStateException, IOException {
-		vo.setMb_id((String)session.getAttribute("userId"));
+		vo.setMb_id((String)session.getAttribute("mb_Id"));
 		boolean a=couponBoxService.getCouponBox(vo);
 		if(a==true) {
 			response.setContentType("text/html; charset=UTF-8");
@@ -48,7 +48,7 @@ public class CouponBoxController {
 	// 내쿠폰목록
 	@RequestMapping("/MyCoupon")
 	public String getCouponListPost(CouponBoxVO vo, String nowPageBtn, Model model ,HttpSession session) {
-		vo.setMb_id((String)session.getAttribute("userId")); 
+		vo.setMb_id((String)session.getAttribute("mb_Id")); 
 		//총 목록 수
 		int totalPageCnt = couponBoxService.myCouponListCnt(vo);
 		//현재 페이지 설정

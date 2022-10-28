@@ -41,13 +41,13 @@
 
 
 					<c:choose>
-						<c:when test="${userId eq 'admin'}">
+						<c:when test="${mb_Id eq 'admin'}">
 							<td class="text-center"><button class="btn btn-primary"
 									onclick="location.href='/getCoupon?c_num=${coupon.c_num}'">수정</button></td>
 							<td class="text-center"><button class="btn btn-danger"
 									onclick="location.href='/deleteCoupon?c_num=${coupon.c_num}'">삭제 </button></td>
 						</c:when>
-						<c:when test="${userId ne null}">
+						<c:when test="${mb_Id ne null}">
 							<c:choose>
 								<c:when test="${error!=1}">
 									<td class="text-center"><button class="btn btn-primary" onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button></td>

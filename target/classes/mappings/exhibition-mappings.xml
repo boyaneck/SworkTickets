@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ExhibitionDAO">
+	<insert id="insertExhibition">
+		INSERT INTO EXHIBITION (EXH_TITLE, EXH_PRICE,
+		EXH_ST_DATE, EXH_END_DATE, EXH_RGE_DATE, EXH_LOCATION, EXH_HALL,
+		EXH_CONTENT,
+		EXH_IMG, EXH_PLANNER, EXH_TIME, EXH_RATING, EXH_ARTIST, EXH_LOCAL_NAME)
+		VALUES
+		(#{exh_title}, #{exh_price}, #{exh_st_date},
+		#{exh_end_date}, now(),
+		#{exh_location}, #{exh_hall}, #{exh_content},
+		#{exh_img},
+		#{exh_planner}, #{exh_time}, #{exh_rating}, #{exh_artist},
+		#{exh_local_name)})
+	</insert>
+
+	<update id="updateExhibition">
+		UPDATE EXHIBITION SET EXH_TITLE=#{exh_title},
+		EXH_PRICE=#{exh_price}, EXH_ST_DATE=#{exh_st_date},
+		EXH_END_DATE=#{exh_end_date}, EXH_MDF_DATE=now(),
+		EXH_LOCATION=#{exh_location}, EXH_HALL=#{exh_hall}, EXH_CONTENT
+		=#{exh_content}, EXH_IMG=#{exh_img}, EXH_PLANNER=#{exh_planner},
+		EXH_TIME=#{exh_time}, EXH_RATING=#{exh_rating},
+		EXH_ARTIST=#{exh_artist}, EXH_LOCAL_NAME=#{exh_local_name}
+		WHERE
+		EXH_NO=#{EXH_NO}
+	</update>
+
+	<delete id="deleteExhibition">
+		DELETE FROM EXHIBITION WHERE EXH_NO = #{exh_no}
+	</delete>
+
+	<select id="getExhibition" resultType="exhibition">
+		SELECT * FROM EXHIBITION 
+		JOIN EXHIBITION_COMMON 
+		ON EXHIBITION.EXH_COMMON_NO = EXHIBITION_COMMON.EXH_COMMON_NO 
+		WHERE EXH_NO=#{exh_no}; 
+
+	</select>
+
+	<select id="getExhibitionList" resultType="exhibition">
+		SELECT * FROM
+		EXHIBITION WHERE 1=1
+		ORDER BY
+		EXH_NO DESC
+		LIMIT 10 OFFSET #{offset}
+	</select>
+
+
+	<select id="totalExhibitionListCnt" resultType="_int">
+		SELECT COUNT(*)
+		FROM EXHIBITION WHERE 1=1
+
+	</select>
+
+	<select id="getUserExhibitionList" resultType="exhibition">
+		SELECT * FROM
+		EXHIBITION WHERE 1=1
+		and
+		DATE(EXH_END_DATE) >= DATE(NOW())
+		ORDER BY
+		EXH_ST_DATE DESC
+		LIMIT 10
+		OFFSET #{offset}
+	</select>
+
+	<select id="totalUserExhibitionListCnt" resultType="_int">
+		SELECT COUNT(*)
+		FROM EXHIBITION WHERE 1=1
+		and
+		DATE(EXH_END_DATE) >= DATE(NOW())
+
+	</select>
+
+</mapper>

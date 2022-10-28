@@ -39,6 +39,15 @@ public class MemberController {
 		conditionMap.put("이메일", "MB_EMAIL");
 		return conditionMap;
 	}
+	
+	   // 회원 마이페이지
+	   @RequestMapping(value="/mypage")
+	   public String getMyPage(MemberVO vo, Model model) {
+	      System.out.println("회원정보가져오기");
+	      model.addAttribute("member", memberService.getMember(vo));
+//	      System.out.println("1111111"+memberService.getMember(vo));
+	      return "member/mypage";
+	   }
 
 	//멤버등록
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
@@ -46,6 +55,16 @@ public class MemberController {
 		memberService.insertMember(vo);
 		return "redirect:index.jsp";
 	}
+	
+	// 회원탈퇴
+	/* @ResponseBody */
+		@RequestMapping(value="/deleteMember")
+		public String deleteMember(MemberVO vo, HttpSession session) {
+			session.invalidate();
+		int result = memberService.deleteMember(vo);
+		System.out.println(result);
+		return "redirect:login.jsp";
+		}
 
 	//관리자 회원조회
 	@RequestMapping("/getMemberList")

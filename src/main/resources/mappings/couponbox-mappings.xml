@@ -7,7 +7,8 @@
 	INSERT INTO C_BOX (
 	C_NUM,
 	MB_ID
-	)VALUES(#{c_num},#{mb_id})
+	)
+	VALUES(#{c_num}, #{mb_id})
 </insert>
 
 <!-- 	쿠폰사용 -->
@@ -25,7 +26,7 @@ AND MB_ID=#{mb_id};
 </select>
 
  <select id="myCouponList" resultType="coupon">
-      SELECT * FROM C_BOX cb,COUPON c
+      SELECT * FROM C_BOX cb, COUPON c
 		 WHERE 1=1
 		 AND CB.C_NUM= C.C_NUM 
 		 AND CB.MB_ID=#{mb_id}

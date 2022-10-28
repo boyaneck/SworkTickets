@@ -19,7 +19,10 @@ public class PhoneController {
 	public String sendSMS(@RequestParam("mb_phone") String userPhoneNumber) {
 		System.out.println(userPhoneNumber);
 		System.out.println("휴대폰으로 보낼 인증번호 난수 생성");
-		int randomNumber = (int)((Math.random()* (9999 - 1000 + 1)) + 1000);
+		//난수 4자리수 생성
+//		int randomNumber = (int)((Math.random()* (9999 - 1000 + 1)) + 1000);
+		//난수 6자리수 생성
+		int randomNumber = (int)Math.floor((Math.random()*(999999-100000+1)+100000));
 		//난수 생성
 		phoneService.certifiedPhoneNumber(userPhoneNumber,randomNumber);
 		return Integer.toString(randomNumber);

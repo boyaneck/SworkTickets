@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -45,11 +47,10 @@ public class KaKaoController {
 		String result = KAKAO_AUTH_URL + "?response_type=code&scope=account_email,gender&client_id="+REST_API_KEY+"&redirect_uri="+REDIRECT_URI;
 
 		System.out.println(result);
-
 		return "redirect:"+result;
 	}
 
-
+	//토큰가져오기
 	@RequestMapping(value = "/getToken")
 	public String oauthKakao(@RequestParam(value = "code", required = false) String code, Model model) throws Exception {
 		System.out.println("code: " + code);
@@ -71,15 +72,16 @@ public class KaKaoController {
 	@RequestMapping("/logOutUrl")
 	@ResponseBody
 	public String getLogout() {
-		REDIRECT_URI = REDIRECT_URI+"/logout_kakao";
+		REDIRECT_URI = REDIRECT_URI+"/logout";
 		String result = KAKAO_AUTH_URL + "?response_type=code&client_id="+REST_API_KEY+"&redirect_uri="+REDIRECT_URI;
 //		REDIRECT_URI = "http://localhost:8090";
 		return result;
 	}
 
-	@RequestMapping(value = "/logout_kakao")
+	//리다이렉트 로그아웃
+	@RequestMapping(value = "/logout")
 	public String logoutKakao(
-			@RequestParam(value = "code", required = false) String code
+			@RequestParam(value = "code", required = false) String code, HttpServletResponse response
 			, Model model) throws Exception {
 		System.out.println("code: " + code);
         String access_Token = getAccessToken(code);
@@ -174,7 +176,7 @@ public class KaKaoController {
     	return map;
     }
 
-	@RequestMapping(value = {"/login_kakao"})
+	@RequestMapping(value = {"/login/kakao"})
 	public String home() {
 		System.out.println("컨트롤러");
 		return "views/login_kakao";

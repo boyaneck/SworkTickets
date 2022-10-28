@@ -34,25 +34,25 @@
    <bean class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg ref="sqlsession"></constructor-arg>
    </bean>
-   	<!-- 메일 인증시 필요 -->
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<!-- SMTP 서버명 설정 -->
-		<property name="host" value="smtp.naver.com" />
-		<!-- SMTP 포트 설정 -->
-		<property name="port" value="587" />
-		<!-- smtp설정한 이메일 아이디 -->
-		<property name="username" value="hm_tickets" />
-		<!-- smtp설정한 이메일 비밀번호입력 -->
-		<property name="password" value="dnjstjs0224" />
-		<property name="defaultEncoding" value="utf-8" />
-		<property name="javaMailProperties" >
-			<props>
-				<prop key="mail.transport.protocol">smtp</prop>
-				<prop key="mail.smtp.auth">true</prop>
-				<prop key="mail.smtp.starttls.enable">true</prop>
-				<prop key="mail.debug">true</prop>
-				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
-			</props>
-		</property>	
-	</bean>
+      <!-- 메일 인증시 필요 -->
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+      <!-- SMTP 서버명 설정 -->
+      <property name="host" value="smtp.naver.com" />
+      <!-- SMTP 포트 설정 -->
+      <property name="port" value="587" />
+      <!-- smtp설정한 이메일 아이디 -->
+      <property name="username" value="hm_tickets" />
+      <!-- smtp설정한 이메일 비밀번호입력 -->
+      <property name="password" value="dnjstjs0224" />
+      <property name="defaultEncoding" value="utf-8" />
+      <property name="javaMailProperties" >
+         <props>
+            <prop key="mail.transport.protocol">smtp</prop>
+            <prop key="mail.smtp.auth">true</prop>
+            <prop key="mail.smtp.starttls.enable">true</prop>
+            <prop key="mail.debug">true</prop>
+            <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+         </props>
+      </property>   
+   </bean>
 </beans>

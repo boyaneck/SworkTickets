@@ -17,11 +17,12 @@
 <a href="/pay">관리자 결제목록</a><br>
 <a href="/login_kakao">카카오로그인</a><br>
 <a href="/payUser">회원 결제</a><br>
+<a href="/getPayList">나의 구매내역</a><br>
 <a href="login.jsp">로그인</a><br>
 <a href="insertMember.jsp">회원가입</a><br>
 <a href="insertCoupon.jsp">쿠폰등록</a><br>
 <a href="/MyCoupon">내 쿠폰함</a><br>
-<a href="/getPayList">나의 구매내역</a>
-
+<a href="/getBoardList">게시판 가기</a><br>
+<a href="/getUserExhibitionList">회원전시</a>
 </body>
 </html>

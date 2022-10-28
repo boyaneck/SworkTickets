@@ -178,10 +178,7 @@ html, body {
 				function() {
 					alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
 					var phone = $("#mb_phone").val();
-<<<<<<< HEAD
 
-=======
->>>>>>> f6f2a97a92a5d9a5be91816e81420d0fceccef49
 					$.ajax({
 						type : "GET",
 						url : "phoneCheck?mb_phone=" + phone,
@@ -290,7 +287,6 @@ html, body {
 	<!-- 	<div class="jumbotron member-jumbo">
 		<h1>멤버등록</h1>
 	</div> -->
-<<<<<<< HEAD
 	<div class="container">
 		<div class="form-body">
 			<div class="row">
@@ -314,6 +310,14 @@ html, body {
 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
 									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
 
+								</div>
+								
+									<div class="col-md-12">
+									<input type="text" class="form-control" name="mb_name"
+										placeholder="이름" required>
+<!-- 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
+									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
+ -->
 								</div>
 								<div class="col-md-12">
 									<tr class="mobileNo">
@@ -353,75 +357,9 @@ html, body {
 								</div>
 							</form>
 						</div>
-=======
-<div class="container">
-	<div class="form-body">
-		<div class="row">
-			<div class="form-holder">
-				<div class="form-content">
-					<div class="form-items">
-						<h3>회원가입</h3>
-						<p>정보입력</p>
-						<form class="requires-validation" action="insertMember"
-							method="post">
-							<div class="col-md-12">
-								<input type="text" class="form-control" name="mb_id"
-									placeholder="아이디" required>
-								<div class="valid-feedback">유효한아이디입니다.</div>
-								<div class="invalid-feedback">공백없이 입력해주세요</div>
-
-							</div>
-							<div class="col-md-12">
-								<input type="password" class="form-control" name="mb_pw"
-									placeholder="패스워드" required>
-								<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
-								<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
-
-							</div>
-							<div class="col-md-12">
-								<tr class="mobileNo">
-									<th><label for="phone">휴대폰 번호</label></th>
-									<td>
-										<p>
-											<input id="mb_phone" type="text" name="mb_phone"
-												title="전화번호 입력" required />
-											<button type="button" id="phoneChk"
-												class="btn btn-dark doubleChk">인증번호 보내기</button>
-											<br /> <input id="phone2" type="text" name="phone2"
-												title="인증번호 입력" disabled required />
-											<button type="button" id="phoneChk2"
-												class="btn btn-dark doubleChk">인증확인</button>
-											<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호
-												보내기를 해주십시오.</span> <input type="hidden" id="phoneDoubleChk" />
-										</p>
-									</td>
-								</tr>
-							</div>
-							<div class="col-md-12">
-								<div id="menu-text">E-mail 인증</div>
-								<input id="mb_email" class="text_box" type="text"
-									name="mb_email" placeholder="이메일 입력" required autofocus>
-								<button type="button" id="sendMail"
-									class="btn btn-primary btn-sm">발송하기</button>
-								<div class="text_box" id="cert">
-									<input id='emailCheck' class='text_box' type='text' required
-										disabled>
-									<button type="button" id='check'
-										class='btn btn-primary btn-sm'
-										onclick='qweemailCheck(); return false;'>인증확인</button>
-								</div>
-							</div>
-
-							<div class="mx-auto" id="footer">
-								<button id="conRegister" type="submit" class="btn btn-dark">회원가입</button>
-							</div>
-						</form>
->>>>>>> f6f2a97a92a5d9a5be91816e81420d0fceccef49
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
 </body>
 </html>

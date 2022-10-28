@@ -23,8 +23,7 @@
 	상점거래ID : ${myPayList.p_mer}<br>
 
 		<form action="paycan" method="POST">
-		<h2>취소할래?</h2>
-			<input type="text" name="mid" id="merchant_uid" value="${myPayList.p_mer}">
+			<input type="hidden" name="mid" id="merchant_uid" value="${myPayList.p_mer}">
 			<button id="cancel_module" type="submit">취소하기</button>
 		</form>
 		<hr>
