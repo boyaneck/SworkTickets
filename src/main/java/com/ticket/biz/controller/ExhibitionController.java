@@ -2,10 +2,7 @@ package com.ticket.biz.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.http.HttpRequest;
-import java.util.Enumeration;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.exhibition.ExhibitionService;
 import com.ticket.biz.exhibition.ExhibitionVO;
+import com.ticket.biz.good.GoodService;
+import com.ticket.biz.good.GoodVO;
 
 @Controller
 @SessionAttributes("exhibition")
@@ -79,9 +78,12 @@ public class ExhibitionController {
 		return "admin/ExhibitionDetail";
 	}
 
+	
+
 	// 전시 목록 조회
 	@RequestMapping("/getExhibitionList")
 	public String getExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
+				
 
 
 		//총 목록 수

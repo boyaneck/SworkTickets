@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GoodDAO">
+<insert id="insertGood">
+	INSERT INTO GOOD (
+	MB_ID,EXH_NO)
+	VALUES(#{mb_id},#{exh_no})
+</insert>
+
+
+   <update id="updateGood">
+      UPDATE GOOD
+ 	 SET GOOD_CHECK=#{good_check}
+      WHERE GOOD_ID=#{good_id}
+  </update>
+
+<select id="getGoodChk" resultType="good">
+SELECT *
+from GOOD
+WHERE 1=1
+AND EXH_NO= #{exh_no}
+AND MB_ID=#{mb_id};
+
+</select>
+
+<select id="getGoodYN" resultType="_integer">
+SELECT COUNT(*)
+from GOOD
+WHERE 1=1
+AND EXH_NO= #{exh_no}
+AND MB_ID=#{mb_id};
+</select>
+
+<!--  <select id="getGoodList" resultType="couponBox"> -->
+<!--       SELECT * FROM good g, EXHIBITION e -->
+<!-- 		 WHERE 1=1 -->
+<!-- 		 AND g.exh_no= e.exh_no  -->
+<!-- 		 AND CB.CB_CHECK=0 -->
+<!-- 		 GROUP BY g.exh_no -->
+<!--       ORDER BY  -->
+<!--       g.exh_no DESC -->
+<!--       LIMIT 10  -->
+<!--    </select> -->
+<!--  <select id="GoodCnt" resultType="_int"> -->
+<!--       SELECT COUNT(*) FROM C_BOX cb,COUPON c -->
+<!-- 		 WHERE 1=1 -->
+<!-- 		 AND CB.C_NUM= C.C_NUM  -->
+<!-- 		 AND CB.MB_ID=#{mb_id} -->
+<!-- 		 AND CB.CB_CHECK=0 -->
+<!--       ORDER BY  -->
+<!--       c.C_NUM DESC -->
+<!--       LIMIT 10 OFFSET #{offset} -->
+<!--    </select> -->
+</mapper>
