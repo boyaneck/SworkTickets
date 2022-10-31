@@ -42,7 +42,9 @@
 				</div>
 				<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인</button>
 				<a href="/login/kakao"><img
-					src="images/kakao_login_medium_narrow.png" style="height: 60px" /></a>
+					src="images/kakao_login_medium_narrow.png" style="height: 30px" /></a>
+					<a href="/login/naver"><img
+					src="images/naver.png" style="height: 30px" /></a>
 			</form>
 		</div>
 	</div>
