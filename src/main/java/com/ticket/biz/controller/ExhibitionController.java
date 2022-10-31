@@ -2,7 +2,10 @@ package com.ticket.biz.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpRequest;
+import java.util.Enumeration;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +25,14 @@ import com.ticket.biz.exhibition.ExhibitionVO;
 @SessionAttributes("exhibition")
 public class ExhibitionController {
 
+	
 	@Autowired
 	private ExhibitionService exhibitionService;
 
 	// 전시 등록 이동
 		@RequestMapping("/insertmoveExhibition")
 		public String insertmoveExhibition(ExhibitionVO vo, Model model) {
-			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
+//			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "admin/ExhibitionInsert";
 		}
 	
@@ -52,21 +56,20 @@ public class ExhibitionController {
 	@RequestMapping("/updateExhibition")
 	public String updateExhibition(@ModelAttribute("exhibition") ExhibitionVO vo, HttpSession session) {
 		exhibitionService.insertExhibition(vo);
-		return "redirect:ExhibitionList";
+		return "redirect:getExhibitionList";
 	}
 
 	// 전시 삭제
 	@RequestMapping("/deleteExhibition")
 	public String deleteExhibition(ExhibitionVO vo, HttpSession session) {
-		String realPath = "c:/swork/tickets/src/main/webapp/img/";
+//		String realPath = "c:/swork/tickets/src/main/webapp/img/";
 		vo = exhibitionService.getExhibition(vo);
-		if (vo.getExh_img() != null) {
-			System.out.println("파일삭제 : " + realPath + vo.getExh_img());
-			File f = new File(realPath + vo.getExh_img());
-			f.delete();
-		}
-		exhibitionService.deleteExhibition(vo);
-		return "redirect:ExhibitionList";
+//		if (vo.getExh_img() != null) {
+//			System.out.println("파일삭제 : " + realPath + vo.getExh_img());
+//			File f = new File(realPath + vo.getExh_img());
+//			f.delete();
+//		}
+		return "redirect:getExhibitionList";
 	}
 
 	// 전시 상세 조회

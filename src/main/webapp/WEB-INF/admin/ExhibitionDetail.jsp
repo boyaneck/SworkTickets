@@ -21,7 +21,22 @@
 <p>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</p>
    <div id="footer">
 			<a href="WEB-INF/admin/ExhibitionInsert.jsp"><button type="button" class="btn btn-primary">수정하기</button></a>
-			<button type="button" class="btn btn-primary">삭제하기</button>
+			<button type="button" class="btn btn-primary" onclick="del()">삭제하기</button>
 		</div>
+		<script>
+       function del(){
+          var delConfirm = confirm('정말 삭제하시겠습니까?');
+       
+         if (delConfirm == true) {
+
+            alert('삭제되었습니다.');
+            location.href = 'deleteExhibition?exh_no=${exhibition.exh_no}&page=${paging.nowPageBtn}';
+         }
+         else {
+            alert('삭제가 취소되었습니다.');
+         }
+       }
+       
+      </script>
 </body>
 </html>

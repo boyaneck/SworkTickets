@@ -16,6 +16,8 @@ public class ExhibitionVO {
 	private String exh_location;
 	private String exh_hall;
 	private String exh_content;
+	private String exh_thumbnail;
+	private String exh_banne;
 	private String exh_img;
 	private String exh_planner;
 	private String exh_time;
@@ -24,7 +26,9 @@ public class ExhibitionVO {
 	private float exh_place_x;
 	private float exh_place_y;
 	private String exh_local_name;
+	private int exh_cancell;
 	
+
 	private String searchKeyword;
 	
 	private MultipartFile uploadFile;	
@@ -39,7 +43,7 @@ public class ExhibitionVO {
 	private String exh_period_use;
 	private String exh_refund_info;
 	
-	
+
 	public int getExh_common_no() {
 		return exh_common_no;
 	}
@@ -158,7 +162,23 @@ public class ExhibitionVO {
 	public void setExh_content(String exh_content) {
 		this.exh_content = exh_content;
 	}
-
+	
+	public String getExh_thumbnail() {
+		return exh_thumbnail;
+	}
+	
+	public void setExh_thumbnail(String exh_thumbnail) {
+		this.exh_thumbnail = exh_thumbnail;
+	}
+	
+	public String getExh_banne() {
+		return exh_banne;
+	}
+	
+	public void setExh_banne(String exh_banne) {
+		this.exh_banne = exh_banne;
+	}
+	
 	public String getExh_img() {
 		return exh_img;
 	}
@@ -219,6 +239,13 @@ public class ExhibitionVO {
 		return exh_local_name;
 	}
 
+	public int getExh_cancell() {
+		return exh_cancell;
+	}
+	public void setExh_cancell(int exh_cancell) {
+		this.exh_cancell = exh_cancell;
+	}
+	
 	public void setExh_local_name(String exh_local_name) {
 		this.exh_local_name = exh_local_name;
 	}
