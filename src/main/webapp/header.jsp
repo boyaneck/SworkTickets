@@ -75,9 +75,23 @@
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="/">Separated link</a>
 			</div></li>
+			
+			
 		<li class="nav-item"><a class="nav-link" href="/">Link</a></li>
 		<li class="nav-item"><a class="nav-link disabled">Disabled</a></li>
-		<li class="nav-item">${mb_Id}님</li>
+		<li class="nav-item"><a class="nav-link" href="/getMemberList">회원목록</a></li>
+		<li class="nav-item"><a class="nav-link" href="/getCouponList"> 쿠폰목록</a> </li>
+		<li class="nav-item"><a class="nav-link" href="/pay">관리자 결제목록</a></li>
+		<li class="nav-item"><a class="nav-link"href="/login_kakao">카카오로그인</a></li>
+		<li class="nav-item"><a class="nav-link" href="/payUser">회원 결제</a></li>
+		<li class="nav-item"><a class="nav-link" href="/getPayList">나의 구매내역</a></li>
+		<li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
+		<li class="nav-item"><a class="nav-link" href="insertMember.jsp">회원가입</a></li>
+		<li class="nav-item"><a class="nav-link" href="insertCoupon.jsp">쿠폰등록</a></li>
+		<li class="nav-item"><a class="nav-link" href="/MyCoupon">내 쿠폰함</a></li>
+		<li class="nav-item"><a class="nav-link" href="/getBoardList">게시판 가기</a></li>
+		<li class="nav-item"><a class="nav-link" href="/getUserExhibitionList">회원전시</a></li>
+		<li class="nav-item">${mb_Id}</li>
 		<li class="nav-item"><a href="/logoutGo">로그아웃</a></li>
 	</ul>
 </body>
