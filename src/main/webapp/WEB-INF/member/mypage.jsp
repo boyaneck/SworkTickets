@@ -12,7 +12,6 @@ if (session.getAttribute("mb_Id") == null) {
 <!DOCTYPE html>
 <html>
 <head>
-   
    <script>
    function quitMember(mb_id) {
       console.log(mb_id);

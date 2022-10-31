@@ -43,6 +43,9 @@
 				<a class="nav-link" href="#"> 지역 </a>
 			</li>
 			<li class="nav-item dropdown header-title">
+				<a class="nav-link" href="/getCouponList"> 쿠폰 </a>
+			</li>
+			<li class="nav-item dropdown header-title">
 				<a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/getBoardList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
 				<div class="dropdown-menu header-menu" aria-labelledby="searchtotal">
 					<a class="dropdown-item header-item" href="#">공지사항</a>

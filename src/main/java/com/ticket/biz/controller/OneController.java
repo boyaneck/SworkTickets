@@ -38,8 +38,13 @@ public class OneController {
 		return conditionMap;
 	}
 	
-	//글 등록
+	// 이동 컨트롤러
+	@RequestMapping("/goWrite")
+	public String goOne(OneVO vo, Model model) {
+		return "redirect:write.jsp";
+	}
 	
+	//글 등록
 	@RequestMapping("/insertOne")
 	
 	public String insertOne(OneVO vo ,Model model , HttpSession session) {
@@ -74,6 +79,7 @@ public class OneController {
 		System.out.println("글 수정 기능 전");
 		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString()) ){
 			
+			
 			oneService.updateOne(vo);
 			return "redirect:getOneList";
 		}else {
@@ -85,21 +91,14 @@ public class OneController {
 	// 글 삭제
 	@RequestMapping("/deleteOne")
 	public String deleteOne(OneVO vo, HttpSession session) {
-		String realPath = "c:/swork/eleven/src/main/webapp/img/" ;
-		vo = oneService.getOne(vo);
-		if( vo.getOne_writer().equals(session.getAttribute("mb_id").toString()) ) {
-			if(vo.getFilename()!=null) {
-				System.out.println("파일삭제: "+realPath + vo.getFilename());
-				File f = new File(realPath + vo.getFilename());		
-				f.delete();
-			}
+		System.out.println("deleteOne 기능 처리 전");
+		int val=0;
+		System.out.println("val " +val);
+		String realPath = "c:/swork/ticket/src/main/webapp/img/" ;
 			oneService.deleteOne(vo);
-			return "getOneList";
-		}else {
-			return "getOne?error=1";
-		}
+			return "redirect:getOneList";
 	}
-
+		
 	// 글 상세 조회
 	@RequestMapping("/getOne")
 	public String getOne(OneVO vo, Model model) {
