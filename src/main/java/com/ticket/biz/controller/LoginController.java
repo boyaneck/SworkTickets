@@ -29,11 +29,7 @@ public class LoginController {
 			System.out.println("아이디: " + memberService.loginCheck(vo).getMb_id());
 			return "redirect:index.jsp";
 		} else {
-<<<<<<< HEAD
 			return "redirect:login.jsp";
-=======
-			return "redirect:login.jsp?error=1";
->>>>>>> fa71b96e42f31a3ebf4ea989a94b174706ff32ed
 		}
 	}
 
