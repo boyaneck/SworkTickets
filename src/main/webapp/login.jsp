@@ -13,9 +13,6 @@
 	background-color: transparent;
 }
 </style>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<div class="jumbotron">
@@ -23,7 +20,7 @@
 	</div>
 	<div class="container" align="center">
 		<div class="col-md-4 col-md-offset-4">
-			
+
 			<%
 			if (request.getParameter("error") != null) {
 				out.println("<div class='alert alert-danger'>");
@@ -45,14 +42,12 @@
 				</div>
 				<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인</button>
 				<a href="/login/kakao"><img
-					src="images/kakao_login_medium_narrow.png" style="height: 60px" /></a>
-				<!-- <a href="/oauth/authorization/naver">네이버 로그인</a> -->
+					src="images/kakao_login_medium_narrow.png" style="height: 30px" /></a>
+					<a href="/login/naver"><img
+					src="images/naver.png" style="height: 30px" /></a>
 			</form>
 		</div>
 	</div>
-	<!-- 	<button class="login-kakao"onclick="kakaoLogin()">
-	<img src="images/kakao_login_medium_narrow.png" style="height:60px"/>
-	</button> -->
 
 </body>
 </html>

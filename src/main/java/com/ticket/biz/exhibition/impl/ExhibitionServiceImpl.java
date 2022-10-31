@@ -10,7 +10,7 @@ import com.ticket.biz.exhibition.ExhibitionVO;
 
 @Service("exhibitionService")
 public class ExhibitionServiceImpl implements ExhibitionService {
-	
+
 	@Autowired
 	private ExhibitionDAO exhibitionDAO;
 
@@ -38,12 +38,12 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	public List<ExhibitionVO> getExhibitionList(ExhibitionVO vo) {
 		return exhibitionDAO.getExhibitionList(vo);
 	}
-	
+
 	@Override
 	public int totalExhibitionListCnt(ExhibitionVO vo) {
 		return exhibitionDAO.totalExhibitionListCnt(vo);
 	}
-	
+
 	@Override
 	public List<ExhibitionVO> getUserExhibitionList(ExhibitionVO vo) {
 		return exhibitionDAO.getUserExhibitionList(vo);

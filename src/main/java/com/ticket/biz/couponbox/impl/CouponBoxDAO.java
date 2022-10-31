@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ticket.biz.coupon.CouponVO;
 import com.ticket.biz.couponbox.CouponBoxVO;
 
 
@@ -39,5 +38,5 @@ public class CouponBoxDAO {
 			public int myCouponListCnt(CouponBoxVO vo) {
 				return mybatis.selectOne("CouponBoxDAO.myCouponListCnt",vo);
 			}
-			
+
 }

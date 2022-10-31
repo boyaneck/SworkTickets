@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ticket.biz.coupon.CouponVO;
 import com.ticket.biz.couponbox.CouponBoxService;
 import com.ticket.biz.couponbox.CouponBoxVO;
 
@@ -40,7 +39,7 @@ public class CouponBoxServiceImpl implements CouponBoxService {
 			 return check;
 		 }
 	}
-	
+
 	//내쿠폰목록
 	@Override
 	public List<CouponBoxVO> myCouponList(CouponBoxVO vo) {

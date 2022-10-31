@@ -26,18 +26,22 @@ public class LoginController {
 
 		if (memberService.loginCheck(vo) != null) {
 			session.setAttribute("mb_Id", memberService.loginCheck(vo).getMb_id());
-//			session.setAttribute("userName", memberService.loginCheck(vo).getMb_name());
 			System.out.println("아이디: " + memberService.loginCheck(vo).getMb_id());
 			return "redirect:index.jsp";
 		} else {
+<<<<<<< HEAD
 			return "redirect:login.jsp";
+=======
+			return "redirect:login.jsp?error=1";
+>>>>>>> fa71b96e42f31a3ebf4ea989a94b174706ff32ed
 		}
 	}
 
-	
-	  @RequestMapping("/logoutGo") 
-	  public String logout(HttpSession session) {
-	  session.invalidate(); 
-	  return "redirect:login.jsp"; }
+	@RequestMapping(value = "/logoutGO")
+	public String logout(HttpSession session) {
+		System.out.println("로그아웃실행");
+		session.invalidate();
+		return "redirect:login.jsp";
+	}
 
 }
