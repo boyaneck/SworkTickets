@@ -22,77 +22,70 @@
 <title>헤더입니다.</title>
 </head>
 
+<!-- 회원 -->
 <nav class="navbar navbar-expand-sm navbar-light header-navbar"
 	data-toggle="affix">
 	<a class="navbar-brand logoimg" href="index.jsp"> <img
 		style="width: 200px;" src="./images/kakao_login_medium_narrow.png">&nbsp&nbsp
 	</a>
 
+	<button class="navbar-toggler header-toggler" type="button" data-toggle="collapse"
+		data-target="#collapsingNavbar">☰</button>
 	<div class="collapse navbar-collapse" id="collapsingNavbar">
 		<ul class="nav navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link active" href="#">전시</a>
+			<li class="nav-item dropdown header-title">
+				<a class="nav-link" href="/getUserExhibitionList" > 전시 </a>
 			</li>
-			<li class="nav-item"><a class="nav-link active" href="#">랭킹</a>
+			<li class="nav-item dropdown header-title">
+				<a class="nav-link" href="#"> 랭킹 </a>
 			</li>
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-				role="button" aria-expanded="false">고객센터</a></li>
+			<li class="nav-item dropdown header-title">
+				<a class="nav-link" href="#"> 지역 </a>
+			</li>
+			<li class="nav-item dropdown header-title">
+				<a class="nav-link" href="/getCouponList"> 쿠폰 </a>
+			</li>
+			<li class="nav-item dropdown header-title">
+				<a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
+				<div class="dropdown-menu header-menu" aria-labelledby="searchtotal">
+					<a class="dropdown-item header-item" href="#">공지사항</a>
+					<a class="dropdown-item header-item" href="#">자주묻는질문</a>
+					<a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
+				</div>
+			</li>
 		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li class="nav-item dropdown header-title" id="dropdown loginbtn">
-				<!-- <a href="login.jsp">로그인</a> -->
-			</li>
-		</ul>
-	</div>
+	
 	<ul class="nav navbar-nav navbar-right">
 		<c:choose>
 			<c:when test='${mb_Id ne NULL}'>
 				<ul class="nav navbar-nav navbar-right">
-					<%-- <li class="nav-item"><a class="nav-link">${mb_Id}님</a></li> --%>
-					<li class="nav-item"><a class="nav-link header-logout"
-						href="logoutGO">로그아웃</a> <a href="mypage?mb_id=${mb_Id}">&nbsp마이페이지</a>
+					<li class="nav-item dropdown header-title">
+					<a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
+					<div class="dropdown-menu header-menu" aria-labelledby="searchtotal">
+					<a class="dropdown-item header-item" href="mypage?mb_id=${mb_Id}">&nbsp마이페이지</a>
+					<a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
+					<a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
+					</div>
 					</li>
 				</ul>
+					<a class="nav-link header-logout" href="/logoutGo">로그아웃</a>
 			</c:when>
 			<c:otherwise>
-				<a href="login.jsp">로그인</a>
+			<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item dropdown header-title">
+				<a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 로그인 </a>
+					<div class="dropdown-menu header-menu" aria-labelledby="searchtotal">
+				<a class="dropdown-item header-item" href="login.jsp">&nbsp로그인</a>
+				<a class="dropdown-item header-item" href="/login_kakao">&nbsp카카오로그인</a>
+				<a class="dropdown-item header-item" href="insertMember.jsp">&nbsp회원가입</a>
+				
+				</div>
+				</li>
+				</ul>
 			</c:otherwise>
 		</c:choose>
 	</ul>
+	</div>
 </nav>
 
-<body>
-	<ul class="nav nav-pills">
-		<li class="nav-item"><a class="nav-link active" href="#">Active</a>
-		</li>
-		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-			data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="/insertMember.jsp">회원가입</a> <a
-					class="dropdown-item" href="/login.jsp">로그인</a> <a
-					class="dropdown-item" href="/getExhibitionList">전시</a> <a
-					class="dropdown-item" href="/">Something else here</a>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="/">Separated link</a>
-			</div></li>
-			
-			
-		<li class="nav-item"><a class="nav-link" href="/">Link</a></li>
-		<li class="nav-item"><a class="nav-link disabled">Disabled</a></li>
-		<li class="nav-item"><a class="nav-link" href="/getMemberList">회원목록</a></li>
-		<li class="nav-item"><a class="nav-link" href="/getCouponList"> 쿠폰목록</a> </li>
-		<li class="nav-item"><a class="nav-link" href="/pay">관리자 결제목록</a></li>
-		<li class="nav-item"><a class="nav-link"href="/login_kakao">카카오로그인</a></li>
-		<li class="nav-item"><a class="nav-link" href="/payUser">회원 결제</a></li>
-		<li class="nav-item"><a class="nav-link" href="/getPayList">나의 구매내역</a></li>
-		<li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
-		<li class="nav-item"><a class="nav-link" href="insertMember.jsp">회원가입</a></li>
-		<li class="nav-item"><a class="nav-link" href="insertCoupon.jsp">쿠폰등록</a></li>
-		<li class="nav-item"><a class="nav-link" href="/MyCoupon">내 쿠폰함</a></li>
-		<li class="nav-item"><a class="nav-link" href="/getBoardList">게시판 가기</a></li>
-		<li class="nav-item"><a class="nav-link" href="/getUserExhibitionList">회원전시</a></li>
-		<li class="nav-item">${mb_Id}</li>
-		<li class="nav-item"><a href="/logoutGo">로그아웃</a></li>
-	</ul>
-</body>
 </html>

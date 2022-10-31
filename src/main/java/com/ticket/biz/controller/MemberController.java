@@ -39,7 +39,7 @@ public class MemberController {
 		conditionMap.put("이메일", "MB_EMAIL");
 		return conditionMap;
 	}
-	
+
 	   // 회원 마이페이지
 	   @RequestMapping(value="/mypage")
 	   public String getMyPage(MemberVO vo, Model model) {
@@ -51,7 +51,7 @@ public class MemberController {
 	   
 	   // 회원 수정
 	   @RequestMapping("/updateMember")
-	   public String updateBoard(@ModelAttribute("member") MemberVO vo, HttpSession session) {
+	   public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
 	      if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())||session.getAttribute("mb_Id").equals("admin")) {
 	         memberService.updateMember(vo);
 	         return "member/mypage";
@@ -66,7 +66,7 @@ public class MemberController {
 		memberService.insertMember(vo);
 		return "redirect:index.jsp";
 	}
-	
+
 	// 회원탈퇴
 	/* @ResponseBody */
 		@RequestMapping(value="/deleteMember")

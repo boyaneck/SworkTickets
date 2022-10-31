@@ -2,7 +2,10 @@ package com.ticket.biz.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpRequest;
+import java.util.Enumeration;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +25,17 @@ import com.ticket.biz.exhibition.ExhibitionVO;
 @SessionAttributes("exhibition")
 public class ExhibitionController {
 
+	
 	@Autowired
 	private ExhibitionService exhibitionService;
 
 	// 전시 등록 이동
 		@RequestMapping("/insertmoveExhibition")
 		public String insertmoveExhibition(ExhibitionVO vo, Model model) {
-			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
+//			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "admin/ExhibitionInsert";
 		}
-	
+
 	// 전시 등록
 	@PostMapping("/insertExhibition")
 	// public String insertBoard(MultipartHttpServletRequest request, ExhibitionVO vo) throws IllegalStateExcetion, IOException {
@@ -52,21 +56,20 @@ public class ExhibitionController {
 	@RequestMapping("/updateExhibition")
 	public String updateExhibition(@ModelAttribute("exhibition") ExhibitionVO vo, HttpSession session) {
 		exhibitionService.insertExhibition(vo);
-		return "redirect:ExhibitionList";
+		return "redirect:getExhibitionList";
 	}
 
 	// 전시 삭제
 	@RequestMapping("/deleteExhibition")
 	public String deleteExhibition(ExhibitionVO vo, HttpSession session) {
-		String realPath = "c:/swork/tickets/src/main/webapp/img/";
+//		String realPath = "c:/swork/tickets/src/main/webapp/img/";
 		vo = exhibitionService.getExhibition(vo);
-		if (vo.getExh_img() != null) {
-			System.out.println("파일삭제 : " + realPath + vo.getExh_img());
-			File f = new File(realPath + vo.getExh_img());
-			f.delete();
-		}
-		exhibitionService.deleteExhibition(vo);
-		return "redirect:ExhibitionList";
+//		if (vo.getExh_img() != null) {
+//			System.out.println("파일삭제 : " + realPath + vo.getExh_img());
+//			File f = new File(realPath + vo.getExh_img());
+//			f.delete();
+//		}
+		return "redirect:getExhibitionList";
 	}
 
 	// 전시 상세 조회
@@ -75,12 +78,12 @@ public class ExhibitionController {
 		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 		return "admin/ExhibitionDetail";
 	}
-	
+
 	// 전시 목록 조회
 	@RequestMapping("/getExhibitionList")
 	public String getExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
-		
-		
+
+
 		//총 목록 수
 				int totalPageCnt = exhibitionService.totalExhibitionListCnt(vo);
 				//현재 페이지 설정
@@ -98,14 +101,14 @@ public class ExhibitionController {
 				model.addAttribute("exhibitionList", exhibitionService.getExhibitionList(vo));
 				return "admin/ExhibitionList";
 	}
-	
+
 	// 유저 전시 상세 조회
 		@RequestMapping("/getUserExhibition")
 		public String getUserExhibition(ExhibitionVO vo, Model model) {
 			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "exhibition/UserExhibitionDetail";
 		}
-	
+
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")
 		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
@@ -121,10 +124,10 @@ public class ExhibitionController {
 
 					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 					vo.setOffset(pvo.getOffset());
-					
+
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
-					
+
 					return "exhibition/getUserExhibitionList";
 		}
 }

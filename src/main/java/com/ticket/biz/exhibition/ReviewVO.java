@@ -1,7 +1,7 @@
 package com.ticket.biz.exhibition;
 
 public class ReviewVO {
-	
+
 	private int review_no;
 	private int exh_no;
 	private int review_score;
@@ -9,8 +9,8 @@ public class ReviewVO {
 	private String review_img;
 	private String review_reg_date;
 	private String mb_id;
-	
-	
+
+
 	public int getReview_no() {
 		return review_no;
 	}

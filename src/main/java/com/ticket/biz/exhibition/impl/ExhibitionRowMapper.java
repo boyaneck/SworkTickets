@@ -31,6 +31,7 @@ public class ExhibitionRowMapper implements RowMapper<ExhibitionVO>{
 		exhibition.setExh_place_x(rs.getFloat("exh_place_x"));
 		exhibition.setExh_place_y(rs.getFloat("exh_place_y"));
 		exhibition.setExh_local_name(rs.getString("exh_local_name"));
+		exhibition.setExh_cancell(rs.getInt("exh_cancell"));
 		
 		return exhibition;
 	}

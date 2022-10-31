@@ -1,7 +1,6 @@
 package com.ticket.biz.member.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +25,15 @@ public class MemberDAO {
 		System.out.println(vo);
 		return mybatis.delete("MemberDAO.deleteMember", vo);
 	}
-	
-	
-	
+
+
+
 	/*회원조회*/
 	public MemberVO getMember(MemberVO vo) {
 		System.out.println("mybatis getMember() 기능");
 		return mybatis.selectOne("MemberDAO.getMember", vo);
 	}
-	
+
 	/* 회원수정 */
 	public void updateMember(MemberVO vo) {
 		System.out.println("mybatis회원정보수정 기능");
@@ -55,6 +54,6 @@ public class MemberDAO {
 	public int totalMemberListCnt(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.totalMemberListCnt", vo);
 	}
-	
+
 
 }

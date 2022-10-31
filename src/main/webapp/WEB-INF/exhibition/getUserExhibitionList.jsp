@@ -19,7 +19,7 @@
 	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
 		<form class="form-inline" action="#" method="post">
 			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
-				placeholder="전시명을 입력하세요.">
+				placeholder="전시명 및 전시장을 검색하세요.">
 			<button class="btn btn-success" type="submit">검색</button>
 		</form>
 	</nav>

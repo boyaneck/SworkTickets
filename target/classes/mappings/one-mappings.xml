@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="OneDAO">
+
+	<select id="totalOneListCnt" resultType="_int">
+	
+		SELECT COUNT(*) FROM ONEONE WHERE 1=1 
+
+		ORDER BY ONE_NO DESC
+		LIMIT 10 OFFSET #{offset}
+	</select>
+	
+	<select id="getOneList" resultType="one">
+		SELECT * FROM ONEONE WHERE 1=1 
+<!-- 		<if test="searchCondition == 'TITLE' "> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if> -->
+<!-- 		<if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE  CONCAT('%',#{searchKeyword},'%')</if> -->
+		ORDER BY ONE_NO DESC
+		LIMIT 10 OFFSET #{offset}
+	</select>
+	
+	<select id="getOne" resultType="one">  
+	SELECT * FROM ONEONE WHERE ONE_NO=#{one_no}
+	</select>
+	
+<insert id="insertOne">
+  INSERT INTO ONEONE (ONE_TITLE, ONE_WRITER, ONE_CONTENT, ONE_DATE, ONE_CATEGORY, ONE_MODIFY, ONE_SECRET) 
+  VALUES ( #{one_title}, #{one_writer}, #{one_content}, now(), #{one_category}, now(), #{one_secret})
+</insert>
+
+<update id="updateOne">
+	UPDATE ONEONE 
+	SET ONE_TITLE=#{one_title},
+	ONE_CONTENT=#{one_content}, 
+	ONE_MODIFY =now()
+	WHERE ONE_NO=#{one_no}
+
+</update>
+
+<delete id="deleteOne">
+	DELETE FROM ONEONE WHERE ONE_NO = #{one_no}
+</delete>
+
+
+
+
+	
+	
+</mapper>
