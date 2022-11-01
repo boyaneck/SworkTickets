@@ -31,18 +31,11 @@ public class GoodController {
 		boolean yn=goodService.getGoodYN(vo);
 		
 		if(yn==true) {
-			if(vo.getGood_check()==0) {
-				vo.setGood_check(1);
+				vo.setExh_no(exh_no);
 				vo.setMb_id(id);
-				goodService.updateGood(vo);
-				System.out.println("수정1");
-			}else {
-				vo.setGood_check(0);
-				vo.setMb_id(id);
-				goodService.updateGood(vo);
+				goodService.deleteGood(vo);
+				System.out.println("좋아요 제거");
 
-				System.out.println("수정0");
-			}
 		}
 		else {
 			System.out.println(exh_no+id);

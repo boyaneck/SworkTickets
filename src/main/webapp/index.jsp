@@ -20,6 +20,7 @@
 <a href="/MyCoupon">- 내 쿠폰함</a><br>
 <a href="/getOneList">- 1대1문의</a><br>
 <a href="login.jsp">- 로그인</a><br>
+<a href="/ranking">- 랭킹</a><br>
 <br><br>
 관리자 메뉴 
 <br><br>

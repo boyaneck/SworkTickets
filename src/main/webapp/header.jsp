@@ -68,7 +68,7 @@
 					</div>
 					</li>
 				</ul>
-					<a class="nav-link header-logout" href="/logoutGo">로그아웃</a>
+					<a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
 			</c:when>
 			<c:otherwise>
 			<ul class="nav navbar-nav navbar-right">

@@ -19,18 +19,16 @@ public class GoodDAO {
 	public void insertGood(GoodVO vo) {
 		mybatis.insert("GoodDAO.insertGood",vo);
 	}
-	//좋아요수정
-	public void updateGood(GoodVO vo) {
-		mybatis.update("GoodDAO.updateGood",vo);
+	//좋아요삭제
+	public void deleteGood(GoodVO vo) {
+		mybatis.delete("GoodDAO.deleteGood",vo);
 	}
-	//좋아요목록
-	public List<GoodVO> getGoodList(GoodVO vo) {
-		return mybatis.selectList("GoodDAO.GoodList",vo);
+	
+	//좋아요 순위 목록
+	public List<GoodVO> getGoodList() {
+		return mybatis.selectList("GoodDAO.getGoodList");
 	}
-	//좋아요개수
-	public int GoodCnt(GoodVO vo) {
-		return mybatis.selectOne("GoodDAO.GoodCnt",vo);
-	}
+
 	//좋아요체크
 	public GoodVO getGoodChk(GoodVO vo) {
 		return mybatis.selectOne("GoodDAO.getGoodChk",vo);
@@ -39,10 +37,11 @@ public class GoodDAO {
 	public boolean getGoodYN(GoodVO vo) {
 		int cnt=mybatis.selectOne("GoodDAO.getGoodYN",vo);
 		if(cnt==0) {
-		return false;
-		}
-		else 
-		{return true;
-		}
+		return false;}
+		else {
+			return true;}
 	}
+	
+
+
 }

@@ -78,13 +78,11 @@ public class ExhibitionController {
 		return "admin/ExhibitionDetail";
 	}
 
-	
 
 	// 전시 목록 조회
 	@RequestMapping("/getExhibitionList")
-	public String getExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
-				
-
+	public String getExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model, HttpSession session) {
+		
 
 		//총 목록 수
 				int totalPageCnt = exhibitionService.totalExhibitionListCnt(vo);

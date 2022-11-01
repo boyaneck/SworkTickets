@@ -14,34 +14,36 @@ public class GoodServiceImpl implements GoodService{
 	@Autowired
 	private GoodDAO goodDAO;
 	
+	//좋아요 등록
 	@Override
 	public void insertGood(GoodVO vo) {
 		goodDAO.insertGood(vo);
 	}
 
+
+	//좋아요 순위 목록
 	@Override
-	public void updateGood(GoodVO vo) {
-		goodDAO.updateGood(vo);
+	public List<GoodVO> getGoodList() {
+		return goodDAO.getGoodList();
 	}
 
-	@Override
-	public List<GoodVO> getGoodList(GoodVO vo) {
-		return goodDAO.getGoodList(vo);
-	}
 
-	@Override
-	public int GoodCnt(GoodVO vo) {
-		return goodDAO.GoodCnt(vo);
-	}
-
+	//좋아요 체크
 	@Override
 	public GoodVO getGoodChk(GoodVO vo) {
 		return goodDAO.getGoodChk(vo);
 	}
-
+	//좋아요 체크
 	@Override
 	public boolean getGoodYN(GoodVO vo) {
 		return goodDAO.getGoodYN(vo);
+		
+	}
+
+	//좋아요 삭제
+	@Override
+	public void deleteGood(GoodVO vo) {
+		goodDAO.deleteGood(vo);
 		
 	}
 	
