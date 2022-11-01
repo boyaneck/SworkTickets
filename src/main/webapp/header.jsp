@@ -73,13 +73,13 @@
         </div>
       </div>
       
-            	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
+<!--             	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
 		<form class="form-inline" action="#" method="post">
 			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
 				placeholder="전시명 및 전시장을 검색하세요.">
 			<button class="btn btn-success" type="submit">검색</button>
 		</form>
-	</nav>
+	</nav> -->
       <!-- 검색 -->
       
       
@@ -133,13 +133,13 @@
           <input type="text" class="form-control" placeholder="검색" />
         </div>
       </div>
-                  	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
+ <!--                  	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
 		<form class="form-inline" action="#" method="post">
 			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
 				placeholder="전시명 및 전시장을 검색하세요.">
 			<button class="btn btn-success" type="submit">검색</button>
 		</form>
-	</nav>
+	</nav> -->
       <!-- 검색 -->
                <li class="nav-item">
                      <span class="nav-link">${mb_Id}님 안녕하세요</span>
@@ -191,13 +191,13 @@
           </form>
         </div>
       </div>
-     	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
+<!--      	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
 		<form class="form-inline" action="#" method="post">
 			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
 				placeholder="전시명 및 전시장을 검색하세요.">
 			<button class="btn" type="submit">검색</button>
 		</form>
-	</nav>
+	</nav> -->
       <!-- 검색 -->
       
       

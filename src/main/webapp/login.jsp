@@ -14,7 +14,7 @@
 }
 </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<div class="jumbotron">
 		<h1>로그인</h1>
 	</div>
@@ -32,22 +32,26 @@
 				<div class="form-group">
 					<label for="inputUserName" class="sr-only">User Name</label>
 					<!-- 					name속성(파라미터) 있어야 데이터 전송됨  -->
-					<input type="text" class="form-control" placeholder="ID"
-						name="mb_id" required autofocus>
+					<input type="text" class="form-control" placeholder="ID" name="mb_id" required autofocus>
 				</div>
 				<div class="form-group">
-					<label for="inputPassword" class="sr-only">Password</label> <input
-						type="password" class="form-control" placeholder="Password"
-						name="mb_pw" required>
+					<label for="inputPassword" class="sr-only">Password</label> 
+					<input type="password" class="form-control" placeholder="Password" name="mb_pw" required>
 				</div>
 				<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인</button>
-				<a href="/login/kakao"><img
-					src="images/kakao_login_medium_narrow.png" style="height: 30px" /></a>
-					<a href="/login/naver"><img
-					src="images/naver.png" style="height: 30px" /></a>
+				<!-- <a class="dropdown-item header-item" href="insertMember.jsp">&nbsp회원가입</a> -->
+			
+			<a href="/step1">회원가입
+				</a>
+				
+				<a href="/getAuthUrl">
+					<img src="images/kakao_login_medium_narrow.png" style="height: 30px" />
+				</a>
+				<a href="/getNaverAuthUrl"><img src="images/naver.png" style="height: 30px" />
+				</a>
 			</form>
 		</div>
 	</div>
-
+	<%@ include file="footer.jsp"%>
 </body>
 </html>
