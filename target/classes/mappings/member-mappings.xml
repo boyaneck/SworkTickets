@@ -47,4 +47,17 @@
 	<select id="getMember" resultType="member">
 		SELECT * FROM MEMBER WHERE MB_ID = #{mb_id}
 	</select>
+	
+	<!-- 아이디, 비번찾기 -->
+	<select id="find" resultType="member">
+		SELECT * FROM MEMBER WHERE 1=1
+		AND MB_EMAIL = #{mb_email}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="change">
+		UPDATE MEMBER 
+		SET MB_PW =#{mb_pw}
+		WHERE MB_ID=#{mb_id}
+	</update>
 </mapper>

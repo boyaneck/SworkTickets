@@ -27,7 +27,12 @@ public interface MemberService {
 	// 회원목록 페이징
 	int totalMemberListCnt(MemberVO vo);
 
-
 	/*회원 마이페이지*/
-	   MemberVO getMember(MemberVO vo);
+	MemberVO getMember(MemberVO vo);
+	
+	// 아이디, 비번 찾기
+	MemberVO find(MemberVO vo);
+	
+	// 비번 변경
+	int change(MemberVO vo);
 }

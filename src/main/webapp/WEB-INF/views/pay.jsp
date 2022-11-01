@@ -39,7 +39,6 @@ $(document).ready(function(){
 //                $('#mb_id').val(userId);
                $('#p_date').val(rsp.paid_at);
                $('#exh_title').val(rsp.name);
-               
                msg += '\n고유ID : ' + rsp.imp_uid;
                msg += '\n상점 거래ID : ' + rsp.merchant_uid;
                msg += '\n결제 금액 : ' + rsp.paid_amount;
@@ -185,6 +184,7 @@ $('#testBtn').click(function(e){
 <!--    결제일시 -->
    <input type="hidden" name="p_date" id="p_date">
    <input type="hidden" name="cb_id" id="cb_id" >
+   <input type="hidden" name="exh_no" id="exh_no" value="${exh_no }" >
    <button id="check_module" type="button">결제하기</button>
    <br><hr>
 

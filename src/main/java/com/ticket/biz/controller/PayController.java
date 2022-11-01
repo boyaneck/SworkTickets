@@ -176,6 +176,8 @@ public class PayController {
          vo.setMb_id((String)session.getAttribute("mb_Id")); 
          String amount=request.getParameter("amount");
          String exh_title=request.getParameter("exh_title");
+         String exh_no=request.getParameter("exh_no");
+         System.out.println(request.getParameter("exh_no"));
        
         //총 목록 수
         int totalPageCnt = couponBoxService.myCouponListCnt(vo);
@@ -196,6 +198,7 @@ public class PayController {
         model.addAttribute("member", memberService.getMember(mem_vo));
         model.addAttribute("amount",amount);
         model.addAttribute("exh_title",exh_title);
+        model.addAttribute("exh_no",exh_no);
         model.addAttribute("today",today); 
         model.addAttribute("paging", pvo);
         model.addAttribute("couponList", couponBoxService.myCouponList(vo));
@@ -220,8 +223,9 @@ public class PayController {
       String buyer_tel = request.getParameter("buyer_tel");
       String buyer_email = request.getParameter("buyer_tel");
       String p_date = request.getParameter("p_date");
-      String exh_title = request.getParameter("exh_title");  
+      String exh_title = request.getParameter("exh_title"); 
       String p_mer = request.getParameter("p_mer");
+      String exh_no = request.getParameter("exh_no"); 
       int cb_id= Integer.parseInt(request.getParameter("cb_id"));
       cb_vo.setCb_id(cb_id);
       couponBoxService.updateCouponBox(cb_vo);
@@ -240,6 +244,7 @@ public class PayController {
       vo.setBuyer_email(buyer_email);
       vo.setBuyer_tel(buyer_tel);
       vo.setExh_title(exh_title);
+      vo.setExh_no(Integer.parseInt(exh_no));
       vo.setP_date(StartDatetime);
       vo.setMb_id(mb_id);
       vo.setP_id(p_id);

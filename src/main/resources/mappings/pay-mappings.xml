@@ -5,8 +5,8 @@
 <mapper namespace="PayDAO">
 
 	<insert id="insertPay">
-		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT) 
-		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount})
+		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT, EXH_NO) 
+		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no})
 	</insert>
 
 <!-- 	<select id="getPay" resultType="pay"> -->
@@ -14,7 +14,7 @@
 <!-- 	</select> -->
 
 	<select id="getPayList" resultType="pay">
-		SELECT e.EXH_TITLE, AMOUNT, BUYER, BUYER_TEL, P_DATE, P_ID, P_MER FROM PAY P, MEMBER MB
+		SELECT e.EXH_TITLE, AMOUNT, BUYER, BUYER_TEL, P_DATE, P_ID, P_MER, P_CHK FROM PAY P, MEMBER MB
 		, exhibition e
 		WHERE 1=1 AND P.MB_ID=MB.MB_ID
 		AND P.MB_ID = #{mb_id}

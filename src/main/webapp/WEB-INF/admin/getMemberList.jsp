@@ -162,7 +162,7 @@ html, body {
 			<div id="btnBox">
 				<!-- 반복처리할 태그 시작-->
 				<c:if test="${paging.nowPageBtn > 1 }">
-					<a href="getMemberList.do?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+					<a href="getMemberList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
 				</c:if>
 				<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
 					step="1" var="i">
@@ -171,13 +171,13 @@ html, body {
 							<a class="aSel">${i}</a>
 						</c:when>
 						<c:otherwise>
-							<a href="getMemberList.do?nowPageBtn=${paging.nowPageBtn}">${i}</a>
+							<a href="getMemberList?nowPageBtn=${paging.nowPageBtn}">${i}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				
 				<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-					<a href="getMemberList.do?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+					<a href="getMemberList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
 				</c:if>
 				<!-- 반복처리할 태그 끝 -->
 			</div>

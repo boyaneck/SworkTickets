@@ -16,25 +16,20 @@ public class PayDAO {
     private	SqlSessionTemplate mybatis;
 
 	//CRUD 메소드 구현
-		//쿠폰등록
 			public void insertPay(PayVO vo) {
 				mybatis.insert("PayDAO.insertPay",vo);
 			}
-			//쿠폰수정
 			public void updatePay(PayVO vo) {
 				mybatis.update("PayDAO.updatePay",vo);
 			}
 
-			//쿠폰삭제
 			public void deletePay(PayVO vo) {
 				mybatis.delete("PayDAO.deletePay",vo);
 			}
 
-			//쿠폰목록 조회
 			public List<PayVO> getPayList(PayVO vo) {
 				return mybatis.selectList("PayDAO.getPayList",vo);
 			}
-			//전체 쿠폰 개수
 			public int totalPayListCnt(PayVO vo) {
 					return mybatis.selectOne("PayDAO.totalPayListCnt",vo);
 			}

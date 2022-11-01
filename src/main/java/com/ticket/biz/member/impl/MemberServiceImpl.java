@@ -23,7 +23,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void logout(HttpSession session) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -57,5 +56,15 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updateMember(MemberVO vo) {
 		memberDAO.updateMember(vo);
+	}
+
+	@Override
+	public MemberVO find(MemberVO vo) {
+		return memberDAO.find(vo);
+	}
+
+	@Override
+	public int change(MemberVO vo) {
+		return memberDAO.change(vo);
 	}
 }

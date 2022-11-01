@@ -22,12 +22,13 @@
 	결제일시 : ${myPayList.p_date}<br>
 	결제고유ID : ${myPayList.p_id}<br>
 	상점거래ID : ${myPayList.p_mer}<br>
+<%-- 	환불 여부 : ${myPayList.p_chk}<br> --%>
 
 		<form action="paycan" method="POST">
 			<input type="hidden" name="mid" id="merchant_uid"
 				value="${myPayList.p_mer}">
 			<c:choose>
-				<c:when test="${myPayList.p_chk eq 1}">
+				<c:when test="${myPayList.p_chk eq 0}">
 					<button id="cancel_module" type="submit">취소하기</button>
 				</c:when>
 				<c:otherwise>

@@ -11,8 +11,15 @@ public class PayVO {
 	private String exh_title;//전시명
 	private int amount;//가격
 	private int p_chk;
+	private int exh_no;
 	
 	
+	public int getExh_no() {
+		return exh_no;
+	}
+	public void setExh_no(int exh_no) {
+		this.exh_no = exh_no;
+	}
 	public int getP_chk() {
 		return p_chk;
 	}
@@ -73,11 +80,12 @@ public class PayVO {
 	public void setBuyer_tel(String buyer_tel) {
 		this.buyer_tel = buyer_tel;
 	}
+	
 	@Override
 	public String toString() {
 		return "PayVO [p_id=" + p_id + ", p_mer=" + p_mer + ", mb_id=" + mb_id + ", p_date=" + p_date + ", buyer="
 				+ buyer + ", buyer_email=" + buyer_email + ", buyer_tel=" + buyer_tel + ", exh_title=" + exh_title
-				+ ", amount=" + amount + "]";
+				+ ", amount=" + amount + ", p_chk=" + p_chk + ", exh_no=" + exh_no + "]";
 	}
 	
 	
