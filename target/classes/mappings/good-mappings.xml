@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GoodDAO">
+	<insert id="insertGood">
+		INSERT INTO GOOD (
+		MB_ID,EXH_NO)
+		VALUES(#{mb_id},#{exh_no})
+	</insert>
+
+	<delete id="deleteGood">
+		DELETE FROM GOOD
+		WHERE EXH_NO= #{exh_no}
+		AND MB_ID=#{mb_id};
+
+	</delete>
+	<select id="getGoodChk" resultType="good">
+		SELECT *
+		from GOOD
+		WHERE 1=1
+		AND EXH_NO= #{exh_no}
+		AND MB_ID=#{mb_id};
+
+	</select>
+
+	<select id="getGoodYN" resultType="_integer">
+		SELECT COUNT(*)
+		from GOOD
+		WHERE 1=1
+		AND EXH_NO= #{exh_no}
+		AND MB_ID=#{mb_id};
+	</select>
+
+	<select id="getGoodList" resultType="exhibition">
+		SELECT e.*, COUNT(g.GOOD_CHECK)AS rank_cnt from exhibition as e
+		LEFT outer JOIN good AS g
+		on e.exh_no= g.exh_no
+		GROUP BY e.exh_no
+		ORDER BY
+		rank_cnt DESC
+		LIMIT 5;
+	</select>
+
+
+
+</mapper>

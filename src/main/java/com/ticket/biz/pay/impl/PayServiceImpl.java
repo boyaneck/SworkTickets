@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ticket.biz.good.GoodVO;
 import com.ticket.biz.pay.PayService;
 import com.ticket.biz.pay.PayVO;
 
@@ -45,6 +46,16 @@ public class PayServiceImpl implements PayService {
 	@Override
 	public PayVO getPay(PayVO vo) {
 		return payDAO.getPay(vo);
+	}
+
+	@Override
+	public List<GoodVO> getPayRank() {
+		return payDAO.getPayRank();
+	}
+
+	@Override
+	public int getPayCnt() {
+		return payDAO.getPayCnt();
 	}
 
 }

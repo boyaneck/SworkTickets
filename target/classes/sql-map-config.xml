@@ -11,6 +11,7 @@
 		<typeAlias type="com.ticket.biz.pay.PayVO" alias="pay"></typeAlias>
 		<typeAlias type="com.ticket.biz.one.OneVO" alias="one"></typeAlias>
 		<typeAlias type="com.ticket.biz.exhibition.ExhibitionVO" alias="exhibition"></typeAlias>
+		<typeAlias type="com.ticket.biz.good.GoodVO" alias="good"></typeAlias>
 	</typeAliases>
 	
 	<mappers>
@@ -20,5 +21,6 @@
 		<mapper resource="mappings/pay-mappings.xml" />
 		<mapper resource="mappings/one-mappings.xml" />
 		<mapper resource="mappings/exhibition-mappings.xml" />
+		<mapper resource="mappings/good-mappings.xml" />
 	</mappers>
 </configuration>

@@ -9,28 +9,50 @@
 		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no})
 	</insert>
 
-<!-- 	<select id="getPay" resultType="pay"> -->
-<!-- 		SELECT * FROM COUPON WHERE C_NUM= #{c_num} -->
-<!-- 	</select> -->
+	<!-- <select id="getPay" resultType="pay"> -->
+	<!-- SELECT * FROM COUPON WHERE C_NUM= #{c_num} -->
+	<!-- </select> -->
 
 	<select id="getPayList" resultType="pay">
-		SELECT e.EXH_TITLE, AMOUNT, BUYER, BUYER_TEL, P_DATE, P_ID, P_MER, P_CHK FROM PAY P, MEMBER MB
-		, exhibition e
+		SELECT e.EXH_TITLE, AMOUNT, BUYER, BUYER_TEL, P_DATE, P_ID, P_MER, P_CHK FROM PAY P, 
+		MEMBER MB, exhibition e
 		WHERE 1=1 AND P.MB_ID=MB.MB_ID
 		AND P.MB_ID = #{mb_id}
 		AND p.EXH_TITLE = e.EXH_TITLE
 		ORDER BY P_DATE DESC
 	</select>
 
-<update id="updatePay">
-	UPDATE Pay
-	SET P_CHK = 1
-	WHERE P_MER = #{p_mer}  
-</update>
+	<update id="updatePay">
+		UPDATE Pay
+		SET P_CHK = 1
+		WHERE P_MER = #{p_mer}
+	</update>
 
-<!-- 	<select id="totalPayListCnt" resultType="_int"> -->
-<!-- 		SELECT COUNT(*) FROM COUPON WHERE 1=1 -->
-<!-- 	</select> -->
+	<!-- <select id="totalPayListCnt" resultType="_int"> -->
+	<!-- SELECT COUNT(*) FROM COUPON WHERE 1=1 -->
+	<!-- </select> -->
 
+	<select id="getPayRank" resultType="exhibition">
+		SELECT *, COUNT(p.P_ID)AS rank_cnt from exhibition as e
+		LEFT outer JOIN pay AS p
+		on e.exh_no= p.exh_no
+		GROUP BY e.exh_no
+		ORDER BY
+		p.exh_no DESC
+		LIMIT 5;
+
+	</select>
+
+	<select id="getPayCnt" resultType="_int">
+		SELECT SUM(rank_cnt)FROM(
+		SELECT e.*, COUNT(p.P_ID)AS rank_cnt from exhibition as e
+		LEFT outer JOIN pay AS p
+		on e.exh_no= p.exh_no
+		GROUP BY e.exh_no
+		ORDER BY
+		p.exh_no DESC
+		LIMIT 5
+		)a;
+	</select>
 
 </mapper>

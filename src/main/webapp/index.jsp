@@ -22,6 +22,7 @@
 <a href="login.jsp">- 로그인</a><br>
 <a href="/findIdform">- 아이디 찾기</a><br>
 <a href="/findPwform">- 비밀번호 찾기</a><br>
+<a href="/ranking">- 랭킹</a><br>
 <br><br>
 관리자 메뉴 
 <br><br>

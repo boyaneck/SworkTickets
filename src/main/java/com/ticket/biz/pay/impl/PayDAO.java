@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ticket.biz.good.GoodVO;
 import com.ticket.biz.pay.PayVO;
 
 
@@ -36,4 +37,13 @@ public class PayDAO {
 			public PayVO getPay(PayVO vo) {
 				return (PayVO) mybatis.selectOne("PayDAO.getPay",vo);
 			}
+			//예매율 랭킹
+			public List<GoodVO> getPayRank() {
+				return mybatis.selectList("PayDAO.getPayRank");
+			}
+			//예매 전체 카운트
+			public int getPayCnt() {
+				return mybatis.selectOne("PayDAO.getPayCnt");
+			}
+		
 }

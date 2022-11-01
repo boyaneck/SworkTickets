@@ -44,6 +44,19 @@ public class ExhibitionVO {
 	private String exh_refund_info;
 	
 
+	//랭킹 추가
+	private int rank_cnt;
+	
+	public int getRank_cnt() {
+		return rank_cnt;
+	}
+	public void setRank_cnt(int rank_cnt) {
+		this.rank_cnt = rank_cnt;
+	}
+
+//	랭킹 추가 끝
+	
+
 	public int getExh_common_no() {
 		return exh_common_no;
 	}

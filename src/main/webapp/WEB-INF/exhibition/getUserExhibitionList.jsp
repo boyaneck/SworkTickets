@@ -12,6 +12,7 @@
 <!-- header end -->
 <style>
 </style>
+
 <body>
 	<div class="jumbotron">
 		<h1>전시 목록</h1>
@@ -36,7 +37,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${UserExhibitionList}" var="exhibition">
-<%-- 					<tr onclick="selTr(${exhibition.exh_no})" style="cursor: pointer;"> --%>
+					<tr onclick="selTr(${exhibition.exh_no})" style="cursor: pointer;">
 						<td class="tdCenter">${exhibition.exh_no}</td>
 						<td><a href="getUserExhibition?exh_no=${exhibition.exh_no}&page=${paging.nowPageBtn}">
 						${exhibition.exh_title}
@@ -45,6 +46,18 @@
 						<td class="tdCenter">${exhibition.exh_st_date}~
 							${exhibition.exh_end_date}</td>
 						<td class="tdCenter">${exhibition.exh_hall}</td>
+						<td class="tdCenter"> 
+						<c:choose>
+						<c:when test="">
+						<button id="good_pick" type="button" onclick="location.href='/good_pick?exh_no=${exhibition.exh_no}'">♥</button>
+						 </c:when>
+						 <c:otherwise>
+						<button id="good_pick" type="button" onclick="location.href='/good_pick?exh_no=${exhibition.exh_no}'">♡</button>
+						</c:otherwise>
+						</c:choose>
+						
+						</td>
+						 
 					</tr>
 				</c:forEach>
 			</tbody>
