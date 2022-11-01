@@ -15,11 +15,15 @@ if (session.getAttribute("mb_Id") == null) {
 
 <script>
 	function quitMember(mb_id) {
+		if(confirm('정말 탈퇴하시겠습니까?')){
 		if (mb_id != null) {
 			console.log("if문 입니다.");
 			location.href = "deleteMember?mb_id=" + mb_id;
 		} else {
 			console.log("else문입니다.");
+		}
+		} else{
+			location.href= "mypage";
 		}
 	}
 </script>

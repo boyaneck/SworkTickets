@@ -1,8 +1,11 @@
 package com.ticket.biz.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +95,7 @@ public class MemberController {
 	// 회원탈퇴
 	/* @ResponseBody */
 	@RequestMapping(value = "/deleteMember")
-	public String deleteMember(MemberVO vo, HttpSession session) {
+	public String deleteMember(MemberVO vo, HttpSession session){
 		session.invalidate();
 		int result = memberService.deleteMember(vo);
 		System.out.println(result);
