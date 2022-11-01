@@ -23,13 +23,14 @@ public class ExhibitionVO {
 	private String exh_time;
 	private String exh_rating;
 	private String exh_artist;
-	private float exh_place_x;
-	private float exh_place_y;
+	private String exh_place_x;
+	private String exh_place_y;
 	private String exh_local_name;
 	private int exh_cancell;
 	
 
-	private String searchKeyword;
+	private String exSearchCondition;
+	private String exSearchKeyword;
 	
 	private MultipartFile uploadFile;	
 	
@@ -42,19 +43,6 @@ public class ExhibitionVO {
 	private String exh_shipping_info;
 	private String exh_period_use;
 	private String exh_refund_info;
-	
-
-	//랭킹 추가
-	private int rank_cnt;
-	
-	public int getRank_cnt() {
-		return rank_cnt;
-	}
-	public void setRank_cnt(int rank_cnt) {
-		this.rank_cnt = rank_cnt;
-	}
-
-//	랭킹 추가 끝
 	
 
 	public int getExh_common_no() {
@@ -232,19 +220,19 @@ public class ExhibitionVO {
 		this.exh_artist = exh_artist;
 	}
 
-	public float getExh_place_x() {
+	public String getExh_place_x() {
 		return exh_place_x;
 	}
 
-	public void setExh_place_x(float exh_place_x) {
+	public void setExh_place_x(String exh_place_x) {
 		this.exh_place_x = exh_place_x;
 	}
 
-	public float getExh_place_y() {
+	public String getExh_place_y() {
 		return exh_place_y;
 	}
 
-	public void setExh_place_y(float exh_place_y) {
+	public void setExh_place_y(String exh_place_y) {
 		this.exh_place_y = exh_place_y;
 	}
 
@@ -263,12 +251,17 @@ public class ExhibitionVO {
 		this.exh_local_name = exh_local_name;
 	}
 
-	public String getSearchKeyword() {
-		return searchKeyword;
+	public String getExSearchCondition() {
+		return exSearchCondition;
 	}
-
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
+	public void setExSearchCondition(String exSearchCondition) {
+		this.exSearchCondition = exSearchCondition;
+	}
+	public String getExSearchKeyword() {
+		return exSearchKeyword;
+	}
+	public void setExSearchKeyword(String exSearchKeyword) {
+		this.exSearchKeyword = exSearchKeyword;
 	}
 
 	public MultipartFile getUploadFile() {

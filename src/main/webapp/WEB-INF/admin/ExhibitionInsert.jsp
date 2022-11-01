@@ -51,17 +51,31 @@
 					<label for="exh_location" class="input-group-text">위치</label>
 				</div>
 				<input type="text" class="form-control innm" id="exh_location"
-					name="exh_location" readonly>
+					name="exh_location" placeholder="주소를 검색해주세요."> 
+					<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 			</div>
+			
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+			<div id="map" style="width:300px;height:300px;margin-top:10px;"></div>
+				</div>
+			</div>
+			
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_hall" class="input-group-text">전시 장소</label>
 				</div>
 				<input type="text" class="form-control innm" id="exh_hall"
-					name="exh_hall">
+					name="exh_hall" placeholder="상세주소를 입력해주세요.">
 				<%--          <input type="text" class="form-control innm" name="writer" value="<%=session.getAttribute("userName").toString() %>" readonly> --%>
 			</div>
+
+<!-- 			<input type="hidden" id="exh_place_x" name="exh_place_x"> -->
+<!-- 			<input type="hidden" id="exh_place_y" name="exh_place_y"> -->
+			<input type="text" id="exh_place_x" name="exh_place_x" placeholder="x좌표">
+			<input type="text" id="exh_place_y" name="exh_place_y" placeholder="y좌표">
+			<span> - 해당 내용은 히든처리할 예정입니다.</span>
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -163,25 +177,6 @@
 		</form>
 	</div>
 
-<!-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
-<!-- <script> -->
-<!-- window.onload = function(){ -->
-<!--     document.getElementById("exh_location").addEventListener("click", function(){ //주소입력칸을 클릭하면 -->
-<!--         //카카오 지도 발생 -->
-<!--         new daum.Postcode({ -->
-<!--             oncomplete: function(data) { //선택시 입력값 세팅 -->
-<!--                 document.getElementById("exh_location").value = data.address; // 주소 넣기 -->
-<!--                 document.querySelector("input[name=exh_hall]").focus(); //상세입력 포커싱 -->
-<!--             } -->
-<!--         }).open(); -->
-<!--     }); -->
-<!-- } -->
-
-<input type="text" id="sample5_address" placeholder="주소">
-<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-<div id="map" style="width:300px;height:300px;margin-top:10px;"></div>
-<!-- <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div> -->
-
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75fb178f353ce628ee79e97732a582fc&libraries=services"></script>
 <script>
@@ -206,18 +201,31 @@
         new daum.Postcode({
             oncomplete: function(data) {
                 var addr = data.address; // 최종 주소 변수
-
+	
                 // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample5_address").value = addr;
+                document.getElementById("exh_location").value = addr;
                 // 주소로 상세 정보를 검색
                 geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
                     if (status === daum.maps.services.Status.OK) {
 
                         var result = results[0]; //첫번째 결과의 값을 활용
+                        console.log(result);
 
+                        var ady = result.y;
+                        document.getElementById("exh_place_x").value = ady;
+                        console.log("adx : "+ady);
+                        
+                        var adx = result.x;
+                        document.getElementById("exh_place_y").value = adx;
+                        console.log("ady : "+adx);
+                        
+                        
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
+                        console.log(coords);
+                        console.log("result.x :"+result.x);
+                        
                         // 지도를 보여준다.
 //                         mapContainer.style.display = "block";
                         map.relayout();
@@ -231,6 +239,5 @@
         }).open();
     }
 </script>
-<!-- </script> -->
 </body>
 </html>
