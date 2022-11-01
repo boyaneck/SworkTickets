@@ -32,13 +32,13 @@
 	</select>
 
 	<select id="getGoodList" resultType="exhibition">
-		SELECT *, COUNT(g.GOOD_CHECK)AS good_cnt from exhibition as e
+		SELECT e.*, COUNT(g.GOOD_CHECK)AS rank_cnt from exhibition as e
 		LEFT outer JOIN good AS g
 		on e.exh_no= g.exh_no
 		GROUP BY e.exh_no
 		ORDER BY
-		good_cnt DESC
-		LIMIT 10;
+		rank_cnt DESC
+		LIMIT 5;
 	</select>
 
 

@@ -44,18 +44,19 @@ public class ExhibitionVO {
 	private String exh_refund_info;
 	
 
-	//좋아요 추가
-	private int good_cnt;
+	//랭킹 추가
+	private int rank_cnt;
 	
-	
-	public int getGood_cnt() {
-		return good_cnt;
+	public int getRank_cnt() {
+		return rank_cnt;
 	}
-	public void setGood_cnt(int good_cnt) {
-		this.good_cnt = good_cnt;
+	public void setRank_cnt(int rank_cnt) {
+		this.rank_cnt = rank_cnt;
 	}
-//	좋아요 추가끝
+
+//	랭킹 추가 끝
 	
+
 	public int getExh_common_no() {
 		return exh_common_no;
 	}
