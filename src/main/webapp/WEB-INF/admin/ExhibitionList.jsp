@@ -17,12 +17,28 @@
 		<h1>관리자 전시 목록</h1>
 	</div>
 	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
-		<form class="form-inline" action="#" method="post">
-			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
-				placeholder="전시명 및 전시장을 검색하세요.">
-			<button class="btn btn-success" type="submit">검색</button>
+		<form class="form-inline" action="getExhibitionList" method="post">
+			<select class="form-control" id="sel1" name="exSearchCondition"
+				style="display: inline-block !important; margin-right: 10px;">
+				<c:forEach items="${exSearchConditionMap}" var="option">
+					<option value="${option.value}">${option.key}</option>
+				</c:forEach>
+			</select> <input class="form-control mr-sm-2" type="text" name="exSearchKeyword"
+				placeholder="검색어를 입력하세요.">
+			<button class="btn btn-outline-primary" type="submit">검색</button>
 		</form>
 	</nav>
+<!-- 	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark"> -->
+<!-- 		<form class="form-inline" action="getExhibitionList" method="post"> -->
+<!-- 			<select class="form-control" id="sel1" name="exFilterCondition" -->
+<!-- 				style="display: inline-block !important; margin-right: 10px;"> -->
+<%-- 				<c:forEach items="${exFilterConditionMap}" var="filter"> --%>
+<%-- 					<option value="${filter.value}">${filter.key}</option> --%>
+<%-- 				</c:forEach> --%>
+<!-- 			</select> -->
+<!-- 			<button class="btn btn-outline-primary" type="submit">검색</button> -->
+<!-- 		</form> -->
+<!-- 	</nav> -->
 	<div class="container-fluid">
 		<table class="table table-hover">
 			<thead class="btn-primary">
@@ -48,10 +64,10 @@
 						<td class="tdCenter">${exhibition.exh_st_date}~
 							${exhibition.exh_end_date}</td>
 						<td class="tdCenter">${exhibition.exh_hall}</td>
-						<td class="tdCenter">
-						<jsp:useBean id="now" class="java.util.Date" />
-						<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> 
-						<c:if test="${exhibition.exh_end_date < today}">
+						<td class="tdCenter"><jsp:useBean id="now"
+								class="java.util.Date" /> <fmt:formatDate value="${now}"
+								pattern="yyyy-MM-dd" var="today" /> <c:if
+								test="${exhibition.exh_end_date < today}">
 								<c:out value="종료" />
 							</c:if></td>
 						<td class="tdCenter"><c:if
@@ -115,5 +131,6 @@
 				</a>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

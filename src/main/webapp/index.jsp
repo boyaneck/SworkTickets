@@ -30,5 +30,6 @@
 <a href="insertCoupon.jsp">- 쿠폰등록</a><br>
 <a href="/getCouponList">- 쿠폰목록</a><br>
 <a href="/pay">- 관리자 결제목록</a><br>
+<a href="/getExhibitionList">- 관리자 전시목록</a><br>
 </body>
 </html>

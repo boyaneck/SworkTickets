@@ -20,13 +20,10 @@
 <p>예매수수료 <fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</p>
 <p>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</p>
    <div id="footer">
-   		<form action="/payUser" method="post">
-   			<input type="hidden" name="exh_no" value="${exhibition.exh_no}">
-   			<input type="hidden" name="exh_title" value="${exhibition.exh_title}">
-   			<input type="hidden" name="amount" value="${exhibition.exh_price}">
-			<button type="submit" class="btn btn-primary">예매하기</button>
-		</form>
+			<button type="button" class="btn btn-primary">예매하기</button>
 		</div>
-</div>
+		<br>
+<%@ include file="UserExhibitionLocation.jsp"%>
+<br>
 </body>
 </html>
