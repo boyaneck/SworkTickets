@@ -1,3 +1,4 @@
+<%@page import="org.springframework.web.bind.annotation.SessionAttributes"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -21,16 +22,16 @@
 <p>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</p>
    <div id="footer">
 			<a href="WEB-INF/admin/ExhibitionInsert.jsp"><button type="button" class="btn btn-primary">수정하기</button></a>
-			<button type="button" class="btn btn-primary" onclick="del()">삭제하기</button>
+			<button type="button" class="btn btn-primary" onclick="del('${page}')">삭제하기</button>
 		</div>
 		<script>
-       function del(){
+       function del(page){
           var delConfirm = confirm('정말 삭제하시겠습니까?');
-       
+          var page= page;
          if (delConfirm == true) {
 
+            location.href = 'deleteExhibition?exh_no=${exhibition.exh_no}&page='+page;
             alert('삭제되었습니다.');
-            location.href = 'deleteExhibition?exh_no=${exhibition.exh_no}&page=${paging.nowPageBtn}';
          }
          else {
             alert('삭제가 취소되었습니다.');
