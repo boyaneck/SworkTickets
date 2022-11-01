@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.member.MemberService;
@@ -61,6 +63,30 @@ public class MemberController {
 	public String insertMember(MemberVO vo) throws IllegalStateException {
 		memberService.insertMember(vo);
 		return "redirect:index.jsp";
+	}
+
+	/* 이용약관 */
+	@RequestMapping("/registerTerm")
+	public ModelAndView registerTerm(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1, @RequestParam(value = "agree2", defaultValue = "false") Boolean agree2,  MemberVO vo)
+			throws Exception {
+		System.out.println("agree: " + agree1);
+		System.out.println("이용약관입니다.");
+		ModelAndView mv = new ModelAndView();
+		if (agree1 == true && agree2 ==true) {
+			mv.setViewName("views/insertMember");
+			return mv;
+		} else {
+			mv.setViewName("views/step1");
+			
+			return mv;
+		}
+
+	}
+	// 이용약관
+
+	@RequestMapping(value = "/step1")
+	public String register_term() {
+		return "views/step1";
 	}
 
 	// 회원탈퇴
