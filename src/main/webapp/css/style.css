@@ -35,6 +35,42 @@ body {
 }
 /* 헤더시작*/
 
+/* 최신전시 시작 */
+.new_title{
+    text-align: center;
+    position:relative;
+}
+.new_title > h2{
+    font-size: 70px;
+    margin:50px 0 30px 0px;
+    position:absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width:100%
+}
+
+.new_title > h3{
+    font-size: 70px;
+    margin:53px 0 30px 7px;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.new_ex{
+    text-align: center;
+}
+
+.new_ex > button{
+    height:180px;
+    width:180px;
+    font-size: 25px;
+    background-color:#fff;
+    border-radius:90px;
+    border-width:1px;
+    border-color:#1f1f1f;
+}
+
+/* 최신전시 끝 */
+
 /* 로고 */
 .logoimg{
 	margin-left:10px;
@@ -311,6 +347,7 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
 	font-size:18px;
 	font-weight:300;
 	color:#1f1f1f!important;
+	margin: 6px 10px 0 0;
 }
 
 /* 헤더 로그인 끝 */
@@ -328,6 +365,8 @@ a.header-loginafter{
 
   li {
     font-weight: normal;
+    margin:11px 0px 0px 20px;
+}
 }
 
 a:hover {
@@ -474,6 +513,7 @@ h1.slide-title{
 	left: 0;
 	height: 100%;
 	transform: translate3d(0, 0, 0);
+	
 }
 
 .tech-slideshow .mover-1 {
