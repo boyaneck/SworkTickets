@@ -48,6 +48,18 @@
   </button> -->
 </div>
 
+<!-- 전시버튼 -->
+
+<div class="new_title">
+<h2><span style="color:#7832f7">NEW</span> EXHIBITION</h2>
+<h3><span style="color:#7832f7">NEW</span> EXHIBITION</h3>
+</div>
+
+<div class="new_ex">
+<button type="button" onclick = "location.href= '../getUserExhibitionList'" ><span style="color:#7832f7">+</span>more</button>
+</div>
+
+
 <!-- <div class="maintext">
 aa
 </div> -->
