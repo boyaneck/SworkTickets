@@ -2,6 +2,8 @@ package com.ticket.biz.good;
 
 import java.util.List;
 
+import com.ticket.biz.exhibition.ExhibitionVO;
+
 public interface GoodService {
 	//CRUD 기능의 메소드 구현
 		//좋아요등록
@@ -18,5 +20,8 @@ public interface GoodService {
 		
 		//좋아요 체크
 		boolean getGoodYN(GoodVO vo);
-
+		
+		List<ExhibitionVO> getMyGoodList(GoodVO vo);
+		
+		int getMyGoodListCnt(GoodVO vo);
 }
