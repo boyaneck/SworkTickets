@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -52,20 +53,23 @@ public class KaKaoController {
 
 	//토큰가져오기
 	@RequestMapping(value = "/getToken")
-	public String oauthKakao(@RequestParam(value = "code", required = false) String code, Model model) throws Exception {
+	public String oauthKakao(@RequestParam(value = "code", required = false) String code, Model model, HttpSession session) throws Exception {
 		System.out.println("code: " + code);
         String access_Token = getAccessToken(code);
 
 
         HashMap<String, Object> userInfo = getUserInfo(access_Token);
-        System.out.println("access_Token : " + access_Token);
-        System.out.println("userInfo : " + userInfo.get("email"));
-        System.out.println("nickname : " + userInfo.get("nickname"));
+//        System.out.println("access_Token : " + access_Token);
+//        System.out.println("userInfo : " + userInfo.get("email"));
+//        System.out.println("nickname : " + userInfo.get("nickname"));
 
         model.addAttribute("kakaoInfo", userInfo);
+       
+        session.setAttribute("kakaoLogin", userInfo);
+        System.out.println(userInfo.get("email"));
         REDIRECT_URI = "http://localhost:8090";
 
-        return "views/login_kakao";
+        return "redirect:index.jsp";
 	}
 
 
