@@ -18,6 +18,7 @@
    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
    crossorigin="anonymous"></script>
+   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
     <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/style.css">
 <title>헤더입니다.</title>
@@ -40,7 +41,7 @@
             <a class="nav-link header" href="/getExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
@@ -107,7 +108,7 @@
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
@@ -163,7 +164,7 @@
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
@@ -213,6 +214,71 @@
         </ul>
       </c:otherwise>   
    </c:choose>
+   
+ <%--     <c:choose>
+  <c:when test="${kakaoInfo.msg eq NULL}">
+	<ul>
+	    <li onclick="kakaoLogin();">
+	      <a href="javascript:void(0)">
+	          <span>카카오 로그인</span>
+	      </a>
+	    </li>
+	</ul>
+  </c:when>
+  <c:otherwise>
+  	<ul>
+	    <li onclick="kakaoLogout();">
+	      <a href="javascript:void(0)">
+	          <span>카카오 로그아웃</span>
+	      </a>
+	    </li>
+	</ul>
+  </c:otherwise>
+  </c:choose> --%>
+ <%--  <script>
+  //카카오 로그인
+  function kakaoLogin() {
+	  location.href = "/getAuthUrl";
+//     $.ajax({
+//         url: '/getAuthUrl',
+//         type: 'get',
+//         async: false,
+//         dataType: 'text',
+//         success: function (res) {
+//         	console.log(res);
+//             location.href = res;
+//         }
+//     });
+
+  }
+  //카카오 로그아웃
+  function kakaoLogout() {
+    $.ajax({
+        url: '/logOutUrl',
+        type: 'get',
+        async: false,
+        dataType: 'text',
+        success: function (res) {
+            location.href = res;
+        }
+    });
+
+  }
+
+  </script>
+  <c:choose>
+	  <c:when test="${kakaoInfo.msg eq NULL}">
+	  	데이터가 없습니다.
+	  </c:when>
+	  <c:otherwise>
+	  	accessToken :  ${kakaoInfo.accessToken}<br>
+	  	id :  ${kakaoInfo.id}<br>
+	  	nickname :  ${kakaoInfo.nickname}<br>
+	  	email :  ${kakaoInfo.email}<br>
+	  	gender :  ${kakaoInfo.gender}<br>
+	  	connected_at :  ${kakaoInfo.connected_at}<br>
+	  </c:otherwise>
+  </c:choose> --%>
    
 </nav>
 

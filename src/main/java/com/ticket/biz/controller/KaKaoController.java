@@ -179,6 +179,6 @@ public class KaKaoController {
 	@RequestMapping(value = {"/login/kakao"})
 	public String home() {
 		System.out.println("컨트롤러");
-		return "views/login_naver";
+		return "views/login_kakao";
 	}
 }
