@@ -12,6 +12,9 @@
 		<typeAlias type="com.ticket.biz.one.OneVO" alias="one"></typeAlias>
 		<typeAlias type="com.ticket.biz.exhibition.ExhibitionVO" alias="exhibition"></typeAlias>
 		<typeAlias type="com.ticket.biz.good.GoodVO" alias="good"></typeAlias>
+		<typeAlias type="com.ticket.biz.board.BoardVO" alias="board"></typeAlias>
+		<typeAlias type="com.ticket.biz.faq.FaqVO" alias="faq"></typeAlias>
+		<typeAlias type="com.ticket.biz.review.ReviewVO" alias="review"></typeAlias>
 	</typeAliases>
 	
 	<mappers>
@@ -22,5 +25,8 @@
 		<mapper resource="mappings/one-mappings.xml" />
 		<mapper resource="mappings/exhibition-mappings.xml" />
 		<mapper resource="mappings/good-mappings.xml" />
+		<mapper resource="mappings/board-mappings.xml"/>
+		<mapper resource="mappings/faq-mappings.xml"/>
+		<mapper resource="mappings/review-mappings.xml"/>
 	</mappers>
 </configuration>

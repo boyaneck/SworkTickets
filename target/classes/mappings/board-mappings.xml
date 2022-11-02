@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardDAO">
+
+	<select id="totalBoardListCnt" resultType="_int">
+	
+		SELECT COUNT(*) FROM NOTICE WHERE 1=1 
+
+		ORDER BY NOTI_NO DESC
+		
+	</select>
+	
+	<select id="getBoardList" resultType="board">
+		SELECT * FROM NOTICE WHERE 1=1 
+<!-- 		<if test="searchCondition == 'TITLE' "> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if> -->
+<!-- 		<if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE  CONCAT('%',#{searchKeyword},'%')</if> -->
+		ORDER BY NOTI_NO DESC
+		LIMIT 10 OFFSET #{offset}
+	</select>
+	
+	<select id="getBoard" resultType="board">  
+	SELECT * FROM NOTICE WHERE NOTI_NO=#{noti_no}
+	</select>
+	
+<insert id="insertBoard">
+  INSERT INTO NOTICE (NOTI_TITLE, NOTI_WRITER, NOTI_CONTENT,
+  NOTI_DATE, NOTI_CATEGORY, NOTI_MODIFY) 
+  VALUES ( #{noti_title}, #{noti_writer},
+             #{noti_content}, now(),
+  			#{noti_category}, now())
+</insert>
+
+<update id="updateBoard">
+	UPDATE NOTICE 
+	SET 
+	NOTI_TITLE=#{noti_title},
+	NOTI_CONTENT=#{noti_content},
+	NOTI_MODIFY =now()
+	WHERE NOTI_NO=#{noti_no}
+	
+</update>
+
+<delete id="deleteBoard">
+	DELETE FROM NOTICE WHERE NOTI_NO=#{noti_no}
+</delete>
+
+</mapper>
