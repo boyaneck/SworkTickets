@@ -130,6 +130,7 @@
                <a class="dropdown-item header-item" href="mypage?mb_id=${mb_Id}">&nbsp마이페이지</a>
                <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
                <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
+                  <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
                </div>
                </li>
             </ul>

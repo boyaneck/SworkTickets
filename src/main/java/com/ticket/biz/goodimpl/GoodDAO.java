@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ticket.biz.exhibition.ExhibitionVO;
 import com.ticket.biz.good.GoodVO;
 
 @Repository
@@ -42,6 +43,12 @@ public class GoodDAO {
 			return true;}
 	}
 	
-
-
+	// 유저 전시 목록 조회
+	public List<ExhibitionVO> getMyGoodList(GoodVO vo) {
+		return mybatis.selectList("GoodDAO.getMyGoodList",vo);
+	}
+	// 유저 전시 목록 조회 카운트
+	public int getMyGoodListCnt(GoodVO vo) {
+		return mybatis.selectOne("GoodDAO.getMyGoodListCnt",vo);
+	}
 }
