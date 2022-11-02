@@ -19,16 +19,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.ticket.biz.faq.FaqService;
+import com.ticket.biz.faq.FaqVO;
 import com.ticket.biz.common.PagingVO;
-import com.ticket.biz.one.OneService;
-import com.ticket.biz.one.OneVO;
 
 @Controller
-@SessionAttributes("one")
-public class OneController {
+@SessionAttributes("faq")
+public class FaqController {
 	
 	@Autowired
-	private OneService oneService;
+	private FaqService faqService;
 	//검색
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
@@ -38,28 +38,29 @@ public class OneController {
 		return conditionMap;
 	}
 	
-	// 이동 컨트롤러
-	@RequestMapping("/goWrite")
-	public String goOne(OneVO vo, Model model) {
-		return "redirect:write.jsp";
-	}
+	//이동 컨트롤러
+//	@RequestMapping("/goWrite")
+//	public String goFaq(FaqVO vo , Model model) {
+////		model.addAttribute("boardList", faqService.getFaqList(vo));
+//		return "redirect:write.jsp";
+//	}
 	
 	//글 등록
-	@RequestMapping("/insertOne")
 	
-	public String insertOne(OneVO vo ,Model model , HttpSession session) {
-//		if(vo.isOne_secret()==true & vo.getOne_writer()== session.getAttribute("mb_id"))
-		System.out.println("확인" + vo.toString());
-		
-		oneService.insertOne(vo);	
-		return "redirect:getOneList";
-		
-	}
+//	@RequestMapping("/insertFaq")
+//	
+//	public String insertFaq(FaqVO vo ,Model model , HttpSession session) {
+////		if(vo.isNoti_secret()==true & vo.getNoti_writer()== session.getAttribute("mb_id"))
+//
+//		faqService.insertFaq(vo);	
+//		return "redirect:faqBoardList";
+//		
+//	}
 
 	//"uploadFile" 추가시 
-//	@PostMapping(value = "/insertOne")
-////	public String insertOne(MultipartHttpServletRequest request, OneVO vo) throws IllegalStateException, IOException {
-//	public String insertOne(OneVO vo) throws IllegalStateException, IOException {
+//	@PostMapping(value = "/insertFaq")
+////	public String insertFaq(MultipartHttpServletRequest request, FaqVO vo) throws IllegalStateException, IOException {
+//	public String insertFaq(FaqVO vo) throws IllegalStateException, IOException {
 //		MultipartFile uplodFile = vo.getUploadFile();
 //		//realPath 추가
 ////	    String realPath = request.getSession().getServletContext().getRealPath("/img/");
@@ -69,53 +70,64 @@ public class OneController {
 //			vo.setFilename(fileName);
 //			uplodFile.transferTo(new File(realPath+fileName));
 //		}
-//		oneService.insertOne(vo);
-//		return "getOneList";
+//		faqService.insertFaq(vo);
+//		return "getFaqList";
 //	}
 
 	// 글 수정
-	@RequestMapping("/updateOne")
-	public String updateOne(@ModelAttribute("one") OneVO vo, HttpSession session) {
-		System.out.println("글 수정 기능 전");
-		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString()) ){
-			
-			
-			oneService.updateOne(vo);
-			return "redirect:getOneList";
-		}else {
-			return "getOne?error=1";
-		}
-		
-	}
+//	@RequestMapping("/updateFaq")
+//	public String updateFaq(@ModelAttribute("board") FaqVO vo, HttpSession session) {
+//		System.out.println("글 수정 기능 전");
+//		System.out.println("vo 객체" +vo.toString());
+////		if(vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ){
+////			 
+//			faqService.updateFaq(vo);
+//			return "redirect:getFaqList";
+////		}else {
+////			return "getFaq?error=1";
+////		}
+//		
+//	}
 
 	// 글 삭제
-	@RequestMapping("/deleteOne")
-	public String deleteOne(OneVO vo, HttpSession session) {
-		System.out.println("deleteOne 기능 처리 전");
-		int val=0;
-		System.out.println("val " +val);
-		String realPath = "c:/swork/ticket/src/main/webapp/img/" ;
-			oneService.deleteOne(vo);
-			return "redirect:getOneList";
-	}
-		
+//	@RequestMapping("/deleteFaq")
+//	public String deleteFaq(FaqVO vo, HttpSession session) {
+//		System.out.println("deleteFaq 기능 처리 전");
+//		int val=0;
+//		System.out.println("val " +val);
+//		String realPath = "c:/swork/ticket/src/main/webapp/img/" ;
+////		vo = faqService.getFaq(vo);
+////		if( vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ) {
+////			if(vo.getFilename()!=null) {
+////				System.out.println("파일삭제: "+realPath + vo.getFilename());
+////				File f = new File(realPath + vo.getFilename());		
+////				f.delete();
+////			}
+//			
+//			faqService.deleteFaq(vo);
+//			return "redirect:getFaqList";
+////		}else {
+////			return "getFaq?error=1";
+////		}
+//	}
+
 	// 글 상세 조회
-	@RequestMapping("/getOne")
-	public String getOne(OneVO vo, Model model) {
-		System.out.println("글상세조회");
-		model.addAttribute("one", oneService.getOne(vo));
-		System.out.println("글상세조회 수행");
-		return "one/getOne";
-	}
+//	@RequestMapping("/getFaq")
+//	public String getFaq(FaqVO vo, Model model) {
+//		System.out.println("글상세조회");
+//		model.addAttribute("board", faqService.getFaq(vo));
+//		System.out.println("글상세조회 수행");
+//		return "board/getFaq";
+//	}
 
 	// 글 목록
-	@RequestMapping("/getOneList")
-	public String getOneListPost(OneVO vo, String nowPageBtn, Model model) {
+	@RequestMapping("/getFaqList")
+	public String getFaqListPost(FaqVO vo, String nowPageBtn, Model model) {
 		System.out.println("글 목록 검색 처리gg");
 		
 		//총 목록 수 
-		int totalPageCnt = oneService.totalOneListCnt(vo);
-		System.out.println("totaloneListCnt 수행 완료");
+		int totalPageCnt = faqService.totalFaqListCnt(vo);
+		System.out.println("totalFaqListCnt 수행 완료");
 		//현재 페이지 설정 
 		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
 		System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
@@ -131,11 +143,11 @@ public class OneController {
 		
 		
 		model.addAttribute("paging", pvo);
-		System.out.println("modelAttribute getoneList");
-		model.addAttribute("oneList", oneService.getOneList(vo));
-		List<OneVO> onelist =oneService.getOneList(vo);
-		System.out.println("modelAttribute getOneList 기능 실행 후 ");
-		return "one/oneList";
+		System.out.println("modelAttribute getFaqList");
+		model.addAttribute("faqList", faqService.getFaqList(vo));
+		List<FaqVO> faqlist =faqService.getFaqList(vo);
+		System.out.println("modelAttribute getFaqList 기능 실행 후 ");
+		return "faq/faqList";
 	}
 	
 	//파일다운로드
