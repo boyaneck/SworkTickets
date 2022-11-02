@@ -18,6 +18,7 @@
    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
    crossorigin="anonymous"></script>
+   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
     <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/style.css">
 <title>헤더입니다.</title>
@@ -55,8 +56,8 @@
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
-               <a class="dropdown-item header-item" href="#">공지사항</a>
-               <a class="dropdown-item header-item" href="#">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
+               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
@@ -86,7 +87,8 @@
                <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
       </c:when>
       
-      <c:when test='${mb_Id ne NULL}'>
+      <c:when test="${mb_Id ne NULL || kakaoLogin ne NULL || naverLogin ne NULL}">
+      	<input name="mb_id" value="${kakaoLogin.id }" hidden="true">
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
@@ -103,8 +105,8 @@
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
-               <a class="dropdown-item header-item" href="#">공지사항</a>
-               <a class="dropdown-item header-item" href="#">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
+               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
@@ -120,7 +122,7 @@
       </div>
       <!-- 검색 -->
                <li class="nav-item">
-                     <span class="nav-hello">${mb_Id}님 안녕하세요</span>
+                     <span class="nav-hello">${kakaoLogin.nickname}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
                <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
@@ -153,13 +155,12 @@
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
-               <a class="dropdown-item header-item" href="#">공지사항</a>
-               <a class="dropdown-item header-item" href="#">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
+               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
       </ul>
-      
       <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon">

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>멤버등록</title>
-<%@ include file="../../header.jsp"%>
+<%@ include file="header.jsp"%>
 
 <style>
 

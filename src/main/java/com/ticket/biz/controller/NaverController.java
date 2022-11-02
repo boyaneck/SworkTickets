@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.servlet.http.HttpSession;
+
 import java.util.Set;
 
 import org.apache.http.HttpResponse;
@@ -38,28 +41,29 @@ public class NaverController {
 	private String REDIRECT_URL = "";
 	private static String tokenChk;
 
-	@RequestMapping("/naverlogin")
+	@RequestMapping(value = { "/login/naver" })
 	public String naverLoginView(Model model, NaverVO vo) {
 		model.addAttribute("naver", vo);
-		return "naverlogin";
+		return "views/login_naver";
 	}
 
 	@RequestMapping("/getNaverAuthUrl")
 	public String getAuthUrl(NaverVO vo) {
-		REDIRECT_URL = vo.getCallback_url() + "/login";
+		REDIRECT_URL = vo.getCallback_url() + "/login_naver";
 		String result = NAVER_AUTH_URL + "?state=success&response_type=code&auth_type=reauthenticate&client_id="
 				+ vo.getClient_id() + "&redirect_uri=" + REDIRECT_URL;
 
 		return "redirect:" + result;
 	}
 
-	@RequestMapping(value = "/login")
-	public String oauthKakao(NaverVO vo, Model model) throws Exception {
+	@RequestMapping(value = "/login_naver")
+	public String oauthKakao(NaverVO vo, Model model, HttpSession session) throws Exception {
 		String asToken = getToken(vo);
 		vo.setAccess_token(asToken);
 		HashMap<String, Object> userInfo = getProfile(vo);
 		model.addAttribute("naverInfo", userInfo);
-		return "naverlogin";
+		session.setAttribute("naverLogin", userInfo);
+		return "redirect:index.jsp";
 	}
 
 	// 접근토근 요청/응답정보
@@ -129,19 +133,19 @@ public class NaverController {
 				map = new HashMap<String, Object>();
 				// 이곳에서 데이터베이스 연동로직 처리할 것
 				System.out.println("id: " + response.get("id").asText());
-				System.out.println("age: " + response.get("age").asText());
-				System.out.println("gender: " + response.get("gender").asText());
+//				System.out.println("age: " + response.get("age").asText());
+//				System.out.println("gender: " + response.get("gender").asText());
 				System.out.println("email: " + response.get("email").asText());
 				System.out.println("mobile: " + response.get("mobile").asText());
-				System.out.println("nickname: " + response.get("nickname").asText());
+//				System.out.println("nickname: " + response.get("nickname").asText());
 
 				map.put("msg", "ok");
 				map.put("id", response.get("id").asText());
-				map.put("age", response.get("age").asText());
-				map.put("gender", response.get("gender").asText());
+//				map.put("age", response.get("age").asText());
+//				map.put("gender", response.get("gender").asText());
 				map.put("email", response.get("email").asText());
 				map.put("mobile", response.get("mobile").asText());
-				map.put("nickname", response.get("nickname").asText());
+//				map.put("nickname", response.get("nickname").asText());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -150,9 +154,9 @@ public class NaverController {
 
 	}
 
-	@RequestMapping(value = { "/login/naver" })
-	public String home() {
-		System.out.println("컨트롤러");
-		return "views/login_naver";
-	}
+//	@RequestMapping(value = { "/login/naver" })
+//	public String home() {
+//		System.out.println("컨트롤러");
+//		return "views/login_naver";
+//	}
 }

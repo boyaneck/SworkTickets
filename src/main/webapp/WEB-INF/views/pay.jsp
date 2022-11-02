@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="/header.jsp"%>
+<%@ include file="../../header.jsp"%>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 var chk = false;

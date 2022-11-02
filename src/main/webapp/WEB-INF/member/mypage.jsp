@@ -15,11 +15,15 @@ if (session.getAttribute("mb_Id") == null) {
 
 <script>
 	function quitMember(mb_id) {
+		if(confirm('정말 탈퇴하시겠습니까?')){
 		if (mb_id != null) {
 			console.log("if문 입니다.");
 			location.href = "deleteMember?mb_id=" + mb_id;
 		} else {
 			console.log("else문입니다.");
+		}
+		} else{
+			location.href= "mypage";
 		}
 	}
 </script>
@@ -36,20 +40,17 @@ if (session.getAttribute("mb_Id") == null) {
 				<div class="input-group-prepend">
 					<span class="input-group-text">아이디</span>
 				</div>
-				<input type="text" class="form-control innm" name="mb_id"
-					value="${member.mb_id}" readonly="readonly">
+				<input type="text" class="form-control innm" name="mb_id" value="${member.mb_id}" readonly="readonly">
 			</div>
 			<div class="mb-3">
-				<label for="pw">*비밀번호</label> <input type="password"
-					class="form-control" name="mb_pw" id="pw" value="${member.mb_pw}"
-					minlength="4" maxlength="8" readonly>
+				<label for="pw">*비밀번호</label> 
+				  <input type="password" class="form-control" name="mb_pw" id="pw" value="${member.mb_pw}" minlength="4" maxlength="8">
 			</div>
 
 			<div class="mb-3">
-				<label for="pw2">*비밀번호 확인</label> <input type="password"
-					class="form-control" name="mb_pw2" id="pw2" value="${member.mb_pw}"
-					minlength="4" maxlength="8" readonly> <font id="checkPw"
-					size="2">비밀번호는 4~8글자입니다</font>
+				<label for="pw2">*비밀번호 확인</label> 
+				  <input type="password" class="form-control" name="mb_pw2" id="pw2" value="${member.mb_pw}" minlength="4" maxlength="8"> 
+					<font id="checkPw" size="2">비밀번호는 4~8글자입니다</font>
 			</div>
 
 			<div class="input-group mb-3">
