@@ -18,6 +18,7 @@
    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
    crossorigin="anonymous"></script>
+   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
     <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/style.css">
 <title>헤더입니다.</title>
@@ -27,7 +28,7 @@
 <nav class="navbar navbar-expand-sm navbar-light header-navbar"
    data-toggle="affix">
    <a class="navbar-brand logoimg" href="index.jsp"> <img
-      style="width: 200px;" src="./images/logo.png">&nbsp&nbsp
+      style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
    </a>
 
    <button class="navbar-toggler header-toggler" type="button" data-toggle="collapse"
@@ -35,35 +36,33 @@
    
    <c:choose>
       <c:when test='${mb_Id eq "admin"}'>
-         <ul class="nav navbar-nav mr-auto ml-5">
+         <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
+            <a class="nav-link header" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="coupon">
             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
             <a class="dropdown-item header-item" href="insertCoupon.jsp">쿠폰등록</a>
             </div>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
+            <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
-               <a class="dropdown-item header-item" href="#">공지사항</a>
-               <a class="dropdown-item header-item" href="#">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
+               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
       </ul>
       
-
-	
       <ul class="nav navbar-nav navbar-right">
             <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
@@ -72,22 +71,9 @@
           <input type="text" class="form-control" placeholder="검색" />
         </div>
       </div>
-      
-<!--             	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
-		<form class="form-inline" action="#" method="post">
-			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
-				placeholder="전시명 및 전시장을 검색하세요.">
-			<button class="btn btn-success" type="submit">검색</button>
-		</form>
-	</nav> -->
       <!-- 검색 -->
-      
-      
-      
-      
-      
                <li class="nav-item">
-                     <span class="nav-link">${mb_Id}님 안녕하세요</span>
+                     <span class="nav-hello">${mb_Id}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
                <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 회원관리 </a>
@@ -101,13 +87,14 @@
                <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
       </c:when>
       
-      <c:when test='${mb_Id ne NULL}'>
-         <ul class="nav navbar-nav mr-auto ml-5">
+      <c:when test="${mb_Id ne NULL || kakaoLogin ne NULL || naverLogin ne NULL}">
+      	<input name="mb_id" value="${kakaoLogin.id }" hidden="true">
+         <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
@@ -116,10 +103,10 @@
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
+            <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
-               <a class="dropdown-item header-item" href="#">공지사항</a>
-               <a class="dropdown-item header-item" href="#">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
+               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
@@ -133,23 +120,17 @@
           <input type="text" class="form-control" placeholder="검색" />
         </div>
       </div>
- <!--                  	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
-		<form class="form-inline" action="#" method="post">
-			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
-				placeholder="전시명 및 전시장을 검색하세요.">
-			<button class="btn btn-success" type="submit">검색</button>
-		</form>
-	</nav> -->
       <!-- 검색 -->
                <li class="nav-item">
-                     <span class="nav-link">${mb_Id}님 안녕하세요</span>
+                     <span class="nav-hello">${kakaoLogin.nickname}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
-               <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
+               <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
                <div class="dropdown-menu header-menu" aria-labelledby="member">
                <a class="dropdown-item header-item" href="mypage?mb_id=${mb_Id}">&nbsp마이페이지</a>
                <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
                <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
+                  <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
                </div>
                </li>
             </ul>
@@ -158,12 +139,12 @@
       </c:when>
       
       <c:otherwise> 
-         <ul class="nav navbar-nav mr-auto mx-5">
+         <ul class="nav navbar-nav mr-auto mx-2">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
@@ -172,34 +153,22 @@
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
+            <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
-               <a class="dropdown-item header-item" href="#">공지사항</a>
-               <a class="dropdown-item header-item" href="#">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
+               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
       </ul>
-      
       <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon">
-        <form class="form-inline" action="#" method="post">
-          	<i class="glyphicon fas fa-search"></i>
-          	<input type="text" class="form-control" placeholder="전시명 및 전시장을 검색하세요." />
-          	<button class="btn" type="submit"></button>
-          </form>
+          <i class="glyphicon fas fa-search"></i>
+          <input type="text" class="form-control" placeholder="검색" />
         </div>
       </div>
-<!--      	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
-		<form class="form-inline" action="#" method="post">
-			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
-				placeholder="전시명 및 전시장을 검색하세요.">
-			<button class="btn" type="submit">검색</button>
-		</form>
-	</nav> -->
       <!-- 검색 -->
-      
       
       <ul class="nav navbar-nav navbar-right">
             <li class="nav-item dropdown header-title">

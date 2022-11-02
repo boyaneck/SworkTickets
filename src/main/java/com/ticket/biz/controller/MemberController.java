@@ -1,8 +1,11 @@
 package com.ticket.biz.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +43,7 @@ public class MemberController {
 	// 회원 마이페이지
 	@RequestMapping(value = "/mypage")
 	public String getMyPage(MemberVO vo, Model model) {
+		System.out.println("11111111111111111111"+vo.getMb_id());
 		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
 //	      System.out.println("1111111"+memberService.getMember(vo));
@@ -61,6 +65,7 @@ public class MemberController {
 	// 멤버등록
 	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) throws IllegalStateException {
+		System.out.println("2222222222222"+vo.getMb_id());
 		memberService.insertMember(vo);
 		return "redirect:index.jsp";
 	}
@@ -92,7 +97,7 @@ public class MemberController {
 	// 회원탈퇴
 	/* @ResponseBody */
 	@RequestMapping(value = "/deleteMember")
-	public String deleteMember(MemberVO vo, HttpSession session) {
+	public String deleteMember(MemberVO vo, HttpSession session){
 		session.invalidate();
 		int result = memberService.deleteMember(vo);
 		System.out.println(result);

@@ -34,17 +34,82 @@ body {
 	width:100%!important;
 }
 /* 헤더시작*/
+
+/* 최신전시 시작 */
+.new_title{
+    text-align: center;
+    position:relative;
+}
+.new_title > h2{
+    font-size: 70px;
+    margin:50px 0 30px 0px;
+    position:absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width:100%
+}
+
+.new_title > h3{
+    font-size: 70px;
+    margin:53px 0 30px 7px;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.new_ex{
+    text-align: center;
+}
+
+.new_ex > button{
+    height:180px;
+    width:180px;
+    font-size: 25px;
+    background-color:#fff;
+    border-radius:90px;
+    border-width:1px;
+    border-color:#1f1f1f;
+}
+
+/* 최신전시 끝 */
+
+/* 로고 */
+.logoimg{
+	margin-left:10px;
+}
+
+/* 목록 */
+.nav-link.header{
+	color:#1f1f1f!important;
+	font-weight:300;
+}
+
+
 .nav-link.header:hover{
 	color:#7832f7!important;
+	font-weight:500;
+}
+.nav-hello{
+	margin-top:10px;
+	color:gray;
+	font-size:16px;
 }
 /* 헤더끝 */
 
 /* 메인이미지 시작 */
+
+
 .carousel-indicators li{
-	background-color: #7832f7!important;
-	width: 60px!important;
+	border:1px solid;
+	background-color: #fff!important;
+	width: 70px!important;
 	height: 7px!important;
+	margin: 0 15px 10px 10px;
 }
+
+.carousel-indicators li.active{
+	background-color: #7832f7!important;
+}
+
+
 /* section {
    height:600px;
     background-color: #f5f5fa;
@@ -195,8 +260,8 @@ section {
 	justify-content:center!important;
 }
 .dropdown.header-title{
-	font-size:22px!important;
-	font-weight:bold;
+	font-size:20px!important;
+	margin:0 40px 0 20px;
 }
 .dropdown.header-title:hover{
 	  text-decoration: none!important;
@@ -243,24 +308,48 @@ li.dropdown {
 
 /* 헤더 로그인 시작 */
 ul.nav.navbar-nav.navbar-right {
-  margin: 0 0 0 auto;
-  background-color:#7832f7!important;
+  margin-right: -28px;
   
 }
 /* a{color:black !important;} */
 
 a.dropdown-item.header-item-login
-{
-	/* background-color:#71f1f1f!important; */
+{	
+	padding:7px 23px 7px 20px;
+	font-size:16px;
+	background-color:#1f1f1f!important;
 	color:#fff;
 }
 a.dropdown-item.header-item-login:hover
 {
-	background:none!important;
+	background-color:#7832f7!important;
 }
+
+
+a.nav-link.header-logout
+{	
+	padding:7px 20px 7px 20px;
+	margin-right:7px;
+	font-size:16px;
+	background-color:#1f1f1f!important;
+	color:#fff;
+}
+a.nav-link.header-logout:hover
+{
+	background-color:#7832f7!important;
+}
+
 a.nav-link.dropdown-toggle.header-toggle-login::after{
 	content:inherit;
 }
+
+.nav-link.mypage{
+	font-size:18px;
+	font-weight:300;
+	color:#1f1f1f!important;
+	margin: 6px 10px 0 0;
+}
+
 /* 헤더 로그인 끝 */
 a.header-loginafter{
 	background-color:var(--background-color1) !important;
@@ -276,6 +365,8 @@ a.header-loginafter{
 
   li {
     font-weight: normal;
+    margin:11px 0px 0px 20px;
+}
 }
 
 a:hover {
@@ -294,7 +385,7 @@ a:hover {
 /* center */
 
 /* center */
-figure img{ position:relative; max-width: 100%;}
+/* figure img{ position:relative; max-width: 100%;} */
 @media (max-width:767px){
    figure img{width: 200vw;}
 } 
@@ -422,6 +513,7 @@ h1.slide-title{
 	left: 0;
 	height: 100%;
 	transform: translate3d(0, 0, 0);
+	
 }
 
 .tech-slideshow .mover-1 {

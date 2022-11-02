@@ -9,7 +9,7 @@
 <script type="text/javascript"
 	src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
-<%@ include file="/header.jsp"%>
+<%@ include file="../../header.jsp"%>
 </head>
 <body>
 	<h2>나의 결제 내역</h2>

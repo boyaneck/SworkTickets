@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FaqDAO">
+
+<!-- 	<select id="totalFaqListCnt" resultType="_int"> -->
+	
+<!-- 		SELECT COUNT(*) FROM FAQ WHERE 1=1  -->
+
+<!-- 		ORDER BY NOTI_NO DESC -->
+<!-- 		LIMIT 10 OFFSET #{offset} -->
+<!-- 	</select> -->
+	
+	<select id="getFaqList" resultType="faq">
+<!-- 		<if test="searchCondition == 'TITLE' "> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if> -->
+<!-- 		<if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE  CONCAT('%',#{searchKeyword},'%')</if> -->
+		SELECT * FROM FAQ WHERE 1=1 
+		ORDER BY FAQ_NO DESC
+		LIMIT 10 OFFSET #{offset}
+	</select>
+	
+	<select id="totalFaqListCnt" resultType="_int">
+	SELECT COUNT(*) FROM FAQ WHERE 1=1 
+
+		ORDER BY FAQ_NO DESC
+		
+	
+	</select>
+	
+<!-- 	<select id="getFaq" resultType="faq">   -->
+<!-- 	SELECT * FROM FAQ WHERE FAQ_NO=#{faq_no} -->
+<!-- 	</select> -->
+	
+<!-- <insert id="insertFaq"> -->
+<!--   INSERT INTO FAQ (FAQ_TITLE, CATE_NAME, FAQ_CONTENT, -->
+<!--   FAQ_REG, FAQ_CONTENT, FAQ_NO)  -->
+<!--   VALUES ( #{faq_title}, #{cate_name}, -->
+<!--              #{faq_content}, now(), -->
+<!--   			#{faq_content}, #{faq_no}) -->
+<!-- </insert> -->
+
+<!-- <update id="updateFaq"> -->
+<!-- 	UPDATE FAQ  -->
+<!-- 	SET  -->
+<!-- 	FAQ_TITLE=#{faq_title}, -->
+<!-- 	FAQ_CONTENT=#{faq_content}, -->
+	
+<!-- 	WHERE FAQ_NO=#{faq_no} -->
+	
+<!-- </update> -->
+
+<!-- <delete id="deleteBoard"> -->
+<!-- 	DELETE FROM FAQ WHERE FAQ_NO=#{faq_no} -->
+<!-- </delete> -->
+
+</mapper>

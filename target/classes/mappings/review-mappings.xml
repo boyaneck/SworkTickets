@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReviewDAO">
+
+	<insert id="insertReview">
+		INSERT INTO
+		REVIEW(REVIEW_WRITER,REVIEW_CONTENT,EXH_NO,RE_REVIEW,REVIEW_TYPE,REVIEW_REG_DATE,REVIEW_BNO)
+		VALUES 
+		(#{review_writer}, #{review_content}, 1, 'A', 1, now(), #{review_bno})
+	</insert>
+
+<!-- 	<delete id="deleteReview"> -->
+<!-- 		DELETE FROM REVIEW -->
+<!-- 		WHERE REVIEW_WRITER = -->
+<!-- 		#{review_writer} AND REVIEW_CONTENT = -->
+<!-- 		#{review_content} -->
+<!-- 	</delete> -->
+
+<!-- 	<select id="getTotal" resultType="_int"> -->
+<!-- 		SELECT COUNT(*) FROM REVIEW -->
+<!-- 		WHERE REVIEW_TYPE = #{review_type} -->
+<!-- 	</select> -->
+
+<!-- 	<select id="getReviewList" resultType="review"> -->
+<!-- 		SELECT * FROM REVIEW  -->
+<!-- 		WHERE -->
+<!-- 		REVIEW_BNO = #{review_bno} -->
+<!-- 	</select> -->
+
+<!-- 	<select id="getList" resultType="ReviewVO"> -->
+<!-- 	SELECT * FROM REVIEW WHERE REVIEW_TYPE = #{review_type} -->
+<!-- 	</select> -->
+
+	<!-- <select id="myRecord" resultType="ReviewVO"> -->
+	<!-- SELECT * FROM REVIEW -->
+	<!-- WHERE -->
+	<!-- REVIEW_WRITER = #{writer} -->
+	<!-- </select> -->
+
+
+</mapper>

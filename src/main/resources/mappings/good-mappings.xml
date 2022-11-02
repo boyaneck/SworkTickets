@@ -41,6 +41,23 @@
 		LIMIT 5;
 	</select>
 
+	<!-- 전시 조회 -->
+	<select id="getMyGoodList" resultType="exhibition">
+		SELECT e.* FROM EXHIBITION as e 
+		LEFT outer JOIN good AS g
+		on e.exh_no= g.exh_no
+		WHERE 1=1
+		AND mb_id= #{mb_id}
+		LIMIT 10
+		 OFFSET #{offset};
+	</select>
 
-
+	<!-- 전시 조회 -->
+	<select id="getMyGoodListCnt" resultType="_int">
+		SELECT count(*) FROM EXHIBITION as e 
+		LEFT outer JOIN good AS g
+		on e.exh_no= g.exh_no
+		WHERE 1=1
+		AND mb_id= #{mb_id};
+	</select>
 </mapper>

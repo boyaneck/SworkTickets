@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../../header.jsp" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
@@ -89,7 +90,9 @@ function f_write(val){
 								<tr>
 									<td onclick="getone(${one.one_no})"
 										style="cursor: pointer">${one.one_no}</td>
-									<td>${one.one_title }</td>
+									<td>${one.one_title }(비밀글)</td>
+									<td>${one.one_writer }</td>
+									<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
 							</c:when>
 							<c:otherwise>
 								<tr>
@@ -106,7 +109,8 @@ function f_write(val){
 							<td class="tdCenter">${one.one_no}</td>
 							<td class="tdCenter">${one.one_title}</td>
 							<td class="tdCenter">${one.one_writer}</td>
-							<td class="tdCenter">${one.one_date}</td>
+<%-- 							<td class="tdCenter">${one.one_date}</td> --%>
+							<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
 							<td class="tdCenter">${one.one_no}</td>
 
 						</tr>
@@ -121,7 +125,7 @@ function f_write(val){
 		<div id="btnBox">
 			<!-- 반복처리할 태그 시작-->
 			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="getOneList.do?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+				<a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
 			</c:if>
 			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
 				step="1" var="i">
@@ -130,12 +134,12 @@ function f_write(val){
 						<a class="aSel">${i}</a>
 					</c:when>
 					<c:otherwise>
-						<a href="getOneList.do?nowPageBtn=${i}">${i}</a>
+						<a href="getOneList?nowPageBtn=${i}">${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="getOneList.do?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+				<a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
 			</c:if>
 			<!-- 반복처리할 태그 끝 -->
 		</div>
