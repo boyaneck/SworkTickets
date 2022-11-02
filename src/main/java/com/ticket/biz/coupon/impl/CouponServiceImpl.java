@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ticket.biz.coupon.CouponService;
 import com.ticket.biz.coupon.CouponVO;
+import com.ticket.biz.couponbox.CouponBoxVO;
 
 @Service("couponService")
 public class CouponServiceImpl implements CouponService {
@@ -46,5 +47,7 @@ public class CouponServiceImpl implements CouponService {
 	public CouponVO getCoupon(CouponVO vo) {
 		return couponDAO.getCoupon(vo);
 	}
+
+	
 
 }

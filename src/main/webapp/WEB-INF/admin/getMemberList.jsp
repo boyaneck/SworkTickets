@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../../header.jsp"%>
+
 <style>
 #searchNav { 
  	-webkit-justify-content: flex-end; 
@@ -89,15 +90,8 @@ html, body {
 	min-height: 100%;
 	padding-bottom: 200px;
 }
-
 </style>
-<script>
-function deletecheck(mb_id){
-		if (confirm("정말 삭제하시겠습니까?")){ 
-			$('.deleteform'+mb_id).submit();
-			 }
-	}	
-</script>
+
 <body>
 	<br><br><br>
 	<div class="wrap">
@@ -117,19 +111,21 @@ function deletecheck(mb_id){
 					<%-- 		<option value="${conditionMap['내용']}">${conditionMap['내용']}</option> --%>
 				</select> <input class="form-control mr-sm-2" type="text"
 					name="searchKeyword" placeholder="검색어를 입력하세요.">
-				<button class="btn btn-outline-primary" type="submit">검색</button>
+				<button class="btn btn-outline-primary" type="submit">검색</button><br>
 			</form>
-				<button type="button"class="btn btn-outline-primary">회원등록</button>
 		</nav>
-
+			
+				<button type="button" class="btn btn-outline-primary" onclick="location.href='insertMember.jsp';">회원등록</button>
+	 <form name="form" action="updateMember" method="post">
 			<table class="table">
 				<colgroup>
 					<col style="width: 10%">
 					<col style="width: 10%">
-					<col style="width: 20%">
+					<col style="width: 10%">
 					<col style="width: 15%">
 					<col style="width: 15%">
 					<col style="width: 20%">
+					<col style="width: 10%">
 					<col style="width: 10%">
 				</colgroup>
 				<thead class="btn-primary">
@@ -141,12 +137,13 @@ function deletecheck(mb_id){
 						<th>전화번호</th>
 						<th>생년월일</th>
 						<th>이메일</th>
-						<th>회원관리</th>
+						<th>회원여부</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${memberList}" var="member">
-						<tr onclick="selTr(${member.mb_no})" style="cursor: pointer;"
+						<tr onclick="location.href='/mypage?mb_id=${member.mb_id}'" style="cursor: pointer;"
+						
 							class="text-center">
 							<td scope="row" data-label="번호">${member.mb_no}</td>
 							<td data-label="아이디">${member.mb_id}</td>
@@ -155,18 +152,17 @@ function deletecheck(mb_id){
 							<td data-label="전화번호">${member.mb_phone}</td>
 							<td data-label="생년월일">${member.mb_birth}</td>
 							<td data-label="이메일">${member.mb_email}</td>
-							<td data-label="회원관리"><input type="button"
-								class="btn btn-outline-danger" value="삭제"
-								onclick="deletecheck('${member.mb_id}');">
+							<td data-label="회원여부">${member.mb_yn}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			<br> <br>
+			</form>
 			<div id="btnBox">
 				<!-- 반복처리할 태그 시작-->
 				<c:if test="${paging.nowPageBtn > 1 }">
-					<a href="getMemberList.do?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+					<a href="getMemberList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
 				</c:if>
 				<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
 					step="1" var="i">
@@ -175,12 +171,13 @@ function deletecheck(mb_id){
 							<a class="aSel">${i}</a>
 						</c:when>
 						<c:otherwise>
-							<a href="getMemberList.do?nowPageBtn=${paging.nowPageBtn}">${i}</a>
+							<a href="getMemberList?nowPageBtn=${paging.nowPageBtn}">${i}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
+				
 				<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-					<a href="getMemberList.do?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+					<a href="getMemberList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
 				</c:if>
 				<!-- 반복처리할 태그 끝 -->
 			</div>

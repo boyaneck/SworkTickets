@@ -10,13 +10,30 @@ public class MemberVO {
 	private String mb_birth;
 	private String mb_email;
 	private int mb_check;
+	private String mb_yn;
 
 	private String searchCondition;
 	private String searchKeyword;
 
 	private int offset;
+	private String find;
+	
 
+	public String getFind() {
+		return find;
+	}
 
+	public void setFind(String find) {
+		this.find = find;
+	}
+
+	public String getMb_yn() {
+		return mb_yn;
+	}
+
+	public void setMb_yn(String mb_yn) {
+		this.mb_yn = mb_yn;
+	}
 
 	public String getSearchCondition() {
 		return searchCondition;

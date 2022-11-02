@@ -22,6 +22,8 @@
    <div id="footer">
 			<button type="button" class="btn btn-primary">예매하기</button>
 		</div>
-</div>
+		<br>
+<%@ include file="UserExhibitionLocation.jsp"%>
+<br>
 </body>
 </html>

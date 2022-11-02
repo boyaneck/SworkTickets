@@ -9,8 +9,9 @@
 		<typeAlias type="com.ticket.biz.couponbox.CouponBoxVO" alias="couponbox"></typeAlias>
 		<typeAlias type="com.ticket.biz.member.MemberVO" alias="member"></typeAlias>
 		<typeAlias type="com.ticket.biz.pay.PayVO" alias="pay"></typeAlias>
-		<typeAlias type="com.ticket.biz.board.BoardVO" alias="board"></typeAlias>
+		<typeAlias type="com.ticket.biz.one.OneVO" alias="one"></typeAlias>
 		<typeAlias type="com.ticket.biz.exhibition.ExhibitionVO" alias="exhibition"></typeAlias>
+		<typeAlias type="com.ticket.biz.good.GoodVO" alias="good"></typeAlias>
 	</typeAliases>
 	
 	<mappers>
@@ -18,7 +19,8 @@
 		<mapper resource="mappings/couponbox-mappings.xml" />
 		<mapper resource="mappings/member-mappings.xml" />
 		<mapper resource="mappings/pay-mappings.xml" />
-		<mapper resource="mappings/board-mappings.xml" />
+		<mapper resource="mappings/one-mappings.xml" />
 		<mapper resource="mappings/exhibition-mappings.xml" />
+		<mapper resource="mappings/good-mappings.xml" />
 	</mappers>
 </configuration>
