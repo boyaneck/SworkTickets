@@ -40,7 +40,7 @@
             <a class="nav-link header" href="/getExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
@@ -107,7 +107,7 @@
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
@@ -163,7 +163,7 @@
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 랭킹 </a>
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="#"> 지역 </a>
