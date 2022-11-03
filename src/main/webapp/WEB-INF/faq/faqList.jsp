@@ -40,15 +40,15 @@ function getfaq(val){
 	location.href="getFaq?faq_no="+val;
 
 }
-// function f_write(val){
-//     console.log(val);
-//     if(val == ''){
-//         alert("로그인이 되야 작성 가능합니다");
-//         location.href="/getOneList";
-//     }else{
-//         location.href="/goWrite";
-//     }
-// }
+function f_write(val){
+    console.log(val);
+    if(val == ''){
+        alert("로그인이 되야 작성 가능합니다");
+        location.href="/getFaqList";
+    }else{
+        location.href="/goWriteFaq";
+    }
+}
 </script>
 <body>
 	<div class="jumbotron">
@@ -105,11 +105,12 @@ function getfaq(val){
 
 <%-- 						<tr onclick="getfaq(${faq.faq_title})" style="cursor: pointer;"> //faq_no 칼럼 추가 예정 --%>
 <%-- 							<td class="tdCenter">${one.one_no}</td> --%>
-							<td class="tdCenter">${faq.faq_title}</td>
+							<tr onclick="getfaq(${faq.faq_no})" style="cursor: pointer;">
+							<td class="tdCenter" onclick="getfaq(${faq.faq_no}")">${faq.faq_title}</td>
 							<td class="tdCenter">${faq.cate_name}</td>
 							
 <%-- 							<td class="tdCenter">${faq.faq_reg}</td> --%>
-<%-- 							<td class="tdCenter"><fmt:formatDate value="${faq.faq_reg}"  var="today" />${today}</td> --%>
+							<td class="tdCenter"><fmt:formatDate value="${faq.faq_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
 <%-- 							<td class="tdCenter">${faq.faq_content}</td> --%>
 	
 						</tr>
@@ -147,7 +148,7 @@ function getfaq(val){
 
 		<%--   <c:if test="${session.getAttribute(mb_id) !==  --%>
 		<%--   <div id="footer"> --%>
-<%-- 		      <div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div> --%>
+		      <div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div>
 	</div>
 
 

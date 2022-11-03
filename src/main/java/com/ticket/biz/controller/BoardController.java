@@ -38,20 +38,21 @@ public class BoardController {
 		return conditionMap;
 	}
 	
-//	//이동 컨트롤러
-//	@RequestMapping("/goWrite")
-//	public String goBoard(BoardVO vo , Model model) {
-////		model.addAttribute("boardList", boardService.getBoardList(vo));
-//		return "redirect:write.jsp";
-//	}
-//	
+	//이동 컨트롤러
+	@RequestMapping("/goWriteBoard")
+	public String goBoard(BoardVO vo , Model model) {
+		System.out.println("noti_writer"+vo.getNoti_writer());
+//		model.addAttribute("boardList", boardService.getBoardList(vo));
+		return "redirect:boardwrite.jsp";
+	}
+	
 	//글 등록
 	
 	@RequestMapping("/insertBoard")
 	
 	public String insertBoard(BoardVO vo ,Model model , HttpSession session) {
 //		if(vo.isNoti_secret()==true & vo.getNoti_writer()== session.getAttribute("mb_id"))
-
+		System.out.println("insertBoard 컨트롤러 시작 ");
 		boardService.insertBoard(vo);	
 		return "redirect:getBoardList";
 		
@@ -77,15 +78,15 @@ public class BoardController {
 	// 글 수정
 	@RequestMapping("/updateBoard")
 	public String updateBoard(@ModelAttribute("board") BoardVO vo, HttpSession session) {
-		System.out.println("글 수정 기능 전");
+		System.out.println("updateBoard 컨트롤러 글 수정 기능 전");
 		System.out.println("vo 객체" +vo.toString());
-		if(vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ){
+		
 			 
 			boardService.updateBoard(vo);
 			return "redirect:getBoardList";
-		}else {
-			return "getBoard?error=1";
-		}
+		
+			
+		
 		
 	}
 
@@ -95,7 +96,7 @@ public class BoardController {
 		System.out.println("deleteBoard 기능 처리 전");
 		int val=0;
 		System.out.println("val " +val);
-		String realPath = "c:/swork/ticket/src/main/webapp/img/" ;
+//		String realPath = "c:/swork/ticket/src/main/webapp/img/" ;
 //		vo = boardService.getBoard(vo);
 //		if( vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ) {
 //			if(vo.getFilename()!=null) {

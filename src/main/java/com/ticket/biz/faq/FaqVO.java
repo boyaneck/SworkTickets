@@ -1,13 +1,24 @@
 package com.ticket.biz.faq;
 
+import java.util.Date;
+
 public class FaqVO {
 
+	private int faq_no;
 	
 	private String faq_title;
 	private String cate_name;
-	private int faq_reg;
+	private Date faq_reg;
 	private String faq_content;
 	private int offset;
+	
+	
+	public int getFaq_no() {
+		return faq_no;
+	}
+	public void setFaq_no(int faq_no) {
+		this.faq_no = faq_no;
+	}
 	
 	public int getOffset() {
 		return offset;
@@ -27,10 +38,12 @@ public class FaqVO {
 	public void setCate_name(String cate_name) {
 		this.cate_name = cate_name;
 	}
-	public int getFaq_reg() {
+	
+	
+	public Date getFaq_reg() {
 		return faq_reg;
 	}
-	public void setFaq_reg(int faq_reg) {
+	public void setFaq_reg(Date faq_reg) {
 		this.faq_reg = faq_reg;
 	}
 	public String getFaq_content() {
