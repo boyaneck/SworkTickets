@@ -18,22 +18,21 @@
 <!-- 		#{review_content} -->
 <!-- 	</delete> -->
 
-<!-- 	<select id="getTotal" resultType="_int"> -->
-<!-- 		SELECT COUNT(*) FROM REVIEW -->
-<!-- 		WHERE REVIEW_TYPE = #{review_type} -->
-<!-- 	</select> -->
+	<select id="totalReviewListCnt" resultType="_int">
+		SELECT COUNT(*) FROM REVIEW WHERE REVIEW_BNO = #{review_bno}
+	</select>
 
-<!-- 	<select id="getReviewList" resultType="review"> -->
-<!-- 		SELECT * FROM REVIEW  -->
-<!-- 		WHERE -->
-<!-- 		REVIEW_BNO = #{review_bno} -->
-<!-- 	</select> -->
+	<select id="getReviewList" resultType="review">
+		SELECT * FROM REVIEW 
+		WHERE
+		REVIEW_BNO = #{review_bno}
+	</select>
 
-<!-- 	<select id="getList" resultType="ReviewVO"> -->
+<!-- 	<select id="getList" resultType="review"> -->
 <!-- 	SELECT * FROM REVIEW WHERE REVIEW_TYPE = #{review_type} -->
 <!-- 	</select> -->
 
-	<!-- <select id="myRecord" resultType="ReviewVO"> -->
+	<!-- <select id="myRecord" resultType="review"> -->
 	<!-- SELECT * FROM REVIEW -->
 	<!-- WHERE -->
 	<!-- REVIEW_WRITER = #{writer} -->

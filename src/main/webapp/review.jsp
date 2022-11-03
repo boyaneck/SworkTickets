@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 
 </head>
@@ -12,23 +12,23 @@
 <script>
 $(document).ready(function(){
 $('#Comment_regist').click(function() {
-		console.log("´ñ±Û¹öÆ° ½ÇÇà");
-		//JsonÀ¸·Î Àü´ŞÇÒ ÆÄ¶ó¹ÌÅÍ º¯¼ö¼±¾ğ // Àü½ÃÈ¸¿¡¼­ ¿Í¾ßÇÒ °Ô½Ã¹° ¹øÈ£ 
+		console.log("ëŒ“ê¸€ë²„íŠ¼ ì‹¤í–‰");
+		//Jsonìœ¼ë¡œ ì „ë‹¬í•  íŒŒë¼ë¯¸í„° ë³€ìˆ˜ì„ ì–¸ // ì „ì‹œíšŒì—ì„œ ì™€ì•¼í•  ê²Œì‹œë¬¼ ë²ˆí˜¸ 
 				//${exh_no};
 		const review_bno = 2;
 		const review_writer = $('#review_writer').val();
 		const review_content = $('#review_content').val();
-		//ÀÛ¼ºÇÑ ÀÛ¼ºÀÚ¿Í ³»¿ë 
+		//ì‘ì„±í•œ ì‘ì„±ìì™€ ë‚´ìš© 
 		
 		console.log(review_bno);
 		console.log(review_writer);
 		console.log(review_content);
 	
 		if(review_writer == ''){
-			alert('·Î±×ÀÎ ÈÄ ÀÌ¿ëÇØÁÖ¼¼¿ä');
+			alert('ë¡œê·¸ì¸ í›„ ì´ìš©í•´ì£¼ì„¸ìš”');
 			return;
 		}else if(review_content == '') {
-			alert('³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä');
+			alert('ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”');
 		}
 		
 		$.ajax({
@@ -44,28 +44,28 @@ $('#Comment_regist').click(function() {
 			),
 			contentType: 'application/json',
 			success:function(data){
-				console.log('Åë½Å¼º°ø' + data);
+				console.log('í†µì‹ ì„±ê³µ' + data);
 				if(data === 'InsertSuccess') {
-					alert('´ñ±Û µî·ÏÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.');
-					console.log('´ñ±Û µî·Ï ¿Ï·á');
+					alert('ëŒ“ê¸€ ë“±ë¡ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.');
+					console.log('ëŒ“ê¸€ ë“±ë¡ ì™„ë£Œ');
 					$('#review_writer').val(review_writer);
 // 					$('#review_content').val('');
   					$('#review_content').val(review_content);
-  					// ´ñ±ÛÀÌ µî·ÏµÇ¸é , »õ·Î¿î ´ñ±ÛÃ¢ ³ª¿À¸é¼­ ´ñ±Û ¾ÆÀÌµğ´Â ÀÛ¼ºÀÚ·Î, ´ñ±ÛÃ¢Àº ºó¹®ÀÚ·Î ¸¸µç´Ù .
-  					console.log("getList ¸Ş¼Òµå ½ÇÇà Àü");
+  					// ëŒ“ê¸€ì´ ë“±ë¡ë˜ë©´ , ìƒˆë¡œìš´ ëŒ“ê¸€ì°½ ë‚˜ì˜¤ë©´ì„œ ëŒ“ê¸€ ì•„ì´ë””ëŠ” ì‘ì„±ìë¡œ, ëŒ“ê¸€ì°½ì€ ë¹ˆë¬¸ìë¡œ ë§Œë“ ë‹¤ .
+  					console.log("getList ë©”ì†Œë“œ ì‹¤í–‰ ì „");
   					getList();
-  					console.log("getList ¸Ş¼Òµå È£Ãâ");
+  					console.log("getList ë©”ì†Œë“œ í˜¸ì¶œ");
 				} else {
-					alert('·Î±×ÀÎ ÀÌÈÄ ÀÌ¿ëÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.');
-					console.log('´ñ±Û µî·Ï ½ÇÆĞ');
+					alert('ë¡œê·¸ì¸ ì´í›„ ì´ìš©í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.');
+					console.log('ëŒ“ê¸€ ë“±ë¡ ì‹¤íŒ¨');
 				}
 			},
 			error:function(){
-				alert('Åë½Å½ÇÆĞ');
+				alert('í†µì‹ ì‹¤íŒ¨');
 			}
-		});// ´ñ±Û ºñµ¿±â ³¡
+		});// ëŒ“ê¸€ ë¹„ë™ê¸° ë
 			
-})// ´ñ±Ûµî·Ï ÀÌº¥Æ® ³¡
+})// ëŒ“ê¸€ë“±ë¡ ì´ë²¤íŠ¸ ë
 
 
 
@@ -81,26 +81,32 @@ function getList() {
 		/* const com_no = ${com}; */
 // 	$.getJSON(
 // 		"/reviewList"+review_bno,
+
    $.ajax({
 		 type:'post',
 		 url:"/reviewList",
 		 data:objparams,
-	
+		
 		success:function(data) {
 			if(data.total > 0){
-				console.log("get list ½ÇÇà Áß");
+				console.log("get list ì‹¤í–‰ ì¤‘");
 				var list = data.list;
+				
+				console.log("ë°›ì•„ì˜¨ ë°ì´í„°ì˜ ë¦¬ìŠ¤íŠ¸ì™€, ì´ ëŒ“ê¸€ ìˆ˜ ")
+				console.log(list);
+				console.log(data.total);
 				
 				var comment_html = "<div>";
 				
 				$('#count').html(data.total);
 				for(i = 0;i < list.length;i++){
+					console.log("ëŒ“ê¸€ ë§Œë“¤ê¸°");
 					var content = list[i].review_content;
 					var writer = list[i].review_writer;
 					comment_html += "<div><span id='review_writer'><strong>" + writer + "</strong></span><br/>";
-					comment_html += "<span id='com-content'>" + content + "</span><br>";
+					comment_html += "<span id='review_content'>" + content + "</span><br>";
 					if(writer === $("#review_writer").val()){
-						 comment_html += "<span id='delete' style='cursor:pointer;' data-id ="+content+">[»èÁ¦]</span><br></div><hr>";
+						 comment_html += "<span id='delete' style='cursor:pointer;' data-id ="+content+">[ì‚­ì œ]</span><br></div><hr>";
 						 
 					}
 					else{
@@ -113,7 +119,8 @@ function getList() {
 				
 			}
 			else{
-				var comment_html = "<div>µî·ÏµÈ ´ñ±ÛÀÌ ¾ø½À´Ï´Ù.</div>";
+					console.log("total ì´ 0 ì¼ë•Œ ");
+				var comment_html = "<div>ë“±ë¡ëœ ëŒ“ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</div>";
 				$(".comment_Box").html(comment_html);
 			}
 		}
@@ -136,18 +143,18 @@ function getList() {
 
 <div class="comment-box">
                     
-   		                 <div class="comment-count">´ñ±Û <span id="count">0</span></div>
+   		                 <div class="comment-count">ëŒ“ê¸€ <span id="count">0</span></div>
 						<input type="hidden" id="review_bno" name="review_bno" value="2">
    		                 	   <!-- <span class="c-icon"><i class="fa-solid fa-user"></i>  -->
    		                 <div class="comment-name">
-	                        <span class="anonym">ÀÛ¼ºÀÚ : 
-	                    	    <input type="text" class="form-control" id="review_writer" placeholder="ÀÌ¸§" name ="review_writer" value='${login.userId}'  style="width: 100px; border:none;">
+	                        <span class="anonym">ì‘ì„±ì : 
+	                    	    <input type="text" class="form-control" id="review_writer" placeholder="ì´ë¦„" name ="review_writer" value='${login.userId}'  style="width: 100px; border:none;">
 	                        </span>
 	                      </div>   
 	                        	
 	                        <!-- </span> -->
-                     <!--<img src="/ÀÍ¸í.jpg" width ="50px" alt="My Image"><!-->
-                    <div class="comment-sbox">
+                     <!--<img src="/ìµëª….jpg" width ="50px" alt="My Image"><!-->
+                    <div class="comment_Box">
                         <input type="text" class="comment-input" id="review_content" cols="80" rows="2" name="review_content" >
                         </div>
                         <!-- <span class="com-function-btn" type="hidden">
@@ -157,7 +164,7 @@ function getList() {
                          </span> -->
                     </div>
                     	<div class="regBtn">
-                    		<button id="Comment_regist"> ´ñ±Ûµî·Ï</button>
+                    		<button id="Comment_regist"> ëŒ“ê¸€ë“±ë¡</button>
                     	 </div>
                     	 
                     	 

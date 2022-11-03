@@ -8,6 +8,7 @@ public class ReviewVO {
 	private String review_writer;
 	private String review_content;
 
+	
 	private String re_review;
 	private int review_type;
 	private Timestamp review_reg;

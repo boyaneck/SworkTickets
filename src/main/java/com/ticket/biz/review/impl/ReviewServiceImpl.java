@@ -29,12 +29,14 @@ public class ReviewServiceImpl implements ReviewService{
 	return reviewDAO.getReviewList(vo);
 	
 	}
-//
-//	@Override
-//	public int getTotal(int review_bno) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
+
+	@Override
+	public int getTotal(ReviewVO vo) {
+		return reviewDAO.getTotal(vo);
+	
+
+		
+	}
 //
 //	@Override
 //	public List<ReviewVO> myRecord(String review_writer) {
@@ -54,11 +56,6 @@ public class ReviewServiceImpl implements ReviewService{
 //		return null;
 //	}
 
-	@Override
-	public int getTotal(int review_bno) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public void deleteReview(ReviewVO vo) {
@@ -71,12 +68,6 @@ public class ReviewServiceImpl implements ReviewService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-//	@Override
-//	public List<ReviewVO> getReivewList(ReveiwVO vo) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 //	@Override
 //	public List<ReviewVO> getReviewList(String review_wrtier) {
