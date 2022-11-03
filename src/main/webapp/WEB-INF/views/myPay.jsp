@@ -25,24 +25,30 @@
 	상점거래ID : ${myPayList.p_mer}<br>
 <%-- 	환불 여부 : ${myPayList.p_chk}<br> --%>
 				<c:set var="today" value="<%=new java.util.Date()%>"/>
-<%-- 				 <fmt:parseDate var="toDay_D" value="${today}" pattern="yyyy-MM-dd HH:mm:ss" /> --%>
+				 <fmt:formatDate var="toDay_D" value="${today}" type="date" dateStyle="full" />
 ${myPayList.exh_end_date}<br>
 ${today }<br>
-<%-- ${toDay_D } --%>
+${toDay_D > myPayList.exh_end_date}
+${toDay_D }
 		<form action="paycan" method="POST">
 			<input type="hidden" name="mid" id="merchant_uid"
 				value="${myPayList.p_mer}">
-			<c:choose>
-				<c:when test="${myPayList.p_chk eq 0 && today < myPayList.exh_end_date}">
+				<c:if test="${myPayList.exh_end_date < toDay_D}">
 					<button onclick="" type="button">종료된 전시</button>
-				</c:when>
-				<c:when test="${myPayList.p_chk eq 0}">
-					<button id="cancel_module" type="submit">취소하기</button>
-				</c:when>
-				<c:otherwise>
-					<button type="button">환불완료</button>
-				</c:otherwise>
-			</c:choose>
+					</c:if>
+				
+				<c:choose>
+	<%-- 				<c:when test="${myPayList.p_chk eq 0 && today < myPayList.exh_end_date}"> --%>
+				
+					<c:when test="${myPayList.p_chk eq 0}">
+						<button id="cancel_module" type="submit">취소하기</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button">환불완료</button>
+					</c:otherwise>
+				</c:choose>
+		
+		
 		</form>
 		<hr>
 		<!-- 	이메일: <input type="hidden" name="buyer_email" id="buyer_email" placeholder="이메일 입력"><br> -->
