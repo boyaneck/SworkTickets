@@ -69,6 +69,12 @@ public class MemberDAO {
 	public List<MemberVO> findPw(MemberVO vo){
 		return mybatis.selectList("MemberDAO.findPw",vo);
 	}
+	
+	// 아이디 중복체크
+	public int idChk(Map<String, Object> param) {
+		
+		return mybatis.selectOne("MemberDAO.idChk", param);
+	}
 
 
 }

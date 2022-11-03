@@ -72,4 +72,11 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> findPw(MemberVO vo){
 		return memberDAO.findPw(vo);
 	}
+	
+	//아이디 중복체크
+    @Override
+    public int idChk(Map<String, Object> param) {
+    	System.out.println(param);
+        return memberDAO.idChk(param);
+    }
 }

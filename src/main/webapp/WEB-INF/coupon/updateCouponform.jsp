@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 수정</title>
+<%@ include file="../../header.jsp"%>
 </head>
 <body>
 <div class="container">

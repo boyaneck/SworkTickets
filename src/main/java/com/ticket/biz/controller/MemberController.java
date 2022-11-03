@@ -1,15 +1,11 @@
 package com.ticket.biz.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.member.MemberService;
@@ -29,6 +26,16 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+    // 아이디 중복 검사
+    @ResponseBody
+    @RequestMapping(value = "/idChk", method = RequestMethod.POST)
+    public int idChk(@RequestParam Map<String, Object> param) {
+//        int result = memberService.idChk(param);
+    	System.out.println(memberService.idChk(param));
+        return memberService.idChk(param);
+        
+    }
 
 	// 회원 검색
 	@ModelAttribute("conditionMap")
@@ -41,32 +48,71 @@ public class MemberController {
 		return conditionMap;
 	}
 
-	   // 회원 마이페이지
-	   @RequestMapping(value="/mypage")
-	   public String getMyPage(MemberVO vo, Model model) {
-	      System.out.println("회원정보가져오기");
-	      model.addAttribute("member", memberService.getMember(vo));
+	// 회원 마이페이지
+	@RequestMapping(value = "/mypage")
+	public String getMyPage(MemberVO vo, Model model) {
+		System.out.println("11111111111111111111"+vo.getMb_id());
+		System.out.println("회원정보가져오기");
+		model.addAttribute("member", memberService.getMember(vo));
 //	      System.out.println("1111111"+memberService.getMember(vo));
-	      return "member/mypage";
-	   }
+		return "member/mypage";
+	}
 
-	//멤버등록
-	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
+	// 회원 수정
+	@RequestMapping("/updateMember")
+	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
+		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
+				|| session.getAttribute("mb_Id").equals("admin")) {
+			memberService.updateMember(vo);
+			return "member/mypage";
+		} else {
+			return "redirect:member/mypage?error=1";
+		}
+	}
+
+	// 멤버등록
+	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) throws IllegalStateException {
+		System.out.println("2222222222222"+vo.getMb_id());
 		memberService.insertMember(vo);
 		return "redirect:index.jsp";
 	}
 
+	/* 이용약관 */
+	@RequestMapping("/registerTerm")
+	public ModelAndView registerTerm(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1, @RequestParam(value = "agree2", defaultValue = "false") Boolean agree2,  MemberVO vo)
+			throws Exception {
+		System.out.println("agree: " + agree1);
+		System.out.println("이용약관입니다.");
+		ModelAndView mv = new ModelAndView();
+		if (agree1 == true && agree2 ==true) {
+			mv.setViewName("views/insertMember");
+			return mv;
+		} else {
+			mv.setViewName("views/step1");
+			
+			return mv;
+		}
+
+	}
+	// 이용약관
+
+	@RequestMapping(value = "/step1")
+	public String register_term() {
+		return "views/step1";
+	}
+
 	// 회원탈퇴
 	/* @ResponseBody */
-	@RequestMapping(value="/deleteMember")
-	public String deleteMember(MemberVO vo, HttpSession session) {
+	@RequestMapping(value = "/deleteMember")
+	public String deleteMember(MemberVO vo, HttpSession session){
 		session.invalidate();
 		int result = memberService.deleteMember(vo);
+		System.out.println(result);
 		return "redirect:login.jsp";
 	}
 
-	//관리자 회원조회
+	// 관리자 회원조회
 	@RequestMapping("/getMemberList")
 	public String getMemberListPost(MemberVO vo, String nowPageBtn, Model model) {
 		System.out.println("회원목록 검색 처리");
@@ -91,78 +137,42 @@ public class MemberController {
 		model.addAttribute("memberList", memberService.getMemberList(vo));
 		return "admin/getMemberList";
 	}
-	
-	// 아이디 중복 검사
-	@ResponseBody
-	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
-	public int idChk(@RequestParam Map<String, Object> param) {
-//		int result = memberService.idChk(param);
-		return memberService.idChk(param);
-	}
-	
-	// 비밀번호찾기
-	@ResponseBody
-	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
-	public Object findPw(MemberVO vo, Model model) { //object 최고 자료형, 객체 자료형. map list는 객체 자료형이기 때문에
-		//List<MemberVO> ml = memberService.findPw(vo);
-		//Map<String, Object> map = new HashMap<String, Object>();
-		//map.put("mMeberInfo", ml);
-		
-		return memberService.findPw(vo).get(0);
-	}
 
-	@Autowired
-	MailSender sender;
-	@Autowired
-	HttpSession session;
 
-	// 인증번호 이메일 전송 Ajax
-	@ResponseBody
-	@RequestMapping(value = "/email_Send", method = RequestMethod.POST)
-	public String mail_Send(@RequestParam String email) {
-		System.out.println("email_Send이동");
-		Random random = new Random();
-		String key = "";
-
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setTo(email);
-
-		// 보낼 인증번호 난수 생성 로직
-		for (int i = 0; i < 3; i++) {
-			// A~Z(대문자)까지 랜덤 알파벳 생성
-			int index = random.nextInt(25) + 65;
-			key += (char) index;
-			// 랜덤 정수를 생성
-			int numIndex = random.nextInt(10);
-			key += numIndex;
+	// 아이디찾기폼
+	@RequestMapping("/findIdform")
+	public String find(MemberVO vo, Model model) {
+		System.out.println("아이디찾기" + vo);
+		vo = memberService.find(vo);
+		System.out.println("찾은결과: " + vo);
+		if (vo != null) {
+			model.addAttribute("mb_Id", vo.getMb_id());
+			return "views/findId";
+		} else {
+			return "views/findId";
 		}
-		// 이메일의 제목이 되는 부분
-		message.setSubject("인증번호 입력을 위한 메일 전송");
-		// 이메일의 내용이 되는 부분
-		message.setText("인증 번호 : " + key);
-		// 이메일의 보내는 사람이 되는 부분(반드시 smtp설정한 이메일주소 입력, 다를 경우 인증 안됨) 예시: admin@gmail.com 등..
-		message.setFrom("hm_tickets@naver.com");
-		System.out.println("인증번호 값: " + key);
-
-		sender.send(message);
-		session.setAttribute("emailKey", key);
-		return "ok";
 	}
 
-	// 이메일 인증번호 체크 Ajax
-	@ResponseBody
-	@RequestMapping(value = "/email_Check", method = RequestMethod.POST)
-	public boolean mail_Check(String emailCheck) {
-		boolean result = false;
-		String emailKey = (String) session.getAttribute("emailKey");
 
-		System.out.println("보낸 인증번호 값 : " + emailKey + ", 사용자가 입력한 값 : " + emailCheck);
-		if (emailCheck.equals(emailKey)) {
-
-			result = true;
+	// 비밀번호찾기폼
+	@RequestMapping("/findPwform")
+	public String findPw(MemberVO vo, Model model) {
+		vo = memberService.find(vo);
+		System.out.println("찾은결과: " + vo);
+		if (vo != null) {
+			model.addAttribute("mb_Id", vo.getMb_id());
+			return "views/findPw";
+		} else {
+			return "views/findPw";
 		}
-		session.removeAttribute("emailKey");
-		return result;
 	}
 
+	// 비밀번호 변경하기
+	@RequestMapping("/change")
+	public String change(MemberVO vo, Model model) {
+		System.out.println("비밀번호변경" + vo);
+		int a = memberService.change(vo);
+		System.out.println("변경여부:" + a);
+		return "redirect:login.jsp";
+	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ticket.biz.exhibition.ExhibitionVO;
 import com.ticket.biz.good.GoodService;
 import com.ticket.biz.good.GoodVO;
 
@@ -45,6 +46,20 @@ public class GoodServiceImpl implements GoodService{
 	public void deleteGood(GoodVO vo) {
 		goodDAO.deleteGood(vo);
 		
+	}
+
+
+	@Override
+	public List<ExhibitionVO> getMyGoodList(GoodVO vo) {
+		
+		return goodDAO.getMyGoodList(vo);
+	}
+
+
+	@Override
+	public int getMyGoodListCnt(GoodVO vo) {
+		// TODO Auto-generated method stub
+		return goodDAO.getMyGoodListCnt(vo);
 	}
 	
 }

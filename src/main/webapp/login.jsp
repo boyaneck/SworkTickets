@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../../header.jsp"%>
+<%@ include file="header.jsp"%>
 <style>
 .login-kakao {
 	border: 0;
