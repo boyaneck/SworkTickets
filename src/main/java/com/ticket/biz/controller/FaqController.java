@@ -39,23 +39,26 @@ public class FaqController {
 	}
 	
 	//이동 컨트롤러
-//	@RequestMapping("/goWrite")
-//	public String goFaq(FaqVO vo , Model model) {
-////		model.addAttribute("boardList", faqService.getFaqList(vo));
-//		return "redirect:write.jsp";
-//	}
+	@RequestMapping("/goWriteFaq")
+	public String goFaq(FaqVO vo , Model model) {
+		System.out.println("goWriteFaq 글쓰기 작성");
+//		model.addAttribute("boardList", faqService.getFaqList(vo));
+		return "redirect:faqwrite.jsp";
+	}
 	
 	//글 등록
 	
-//	@RequestMapping("/insertFaq")
-//	
-//	public String insertFaq(FaqVO vo ,Model model , HttpSession session) {
-////		if(vo.isNoti_secret()==true & vo.getNoti_writer()== session.getAttribute("mb_id"))
-//
-//		faqService.insertFaq(vo);	
-//		return "redirect:faqBoardList";
-//		
-//	}
+	@RequestMapping("/insertFaq")
+	
+	public String insertFaq(FaqVO vo ,Model model , HttpSession session) {
+		System.out.println("insertFaq 컨트롤러 실행");
+		System.out.println("faq_title"+ vo.getFaq_title());
+//		if(vo.isNoti_secret()==true & vo.getNoti_writer()== session.getAttribute("mb_id"))
+
+		faqService.insertFaq(vo);	
+		return "redirect:getFaqList";
+		
+	}
 
 	//"uploadFile" 추가시 
 //	@PostMapping(value = "/insertFaq")
@@ -75,50 +78,50 @@ public class FaqController {
 //	}
 
 	// 글 수정
-//	@RequestMapping("/updateFaq")
-//	public String updateFaq(@ModelAttribute("board") FaqVO vo, HttpSession session) {
-//		System.out.println("글 수정 기능 전");
-//		System.out.println("vo 객체" +vo.toString());
-////		if(vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ){
-////			 
-//			faqService.updateFaq(vo);
-//			return "redirect:getFaqList";
-////		}else {
-////			return "getFaq?error=1";
-////		}
-//		
-//	}
+	@RequestMapping("/updateFaq")
+	public String updateFaq(@ModelAttribute("faq") FaqVO vo, HttpSession session) {
+		System.out.println("글 수정 기능 전");
+		System.out.println("vo 객체" +vo.toString());
+//		if(vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ){
+//			 
+			faqService.updateFaq(vo);
+			return "redirect:getFaqList";
+//		}else {
+//			return "getFaq?error=1";
+//		}
+		
+	}
 
-	// 글 삭제
-//	@RequestMapping("/deleteFaq")
-//	public String deleteFaq(FaqVO vo, HttpSession session) {
-//		System.out.println("deleteFaq 기능 처리 전");
-//		int val=0;
-//		System.out.println("val " +val);
-//		String realPath = "c:/swork/ticket/src/main/webapp/img/" ;
-////		vo = faqService.getFaq(vo);
-////		if( vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ) {
-////			if(vo.getFilename()!=null) {
-////				System.out.println("파일삭제: "+realPath + vo.getFilename());
-////				File f = new File(realPath + vo.getFilename());		
-////				f.delete();
-////			}
-//			
-//			faqService.deleteFaq(vo);
-//			return "redirect:getFaqList";
-////		}else {
-////			return "getFaq?error=1";
-////		}
-//	}
+//	 글 삭제
+	@RequestMapping("/deleteFaq")
+	public String deleteFaq(FaqVO vo, HttpSession session) {
+		System.out.println("deleteFaq 기능 처리 전");
+		int val=0;
+		System.out.println("val " +val);
+		String realPath = "c:/swork/ticket/src/main/webapp/img/" ;
+//		vo = faqService.getFaq(vo);
+//		if( vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ) {
+//			if(vo.getFilename()!=null) {
+//				System.out.println("파일삭제: "+realPath + vo.getFilename());
+//				File f = new File(realPath + vo.getFilename());		
+//				f.delete();
+//			}
+			
+			faqService.deleteFaq(vo);
+			return "redirect:getFaqList";
+//		}else {
+//			return "getFaq?error=1";
+//		}
+	}
 
 	// 글 상세 조회
-//	@RequestMapping("/getFaq")
-//	public String getFaq(FaqVO vo, Model model) {
-//		System.out.println("글상세조회");
-//		model.addAttribute("board", faqService.getFaq(vo));
-//		System.out.println("글상세조회 수행");
-//		return "board/getFaq";
-//	}
+	@RequestMapping("/getFaq")
+	public String getFaq(FaqVO vo, Model model) {
+		System.out.println("글상세조회");
+		model.addAttribute("faq", faqService.getFaq(vo));
+		System.out.println("글상세조회 수행");
+		return "faq/getFaq";
+	}
 
 	// 글 목록
 	@RequestMapping("/getFaqList")
