@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.member.MemberService;
 import com.ticket.biz.member.MemberVO;
+import com.ticket.biz.pwtest.PwCheck;
 
 @Controller
 @SessionAttributes("member")
@@ -61,11 +63,18 @@ public class MemberController {
 			return "redirect:member/mypage?error=1";
 		}
 	}
-
+	//창일	추가
+	@Autowired
+	private PwCheck pwCheck;
+	//---
 	// 멤버등록
 	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) throws IllegalStateException {
 		System.out.println("2222222222222"+vo.getMb_id());
+		String password =vo.getMb_pw();
+		//창일		추가
+		vo.setMb_pw(pwCheck.encrypt(password));  
+		//---
 		memberService.insertMember(vo);
 		return "redirect:index.jsp";
 	}
@@ -163,6 +172,10 @@ public class MemberController {
 	@RequestMapping("/change")
 	public String change(MemberVO vo, Model model) {
 		System.out.println("비밀번호변경" + vo);
+		//창일 추가
+		String password= pwCheck.encrypt(vo.getMb_pw());
+		vo.setMb_pw(password);
+		//---
 		int a = memberService.change(vo);
 		System.out.println("변경여부:" + a);
 		return "redirect:login.jsp";

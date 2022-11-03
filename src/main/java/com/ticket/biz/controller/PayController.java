@@ -212,6 +212,7 @@ public class PayController {
 	@RequestMapping(value = "/payUserDB", method = RequestMethod.POST)
 	public String payment(HttpServletRequest request, HttpSession session, HttpServletResponse response, Model model,
 			PayVO vo, CouponBoxVO cb_vo) throws IOException {
+		int cb_id=0;
 		String nm = request.getParameter("buyer");
 		String p_id = request.getParameter("p_id");
 		String amount = request.getParameter("amount");
@@ -224,10 +225,11 @@ public class PayController {
 		String exh_title = request.getParameter("exh_title");
 		String p_mer = request.getParameter("p_mer");
 		String exh_no = request.getParameter("exh_no");
-		int cb_id = Integer.parseInt(request.getParameter("cb_id"));
+		cb_id = Integer.parseInt(request.getParameter("cb_id"));
 		cb_vo.setCb_id(cb_id);
+		if(cb_id!=0) {
 		couponBoxService.updateCouponBox(cb_vo);
-
+		}
 		String unixTimeStamp = p_date;
 
 		long timestamp = Long.parseLong(unixTimeStamp);
