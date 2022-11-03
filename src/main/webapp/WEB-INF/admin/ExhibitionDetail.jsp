@@ -21,10 +21,22 @@
 <p>예매수수료 <fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</p>
 <p>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</p>
    <div id="footer">
-			<a href="WEB-INF/admin/ExhibitionInsert.jsp"><button type="button" class="btn btn-primary">수정하기</button></a>
-			<button type="button" class="btn btn-primary" onclick="del('${page}')">삭제하기</button>
+			<a href="WEB-INF/admin/ExhibitionInsert.jsp"><button type="button" id="modify" class="btn btn-primary">수정하기</button></a>
+			<button type="button" id="del" class="btn btn-primary" onclick="del('${page}')">삭제하기</button>
 		</div>
+		<jsp:useBean id="now" class="java.util.Date" /> <fmt:formatDate value="${exhibition.exh_st_date}" pattern="yyyy-MM-dd" var="st_date" />
 		<script>
+		console.log( ${st_date});
+		(function delmo() {
+		    let cancell = "${exhibition.exh_cancell}";
+		    if (cancell == 1 ) {
+		        $("#modify").hide();
+		        $("#del").hide();
+		    } else {
+		    }
+		})();
+
+		
        function del(page){
           var delConfirm = confirm('정말 삭제하시겠습니까?');
           var page= page;
