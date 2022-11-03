@@ -326,10 +326,10 @@ function qweemailCheck() {
 									</tr>
 								</div>
 								<div class="col-md-12">
-									<div id="menu-text">E-mail 인증</div>
+									<!-- <div id="menu-text">E-mail 인증</div> -->
 									<input id="mb_email" class="text_box" type="text"
 										name="mb_email" placeholder="이메일 입력" required autofocus>
-									<button type="button" id="sendMail"
+					<!-- 				<button type="button" id="sendMail"
 										class="btn btn-primary btn-sm">발송하기</button>
 									<div class="text_box" id="cert">
 										<input id='emailCheck' class='text_box' type='text' required
@@ -337,9 +337,8 @@ function qweemailCheck() {
 										<button type="button" id='check'
 											class='btn btn-primary btn-sm'
 											onclick='qweemailCheck(); return false;'>인증확인</button>
-									</div>
+									</div> -->
 								</div>
-
 								<div class="mx-auto" id="footer">
 									<button id="conRegister" type="submit" class="btn btn-dark">회원가입</button>
 								</div>

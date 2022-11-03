@@ -87,8 +87,8 @@
                <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
       </c:when>
       
-      <c:when test="${mb_Id ne NULL || kakaoLogin ne NULL || naverLogin ne NULL}">
-      	<input name="mb_id" value="${kakaoLogin.id }" hidden="true">
+      <c:when test="${mb_Id ne NULL || kakaoId ne NULL || naverLogin ne NULL}">
+      	<input name="mb_id" value="${kakaoId }" hidden="true">
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
@@ -122,7 +122,7 @@
       </div>
       <!-- 검색 -->
                <li class="nav-item">
-                     <span class="nav-hello">${kakaoLogin.nickname}님 안녕하세요</span>
+                     <span class="nav-hello">${kakaoNickName}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
                <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>

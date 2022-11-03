@@ -1,11 +1,8 @@
 package com.ticket.biz.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.member.MemberService;
 import com.ticket.biz.member.MemberVO;
+import com.ticket.biz.pwtest.PwCheck;
 
 @Controller
 @SessionAttributes("member")
@@ -42,10 +40,13 @@ public class MemberController {
 
 	// 회원 마이페이지
 	@RequestMapping(value = "/mypage")
-	public String getMyPage(MemberVO vo, Model model) {
-		System.out.println("11111111111111111111"+vo.getMb_id());
+	public String getMyPage(MemberVO vo, Model model, HttpSession session) {
+
 		System.out.println("회원정보가져오기");
+		
+
 		model.addAttribute("member", memberService.getMember(vo));
+
 //	      System.out.println("1111111"+memberService.getMember(vo));
 		return "member/mypage";
 	}
@@ -55,6 +56,10 @@ public class MemberController {
 	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
 				|| session.getAttribute("mb_Id").equals("admin")) {
+			System.out.println("1111111111111");
+			String password = pwCheck.encrypt(vo.getMb_pw());
+			System.out.println("2222222222222" + password);
+			vo.setMb_pw(password);
 			memberService.updateMember(vo);
 			return "member/mypage";
 		} else {
@@ -62,27 +67,43 @@ public class MemberController {
 		}
 	}
 
+//	// 멤버등록
+//	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
+//	public String insertMember(MemberVO vo) throws IllegalStateException {
+////		System.out.println("11111111111111111111"+ session.getAttribute("kakaoLogin"));
+//		System.out.println("2222222222222"+vo.getMb_id());
+//		return "redirect:index.jsp";
+//	}
+	// 창일 추가
+	@Autowired
+	private PwCheck pwCheck;
+
+	// ---
 	// 멤버등록
 	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) throws IllegalStateException {
-		System.out.println("2222222222222"+vo.getMb_id());
+		System.out.println("2222222222222" + vo.getMb_id());
+		String password = vo.getMb_pw();
+		// 창일 추가
+		vo.setMb_pw(pwCheck.encrypt(password));
+		// ---
 		memberService.insertMember(vo);
 		return "redirect:index.jsp";
 	}
 
 	/* 이용약관 */
 	@RequestMapping("/registerTerm")
-	public ModelAndView registerTerm(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1, @RequestParam(value = "agree2", defaultValue = "false") Boolean agree2,  MemberVO vo)
-			throws Exception {
+	public ModelAndView registerTerm(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1,
+			@RequestParam(value = "agree2", defaultValue = "false") Boolean agree2, MemberVO vo) throws Exception {
 		System.out.println("agree: " + agree1);
-		System.out.println("이용약관입니다.");
+//		System.out.println("이용약관입니다.");
 		ModelAndView mv = new ModelAndView();
-		if (agree1 == true && agree2 ==true) {
+		if (agree1 == true && agree2 == true) {
+			System.out.println("이용약관입니다.");
 			mv.setViewName("views/insertMember");
 			return mv;
 		} else {
 			mv.setViewName("views/step1");
-			
 			return mv;
 		}
 
@@ -97,7 +118,7 @@ public class MemberController {
 	// 회원탈퇴
 	/* @ResponseBody */
 	@RequestMapping(value = "/deleteMember")
-	public String deleteMember(MemberVO vo, HttpSession session){
+	public String deleteMember(MemberVO vo, HttpSession session) {
 		session.invalidate();
 		int result = memberService.deleteMember(vo);
 		System.out.println(result);
@@ -130,7 +151,6 @@ public class MemberController {
 		return "admin/getMemberList";
 	}
 
-
 	// 아이디찾기폼
 	@RequestMapping("/findIdform")
 	public String find(MemberVO vo, Model model) {
@@ -145,7 +165,6 @@ public class MemberController {
 		}
 	}
 
-
 	// 비밀번호찾기폼
 	@RequestMapping("/findPwform")
 	public String findPw(MemberVO vo, Model model) {
@@ -159,10 +178,22 @@ public class MemberController {
 		}
 	}
 
+//	// 비밀번호 변경하기
+//	@RequestMapping("/change")
+//	public String change(MemberVO vo, Model model) {
+//		System.out.println("비밀번호변경" + vo);
+//		int a = memberService.change(vo);
+//		System.out.println("변경여부:" + a);
+//		return "redirect:login.jsp";
+//	}
 	// 비밀번호 변경하기
 	@RequestMapping("/change")
 	public String change(MemberVO vo, Model model) {
 		System.out.println("비밀번호변경" + vo);
+		// 창일 추가
+		String password = pwCheck.encrypt(vo.getMb_pw());
+		vo.setMb_pw(password);
+		// ---
 		int a = memberService.change(vo);
 		System.out.println("변경여부:" + a);
 		return "redirect:login.jsp";

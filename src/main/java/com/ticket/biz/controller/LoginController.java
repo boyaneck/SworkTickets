@@ -10,27 +10,48 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.ticket.biz.member.MemberService;
 import com.ticket.biz.member.MemberVO;
+import com.ticket.biz.pwtest.PwCheck;
 
 @Controller
 @SessionAttributes("login")
 public class LoginController {
+	//창일추가
+	@Autowired
+	private PwCheck pwCheck;
+	//---
 	@Autowired
 	private MemberService memberService;
 
 	@RequestMapping(value = "/logincheck", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpSession session) {
+		//창일-추가
+		String password= vo.getMb_pw();
+		//---
+		
 		System.out.println("로그인 인증 처리...");
 		if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
 			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
 		}
-
-		if (memberService.loginCheck(vo) != null) {
-			session.setAttribute("mb_Id", memberService.loginCheck(vo).getMb_id());
-			System.out.println("아이디: " + memberService.loginCheck(vo).getMb_id());
-			return "redirect:index.jsp";
-		} else {
-			return "redirect:login.jsp";
-		}
+		//창일 추가
+		boolean login= pwCheck.isMatch(vo.getMb_pw(),memberService.getMember(vo).getMb_pw());
+		 if(login==true) {
+				System.out.println("로그인");
+				System.out.println(memberService.getMember(vo).getMb_id());
+				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+				return "redirect:index.jsp";
+			}else {
+				System.out.println("실패");
+				return "redirect:login.jsp";
+			}
+		 //---
+//		if (memberService.loginCheck(vo) != null) {
+//			session.setAttribute("mb_Id", memberService.loginCheck(vo).getMb_id());
+//			
+//			System.out.println("아이디: " + memberService.loginCheck(vo).getMb_id());
+//			return "redirect:index.jsp";
+//		} else {
+//			return "redirect:login.jsp";
+//		}
 	}
 
 	@RequestMapping(value = "/logoutGO")
