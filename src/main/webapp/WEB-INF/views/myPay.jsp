@@ -34,7 +34,7 @@ ${sysYear }
 			<input type="hidden" name="mid" id="merchant_uid"
 				value="${myPayList.p_mer}">
 				<c:if test="${myPayList.exh_end_date < sysYear}">
-					<button onclick="" type="button">종료된 전시</button>
+					<button class="btn btn-danger" onclick="" type="button">종료된 전시</button>
 					</c:if>
 				
 				<c:choose>
