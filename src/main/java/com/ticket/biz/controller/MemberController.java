@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,16 +39,42 @@ public class MemberController {
 		return conditionMap;
 	}
 
-	// 회원 마이페이지
-	@RequestMapping(value = "/mypage")
-	public String getMyPage(MemberVO vo, Model model, HttpSession session) {
-
-		System.out.println("회원정보가져오기");
+	// 회원수정 접근 비밀번호
+	@RequestMapping(value="/mypageView")
+	public String mypageConfirm(MemberVO vo, Model model, HttpSession session) {
+		String password = vo.getMb_pw();
 		
+//		if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
+//			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+//		}
+			return "member/mypageConfirm";
+	}
 
+//		System.out.println(session.getAttribute("mb_Id"));
+//		System.out.println(vo.getMb_pw());
+//		System.out.println("aaaa");
+	
+
+
+	// 회원수정
+	@RequestMapping(value = "/mypage")
+	public String getMyPage( MemberVO vo, Model model, HttpSession session) {
+		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
+		System.out.println("1111111"+memberService.getMember(vo));
+		if (memberService.getMember(vo) != null) {
+			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
+			if (login == true) {
+				System.out.println("로그인");
+				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+				return "member/mypage";
+			} else {
+				System.out.println("실패");
+				return "member/mypageConfirm";
+			}
+		}
 
-//	      System.out.println("1111111"+memberService.getMember(vo));
+	      
 		return "member/mypage";
 	}
 
@@ -82,7 +109,7 @@ public class MemberController {
 	// 멤버등록
 	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) throws IllegalStateException {
-		System.out.println("2222222222222" + vo.getMb_id());
+//		System.out.println("2222222222222" + vo.getMb_id());
 		String password = vo.getMb_pw();
 		// 창일 추가
 		vo.setMb_pw(pwCheck.encrypt(password));

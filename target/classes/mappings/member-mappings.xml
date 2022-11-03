@@ -46,7 +46,7 @@
 
 	<!-- 마이페이지 회원조회 -->
 	<select id="getMember" resultType="member">
-		SELECT * FROM MEMBER WHERE MB_ID = #{mb_id}
+		SELECT * FROM MEMBER WHERE MB_ID = #{mb_id} AND MB_YN = 'Y'
 	</select>
 	
 	<!-- 아이디, 비번찾기 -->

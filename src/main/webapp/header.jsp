@@ -126,7 +126,7 @@
                <li class="nav-item dropdown header-title">
                <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
                <div class="dropdown-menu header-menu" aria-labelledby="member">
-               <a class="dropdown-item header-item" href="mypage?mb_id=${mb_Id}">&nbsp마이페이지</a>
+               <a class="dropdown-item header-item" id="memberUpdate" href="mypageView">&nbsp회원수정</a>
                <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
                <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
                   <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
@@ -231,5 +231,15 @@
    </c:choose>
    
 </nav>
-
+<script>
+/* $(document).ready(function(){
+    $("#memberUpdate").click(function(){
+        // 확인 대화상자    
+        if(confirm("수정하시겠습니까?")){
+            document.form1.action ="member/mypageConfirm";
+            document.form1.submit();
+        }
+    });
+}); */
+</script>
 </html>

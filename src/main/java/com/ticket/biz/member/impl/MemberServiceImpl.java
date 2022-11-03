@@ -21,17 +21,13 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.loginCheck(vo);
 	}
 
-	@Override
-	public void logout(HttpSession session) {
-
-	}
-
+	/* 회원가입 */
 	@Override
 	public void insertMember(MemberVO vo) {
 		memberDAO.insertMember(vo);
 	}
 
-	// 회원목록
+	/* 회원목록 */
 	@Override
 	public List<MemberVO> getMemberList(MemberVO vo) {
 		return memberDAO.getMemberList(vo);
@@ -47,11 +43,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.deleteMember(vo);
 	}
 
-	   @Override
-	   public MemberVO getMember(MemberVO vo) {
-	      System.out.println(vo.getMb_id());
-	      return memberDAO.getMember(vo);
-	   }
+	@Override
+	public MemberVO getMember(MemberVO vo) {
+//		System.out.println(vo.getMb_id());
+		return memberDAO.getMember(vo);
+	}
 
 	@Override
 	public void updateMember(MemberVO vo) {
