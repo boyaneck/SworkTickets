@@ -71,18 +71,24 @@ public class NaverController {
 		String email = (String) userInfo.get("email");
 		// 핸드폰번호 하이픈 제거
 		String phone = userInfo.get("mobile").toString().replaceAll(Pattern.quote("-"), "");
-		
-		System.out.println("test"+phone);
-		
+
+		System.out.println("test" + phone);
+
 //		String nickname = (String) userInfo.get("nickname");
 //
 		member.setMb_id(id);
 		member.setMb_email(email);
 		member.setMb_phone(phone);
-		memberService.insertMember(member);
-		
+
 		model.addAttribute("naverInfo", userInfo);
 		session.setAttribute("naverLogin", userInfo);
+
+		if (member.getMb_id() == null) {
+			memberService.insertMember(member);
+		} else {
+			System.out.println("테스트");
+			return "redirect:index.jsp";
+		}
 
 		return "redirect:index.jsp";
 	}
@@ -99,7 +105,7 @@ public class NaverController {
 		m.put("grant_type", "authorization_code");
 		m.put("client_id", vo.getClient_id()); // 애플리케이션 클라이언트 아이디값";
 		m.put("client_secret", vo.getClient_secret());// 애플리케이션 클라이언트 시크릿값";
-		m.put("redirect_uri", URLEncoder.encode(vo.getCallback_url(), "UTF-8")); 
+		m.put("redirect_uri", URLEncoder.encode(vo.getCallback_url(), "UTF-8"));
 		m.put("code", vo.getCode());
 		m.put("state", vo.getState());
 
