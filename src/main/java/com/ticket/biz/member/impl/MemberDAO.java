@@ -19,7 +19,6 @@ public class MemberDAO {
 //		System.out.println(vo);
 		mybatis.insert("MemberDAO.insertMember", vo);
 	}
-
 	/* 회원탈퇴 */
 	public int deleteMember(MemberVO vo) {
 		System.out.println(vo);

@@ -83,6 +83,7 @@ $(function() {
  }
  
 </script>
+<%@ include file="../../header.jsp"%>
 </head>
 <body>
 	<form action="" method="post" id="findIdform">

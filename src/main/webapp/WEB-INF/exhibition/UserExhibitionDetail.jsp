@@ -5,8 +5,6 @@
 	<title>${exhibition.exh_title}</title>
 </head>
 <body>
-<style>
-</style>
 <br><br><br>
 <div class="jumbotron">
         <h1>${exhibition.exh_title}</h1>
@@ -20,7 +18,12 @@
 <p>예매수수료 <fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</p>
 <p>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</p>
    <div id="footer">
-			<button type="button" class="btn btn-primary">예매하기</button>
+			   <form action="/payUser" method="post">
+			   <input type="hidden" name="exh_no" value="${exhibition.exh_no}">
+            <input type="hidden" name="exh_title" value="${exhibition.exh_title}">
+            <input type="hidden" name="amount" value="${exhibition.exh_price}">
+         <button type="submit" class="btn btn-primary">예매하기</button>
+      </form>
 		</div>
 		<br>
 <%@ include file="UserExhibitionLocation.jsp"%>

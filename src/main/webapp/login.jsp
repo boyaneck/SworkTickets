@@ -48,7 +48,9 @@
 					<img src="images/kakao_login_medium_narrow.png" style="height: 30px" />
 				</a>
 				<a href="/getNaverAuthUrl"><img src="images/naver.png" style="height: 30px" />
-				</a>
+				</a><br>
+				<a href="/findIdform">아이디찾기</a>
+				<a href="/findPwform">비밀번호찾기</a>
 			</form>
 		</div>
 	</div>

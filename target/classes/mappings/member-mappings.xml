@@ -4,9 +4,10 @@
 <mapper namespace="MemberDAO">
 	<!-- 멤버등록 -->
 	<insert id="insertMember">
-		INSERT INTO MEMBER(MB_ID, MB_PW, MB_PHONE, MB_EMAIL)
-		VALUES( #{mb_id}, #{mb_pw}, #{mb_phone}, #{mb_email})
+		INSERT INTO MEMBER(MB_ID, MB_PW, MB_NAME, MB_PHONE, MB_EMAIL)
+		VALUES( #{mb_id}, #{mb_pw},#{mb_name}, #{mb_phone}, #{mb_email})
 	</insert>
+	
 	<!-- 로그인 -->
 	<select id="login" resultType="member">
 		SELECT * FROM MEMBER WHERE MB_ID = #{mb_id} AND MB_PW = #{mb_pw} AND MB_YN = 'Y'

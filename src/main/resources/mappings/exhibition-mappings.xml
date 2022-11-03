@@ -61,7 +61,7 @@
 		EXHIBITION WHERE 1=1
 		<if test="exSearchCondition == 'EXH_TITLE' "> AND UPPER(EXH_TITLE) LIKE UPPER(REPLACE(CONCAT('%', #{exSearchKeyword},'%'),' ','')) ORDER BY EXH_NO DESC</if>
 		<if test="exSearchCondition == 'EXH_HALL' "> AND UPPER(EXH_HALL) LIKE UPPER(REPLACE(CONCAT('%', #{exSearchKeyword},'%'),' ','')) ORDER BY EXH_NO DESC</if>
-		LIMIT 10 OFFSET #{offset}
+<!-- 		LIMIT 10 OFFSET #{offset} -->
 	</select>
 
 	<!-- 	전시 개수 조회 -->

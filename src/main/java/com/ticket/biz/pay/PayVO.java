@@ -12,8 +12,40 @@ public class PayVO {
 	private int amount;//가격
 	private int p_chk;
 	private int exh_no;
+	private String exh_end_date;
+	
+	private String searchCondition;
+	private String searchKeyword;
+
+	private int offset;
 	
 	
+	
+	
+	public String getExh_end_date() {
+		return exh_end_date;
+	}
+	public void setExh_end_date(String exh_end_date) {
+		this.exh_end_date = exh_end_date;
+	}
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 	public int getExh_no() {
 		return exh_no;
 	}
