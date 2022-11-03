@@ -87,7 +87,7 @@ function f_write(val){
 						<c:choose>
 							<c:when
 								test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}">
-								<tr>
+								<tr onclick="getone(${one.one_no})" style="cursor: pointer;">
 									<td onclick="getone(${one.one_no})"
 										style="cursor: pointer">${one.one_no}</td>
 									<td>${one.one_title }(비밀글)</td>
