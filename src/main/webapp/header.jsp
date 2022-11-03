@@ -80,15 +80,14 @@
                <div class="dropdown-menu header-menu" aria-labelledby="member">
                <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
                <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a>
-               <a class="dropdown-item header-item" href="/pay">&nbsp회원결제내역</a>
+               <a class="dropdown-item header-item" href="/getAllPayList">&nbsp회원결제내역</a>
                </div>
                </li>
             </ul>
                <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
       </c:when>
       
-      <c:when test="${mb_Id ne NULL || kakaoLogin ne NULL || naverLogin ne NULL}">
-      	<input name="mb_id" value="${kakaoLogin.id }" hidden="true">
+       <c:when test="${mb_Id ne NULL}">
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
@@ -122,7 +121,7 @@
       </div>
       <!-- 검색 -->
                <li class="nav-item">
-                     <span class="nav-hello">${kakaoLogin.nickname}님 안녕하세요</span>
+                     <span class="nav-hello">${mb_Id}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
                <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
@@ -131,6 +130,54 @@
                <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
                <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
                   <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
+               </div>
+               </li>
+            </ul>
+            
+               <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
+      </c:when>
+        <c:when test="${kakaoId ne NULL || naverLogin ne NULL}">
+         <ul class="nav navbar-nav mr-auto ml-3">
+         <li class="nav-item dropdown header-title">
+            <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
+         </li>
+         <li class="nav-item dropdown header-title">
+            <a class="nav-link header" href="/ranking"> 랭킹 </a>
+         </li>
+         <li class="nav-item dropdown header-title">
+            <a class="nav-link header" href="#"> 지역 </a>
+         </li>
+         <li class="nav-item dropdown header-title">
+            <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
+         </li>
+         <li class="nav-item dropdown header-title">
+            <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
+            <div class="dropdown-menu header-menu" aria-labelledby="cs">
+               <a class="dropdown-item header-item" href="#">공지사항</a>
+               <a class="dropdown-item header-item" href="#">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
+            </div>
+         </li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+            <!-- 검색 -->
+      <div class="form-group col-xs-6 my-2">
+        <div class="inner-addon right-addon">
+          <i class="glyphicon fas fa-search"></i>
+          <input type="text" class="form-control" placeholder="검색" />
+        </div>
+      </div>
+      <!-- 검색 -->
+               <li class="nav-item">
+                     <%-- <span class="nav-hello">${kakaoId} 님 안녕하세요 </span> --%>
+               </li>
+               <li class="nav-item dropdown header-title">
+               <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
+               <div class="dropdown-menu header-menu" aria-labelledby="member">
+               <%-- <a class="dropdown-item header-item" href="mypage?mb_id=${mb_Id}">&nbsp마이페이지</a> --%>
+               <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
+               <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
                </div>
                </li>
             </ul>

@@ -2,7 +2,6 @@ package com.ticket.biz.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +36,8 @@ public class LoginController {
 		boolean login= pwCheck.isMatch(vo.getMb_pw(),memberService.getMember(vo).getMb_pw());
 		 if(login==true) {
 				System.out.println("로그인");
+				System.out.println(memberService.getMember(vo).getMb_id());
+				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
 				return "redirect:index.jsp";
 			}else {
 				System.out.println("실패");

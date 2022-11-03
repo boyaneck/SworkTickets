@@ -16,6 +16,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void insertBoard(BoardVO vo) {
+		System.out.println("insertBoard ServiceImpl 에서 탐");
 		boardDAO.insertBoard(vo);
 	}
 
@@ -28,7 +29,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void updateBoard(BoardVO vo) {
 		boardDAO.updateBoard(vo);
-		System.out.println("서비스 update!!!");
+		System.out.println("updateBoard service 에서 실행");
 	}
 
 	@Override

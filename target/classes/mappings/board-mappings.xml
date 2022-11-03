@@ -29,7 +29,7 @@
   NOTI_DATE, NOTI_CATEGORY, NOTI_MODIFY) 
   VALUES ( #{noti_title}, #{noti_writer},
              #{noti_content}, now(),
-  			#{noti_category}, now())
+  			1111, now())
 </insert>
 
 <update id="updateBoard">

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../header.jsp" %>
+<%@ include file="../../header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -37,9 +37,19 @@
 <script>
 
 function getboard(val){
-	location.href="getBoard?noti_no&page="+val ;
-
+	location.href="getBoard?noti_no="+val ;
+	
 }
+function f_write(val){
+    console.log(val);
+    if(val == ''){
+        alert("로그인이 되야 작성 가능합니다");
+        location.href="/getBoardList";
+    }else{
+        location.href="/goWriteBoard";
+    }
+}
+
 // function f_write(val){
 //     console.log(val);
 //     if(val == ''){
@@ -62,8 +72,8 @@ function getboard(val){
 				<c:forEach items="${conditionMap}" var="option">
 					<option value="${option.value}">${option.key}</option>
 				</c:forEach>
-						<option value="${conditionMap['제목']}">${conditionMap['제목']}</option>
-						
+				<option value="${conditionMap['제목']}">${conditionMap['제목']}</option>
+
 			</select> <input class="form-control mr-sm-2" type="text" name="searchKeyword"
 				placeholder="검색어를 입력하세요.">
 			<button class="btn btn-success" type="submit">검색</button>
@@ -77,49 +87,51 @@ function getboard(val){
 					<th>제목</th>
 					<th>작성자</th>
 					<th>등록일</th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
 
 				<c:forEach items="${boardList}" var="board">
-<%-- 					<c:if test="${one.one_secret eq 'true'}"> --%>
-<%-- 						<c:choose> --%>
-<%-- 							<c:when --%>
-<%-- 								test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}"> --%>
-<!-- 								<tr> -->
-<%-- 									<td onclick="getone(${one.one_no})" --%>
-<%-- 										style="cursor: pointer">${one.one_no}</td> --%>
-<%-- 									<td>${one.one_title }</td> --%>
-<%-- 							</c:when> --%>
-<%-- 							<c:otherwise> --%>
-<!-- 								<tr> -->
-<!-- 									<td>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td> -->
-<!-- 								</tr> -->
-<%-- 							</c:otherwise> --%>
-<%-- 						</c:choose> --%>
+					<%-- 					<c:if test="${one.one_secret eq 'true'}"> --%>
+					<%-- 						<c:choose> --%>
+					<%-- 							<c:when --%>
+					<%-- 								test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}"> --%>
+					<!-- 								<tr> -->
+					<%-- 									<td onclick="getone(${one.one_no})" --%>
+					<%-- 										style="cursor: pointer">${one.one_no}</td> --%>
+					<%-- 									<td>${one.one_title }</td> --%>
+					<%-- 							</c:when> --%>
+					<%-- 							<c:otherwise> --%>
+					<!-- 								<tr> -->
+					<!-- 									<td>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td> -->
+					<!-- 								</tr> -->
+					<%-- 							</c:otherwise> --%>
+					<%-- 						</c:choose> --%>
 
-<%-- 					</c:if> --%>
+					<%-- 					</c:if> --%>
 
-<%-- 					<c:if test="${one.one_secret eq 'false'}"> --%>
+					<%-- 					<c:if test="${one.one_secret eq 'false'}"> --%>
 
-<%-- 						<tr onclick="getboard(${board.noti_no})" style="cursor: pointer;"> --%>
-<%-- 						<tr onclick="getboard(${board.noti_title}) style="cursor:pointer"> --%>
-							<td class="tdCenter" onclick="getboard(${board.noti_no})">${board.noti_no}</td>
-							<td class="tdCenter" onclick="getboard(${board.noti_title})">${board.noti_title}</td>
-							<td class="tdCenter">${board.noti_writer}</td>
-							<td class="tdCenter"><fmt:formatDate value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
-<%-- 							<td class="tdCenter">${board.noti_no}</td> --%>
+	<%-- 				<tr onclick="getboard(${board.noti_no})" style="cursor: pointer;"> --%>
+					<tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"; style="cursor: pointer;">
+						<%-- 						<tr onclick="getboard(${board.noti_title}) style="cursor:pointer"> --%>
+						<td class="tdCenter" >${board.noti_no}</td>
+						<td class="tdCenter" >${board.noti_title}</td>
+						<td class="tdCenter" >${board.noti_writer}</td>
+						<td class="tdCenter"><fmt:formatDate
+								value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
+								var="today" />${today}</td>
+						<%-- 							<td class="tdCenter">${board.noti_no}</td> --%>
 
-						</tr>
+					</tr>
 
-<%-- 					</c:if> --%>
+					<%-- 					</c:if> --%>
 
 				</c:forEach>
 			</tbody>
 		</table>
-		<br>
-		<br>
+		<br> <br>
 		<div id="btnBox">
 			<!-- 반복처리할 태그 시작-->
 			<c:if test="${paging.nowPageBtn > 1 }">
@@ -140,16 +152,27 @@ function getboard(val){
 				<a href="getBoardList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
 			</c:if>
 			<!-- 반복처리할 태그 끝 -->
+			
+			
+			
+			
+			
+			
+			<div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div>
+	</div>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 
 		<%--   <c:if test="${session.getAttribute(mb_id) !==  --%>
 		<%--   <div id="footer"> --%>
-<%-- 		      <div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div> --%>
-	</div>
+		<%-- 		      <div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div> --%>
 
 
 
+
+	
+
+
+		</body>
 </body>
 </html>

@@ -33,7 +33,7 @@
 				<c:forEach items="${getMyGoodList}" var="getMyGoodList">
 					<tr onclick="selTr(${getMyGoodList.exh_no})" style="cursor: pointer;">
 						<td class="tdCenter">${getMyGoodList.exh_no}</td>
-						<td><a href="getUserExhibition?exh_no=${getMyGoodList.exh_no}&page=${paging.nowPageBtn}">
+						<td><a href="getMyGoodList?exh_no=${getMyGoodList.exh_no}&page=${paging.nowPageBtn}">
 						${getMyGoodList.exh_title}
 						</a></td>
 						<td class="tdCenter"><fmt:formatNumber value="${getMyGoodList.exh_price}" groupingUsed="true" />원</td>
@@ -63,12 +63,13 @@
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
 						<!-- 		맨처음 -->
+						<c:if test="${paging.nowPageBtn > 1 }">
 						<li class="page-item "><a class="page-link"
-							href="getUserExhibitionList?nowPageBtn=1">&laquo;</a></li>
-
+							href="getMyGoodList?nowPageBtn=1">&laquo;</a></li>
+						</c:if>
 						<c:if test="${paging.nowPageBtn > 1 }">
 							<li class="page-item "><a class="page-link"
-								href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
+								href="getMyGoodList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
 						</c:if>
 
 						<!-- 반복처리 태그				 -->
@@ -77,23 +78,24 @@
 							<c:choose>
 								<c:when test="${paging.nowPageBtn==i}">
 									<li class="page-item active"><a class="page-link"
-										href="getUserExhibitionList?nowPageBtn=${i}">${i}</a></li>
+										href="getMyGoodList?nowPageBtn=${i}">${i}</a></li>
 								</c:when>
 								<c:otherwise>
 									<li class="page-item "><a class="page-link"
-										href="getUserExhibitionList?nowPageBtn=${i}">${i}</a></li>
+										href="getMyGoodList?nowPageBtn=${i}">${i}</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<!-- 		반복 끝 -->
 						<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
 							<li class="page-item "><a class="page-link"
-								href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
+								href="getMyGoodList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
 						</c:if>
 						<!-- 		맨끝 -->
+						<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
 						<li class="page-item"><a class="page-link"
-							href="getUserExhibitionList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
-
+							href="getMyGoodList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
+						</c:if>
 					</ul>
 				</nav>
 

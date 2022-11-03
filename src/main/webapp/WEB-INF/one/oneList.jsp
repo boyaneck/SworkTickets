@@ -52,11 +52,11 @@ function f_write(val){
 </script>
 <body>
 	<div class="jumbotron">
-		<h1>공지 사항</h1>
+		<h1>1:1문의 </h1>
 	</div>
 	<%-- <%@ include file="../../menu.jsp" %> --%>
 	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
-		<form class="form-inline" action="getOneList.do" method="post">
+		<form class="form-inline" action="getOneList" method="post">
 			<select class="form-control" id="sel1" name="searchCondition"
 				style="display: inline-block !important; margin-right: 10px;">
 				<c:forEach items="${conditionMap}" var="option">
@@ -77,7 +77,7 @@ function f_write(val){
 					<th>제목</th>
 					<th>작성자</th>
 					<th>등록일</th>
-					<th>조회수</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -87,7 +87,7 @@ function f_write(val){
 						<c:choose>
 							<c:when
 								test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}">
-								<tr>
+								<tr onclick="getone(${one.one_no})" style="cursor: pointer;">
 									<td onclick="getone(${one.one_no})"
 										style="cursor: pointer">${one.one_no}</td>
 									<td>${one.one_title }(비밀글)</td>
@@ -111,7 +111,7 @@ function f_write(val){
 							<td class="tdCenter">${one.one_writer}</td>
 <%-- 							<td class="tdCenter">${one.one_date}</td> --%>
 							<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
-							<td class="tdCenter">${one.one_no}</td>
+							
 
 						</tr>
 

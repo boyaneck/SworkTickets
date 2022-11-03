@@ -18,7 +18,7 @@ public class BoardDAOMybatis {
 
 	// 글 등록
 	public void insertBoard(BoardVO vo) {
-		System.out.println("Board insert 기능 처리 전");
+		System.out.println("Board insert Mybatis에서 기능 처리 전");
 		mybatis.insert("BoardDAO.insertBoard", vo);
 		System.out.println("Board insert 기능 수행함");
 	}

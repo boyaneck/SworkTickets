@@ -35,4 +35,6 @@ public interface MemberService {
 	
 	// 비번 변경
 	int change(MemberVO vo);
+
+
 }
