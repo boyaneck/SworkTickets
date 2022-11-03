@@ -183,7 +183,7 @@ $('#testBtn').click(function(e){
 <!--    회원아이디<input type="text" name="mb_id" id="mb_id" > -->
 <!--    결제일시 -->
    <input type="hidden" name="p_date" id="p_date">
-   <input type="hidden" name="cb_id" id="cb_id" >
+   <input type="hidden" name="cb_id" id="cb_id" value=0 >
    <input type="hidden" name="exh_no" id="exh_no" value="${exh_no }" >
    <button id="check_module" type="button">결제하기</button>
    <br><hr>

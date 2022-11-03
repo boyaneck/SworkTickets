@@ -30,6 +30,7 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -145,14 +146,6 @@ public class PayController {
 		}
 	}
 
-//   // 나의 결제내역 취소시키기
-//   @RequestMapping("/mypaycan")
-//   public String deletemypay(PayVO vo, HttpSession session) {
-//      vo = payService.getPay(vo);
-//      payService.deletePay(vo);
-//         return "redirect:myPay";
-//
-//   }
 
 	// 상품결제 폼 호출 (관리자 결제목록)
 	@RequestMapping(value = { "/pay" }, method = RequestMethod.GET)
@@ -208,27 +201,40 @@ public class PayController {
 		return "views/pay";
 	}
 
+	// 관리자 검색 기능
+	@ModelAttribute("conditionMap")
+	public Map<String, String> searchConditionMap() {
+		Map<String, String> conditionMap = new HashMap<>();
+		conditionMap.put("구매자", "BUYER");
+		conditionMap.put("전화번호", "BUYER_TEL");
+		conditionMap.put("결제일자", "P_DATE");
+		return conditionMap;
+	}
+	
 	// 결제 진행 폼=> 이곳에서 DB저장 로직도 추가하기
 	@RequestMapping(value = "/payUserDB", method = RequestMethod.POST)
 	public String payment(HttpServletRequest request, HttpSession session, HttpServletResponse response, Model model,
 			PayVO vo, CouponBoxVO cb_vo) throws IOException {
-		String nm = request.getParameter("buyer");
-		String p_id = request.getParameter("p_id");
-		String amount = request.getParameter("amount");
-		System.out.println(amount);
-//      int amount = Integer.parseInt(request.getParameter("amount"));
-		String mid = request.getParameter("mid");
-		String buyer_tel = request.getParameter("buyer_tel");
-		String buyer_email = request.getParameter("buyer_tel");
-		String p_date = request.getParameter("p_date");
-		String exh_title = request.getParameter("exh_title");
-		String p_mer = request.getParameter("p_mer");
-		String exh_no = request.getParameter("exh_no");
-		int cb_id = Integer.parseInt(request.getParameter("cb_id"));
-		cb_vo.setCb_id(cb_id);
-		couponBoxService.updateCouponBox(cb_vo);
-
-		String unixTimeStamp = p_date;
+		
+		   int cb_id=0;
+		      String nm = request.getParameter("buyer");
+		      String p_id = request.getParameter("p_id");
+		      String amount = request.getParameter("amount");
+		      System.out.println(amount);
+//		      int amount = Integer.parseInt(request.getParameter("amount"));
+		      String mid = request.getParameter("mid");
+		      String buyer_tel = request.getParameter("buyer_tel");
+		      String buyer_email = request.getParameter("buyer_tel");
+		      String p_date = request.getParameter("p_date");
+		      String exh_title = request.getParameter("exh_title");
+		      String p_mer = request.getParameter("p_mer");
+		      String exh_no = request.getParameter("exh_no");
+		      cb_id = Integer.parseInt(request.getParameter("cb_id"));
+		      cb_vo.setCb_id(cb_id);
+		      if(cb_id!=0) {
+		      couponBoxService.updateCouponBox(cb_vo);
+		      }
+		      String unixTimeStamp = p_date;
 
 		long timestamp = Long.parseLong(unixTimeStamp);
 		Date date = new java.util.Date(timestamp * 1000L);
@@ -263,6 +269,29 @@ public class PayController {
 		model.addAttribute("myPayList", payService.getPayList(vo));
 		return "views/myPay";
 	}
+	
+	
+	// 회원 구매내역 보기
+		@RequestMapping("/getAllPayList")
+		public String getAllPayList(PayVO vo, String nowPageBtn, Model model, HttpSession session) {
+			// 총 목록 수
+			int totalPageCnt = payService.totalPayListCnt(vo);
+			// 현재 페이지 설정
+			int nowPage = Integer.parseInt(nowPageBtn == null || nowPageBtn.equals("") ? "1" : nowPageBtn);
+			System.out.println("totalPageCnt: " + totalPageCnt + ", nowPage: " + nowPage);
+			// 한페이지당 보여줄 목록 수
+			int onePageCnt = 10;
+			// 한 번에 보여질 버튼 수
+			int oneBtnCnt = 5;
+			PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+			vo.setOffset(pvo.getOffset());
+			
+			System.out.println("회원전체 구매내역");
+//			vo.setMb_id((String) session.getAttribute("mb_Id"));
+			model.addAttribute("paging",pvo);
+			model.addAttribute("allPayList", payService.getAllPayList(vo));
+			return "admin/adminPay";
+		}
 
 	// 아임포트 결제완료건에 한하여 목록 반환
 	@RequestMapping(value = "/payamount")

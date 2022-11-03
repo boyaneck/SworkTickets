@@ -11,7 +11,7 @@
    <update id="updateCoupon">
       UPDATE COUPON
       SET C_NUM =#{c_num}, C_NAME=#{c_name}, C_PER=#{c_per}, C_DATE=#{c_date}
-      WHERE C_NUM=#{c_num}
+      WHERE C_NUM=#{c_num} 
    </update>
    
    <delete id="deleteCoupon">
