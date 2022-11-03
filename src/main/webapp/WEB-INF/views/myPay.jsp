@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +24,18 @@
 	결제고유ID : ${myPayList.p_id}<br>
 	상점거래ID : ${myPayList.p_mer}<br>
 <%-- 	환불 여부 : ${myPayList.p_chk}<br> --%>
-
+				<c:set var="today" value="<%=new java.util.Date()%>"/>
+<%-- 				 <fmt:parseDate var="toDay_D" value="${today}" pattern="yyyy-MM-dd HH:mm:ss" /> --%>
+${myPayList.exh_end_date}<br>
+${today }<br>
+<%-- ${toDay_D } --%>
 		<form action="paycan" method="POST">
 			<input type="hidden" name="mid" id="merchant_uid"
 				value="${myPayList.p_mer}">
 			<c:choose>
+				<c:when test="${myPayList.p_chk eq 0 && today < myPayList.exh_end_date}">
+					<button onclick="" type="button">종료된 전시</button>
+				</c:when>
 				<c:when test="${myPayList.p_chk eq 0}">
 					<button id="cancel_module" type="submit">취소하기</button>
 				</c:when>

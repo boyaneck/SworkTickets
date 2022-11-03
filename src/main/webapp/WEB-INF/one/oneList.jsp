@@ -52,7 +52,7 @@ function f_write(val){
 </script>
 <body>
 	<div class="jumbotron">
-		<h1>공지 사항</h1>
+		<h1>1대1 문의</h1>
 	</div>
 	<%-- <%@ include file="../../menu.jsp" %> --%>
 	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">

@@ -31,6 +31,10 @@ public class PayDAO {
 			public List<PayVO> getPayList(PayVO vo) {
 				return mybatis.selectList("PayDAO.getPayList",vo);
 			}
+			public List<PayVO> getAllPayList(PayVO vo) {
+				return mybatis.selectList("PayDAO.getAllPayList",vo);
+			}
+			
 			public int totalPayListCnt(PayVO vo) {
 					return mybatis.selectOne("PayDAO.totalPayListCnt",vo);
 			}

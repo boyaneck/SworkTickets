@@ -104,18 +104,97 @@ function orderList(){
 <%@ include file="../../header.jsp"%>
 </head>
 <body>
-<form name="fm">
-<div style="position:sticky;top:0;left:0;background-color:#fff;padding-bottom:20px;border-bottom:1px solid #000;">
-	<h2>결제내역 관련</h2>
-	imp_uid: <input type="text" name="imp_uid" id="imp_uid" placeholder="imp_uid 입력"><br>
-	merchant_uid: <input type="text" name="merchant_uid" id="merchant_uid" placeholder="merchant_uid 입력"><br>
-	<button id="cancel_module" type="button">취소하기</button>
-	<button id="list_module" type="button">결제완료목록조회</button>
-	<button id="all_module" type="button">모든목록조회</button>
-</div>
+<!-- <form name="fm"> -->
+<!-- <div style="position:sticky;top:0;left:0;background-color:#fff;padding-bottom:20px;border-bottom:1px solid #000;"> -->
+<!-- 	<h2>결제내역 관리</h2> -->
+<!-- 	imp_uid: <input type="text" name="imp_uid" id="imp_uid" placeholder="imp_uid 입력"><br> -->
+<!-- 	merchant_uid: <input type="text" name="merchant_uid" id="merchant_uid" placeholder="merchant_uid 입력"><br> -->
+<!-- 	<button id="cancel_module" type="button">취소하기</button> -->
+<!-- 	<button id="list_module" type="button">결제완료목록조회</button> -->
+<!-- 	<button id="all_module" type="button">모든목록조회</button> -->
+<!-- </div> -->
+<!-- 	</form> -->
+
+	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
+			<form class="form-inline" action="getAllPayList" method="post">
+				<select class="form-control" id="sel1" name="searchCondition"
+					style="display: inline-block !important; margin-right: 10px;">
+					<c:forEach items="${conditionMap}" var="option">
+						<option value="${option.value}">${option.key}</option>
+					</c:forEach>
+				</select> <input class="form-control mr-sm-2" type="text"
+					name="searchKeyword" placeholder="검색어를 입력하세요.">
+				<button class="btn btn-outline-primary" type="submit">검색</button><br>
+			</form>
+		</nav>
 	
-	<p id="paylist"></p>
-</form>
+	<c:forEach items="${allPayList}" var="allPayList">
+	상품명: ${allPayList.exh_title} <br>
+	금액: ${allPayList.amount}<br>
+	구매자 : ${allPayList.buyer}<br>
+	전화번호 : ${allPayList.buyer_tel}<br>
+	결제일시 : ${allPayList.p_date}<br>
+	결제고유ID : ${allPayList.p_id}<br>
+	상점거래ID : ${allPayList.p_mer}<br>
+<%-- 	환불 여부 : ${myPayList.p_chk}<br> --%>
+
+		<form action="paycan" method="POST">
+			<input type="hidden" name="mid" id="merchant_uid"
+				value="${allPayList.p_mer}">
+			<c:choose>
+				<c:when test="${allPayList.p_chk eq 0}">
+					<button id="cancel_module" type="submit">취소하기</button>
+				</c:when>
+				<c:otherwise>
+					<button type="button">환불완료</button>
+				</c:otherwise>
+			</c:choose>
+		</form>
+		<hr>
+		</c:forEach>
+		
+		<div class="container ">
+			
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+<!-- 		맨처음 -->
+						<c:if test="${paging.nowPageBtn > 1 }">
+						<li class="page-item "><a class="page-link"
+							href="getAllPayList?nowPageBtn=1">&laquo;</a></li>
+							</c:if>
+							<c:if test="${paging.nowPageBtn > 1 }">
+							<li class="page-item "><a class="page-link"
+							href="getAllPayList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
+							</c:if>
+
+<!-- 반복처리 태그 -->				
+							<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i" >
+								<c:choose>
+									<c:when test="${paging.nowPageBtn==i}">
+									<li class="page-item active"><a class="page-link"
+									href="getAllPayList?nowPageBtn=${i}">${i}</a></li>
+									</c:when>
+									<c:otherwise>
+									<li class="page-item "><a class="page-link"
+									href="getAllPayList?nowPageBtn=${i}">${i}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+<!-- 		반복 끝 -->
+								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+							<li class="page-item "><a class="page-link"
+							href="getAllPayList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
+							</c:if>
+<!-- 		맨끝 -->
+							<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+								<li class="page-item"><a class="page-link"
+							href="getAllPayList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
+								</c:if>
+					</ul>
+				</nav>
+			
+				</div>
+
 
 </body>
 </html>

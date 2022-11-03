@@ -33,10 +33,14 @@ public class PayServiceImpl implements PayService {
 
 	@Override
 	public List<PayVO> getPayList(PayVO vo) {
-
 		return payDAO.getPayList(vo);
 	}
 
+	@Override
+	public List<PayVO> getAllPayList(PayVO vo) {
+		return payDAO.getAllPayList(vo);
+	}
+	
 	@Override
 	public int totalPayListCnt(PayVO vo) {
 

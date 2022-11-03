@@ -9,17 +9,40 @@
 		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no})
 	</insert>
 
-	<!-- <select id="getPay" resultType="pay"> -->
-	<!-- SELECT * FROM COUPON WHERE C_NUM= #{c_num} -->
-	<!-- </select> -->
-
 	<select id="getPayList" resultType="pay">
-		SELECT e.EXH_TITLE, AMOUNT, BUYER, BUYER_TEL, P_DATE, P_ID, P_MER, P_CHK FROM PAY P, 
-		MEMBER MB, exhibition e
+		SELECT p.*,e.exh_end_date
+		FROM PAY P, MEMBER MB, exhibition e
 		WHERE 1=1 AND P.MB_ID=MB.MB_ID
 		AND P.MB_ID = #{mb_id}
 		AND p.EXH_TITLE = e.EXH_TITLE
 		ORDER BY P_DATE DESC
+	</select>
+	
+<!-- 	<select id="getAllPayList" resultType="pay"> -->
+<!-- 		SELECT e.EXH_TITLE, MB.MB_ID, AMOUNT, BUYER, BUYER_TEL, P_DATE, P_ID, P_MER, P_CHK  -->
+<!-- 		FROM PAY P, MEMBER MB, exhibition e -->
+<!-- 		WHERE 1=1 AND P.MB_ID=MB.MB_ID -->
+<!-- 		AND p.EXH_TITLE = e.EXH_TITLE -->
+<!-- 		ORDER BY P_DATE DESC -->
+<!-- 	</select> -->
+	
+	<select id="getAllPayList" resultType="pay">
+		SELECT *
+		FROM PAY P
+		WHERE 1=1 
+		<if test="searchCondition == 'BUYER' "> AND buyer LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		<if test="searchCondition == 'BUYER_TEL' "> AND buyer_tel LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		<if test="searchCondition == 'P_DATE' "> AND p_date LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		ORDER BY P_DATE DESC	
+		LIMIT 10 OFFSET #{offset}
+		</select>
+
+	<select id="totalPayListCnt" resultType="_int">
+		SELECT Count(*) FROM PAY WHERE 1=1
+		<if test="searchCondition == 'BUYER' "> AND buyer LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		<if test="searchCondition == 'BUYER_TEL' "> AND buyer_tel LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		<if test="searchCondition == 'P_DATE' "> AND p_date LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		
 	</select>
 
 	<update id="updatePay">

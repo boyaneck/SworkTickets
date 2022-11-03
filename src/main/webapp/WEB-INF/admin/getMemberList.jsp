@@ -159,28 +159,47 @@ html, body {
 			</table>
 			<br> <br>
 			</form>
-			<div id="btnBox">
-				<!-- 반복처리할 태그 시작-->
-				<c:if test="${paging.nowPageBtn > 1 }">
-					<a href="getMemberList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
-				</c:if>
-				<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-					step="1" var="i">
-					<c:choose>
-						<c:when test="${paging.nowPageBtn == i}">
-							<a class="aSel">${i}</a>
-						</c:when>
-						<c:otherwise>
-							<a href="getMemberList?nowPageBtn=${paging.nowPageBtn}">${i}</a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				
-				<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-					<a href="getMemberList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
-				</c:if>
-				<!-- 반복처리할 태그 끝 -->
-			</div>
+			 <div class="container ">
+			
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+<!-- 		맨처음 -->
+						<c:if test="${paging.nowPageBtn > 1 }">
+						<li class="page-item "><a class="page-link"
+							href="getMemberList?nowPageBtn=1">&laquo;</a></li>
+							</c:if>
+							<c:if test="${paging.nowPageBtn > 1 }">
+							<li class="page-item "><a class="page-link"
+							href="getMemberList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
+							</c:if>
+
+<!-- 반복처리 태그 -->				
+							<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i" >
+								<c:choose>
+									<c:when test="${paging.nowPageBtn==i}">
+									<li class="page-item active"><a class="page-link"
+									href="getMemberList?nowPageBtn=${i}">${i}</a></li>
+									</c:when>
+									<c:otherwise>
+									<li class="page-item "><a class="page-link"
+									href="getMemberList?nowPageBtn=${i}">${i}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+<!-- 		반복 끝 -->
+								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+							<li class="page-item "><a class="page-link"
+							href="getMemberList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
+							</c:if>
+<!-- 		맨끝 -->
+							<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+								<li class="page-item"><a class="page-link"
+							href="getMemberList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
+								</c:if>
+					</ul>
+				</nav>
+			
+				</div>
 			<br> <br>
 			<div id="footer">
 				

@@ -80,7 +80,7 @@
                <div class="dropdown-menu header-menu" aria-labelledby="member">
                <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
                <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a>
-               <a class="dropdown-item header-item" href="/pay">&nbsp회원결제내역</a>
+               <a class="dropdown-item header-item" href="/getAllPayList">&nbsp회원결제내역</a>
                </div>
                </li>
             </ul>
