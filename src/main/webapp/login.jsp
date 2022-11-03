@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 <%@ include file="header.jsp"%>
 <style>
 .login-kakao {
@@ -38,11 +38,10 @@
 					<label for="inputPassword" class="sr-only">Password</label> 
 					<input type="password" class="form-control" placeholder="Password" name="mb_pw" required>
 				</div>
-				<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인</button>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
 				<!-- <a class="dropdown-item header-item" href="insertMember.jsp">&nbsp회원가입</a> -->
 			
-			<a href="/step1">회원가입
-				</a>
+			<a href="/step1">회원가입 </a>
 				
 				<a href="/getAuthUrl">
 					<img src="images/kakao_login_medium_narrow.png" style="height: 30px" />

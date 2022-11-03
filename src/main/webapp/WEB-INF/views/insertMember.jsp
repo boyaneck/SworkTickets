@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>멤버등록</title>
+<title>회원가입</title>
 <%@ include file="../../header.jsp"%>
 
 <style>
