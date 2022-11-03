@@ -23,7 +23,15 @@
       </repository>
    </repositories>
 
+
    <dependencies>
+   
+   	<!-- 암호화 비크립트 -->
+	<dependency>
+		<groupId>org.mindrot</groupId>
+		<artifactId>jbcrypt</artifactId>
+		<version>0.4</version>
+	</dependency>
       <!-- 메일 인증시 필요한 라이브러리 시작-->
       <dependency>
          <groupId>javax.mail</groupId>

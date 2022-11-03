@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
+	<script>
+	$(function(){
+		$("input[name=agreeAll]").click(function(){
+			$("input[name=agree1").prop("checked", this.checked);
+			$("input[name=agree2").prop("checked", this.checked);
+			});
+		});
+	</script>
 </head>
 <body>
   <div class="container">
@@ -66,6 +74,9 @@
 					</div>
 				</div>
 			</div>
+				<label class="checkbox-inline">   
+							<input type="checkbox" name="agreeAll" id="agreeAll" value="true" required="required">전체 동의합니다.
+						</label>  
 		  </div>
 			<button type="submit" class="btn btn-default">회원가입 단계로 넘어가기</button>
 		</div>

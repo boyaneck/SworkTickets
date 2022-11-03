@@ -137,5 +137,4 @@ public class MemberVO {
 				+ ", mb_address=" + mb_address + ", mb_phone=" + mb_phone + ", mb_birth=" + mb_birth + ", mb_email="
 				+ mb_email + ", mb_check=" + mb_check + ", toString()=" + super.toString() + "]";
 	}
-
 }
