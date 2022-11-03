@@ -25,15 +25,15 @@
 	상점거래ID : ${myPayList.p_mer}<br>
 <%-- 	환불 여부 : ${myPayList.p_chk}<br> --%>
 				<c:set var="today" value="<%=new java.util.Date()%>"/>
-				 <fmt:formatDate var="toDay_D" value="${today}" type="date" dateStyle="full" />
+		<c:set var="sysYear"> <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" /></c:set>
 ${myPayList.exh_end_date}<br>
 ${today }<br>
-${toDay_D > myPayList.exh_end_date}
-${toDay_D }
+${sysYear > myPayList.exh_end_date}
+${sysYear }
 		<form action="paycan" method="POST">
 			<input type="hidden" name="mid" id="merchant_uid"
 				value="${myPayList.p_mer}">
-				<c:if test="${myPayList.exh_end_date < toDay_D}">
+				<c:if test="${myPayList.exh_end_date < sysYear}">
 					<button onclick="" type="button">종료된 전시</button>
 					</c:if>
 				
