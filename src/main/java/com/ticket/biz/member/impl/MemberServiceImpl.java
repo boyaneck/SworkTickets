@@ -1,6 +1,7 @@
 package com.ticket.biz.member.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -67,4 +68,11 @@ public class MemberServiceImpl implements MemberService {
 	public int change(MemberVO vo) {
 		return memberDAO.change(vo);
 	}
+	
+	//아이디 중복체크
+    @Override
+    public int idChk(Map<String, Object> param) {
+    	System.out.println(param);
+        return memberDAO.idChk(param);
+    }
 }

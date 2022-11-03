@@ -1,6 +1,7 @@
 package com.ticket.biz.member.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,12 @@ public class MemberDAO {
 	// 비번 변경
 	public int change(MemberVO vo) {
 		return mybatis.update("MemberDAO.change", vo);
+	}
+	
+	// 아이디 중복체크
+	public int idChk(Map<String, Object> param) {
+		
+		return mybatis.selectOne("MemberDAO.idChk", param);
 	}
 
 

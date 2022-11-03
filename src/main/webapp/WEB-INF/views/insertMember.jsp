@@ -280,6 +280,7 @@ function qweemailCheck() {
 	}
 }
 
+//유효성 검사
 function validate() {
 	var mb_id = document.getElementById("mb_id");
 	var mb_pw = document.getElementById("mb_pw");
@@ -314,6 +315,7 @@ function validate() {
 	 }
 }
 
+
 function email_chk(object){
 	 var object = object.value
 	 var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -326,6 +328,27 @@ function numberMaxLength(e){
     }
 }
 
+//아이디 중복체크
+function chkBtn(){
+	console.log("아이디");
+    $.ajax({
+        url : "/idChk",
+        type : "post", 
+        dataType : "json", 
+        data : {"mb_id" : $("#mb_id").val()},  
+        success : function(data){
+            if(data == 1){
+                alert("중복된 아이디입니다.");
+            }else {
+            	if(data == 0){
+//                 $("#idChk").attr("value", "Y");
+                alert("사용가능한 아이디입니다.");
+            	}
+            }
+        }
+    })
+    
+}
 
 
 /* 이메일 인증번호 일치 여부 start */
@@ -343,9 +366,10 @@ function numberMaxLength(e){
 							<form class="requires-validation" action="insertMember" name="insertMember"
 								method="post">
 								<div class="col-md-12">
-									<input type="text" class="form-control" name="mb_id"
+									<input type="text" class="form-control" name="mb_id" id="mb_id"
 										placeholder="아이디" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*$" 
 										 required>
+									<button type="button" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
 									<div class="valid-feedback">유효한아이디입니다.</div>
 									<div class="invalid-feedback">공백없이 입력해주세요</div>
 
