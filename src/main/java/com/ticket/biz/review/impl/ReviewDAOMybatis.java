@@ -30,18 +30,14 @@ public class ReviewDAOMybatis {
 		System.out.println("review delete 기능 수행함");
 	}
 
-	// 댓글 수정
-//		public void updateBoard(ReviewVO vo) {
-//			System.out.println("update board 기능 처리 전");
-//			mybatis.update("ReviewDAO.updateBoard",vo);
-//			System.out.println("update board 기능 수행함");
-//		}
+	 //댓글 수정
+		public void updateReview(ReviewVO vo) {
+			System.out.println("update board 기능 처리 전");
+			mybatis.update("ReviewDAO.updateReview",vo);
+			System.out.println("update review 기능 수행함");
+		}
 
-	// 댓글 상세보기
-//		public ReviewVO getBoard(ReviewVO vo) {
-//			System.out.println("Getboard 기능 처리 전");
-//		 return (ReviewVO)mybatis.selectOne("ReviewDAO.getBoard", vo);
-//		}
+
 
 	// 댓글 목록 조회
 	public List<ReviewVO> getReviewList(ReviewVO vo) {

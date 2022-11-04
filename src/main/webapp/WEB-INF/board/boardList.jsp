@@ -41,7 +41,7 @@ function getboard(val){
 	
 }
 function f_write(val){
-    console.log(val);
+    console.log("noti_writer 받아와야함"+val);
     if(val == ''){
         alert("로그인이 되야 작성 가능합니다");
         location.href="/getBoardList";

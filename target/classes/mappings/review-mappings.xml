@@ -9,31 +9,40 @@
 		REVIEW(REVIEW_WRITER,REVIEW_CONTENT,EXH_NO,RE_REVIEW,REVIEW_TYPE,REVIEW_REG_DATE,REVIEW_BNO)
 		VALUES 
 		(#{review_writer}, #{review_content}, 1, 'A', 1, now(), #{review_bno})
+		
 	</insert>
 
-<!-- 	<delete id="deleteReview"> -->
-<!-- 		DELETE FROM REVIEW -->
-<!-- 		WHERE REVIEW_WRITER = -->
-<!-- 		#{review_writer} AND REVIEW_CONTENT = -->
-<!-- 		#{review_content} -->
-<!-- 	</delete> -->
+	<delete id="deleteReview">
+		DELETE FROM REVIEW
+		WHERE REVIEW_NO= #{review_no}
+		
+	</delete>
 
-<!-- 	<select id="getTotal" resultType="_int"> -->
-<!-- 		SELECT COUNT(*) FROM REVIEW -->
-<!-- 		WHERE REVIEW_TYPE = #{review_type} -->
-<!-- 	</select> -->
+	<select id="totalReviewListCnt" resultType="_int">
+		SELECT COUNT(*) FROM REVIEW WHERE REVIEW_BNO = #{review_bno}
+	</select>
 
-<!-- 	<select id="getReviewList" resultType="review"> -->
-<!-- 		SELECT * FROM REVIEW  -->
-<!-- 		WHERE -->
-<!-- 		REVIEW_BNO = #{review_bno} -->
-<!-- 	</select> -->
+	<select id="getReviewList" resultType="review">
+		SELECT * FROM REVIEW 
+		WHERE
+		REVIEW_BNO=#{review_bno}
+	</select>
 
-<!-- 	<select id="getList" resultType="ReviewVO"> -->
+<update id="updateReview">
+	UPDATE REVIEW 
+	SET 
+	NOTI_TITLE=#{noti_title},
+	NOTI_CONTENT=#{noti_content},
+
+	
+</update>
+
+
+<!-- 	<select id="getList" resultType="review"> -->
 <!-- 	SELECT * FROM REVIEW WHERE REVIEW_TYPE = #{review_type} -->
 <!-- 	</select> -->
 
-	<!-- <select id="myRecord" resultType="ReviewVO"> -->
+	<!-- <select id="myRecord" resultType="review"> -->
 	<!-- SELECT * FROM REVIEW -->
 	<!-- WHERE -->
 	<!-- REVIEW_WRITER = #{writer} -->
