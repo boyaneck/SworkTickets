@@ -50,7 +50,7 @@
             <a class="nav-link header" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="coupon">
             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
-            <a class="dropdown-item header-item" href="insertCoupon.jsp">쿠폰등록</a>
+            <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
             </div>
          </li>
          <li class="nav-item dropdown header-title">
