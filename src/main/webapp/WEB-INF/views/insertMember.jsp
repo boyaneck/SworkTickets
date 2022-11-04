@@ -158,6 +158,14 @@ html, body {
 </style>
 
 <script>
+
+
+
+
+
+
+
+
 $(function() {
 		//핸드폰 번호 인증 
 		var code2 = "";
@@ -271,6 +279,78 @@ function qweemailCheck() {
 		});
 	}
 }
+
+//유효성 검사
+function validate() {
+	var mb_id = document.getElementById("mb_id");
+	var mb_pw = document.getElementById("mb_pw");
+	var mb_name = document.getElementById("mb_name");
+	var mb_phone = document.getElementById("mb_phone");
+	var mb_email = document.getElementById("mb_email");
+	
+	 if (document.insertMember.mb_id.value == "") {
+		alert("아이디를 입력하세요");
+		return;
+	}
+	 if (document.insertMember.mb_pw.value == "") {
+		alert("비밀번호를 입력하세요");
+		return;
+	}
+	 if (document.insertMember.mb_name.value == "") {
+		alert("이름을 입력하세요");
+		return;
+	}
+	 if (document.insertMember.mb_phone.value == "") {
+		alert("휴대번호를 입력하세요");
+		return;
+	}
+	 if (document.insertMember.mb_email.value == "") {
+		alert("이메일을 입력하세요");
+		return;
+	 } else {
+		 if(!email_chk(insertMember.mb_email.value)) {
+		 alert("이메일을 형식에 맞게 입력하세요");
+		 return;
+		 }
+	 }
+}
+
+
+function email_chk(object){
+	 var object = object.value
+	 var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	 return (regex.test(object));
+}
+
+function numberMaxLength(e){
+    if(e.value.length > e.maxLength){
+        e.value = e.value.slice(0, e.maxLength);
+    }
+}
+
+//아이디 중복체크
+function chkBtn(){
+	console.log("아이디");
+    $.ajax({
+        url : "/idChk",
+        type : "post", 
+        dataType : "json", 
+        data : {"mb_id" : $("#mb_id").val()},  
+        success : function(data){
+            if(data == 1){
+                alert("중복된 아이디입니다.");
+            }else {
+            	if(data == 0){
+//                 $("#idChk").attr("value", "Y");
+                alert("사용가능한 아이디입니다.");
+            	}
+            }
+        }
+    })
+    
+}
+
+
 /* 이메일 인증번호 일치 여부 start */
 </script>
 </head>
@@ -283,25 +363,27 @@ function qweemailCheck() {
 						<div class="form-items">
 							<h3>회원가입</h3>
 							<p>정보입력</p>
-							<form class="requires-validation" action="insertMember"
+							<form class="requires-validation" action="insertMember" name="insertMember"
 								method="post">
 								<div class="col-md-12">
-									<input type="text" class="form-control" name="mb_id"
-										placeholder="아이디" required>
+									<input type="text" class="form-control" name="mb_id" id="mb_id"
+										placeholder="아이디" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*$" 
+										 required>
+									<button type="button" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
 									<div class="valid-feedback">유효한아이디입니다.</div>
 									<div class="invalid-feedback">공백없이 입력해주세요</div>
 
 								</div>
 								<div class="col-md-12">
 									<input type="password" class="form-control" name="mb_pw"
-										placeholder="패스워드" required>
+										placeholder="패스워드" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$" required>
 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
 									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
 								</div>
 
 								<div class="col-md-12">
 									<input type="text" class="form-control" name="mb_name"
-										placeholder="이름" required>
+										placeholder="이름" maxlength="5" minlength="2" required>
 									<!-- 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
 									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
  -->
@@ -311,8 +393,8 @@ function qweemailCheck() {
 										<th><label for="phone">휴대폰 번호</label></th>
 										<td>
 											<p>
-												<input id="mb_phone" type="text" name="mb_phone"
-													title="전화번호 입력" required />
+												<input id="mb_phone" type="number" name="mb_phone"
+													title="전화번호 입력" maxlength="11" oninput="numberMaxLength(this);" required />
 												<button type="button" id="phoneChk"
 													class="btn btn-dark doubleChk">인증번호 보내기</button>
 												<br /> <input id="phone2" type="text" name="phone2"
@@ -326,10 +408,10 @@ function qweemailCheck() {
 									</tr>
 								</div>
 								<div class="col-md-12">
-									<!-- <div id="menu-text">E-mail 인증</div> -->
-									<input id="mb_email" class="text_box" type="text"
-										name="mb_email" placeholder="이메일 입력" required autofocus>
-					<!-- 				<button type="button" id="sendMail"
+									<div id="menu-text">E-mail 인증</div>
+									<input id="mb_email" class="text_box" type="email"
+										name="mb_email" placeholder="이메일 입력" maxlength="50" onchange="email_chk(this)"  required autofocus>
+									<button type="button" id="sendMail"
 										class="btn btn-primary btn-sm">발송하기</button>
 									<div class="text_box" id="cert">
 										<input id='emailCheck' class='text_box' type='text' required
@@ -337,10 +419,11 @@ function qweemailCheck() {
 										<button type="button" id='check'
 											class='btn btn-primary btn-sm'
 											onclick='qweemailCheck(); return false;'>인증확인</button>
-									</div> -->
+									</div>
 								</div>
+
 								<div class="mx-auto" id="footer">
-									<button id="conRegister" type="submit" class="btn btn-dark">회원가입</button>
+									<button id="conRegister" type="submit" class="btn btn-dark" onclick="validate()">회원가입</button>
 								</div>
 							</form>
 						</div>
