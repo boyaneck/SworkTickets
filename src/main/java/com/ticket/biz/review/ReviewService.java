@@ -7,7 +7,7 @@ public interface ReviewService {
 	
 	List<ReviewVO> getReviewList(ReviewVO vo); //목록 요청
 	
-	int getTotal(int review_bno); //댓글 개수
+	int getTotal(ReviewVO vo); //댓글 개수
 	
 	void deleteReview(ReviewVO vo);   // 댓글 삭제 
 	

@@ -32,9 +32,9 @@ public class ReviewDAOMybatis {
 
 	 //댓글 수정
 		public void updateReview(ReviewVO vo) {
-			System.out.println("update board 기능 처리 전");
+			System.out.println("update Review  Mybatis에서 기능 처리 전!!!!!!");
 			mybatis.update("ReviewDAO.updateReview",vo);
-			System.out.println("update review 기능 수행함");
+			System.out.println("update review 기능 mybatis에서  수행함");
 		}
 
 
@@ -49,8 +49,8 @@ public class ReviewDAOMybatis {
 
 	// 전체댓글 목록 갯수
 	public int getTotal(ReviewVO vo) {
-		System.out.println("===> mybatis로 getBoardListCnt() 기능 처리");
-		return mybatis.selectOne("ReviewDAO.totalBoardListCnt", vo);
+		System.out.println("===> mybatis로 getReviewListCnt() 기능 처리");
+		return mybatis.selectOne("ReviewDAO.totalReviewListCnt", vo);
 
 	}
 

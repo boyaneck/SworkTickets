@@ -152,27 +152,27 @@ public class BoardController {
 	}
 	
 	//파일다운로드
-	@GetMapping(value="/download")
-    public void fileDownLoad(@RequestParam(value="filename", required=false) String filename, 
-    		HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("파일 다운로드");
-		if (!(filename == null || filename.equals(""))) {
-	        //요청파일 정보 불러오기
-	        String realPath = "c:/swork/eleven/src/main/webapp/img/" ;
-//		    String realPath = request.getSession().getServletContext().getRealPath("/img/");
-	        File file = new File(realPath+filename);        
-	
-			//한글은 http 헤더에 사용할 수 없기 때문에 파일명은 영문으로 인코딩하여 헤더에 적용한다
-			String fn = new String(file.getName().getBytes(), "iso_8859_1");
-			
-			//ContentType설정
-			byte[] bytes = org.springframework.util.FileCopyUtils.copyToByteArray(file);
-			response.setHeader("Content-Disposition", "attachment; filename=\""+ fn + "\"");
-			response.setContentLength(bytes.length);
-	//			response.setContentType("image/jpeg");	        
-			response.getOutputStream().write(bytes);
-	        response.getOutputStream().flush();
-	        response.getOutputStream().close();
-        }
-    }
+//	@GetMapping(value="/download")
+//    public void fileDownLoad(@RequestParam(value="filename", required=false) String filename, 
+//    		HttpServletRequest request, HttpServletResponse response) throws IOException {
+//		System.out.println("파일 다운로드");
+//		if (!(filename == null || filename.equals(""))) {
+//	        //요청파일 정보 불러오기
+//	        String realPath = "c:/swork/eleven/src/main/webapp/img/" ;
+////		    String realPath = request.getSession().getServletContext().getRealPath("/img/");
+//	        File file = new File(realPath+filename);        
+//	
+//			//한글은 http 헤더에 사용할 수 없기 때문에 파일명은 영문으로 인코딩하여 헤더에 적용한다
+//			String fn = new String(file.getName().getBytes(), "iso_8859_1");
+//			
+//			//ContentType설정
+//			byte[] bytes = org.springframework.util.FileCopyUtils.copyToByteArray(file);
+//			response.setHeader("Content-Disposition", "attachment; filename=\""+ fn + "\"");
+//			response.setContentLength(bytes.length);
+//	//			response.setContentType("image/jpeg");	        
+//			response.getOutputStream().write(bytes);
+//	        response.getOutputStream().flush();
+//	        response.getOutputStream().close();
+//        }
+//    }
 }
