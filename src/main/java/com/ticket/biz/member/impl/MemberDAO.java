@@ -65,15 +65,13 @@ public class MemberDAO {
 //		return mybatis.selectList("MemberDAO.findPw", param);
 //	}
 	
-	public List<MemberVO> findPw(MemberVO vo){
-		return mybatis.selectList("MemberDAO.findPw",vo);
+	public MemberVO find(MemberVO vo){
+		return mybatis.selectOne("MemberDAO.find",vo);
+	}
+	public int change(MemberVO vo){
+		return mybatis.update("MemberDAO.change",vo);
 	}
 	
-	// 아이디 중복체크
-	public int idChk(Map<String, Object> param) {
-		
-		return mybatis.selectOne("MemberDAO.idChk", param);
-	}
 
 
 }
