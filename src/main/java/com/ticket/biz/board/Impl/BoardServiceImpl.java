@@ -1,4 +1,4 @@
-package com.ticket.biz.board.Impl;
+package com.ticket.biz.board.impl;
 
 import java.util.List;
 

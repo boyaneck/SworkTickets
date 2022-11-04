@@ -1,7 +1,6 @@
 package com.ticket.biz.member.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,23 +21,21 @@ public class MemberDAO {
 	}
 	/* 회원탈퇴 */
 	public int deleteMember(MemberVO vo) {
-//		System.out.println(vo);
+		System.out.println(vo);
 		return mybatis.delete("MemberDAO.deleteMember", vo);
 	}
 
-
-
 	/*회원조회*/
 	public MemberVO getMember(MemberVO vo) {
-//		System.out.println("mybatis getMember() 기능");
+		System.out.println("mybatis getMember() 기능");
 		return mybatis.selectOne("MemberDAO.getMember", vo);
 	}
 
 	/* 회원수정 */
 	public void updateMember(MemberVO vo) {
-//		System.out.println("mybatis회원정보수정 기능");
+		System.out.println("mybatis회원정보수정 기능");
 		mybatis.update("MemberDAO.updateMember", vo);
-//		System.out.println("회원수정" + vo);
+		System.out.println("회원수정" + vo);
 	}
 
 	public MemberVO loginCheck(MemberVO vo) {
@@ -55,23 +52,15 @@ public class MemberDAO {
 		return mybatis.selectOne("MemberDAO.totalMemberListCnt", vo);
 	}
 	
-	// 아이디 중복체크
-	public int idChk(Map<String, Object> param) {
-		return mybatis.selectOne("MemberDAO.idChk", param);
+	// 아이디, 비번찾기
+	public MemberVO find(MemberVO vo) {
+		return mybatis.selectOne("MemberDAO.find", vo);
 	}
 	
-	// 비밀번호 찾기
-//	public List findPw(Map<String, Object> param) {
-//		return mybatis.selectList("MemberDAO.findPw", param);
-//	}
-	
-	public MemberVO find(MemberVO vo){
-		return mybatis.selectOne("MemberDAO.find",vo);
+	// 비번 변경
+	public int change(MemberVO vo) {
+		return mybatis.update("MemberDAO.change", vo);
 	}
-	public int change(MemberVO vo){
-		return mybatis.update("MemberDAO.change",vo);
-	}
-	
 
 
 }

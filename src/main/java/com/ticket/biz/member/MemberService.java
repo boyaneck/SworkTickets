@@ -1,11 +1,8 @@
 package com.ticket.biz.member;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
-
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 public interface MemberService {
@@ -38,7 +35,6 @@ public interface MemberService {
 	
 	// 비번 변경
 	int change(MemberVO vo);
-	
-	// 아이디 중복체크
-	int idChk(Map<String, Object> param);
+
+
 }

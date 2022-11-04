@@ -23,12 +23,9 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewservice;
 	
-	
-	
-	//댓글 등록 하기 
 	@ResponseBody
 	@RequestMapping("/insertReview")
-	public String ReviewInsert(@RequestBody ReviewVO vo,HttpSession session, Model model) {
+	public String ReviewInsert(@RequestBody ReviewVO vo,HttpSession session) {
 		System.out.println("review_writer"+vo.getReview_writer());
 		System.out.println("review insert:컨트롤러 실행 ");
 		if(session.getAttribute("mb_Id") == null) {
@@ -39,56 +36,29 @@ public class ReviewController {
 			
 			reviewservice.insertReview(vo);
 			System.out.println("댓글 등록 서비스 성공 Controller");
-			System.out.println("review_writer" +vo.getReview_writer());
-			model.addAttribute("reviewmodel", vo);
 			return "InsertSuccess";
 		}
 	}
-	
-	
-//	//댓글 삭제하기
-	@RequestMapping("/deleteReview")
-	public String deleteReview(ReviewVO vo, HttpSession session) {
-		System.out.println("deleteReview 기능 처리 전");
-//		int val=0;
-//		System.out.println("val " +val);
-		System.out.println("deleteReview controller 에서 review_no 받기" +vo.getReview_writer());
-		System.out.println("컨트롤러 to string"+ vo.toString());
-			reviewservice.deleteReview(vo);
-			System.out.println("delete 컨트롤러 다 탔음");
-			return "redirect:reviewwrite.jsp";
-	}
 
-	
-	//댓글 목록 조회
-	@ResponseBody
 	@RequestMapping("/reviewList")
 	public Map<String, Object> getReviewList(ReviewVO vo, Model model) {
 		System.out.println("댓글 목록 컨트롤러 동작");
 		System.out.println("bno"+vo.getReview_bno());
 		System.out.println("writer"+vo.getReview_writer());
 		
-//		model.addAttribute("reviewList",reviewservice.getReviewList(vo));
-		List<ReviewVO> reviewList=reviewservice.getReviewList(vo);
-		System.out.println("toString"+reviewList.toString());
-//				List<ReviewVO> list = reviewservice.getReviewList(vo);
-				System.out.println("getReviewList 실행후 컨트롤러 안 ");
-		int no =vo.getReview_no();
-		
-		System.out.println("reviewList 실행 뒤 가져온 컨트롤러 안에서  no!!!!!!!!"+no);
-		
-		int total = reviewservice.getTotal(vo);
+		System.out.println("toString"+vo.toString());
+				List<ReviewVO> list = reviewservice.getReviewList(vo);
+				System.out.println("review serice좀 컨트롤러에서 타라 ");
+		int bno =vo.getReview_bno();
+		int total = reviewservice.getTotal(bno);
 		System.out.println("bno1"+vo.getReview_bno());
 		ModelAndView view = new ModelAndView();
-		System.out.println("댓글 갯수 " + reviewservice.getTotal(vo));
+		System.out.println("댓글 갯수 " + reviewservice.getTotal(bno));
 		
 		Map<String, Object> map = new HashMap<>();
-//		map.put("list", list);
+		map.put("list", list);
 		map.put("total", total);
-		map.put("reviewlist",reviewList);
-		view.setViewName("reviewwrite");
-		System.out.println("review list 가져오는 controller 다 탔음");
-		System.out.println("review_writer 가져오기"+vo.getReview_writer());
+		view.setViewName("review");
 		return map;
 	}
 	

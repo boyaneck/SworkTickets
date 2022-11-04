@@ -1,5 +1,7 @@
 package com.ticket.biz.couponbox;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.ticket.biz.coupon.CouponVO;
 
 public class CouponBoxVO {
@@ -7,21 +9,44 @@ public class CouponBoxVO {
 	private String c_num;
 	private String mb_id;
 	private int cb_check;
-
+	
 	private String searchCondition;
 	private String searchKeyword;
-
+	
 	private int offset;
-
+	
+	
+	private String c_name;
+	private int c_per;
+	private String c_date;
+	
+	@Autowired
 	private CouponVO couponvo;
-
-
-
+	
+	
 	public CouponVO getCouponvo() {
 		return couponvo;
 	}
 	public void setCouponvo(CouponVO couponvo) {
 		this.couponvo = couponvo;
+	}
+	public String getC_name() {
+		return c_name;
+	}
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
+	}
+	public int getC_per() {
+		return c_per;
+	}
+	public void setC_per(int c_per) {
+		this.c_per = c_per;
+	}
+	public String getC_date() {
+		return c_date;
+	}
+	public void setC_date(String c_date) {
+		this.c_date = c_date;
 	}
 	public String getSearchCondition() {
 		return searchCondition;
@@ -47,7 +72,7 @@ public class CouponBoxVO {
 	public void setCb_id(int cb_id) {
 		this.cb_id = cb_id;
 	}
-
+	
 	public String getC_num() {
 		return c_num;
 	}
@@ -67,6 +92,6 @@ public class CouponBoxVO {
 		this.cb_check = cb_check;
 	}
 
-
+	
 
 }

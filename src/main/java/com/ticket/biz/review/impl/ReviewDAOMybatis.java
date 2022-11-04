@@ -25,7 +25,7 @@ public class ReviewDAOMybatis {
 
 	// 댓글 삭제
 	public void deleteReview(ReviewVO vo) {
-		System.out.println("review delete 기능 처리 전 mybatis에서 writer 값 받기"+vo.getReview_writer());
+		System.out.println("review delete 기능 처리 전");
 		mybatis.delete("ReviewDAO.deleteReview", vo);
 		System.out.println("review delete 기능 수행함");
 	}
@@ -46,14 +46,15 @@ public class ReviewDAOMybatis {
 	// 댓글 목록 조회
 	public List<ReviewVO> getReviewList(ReviewVO vo) {
 		System.out.println("getReviewList Mybatis 기능 처리 전 ");
-		
+	
 		return mybatis.selectList("ReviewDAO.getReviewList",vo);
+
 	}
 
 	// 전체댓글 목록 갯수
 	public int getTotal(ReviewVO vo) {
-		System.out.println("===> mybatis로 getReviewListCnt() 기능 처리");
-		return mybatis.selectOne("ReviewDAO.totalReviewListCnt",vo);
+		System.out.println("===> mybatis로 getBoardListCnt() 기능 처리");
+		return mybatis.selectOne("ReviewDAO.totalBoardListCnt", vo);
 
 	}
 
