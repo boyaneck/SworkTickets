@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberDAO">
-	<!-- 멤버등록 -->
+	<!-- 회원가입 -->
 	<insert id="insertMember">
-		INSERT INTO MEMBER(MB_ID, MB_PW, MB_NAME, MB_PHONE, MB_EMAIL)
+		INSERT IGNORE INTO MEMBER(MB_ID, MB_PW, MB_NAME, MB_PHONE, MB_EMAIL)
 		VALUES( #{mb_id}, #{mb_pw},#{mb_name}, #{mb_phone}, #{mb_email})
 	</insert>
 	

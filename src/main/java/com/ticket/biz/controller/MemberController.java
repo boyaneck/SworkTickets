@@ -33,7 +33,6 @@ public class MemberController {
     @RequestMapping(value = "/idChk", method = RequestMethod.POST)
     public int idChk(@RequestParam Map<String, Object> param) {
 //        int result = memberService.idChk(param);
-       System.out.println(memberService.idChk(param));
         return memberService.idChk(param);
         
     }
@@ -67,9 +66,7 @@ public class MemberController {
 	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
 				|| session.getAttribute("mb_Id").equals("admin")) {
-			System.out.println("1111111111111");
 			String password = pwCheck.encrypt(vo.getMb_pw());
-			System.out.println("2222222222222" + password);
 			vo.setMb_pw(password);
 			memberService.updateMember(vo);
 			return "member/mypage";
@@ -93,7 +90,6 @@ public class MemberController {
 	// 멤버등록
 	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) throws IllegalStateException {
-		System.out.println("2222222222222" + vo.getMb_id());
 		String password = vo.getMb_pw();
 		// 창일 추가
 		vo.setMb_pw(pwCheck.encrypt(password));
@@ -106,11 +102,8 @@ public class MemberController {
 	@RequestMapping("/registerTerm")
 	public ModelAndView registerTerm(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1,
 			@RequestParam(value = "agree2", defaultValue = "false") Boolean agree2, MemberVO vo) throws Exception {
-		System.out.println("agree: " + agree1);
-//		System.out.println("이용약관입니다.");
 		ModelAndView mv = new ModelAndView();
 		if (agree1 == true && agree2 == true) {
-			System.out.println("이용약관입니다.");
 			mv.setViewName("views/insertMember");
 			return mv;
 		} else {
@@ -119,7 +112,7 @@ public class MemberController {
 		}
 
 	}
-	// 이용약관
+	// 이용약관 뷰
 
 	@RequestMapping(value = "/step1")
 	public String register_term() {
