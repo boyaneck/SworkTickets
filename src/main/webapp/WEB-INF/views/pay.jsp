@@ -9,6 +9,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
+<style>
+.rectangle {
+  border-radius:30px;
+  width: 430px;
+  height: 150px;
+  border: solid black;
+  background-color: white;
+  margin:10px;
+  padding: 5px;
+}
+
+</style>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 var chk = false;
@@ -202,7 +214,7 @@ $('#testBtn').click(function(e){
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">쿠폰 목록</h5>
@@ -211,25 +223,33 @@ $('#testBtn').click(function(e){
         </button>
       </div>
       <div class="modal-body">
-             <div class="container">
-         <table class="table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+             
          <c:forEach items="${couponList}" var="coupon">
          <fmt:parseDate var="endDate_D" value="${coupon.c_date }"  pattern="yyyy-MM-dd"/>
          <fmt:parseNumber var="endDate_N" value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" /> 
          
-            <tr>
-              <td class="text-center">쿠폰명 : ${coupon.c_name}<br>
-              할인율 : ${coupon.c_per}%<br>
-              만료날짜 : ${coupon.c_date}
-               </td>
-                <td class="text-center text-danger"> ${endDate_N-startDate_N}일 남음 </td>
-          <td class="text-center">
-          <button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button> </td>
+      	<div class="container">
 
-            </tr>
+				<div class="rectangle">
+					<div class="row">
+						<div class="col-4">
+							<h1 class="text-center"
+								style="transform: translate(0, 80%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
+						</div>
+						<div class="col" style="transform: translate(0, 0); text-align:left;">
+							<b id="c_name" style="font-size: 40px">${coupon.c_name}</b><br>
+							${coupon.c_date}까지<br> <span class="text-danger"><small>
+									${endDate_N-startDate_N}일 남음</small></span>
+
+							    <button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
 </c:forEach>
-</table>
-</div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
