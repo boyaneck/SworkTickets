@@ -1,6 +1,7 @@
 package com.ticket.biz.member.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +24,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void logout(HttpSession session) {
+		// TODO Auto-generated method stub
 
 	}
 
@@ -47,11 +49,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.deleteMember(vo);
 	}
 
-	   @Override
-	   public MemberVO getMember(MemberVO vo) {
-	      System.out.println(vo.getMb_id());
-	      return memberDAO.getMember(vo);
-	   }
+	@Override
+	public MemberVO getMember(MemberVO vo) {
+		return memberDAO.getMember(vo);
+	}
 
 	@Override
 	public void updateMember(MemberVO vo) {
@@ -59,13 +60,23 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO find(MemberVO vo) {
-		return memberDAO.find(vo);
+	public int idChk(Map<String, Object> param) {
+		return memberDAO.idChk(param);
 	}
 
-	@Override
-	public int change(MemberVO vo) {
-		return memberDAO.change(vo);
+	// 비밀번호 찾기
+//	public String findPw(Map<String, Object> param) {
+//		return memberDAO.findPw(param);
+//	}
+	
+	public List<MemberVO> findPw(MemberVO vo){
+		return memberDAO.findPw(vo);
 	}
-
+	
+	//아이디 중복체크
+    @Override
+    public int idChk(Map<String, Object> param) {
+    	System.out.println(param);
+        return memberDAO.idChk(param);
+    }
 }

@@ -5,56 +5,40 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ExhibitionVO {
-	
+
 	private int exh_no;
 	private String exh_title;
 	private int exh_price;
-	private Date exh_st_date; 
-	private Date exh_end_date; 
-	private Date exh_rge_date; 
-	private Date exh_mdf_date; 
+	private Date exh_st_date;
+	private Date exh_end_date;
+	private Date exh_rge_date;
+	private Date exh_mdf_date;
 	private String exh_location;
 	private String exh_hall;
 	private String exh_content;
-	private String exh_thumbnail;
-	private String exh_banne;
 	private String exh_img;
 	private String exh_planner;
 	private String exh_time;
 	private String exh_rating;
 	private String exh_artist;
-	private String exh_place_x;
-	private String exh_place_y;
+	private float exh_place_x;
+	private float exh_place_y;
 	private String exh_local_name;
-	private int exh_cancell;
-	
 
-	private String exSearchCondition;
-	private String exSearchKeyword;
-	
-	private MultipartFile uploadFile;	
-	
+	private String searchKeyword;
+
+	private MultipartFile uploadFile;
+
 	private int offset;
 
-	
+
 	private int exh_common_no;
 	private String exh_cs_phone;
 	private int exh_fee;
 	private String exh_shipping_info;
 	private String exh_period_use;
 	private String exh_refund_info;
-	
-	//랭킹 추가
-		private int rank_cnt;
-		
-		public int getRank_cnt() {
-			return rank_cnt;
-		}
-		public void setRank_cnt(int rank_cnt) {
-			this.rank_cnt = rank_cnt;
-		}
 
-//		랭킹 추가 끝
 
 	public int getExh_common_no() {
 		return exh_common_no;
@@ -93,8 +77,8 @@ public class ExhibitionVO {
 		this.exh_refund_info = exh_refund_info;
 	}
 
-	
-	
+
+
 	public int getExh_no() {
 		return exh_no;
 	}
@@ -174,23 +158,7 @@ public class ExhibitionVO {
 	public void setExh_content(String exh_content) {
 		this.exh_content = exh_content;
 	}
-	
-	public String getExh_thumbnail() {
-		return exh_thumbnail;
-	}
-	
-	public void setExh_thumbnail(String exh_thumbnail) {
-		this.exh_thumbnail = exh_thumbnail;
-	}
-	
-	public String getExh_banne() {
-		return exh_banne;
-	}
-	
-	public void setExh_banne(String exh_banne) {
-		this.exh_banne = exh_banne;
-	}
-	
+
 	public String getExh_img() {
 		return exh_img;
 	}
@@ -231,19 +199,19 @@ public class ExhibitionVO {
 		this.exh_artist = exh_artist;
 	}
 
-	public String getExh_place_x() {
+	public float getExh_place_x() {
 		return exh_place_x;
 	}
 
-	public void setExh_place_x(String exh_place_x) {
+	public void setExh_place_x(float exh_place_x) {
 		this.exh_place_x = exh_place_x;
 	}
 
-	public String getExh_place_y() {
+	public float getExh_place_y() {
 		return exh_place_y;
 	}
 
-	public void setExh_place_y(String exh_place_y) {
+	public void setExh_place_y(float exh_place_y) {
 		this.exh_place_y = exh_place_y;
 	}
 
@@ -251,28 +219,16 @@ public class ExhibitionVO {
 		return exh_local_name;
 	}
 
-	public int getExh_cancell() {
-		return exh_cancell;
-	}
-	public void setExh_cancell(int exh_cancell) {
-		this.exh_cancell = exh_cancell;
-	}
-	
 	public void setExh_local_name(String exh_local_name) {
 		this.exh_local_name = exh_local_name;
 	}
 
-	public String getExSearchCondition() {
-		return exSearchCondition;
+	public String getSearchKeyword() {
+		return searchKeyword;
 	}
-	public void setExSearchCondition(String exSearchCondition) {
-		this.exSearchCondition = exSearchCondition;
-	}
-	public String getExSearchKeyword() {
-		return exSearchKeyword;
-	}
-	public void setExSearchKeyword(String exSearchKeyword) {
-		this.exSearchKeyword = exSearchKeyword;
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 
 	public MultipartFile getUploadFile() {
@@ -290,6 +246,6 @@ public class ExhibitionVO {
 	public void setOffset(int offset) {
 		this.offset = offset;
 	}
-	
-	
+
+
 }
