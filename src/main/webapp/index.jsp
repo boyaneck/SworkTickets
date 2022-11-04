@@ -45,7 +45,9 @@
 <h2><span style="color:#7832f7">NEW</span> EXHIBITION</h2>
 <h3 style="color:#fff">NEW EXHIBITION</h3>
 </div>
-
+<div>
+<img class="d-inline-block w-25" src="./images/1.png"><img class="d-inline-block w-25" src="./images/2.png">
+</div>
 <div class="new_ex">
 <button type="button" onclick = "location.href= '../getUserExhibitionList'" ><span style="color:#7832f7">+</span>more</button>
 </div>
