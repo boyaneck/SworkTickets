@@ -34,7 +34,10 @@
    
    <select id="totalCouponListCnt" resultType="_int">
       SELECT COUNT(*) FROM COUPON WHERE 1=1 
-   
+   <if test="mb_id != 'admin' ">and DATE(C_DATE) >= DATE(NOW())</if>
+      ORDER BY 
+      <if test="mb_id == 'admin' ">C_DATE,</if>
+        C_NUM DESC
    </select>
    
 
