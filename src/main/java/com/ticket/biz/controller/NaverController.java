@@ -83,7 +83,7 @@ public class NaverController {
 		model.addAttribute("naverInfo", userInfo);
 		session.setAttribute("naverLogin", userInfo);
 
-		if (member.getMb_id() == null) {
+		if (member.getMb_id() != null) {
 			memberService.insertMember(member);
 		} else {
 			System.out.println("테스트");

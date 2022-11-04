@@ -8,6 +8,21 @@
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
 </head>
+<script>
+function pwChk(){
+    $.ajax({
+        url : "/pwChk",
+        type : "post", 
+        dataType : "json", 
+        data : {"mb_pw" : $("#mb_pw").val()},  
+        success : function(data){
+           if(data == 0){
+                alert("비밀번호가 일치하지 않습니다.");
+           }
+        }
+   })
+}
+</script>
 <body>
 	<form action="mypage">
 		<div class="card-body">
@@ -21,7 +36,7 @@
 				</div>
 
 			</div>
-			<button class="btn bg-gradient-primary w-100 my-4 mb-2" id="checkPwd">
+			<button type="button" onclick="pwChk()" class="btn bg-gradient-primary w-100 my-4 mb-2" id="checkPwd">
 				비밀번호 확인</button>
 
 			<!-- <script>

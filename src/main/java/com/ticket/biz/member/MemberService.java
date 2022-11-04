@@ -5,12 +5,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 public interface MemberService {
 	
 	
+	   // 회원 수정 비밀번호 확인
+	   int pwChk(Map<String, Object> param);
+	   //아이디 중복체크
+	int idChk(Map<String, Object> param);
 	/*회원가입*/
 	void insertMember(MemberVO vo);
 
@@ -40,7 +42,6 @@ public interface MemberService {
 
 	// 비번 변경
 	int change(MemberVO vo);
-	
-	// 아이디 중복체크
-	int idChk(Map<String, Object> param);
+
+
 }

@@ -17,6 +17,12 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 
+	//패스워드찾기
+    @Override
+    public int pwChk(Map<String, Object> param) {
+        return memberDAO.pwChk(param);
+    }
+    
 	   //아이디 중복체크
     @Override
     public int idChk(Map<String, Object> param) {
