@@ -14,6 +14,12 @@ public class ReviewVO {
 	private Timestamp review_reg;
 	
 	
+	public String getReview_writer() {
+		return review_writer;
+	}
+	public void setReview_writer(String review_writer) {
+		this.review_writer = review_writer;
+	}
 	
 	
 	
@@ -30,12 +36,7 @@ public class ReviewVO {
 	public void setReview_no(int review_no) {
 		this.review_no = review_no;
 	}
-	public String getReview_writer() {
-		return review_writer;
-	}
-	public void setReview_writer(String review_writer) {
-		this.review_writer = review_writer;
-	}
+	
 	public String getReview_content() {
 		return review_content;
 	}

@@ -39,6 +39,7 @@ $(document).ready(function(){
 				console.log("받아온 데이터의 리스트와, 총 댓글 수 ")
 				console.log(list);
 				console.log(data.total);
+				console.log(list.review_no);
 				console.log(reviewList);
 				
 				var comment_html = "<div>";
@@ -63,8 +64,8 @@ $(document).ready(function(){
 						console.log(writer_d);
 // 						console.log("딜리트!!!!!!!!!"+reviewList.review_writer);
 // 						 comment_html += "<span id='delete' style='cursor:pointer;' >(삭제하기)</span><br></div><hr>";
-						comment_html += "<button id='delete' style='cursor:pointer;' onclick='del(`${mb_Id}`)'>(삭제하기)</button><br></div><hr>";
-						
+// 						comment_html += "<button id='delete' style='cursor:pointer;' onclick='del(`${mb_Id}`)'>(삭제하기)</button><br></div><hr>";
+						comment_html += "<button id='delete' style='cursor:pointer;' onclick='del(`${reviewlist.review_no}`)'>(삭제하기)</button><br></div><hr>";
 									 
 					}
 					else{

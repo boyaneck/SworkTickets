@@ -50,11 +50,12 @@ public class ReviewController {
 	@RequestMapping("/deleteReview")
 	public String deleteReview(ReviewVO vo, HttpSession session) {
 		System.out.println("deleteReview 기능 처리 전");
-		int val=0;
-		System.out.println("val " +val);
+//		int val=0;
+//		System.out.println("val " +val);
 		System.out.println("deleteReview controller 에서 review_no 받기" +vo.getReview_writer());
 		System.out.println("컨트롤러 to string"+ vo.toString());
 			reviewservice.deleteReview(vo);
+			System.out.println("delete 컨트롤러 다 탔음");
 			return "redirect:reviewwrite.jsp";
 	}
 
@@ -69,11 +70,12 @@ public class ReviewController {
 		
 //		model.addAttribute("reviewList",reviewservice.getReviewList(vo));
 		List<ReviewVO> reviewList=reviewservice.getReviewList(vo);
-		System.out.println("toString"+vo.toString());
-				List<ReviewVO> list = reviewservice.getReviewList(vo);
+		System.out.println("toString"+reviewList.toString());
+//				List<ReviewVO> list = reviewservice.getReviewList(vo);
 				System.out.println("getReviewList 실행후 컨트롤러 안 ");
-		int bno =vo.getReview_bno();
-		System.out.println("reviewList 실행 뒤 가져온 컨트롤러 안에서  bno"+bno);
+		int no =vo.getReview_no();
+		
+		System.out.println("reviewList 실행 뒤 가져온 컨트롤러 안에서  no!!!!!!!!"+no);
 		
 		int total = reviewservice.getTotal(vo);
 		System.out.println("bno1"+vo.getReview_bno());
@@ -81,7 +83,7 @@ public class ReviewController {
 		System.out.println("댓글 갯수 " + reviewservice.getTotal(vo));
 		
 		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
+//		map.put("list", list);
 		map.put("total", total);
 		map.put("reviewlist",reviewList);
 		view.setViewName("reviewwrite");
