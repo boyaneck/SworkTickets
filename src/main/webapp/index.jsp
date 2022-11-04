@@ -48,6 +48,16 @@
   </button> -->
 </div>
 
+<!-- 전시버튼 -->
+<div class="new_title">
+<h2><span style="color:#7832f7">NEW</span> EXHIBITION</h2>
+<h3 style="color:#fff">NEW EXHIBITION</h3>
+</div>
+
+<div class="new_ex">
+<button type="button" onclick = "location.href= '../getUserExhibitionList'" ><span style="color:#7832f7">+</span>more</button>
+</div>
+
 <!-- <div class="maintext">
 aa
 </div> -->
@@ -62,16 +72,13 @@ aa
 <!-- <a href="/MyCoupon">- 내 쿠폰함</a><br> -->
 <!-- <a href="/getOneList">- 1대1문의</a><br> -->
 <!-- <a href="login.jsp">- 로그인</a><br> -->
-<a href="reviewwrite.jsp">후기</a><br>
 <br><br>
-관리자 메뉴  
+관리자 메뉴 
 <br><br>
 <a href="/getMemberList">- 회원목록</a><br>
 <a href="insertCoupon.jsp">- 쿠폰등록</a><br>
 <a href="/getCouponList">- 쿠폰목록</a><br>
 <a href="/pay">- 관리자 결제목록</a><br>
-
-
 <div class="container-fluid">
 	<div class="h-100 d-inline-block bg-dark text-white">디브</div>
 </div>

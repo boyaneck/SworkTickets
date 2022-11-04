@@ -27,13 +27,12 @@ public class GoodController {
 
 	//좋아요 등록
 	@RequestMapping(value = "/good_pick")
-	public String insertGood(GoodVO vo,HttpSession session,HttpServletRequest request) throws IllegalStateException, IOException {
+	public String insertGood(GoodVO vo,HttpSession session,HttpServletRequest request,Model model) throws IllegalStateException, IOException {
 		String id=(String)session.getAttribute("mb_Id");
 		int exh_no= vo.getExh_no();
 		vo.setMb_id(id);
 		vo= goodService.getGoodChk(vo);
 		boolean yn=goodService.getGoodYN(vo);
-		
 		if(yn==true) {
 				vo.setExh_no(exh_no);
 				vo.setMb_id(id);
@@ -49,7 +48,7 @@ public class GoodController {
 			goodService.insertGood(insert_vo);
 			System.out.println("좋아요 등록");
 		}
-		return "redirect:getUserExhibitionList";
+		return "forward:/getUserExhibitionList";
 	}
 	
 	// 유저 좋아요 목록 조회

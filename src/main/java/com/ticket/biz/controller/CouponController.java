@@ -25,6 +25,11 @@ public class CouponController {
 	@Autowired
 	private CouponService couponService;
 
+	//쿠폰 등록폼
+	@RequestMapping(value = "/insertCouponForm")
+	public String insertCouponForm(CouponVO vo) throws IllegalStateException, IOException {
+		return "admin/insertCoupon";
+	}
 
 	//쿠폰 등록
 	@PostMapping(value = "/insertCoupon")

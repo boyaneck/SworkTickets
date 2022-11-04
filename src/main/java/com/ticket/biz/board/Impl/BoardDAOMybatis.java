@@ -1,4 +1,4 @@
-package com.ticket.biz.board.impl;
+package com.ticket.biz.board.Impl;
 
 import java.util.List;
 
@@ -53,6 +53,6 @@ public class BoardDAOMybatis {
 	public int totalBoardListCnt(BoardVO vo) {
 		System.out.println("===> mybatis로 getBoardListCnt() 기능 처리");
 		return mybatis.selectOne("BoardDAO.totalBoardListCnt", vo);
-		
+
 	}
 }

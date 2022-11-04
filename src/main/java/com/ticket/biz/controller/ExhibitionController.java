@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.exhibition.ExhibitionService;
 import com.ticket.biz.exhibition.ExhibitionVO;
+import com.ticket.biz.good.GoodService;
 
 @Controller
 @SessionAttributes("exhibition")
@@ -140,6 +141,7 @@ public class ExhibitionController {
 			return "exhibition/UserExhibitionDetail";
 		}
 	
+		
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")
 		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
@@ -155,6 +157,7 @@ public class ExhibitionController {
 
 					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 					vo.setOffset(pvo.getOffset());
+					
 					
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
