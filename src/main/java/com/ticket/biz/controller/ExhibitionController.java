@@ -3,6 +3,7 @@ package com.ticket.biz.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.exhibition.ExhibitionService;
@@ -53,24 +55,35 @@ public class ExhibitionController {
 	// 전시 등록 이동
 		@RequestMapping("/insertmoveExhibition")
 		public String insertmoveExhibition(ExhibitionVO vo, Model model) {
-//			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
+			System.out.println("상세보기 갔다가 다시 등록하기 누름"+vo.toString());
+//			model.addAttribute("exhibition", exhibitsionService.getExhibition(vo));
 			return "admin/ExhibitionInsert";
 		}
 
 	// 전시 등록
-	@PostMapping("/insertExhibition")
-	// public String insertBoard(MultipartHttpServletRequest request, ExhibitionVO vo) throws IllegalStateExcetion, IOException {
-	public String insertExhibition(ExhibitionVO vo) throws IllegalStateException, IOException {
-		MultipartFile uploadFile = vo.getUploadFile();
-		// String realPath=request.getSession().getServletContext().getRealPath("/img/");
-		String realPath = "c:/swork/tickets/src/main/webapp/img/";
-		String fileName = uploadFile.getOriginalFilename();
-		if (!uploadFile.isEmpty()) {
-			vo.setExh_img(fileName);
-			uploadFile.transferTo(new File(realPath + fileName));
+	@PostMapping(value="/insertExhibition")
+	public String requestupload2(MultipartHttpServletRequest mRequest, ExhibitionVO vo) {
+		List<MultipartFile> fileList = mRequest.getFiles("uploadFile");
+		String realPath = "C:/swork/tickets/src/main/webapp/images/";
+		String fileName="";
+		System.out.println("4");
+		for (MultipartFile mf : fileList) {
+			fileName +="/"+ mf.getOriginalFilename(); // 원본 파일 명
+			long fileSize = mf.getSize(); // 파일 사이즈
+			String fileSaveName=mf.getOriginalFilename();
+			String safeFile = realPath + fileSaveName;
+			
+			vo.setExh_img(fileName);//파일명 담음
+			try {
+				mf.transferTo(new File(safeFile));//파일 저장?
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		exhibitionService.insertExhibition(vo);
-		return "redirect:ExhibitionList";
+		return "redirect:getExhibitionList";
 	}
 
 	// 전시 수정
@@ -83,7 +96,7 @@ public class ExhibitionController {
 	// 전시 삭제
 	@RequestMapping("/deleteExhibition")
 	public String deleteExhibition(ExhibitionVO vo, HttpSession session,HttpServletRequest request) {
-//		String realPath = "c:/swork/tickets/src/main/webapp/img/";
+//		String realPath = "C:/swork/tickets/src/main/webapp/images/";
 //		vo = exhibitionService.getExhibition(vo);
 //		if (vo.getExh_img() != null) {
 //			System.out.println("파일삭제 : " + realPath + vo.getExh_img());
@@ -128,6 +141,7 @@ public class ExhibitionController {
 
 				model.addAttribute("paging", pvo);
 				model.addAttribute("exhibitionList", exhibitionService.getExhibitionList(vo));
+				
 				System.out.println("컨트롤러 완료");
 				return "admin/ExhibitionList";
 	}

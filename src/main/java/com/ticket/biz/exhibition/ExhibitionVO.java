@@ -5,14 +5,14 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ExhibitionVO {
-
+	
 	private int exh_no;
 	private String exh_title;
 	private int exh_price;
-	private Date exh_st_date;
-	private Date exh_end_date;
-	private Date exh_rge_date;
-	private Date exh_mdf_date;
+	private Date exh_st_date; 
+	private Date exh_end_date; 
+	private Date exh_rge_date; 
+	private Date exh_mdf_date; 
 	private String exh_location;
 	private String exh_hall;
 	private String exh_content;
@@ -26,27 +26,30 @@ public class ExhibitionVO {
 	private String exh_place_x;
 	private String exh_place_y;
 	private String exh_local_name;
-	private int exh_cancell;
-
+	private int exh_approval;
+	
 
 	private String exSearchCondition;
 	private String exSearchKeyword;
-
-	private MultipartFile uploadFile;
+	
+	private MultipartFile uploadFile;	
+	private MultipartFile uploadFile_thumb;	
+	private MultipartFile uploadFile_banne;	
+	
 
 	private int offset;
 
-
+	
 	private int exh_common_no;
 	private String exh_cs_phone;
 	private int exh_fee;
 	private String exh_shipping_info;
 	private String exh_period_use;
 	private String exh_refund_info;
-
+	
 	//랭킹 추가
 		private int rank_cnt;
-
+		
 		public int getRank_cnt() {
 			return rank_cnt;
 		}
@@ -93,8 +96,8 @@ public class ExhibitionVO {
 		this.exh_refund_info = exh_refund_info;
 	}
 
-
-
+	
+	
 	public int getExh_no() {
 		return exh_no;
 	}
@@ -174,23 +177,23 @@ public class ExhibitionVO {
 	public void setExh_content(String exh_content) {
 		this.exh_content = exh_content;
 	}
-
+	
 	public String getExh_thumbnail() {
 		return exh_thumbnail;
 	}
-
+	
 	public void setExh_thumbnail(String exh_thumbnail) {
 		this.exh_thumbnail = exh_thumbnail;
 	}
-
+	
 	public String getExh_banne() {
 		return exh_banne;
 	}
-
+	
 	public void setExh_banne(String exh_banne) {
 		this.exh_banne = exh_banne;
 	}
-
+	
 	public String getExh_img() {
 		return exh_img;
 	}
@@ -251,13 +254,15 @@ public class ExhibitionVO {
 		return exh_local_name;
 	}
 
-	public int getExh_cancell() {
-		return exh_cancell;
+	public int getExh_approval() {
+		return exh_approval;
 	}
-	public void setExh_cancell(int exh_cancell) {
-		this.exh_cancell = exh_cancell;
+	
+	public void setExh_approval(int exh_approval) {
+		this.exh_approval = exh_approval;
+		
 	}
-
+	
 	public void setExh_local_name(String exh_local_name) {
 		this.exh_local_name = exh_local_name;
 	}
@@ -282,6 +287,18 @@ public class ExhibitionVO {
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
+	public MultipartFile getUploadFile_thumb() {
+		return uploadFile_thumb;
+	}
+	public void setUploadFile_thumb(MultipartFile uploadFile_thumb) {
+		this.uploadFile_thumb = uploadFile_thumb;
+	}
+	public MultipartFile getUploadFile_banne() {
+		return uploadFile_banne;
+	}
+	public void setUploadFile_banne(MultipartFile uploadFile_banne) {
+		this.uploadFile_banne = uploadFile_banne;
+	}
 
 	public int getOffset() {
 		return offset;
@@ -290,6 +307,6 @@ public class ExhibitionVO {
 	public void setOffset(int offset) {
 		this.offset = offset;
 	}
-
-
+	
+	
 }
