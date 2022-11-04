@@ -34,9 +34,14 @@ public class ReviewServiceImpl implements ReviewService{
 	public int getTotal(ReviewVO vo) {
 		return reviewDAO.getTotal(vo);
 	
-
-		
 	}
+	
+	@Override
+	public void deleteReview(ReviewVO vo) {
+		System.out.println("delete Review service Impl 기능 처리");
+		reviewDAO.deleteReview(vo);
+	}
+	
 //
 //	@Override
 //	public List<ReviewVO> myRecord(String review_writer) {
@@ -44,11 +49,7 @@ public class ReviewServiceImpl implements ReviewService{
 //		return null;
 //	}
 //
-//	@Override
-//	public void deleteReview(ReviewVO vo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+
 //
 //	@Override
 //	public List<ReviewVO> getReivewList(ReveiwVO vo) {
@@ -57,11 +58,7 @@ public class ReviewServiceImpl implements ReviewService{
 //	}
 
 
-	@Override
-	public void deleteReview(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public List<ReviewVO> myRecord(String review_writer) {
