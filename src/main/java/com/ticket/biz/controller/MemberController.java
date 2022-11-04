@@ -28,15 +28,22 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-    // 아이디 중복 검사
-    @ResponseBody
-    @RequestMapping(value = "/idChk", method = RequestMethod.POST)
-    public int idChk(@RequestParam Map<String, Object> param) {
+	// 아이디 중복 검사
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(@RequestParam Map<String, Object> param) {
 //        int result = memberService.idChk(param);
-        return memberService.idChk(param);
-        
-    }
-    
+		return memberService.idChk(param);
+
+	}
+	// 회원 수정 비밀번호 확인
+	@ResponseBody
+	@RequestMapping(value = "/pwChk", method = RequestMethod.POST)
+	public int pwChk(@RequestParam Map<String, Object> param) {
+		return memberService.pwChk(param);
+	}
+
+
 	// 회원 검색
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
@@ -47,60 +54,57 @@ public class MemberController {
 		conditionMap.put("이메일", "MB_EMAIL");
 		return conditionMap;
 	}
+
 	// 회원수정 접근 비밀번호
-		@RequestMapping(value="/mypageView")
-		public String mypageConfirm(MemberVO vo, Model model, HttpSession session) {
-			String password = vo.getMb_pw();
-			
+	@RequestMapping(value = "/mypageView")
+	public String mypageConfirm(MemberVO vo, Model model, HttpSession session) {
+		String password = vo.getMb_pw();
+
 //			if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
 //				throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
 //			}
-				return "member/mypageConfirm";
-		}
+		return "member/mypageConfirm";
+	}
 
 //			System.out.println(session.getAttribute("mb_Id"));
 //			System.out.println(vo.getMb_pw());
 //			System.out.println("aaaa");
-		
-		
 
-		// 회원마이페이지
-		@RequestMapping(value = "/mypage")
-		public String getMyPage( MemberVO vo, Model model, HttpSession session) {
-			System.out.println("회원정보가져오기");
-			model.addAttribute("member", memberService.getMember(vo));
-			System.out.println("1111111"+memberService.getMember(vo));
-			if (memberService.getMember(vo) != null) {
-				boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
-				if (login == true) {
-					System.out.println("로그인");
-					session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
-					return "member/mypage";
-				} else {
-					System.out.println("실패");
-					return "member/mypageConfirm";
-				}
-			}
-
-		      
-			return "member/mypage";
-		}
-
-		// 회원 수정
-		@RequestMapping("/updateMember")
-		public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
-			if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
-					|| session.getAttribute("mb_Id").equals("admin")) {
-				System.out.println("1111111111111");
-				String password = pwCheck.encrypt(vo.getMb_pw());
-				System.out.println("2222222222222" + password);
-				vo.setMb_pw(password);
-				memberService.updateMember(vo);
+	// 회원마이페이지
+	@RequestMapping(value = "/mypage")
+	public String getMyPage(MemberVO vo, Model model, HttpSession session) {
+		System.out.println("회원정보가져오기");
+		model.addAttribute("member", memberService.getMember(vo));
+		System.out.println("1111111" + memberService.getMember(vo));
+		if (memberService.getMember(vo) != null) {
+			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
+			if (login == true) {
+				System.out.println("로그인");
+				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
 				return "member/mypage";
 			} else {
-				return "redirect:member/mypage?error=1";
+				System.out.println("실패");
+				return "member/mypageConfirm";
 			}
 		}
+
+		return "member/mypage";
+	}
+	// 회원 수정
+	@RequestMapping("/updateMember")
+	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
+		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
+				|| session.getAttribute("mb_Id").equals("admin")) {
+			System.out.println("1111111111111");
+			String password = pwCheck.encrypt(vo.getMb_pw());
+			System.out.println("2222222222222" + password);
+			vo.setMb_pw(password);
+			memberService.updateMember(vo);
+			return "member/mypage";
+		} else {
+			return "redirect:member/mypage?error=1";
+		}
+	}
 
 //	// 멤버등록
 //	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)

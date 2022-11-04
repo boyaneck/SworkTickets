@@ -15,6 +15,12 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
+	
+	   // 회원 수정 비밀번호 확인
+	   public int pwChk(Map<String, Object> param) {
+	      return mybatis.selectOne("MemberDAO.pwChk", param);
+	   }
+	   
 	// 아이디 중복체크
 	public int idChk(Map<String, Object> param) {
 

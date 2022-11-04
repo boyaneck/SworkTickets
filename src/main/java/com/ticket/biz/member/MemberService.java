@@ -9,6 +9,9 @@ import javax.servlet.http.HttpSession;
 public interface MemberService {
 	
 	
+	   // 회원 수정 비밀번호 확인
+	   int pwChk(Map<String, Object> param);
+	   //아이디 중복체크
 	int idChk(Map<String, Object> param);
 	/*회원가입*/
 	void insertMember(MemberVO vo);
