@@ -1,4 +1,4 @@
-package com.ticket.biz.board.impl;
+package com.ticket.biz.board.Impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
