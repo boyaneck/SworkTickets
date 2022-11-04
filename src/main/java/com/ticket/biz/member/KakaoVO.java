@@ -5,8 +5,8 @@ public class KakaoVO {
 	private String REST_API_KEY = "4261ff490e85bca326e55849230898ef";
 	private String ADMIN_KEY = "6463140455b8d45caf00afb3bff98247";
 	private String code;
-	
-	
+
+
 	public String getCode() {
 		return code;
 	}

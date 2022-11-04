@@ -16,19 +16,19 @@ public class Interceptor implements HandlerInterceptor{
 			throws Exception {
 		String reqUrl= request.getRequestURL().toString();
 		System.out.println("reqUrl: "+reqUrl);
-	
+
 		for(String target :EXCLUDE_URL_LIST) {
 			if(reqUrl.indexOf(target)>-1) {
 				return true;
 			}
 		}
-		
+
 		HttpSession session= request.getSession();
 		String userId= (String)session.getAttribute("mb_Id");
-		
+
 		if(userId==null || userId.trim().equals("")) {
 			session.invalidate();
-			
+
 			response.sendRedirect(request.getContextPath()+"/login.jsp");
 			return false;
 		}
@@ -41,5 +41,5 @@ public class Interceptor implements HandlerInterceptor{
 		}
 		return true;
 	}
-		
+
 }

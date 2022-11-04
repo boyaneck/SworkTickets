@@ -38,6 +38,16 @@ public class MemberController {
         
     }
 
+    // 아이디 중복 검사
+    @ResponseBody
+    @RequestMapping(value = "/idChk", method = RequestMethod.POST)
+    public int idChk(@RequestParam Map<String, Object> param) {
+//        int result = memberService.idChk(param);
+       System.out.println(memberService.idChk(param));
+        return memberService.idChk(param);
+        
+    }
+    
 	// 회원 검색
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
@@ -54,7 +64,7 @@ public class MemberController {
 	public String getMyPage(MemberVO vo, Model model, HttpSession session) {
 
 		System.out.println("회원정보가져오기");
-		
+
 
 		model.addAttribute("member", memberService.getMember(vo));
 

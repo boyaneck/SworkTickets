@@ -20,9 +20,9 @@ public class FaqRowMapper implements RowMapper<FaqVO>{
 	faq.setCate_name(rs.getString("cate_name"));
 	return faq;
 	}
-	
-	
 
-	
-	
+
+
+
+
 }

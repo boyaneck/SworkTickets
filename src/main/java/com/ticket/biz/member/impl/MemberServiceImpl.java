@@ -17,6 +17,13 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 
+	   //아이디 중복체크
+    @Override
+    public int idChk(Map<String, Object> param) {
+       System.out.println(param);
+        return memberDAO.idChk(param);
+    }
+    
 	@Override
 	public MemberVO loginCheck(MemberVO vo) {
 		return memberDAO.loginCheck(vo);

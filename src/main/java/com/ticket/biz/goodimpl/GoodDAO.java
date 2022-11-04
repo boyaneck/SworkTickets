@@ -15,7 +15,7 @@ public class GoodDAO {
 
 	@Autowired
     private	SqlSessionTemplate mybatis;
-	
+
 	//좋아요등록
 	public void insertGood(GoodVO vo) {
 		mybatis.insert("GoodDAO.insertGood",vo);
@@ -24,7 +24,7 @@ public class GoodDAO {
 	public void deleteGood(GoodVO vo) {
 		mybatis.delete("GoodDAO.deleteGood",vo);
 	}
-	
+
 	//좋아요 순위 목록
 	public List<GoodVO> getGoodList() {
 		return mybatis.selectList("GoodDAO.getGoodList");
@@ -42,7 +42,7 @@ public class GoodDAO {
 		else {
 			return true;}
 	}
-	
+
 	// 유저 전시 목록 조회
 	public List<ExhibitionVO> getMyGoodList(GoodVO vo) {
 		return mybatis.selectList("GoodDAO.getMyGoodList",vo);

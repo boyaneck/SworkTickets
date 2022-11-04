@@ -10,7 +10,7 @@ import com.ticket.biz.one.OneVO;
 
 @Service("oneService")
 public class OneServiceImpl implements OneService{
-	
+
 	@Autowired
 	private OneDAOMybatis oneDAO;
 
@@ -38,7 +38,8 @@ public class OneServiceImpl implements OneService{
 	public List<OneVO> getOneList(OneVO vo) {
 		return oneDAO.getOneList(vo);
 	}
-	
+
+	@Override
 	public int totalOneListCnt(OneVO vo) {
 		return oneDAO.totalOneListCnt(vo);
 	}

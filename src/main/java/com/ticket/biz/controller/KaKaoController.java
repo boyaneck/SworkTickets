@@ -192,7 +192,7 @@ public class KaKaoController {
 		String result = "";
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(KAKAO_TOKEN_URL);
-		Map<String, String> m = new HashMap<String, String>();
+		Map<String, String> m = new HashMap<>();
 		m.put("grant_type", "authorization_code");
 		m.put("client_id", vo.getREST_API_KEY());
 		m.put("redirect_uri", REDIRECT_URI);

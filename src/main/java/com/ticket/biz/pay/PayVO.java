@@ -13,15 +13,15 @@ public class PayVO {
 	private int p_chk;
 	private int exh_no;
 	private String exh_end_date;
-	
+
 	private String searchCondition;
 	private String searchKeyword;
 
 	private int offset;
-	
-	
-	
-	
+
+
+
+
 	public String getExh_end_date() {
 		return exh_end_date;
 	}
@@ -112,14 +112,14 @@ public class PayVO {
 	public void setBuyer_tel(String buyer_tel) {
 		this.buyer_tel = buyer_tel;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "PayVO [p_id=" + p_id + ", p_mer=" + p_mer + ", mb_id=" + mb_id + ", p_date=" + p_date + ", buyer="
 				+ buyer + ", buyer_email=" + buyer_email + ", buyer_tel=" + buyer_tel + ", exh_title=" + exh_title
 				+ ", amount=" + amount + ", p_chk=" + p_chk + ", exh_no=" + exh_no + "]";
 	}
-	
-	
-	
+
+
+
 }
