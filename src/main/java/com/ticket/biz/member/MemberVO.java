@@ -17,7 +17,7 @@ public class MemberVO {
 
 	private int offset;
 	private String find;
-	
+
 
 	public String getFind() {
 		return find;

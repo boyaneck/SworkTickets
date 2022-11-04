@@ -20,11 +20,11 @@ public class ReviewRowMapper implements RowMapper<ReviewVO>{
 	review.setRe_review(rs.getString("re_review"));
 	review.setReview_reg(rs.getTimestamp("review_reg"));
 	review.setReview_type(rs.getInt("review_type"));
-	
-	
 
-	
+
+
+
 		return review;
 	}
-	
+
 }

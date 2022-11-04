@@ -1,36 +1,36 @@
 package com.ticket.biz.member;
 
 public class NaverVO {
-	
+
 	//네이버 정보
 	private String client_id = "FvqDU_EOG1povZWb2YP6";
 	private String service_url = "http://localhost:8090/index";
 	private String callback_url = "http://localhost:8090";
 	private String client_secret = "cisI7m8b8z";
-	
-	
-	
-	// 네이버 로그인 연동 결과 Callback 정보 
+
+
+
+	// 네이버 로그인 연동 결과 Callback 정보
 	private String code;
 	private String state;
-	
-	
+
+
 	//접근토근 요청/응답정보
 	private String grant_type;
 	private String access_token;
 	private String refresh_token;
 	private String token_type;
 	private int expires_in;
-	
-	
+
+
 	//공통 - 연동결과 응답정보, 접근토근 응답정보
 	private String error;
 	private String error_description;
-	
+
 	private int inout;
-	
-	
-	
+
+
+
 	public String getClient_id() {
 		return client_id;
 	}
@@ -115,8 +115,8 @@ public class NaverVO {
 	public void setInout(int inout) {
 		this.inout = inout;
 	}
-	
-	
-	
-	
+
+
+
+
 }

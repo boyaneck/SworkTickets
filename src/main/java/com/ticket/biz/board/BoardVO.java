@@ -13,21 +13,21 @@ public class BoardVO {
 	private Date noti_date;
 	private String noti_category;
 	private Date noti_modify;
-	
+
 	private String searchCondition;
 	private String searchKeyword;
-	
-	
-	
+
+
+
 	private MultipartFile uploadFile;
 	private String filename;
 
 	private int offset;
-	
 
-	
-	
-	
+
+
+
+
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
@@ -94,7 +94,7 @@ public class BoardVO {
 	public void setNoti_date(Date noti_date) {
 		this.noti_date = noti_date;
 	}
-	
+
 	public Date getNoti_modify() {
 		return noti_modify;
 	}
@@ -109,7 +109,7 @@ public class BoardVO {
 				+ searchKeyword + ", uploadFile=" + uploadFile + ", filename=" + filename + ", offset=" + offset
 				+ ", noti_secret=" + "]";
 	}
-	
-	
-	
+
+
+
 }

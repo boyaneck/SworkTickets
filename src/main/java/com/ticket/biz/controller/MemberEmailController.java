@@ -30,14 +30,14 @@ public class MemberEmailController {
 		String key = "";
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(email);
-		
+
 		//보낼 인증번호 난수 생성 로직
 		for (int i = 0; i < 3; i++) {
 			// A~Z(대문자)까지 랜덤 알파벳 생성
-			int index = random.nextInt(25) + 65; 
+			int index = random.nextInt(25) + 65;
 			key += (char) index;
 			// 랜덤 정수를 생성
-			int numIndex = random.nextInt(10); 
+			int numIndex = random.nextInt(10);
 			key += numIndex;
 		}
 		//이메일의 제목이 되는 부분
@@ -47,7 +47,7 @@ public class MemberEmailController {
 		//이메일의 보내는 사람이 되는 부분(반드시 smtp설정한 이메일주소 입력, 다를 경우 인증 안됨) 예시: admin@gmail.com 등..
 		message.setFrom("hm_tickets@naver.com");
 		System.out.println("인증번호 값: "+key);
-		
+
 		sender.send(message);
 		System.out.println("메세지 : " + message);
 		session.setAttribute("emailKey", key);

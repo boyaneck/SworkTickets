@@ -5,13 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.ticket.biz.faq.FaqService;
 import com.ticket.biz.faq.FaqVO;
 
 @Service("faqService")
 public class FaqServiceImpl implements FaqService{
-	
+
 	@Autowired
 	private FaqDAOMybatis FaqDAO;
 
@@ -37,13 +36,13 @@ public class FaqServiceImpl implements FaqService{
 
 	@Override
 	public FaqVO getFaq(FaqVO vo) {
-		
+
 		return FaqDAO.getFaq(vo);
 	}
 
 	@Override
 	public List<FaqVO> getFaqList(FaqVO vo) {
-	
+
 		return FaqDAO.getFaqList(vo);
 	}
 
@@ -54,7 +53,7 @@ public class FaqServiceImpl implements FaqService{
 
 
 
-	
-	
+
+
 
 }

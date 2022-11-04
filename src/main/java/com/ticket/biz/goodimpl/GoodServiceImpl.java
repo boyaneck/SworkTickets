@@ -14,7 +14,7 @@ public class GoodServiceImpl implements GoodService{
 
 	@Autowired
 	private GoodDAO goodDAO;
-	
+
 	//좋아요 등록
 	@Override
 	public void insertGood(GoodVO vo) {
@@ -38,20 +38,20 @@ public class GoodServiceImpl implements GoodService{
 	@Override
 	public boolean getGoodYN(GoodVO vo) {
 		return goodDAO.getGoodYN(vo);
-		
+
 	}
 
 	//좋아요 삭제
 	@Override
 	public void deleteGood(GoodVO vo) {
 		goodDAO.deleteGood(vo);
-		
+
 	}
 
 
 	@Override
 	public List<ExhibitionVO> getMyGoodList(GoodVO vo) {
-		
+
 		return goodDAO.getMyGoodList(vo);
 	}
 
@@ -61,5 +61,5 @@ public class GoodServiceImpl implements GoodService{
 		// TODO Auto-generated method stub
 		return goodDAO.getMyGoodListCnt(vo);
 	}
-	
+
 }

@@ -11,7 +11,7 @@ public class ExhibitionRowMapper implements RowMapper<ExhibitionVO>{
 
 	@Override
 	public ExhibitionVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-		
+
 		ExhibitionVO exhibition = new ExhibitionVO();
 		exhibition.setExh_no(rs.getInt("exh_no"));
 		exhibition.setExh_title(rs.getString("exh_title"));
@@ -32,7 +32,7 @@ public class ExhibitionRowMapper implements RowMapper<ExhibitionVO>{
 		exhibition.setExh_place_y(rs.getString("exh_place_y"));
 		exhibition.setExh_local_name(rs.getString("exh_local_name"));
 		exhibition.setExh_cancell(rs.getInt("exh_cancell"));
-		
+
 		return exhibition;
 	}
 }

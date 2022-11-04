@@ -46,7 +46,7 @@ public class ReviewDAOMybatis {
 	// 댓글 목록 조회
 	public List<ReviewVO> getReviewList(ReviewVO vo) {
 		System.out.println("getReviewList Mybatis 기능 처리 전 ");
-	
+
 		return mybatis.selectList("ReviewDAO.getReviewList",vo);
 
 	}
