@@ -9,18 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
-<style>
-.rectangle {
-  border-radius:30px;
-  width: 430px;
-  height: 150px;
-  border: solid black;
-  background-color: white;
-  margin:10px;
-  padding: 5px;
-}
-
-</style>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 var chk = false;
@@ -170,53 +158,87 @@ $('#testBtn').click(function(e){
 </script>
 
 <style>
+.row{align: left;}
 input[type="button"] {
 	height: calc(1.5em + 0.75rem + 2px);
 }
-input[type="text"] {
-	width: 300px;
+input[type="text"]{
+	width: 400px;
+	align: left !important;
+}
+#pay{align: left !important; width: 400px !important; margin-right: 8px !important;}
+h3{margin-top: 30px; }
+.col-2{text-align: left;}
+.hr{
+margin-bottom: 30px;
+width:57%;
+border: 1px solid gray;
+text-align: left !important;
+margin-left: 17% !important;
+}
+#check_module{
+color:white; background-color:black; width:15%; margin-top:5%;
 }
 </style>
 
 
 </head>
 <body>
+   
 <form name="fm" style="text-align:-webkit-center;">
 <div class="container-fluid" style="text-align:-webkit-center; width:70%">
-   <h2>결제 할거에유?</h2><br>
-   <hr>
-   
-   <div class="form-group row">
-   <b>상품명</b>&nbsp;&nbsp;
-   <input type="text" name="exh_title" id="exh_title" value='${exh_title}' readonly="readonly"><br>
-   </div>
-   
-   <div class="form-group row">
-   <b>이름</b>&nbsp;&nbsp;
-   <input type="text" name="buyer" id="buyer" placeholder="이름 입력" value="${member.mb_name}"><br>
-   </div>
-   
-   <div class="form-group row">
-   <b>전화번호</b>&nbsp;&nbsp;
-   <input type="text" name="buyer_tel" id="buyer_tel" placeholder="예시: 010-1111-2222" value='${member.mb_phone}'><br>
-   </div>
-   
-   <div class="form-group row">
-   <b>이메일</b>&nbsp;&nbsp;
-   <input type="text" name="buyer_email" id="buyer_email" placeholder="이메일 입력" value='${member.mb_email}'><br>
-   </div>
-   
-   <div class="form-group row">
-   <b>결제금액</b>&nbsp;&nbsp;
-   <input type="text" name="amount" id="amount" value='${amount}' readonly="readonly">
 
-   <input type="hidden" name="result" id="result" value='${amount}' ><br>
+   <div class="row">
+   <div class="col-2"></div>
+    <div class="col-2"><h3><b>결제 페이지</b></h3></div>
+    <div class="col-4"></div>
+    <div class="col-3"></div>
+  </div><hr class="hr"  >
    
+   
+   <div class="row">
+   <div class="col-2"></div>
+    <div class="col-2"><b>상품명</b></div>
+    <div class="col-4"><input type="text"  name="exh_title" id="exh_title" value='${exh_title}' readonly="readonly"></div>
+    <div class="col-3"></div>
+  </div><br>
+   
+   <div class="row">
+   <div class="col-2"></div>
+   <div class="col-2"><b>이름</b></div>
+   <div class="col-4"><input type="text" name="buyer" id="buyer" placeholder="이름 입력" value="${member.mb_name}"></div>
+   <div class="col-3"></div>
+   </div><br>
+   
+   <div class="row">
+   <div class="col-2"></div>
+   <div class="col-2"><b>전화번호</b></div>
+   <div class="col-4"><input type="text" name="buyer_tel" id="buyer_tel" placeholder="예시: 010-1111-2222" value='${member.mb_phone}'></div>
+   <div class="col-3"></div>
+   </div><br>
+   
+   <div class="row">
+   <div class="col-2"></div>
+   <div class="col-2"><b>이메일</b></div>
+   <div class="col-4"><input type="text" name="buyer_email" id="buyer_email" placeholder="이메일 입력" value='${member.mb_email}'></div>
+   <div class="col-3"></div>
+   </div><br>
+   
+   <div class="row">
+   <div class="col-2"></div>
+   <div class="col-2"><b>결제금액</b></div>
+   <div class="col-5"><input type="text" id="pay" name="amount" id="amount" value='${amount}' readonly="readonly">
    <button type="button" style="color:#7329f7; background-color:white; border-color:#7329f7; border: solid 1px;" data-toggle="modal" data-target="#staticBackdrop">
- 쿠폰적용
-</button>
+   쿠폰적용
+	</button></div>
+	<div class="col-2"></div>	
+   </div>
+
+   <input type="hidden" name="result" id="result" value='${amount}' >
+   
+ 
 </div>
-    <input type="hidden" name="md_id" id="md_id" value='${md_id}' style="display:none;"><br>
+    <input type="hidden" name="md_id" id="md_id" value='${md_id}' style="display:none;">
 <!--    결제고유ID -->
    <input type=hidden name="p_id" id="p_id" >
 <!--    상점거래ID -->
@@ -226,10 +248,10 @@ input[type="text"] {
    <input type="hidden" name="p_date" id="p_date">
    <input type="hidden" name="cb_id" id="cb_id" value=0 >
    <input type="hidden" name="exh_no" id="exh_no" value="${exh_no }" >
-   <div class="form-group row">
-   <button id="check_module" style="color:white; background-color:black;" type="button">결제하기</button>
-   </div>
-   </div>
+    <div class="row">
+   <div class="col-2"></div>
+   <div class="col-8"><button id="check_module" type="button">결제하기</button></div>
+   <div class="col-2"></div>
    </div>
    <br>
 </form>
@@ -244,7 +266,7 @@ input[type="text"] {
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">쿠폰 목록</h5>
@@ -253,33 +275,25 @@ input[type="text"] {
         </button>
       </div>
       <div class="modal-body">
-             
+             <div class="container">
+         <table class="table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
          <c:forEach items="${couponList}" var="coupon">
          <fmt:parseDate var="endDate_D" value="${coupon.c_date }"  pattern="yyyy-MM-dd"/>
          <fmt:parseNumber var="endDate_N" value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" /> 
          
-      	<div class="container">
+            <tr>
+              <td class="text-center">쿠폰명 : ${coupon.c_name}<br>
+              할인율 : ${coupon.c_per}%<br>
+              만료날짜 : ${coupon.c_date}
+               </td>
+                <td class="text-center text-danger"> ${endDate_N-startDate_N}일 남음 </td>
+          <td class="text-center">
+          <button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button> </td>
 
-				<div class="rectangle">
-					<div class="row">
-						<div class="col-4">
-							<h1 class="text-center"
-								style="transform: translate(0, 80%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
-						</div>
-						<div class="col" style="transform: translate(0, 0); text-align:left;">
-							<b id="c_name" style="font-size: 40px">${coupon.c_name}</b><br>
-							${coupon.c_date}까지<br> <span class="text-danger"><small>
-									${endDate_N-startDate_N}일 남음</small></span>
-
-							    <button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button>
-
-						</div>
-
-					</div>
-				</div>
-			</div>
+            </tr>
 </c:forEach>
-
+</table>
+</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
