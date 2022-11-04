@@ -9,7 +9,8 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리뷰쓰기</title>
+<%@ include file="header.jsp"%>
 </head>
 <body>
 
