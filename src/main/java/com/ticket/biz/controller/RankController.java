@@ -18,30 +18,30 @@ public class RankController {
 
 	@Autowired
 	private GoodService goodService;
-	
+
 	@Autowired
 	private PayService payService;
-	
+
 	// 전시 목록 조회
 		@RequestMapping("/ranking")
 		public String getExhibitionList(ExhibitionVO vo, Model model, HttpSession session) {
 					double total= payService.getPayCnt();
-			
+
 					model.addAttribute("total",total);
 					model.addAttribute("payRankList", payService.getPayRank());
 					model.addAttribute("getGoodList", goodService.getGoodList());
 					return "ranking/ranking";
-					
+
 //					예매율(%) =>(해당전시카운트 % 전체카운트) * 100
 		}
 
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 }
 

@@ -11,12 +11,12 @@ public class ReviewVO {
 	private String re_review;
 	private int review_type;
 	private Timestamp review_reg;
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	public int getReview_bno() {
 		return review_bno;
 	}
@@ -66,5 +66,5 @@ public class ReviewVO {
 				+ ", review_reg=" + review_reg + "]";
 	}
 
-	
+
 }

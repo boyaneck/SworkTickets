@@ -13,21 +13,21 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Autowired
 	private ReviewDAOMybatis reviewDAO;
-		
+
 	@Override
 	public void insertReview(ReviewVO vo) {
 		System.out.println("review insert  serviceimpl 기능 처리 전");
 		reviewDAO.insertReview(vo);
 		System.out.println("review insert 기능 수행함 serviceimpl");
-		
+
 	}
 
 	@Override
 	public List<ReviewVO> getReviewList(ReviewVO vo) {
-		
+
 		System.out.println("getReviewList service Impl기능 처리 ");
 	return reviewDAO.getReviewList(vo);
-	
+
 	}
 //
 //	@Override
@@ -45,7 +45,7 @@ public class ReviewServiceImpl implements ReviewService{
 //	@Override
 //	public void deleteReview(ReviewVO vo) {
 //		// TODO Auto-generated method stub
-//		
+//
 //	}
 //
 //	@Override
@@ -63,7 +63,7 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public void deleteReview(ReviewVO vo) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

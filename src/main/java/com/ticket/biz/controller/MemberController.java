@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,6 +28,16 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+    // 아이디 중복 검사
+    @ResponseBody
+    @RequestMapping(value = "/idChk", method = RequestMethod.POST)
+    public int idChk(@RequestParam Map<String, Object> param) {
+//        int result = memberService.idChk(param);
+       System.out.println(memberService.idChk(param));
+        return memberService.idChk(param);
+        
+    }
+    
 	// 회원 검색
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
@@ -43,7 +54,7 @@ public class MemberController {
 	public String getMyPage(MemberVO vo, Model model, HttpSession session) {
 
 		System.out.println("회원정보가져오기");
-		
+
 
 		model.addAttribute("member", memberService.getMember(vo));
 

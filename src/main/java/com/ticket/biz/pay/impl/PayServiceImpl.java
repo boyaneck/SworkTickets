@@ -40,7 +40,7 @@ public class PayServiceImpl implements PayService {
 	public List<PayVO> getAllPayList(PayVO vo) {
 		return payDAO.getAllPayList(vo);
 	}
-	
+
 	@Override
 	public int totalPayListCnt(PayVO vo) {
 

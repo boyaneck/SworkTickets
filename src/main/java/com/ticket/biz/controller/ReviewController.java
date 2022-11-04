@@ -19,10 +19,10 @@ import com.ticket.biz.review.ReviewVO;
 
 @Controller
 public class ReviewController {
-	
+
 	@Autowired
 	private ReviewService reviewservice;
-	
+
 	@ResponseBody
 	@RequestMapping("/insertReview")
 	public String ReviewInsert(@RequestBody ReviewVO vo,HttpSession session) {
@@ -33,7 +33,7 @@ public class ReviewController {
 			return "fail";
 		} else {
 			System.out.println("insertReview 컨트롤러에서 로그인 확인 함");
-			
+
 			reviewservice.insertReview(vo);
 			System.out.println("댓글 등록 서비스 성공 Controller");
 			return "InsertSuccess";
@@ -45,7 +45,7 @@ public class ReviewController {
 		System.out.println("댓글 목록 컨트롤러 동작");
 		System.out.println("bno"+vo.getReview_bno());
 		System.out.println("writer"+vo.getReview_writer());
-		
+
 		System.out.println("toString"+vo.toString());
 				List<ReviewVO> list = reviewservice.getReviewList(vo);
 				System.out.println("review serice좀 컨트롤러에서 타라 ");
@@ -54,12 +54,12 @@ public class ReviewController {
 		System.out.println("bno1"+vo.getReview_bno());
 		ModelAndView view = new ModelAndView();
 		System.out.println("댓글 갯수 " + reviewservice.getTotal(bno));
-		
+
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("total", total);
 		view.setViewName("review");
 		return map;
 	}
-	
+
 }
