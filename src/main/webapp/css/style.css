@@ -33,6 +33,15 @@ body {
 .row{
 	width:100%!important;
 }
+
+/* 번호입력 화살표 제거 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 /* 헤더시작*/
 
 /* 최신전시 시작 */
