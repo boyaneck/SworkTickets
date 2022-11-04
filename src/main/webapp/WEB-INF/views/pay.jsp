@@ -224,20 +224,7 @@ color:white; background-color:black; width:15%; margin-top:5%;
    <div class="col-3"></div>
    </div><br>
    
-   <div class="row">
-   <div class="col-2"></div>
-   <div class="col-2"><b>결제금액</b></div>
-   <div class="col-5"><input type="text" id="pay" name="amount" id="amount" value='${amount}' readonly="readonly">
-   <button type="button" style="color:#7329f7; background-color:white; border-color:#7329f7; border: solid 1px;" data-toggle="modal" data-target="#staticBackdrop">
-   쿠폰적용
-	</button></div>
-	<div class="col-2"></div>	
-   </div>
-
-   <input type="hidden" name="result" id="result" value='${amount}' >
-   
- 
-</div>
+    <input type="hidden" name="result" id="result" value='${amount}' >
     <input type="hidden" name="md_id" id="md_id" value='${md_id}' style="display:none;">
 <!--    결제고유ID -->
    <input type=hidden name="p_id" id="p_id" >
@@ -248,6 +235,22 @@ color:white; background-color:black; width:15%; margin-top:5%;
    <input type="hidden" name="p_date" id="p_date">
    <input type="hidden" name="cb_id" id="cb_id" value=0 >
    <input type="hidden" name="exh_no" id="exh_no" value="${exh_no }" >
+   
+   
+   
+   <div class="row">
+   <div class="col-2"></div>
+   <div class="col-2"><b>결제금액</b></div>
+   <div class="col-5"><input type="text" id="pay" name="amount" id="amount" value='${amount}' readonly="readonly">
+   <button type="button" style="color:#7329f7; background-color:white; border-color:#7329f7; border: solid 1px;" data-toggle="modal" data-target="#staticBackdrop">
+   쿠폰적용
+	</button></div>
+	<div class="col-2"></div>	
+   
+  
+ </div>
+</div>
+   
     <div class="row">
    <div class="col-2"></div>
    <div class="col-8"><button id="check_module" type="button">결제하기</button></div>
@@ -266,7 +269,7 @@ color:white; background-color:black; width:15%; margin-top:5%;
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">쿠폰 목록</h5>
@@ -275,25 +278,33 @@ color:white; background-color:black; width:15%; margin-top:5%;
         </button>
       </div>
       <div class="modal-body">
-             <div class="container">
-         <table class="table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+             
          <c:forEach items="${couponList}" var="coupon">
          <fmt:parseDate var="endDate_D" value="${coupon.c_date }"  pattern="yyyy-MM-dd"/>
          <fmt:parseNumber var="endDate_N" value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" /> 
          
-            <tr>
-              <td class="text-center">쿠폰명 : ${coupon.c_name}<br>
-              할인율 : ${coupon.c_per}%<br>
-              만료날짜 : ${coupon.c_date}
-               </td>
-                <td class="text-center text-danger"> ${endDate_N-startDate_N}일 남음 </td>
-          <td class="text-center">
-          <button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button> </td>
+         <div class="container">
 
-            </tr>
+            <div class="rectangle">
+               <div class="row">
+                  <div class="col-4">
+                     <h1 class="text-center"
+                        style="transform: translate(0, 80%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
+                  </div>
+                  <div class="col" style="transform: translate(0, 0); text-align:left;">
+                     <b id="c_name" style="font-size: 40px">${coupon.c_name}</b><br>
+                     ${coupon.c_date}까지<br> <span class="text-danger"><small>
+                           ${endDate_N-startDate_N}일 남음</small></span>
+
+                         <button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button>
+
+                  </div>
+
+               </div>
+            </div>
+         </div>
 </c:forEach>
-</table>
-</div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -301,7 +312,5 @@ color:white; background-color:black; width:15%; margin-top:5%;
     </div>
   </div>
 </div>
-
-   
 </body>
 </html>
