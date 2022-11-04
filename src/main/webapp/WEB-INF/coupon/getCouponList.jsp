@@ -8,18 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 목록</title>
-<style>
-.rectangle {
-  border-radius:30px;
-  width: 430px;
-  height: 150px;
-  border: solid black;
-  background-color: white;
-  margin:10px;
-  padding: 5px;
-}
 
-</style>
 
 
  <script>
@@ -40,7 +29,8 @@
 
 
 <div class="container" style="text-align: -webkit-center;">
-<h1 style="text-align: center;">쿠폰 목록</h1>
+<br>
+<h1 style="text-align: center;">쿠폰 목록</h1><br>
 
 <c:forEach items="${couponList}" var="coupon">
 <fmt:parseDate var="endDate_D" value="${coupon.c_date }"  pattern="yyyy-MM-dd"/>
@@ -60,11 +50,11 @@
 						<div class="col" style="transform: translate(0, 0); text-align:left;">
 							<b id="c_name" style="font-size: 40px">${coupon.c_name}</b><br>
 							${coupon.c_date}까지<br> <span class="text-danger"><small>
-									${endDate_N-startDate_N}일 남음</small></span>
+									${endDate_N-startDate_N}일 남음 &nbsp;</small></span>
 
 							<c:choose>
 								<c:when test="${mb_Id eq 'admin'}">
-									<button class="btn btn-primary"
+									<button class="btn btn-danger"
 										onclick="location.href='/getCoupon?c_num=${coupon.c_num}'">수정</button>
 									<button class="btn btn-danger"
 										onclick="location.href='/deleteCoupon?c_num=${coupon.c_num}'">삭제
@@ -73,14 +63,14 @@
 								<c:when test="${mb_Id ne null}">
 									<c:choose>
 										<c:when test="${error!=1}">
-											<button class="btn btn-primary"
+											<button class="btn btn-dark"
 												onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
 										</c:when>
 									</c:choose>
 
 								</c:when>
 								<c:otherwise>
-									<button class="btn btn-primary" onclick="notlogin()">쿠폰받기</button>
+									<button class="btn btn-dark" onclick="notlogin()">쿠폰받기</button>
 								</c:otherwise>
 							</c:choose>
 

@@ -43,6 +43,6 @@ AND MB_ID=#{mb_id};
 		 AND CB.CB_CHECK=0
       ORDER BY 
       c.C_NUM DESC
-      LIMIT 10 OFFSET #{offset}
+   
    </select>
 </mapper>

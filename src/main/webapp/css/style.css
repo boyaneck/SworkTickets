@@ -387,7 +387,7 @@ footer {
 /* 쿠폰 네모 추가*/
 .rectangle {
   border-radius:30px;
-  width: 430px;
+  width: 400px;
   height: 150px;
   border: solid black;
   background-color: white;

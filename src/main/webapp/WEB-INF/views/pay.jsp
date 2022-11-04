@@ -9,18 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
-<style>
-.rectangle {
-  border-radius:30px;
-  width: 430px;
-  height: 150px;
-  border: solid black;
-  background-color: white;
-  margin:10px;
-  padding: 5px;
-}
 
-</style>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 var chk = false;
