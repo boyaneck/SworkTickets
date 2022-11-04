@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface MemberService {
 	
 	
-	int idChk(Map<String, Object> param);
 	/*회원가입*/
 	void insertMember(MemberVO vo);
 

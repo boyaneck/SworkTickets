@@ -66,10 +66,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.updateMember(vo);
 	}
 
-	@Override
-	public int idChk(Map<String, Object> param) {
-		return memberDAO.idChk(param);
-	}
 
 	// 비밀번호 찾기
 //	public String findPw(Map<String, Object> param) {
