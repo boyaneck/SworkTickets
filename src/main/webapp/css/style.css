@@ -302,4 +302,95 @@ nav.navbar {
 li.dropdown {
   margin: 0 40px;
 }
+/* 푸터 style */
+footer {
+   width: 100%;
+   background: #23263b;
+   padding-left:1%;
+   margin-top:50px;
+   
+}
 
+
+  .footer_row {
+      display: flex;
+      justify-content: flex-start;
+      padding-top: 60px;
+      list-style-type : none;
+   }
+   .footer_row > div {
+      max-width: 396px;
+      width: 100%;
+      list-style-type : none;
+   }
+   /* 푸터 공용 style */
+   .footer_row {
+      text-align: center;
+      padding: 2px 3px;
+   }
+   .footer_row {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: normal;
+   }
+   .footer_row {
+      letter-spacing:2px;
+      margin-left:1%;
+      color: #808080;
+   }
+
+
+
+@media (max-width: 750px) {
+.footer_row {
+   flex-direction: column;
+   margin-left:0%;
+   align-items: center;
+   font-size: 12px;
+   }
+}
+
+/* copyright */
+.copyright {
+   width: 100%;
+   height: 20px;
+   margin-top: 20px;
+   line-height: 40px;
+   text-align: center;
+   color: #cccccc;
+}
+
+.footer-load{
+   border:0;
+   background-color:#23263b;
+   color:#c0c0c0;
+   margin-top : 20px;
+    margin-left : 10px;
+    font-size:18px;
+}
+
+@media (max-width: 750px) {
+.footer-load{
+   border:0;
+   background-color:#23263b;
+   color:#c0c0c0;
+   margin-top : 20px;
+    font-size:18px;
+}
+}
+
+
+/* footer 하단 고정 [E] */
+
+
+/* 쿠폰 네모 추가*/
+.rectangle {
+  border-radius:30px;
+  width: 430px;
+  height: 150px;
+  border: solid black;
+  background-color: white;
+  margin:10px;
+  padding: 5px;
+}
