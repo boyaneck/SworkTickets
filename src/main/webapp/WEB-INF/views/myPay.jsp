@@ -23,30 +23,27 @@
 	결제일시 : ${myPayList.p_date}<br>
 	결제고유ID : ${myPayList.p_id}<br>
 	상점거래ID : ${myPayList.p_mer}<br>
+	전시 종료일 : ${myPayList.exh_end_date}<br>
 <%-- 	환불 여부 : ${myPayList.p_chk}<br> --%>
 				<c:set var="today" value="<%=new java.util.Date()%>"/>
 		<c:set var="sysYear"> <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" /></c:set>
-${myPayList.exh_end_date}<br>
-${today }<br>
-${sysYear > myPayList.exh_end_date}
-${sysYear }
 		<form action="paycan" method="POST">
 			<input type="hidden" name="mid" id="merchant_uid"
 				value="${myPayList.p_mer}">
 				<c:if test="${myPayList.exh_end_date < sysYear}">
-					<button class="btn btn-danger" onclick="" type="button">종료된 전시</button>
+					<button class="btn btn-outline-danger" onclick="" type="button">종료된 전시</button>
 					</c:if>
 				
+				<c:if test="${myPayList.exh_end_date > sysYear}">
 				<c:choose>
-	<%-- 				<c:when test="${myPayList.p_chk eq 0 && today < myPayList.exh_end_date}"> --%>
-				
 					<c:when test="${myPayList.p_chk eq 0}">
-						<button id="cancel_module" type="submit">취소하기</button>
+						<button id="cancel_module" type="submit" class="btn btn-outline-primary">취소하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button">환불완료</button>
+						<button type="button" class="btn btn-outline-success">환불완료</button>
 					</c:otherwise>
 				</c:choose>
+				</c:if>
 		
 		
 		</form>

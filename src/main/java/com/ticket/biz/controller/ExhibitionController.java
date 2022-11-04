@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,11 +25,11 @@ import com.ticket.biz.exhibition.ExhibitionVO;
 @SessionAttributes("exhibition")
 public class ExhibitionController {
 
-	
+
 	@Autowired
 	private ExhibitionService exhibitionService;
-	
-	
+
+
 	// 전시 필터
 //	@ModelAttribute("exSearchConditionMap")
 //	public Map<String, String> exFilterConditionMap(){
@@ -41,11 +40,11 @@ public class ExhibitionController {
 //		exFilterMap.put("전시삭제여부", "EXH_CANCELL");
 //		return exFilterMap;
 //	}
-	
+
 	// 전시 검색
 	@ModelAttribute("exSearchConditionMap")
 	public Map<String, String> exSearchConditionMap(){
-		Map<String, String> exConditionMap = new HashMap<String, String>();
+		Map<String, String> exConditionMap = new HashMap<>();
 		exConditionMap.put("전시명", "EXH_TITLE");
 		exConditionMap.put("장소", "EXH_HALL");
 	return exConditionMap;
@@ -57,7 +56,7 @@ public class ExhibitionController {
 //			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "admin/ExhibitionInsert";
 		}
-	
+
 	// 전시 등록
 	@PostMapping("/insertExhibition")
 	// public String insertBoard(MultipartHttpServletRequest request, ExhibitionVO vo) throws IllegalStateExcetion, IOException {
@@ -106,14 +105,14 @@ public class ExhibitionController {
 		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 		return "admin/ExhibitionDetail";
 	}
-	
+
 	// 전시 목록 조회
 	@RequestMapping("/getExhibitionList")
-	
+
 	public String getExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
 		System.out.println("컨트롤");
-		
-		
+
+
 		//총 목록 수
 				int totalPageCnt = exhibitionService.totalExhibitionListCnt(vo);
 				//현재 페이지 설정
@@ -132,17 +131,19 @@ public class ExhibitionController {
 				System.out.println("컨트롤러 완료");
 				return "admin/ExhibitionList";
 	}
-	
+
 	// 유저 전시 상세 조회
 		@RequestMapping("/getUserExhibition")
 		public String getUserExhibition(ExhibitionVO vo, Model model) {
 			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "exhibition/UserExhibitionDetail";
 		}
-	
+
+
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")
 		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
+			System.out.println("1");
 			//총 목록 수
 					int totalPageCnt = exhibitionService.totalUSerExhibitionListCnt(vo);
 					//현재 페이지 설정
@@ -155,10 +156,11 @@ public class ExhibitionController {
 
 					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 					vo.setOffset(pvo.getOffset());
-					
+
+
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
-					
+
 					return "exhibition/getUserExhibitionList";
 		}
 }

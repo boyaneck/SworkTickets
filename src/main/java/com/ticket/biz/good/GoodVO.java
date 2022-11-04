@@ -9,23 +9,23 @@ public class GoodVO {
 	private int good_check;//체크
 	private String mb_id;//사용자아아디
 	private int exh_no;//전시아이디
-	
+
 	private int offset;
-	
-	
+
+
 	@Autowired
 	private ExhibitionVO exhibitionvo;
-	
-	
+
+
 	public ExhibitionVO getExhibitionvo() {
 		return exhibitionvo;
 	}
 	public void setExhibitionvo(ExhibitionVO exhibitionvo) {
 		this.exhibitionvo = exhibitionvo;
 	}
-	
-	
-	
+
+
+
 	public int getOffset() {
 		return offset;
 	}
@@ -56,7 +56,7 @@ public class GoodVO {
 	public void setExh_no(int exh_no) {
 		this.exh_no = exh_no;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "GoodVO [good_id=" + good_id + ", good_check=" + good_check + ", mb_id=" + mb_id + ", exh_no=" + exh_no

@@ -32,11 +32,11 @@
 				<div class="form-group">
 					<label for="inputUserName" class="sr-only">User Name</label>
 					<!-- 					name속성(파라미터) 있어야 데이터 전송됨  -->
-					<input type="text" class="form-control" placeholder="ID" name="mb_id" required autofocus>
+					<input type="text" class="form-control" placeholder="ID" name="mb_id"  autofocus>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword" class="sr-only">Password</label> 
-					<input type="password" class="form-control" placeholder="Password" name="mb_pw" required>
+					<input type="password" class="form-control" placeholder="Password" name="mb_pw" >
 				</div>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
 				<!-- <a class="dropdown-item header-item" href="insertMember.jsp">&nbsp회원가입</a> -->

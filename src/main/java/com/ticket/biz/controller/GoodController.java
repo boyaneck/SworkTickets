@@ -1,7 +1,6 @@
 package com.ticket.biz.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,14 +26,13 @@ public class GoodController {
 
 	//좋아요 등록
 	@RequestMapping(value = "/good_pick")
-	public String insertGood(GoodVO vo,HttpSession session,HttpServletRequest request) throws IllegalStateException, IOException {
+	public String insertGood(GoodVO vo,HttpSession session,HttpServletRequest request,Model model) throws IllegalStateException, IOException {
 		String id=(String)session.getAttribute("mb_Id");
 		int exh_no= vo.getExh_no();
 		vo.setMb_id(id);
 		vo= goodService.getGoodChk(vo);
 		boolean yn=goodService.getGoodYN(vo);
-		
-		if(yn==true) {
+		if(yn) {
 				vo.setExh_no(exh_no);
 				vo.setMb_id(id);
 				goodService.deleteGood(vo);
@@ -49,9 +47,9 @@ public class GoodController {
 			goodService.insertGood(insert_vo);
 			System.out.println("좋아요 등록");
 		}
-		return "redirect:getUserExhibitionList";
+		return "forward:/getUserExhibitionList";
 	}
-	
+
 	// 유저 좋아요 목록 조회
 	@RequestMapping("/getMyGoodList")
 	public String getUserExhibitionList(GoodVO vo, String nowPageBtn, Model model ,HttpSession session ) {
@@ -69,11 +67,11 @@ public class GoodController {
 
 				PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 				vo.setOffset(pvo.getOffset());
-				
+
 				model.addAttribute("paging", pvo);
 				model.addAttribute("getMyGoodList", goodService.getMyGoodList(vo));
-				
+
 				return "member/mygoodList";
 	}
-	
+
 }

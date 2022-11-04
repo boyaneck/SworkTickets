@@ -19,12 +19,12 @@ public class OneRowMapper implements RowMapper<OneVO>{
 	one.setOne_category(rs.getString("one_category"));
 	one.setOne_modify(rs.getDate("one_modify"));
 	one.setOne_secret(rs.getBoolean("one_secret"));
-	
+
 		return one;
 	}
-	
-	
 
-	
-	
+
+
+
+
 }

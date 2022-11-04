@@ -1,4 +1,4 @@
-package com.ticket.biz.board.impl;
+package com.ticket.biz.board.Impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,15 +21,15 @@ public class BoardRowMapper implements RowMapper<BoardVO>{
 	board.setNoti_modify(rs.getDate("noti_modify"));
 	board.setSearchCondition(rs.getString("noti_searchcondition"));
 	board.setSearchKeyword(rs.getString("searchKeyword"));
-	
-	
-	
+
+
+
 	board.setOffset(rs.getInt("offset"));
 		return board;
 	}
-	
-	
 
-	
-	
+
+
+
+
 }

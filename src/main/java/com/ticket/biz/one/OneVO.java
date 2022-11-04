@@ -13,28 +13,28 @@ public class OneVO {
 	private Date one_date;
 	private String one_category;
 	private Date one_modify;
-	
+
 	private String searchCondition;
 	private String searchKeyword;
-	
-	
-	
+
+
+
 	private MultipartFile uploadFile;
 	private String filename;
 
 	private int offset;
-	
+
 	private boolean one_secret;
-	
-	
+
+
 	public boolean isOne_secret() {
 		return one_secret;
 	}
 	public void setOne_secret(boolean one_secret) {
 		this.one_secret = one_secret;
 	}
-	
-	
+
+
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
@@ -101,14 +101,14 @@ public class OneVO {
 	public void setOne_date(Date one_date) {
 		this.one_date = one_date;
 	}
-	
+
 	public Date getOne_modify() {
 		return one_modify;
 	}
 	public void setOne_modify(Date one_modify) {
 		this.one_modify = one_modify;
 	}
-	
-	
-	
+
+
+
 }
