@@ -27,13 +27,13 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-
+	
     // 아이디 중복 검사
     @ResponseBody
     @RequestMapping(value = "/idChk", method = RequestMethod.POST)
     public int idChk(@RequestParam Map<String, Object> param) {
 //        int result = memberService.idChk(param);
-       System.out.println(memberService.idChk(param));
+    	System.out.println(memberService.idChk(param));
         return memberService.idChk(param);
         
     }
