@@ -28,6 +28,16 @@
 		REVIEW_BNO=#{review_bno}
 	</select>
 
+<update id="updateReview">
+	UPDATE REVIEW 
+	SET 
+	NOTI_TITLE=#{noti_title},
+	NOTI_CONTENT=#{noti_content},
+
+	
+</update>
+
+
 <!-- 	<select id="getList" resultType="review"> -->
 <!-- 	SELECT * FROM REVIEW WHERE REVIEW_TYPE = #{review_type} -->
 <!-- 	</select> -->

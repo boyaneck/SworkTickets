@@ -43,6 +43,19 @@ public class ReviewServiceImpl implements ReviewService{
 		System.out.println("review delete serviceImpl wrtier값 받아오기" + vo.getReview_writer());
 		reviewDAO.deleteReview(vo);
 	}
+
+	@Override
+	public void updateReview(ReviewVO vo) {
+		System.out.println("update review serviceImpl 기능 처리전");
+		reviewDAO.updateReview(vo);
+		
+	}
+
+	@Override
+	public List<ReviewVO> myRecord(String review_writer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 //
 //	@Override
@@ -52,26 +65,9 @@ public class ReviewServiceImpl implements ReviewService{
 //	}
 //
 
-//
-//	@Override
-//	public List<ReviewVO> getReivewList(ReveiwVO vo) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 
 	
 
-	@Override
-	public List<ReviewVO> myRecord(String review_writer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-//	@Override
-//	public List<ReviewVO> getReviewList(String review_wrtier) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
+	
 }

@@ -11,6 +11,8 @@ public interface ReviewService {
 	
 	void deleteReview(ReviewVO vo);   // 댓글 삭제 
 	
+	void updateReview(ReviewVO vo);
+	
 	
 	List<ReviewVO> myRecord(String review_writer);
 
