@@ -15,12 +15,11 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	
-	   // 회원 수정 비밀번호 확인
-	   public int pwChk(Map<String, Object> param) {
-	      return mybatis.selectOne("MemberDAO.pwChk", param);
-	   }
-	   
+	// 회원 수정 비밀번호 확인
+	public int pwChk(Map<String, Object> param) {
+		return mybatis.selectOne("MemberDAO.pwChk", param);
+	}
+
 	// 아이디 중복체크
 	public int idChk(Map<String, Object> param) {
 
@@ -35,13 +34,12 @@ public class MemberDAO {
 
 	/* 회원탈퇴 */
 	public int deleteMember(MemberVO vo) {
-		System.out.println(vo);
 		return mybatis.delete("MemberDAO.deleteMember", vo);
 	}
 
 	/* 회원조회 */
 	public MemberVO getMember(MemberVO vo) {
-		System.out.println("mybatis getMember() 기능");
+//		System.out.println("mybatis getMember() 기능");
 		return mybatis.selectOne("MemberDAO.getMember", vo);
 	}
 

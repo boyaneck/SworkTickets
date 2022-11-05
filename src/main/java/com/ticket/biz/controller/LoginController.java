@@ -34,7 +34,21 @@ public class LoginController {
 
 		System.out.println("로그인 인증 처리...");
 		if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
-			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+//			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+			System.out.println("실패");
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter script;
+			try {
+				script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('아이디와 비밀번호를 입력해주세요');");
+				script.println("location.href = 'login.jsp'");
+				script.println("</script>");
+				script.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		if (memberService.getMember(vo) != null) {
 			// 창일 추가
@@ -45,7 +59,19 @@ public class LoginController {
 				return "redirect:index.jsp";
 			} else {
 				System.out.println("실패");
-				return "redirect:login.jsp";
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter script;
+				try {
+					script = response.getWriter();
+					script.println("<script>");
+					script.println("alert('비밀번호가 다릅니다.');");
+					script.println("location.href = 'login.jsp'");
+					script.println("</script>");
+					script.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		} else {
 			response.setCharacterEncoding("utf-8");

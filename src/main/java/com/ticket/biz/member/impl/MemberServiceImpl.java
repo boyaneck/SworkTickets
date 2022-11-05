@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
 	   //아이디 중복체크
     @Override
     public int idChk(Map<String, Object> param) {
-       System.out.println(param);
+//       System.out.println(param);
         return memberDAO.idChk(param);
     }
     
@@ -63,7 +63,7 @@ public class MemberServiceImpl implements MemberService {
 
 	   @Override
 	   public MemberVO getMember(MemberVO vo) {
-	      System.out.println(vo.getMb_id());
+//	      System.out.println(vo.getMb_id());
 	      return memberDAO.getMember(vo);
 	   }
 
