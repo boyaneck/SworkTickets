@@ -10,132 +10,30 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>관리자 모드</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-	integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-	crossorigin="anonymous"></script>
-
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
 	rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
-<style>
-body {
-	font-family: '맑은 고딕', verdana;
-	padding: 0;
-	margin: 0;
-}
 
-ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-
-div#root {
-	width: 90%;
-	margin: 0 auto;
-}
-
-header#header {
-	font-size: 60px;
-	padding: 20px 0;
-}
-
-header#header h1 a {
-	color: #000;
-	font-weight: bold;
-}
-
-nav#nav {
-	padding: 10px;
-	text-align: right;
-}
-
-nav#nav ul li {
-	display: inline-block;
-	margin-left: 10px;
-}
-
-section#container {
-	padding: 20px 0;
-	border-top: 2px solid #eee;
-	border-bottom: 2px solid #eee;
-}
-
-section#container::after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-aside {
-	float: left;
-	width: 200px;
-}
-
-div#container_box {
-	float: right;
-	width: calc(100% - 200px - 20px);
-}
-
-aside ul li {
-	text-align: center;
-	margin-bottom: 10px;
-}
-
-aside ul li a {
-	display: block;
-	width: 100%;
-	padding: 10px 0;
-}
-
-aside ul li a:hover {
-	background: #eee;
-}
-
-footer#footer {
-	background: #f9f9f9;
-	padding: 20px;
-}
-
-footer#footer ul li {
-	display: inline-block;
-	margin-right: 10px;
-}
-</style>
-<title>관리자페이지</title>
 </head>
 <body class="sb-nav-fixed">
-	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<!-- Navbar Brand-->
-		<a class="navbar-brand logoimg" href="index.jsp"
-			style="text-align: center;"> <img style="width: 140px;"
-			src="./images/logo.png">&nbsp&nbsp
-		</a>
-		<!-- Sidebar Toggle-->
-		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
-			id="sidebarToggle" href="#!">
-			<i class="fas fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end"
-			id="collapsibleNavbar">
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link header-logout"
-					href="/logoutGO">로그아웃</a></li>
-			</ul>
-		</div>
-	</nav>
+       <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+        		<a class="navbar-brand logoimg" href="index.jsp"style="text-align: center;"> <img
+							style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
+						</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+  <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+   <li class="nav-item">
+						 <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
+        </li>
+        </ul>
+        </div>
+        </nav>
 	<div id="layoutSidenav" style="text-align: center;">
 		<div id="layoutSidenav_nav">
 			<nav class="sb-sidenav accordion sb-sidenav-dark"
@@ -143,7 +41,7 @@ footer#footer ul li {
 				<div class="sb-sidenav-menu">
 
 					<div class="nav">
-
+				
 						<div class="sb-sidenav-menu-heading"></div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts" aria-expanded="false"
@@ -158,9 +56,9 @@ footer#footer ul li {
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/insertMember">회원등록</a> <a
-									class="nav-link" href="/getMemberList">회원목록</a> <a
-									class="nav-link" href="/getAllPayList">회원결제</a>
+								<a class="nav-link" href="/insertMember">회원등록</a>
+						<a class="nav-link"	href="/getMemberList">회원목록</a>
+							<a class="nav-link"	href="/getAllPayList">회원결제</a>
 							</nav>
 						</div>
 
@@ -177,8 +75,8 @@ footer#footer ul li {
 						<div class="collapse" id="collapseLayouts_exh"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="#">전시등록</a> <a class="nav-link "
-									href="/getExhibitionList">전시목록</a>
+								<a class="nav-link" href="#">전시등록</a>
+							 <a class="nav-link " href="/getExhibitionList" >전시목록</a>
 							</nav>
 						</div>
 
@@ -195,8 +93,9 @@ footer#footer ul li {
 						<div class="collapse" id="collapseLayouts_coupon"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a> <a
-									class="nav-link" href="/getCouponList">쿠폰목록</a>
+								<a class="nav-link" href="/insertCouponForm">쿠폰등록
+								</a>
+						<a class="nav-link"	href="/getCouponList">쿠폰목록</a>
 							</nav>
 						</div>
 
@@ -214,18 +113,30 @@ footer#footer ul li {
 						<div class="collapse" id="collapseLayouts_service"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/getBoardList">공지사항</a> <a
-									class="nav-link" href="/getFaqList">FAQ</a> <a class="nav-link"
-									href="/getOneList">1:1 문의</a>
+								<a class="nav-link" href="/getBoardList">공지사항</a> 
+								<a class="nav-link"href="/getFaqList">FAQ</a>
+								 <a class="nav-link" href="/getOneList">1:1 문의</a>
 							</nav>
 						</div>
 					</div>
-
+					
 				</div>
-
+							
 			</nav>
 		</div>
 
 	</div>
-</body>
+	       
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+		crossorigin="anonymous"></script>
+	<script src="js/datatables-simple-demo.js"></script>
 </html>
