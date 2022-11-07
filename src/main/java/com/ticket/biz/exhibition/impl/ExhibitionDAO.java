@@ -21,6 +21,11 @@ public class ExhibitionDAO {
 		mybatis.insert("ExhibitionDAO.insertExhibition", vo);
 	}
 
+	// 전시 승인
+	public void approvalExhibition(ExhibitionVO vo) {
+		mybatis.update("ExhibitionDAO.approvalExhibition", vo);
+	}
+	
 	// 전시 수정
 	public void updateExhibition(ExhibitionVO vo) {
 		mybatis.update("ExhibitionDAO.updateExhibition", vo);
