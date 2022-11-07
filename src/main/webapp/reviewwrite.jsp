@@ -9,7 +9,7 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>리뷰쓰기</title>
+<title>Insert title here</title>
 <%@ include file="header.jsp"%>
 </head>
 <body>
@@ -33,6 +33,7 @@ $(document).ready(function(){
 		 data:objparams,
 		
 		success:function(data) {
+		console.log(data);
 			if(data.total > 0){
 				console.log("get list 실행 중");
 				var list = data.list;
@@ -47,17 +48,22 @@ $(document).ready(function(){
 				var comment_html = "<div>";
 				
 				$('#count').html(data.total);
-				for(i = 0;i < list.length;i++){
+				$.each(list, function(i, v){
 					console.log("댓글 만들기");
 					var content = list[i].review_content;
 					var writer = list[i].review_writer;
-					var review_no=list[i].review_no;
+					var review_no= list[i].review_no;
 					
-					console.log("댓글번호받아라!!! 시름" +review_no);
+					console.log("댓글번호받아라!!!" +review_no);
+					console.log("writer!!!" +writer);
+					
+					//여기 위를 form 으로 지정해서 
+					//현재 update에서는 아래의 폼을 물고 있고 , closest는 자신의 조상을 가르키고 있기 때문에 그것 또한 , 잘 생각해서 .할 것 .
 					comment_html += "<div><span id='review_writer'><strong>" + writer + "</strong></span><br/>";
+					//writer와 content를 input요소로 넣고 하하고 
 					comment_html += "<span id='review_content'>" + content + "</span><br>";
 					
-					
+// 					alert('세션아이디: '+$("#review_writer").val());
 					console.log("댓글 아래로 쭉 떠야함 ");
 					if(writer === $("#review_writer").val()){
 						//wirter는 db에 있는것   , #review_writer은 세션에 있는 것 
@@ -77,7 +83,7 @@ $(document).ready(function(){
 											
 										
 											
-											comment_html += "<button id='update' style='cursor:pointer;' onclick='uplist("+list_no+")'>(수정하기)</button><br></div><hr>";
+											comment_html += "<button id='update1' style='cursor:pointer;' onclick='updateReview("+list_no+")'>(수정하기)</button><br></div><hr>";
 											
 											
 // 											comment_html += "<div><fmt:formatDate value="${list.review_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}<br></div><hr>";
@@ -85,13 +91,13 @@ $(document).ready(function(){
 					else{
 						comment_html += "</div><hr>";
 					}
-				}
-				
+					
+				});
+				console.log('99999999: '+comment_html);
 				$(".comment_Box").html(comment_html);
 				
 				
-			}
-			else{
+			}else{
 					console.log("total 이 0 일때 ");
 				var comment_html = "<div>등록된 댓글이 없습니다.</div>";
 				$(".comment_Box").html(comment_html);
@@ -145,7 +151,7 @@ $('#Comment_regist').click(function() {
 //					$('#review_content').val('');
 					$('#review_content').val(review_content);
 					// 댓글이 등록되면 , 새로운 댓글창 나오면서 댓글 아이디는 작성자로, 댓글창은 빈문자로 만든다 .
-				
+				 window.location.reload();
 			} else {
 				alert('로그인 이후 이용해주시기 바랍니다.');
 				console.log('댓글 등록 실패');
@@ -162,13 +168,6 @@ $('#Comment_regist').click(function() {
 
 });
 
-function uplist(val){
-	console.log("댓글 수정 함수  실행");
-	console.log(val);
-	
-	location.href="updateReview?review_no="+val;
-	
-}
 
 
 function del(val){
@@ -184,12 +183,55 @@ function del(val){
         alert('삭제가 취소되었습니다.');
     }
 }
-// $(document).ready(function(){
-// $("#delete").click(function(){
+
+function updateReview(val){
+//  일단 list.no는 필요 없음
 	
-// 	console.log("딜리트함수 실행");
-// });
-// });
+	
+	document.querySelectorAll('.btn-comment-update').forEach(function (item) {
+        item.addEventListener('click', function () { // 버튼 클릭 이벤트 발생시
+            const form = this.closest('form'); // btn의 가장 가까운 조상의 Element(form)를 반환 (closest)
+            commentUpdate(form); // 해당 form으로 업데이트 수행
+        });
+    });
+	
+	 /** 댓글 수정 */
+    function commentUpdate(form) {
+        const data = {
+            
+            comment: form.querySelector('#comment-content').value(),
+        }
+        if (!data.comment || data.comment.trim() === "") {
+            alert("공백 또는 입력하지 않은 부분이 있습니다.");
+            return false;
+        }
+        const con_check = confirm("수정하시겠습니까?");
+        if (con_check === true) {
+            $.ajax({
+                type: 'POST',
+                url: "updateReview",
+                dataType: 'JSON',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function () {
+                window.location.reload();
+            }).fail(function (error) {
+                alert(JSON.stringify(error));
+            });
+        }
+	
+	 }
+			
+}
+	}
+	
+}
+$(document).ready(function(){
+$("#delete").click(function(){
+	
+	console.log("딜리트함수 실행");
+});
+});
 
 </script>
 
@@ -197,7 +239,7 @@ function del(val){
                     
    		                 <div class="comment-count">댓글 <span id="count">0</span></div>
    		                 
-						<input type="hidden" id="review_bno" name="review_bno" value="2">
+						<input type="hidden" id="review_no" name="review_no" value="2">
 						
    		                 	   <!-- <span class="c-icon"><i class="fa-solid fa-user"></i>  -->
    		                 <div class="comment-name">
@@ -215,8 +257,7 @@ function del(val){
                     		<button id="Comment_regist"> 댓글등록</button>
                     	 </div>
 	                        	
-	                        	<a type="button" data-toggle="collapse" data-target=".multi-collapse-{{id}}"
-                class="bi bi-pencil-square"></a> {{! 댓글 수정 버튼 }}
+	                        	
 	                   	
 <!-- 	                        	댓글 작성되면 작고 올라올 곳  -->
 	                        	<div class="">
@@ -224,9 +265,19 @@ function del(val){
 	                        	
 	                        	
 	                        	
-                    <div class="comment_Box">
-<!--                         <input type="text" class="comment-input" id="review_content" cols="80" rows="2" placeholder="내용을 입력해주세요" name="review_content" style="height:200px; height:200px;"> -->
-                        </div>
+                {{! 댓글 수정 }}
+                <form class="collapse multi-collapse-{{id}}">
+<!--                     <input type="hidden" id="id" value="{{id}}"> -->
+<!--                     <input type="hidden" id="postsId" value="{{postsId}}"> -->
+                    <div class="form-group">
+                        <textarea class="form-control" id="comment-content" rows="3">{{comment}}</textarea>
+                    </div>
+                    <button type="button"  class="btn btn-outline-primary bi bi-pencil-square btn-comment-update"> 수정</button>
+                 </form> <br>
+                    
+                    
+                    
+                    <div class="comment_Box"></div>
 	                        <!-- </span> -->
                      <!--<img src="/익명.jpg" width ="50px" alt="My Image"><!-->
                      
@@ -236,7 +287,8 @@ function del(val){
                             <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                          </span> -->
-                    </div>
+</div>
+                    
                     	
                     	 
 </body>
