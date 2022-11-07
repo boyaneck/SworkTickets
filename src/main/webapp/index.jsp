@@ -8,7 +8,46 @@
 <!-- header -->
 <%@ include file="header.jsp"%>
 <!-- header end -->
+<script>
+$(document).ready(function(){
+	$('.slider-wrap').slick({
+		  dots: false,
+		  /* autoplay:true; //자동넘김 */
+		  infinite: false,
+		  speed: 300,
+		  slidesToShow: 4,
+		  slidesToScroll: 4,
+		  responsive: [
+		    {
+		    	//반응형 ~ 1024
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 3,
+		        slidesToScroll: 3,
+		        infinite: true,
+		        dots: true
+		      }
+		    },
+		    { //반응형 ~ 600
+		      breakpoint: 600,
+		      settings: {
+		        slidesToShow: 2,
+		        slidesToScroll: 2
+		      }
+		    },
+		    { //반응형 ~ 480
+		      breakpoint: 480,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1
+		      }
+		    }
+		  ]
+		});
+});
+</script>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
 <!-- <img class="picture" src="./images/main_image.png" /> -->
 
@@ -45,16 +84,32 @@
 <h2><span style="color:#7832f7">NEW</span> EXHIBITION</h2>
 <h3 style="color:#fff">NEW EXHIBITION</h3>
 </div>
+<div class="slider-wrap">
+<img src="./images/1.png" width="150" height="200">
+<img src="./images/2.png" width="150" height="200">
+<img src="./images/1.png" width="150" height="200">
+<img src="./images/poroly_jsy.png" width="150" height="200">
+<img src="./images/poroly.png" width="150" height="200">
+<img src="./images/달러구트꿈백화점.jpg" width="150" height="200">
+<img src="./images/아라의소설.jpg" width="150" height="200">
+<img src="./images/이기적유전자.jpg" width="150" height="200">
+<img src="./images/파친코2.jpg" width="150" height="200">
+<img src="./images/거북이자리.jpg" width="150" height="200">
+<img src="./images/평면의역사.jpg" width="150" height="200">
+<img src="./images/필요가피로가되지않게.jpg" width="150" height="200">
+<img src="./images/하얼빈.jpg" width="150" height="200">
+<img src="./images/2.png" width="150" height="200">
+</div>
 
 <div class="new_ex">
 <button type="button" onclick = "location.href= '../getUserExhibitionList'" ><span style="color:#7832f7">+</span>more</button>
 </div>
 
-<br><br>
+<!-- <br><br>
 회원 메뉴 
-<br><br>
+<br><br> -->
 
-<a href="/getUserExhibitionList">- 회원전시</a><br>
+<!-- <a href="/getUserExhibitionList">- 회원전시</a><br> -->
 <br><br>
 관리자 메뉴 
 <br><br>
@@ -62,6 +117,7 @@
 <a href="insertCoupon.jsp">- 쿠폰등록</a><br>
 <a href="/getCouponList">- 쿠폰목록</a><br>
 <a href="/pay">- 관리자 결제목록</a><br>
+<a href="reviewwrite.jsp">후기</a>
 <div class="container-fluid">
 	<div class="h-100 d-inline-block bg-dark text-white">디브</div>
 </div>

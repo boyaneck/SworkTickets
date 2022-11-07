@@ -13,6 +13,30 @@
         <h1>${exhibition.exh_title}</h1>
         <h5>${exhibition.exh_st_date} ~ ${exhibition.exh_end_date}</h5>
         <h6>${exhibition.exh_hall}</h6>
+        <br>
+        <jsp:useBean id="now" class="java.util.Date" /> 
+        <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> 
+		<h5>
+		<c:choose>
+				<c:when test="${exhibition.exh_approval eq 0 && exhibition.exh_st_date <= today}">
+				<p>승인 불가</p>
+				<p>전시 시작일자를 변경해주세요.</p>
+				</c:when>
+				<c:when test="${exhibition.exh_approval eq 0 && exhibition.exh_st_date > today}">
+				<p>승인 대기</p>
+				</c:when>
+				<c:when test="${exhibition.exh_approval eq 1 && exhibition.exh_end_date < today}">
+				<p>전시 종료</p>
+				</c:when>
+				<c:when test="${exhibition.exh_approval eq 1 && exhibition.exh_st_date > today}">
+				<p>승인</p>
+				<p>전시 예정</p>
+				</c:when>
+				<c:otherwise>
+				<p>전시 진행중</p>
+				</c:otherwise>
+		</c:choose>
+		</h5>
 </div>
 <p>작가 ${exhibition.exh_artist}</p>
 <p>관람등급 ${exhibition.exh_rating}</p>
@@ -21,18 +45,33 @@
 <p>예매수수료 <fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</p>
 <p>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</p>
    <div id="footer">
-			<a href="WEB-INF/admin/ExhibitionInsert.jsp"><button type="button" id="modify" class="btn btn-primary">수정하기</button></a>
-			<button type="button" id="del" class="btn btn-primary" onclick="del('${page}')">삭제하기</button>
+			<a href="WEB-INF/admin/ExhibitionInsert.jsp"><button type="button" id="modify" class="btn btn-primary">수정</button></a>
+			<button type="button" id="del" class="btn btn-primary" onclick="del('${page}')">삭제</button>
+			<a href="#"><button type="button" id="approval" class="btn btn-primary">승인</button></a>
 		</div>
-		<jsp:useBean id="now" class="java.util.Date" /> <fmt:formatDate value="${exhibition.exh_st_date}" pattern="yyyy-MM-dd" var="st_date" />
 		<script>
-		console.log( ${st_date});
+		 var edate = new Date('${exhibition.exh_end_date}');
+		 var ndate = new Date();
+		 var mond = document.getElementById("modify"); 	
+		 var dond = document.getElementById("del"); 	
+		 var aond = document.getElementById("approval"); 	
+		 
 		(function delmo() {
-		    let cancell = "${exhibition.exh_cancell}";
-		    if (cancell == 1 ) {
-		        $("#modify").hide();
-		        $("#del").hide();
-		    } else {
+		    let approval = "${exhibition.exh_approval}";
+		    if (approval == 1 && edate <= ndate) {
+// 		    	$(#modify).attr("disabled", true);
+// 		    	$(#del).attr("disabled", true);
+// 		    	$(#approval).attr("disabled", true);
+		    	mond.style.display = 'none';
+		    	dond.style.display = 'none';
+		    	aond.style.display = 'none';
+		    } else if (approval == 1) {
+		    	dond.style.display = 'none';
+		    	aond.style.display = 'none';
+// 		    	$(#del).attr("disabled", true);
+// 		    	$(#approval).attr("disabled", true);
+		    }
+		    else{
 		    }
 		})();
 

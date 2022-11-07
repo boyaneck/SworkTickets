@@ -37,7 +37,7 @@ input.my_checkbox {display:none;}
                <th>좋아요</th>
             </tr>
          </thead>
-         <script>
+<script>
 $(function(){
    /*
    즉시 실행 함수 종류

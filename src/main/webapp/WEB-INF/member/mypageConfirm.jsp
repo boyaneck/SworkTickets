@@ -8,21 +8,36 @@
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
 </head>
+<script>
+function pwChk(){
+    $.ajax({
+        url : "/pwChk",
+        type : "post", 
+        dataType : "json", 
+        data : {"mb_pw" : $("#mb_pw").val()},  
+        success : function(data){
+           if(data == 0){
+                alert("비밀번호가 일치하지 않습니다.");
+           }
+        }
+   })
+}
+</script>
 <body>
-	<form action="mypage">
+	<%-- <form action="mypage">
 		<div class="card-body">
 			<div class="text-start">
 
 				<input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
-				<%-- <input type="hidden" name="mb_pw" value="${member.mb_pw}" /> --%>
+				<input type="hidden" name="mb_pw" value="${member.mb_pw}" />
 				<div class="input-group input-group-outline my-3">
 					<label class="form-label">비밀번호 확인</label> <input type="password"
 						id="mb_pw" name="mb_pw" class="form-control">
 				</div>
 
 			</div>
-			<button class="btn bg-gradient-primary w-100 my-4 mb-2" id="checkPwd">
-				비밀번호 확인</button>
+			<button type="button" onclick="pwChk()" class="btn bg-gradient-primary w-100 my-4 mb-2" id="checkPwd">
+				비밀번호 확인</button> --%>
 
 			<!-- <script>
 				$('#checkPwd').click(function() {
@@ -58,8 +73,25 @@
 					}
 				});
 			</script> -->
+		<!-- </div>
+	</form> -->
+	<form action="mypage">
+		<div class="card-body">
+			<div class="text-start">
+
+				<input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
+				<%-- <input type="hidden" name="mb_pw" value="${member.mb_pw}" /> --%>
+				<div class="input-group input-group-outline my-3">
+					<label class="form-label">비밀번호 확인</label> <input type="password"
+						id="mb_pw" name="mb_pw" class="form-control">
+				</div>
+
+			</div>
+			<button class="btn bg-gradient-primary w-100 my-4 mb-2" id="checkPwd">
+				비밀번호 확인</button>
 		</div>
 	</form>
+	
 
 </body>
 </html>

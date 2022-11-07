@@ -412,7 +412,7 @@ function chkBtn(){
 												<button type="button" id="phoneChk"
 													class="btn btn-dark doubleChk"
 													onclick="javascript:sendAuthNum()">인증번호 보내기</button>
-												<span id="timer">타이머</span> <br /> <input id="phone2"
+												<span id="timer"></span> <br /> <input id="phone2"
 													type="text" name="phone2" title="인증번호 입력" disabled required />
 												<button type="button" id="phoneChk2"
 													class="btn btn-dark doubleChk">인증확인</button>

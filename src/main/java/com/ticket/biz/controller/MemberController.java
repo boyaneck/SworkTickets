@@ -1,8 +1,11 @@
 package com.ticket.biz.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +30,22 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
-    // 아이디 중복 검사
-    @ResponseBody
-    @RequestMapping(value = "/idChk", method = RequestMethod.POST)
-    public int idChk(@RequestParam Map<String, Object> param) {
+
+	// 아이디 중복 검사
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(@RequestParam Map<String, Object> param) {
 //        int result = memberService.idChk(param);
-    	System.out.println(memberService.idChk(param));
-        return memberService.idChk(param);
-        
-    }
-    
+		return memberService.idChk(param);
+
+	}
+	// 회원 수정 비밀번호 확인
+//	@ResponseBody
+//	@RequestMapping(value = "/pwChk", method = RequestMethod.POST)
+//	public int pwChk(@RequestParam Map<String, Object> param) {
+//		return memberService.pwChk(param);
+//	}
+
 	// 회원 검색
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
@@ -49,16 +57,53 @@ public class MemberController {
 		return conditionMap;
 	}
 
-	// 회원 마이페이지
+	// 회원수정 접근 비밀번호
+	@RequestMapping(value = "/mypageView")
+	public String mypageConfirm(MemberVO vo, Model model, HttpSession session, HttpServletResponse response)
+			throws IOException {
+		String password = vo.getMb_pw();
+
+//			if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
+//				throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+//			}
+		return "member/mypageConfirm";
+	}
+
+//			System.out.println(session.getAttribute("mb_Id"));
+//			System.out.println(vo.getMb_pw());
+//			System.out.println("aaaa");
+
+	// 회원마이페이지
 	@RequestMapping(value = "/mypage")
-	public String getMyPage(MemberVO vo, Model model, HttpSession session) {
-
-		System.out.println("회원정보가져오기");
-
-
+	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response) {
+//		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
+		if (memberService.getMember(vo) != null) {
+			
+			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
+			System.out.println(login);
+			if (login == true) {
+				System.out.println("마이페이지접근");
+				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+//				return "member/mypage";
+			} else{
+				System.out.println("실패2");
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter script;
+				try {
+					script = response.getWriter();
+					script.println("<script>");
+					script.println("alert('비밀번호를 올바르게 입력해주세요');");
+					script.println("location.href = 'mypageView'");
+					script.println("</script>");
+					script.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-//	      System.out.println("1111111"+memberService.getMember(vo));
 		return "member/mypage";
 	}
 
@@ -67,9 +112,7 @@ public class MemberController {
 	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
 				|| session.getAttribute("mb_Id").equals("admin")) {
-			System.out.println("1111111111111");
 			String password = pwCheck.encrypt(vo.getMb_pw());
-			System.out.println("2222222222222" + password);
 			vo.setMb_pw(password);
 			memberService.updateMember(vo);
 			return "member/mypage";
@@ -93,7 +136,6 @@ public class MemberController {
 	// 멤버등록
 	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) throws IllegalStateException {
-		System.out.println("2222222222222" + vo.getMb_id());
 		String password = vo.getMb_pw();
 		// 창일 추가
 		vo.setMb_pw(pwCheck.encrypt(password));
@@ -106,11 +148,8 @@ public class MemberController {
 	@RequestMapping("/registerTerm")
 	public ModelAndView registerTerm(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1,
 			@RequestParam(value = "agree2", defaultValue = "false") Boolean agree2, MemberVO vo) throws Exception {
-		System.out.println("agree: " + agree1);
-//		System.out.println("이용약관입니다.");
 		ModelAndView mv = new ModelAndView();
 		if (agree1 == true && agree2 == true) {
-			System.out.println("이용약관입니다.");
 			mv.setViewName("views/insertMember");
 			return mv;
 		} else {
@@ -119,7 +158,7 @@ public class MemberController {
 		}
 
 	}
-	// 이용약관
+	// 이용약관 뷰
 
 	@RequestMapping(value = "/step1")
 	public String register_term() {
@@ -132,7 +171,7 @@ public class MemberController {
 	public String deleteMember(MemberVO vo, HttpSession session) {
 		session.invalidate();
 		int result = memberService.deleteMember(vo);
-		System.out.println(result);
+//		System.out.println(result);
 		return "redirect:login.jsp";
 	}
 
@@ -165,9 +204,9 @@ public class MemberController {
 	// 아이디찾기폼
 	@RequestMapping("/findIdform")
 	public String find(MemberVO vo, Model model) {
-		System.out.println("아이디찾기" + vo);
+//		System.out.println("아이디찾기" + vo);
 		vo = memberService.find(vo);
-		System.out.println("찾은결과: " + vo);
+//		System.out.println("찾은결과: " + vo);
 		if (vo != null) {
 			model.addAttribute("mb_Id", vo.getMb_id());
 			return "views/findId";
