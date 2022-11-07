@@ -22,7 +22,7 @@
 		AND MB_ID=#{mb_id};
 
 	</select>
-
+	
 	<select id="getGoodYN" resultType="_integer">
 		SELECT COUNT(*)
 		from GOOD
@@ -30,7 +30,8 @@
 		AND EXH_NO= #{exh_no}
 		AND MB_ID=#{mb_id};
 	</select>
-
+	
+<!-- 좋아요 랭킹 -->
 	<select id="getGoodList" resultType="exhibition">
 		SELECT e.*, COUNT(g.GOOD_CHECK)AS rank_cnt from exhibition as e
 		LEFT outer JOIN good AS g
@@ -38,10 +39,10 @@
 		GROUP BY e.exh_no
 		ORDER BY
 		rank_cnt DESC
-		LIMIT 5;
+		LIMIT 3;
 	</select>
 
-	<!-- 전시 조회 -->
+	<!-- 내 좋아요 목록 -->
 	<select id="getMyGoodList" resultType="exhibition">
 		SELECT e.* FROM EXHIBITION as e 
 		LEFT outer JOIN good AS g
@@ -52,7 +53,7 @@
 		 OFFSET #{offset};
 	</select>
 
-	<!-- 전시 조회 -->
+	<!-- 내 좋아요 목록수 -->
 	<select id="getMyGoodListCnt" resultType="_int">
 		SELECT count(*) FROM EXHIBITION as e 
 		LEFT outer JOIN good AS g

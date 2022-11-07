@@ -1,8 +1,11 @@
 package com.ticket.biz.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +40,11 @@ public class MemberController {
 
 	}
 	// 회원 수정 비밀번호 확인
-	@ResponseBody
-	@RequestMapping(value = "/pwChk", method = RequestMethod.POST)
-	public int pwChk(@RequestParam Map<String, Object> param) {
-		return memberService.pwChk(param);
-	}
-
+//	@ResponseBody
+//	@RequestMapping(value = "/pwChk", method = RequestMethod.POST)
+//	public int pwChk(@RequestParam Map<String, Object> param) {
+//		return memberService.pwChk(param);
+//	}
 
 	// 회원 검색
 	@ModelAttribute("conditionMap")
@@ -57,7 +59,8 @@ public class MemberController {
 
 	// 회원수정 접근 비밀번호
 	@RequestMapping(value = "/mypageView")
-	public String mypageConfirm(MemberVO vo, Model model, HttpSession session) {
+	public String mypageConfirm(MemberVO vo, Model model, HttpSession session, HttpServletResponse response)
+			throws IOException {
 		String password = vo.getMb_pw();
 
 //			if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
@@ -72,32 +75,44 @@ public class MemberController {
 
 	// 회원마이페이지
 	@RequestMapping(value = "/mypage")
-	public String getMyPage(MemberVO vo, Model model, HttpSession session) {
-		System.out.println("회원정보가져오기");
+	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response) {
+//		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
-		System.out.println("1111111" + memberService.getMember(vo));
 		if (memberService.getMember(vo) != null) {
+			
 			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
+			System.out.println(login);
 			if (login == true) {
-				System.out.println("로그인");
+				System.out.println("마이페이지접근");
 				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
-				return "member/mypage";
-			} else {
-				System.out.println("실패");
-				return "member/mypageConfirm";
+//				return "member/mypage";
+			} else{
+				System.out.println("실패2");
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter script;
+				try {
+					script = response.getWriter();
+					script.println("<script>");
+					script.println("alert('비밀번호를 올바르게 입력해주세요');");
+					script.println("location.href = 'mypageView'");
+					script.println("</script>");
+					script.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 
 		return "member/mypage";
 	}
+
 	// 회원 수정
 	@RequestMapping("/updateMember")
 	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
 				|| session.getAttribute("mb_Id").equals("admin")) {
-			System.out.println("1111111111111");
 			String password = pwCheck.encrypt(vo.getMb_pw());
-			System.out.println("2222222222222" + password);
 			vo.setMb_pw(password);
 			memberService.updateMember(vo);
 			return "member/mypage";
@@ -156,7 +171,7 @@ public class MemberController {
 	public String deleteMember(MemberVO vo, HttpSession session) {
 		session.invalidate();
 		int result = memberService.deleteMember(vo);
-		System.out.println(result);
+//		System.out.println(result);
 		return "redirect:login.jsp";
 	}
 
@@ -189,9 +204,9 @@ public class MemberController {
 	// 아이디찾기폼
 	@RequestMapping("/findIdform")
 	public String find(MemberVO vo, Model model) {
-		System.out.println("아이디찾기" + vo);
+//		System.out.println("아이디찾기" + vo);
 		vo = memberService.find(vo);
-		System.out.println("찾은결과: " + vo);
+//		System.out.println("찾은결과: " + vo);
 		if (vo != null) {
 			model.addAttribute("mb_Id", vo.getMb_id());
 			return "views/findId";
