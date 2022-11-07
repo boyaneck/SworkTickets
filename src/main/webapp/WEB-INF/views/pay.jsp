@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
+
 <style>
 .rectangle {
   border-radius:30px;
@@ -41,6 +42,7 @@ margin-left: 17% !important;
 color:white; background-color:black; width:15%; margin-top:5%;
 }
 </style>
+
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 var chk = false;
@@ -274,8 +276,6 @@ input[type="text"] {
    <br>
 </form>
 
-
-
 <!-- 쿠폰 -->
 <fmt:parseDate var="startDate_D"  value="${today }" pattern="yyyy-MM-dd"/>
 <fmt:parseNumber var="startDate_N" value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
@@ -287,7 +287,7 @@ input[type="text"] {
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">쿠폰 목록</h5>
+        <h5 class="modal-title" id="staticBackdropLabel"><b>쿠폰 목록</b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -300,23 +300,21 @@ input[type="text"] {
          
          <div class="container">
 
-            <div class="rectangle">
                <div class="row">
-                  <div class="col-4">
+                  <div class="col-3">
                      <h1 class="text-center"
-                        style="transform: translate(0, 80%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
+                        style="transform: translate(0, 65%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
                   </div>
                   <div class="col" style="transform: translate(0, 0); text-align:left;">
-                     <b id="c_name" style="font-size: 40px">${coupon.c_name}</b><br>
+                     <b id="c_name" style="font-size: 30px">${coupon.c_name}</b><br>
                      ${coupon.c_date}까지<br> <span class="text-danger"><small>
                            ${endDate_N-startDate_N}일 남음</small></span>
-
-                         <button id="${coupon.c_num}" class="close" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button>
-
                   </div>
-
+                  <div class="col-4">
+                         <button id="${coupon.c_num}" style="transform: translate(0, 95%); border:1px solid #7329f7; width:130px; height:45px; background-color: #fff; color: #7329f7; font-size: 18px; font-weight: bold;"  class="align-middle" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button>
+                  </div>
                </div>
-            </div>
+               <hr>
          </div>
 </c:forEach>
 
