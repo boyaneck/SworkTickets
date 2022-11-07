@@ -17,16 +17,11 @@
 <script>
 $(document).ready(function(){
 	
-
-		
 		const review_bno1=2;
 		var objparams={review_bno:review_bno1};
 		
 		console.log("안됨");
-		
-// 	var objparams={review_bno:review_bno1,review_writer:review_writer1,review_content:review_content1};
-
-		
+				
    $.ajax({
 		 type:'post',
 		 url:"/reviewList",
@@ -42,12 +37,12 @@ $(document).ready(function(){
 				console.log("받아온 데이터의 리스트와, 총 댓글 수 ")
 				console.log(list);
 				console.log(data.total);
-				console.log("list 번호"+list.review_no);
+		
 			
 				
 				var comment_html = "<div>";
 				
-				$('#count').html(data.total);
+				$('#count').html(data.total); //댓글 수 
 				$.each(list, function(i, v){
 					console.log("댓글 만들기");
 					var content = list[i].review_content;
@@ -59,33 +54,60 @@ $(document).ready(function(){
 					
 					//여기 위를 form 으로 지정해서 
 					//현재 update에서는 아래의 폼을 물고 있고 , closest는 자신의 조상을 가르키고 있기 때문에 그것 또한 , 잘 생각해서 .할 것 .
-					comment_html += "<div><span id='review_writer'><strong>" + writer + "</strong></span><br/>";
-					//writer와 content를 input요소로 넣고 하하고 
-					comment_html += "<span id='review_content'>" + content + "</span><br>";
 					
-// 					alert('세션아이디: '+$("#review_writer").val());
+					
+					
+// 					<div><form>
+// <div>
+// <span id="review_writer"><strong><input type="text" name="review_writer" value="+라이터변수넣기+"></strong></span><br>
+// <span id="review_content"><textarea name="review_content">"+내용변수넣기+"</textarea></span><br>
+// <button id="delete" style="cursor:pointer;" onclick="del("+리뷰넘버변수넣기+")">(삭제하기)</button><br>
+// </div><hr><button id="update1" style="cursor:pointer;" onclick="updateReview("+리뷰넘버변수넣기+")">(수정하기)</button><br></form></div><hr>
+					
+					//writer와 content를 input요소로 넣고 하고 
+					
+// 					comment_html +="<form action ='/updateReview'>"	
+// 					commnet_html +="<div class='a'>";
+
+					comment_html +="<div class='aa1'>";
+					comment_html += "<div><span class='review_writer'><strong>"+ writer + "</strong></div><br/>";
+					comment_html +="<div>"+content+"</div>";
+					comment_html +="</div>";
+				
+					
+
+					
+					
+					comment_html += "<div>";
+					comment_html +="<div class='cc'>";
+					comment_html +="<div class='aa2' style = 'display :none'>";
+					comment_html +="<form action ='/updateReview'>"	;
+					comment_html +="<div><input type='hidden'  name='review_writer'>"+writer+"</div>";
+					comment_html +="<div><textarea name='review_content' class='reveiw_content' >"+content+"</textarea></div>";
+					comment_html +="<button  class='btn-comment-update'>수정</button>";
+					comment_html += "</form>";
+					comment_html += "</div>";
+					
 					console.log("댓글 아래로 쭉 떠야함 ");
-					if(writer === $("#review_writer").val()){
+				
+					if(writer === $(".review_writer").val()){
 						//wirter는 db에 있는것   , #review_writer은 세션에 있는 것 
 						
-						var writer_d = $("#review_writer").val()
+						var writer_d = $(".review_writer").val()
 						console.log("세션 아이디 값");
 						console.log(writer_d);
 						console.log("review 값은 무엇일까요?"+review_no);
 						var list_no=review_no;
 						console.log(list_no);
-// 						<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
-// 						console.log("딜리트!!!!!!!!!"+reviewList.review_writer);
-// 						 comment_html += "<span id='delete' style='cursor:pointer;' >(삭제하기)</span><br></div><hr>";
-// 						comment_html += "<button id='delete' style='cursor:pointer;' onclick11='del(`${mb_Id}`)'>(삭제하기)</button><br></div><hr>";
-<%-- 						comment_html += "<button id='delete' style='cursor:pointer;' onclick='del(<%=list[i].review_no%>)'>(삭제하기)</button><br></div><hr>"; --%>
-											comment_html += "<button id='delete' style='cursor:pointer;' onclick='del("+list_no+")'>(삭제하기)</button><br></div><hr>";	 
+// 						<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>	
+														
+
+											comment_html += "<div><button id='delete' style='cursor:pointer;' onclick='del("+list_no+")'>(삭제하기)</button><br></div><hr>";	 																																
+											comment_html += "<button class='update1' style='cursor:pointer;' onclick='updateReview("+list_no+")'>(수정하기)</button><br><hr>";
 											
-										
+											comment_html += "</div>";
 											
-											comment_html += "<button id='update1' style='cursor:pointer;' onclick='updateReview("+list_no+")'>(수정하기)</button><br></div><hr>";
-											
-											
+											//div cc의 마침
 // 											comment_html += "<div><fmt:formatDate value="${list.review_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}<br></div><hr>";
 					}
 					else{
@@ -105,8 +127,6 @@ $(document).ready(function(){
 		}
    });	
 		
- 	
-
 
 $('#Comment_regist').click(function() {
 	
@@ -114,8 +134,8 @@ $('#Comment_regist').click(function() {
 	//Json으로 전달할 파라미터 변수선언 // 전시회에서 와야할 게시물 번호 
 			//${exh_no};
 	const review_bno = 2;
-	const review_writer = $('#review_writer').val();
-	const review_content = $('#review_content').val();
+	const review_writer = $('.review_writer').val();
+	const review_content = $('.review_content').val();
 	//작성한 작성자와 내용 
 	 
 	console.log(review_bno);
@@ -147,9 +167,9 @@ $('#Comment_regist').click(function() {
 				alert('댓글 등록이 완료되었습니다.');
 				console.log('댓글 등록 완료');
 				console.log();
-				$('#review_writer').val(review_writer);
+				$('.review_writer').val(review_writer);
 //					$('#review_content').val('');
-					$('#review_content').val(review_content);
+					$('.review_content').val(review_content);
 					// 댓글이 등록되면 , 새로운 댓글창 나오면서 댓글 아이디는 작성자로, 댓글창은 빈문자로 만든다 .
 				 window.location.reload();
 			} else {
@@ -164,11 +184,7 @@ $('#Comment_regist').click(function() {
 		
 })// 댓글등록 이벤트 끝
 
-
-
 });
-
-
 
 function del(val){
 	console.log("딜리트함수 실행");
@@ -186,10 +202,46 @@ function del(val){
 
 function updateReview(val){
 //  일단 list.no는 필요 없음
+		console.log("updateReview 함수 실행"+val);
+	
+	    $(this).class
+		$(".aa1").hide();
+		$(".aa2").show();
+		$(".update1").hide();
+// 		$(this).closest("aa1");		
+		
+// 		$(".update1").closest("div").show();
+// 		$(this).closest(".aa1").hide();
+// 		$(this).closest(".aa2").show();
+// 		$(this).show(".aa2");
 	
 	
+// 		var cc=this.closest('div');
+// 		console.log(cc);
+		
+// 		$(".aa2").show();
+// 		$('.update1').hide();
+		
+// 	 const div1 = this.closest("form");
+// 		show(div1);
+
+		
+		
+
+// 		var form1="<form action ='/updateReview'>";
+// 		var form2="</form>"
+		
+		//리스트의 댓글이 폼형식으로 바꿔야함 
+// 		$(".btn-comment-update").onclick(function(){
+// 		const form=this.closest("form");
+// 		commetUpdate(form);
+			
+// 		})
+		
 	document.querySelectorAll('.btn-comment-update').forEach(function (item) {
-        item.addEventListener('click', function () { // 버튼 클릭 이벤트 발생시
+        item.addEventListener('click', function () { 
+        	
+//         	// 버튼 클릭 이벤트 발생시
             const form = this.closest('form'); // btn의 가장 가까운 조상의 Element(form)를 반환 (closest)
             commentUpdate(form); // 해당 form으로 업데이트 수행
         });
@@ -199,7 +251,7 @@ function updateReview(val){
     function commentUpdate(form) {
         const data = {
             
-            comment: form.querySelector('#comment-content').value(),
+            comment: form.querySelector('.review_content').value(),
         }
         if (!data.comment || data.comment.trim() === "") {
             alert("공백 또는 입력하지 않은 부분이 있습니다.");
@@ -223,15 +275,7 @@ function updateReview(val){
 	 }
 			
 }
-	}
-	
-}
-$(document).ready(function(){
-$("#delete").click(function(){
-	
-	console.log("딜리트함수 실행");
-});
-});
+
 
 </script>
 
@@ -243,51 +287,24 @@ $("#delete").click(function(){
 						
    		                 	   <!-- <span class="c-icon"><i class="fa-solid fa-user"></i>  -->
    		                 <div class="comment-name">
-	                        <span class="anonym">작성자  <input type="text" class="form-control"  placeholder="아이디" id="review_writer" name ="review_writer" value="${mb_Id}" readonly style="width: 300px; border:none;">
+	                        <span class="anonym">작성자  <input type="text" class="form-control review_writer"  placeholder="아이디" name ="review_writer" value="${mb_Id}" readonly style="width: 300px; border:none;">
 	                        </span>
 	                      </div>   
 	                  
 	                  
 	                        	<div class="content"> 내용:
 	                        	
-	                        	<span><input type="text" class="form-control"id="review_content" name="review_content" placeholder="내용을 입력하세요" style="width: 300px; border:none;">
+	                        	<span><input type="text" class="form-control review_content"   name="review_content" placeholder="내용을 입력하세요" style="width: 300px; border:none;">
 	                        	</span>
 	                        	</div>
 	                        	<div class="regBtn">
                     		<button id="Comment_regist"> 댓글등록</button>
                     	 </div>
-	                        	
-	                        	
-	                   	
-<!-- 	                        	댓글 작성되면 작고 올라올 곳  -->
-	                        	<div class="">
-	                        	</div>
-	                        	
-	                        	
-	                        	
-                {{! 댓글 수정 }}
-                <form class="collapse multi-collapse-{{id}}">
-<!--                     <input type="hidden" id="id" value="{{id}}"> -->
-<!--                     <input type="hidden" id="postsId" value="{{postsId}}"> -->
-                    <div class="form-group">
-                        <textarea class="form-control" id="comment-content" rows="3">{{comment}}</textarea>
-                    </div>
-                    <button type="button"  class="btn btn-outline-primary bi bi-pencil-square btn-comment-update"> 수정</button>
-                 </form> <br>
+
+	   
                     
                     
-                    
-                    <div class="comment_Box"></div>
-	                        <!-- </span> -->
-                     <!--<img src="/익명.jpg" width ="50px" alt="My Image"><!-->
-                     
-                     
-                        <!-- <span class="com-function-btn" type="hidden">
-                            
-                            <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-                         </span> -->
-</div>
+                    <div class="comment_Box"></div> </div>
                     
                     	
                     	 
