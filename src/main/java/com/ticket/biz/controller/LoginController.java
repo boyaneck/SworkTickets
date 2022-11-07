@@ -48,14 +48,15 @@ public class LoginController {
 		}
 		if (memberService.getMember(vo) != null) {
 			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
-			if((login == true)&&memberService.getMember(vo).getMb_id().equals("admin")) {
-				System.out.println("로그인");
-				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
-			
-				return "admin/admin_index";
-				
-			}
-			else if (login == true) {
+//			if((login == true)&&memberService.getMember(vo).getMb_id().equals("admin")) {
+//				System.out.println("로그인");
+//				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+//			
+//				return "admin/admin_index";
+//				
+//			}
+//			else
+				if (login == true) {
 				System.out.println("로그인");
 				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
 			
