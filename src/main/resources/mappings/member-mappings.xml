@@ -37,9 +37,9 @@
 
 	<!-- 멤버수정 -->
 	 <update id="updateMember">
-      UPDATE MEMBER
+      UPDATE IGNORE MEMBER
       SET
-      MB_NAME=#{mb_name}, MB_PW =#{mb_pw}
+      MB_NAME=#{mb_name}, MB_PW = #{mb_pw}
       WHERE
       MB_ID = #{mb_id}
    </update>

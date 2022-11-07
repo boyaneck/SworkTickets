@@ -19,18 +19,14 @@ import com.ticket.biz.pwtest.PwCheck;
 @Controller
 @SessionAttributes("login")
 public class LoginController {
-	// 창일추가
 	@Autowired
 	private PwCheck pwCheck;
-	// ---
 	@Autowired
 	private MemberService memberService;
 
 	@RequestMapping(value = "/logincheck", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpSession session, HttpServletResponse response) {
-		// 창일-추가
 		String password = vo.getMb_pw();
-		// ---
 
 		System.out.println("로그인 인증 처리...");
 		if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
@@ -51,12 +47,21 @@ public class LoginController {
 			}
 		}
 		if (memberService.getMember(vo) != null) {
-			// 창일 추가
 			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
-			if (login == true) {
+//			if((login == true)&&memberService.getMember(vo).getMb_id().equals("admin")) {
+//				System.out.println("로그인");
+//				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+//			
+//				return "admin/admin_index";
+//				
+//			}
+//			else
+				if (login == true) {
 				System.out.println("로그인");
 				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+			
 				return "redirect:index.jsp";
+				
 			} else {
 				System.out.println("실패");
 				response.setCharacterEncoding("utf-8");
@@ -65,7 +70,7 @@ public class LoginController {
 				try {
 					script = response.getWriter();
 					script.println("<script>");
-					script.println("alert('비밀번호가 다릅니다.');");
+					script.println("alert('비밀번호가 다르거나 비밀번호를 입력해주세요');");
 					script.println("location.href = 'login.jsp'");
 					script.println("</script>");
 					script.close();
