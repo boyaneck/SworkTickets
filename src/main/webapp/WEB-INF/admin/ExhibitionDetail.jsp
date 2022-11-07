@@ -45,12 +45,14 @@
 <p>예매수수료 <fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</p>
 <p>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</p>
    <div id="footer">
-			<a href="WEB-INF/admin/ExhibitionInsert.jsp"><button type="button" id="modify" class="btn btn-primary">수정</button></a>
+<%-- 			<a href="WEB-INF/admin/ExhibitionInsert?exh_no=${exhibition.exh_no}.jsp"><button type="button" id="modify" class="btn btn-primary">수정</button></a> --%>
+			<a href="modifymoveExhibition?exh_no=${exhibition.exh_no}&page=${page}"><button type="button" id="modify" class="btn btn-primary">수정</button></a>
 			<button type="button" id="del" class="btn btn-primary" onclick="del('${page}')">삭제</button>
-			<a href="#"><button type="button" id="approval" class="btn btn-primary">승인</button></a>
+			<a href="approvalExhibition?exh_no=${exhibition.exh_no}"><button type="button" id="approval" class="btn btn-primary">승인</button></a>
 		</div>
 		<script>
 		 var edate = new Date('${exhibition.exh_end_date}');
+		 var sdate = new Date('${exhibition.exh_st_date}');
 		 var ndate = new Date();
 		 var mond = document.getElementById("modify"); 	
 		 var dond = document.getElementById("del"); 	
@@ -70,8 +72,9 @@
 		    	aond.style.display = 'none';
 // 		    	$(#del).attr("disabled", true);
 // 		    	$(#approval).attr("disabled", true);
-		    }
-		    else{
+		    } else if (approval == 0 && sdate <= ndate) {
+		    	aond.style.display = 'none';
+		    } else{
 		    }
 		})();
 

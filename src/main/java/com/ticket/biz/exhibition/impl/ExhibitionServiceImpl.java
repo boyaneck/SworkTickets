@@ -18,6 +18,11 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	public void insertExhibition(ExhibitionVO vo) {
 		exhibitionDAO.insertExhibition(vo);
 	}
+	
+	@Override
+	public void approvalExhibition(ExhibitionVO vo) {
+		exhibitionDAO.approvalExhibition(vo);
+	}
 
 	@Override
 	public void updateExhibition(ExhibitionVO vo) {

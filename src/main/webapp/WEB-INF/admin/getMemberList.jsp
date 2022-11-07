@@ -142,8 +142,7 @@ html, body {
 				</thead>
 				<tbody>
 					<c:forEach items="${memberList}" var="member">
-						<tr onclick="location.href='/mypage?mb_id=${member.mb_id}'" style="cursor: pointer;"
-						
+						<tr onclick="location.href='mypage?mb_id=${member.mb_id}'" style="cursor: pointer;"
 							class="text-center">
 							<td scope="row" data-label="번호">${member.mb_no}</td>
 							<td data-label="아이디">${member.mb_id}</td>
