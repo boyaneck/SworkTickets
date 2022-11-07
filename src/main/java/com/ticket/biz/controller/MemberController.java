@@ -59,9 +59,8 @@ public class MemberController {
 
 	// 회원수정 접근 비밀번호
 	@RequestMapping(value = "/mypageView")
-	public String mypageConfirm(MemberVO vo, Model model, HttpSession session, HttpServletResponse response)
+	public String mypageConfirm()
 			throws IOException {
-		String password = vo.getMb_pw();
 
 //			if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
 //				throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
@@ -78,7 +77,8 @@ public class MemberController {
 	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response) {
 //		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
-		if (memberService.getMember(vo) != null) {
+		System.out.println(memberService.getMember(vo));
+		if (memberService.getMember(vo).equals("admin") || memberService.getMember(vo) != null ) {
 			
 			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
 			System.out.println(login);
