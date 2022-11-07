@@ -229,6 +229,70 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
 }
 
 
+/* rank시작 */
+
+
+.rank_box {
+	margin-top: 100px;
+}
+
+.rank_box > div {
+	position:relative;
+	display: inline-block;
+	text-align: center;
+    height: 1000px;
+    line-height: 100px;
+}
+
+.rank_box > img {
+	position:relative;
+	display: inline-block;
+	
+}
+
+
+.rank1 {
+	width: 40%;
+	top: 200px;
+}
+
+.rank2 {
+	width: 39%;
+	top: 200px;
+}
+
+.rank_center {
+	display: inline-block;
+	width: 20%;
+}
+
+.rank-title {
+    position: sticky;
+    top: 0; 
+}
+
+
+.rank-title {
+	font-size: 50px;
+	top:40%;
+}
+
+.rank_ex {
+	text-align: center;
+}
+
+.rank_ex > button {
+	height: 50px;
+	width: 120px;
+	font-size: 25px;
+	background-color: #fff;
+	border-width: 1px;
+	border-color: #1f1f1f;
+}
+
+/* rank 끝 */
+
+
 .center_line{
       position:center;
        border: 1px solid black;

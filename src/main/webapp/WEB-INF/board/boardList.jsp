@@ -61,11 +61,12 @@ function f_write(val){
 // }
 </script>
 <body>
-	<div class="jumbotron">
-		<h1>공지 사항</h1>
+	<div class="board" >
+		<h1>공 지 사 항</h1>
 	</div>
+	
 	<%-- <%@ include file="../../menu.jsp" %> --%>
-	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
+	<nav id="searchNav" class="sub_title">
 		<form class="form-inline" action="getOneList.do" method="post">
 			<select class="form-control" id="sel1" name="searchCondition"
 				style="display: inline-block !important; margin-right: 10px;">
@@ -83,10 +84,10 @@ function f_write(val){
 		<table class="table table-hover">
 			<thead class="btn-primary">
 				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>등록일</th>
+					<th style="width:10%; text-align:center;" >번호</th>
+					<th style="width:50%; text-align:center;">제목</th>
+					<th style="width:20%; text-align:center;">작성자</th>
+					<th style="width:20%; text-align:center;">등록일</th>
 
 				</tr>
 			</thead>
@@ -116,10 +117,10 @@ function f_write(val){
 	<%-- 				<tr onclick="getboard(${board.noti_no})" style="cursor: pointer;"> --%>
 					<tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"; style="cursor: pointer;">
 						<%-- 						<tr onclick="getboard(${board.noti_title}) style="cursor:pointer"> --%>
-						<td class="tdCenter" >${board.noti_no}</td>
-						<td class="tdCenter" >${board.noti_title}</td>
-						<td class="tdCenter" >${board.noti_writer}</td>
-						<td class="tdCenter"><fmt:formatDate
+						<td class="tdCenter" style="width:10%;" >${board.noti_no}</td>
+						<td class="tdCenter" style="width:50%;" >${board.noti_title}</td>
+						<td class="tdCenter" style="width:20%;" >${board.noti_writer}</td>
+						<td class="tdCenter" style="width:20%;" ><fmt:formatDate
 								value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
 								var="today" />${today}</td>
 						<%-- 							<td class="tdCenter">${board.noti_no}</td> --%>
@@ -131,17 +132,23 @@ function f_write(val){
 				</c:forEach>
 			</tbody>
 		</table>
-		<br> <br>
+		<div >
+		<button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</button>
+		</div>
+	</div>
+		</div>
+		<br><br>
+		<div id="btnBox_parent">
 		<div id="btnBox">
 			<!-- 반복처리할 태그 시작-->
 			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="getBoardList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+				<a href="getBoardList?nowPageBtn=${paging.nowPageBtn -1 }" >&lt;</a>
 			</c:if>
 			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
 				step="1" var="i">
 				<c:choose>
 					<c:when test="${paging.nowPageBtn == i}">
-						<a class="aSel">${i}</a>
+						<a style="font-weight:400; color:#7832f7;" class="aSel">${i}</a>
 					</c:when>
 					<c:otherwise>
 						<a href="getBoardList?nowPageBtn=${i}">${i}</a>
@@ -152,26 +159,11 @@ function f_write(val){
 				<a href="getBoardList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
 			</c:if>
 			<!-- 반복처리할 태그 끝 -->
-			
-			
-			
-			
-			
-			
-			<div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div>
-	</div>
-		</div>
-		<br> <br>
-
+			</div>
+			</div>
 		<%--   <c:if test="${session.getAttribute(mb_id) !==  --%>
 		<%--   <div id="footer"> --%>
 		<%-- 		      <div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div> --%>
-
-
-
-
-	
-
 
 		</body>
 </body>
