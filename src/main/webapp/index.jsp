@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- header -->
+
 <%@ include file="header.jsp"%>
-<!-- header end -->
+
 </head>
 <body class="d-flex flex-column min-vh-100">
 <!-- <img class="picture" src="./images/main_image.png" /> -->
