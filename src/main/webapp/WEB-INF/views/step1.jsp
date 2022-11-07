@@ -4,15 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입 약관</title>
 <%@ include file="../../header.jsp"%>
 	<script>
+	/* 약관 전체동의 시작 */
 	$(function(){
 		$("input[name=agreeAll]").click(function(){
 			$("input[name=agree1").prop("checked", this.checked);
 			$("input[name=agree2").prop("checked", this.checked);
 			});
 		});
+	/* 약관 전체동의 끝 */
 	</script>
 </head>
 <body>

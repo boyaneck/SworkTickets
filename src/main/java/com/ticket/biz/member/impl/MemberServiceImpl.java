@@ -1,6 +1,7 @@
 package com.ticket.biz.member.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,19 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 
+	//패스워드찾기
+    @Override
+    public int pwChk(Map<String, Object> param) {
+        return memberDAO.pwChk(param);
+    }
+    
+	   //아이디 중복체크
+    @Override
+    public int idChk(Map<String, Object> param) {
+       System.out.println(param);
+        return memberDAO.idChk(param);
+    }
+    
 	@Override
 	public MemberVO loginCheck(MemberVO vo) {
 		return memberDAO.loginCheck(vo);
@@ -23,6 +37,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void logout(HttpSession session) {
+		// TODO Auto-generated method stub
 
 	}
 
@@ -47,16 +62,21 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.deleteMember(vo);
 	}
 
-	   @Override
-	   public MemberVO getMember(MemberVO vo) {
-	      System.out.println(vo.getMb_id());
-	      return memberDAO.getMember(vo);
-	   }
+	@Override
+	public MemberVO getMember(MemberVO vo) {
+		return memberDAO.getMember(vo);
+	}
 
 	@Override
 	public void updateMember(MemberVO vo) {
 		memberDAO.updateMember(vo);
 	}
+
+
+	// 비밀번호 찾기
+//	public String findPw(Map<String, Object> param) {
+//		return memberDAO.findPw(param);
+//	}
 
 	@Override
 	public MemberVO find(MemberVO vo) {
@@ -67,5 +87,5 @@ public class MemberServiceImpl implements MemberService {
 	public int change(MemberVO vo) {
 		return memberDAO.change(vo);
 	}
-
+	
 }

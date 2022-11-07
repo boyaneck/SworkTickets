@@ -37,7 +37,7 @@ input.my_checkbox {display:none;}
                <th>좋아요</th>
             </tr>
          </thead>
-         <script>
+<script>
 $(function(){
    /*
    즉시 실행 함수 종류
@@ -201,6 +201,7 @@ function is_checked(eno) {//eno=3
          </div>
          <!--       반복처리할 태그 끝 -->
          </div>
+     
 
 </body>
 </html>

@@ -2,12 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberDAO">
-	<!-- 멤버등록 -->
+	<!-- 회원가입 -->
 	<insert id="insertMember">
-		INSERT INTO MEMBER(MB_ID, MB_PW, MB_NAME, MB_PHONE, MB_EMAIL)
+		INSERT IGNORE INTO MEMBER(MB_ID, MB_PW, MB_NAME, MB_PHONE, MB_EMAIL)
 		VALUES( #{mb_id}, #{mb_pw},#{mb_name}, #{mb_phone}, #{mb_email})
 	</insert>
-	
+	         <!--  회원 수정 비밀번호 확인 -->
+   <select id="pwChk" resultType="int">
+      SELECT COUNT(MB_PW) FROM MEMBER WHERE MB_PW = #{mb_pw}
+   </select>
+   
 	<!-- 로그인 -->
 	<select id="login" resultType="member">
 		SELECT * FROM MEMBER WHERE MB_ID = #{mb_id} AND MB_PW = #{mb_pw} AND MB_YN = 'Y'
@@ -61,4 +65,9 @@
 		SET MB_PW =#{mb_pw}
 		WHERE MB_ID=#{mb_id}
 	</update>
+	
+	   <!--    아이디 중복체크 -->
+   <select id="idChk" resultType="int">
+      SELECT COUNT(MB_ID) FROM MEMBER WHERE MB_ID = #{mb_id}
+   </select>
 </mapper>

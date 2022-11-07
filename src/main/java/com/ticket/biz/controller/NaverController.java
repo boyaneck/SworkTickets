@@ -83,7 +83,7 @@ public class NaverController {
 		model.addAttribute("naverInfo", userInfo);
 		session.setAttribute("naverLogin", userInfo);
 
-		if (member.getMb_id() == null) {
+		if (member.getMb_id() != null) {
 			memberService.insertMember(member);
 		} else {
 			System.out.println("테스트");
@@ -101,7 +101,7 @@ public class NaverController {
 		HttpClient client = HttpClientBuilder.create().build();
 
 		HttpPost post = new HttpPost(NAVER_TOKEN_URL);
-		Map<String, String> m = new HashMap<String, String>();
+		Map<String, String> m = new HashMap<>();
 		m.put("grant_type", "authorization_code");
 		m.put("client_id", vo.getClient_id()); // 애플리케이션 클라이언트 아이디값";
 		m.put("client_secret", vo.getClient_secret());// 애플리케이션 클라이언트 시크릿값";
@@ -130,7 +130,7 @@ public class NaverController {
 
 	// Map을 사용해서 Http요청 파라미터를 만들어 주는 함수 private
 	List<NameValuePair> convertParameter(Map<String, String> paramMap) {
-		List<NameValuePair> paramList = new ArrayList<NameValuePair>();
+		List<NameValuePair> paramList = new ArrayList<>();
 		Set<Entry<String, String>> entries = paramMap.entrySet();
 		for (Entry<String, String> entry : entries) {
 			paramList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
@@ -157,7 +157,7 @@ public class NaverController {
 			JsonNode response = rootNode.get("response");
 
 			if (!rootNode.asText().equals("null")) {
-				map = new HashMap<String, Object>();
+				map = new HashMap<>();
 				// 이곳에서 데이터베이스 연동로직 처리할 것
 				System.out.println("id: " + response.get("id").asText());
 //				System.out.println("age: " + response.get("age").asText());

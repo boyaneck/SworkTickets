@@ -65,7 +65,7 @@ public class PayController {
 		String result = "";
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(IMPORT_TOKEN_URL);
-		Map<String, String> m = new HashMap<String, String>();
+		Map<String, String> m = new HashMap<>();
 		m.put("imp_key", KEY);
 		m.put("imp_secret", SECRET);
 		try {
@@ -84,7 +84,7 @@ public class PayController {
 
 	// Map을 사용해서 Http요청 파라미터를 만들어 주는 함수 private
 	List<NameValuePair> convertParameter(Map<String, String> paramMap) {
-		List<NameValuePair> paramList = new ArrayList<NameValuePair>();
+		List<NameValuePair> paramList = new ArrayList<>();
 		Set<Entry<String, String>> entries = paramMap.entrySet();
 		for (Entry<String, String> entry : entries) {
 			paramList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
@@ -96,7 +96,7 @@ public class PayController {
 	public void setHackCheck(String amount, String mId, String token) {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(IMPORT_PREPARE_URL);
-		Map<String, String> m = new HashMap<String, String>();
+		Map<String, String> m = new HashMap<>();
 		post.setHeader("Authorization", token);
 		m.put("amount", amount);
 		m.put("merchant_uid", mId);
@@ -106,7 +106,7 @@ public class PayController {
 			ObjectMapper mapper = new ObjectMapper();
 			String body = EntityUtils.toString(res.getEntity());
 			JsonNode rootNode = mapper.readTree(body);
-//            System.out.println(rootNode); 
+//            System.out.println(rootNode);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,7 +118,7 @@ public class PayController {
 		String token = getImportToken();
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(IMPORT_CANCEL_URL);
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		post.setHeader("Authorization", token);
 		vo.setP_mer(mid);
 		System.out.println(mid);
@@ -210,12 +210,12 @@ public class PayController {
 		conditionMap.put("결제일자", "P_DATE");
 		return conditionMap;
 	}
-	
+
 	// 결제 진행 폼=> 이곳에서 DB저장 로직도 추가하기
 	@RequestMapping(value = "/payUserDB", method = RequestMethod.POST)
 	public String payment(HttpServletRequest request, HttpSession session, HttpServletResponse response, Model model,
 			PayVO vo, CouponBoxVO cb_vo) throws IOException {
-		
+
 		   int cb_id=0;
 		      String nm = request.getParameter("buyer");
 		      String p_id = request.getParameter("p_id");
@@ -269,8 +269,8 @@ public class PayController {
 		model.addAttribute("myPayList", payService.getPayList(vo));
 		return "views/myPay";
 	}
-	
-	
+
+
 	// 회원 구매내역 보기
 		@RequestMapping("/getAllPayList")
 		public String getAllPayList(PayVO vo, String nowPageBtn, Model model, HttpSession session) {
@@ -285,7 +285,7 @@ public class PayController {
 			int oneBtnCnt = 5;
 			PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 			vo.setOffset(pvo.getOffset());
-			
+
 			System.out.println("회원전체 구매내역");
 //			vo.setMb_id((String) session.getAttribute("mb_Id"));
 			model.addAttribute("paging",pvo);
@@ -301,7 +301,7 @@ public class PayController {
 		String token = getImportToken();
 		System.out.println("토큰값: " + token);
 		System.out.println("mid값: " + mid);
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet get = new HttpGet(IMPORT_PAYMENTINFO_URL + mid + "/paid");
 		get.setHeader("Authorization", token);
@@ -345,7 +345,7 @@ public class PayController {
 	public Object getlist() {
 		String token = getImportToken();
 		System.out.println("토큰값: " + token);
-		List<Object> list = new ArrayList<Object>();
+		List<Object> list = new ArrayList<>();
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet get = new HttpGet(IMPORT_PAYMENTLIST_URL);
 		get.setHeader("Authorization", token);
@@ -358,7 +358,7 @@ public class PayController {
 			System.out.println("555: " + resNode);
 			String pg_provider_name = "";
 			for (int i = 0; i < resNode.size(); i++) {
-				Map<String, String> map = new HashMap<String, String>();
+				Map<String, String> map = new HashMap<>();
 				map.put("imp_uid", resNode.get(i).get("imp_uid").asText());
 				map.put("merchant_uid", resNode.get(i).get("merchant_uid").asText());
 				map.put("name", resNode.get(i).get("name").asText());
@@ -413,30 +413,30 @@ public class PayController {
 	// 아임포트 전체 목록 반환
 //      @RequestMapping(value="/paylist")
 //      @ResponseBody
-//      public Object getlist() { 
+//      public Object getlist() {
 //         String token = getImportToken();
 //         System.out.println("토큰값: "+token);
 //         List<Object> list = new ArrayList<Object>();
-//         
+//
 //         long stime = unixtime("2022-07-08 00:00:00.000 +0100","+0100")/1000; //시작과 끝은 90일 단위로 맞추셈
 //         long etime = unixtime("2022-10-21 00:00:00.000 +0100","+0100")/1000;
 //         System.out.println("start unixtime : "+stime);
 //         System.out.println("end unixtime : "+etime);
-//         
-//         HttpClient client = HttpClientBuilder.create().build(); 
+//
+//         HttpClient client = HttpClientBuilder.create().build();
 //         HttpGet get = new HttpGet(IMPORT_PAYMENTLIST_URL+"?page=1&limit=100&from="+stime+"&to="+etime+"&sorting=-started");
-//         get.setHeader("Authorization", token); 
+//         get.setHeader("Authorization", token);
 //         try {
-//            HttpResponse res = client.execute(get); 
-//            ObjectMapper mapper = new ObjectMapper(); 
-//            String body = EntityUtils.toString(res.getEntity()); 
-//            JsonNode rootNode = mapper.readTree(body); 
-//            JsonNode resNode = rootNode.get("response").get("list"); 
-//            JsonNode resNode1 = rootNode.get("response"); 
+//            HttpResponse res = client.execute(get);
+//            ObjectMapper mapper = new ObjectMapper();
+//            String body = EntityUtils.toString(res.getEntity());
+//            JsonNode rootNode = mapper.readTree(body);
+//            JsonNode resNode = rootNode.get("response").get("list");
+//            JsonNode resNode1 = rootNode.get("response");
 //            System.out.println("555: " + resNode1);
-//            
+//
 //            for(int i=0; i< resNode.size();i++) {
-//               
+//
 //               Map<String, String> map = new HashMap<String, String>();
 //               map.put("imp_uid",resNode.get(i).get("imp_uid").asText() );
 //               map.put("merchant_uid",resNode.get(i).get("merchant_uid").asText() );
@@ -447,11 +447,11 @@ public class PayController {
 //               map.put("failed_at",resNode.get(i).get("status").asText() );
 //               list.add(map);
 //            }
-//            
-//         } catch (Exception e) { 
-//            e.printStackTrace(); 
+//
+//         } catch (Exception e) {
+//            e.printStackTrace();
 //         }
-//         return list; 
-//      } 
+//         return list;
+//      }
 
 }

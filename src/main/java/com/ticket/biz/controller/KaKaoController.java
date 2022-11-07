@@ -62,20 +62,19 @@ public class KaKaoController {
 		System.out.println("code: " + vo.getCode());
 		String access_Token = getAccessToken(vo.getCode());
 		HashMap<String, Object> userInfo = getUserInfo(access_Token);
+		
 //        System.out.println("access_Token : " + access_Token);
 		String id = (String) userInfo.get("id");
 		String email = (String) userInfo.get("email");
 		String nickname = (String) userInfo.get("nickname");
 //        System.out.println("userInfo : " + userInfo.get("email"));
 //        System.out.println("nickname : " + userInfo.get("nickname"));
-
 		member.setMb_id(id);
 		member.setMb_email(email);
 		member.setMb_name(nickname);
-
 		model.addAttribute("kakaoInfo", userInfo);
 		session.setAttribute("kakaoId", userInfo.get("id"));
-		if (member.getMb_id() == null) {
+		if (member.getMb_id() != null) {
 			memberService.insertMember(member);
 		} else {
 			System.out.println("테스트");
@@ -192,7 +191,7 @@ public class KaKaoController {
 		String result = "";
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(KAKAO_TOKEN_URL);
-		Map<String, String> m = new HashMap<String, String>();
+		Map<String, String> m = new HashMap<>();
 		m.put("grant_type", "authorization_code");
 		m.put("client_id", vo.getREST_API_KEY());
 		m.put("redirect_uri", REDIRECT_URI);

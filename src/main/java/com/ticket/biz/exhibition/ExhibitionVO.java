@@ -26,14 +26,17 @@ public class ExhibitionVO {
 	private String exh_place_x;
 	private String exh_place_y;
 	private String exh_local_name;
-	private int exh_cancell;
+	private int exh_approval;
 	
 
 	private String exSearchCondition;
 	private String exSearchKeyword;
 	
 	private MultipartFile uploadFile;	
+	private MultipartFile uploadFile_thumb;	
+	private MultipartFile uploadFile_banne;	
 	
+
 	private int offset;
 
 	
@@ -251,11 +254,13 @@ public class ExhibitionVO {
 		return exh_local_name;
 	}
 
-	public int getExh_cancell() {
-		return exh_cancell;
+	public int getExh_approval() {
+		return exh_approval;
 	}
-	public void setExh_cancell(int exh_cancell) {
-		this.exh_cancell = exh_cancell;
+	
+	public void setExh_approval(int exh_approval) {
+		this.exh_approval = exh_approval;
+		
 	}
 	
 	public void setExh_local_name(String exh_local_name) {
@@ -281,6 +286,18 @@ public class ExhibitionVO {
 
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
+	}
+	public MultipartFile getUploadFile_thumb() {
+		return uploadFile_thumb;
+	}
+	public void setUploadFile_thumb(MultipartFile uploadFile_thumb) {
+		this.uploadFile_thumb = uploadFile_thumb;
+	}
+	public MultipartFile getUploadFile_banne() {
+		return uploadFile_banne;
+	}
+	public void setUploadFile_banne(MultipartFile uploadFile_banne) {
+		this.uploadFile_banne = uploadFile_banne;
 	}
 
 	public int getOffset() {
