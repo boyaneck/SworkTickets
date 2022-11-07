@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet"
@@ -8,7 +9,8 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리뷰쓰기</title>
+<%@ include file="header.jsp"%>
 </head>
 <body>
 
@@ -35,12 +37,12 @@ $(document).ready(function(){
 				console.log("get list 실행 중");
 				var list = data.list;
 				
-				var reviewList=data.reviewlist;
+			
 				console.log("받아온 데이터의 리스트와, 총 댓글 수 ")
 				console.log(list);
 				console.log(data.total);
-				console.log(list.review_no);
-				console.log(reviewList);
+				console.log("list 번호"+list.review_no);
+			
 				
 				var comment_html = "<div>";
 				
@@ -50,7 +52,8 @@ $(document).ready(function(){
 					var content = list[i].review_content;
 					var writer = list[i].review_writer;
 					var review_no=list[i].review_no;
-					console.log("댓글번호받아라!!!" +review_no);
+					
+					console.log("댓글번호받아라!!! 시름" +review_no);
 					comment_html += "<div><span id='review_writer'><strong>" + writer + "</strong></span><br/>";
 					comment_html += "<span id='review_content'>" + content + "</span><br>";
 					
@@ -62,11 +65,22 @@ $(document).ready(function(){
 						var writer_d = $("#review_writer").val()
 						console.log("세션 아이디 값");
 						console.log(writer_d);
+						console.log("review 값은 무엇일까요?"+review_no);
+						var list_no=review_no;
+						console.log(list_no);
+// 						<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
 // 						console.log("딜리트!!!!!!!!!"+reviewList.review_writer);
 // 						 comment_html += "<span id='delete' style='cursor:pointer;' >(삭제하기)</span><br></div><hr>";
-// 						comment_html += "<button id='delete' style='cursor:pointer;' onclick='del(`${mb_Id}`)'>(삭제하기)</button><br></div><hr>";
-						comment_html += "<button id='delete' style='cursor:pointer;' onclick='del(`${reviewlist.review_no}`)'>(삭제하기)</button><br></div><hr>";
-									 
+// 						comment_html += "<button id='delete' style='cursor:pointer;' onclick11='del(`${mb_Id}`)'>(삭제하기)</button><br></div><hr>";
+<%-- 						comment_html += "<button id='delete' style='cursor:pointer;' onclick='del(<%=list[i].review_no%>)'>(삭제하기)</button><br></div><hr>"; --%>
+											comment_html += "<button id='delete' style='cursor:pointer;' onclick='del("+list_no+")'>(삭제하기)</button><br></div><hr>";	 
+											
+										
+											
+											comment_html += "<button id='update' style='cursor:pointer;' onclick='uplist("+list_no+")'>(수정하기)</button><br></div><hr>";
+											
+											
+// 											comment_html += "<div><fmt:formatDate value="${list.review_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}<br></div><hr>";
 					}
 					else{
 						comment_html += "</div><hr>";
@@ -97,7 +111,7 @@ $('#Comment_regist').click(function() {
 	const review_writer = $('#review_writer').val();
 	const review_content = $('#review_content').val();
 	//작성한 작성자와 내용 
-	
+	 
 	console.log(review_bno);
 	console.log(review_writer);
 	console.log(review_content);
@@ -148,13 +162,23 @@ $('#Comment_regist').click(function() {
 
 });
 
+function uplist(val){
+	console.log("댓글 수정 함수  실행");
+	console.log(val);
+	
+	location.href="updateReview?review_no="+val;
+	
+}
+
+
 function del(val){
 	console.log("딜리트함수 실행");
+	console.log(val);
 	console.log(val);
 	var delConfirm = confirm('정말 삭제하시겠습니까?');
     if (delConfirm == true) {
         alert('삭제되었습니다.');
-        location.href ="deleteReview?review_writer="+ val;
+        location.href ="deleteReview?review_no="+val;
     }
     else {
         alert('삭제가 취소되었습니다.');
@@ -191,6 +215,8 @@ function del(val){
                     		<button id="Comment_regist"> 댓글등록</button>
                     	 </div>
 	                        	
+	                        	<a type="button" data-toggle="collapse" data-target=".multi-collapse-{{id}}"
+                class="bi bi-pencil-square"></a> {{! 댓글 수정 버튼 }}
 	                   	
 <!-- 	                        	댓글 작성되면 작고 올라올 곳  -->
 	                        	<div class="">

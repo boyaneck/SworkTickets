@@ -19,6 +19,7 @@ public class ReviewDAOMybatis {
 	// 댓글 등록
 	public void insertReview(ReviewVO vo) {
 		System.out.println("Review insert 기능 처리 전 dao에서 ");
+		System.out.println("review mybatis to String" + vo.toString());
 		mybatis.insert("ReviewDAO.insertReview", vo);
 		System.out.println("Review insert 기능 수행함");
 	}
@@ -30,18 +31,14 @@ public class ReviewDAOMybatis {
 		System.out.println("review delete 기능 수행함");
 	}
 
-	// 댓글 수정
-//		public void updateBoard(ReviewVO vo) {
-//			System.out.println("update board 기능 처리 전");
-//			mybatis.update("ReviewDAO.updateBoard",vo);
-//			System.out.println("update board 기능 수행함");
-//		}
+	 //댓글 수정
+		public void updateReview(ReviewVO vo) {
+			System.out.println("update board 기능 처리 전");
+			mybatis.update("ReviewDAO.updateReview",vo);
+			System.out.println("update review 기능 수행함");
+		}
 
-	// 댓글 상세보기
-//		public ReviewVO getBoard(ReviewVO vo) {
-//			System.out.println("Getboard 기능 처리 전");
-//		 return (ReviewVO)mybatis.selectOne("ReviewDAO.getBoard", vo);
-//		}
+
 
 	// 댓글 목록 조회
 	public List<ReviewVO> getReviewList(ReviewVO vo) {
@@ -53,8 +50,8 @@ public class ReviewDAOMybatis {
 
 	// 전체댓글 목록 갯수
 	public int getTotal(ReviewVO vo) {
-		System.out.println("===> mybatis로 getBoardListCnt() 기능 처리");
-		return mybatis.selectOne("ReviewDAO.totalBoardListCnt", vo);
+		System.out.println("===> mybatis로 getReviewListCnt() 기능 처리");
+		return mybatis.selectOne("ReviewDAO.totalReviewListCnt", vo);
 
 	}
 

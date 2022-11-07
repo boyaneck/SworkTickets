@@ -11,17 +11,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
-input[type="text" i] {
-    padding: 0px;
+.row{align: left;}
+#sendMail, #check, #change{
+width: 90%;
+	height: calc(1.5em + 0.75rem + 2px);
+	color:#7329f7; 
+	background-color:white; 
+	border-color:#7329f7; 
+	border: solid 1px;
+	align: left !important;
+	margin-left:0;
 }
-
-input[type="text"] {
-    box-sizing: border-box;
-    height: 31px;
-    vertical-align: bottom;
-    margin-top: 10px;
+input[type="text"]{
+    width: 400px;
+	height: calc(1.5em + 0.75rem + 2px);
+	align: left !important;
+	margin-right:0;
 }
-
+input[type="password"]{
+    width: 400px;
+	height: calc(1.5em + 0.75rem + 2px);
+	align: left !important;
+	margin-right:0;
+}
+input[type="hidden"]{
+    width: 400px;
+	height: calc(1.5em + 0.75rem + 2px);
+	align: left !important;
+	margin-right:0;
+}
+h2{margin-top: 30px; 
+    width: 100%;
+    margin: 50px 0;
+    padding-right: 380px;
+}
+.col-3{text-align: right;}
 </style>
 <script>
 $(function() {
@@ -104,31 +128,58 @@ $(function() {
 <%@ include file="../../header.jsp"%>
 </head>
 <body>
-	<form action="" method="post" id="findPwform">
+<div style="background-color:lightgray; height:100vh">
+<form action="" method="post" id="findPwform">
 		<input type="hidden" name="mb_email" id="mb_email">
 	</form>
 	
-	
-	<div class="container-fluid" id="fluid-height" style="padding:0 ">
-      <div id="center" class="container container-box">
-         <div class="g_box" >
-            <div id="menu-text">E-mail 인증</div>
-			<input id="email" name="email" class="text_box" type="text" placeholder="이메일 입력" required autofocus>
-			<button id="sendMail" class="btn btn-primary btn-sm">발송하기</button>
-			<div class="text_box" id="cert">
-				<input id='emailCheck' class='text_box' type='text' required disabled>
-				<button id='check' class='btn btn-primary btn-sm' onclick='emailCheck()'>인증확인</button>
-          	</div>
-         </div>
-      </div>
-   </div>
-    <%if(request.getAttribute("mb_Id")!=null){ %>
-	<form action="change" id="pwchange" method="post">
-	<input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
-	<input type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호'><br>
-	<input type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인'><br>
-	<button type="button" onclick="change()">변경하기</button>
-	</form>
-	<%} %>
+<h2 style="text-align:center; font-weight:bolder;padding:50px">비밀번호 찾기</h2>
+
+	<div class="container-fluid" id="fluid-height"
+		style="text-align: -webkit-center; background-color: white; width: 50%">
+		<div class="row">
+				<h3 style="margin:50px 0; margin-left: 10%;">
+					&nbsp;&nbsp;&nbsp;&nbsp;E-mail 인증
+				</h3>
+			<br>
+		</div>
+
+		<div class="row">
+			<div class="col-3">
+				<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이메일</b>
+			</div>
+			
+			<div class="col-6">
+				<input id="email" name="email" class="text_box" type="text" placeholder="이메일 입력" required autofocus></div>
+					<div class="col-3"><button id="sendMail" >발송하기</button> </div>
+		</div><br>
+		
+		<div class="row">
+			<div class="col-3">
+				<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인증번호</b>
+			</div>
+			<div class="col-6" style="margin-bottom:50px;">
+				<input id='emailCheck' class='text_box' type='text' required disabled></div>
+				<div class="col-3"><button id='check' onclick='emailCheck()'>인증확인</button>
+			</div>
+		</div>
+		
+<!-- 		인증번호확인 -->
+		 <%if(request.getAttribute("mb_Id")!=null){ %>
+		<div class="row">
+			<div class="col-3">
+				<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</b>
+			</div>
+			<div class="col-6" style="margin-bottom:50px;">
+		<form action="change" id="pwchange" method="post">
+		<input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
+		<input type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
+		<input type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
+		<div class="col-3"><button type="button" id="change" onclick="change()">변경하기</button></div>
+		</form>
+		<%} %>
+	</div>
+	</div>
+	</div>
 </body>
 </html>

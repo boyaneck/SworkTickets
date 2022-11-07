@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쿠폰 목록</title>
+<title>내 쿠폰함</title>
+
  <script>
   
      function notlogin() {
@@ -25,64 +26,81 @@
  
 
 
-<div class="container">
+<div class="container" style="text-align: -webkit-center;">
 <h1 style="text-align: center;">내 쿠폰함</h1>
-<table class="table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+
 <c:forEach items="${couponList}" var="coupon">
 <fmt:parseDate var="endDate_D" value="${coupon.c_date }"  pattern="yyyy-MM-dd"/>
 <fmt:parseNumber var="endDate_N" value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" /> 
 
-	<tr>
-	  <td class="text-center">쿠폰명 : ${coupon.c_name}</td>
-	  <td class="text-center">할인율 : ${coupon.c_per}%</td>	
-	  <td class="text-center">만료날짜 : ${coupon.c_date}</td>
-	    <td class="text-center text-danger"> ${endDate_N-startDate_N}일 남음 </td>
+   
+<!--    <div class="rectangle" style="-webkit-mask-image: radial-gradient(circle at 148px 16px, transparent 16px, red 16.5px); -webkit-mask-position: 0 -16px;">  -->
+<!-- <div class="rectangle" style="-webkit-mask-image: radial-gradient(circle at 120px 15px, transparent 15px, red 15.5px); -webkit-mask-position: 0 -15px;"> -->
+         <div class="container">
 
-				</tr>
-</c:forEach>
-</table>
+            <div class="rectangle">
+               <div class="row">
+                  <div class="col-4">
+                     <h1 class="text-center"
+                        style="transform: translate(0, 80%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
+                  </div>
+                  <div class="col" style="transform: translate(0, 0); text-align:left;">
+                     <b id="c_name" style="font-size: 40px">${coupon.c_name}</b><br>
+                     ${coupon.c_date}까지<br> <span class="text-danger"><small>
+                           ${endDate_N-startDate_N}일 남음</small></span>
+
+      
+                  </div>
+
+               </div>
+            </div>
+         </div>
+
+
+      </c:forEach>
+
 </div>
   <div class="container ">
-			
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-center">
-<!-- 		맨처음 -->
-						<c:if test="${paging.nowPageBtn > 1 }">
-						<li class="page-item "><a class="page-link"
-							href="MYCoupon?nowPageBtn=1">&laquo;</a></li>
-							</c:if>
-							<c:if test="${paging.nowPageBtn > 1 }">
-							<li class="page-item "><a class="page-link"
-							href="MYCoupon?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
-							</c:if>
+         
+            <nav aria-label="Page navigation example">
+               <ul class="pagination justify-content-center">
+<!--       맨처음 -->
+                  <c:if test="${paging.nowPageBtn > 1 }">
+                  <li class="page-item "><a class="page-link"
+                     href="MYCoupon?nowPageBtn=1">&laquo;</a></li>
+                     </c:if>
+                     <c:if test="${paging.nowPageBtn > 1 }">
+                     <li class="page-item "><a class="page-link"
+                     href="MYCoupon?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
+                     </c:if>
 
-<!-- 반복처리 태그 -->				
-							<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i" >
-								<c:choose>
-									<c:when test="${paging.nowPageBtn==i}">
-									<li class="page-item active"><a class="page-link"
-									href="MYCoupon?nowPageBtn=${i}">${i}</a></li>
-									</c:when>
-									<c:otherwise>
-									<li class="page-item "><a class="page-link"
-									href="MYCoupon?nowPageBtn=${i}">${i}</a></li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-<!-- 		반복 끝 -->
-								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-							<li class="page-item "><a class="page-link"
-							href="MYCoupon?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
-							</c:if>
-<!-- 		맨끝 -->
-							<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-								<li class="page-item"><a class="page-link"
-							href="MYCoupon?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
-								</c:if>
-					</ul>
-				</nav>
-			
-				</div>
+<!-- 반복처리 태그 -->            
+                     <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i" >
+                        <c:choose>
+                           <c:when test="${paging.nowPageBtn==i}">
+                           <li class="page-item active"><a class="page-link"
+                           href="MYCoupon?nowPageBtn=${i}">${i}</a></li>
+                           </c:when>
+                           <c:otherwise>
+                           <li class="page-item "><a class="page-link"
+                           href="MYCoupon?nowPageBtn=${i}">${i}</a></li>
+                           </c:otherwise>
+                        </c:choose>
+                     </c:forEach>
+<!--       반복 끝 -->
+                        <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+                     <li class="page-item "><a class="page-link"
+                     href="MYCoupon?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
+                     </c:if>
+<!--       맨끝 -->
+                     <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+                        <li class="page-item"><a class="page-link"
+                     href="MYCoupon?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
+                        </c:if>
+               </ul>
+            </nav>
+         
+            </div>
   
   
   
