@@ -115,7 +115,7 @@ html, body {
 			</form>
 		</nav>
 			
-				<button type="button" class="btn btn-outline-primary" onclick="location.href='insertMember.jsp';">회원등록</button>
+				<button type="button" class="btn btn-outline-primary" onclick="location.href='/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</button>
 	 <form name="form" action="updateMember" method="post">
 			<table class="table">
 				<colgroup>
