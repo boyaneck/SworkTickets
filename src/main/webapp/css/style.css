@@ -394,3 +394,32 @@ footer {
   margin:10px;
   padding: 5px;
 }
+
+/* 버튼 */
+.btn-purple{
+	border:1px solid #7329f7; 
+	width:100px; 
+	height:37px; 
+	background-color: #fff; 
+	color: #7329f7; 
+	font-size: 18px;
+	 font-weight: bold;
+}
+.btn-purple:hover{
+	border:1px solid #7329f7; 
+	width:100px; 
+	height:37px; 
+	background-color: #7329f7; 
+	color: #fff; 
+	font-size: 18px;
+	 font-weight: bold;
+}
+/* 페이징 */
+.page-st:hover
+  { text-decoration:none;
+   color:#7329f7; }
+   
+   .page-st
+  { text-decoration:none;
+   color:#000; 
+   }
