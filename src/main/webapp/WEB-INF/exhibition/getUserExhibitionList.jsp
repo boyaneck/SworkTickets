@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -15,10 +15,10 @@ input.my_checkbox {display:none;}
 </style>
 
 <body>
-   <div class="jumbotron">
+   <div class="board">
       <h1>전시 목록</h1>
    </div>
-   <nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
+   <nav id="searchNav" class="sub_title">
       <form class="form-inline" action="#" method="post">
          <input class="form-control mr-sm-2" type="text" name="searchKeyword"
             placeholder="전시명 및 전시장을 검색하세요.">
@@ -128,15 +128,15 @@ function is_checked(eno) {//eno=3
          <tbody>
             <c:forEach items="${UserExhibitionList}" var="exhibition">
                <tr onclick="selTr(${exhibition.exh_no})" style="cursor: pointer;">
-                  <td class="tdCenter">${exhibition.exh_no}</td>
-                  <td><a href="getUserExhibition?exh_no=${exhibition.exh_no}&page=${paging.nowPageBtn}">
+                  <td class="tdCenter" style="width:8%; text-align:center;">${exhibition.exh_no}</td>
+                  <td class="tdCenter" style="width:40%;"><a href="getUserExhibition?exh_no=${exhibition.exh_no}&page=${paging.nowPageBtn}">
                   ${exhibition.exh_title}
                   </a></td>
-                  <td class="tdCenter"><fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</td>
-                  <td class="tdCenter">${exhibition.exh_st_date}~
+                  <td class="tdCenter" style="width:10%; text-align:center;"><fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</td>
+                  <td class="tdCenter" style="width:20%; text-align:center;">${exhibition.exh_st_date}~
                      ${exhibition.exh_end_date}</td>
-                  <td class="tdCenter">${exhibition.exh_hall}</td>
-                  <td class="tdCenter"> 
+                  <td class="tdCenter" style="width:12%; text-align:center;">${exhibition.exh_hall}</td>
+                  <td class="tdCenter" style="width:10%; text-align:center;"> 
                   <form name="goodVO" method="post">
 
  <label onclick='is_checked(${exhibition.exh_no})'><!-- is_checked(3) 함수 호출문  -->

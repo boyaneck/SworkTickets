@@ -13,9 +13,6 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-	crossorigin="anonymous"></script>
-
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -237,7 +234,7 @@ table {
 								<div class="collapse" id="collapseLayouts"
 									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="/insertMember">회원등록</a> <a
+										<a class="nav-link" href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> <a
 											class="nav-link" href="/getMemberList">회원목록</a> <a
 											class="nav-link" href="/getAllPayList">회원결제</a>
 									</nav>
@@ -306,120 +303,6 @@ table {
 				</div>
 			</div>
 		</aside>
-		<div id="container_box">
-			<div class="wrap" style="padding:40px;">
-				<div class="container">
-					<h2 style="text-align: center;">회원 목록</h2>
-				</div>
-				<br> <br> <br>
-				<div class="res_tbl_wrap">
-					<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
-						<form class="form-inline" action="getMemberList" method="post">
-							<select class="form-control" id="sel1" name="searchCondition"
-								style="display: inline-block !important; margin-right: 10px;">
-								<c:forEach items="${conditionMap}" var="option">
-									<option value="${option.value}">${option.key}</option>
-								</c:forEach>
-								<%-- 		<option value="${conditionMap['제목']}">${conditionMap['제목']}</option> --%>
-								<%-- 		<option value="${conditionMap['내용']}">${conditionMap['내용']}</option> --%>
-							</select> <input class="form-control mr-sm-2" type="text"
-								name="searchKeyword" placeholder="검색어를 입력하세요.">
-							<button class="btn btn-outline-primary" type="submit">검색</button>
-							<br>
-						</form>
-					</nav>
-
-					<button type="button" class="btn btn-outline-primary"
-						onclick="location.href='insertMember.jsp';">회원등록</button>
-					<form name="form" action="updateMember" method="post">
-						<table class="table">
-							<colgroup>
-								<col style="width: 10%">
-								<col style="width: 10%">
-								<col style="width: 10%">
-								<col style="width: 15%">
-								<col style="width: 15%">
-								<col style="width: 20%">
-								<col style="width: 10%">
-								<col style="width: 10%">
-							</colgroup>
-							<thead class="btn-primary">
-								<tr>
-									<th>번호</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>주소</th>
-									<th>전화번호</th>
-									<th>생년월일</th>
-									<th>이메일</th>
-									<th>회원여부</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${memberList}" var="member">
-									<tr onclick="location.href='mypage?mb_id=${member.mb_id}'"
-										style="cursor: pointer;" class="text-center">
-										<td scope="row" data-label="번호">${member.mb_no}</td>
-										<td data-label="아이디">${member.mb_id}</td>
-										<td data-label="이름">${member.mb_name}</td>
-										<td data-label="주소">${member.mb_address}</td>
-										<td data-label="전화번호">${member.mb_phone}</td>
-										<td data-label="생년월일">${member.mb_birth}</td>
-										<td data-label="이메일">${member.mb_email}</td>
-										<td data-label="회원여부">${member.mb_yn}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<br> <br>
-					</form>
-					<div class="container ">
-
-						<nav aria-label="Page navigation example">
-							<ul class="pagination justify-content-center">
-								<!-- 		맨처음 -->
-								<c:if test="${paging.nowPageBtn > 1 }">
-									<li class="page-item "><a class="page-link"
-										href="getMemberList?nowPageBtn=1">&laquo;</a></li>
-								</c:if>
-								<c:if test="${paging.nowPageBtn > 1 }">
-									<li class="page-item "><a class="page-link"
-										href="getMemberList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
-								</c:if>
-
-								<!-- 반복처리 태그 -->
-								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-									step="1" var="i">
-									<c:choose>
-										<c:when test="${paging.nowPageBtn==i}">
-											<li class="page-item active"><a class="page-link"
-												href="getMemberList?nowPageBtn=${i}">${i}</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item "><a class="page-link"
-												href="getMemberList?nowPageBtn=${i}">${i}</a></li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<!-- 		반복 끝 -->
-								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<li class="page-item "><a class="page-link"
-										href="getMemberList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
-								</c:if>
-								<!-- 		맨끝 -->
-								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<li class="page-item"><a class="page-link"
-										href="getMemberList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
-								</c:if>
-							</ul>
-						</nav>
-
-					</div>
-					<br> <br>
-					<div id="footer"></div>
-				</div>
-			</div>
-		</div>
 	</section>
 
 </body>

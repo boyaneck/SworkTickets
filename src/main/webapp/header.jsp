@@ -23,6 +23,7 @@
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
     <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/board.css">
 
 <title>헤더입니다.</title>
 </head>
