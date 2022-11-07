@@ -334,7 +334,7 @@ function numberMaxLength(e){
 }
 
 //아이디 중복체크
-function chkBtn(){
+/* function chkBtn(){
    var idRegex = /^[0-9|a-z|A-Z|]*$/;
     $.ajax({
         url : "/idChk",
@@ -347,7 +347,8 @@ function chkBtn(){
             }else {
                if(data == 0 && $("#mb_id").val().length > 7 && idRegex.test($("#mb_id").val())) {
                 alert("사용가능한 아이디입니다.");
-               } else {
+               } 
+               else {
                   if(idRegex.test($("#mb_id").val())) {
                      alert("8~12자 사이의 아이디를 입력해주세요.");
                   } else {
@@ -357,7 +358,7 @@ function chkBtn(){
              }
         }
     })
-}
+} */
 /* 이메일 인증번호 일치 여부 start */
 </script>
 

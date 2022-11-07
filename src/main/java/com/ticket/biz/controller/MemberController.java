@@ -59,8 +59,7 @@ public class MemberController {
 
 	// 회원수정 접근 비밀번호
 	@RequestMapping(value = "/mypageView")
-	public String mypageConfirm()
-			throws IOException {
+	public String mypageConfirm() throws IOException {
 
 //			if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
 //				throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
@@ -77,42 +76,48 @@ public class MemberController {
 	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response) {
 //		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
-		System.out.println(memberService.getMember(vo));
-		if (memberService.getMember(vo).equals("admin") || memberService.getMember(vo) != null ) {
-			
-			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
-			System.out.println(login);
-			if (login == true) {
-				System.out.println("마이페이지접근");
-				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
-//				return "member/mypage";
-			} else{
-				System.out.println("실패2");
-				response.setCharacterEncoding("utf-8");
-				response.setContentType("text/html; charset=utf-8");
-				PrintWriter script;
-				try {
-					script = response.getWriter();
-					script.println("<script>");
-					script.println("alert('비밀번호를 올바르게 입력해주세요');");
-					script.println("location.href = 'mypageView'");
-					script.println("</script>");
-					script.close();
-				} catch (IOException e) {
-					e.printStackTrace();
+//		System.out.println(memberService.getMember(vo));
+		if (memberService.getMember(vo) != null) {
+			if (session.getAttribute("mb_Id").equals("admin")) {
+				System.out.println("어드민");
+				return "member/mypage";
+			} else {
+				System.out.println("엘즈문");
+				boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
+				if (login == true) {
+					System.out.println("마이페이지접근");
+					session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+					return "member/mypage";
+				} else {
+					response.setCharacterEncoding("utf-8");
+					response.setContentType("text/html; charset=utf-8");
+					PrintWriter script;
+					try {
+						script = response.getWriter();
+						script.println("<script>");
+						script.println("alert('비밀번호를 올바르게 입력해주세요');");
+						script.println("location.href = 'mypageView'");
+						script.println("</script>");
+						script.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
+
 			}
 		}
 
 		return "member/mypage";
+
 	}
 
 	// 회원 수정
 	@RequestMapping("/updateMember")
 	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
-		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
-				|| session.getAttribute("mb_Id").equals("admin")) {
+		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString()) || session.getAttribute("mb_Id").equals("admin")) {
+			System.out.println(memberService.getMember(vo));
 			String password = pwCheck.encrypt(vo.getMb_pw());
+			System.out.print(vo.getMb_pw());
 			vo.setMb_pw(password);
 			memberService.updateMember(vo);
 			return "member/mypage";

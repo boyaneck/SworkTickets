@@ -65,7 +65,7 @@ public class LoginController {
 				try {
 					script = response.getWriter();
 					script.println("<script>");
-					script.println("alert('비밀번호가 다릅니다.');");
+					script.println("alert('비밀번호가 다르거나 비밀번호를 입력해주세요');");
 					script.println("location.href = 'login.jsp'");
 					script.println("</script>");
 					script.close();
