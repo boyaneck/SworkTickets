@@ -277,4 +277,10 @@ public class MemberController {
 		System.out.println("변경여부:" + a);
 		return "redirect:login.jsp";
 	}
+	
+	//관리자페이지로 이동
+	@RequestMapping(value = "/admin")
+	public String adminView() {
+		return "admin/admin_index";
+	}
 }
