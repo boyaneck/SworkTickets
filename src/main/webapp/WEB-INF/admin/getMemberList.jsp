@@ -97,7 +97,7 @@ html, body {
 
 	<div class="wrap">
 		<div class="container">
-			<h2 style="text-align: center; font-weight: bold">회원 목록</h2>
+			<h1 style="text-align: center; ">회원 목록</h1>
 		</div>
 		<br>
 	

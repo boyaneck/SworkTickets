@@ -18,7 +18,7 @@
 				<div class="col-lg-7">
 					<div class="card shadow-lg border-0 rounded-lg mt-5">
 						 <div class="card-header">
-						 <h2 style="text-align: center; font-weight: bold">쿠폰수정</h2></div>
+						 <h1 style="text-align: center; ">쿠폰수정</h1></div>
 						<div class="card-body">
 						<form action="/updateCoupon" method="post"> 
 							
