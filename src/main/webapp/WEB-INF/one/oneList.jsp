@@ -51,11 +51,11 @@ function f_write(val){
 }
 </script>
 <body>
-	<div class="jumbotron">
+	<div class="board">
 		<h1>1:1문의 </h1>
 	</div>
 	<%-- <%@ include file="../../menu.jsp" %> --%>
-	<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
+	<nav id="searchNav" class="sub_title">
 		<form class="form-inline" action="getOneList" method="post">
 			<select class="form-control" id="sel1" name="searchCondition"
 				style="display: inline-block !important; margin-right: 10px;">
@@ -73,10 +73,10 @@ function f_write(val){
 		<table class="table table-hover">
 			<thead class="btn-primary">
 				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>등록일</th>
+					<th style="width:10%; text-align:center;">번호</th>
+					<th style="width:50%; text-align:center;">제목</th>
+					<th style="width:20%; text-align:center;">작성자</th>
+					<th style="width:20%; text-align:center;">등록일</th>
 					
 				</tr>
 			</thead>
@@ -120,8 +120,12 @@ function f_write(val){
 				</c:forEach>
 			</tbody>
 		</table>
+			<%--   <c:if test="${session.getAttribute(mb_id) !==  --%>
+		<%--   <div id="footer"> --%>
+		      <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</button>
 		<br>
 		<br>
+		<div id="btnBox_parent">
 		<div id="btnBox">
 			<!-- 반복처리할 태그 시작-->
 			<c:if test="${paging.nowPageBtn > 1 }">
@@ -134,7 +138,7 @@ function f_write(val){
 						<a class="aSel">${i}</a>
 					</c:when>
 					<c:otherwise>
-						<a href="getOneList?nowPageBtn=${i}">${i}</a>
+						<a style="font-weight:400; color:#7832f7;" href="getOneList?nowPageBtn=${i}">${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -143,12 +147,11 @@ function f_write(val){
 			</c:if>
 			<!-- 반복처리할 태그 끝 -->
 		</div>
+		</div>
 		<br>
 		<br>
 
-		<%--   <c:if test="${session.getAttribute(mb_id) !==  --%>
-		<%--   <div id="footer"> --%>
-		      <div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div>
+	
 	</div>
 
 

@@ -16,6 +16,7 @@
 	<h2>나의 결제 내역</h2>
 	<br>
 	<c:forEach items="${myPayList}" var="myPayList">
+	<img src="/images/${myPayList.exh_img}" alt="이미지"><br>
 	상품명: ${myPayList.exh_title} <br>
 	금액: ${myPayList.amount}<br>
 	구매자 : ${myPayList.buyer}<br>

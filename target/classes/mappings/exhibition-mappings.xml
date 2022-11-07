@@ -6,23 +6,20 @@
 
 	<!-- 전시 등록 -->
 	<insert id="insertExhibition">
-		INSERT INTO EXHIBITION
+		INSERT INTO EXHIBITION 
 		(EXH_TITLE, EXH_PRICE, EXH_ST_DATE, EXH_END_DATE, EXH_RGE_DATE, EXH_LOCATION,
-		EXH_HALL, EXH_CONTENT,
+		EXH_HALL, EXH_CONTENT, 
 		EXH_THUMBNAIL, EXH_BANNE, EXH_IMG
 		, EXH_PLANNER,
-		EXH_TIME, EXH_RATING, EXH_ARTIST,
-		EXH_PLACE_X, EXH_PLACE_Y,
+		EXH_TIME, EXH_RATING, EXH_ARTIST, EXH_PLACE_X, EXH_PLACE_Y,
 		EXH_LOCAL_NAME, EXH_CS_PHONE, EXH_FEE,
-		EXH_SHIPPING_INFO, EXH_PERIOD_USE, EXH_REFUND_INFO)
-		VALUES
+		EXH_SHIPPING_INFO, EXH_PERIOD_USE, EXH_REFUND_INFO) 
+		VALUES 
 		(
-		#{exh_title}, #{exh_price}, #{exh_st_date}, #{exh_end_date}, now(),
-		#{exh_location},
-		#{exh_hall}, #{exh_content}, #{exh_thumbnail}, #{exh_banne},
-		#{exh_img}, #{exh_planner}, #{exh_time}, #{exh_rating}, #{exh_artist},
-		#{exh_place_x},
-		#{exh_place_y}, #{exh_local_name}, #{exh_cs_phone}, #{exh_fee},
+		#{exh_title}, #{exh_price}, #{exh_st_date}, #{exh_end_date}, now(),  #{exh_location}, 
+		#{exh_hall}, #{exh_content}, #{exh_thumbnail}, #{exh_banne}, 
+		#{exh_img}, #{exh_planner}, #{exh_time}, #{exh_rating}, #{exh_artist}, #{exh_place_x}, 
+		#{exh_place_y}, #{exh_local_name}, #{exh_cs_phone}, #{exh_fee}, 
 		#{exh_shipping_info}, #{exh_period_use}, #{exh_refund_info})
 	</insert>
 
@@ -45,10 +42,10 @@
 
 	<!-- 전시 승인 -->
 	<update id="approvalExhibition">
-		UPDATE EXHIBITION SET EXH_APPROVAL=1
+		UPDATE EXHIBITION SET EXH_APPROVAL=1 
 		WHERE EXH_NO=#{exh_no}
 	</update>
-
+	
 	<!-- 전시 삭제 -->
 	<delete id="deleteExhibition">
 		DELETE FROM exhibition
@@ -67,7 +64,10 @@
 	<select id="getExhibitionList" resultType="exhibition">
 		SELECT * FROM
 		EXHIBITION WHERE 1=1
-		ORDER BY EXH_NO DESC
+		<if test="exSearchCondition == 'EXH_TITLE' "> AND UPPER(EXH_TITLE) LIKE UPPER(REPLACE(CONCAT('%',
+			#{exSearchKeyword},'%'),' ','')) ORDER BY EXH_NO DESC</if>
+		<if test="exSearchCondition == 'EXH_HALL' "> AND UPPER(EXH_HALL) LIKE UPPER(REPLACE(CONCAT('%',
+			#{exSearchKeyword},'%'),' ','')) ORDER BY EXH_NO DESC</if>
 		<!-- LIMIT 10 OFFSET #{offset} -->
 	</select>
 
@@ -75,43 +75,13 @@
 	<select id="totalExhibitionListCnt" resultType="_int">
 		SELECT COUNT(*)
 		FROM EXHIBITION WHERE 1=1
-	</select>
-		
-	<!-- 유저 전시 검색 -->
-	<select id="searchUserExhibitionList" resultType="exhibition">
-		SELECT * FROM
-		EXHIBITION WHERE 1=1
-		AND UPPER(EXH_TITLE) LIKE UPPER(REPLACE(CONCAT('%',#{exSearchKeyword},'%'),' ','')) 
-		OR UPPER(EXH_HALL) LIKE UPPER(REPLACE(CONCAT('%',#{exSearchKeyword},'%'),' ',''))
-		ORDER BY EXH_NO DESC
-		LIMIT 10 OFFSET #{offset}
-	</select>
+		<if test="exSearchCondition == 'EXH_TITLE' "> AND UPPER(EXH_TITLE) LIKE UPPER(REPLACE(CONCAT('%',
+			#{exSearchKeyword},'%'),' ',''))</if>
+		<if test="exSearchCondition == 'EXH_HALL' "> AND UPPER(EXH_HALL) LIKE UPPER(REPLACE(CONCAT('%',
+			#{exSearchKeyword},'%'),' ',''))</if>
 
-	<!-- 유저 전시 검색 개수 -->
-	<select id="totalsearchUserExhibitionListCnt" resultType="_int">
-		SELECT COUNT(*)
-		FROM EXHIBITION WHERE 1=1
-		AND UPPER(EXH_TITLE) LIKE UPPER(REPLACE(CONCAT('%',#{exSearchKeyword},'%'),' ','')) 
-		OR UPPER(EXH_HALL) LIKE UPPER(REPLACE(CONCAT('%',#{exSearchKeyword},'%'),' ',''))
 
 	</select>
-
-	<!-- 유저 전시 조회 -->
-<!-- 	<select id="getUserExhibitionList" resultType="exhibition"> -->
-<!-- 			SELECT * FROM (SELECT e.*, g.mb_id FROM exhibition e -->
-<!-- 		LEFT JOIN good g -->
-<!-- 		ON e.EXH_NO = g.EXH_NO -->
-<!-- 		WHERE e.EXH_APPROVAL=1) f -->
-<!-- 		WHERE f.mb_id=#{mb_id} -->
-<!-- 		OR EXH_NO NOT IN -->
-<!-- 		(SELECT c.EXH_NO FROM exhibition c -->
-<!-- 		LEFT JOIN good d -->
-<!-- 		ON c.EXH_NO = d.EXH_NO  -->
-<!-- 		WHERE mb_id=#{mb_id}) -->
-<!-- 		ORDER BY exh_st_date DESC -->
-<!-- 		LIMIT 10 -->
-<!-- 		OFFSET #{offset}; -->
-<!-- 	</select> -->
 
 	<!-- 유저 전시 조회 -->
 	<select id="getUserExhibitionList" resultType="exhibition">
@@ -138,4 +108,5 @@
 		EXH_APPROVAL=1
 
 	</select>
+
 </mapper>

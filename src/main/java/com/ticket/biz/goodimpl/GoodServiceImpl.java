@@ -13,12 +13,12 @@ import com.ticket.biz.good.GoodVO;
 public class GoodServiceImpl implements GoodService{
 
 	@Autowired
-	private GoodDAO goodDAO;
-
+    GoodDAO goodDAO;
+	
 	//좋아요 등록
 	@Override
-	public void insertGood(GoodVO vo) {
-		goodDAO.insertGood(vo);
+	public int insertGood(GoodVO vo) {
+	 return	goodDAO.insertGood(vo);
 	}
 
 
@@ -29,23 +29,17 @@ public class GoodServiceImpl implements GoodService{
 	}
 
 
-	//좋아요 체크
-	@Override
-	public GoodVO getGoodChk(GoodVO vo) {
-		return goodDAO.getGoodChk(vo);
-	}
-	//좋아요 체크
-	@Override
-	public boolean getGoodYN(GoodVO vo) {
-		return goodDAO.getGoodYN(vo);
-
-	}
-
 	//좋아요 삭제
 	@Override
-	public void deleteGood(GoodVO vo) {
-		goodDAO.deleteGood(vo);
+	public int deleteGood(GoodVO vo) {
+		return goodDAO.deleteGood(vo);
+		
+	}
 
+
+	@Override
+	public int getMyGoodListCnt(GoodVO vo) {
+	return goodDAO.getMyGoodListCnt(vo);
 	}
 
 
@@ -56,10 +50,5 @@ public class GoodServiceImpl implements GoodService{
 	}
 
 
-	@Override
-	public int getMyGoodListCnt(GoodVO vo) {
-		// TODO Auto-generated method stub
-		return goodDAO.getMyGoodListCnt(vo);
-	}
-
+	
 }
