@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,38 +12,42 @@
 
 <style>
 .rectangle {
-  border-radius:30px;
-  width: 430px;
-  height: 150px;
-  border: solid black;
-  background-color: white;
-  margin:10px;
-  padding: 5px;
+	border-radius: 30px;
+	width: 430px;
+	height: 150px;
+	border: solid black;
+	background-color: white;
+	margin: 10px;
+	padding: 5px;
 }
-.row{align: left;}
+
+.row {
+	align: left;
+}
 input[type="button"] {
 	height: calc(1.5em + 0.75rem + 2px);
 }
-input[type="text"]{
-	width: 400px;
+
+input[type="text"] {
 	align: left !important;
+	width: 100%;
 }
-#pay{align: left !important; width: 400px !important; margin-right: 8px !important;}
-h3{margin-top: 30px; }
-.col-2{text-align: left;}
-.hr{
-margin-bottom: 30px;
-width:57%;
-border: 1px solid gray;
-text-align: left !important;
-margin-left: 17% !important;
+
+h3 {
+	padding: 20px 0;
+	text-align: left;
 }
-#check_module{
-color:white; background-color:black; width:15%; margin-top:5%;
+
+#check_module {
+	color: white;
+	background-color: black;
+	width: 15%;
+	margin-top: 5%;
 }
 </style>
 
-<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 var chk = false;
 $(document).ready(function(){
@@ -191,141 +195,211 @@ $('#testBtn').click(function(e){
 
 </script>
 
-<style>
-input[type="button"] {
-   height: calc(1.5em + 0.75rem + 2px);
-}
-input[type="text"] {
-   width: 300px;
-}
-</style>
+
 
 
 </head>
-<body>
-<form name="fm" style="text-align:-webkit-center;">
-<div class="container-fluid" style="text-align:-webkit-center; width:70%">
-   <div class="row">
-   <div class="col-2"></div>
-    <div class="col-2"><h3><b>결제 페이지</b></h3></div>
-    <div class="col-4"></div>
-    <div class="col-3"></div>
-  </div><hr class="hr" >
-   
-    <div class="row">
-   <div class="col-2"></div>
-    <div class="col-2"><b>상품명</b></div>
-    <div class="col-4"><input type="text"  name="exh_title" id="exh_title" value='${exh_title}' readonly="readonly"></div>
-    <div class="col-3"></div>
-  </div><br>
-   
-    <div class="row">
-   <div class="col-2"></div>
-   <div class="col-2"><b>이름</b></div>
-   <div class="col-4"><input type="text" name="buyer" id="buyer" placeholder="이름 입력" value="${member.mb_name}"></div>
-   <div class="col-3"></div>
-   </div><br>
-   
-  <div class="row">
-   <div class="col-2"></div>
-   <div class="col-2"><b>전화번호</b></div>
-   <div class="col-4"><input type="text" name="buyer_tel" id="buyer_tel" placeholder="예시: 010-1111-2222" value='${member.mb_phone}'></div>
-   <div class="col-3"></div>
-   </div><br>
-   
-   <div class="row">
-   <div class="col-2"></div>
-   <div class="col-2"><b>이메일</b></div>
-   <div class="col-4"><input type="text" name="buyer_email" id="buyer_email" placeholder="이메일 입력" value='${member.mb_email}'></div>
-   <div class="col-3"></div>
-   </div><br>
-   
-   
-   
-   
-   <div class="row">
-   <div class="col-2"></div>
-   <div class="col-2"><b>결제금액</b></div>
-   <div class="col-5">
-   <input type="text" name="amount" id="amount" value='${amount}' readonly="readonly">
+<body class="d-flex flex-column min-vh-100">
+	<!-- 타이틀 -->
+	<div class="container"
+		style="background-color: lightgray; width: 50%; padding: 30px;">
+		<h2 style="text-align: center; font-weight: bolder; padding: 30px 0;">결제하기</h2>
 
-   <input type="hidden" name="result" id="result" value='${amount}' >
-   
-   <button type="button" style="color:#7329f7; background-color:white; border-color:#7329f7; border: solid 1px; margin-right:10px;" data-toggle="modal" data-target="#staticBackdrop">
- 쿠폰적용
-</button></div>
- <div class="col-2"></div>
-</div>
-    <input type="hidden" name="md_id" id="md_id" value='${md_id}' style="display:none;"><br>
-<!--    결제고유ID -->
-   <input type=hidden name="p_id" id="p_id" >
-<!--    상점거래ID -->
-   <input type="hidden" name="p_mer" id="p_mer" >
-<!--    회원아이디<input type="text" name="mb_id" id="mb_id" > -->
-<!--    결제일시 -->
-   <input type="hidden" name="p_date" id="p_date">
-   <input type="hidden" name="cb_id" id="cb_id" value=0 >
-   <input type="hidden" name="exh_no" id="exh_no" value="${exh_no }" >
-   <div class="row">
-   <div class="col-2"></div>
-   <div class="col-8">
-   <button id="check_module" style="color:white; background-color:black;" type="button">결제하기</button></div>
-   <div class="col-2"></div>
-   </div>
-   </div>
-   <br>
-</form>
+		<!-- 이미지, 제목, 가격 -->
+		<div class="container"
+			style="text-align: center; background-color: white;">
 
-<!-- 쿠폰 -->
-<fmt:parseDate var="startDate_D"  value="${today }" pattern="yyyy-MM-dd"/>
-<fmt:parseNumber var="startDate_N" value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
-   <!-- Button trigger modal -->
+			<h3>
+				<b>주문 상세 정보</b>
+			</h3>
+			<div class="row">
+				<div class="col">
+					<img src="/images/2.png" alt="이미지"
+						style="width: 200px; height: 250px;">
+				</div>
+				<div class="col">
+					<div class="row">
+						<h4>
+							<b>${exh_title}</b>
+						</h4>
+						<input type="hidden" name="exh_title" id="exh_title"
+							value='${exh_title}' readonly="readonly">
+					</div>
+					<div class="row">
+						${amount}원 <input type="hidden" name="amount" id="amount"
+							value='${amount}' readonly="readonly">
+					</div>
+				</div>
+			</div>
+			<hr style="margin: 30px; text-align: left;">
+			<!-- 주문자 정보 -->
+			<div class="container"
+				style="text-align: left; padding: 20px 0; background-color: white;">
+
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col-5">
+						<h3 style="padding: 0 0;">주문자 정보</h3>
+					</div>
+					<div class="col-6">
+						<input type="hidden" style="width: 100%">
+					</div>
+				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col-2">
+						<b>이름</b>
+					</div>
+					<div class="col-9">
+						<input type="text" name="buyer" id="buyer" placeholder="이름 입력"
+							value="${member.mb_name}" style="width: 100%">
+					</div>
+				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col-2">
+						<b>전화번호</b>
+					</div>
+					<div class="col-9">
+						<input type="text" name="buyer_tel" id="buyer_tel"
+							placeholder="예시: 010-1111-2222" value='${member.mb_phone}'>
+					</div>
+				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col-2">
+						<b>이메일</b>
+					</div>
+					<div class="col-9">
+						<input type="text" name="buyer_email" id="buyer_email"
+							placeholder="이메일 입력" value='${member.mb_email}'>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <hr style="margin-bottom:30px; "> -->
+
+		<!-- 결제창 -->
+		<div class="container"
+			style="text-align: center; padding: 20px 0; margin-top:50px; background-color: white;">
+			<div class="container"
+				style="text-align: center; background-color: white;">
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col-2" style="border-bottom: 2px solid black;">
+						<b>결제금액</b>
+					</div>
+					<div class="col-6" style="border-bottom: 2px solid black;">
+						<input type="text" name="amount" id="amount" value='${amount}원'
+							style="font-weight: bold; text-align: right !important; color: #7329f7; border: none;"
+							readonly="readonly">
+					</div>
+					<div class="col-3">
+						<button type="button"
+							style="color: #7329f7; width: 100%; background-color: white; border-color: #7329f7; border: solid 1px;"
+							data-toggle="modal" data-target="#staticBackdrop">쿠폰적용</button>
+					</div>
+				</div>
+				<br> <input type="hidden" name="result" id="result"
+					value='${amount}' style="display: none;"> <input
+					type="hidden" name="md_id" id="md_id" value='${md_id}'
+					style="display: none;"><br>
+				<!--    결제고유ID -->
+				<input type=hidden name="p_id" id="p_id" style="display: none;">
+				<!--    상점거래ID -->
+				<input type="hidden" name="p_mer" id="p_mer" style="display: none;">
+				<!--    회원아이디<input type="text" name="mb_id" id="mb_id" > -->
+				<!--    결제일시 -->
+				<input type="hidden" name="p_date" id="p_date"
+					style="display: none;"> <input type="hidden" name="cb_id"
+					id="cb_id" value=0 style="display: none;"> <input
+					type="hidden" name="exh_no" id="exh_no" value="${exh_no }"
+					style="display: none;">
 
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"><b>쿠폰 목록</b></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-             
-         <c:forEach items="${couponList}" var="coupon">
-         <fmt:parseDate var="endDate_D" value="${coupon.c_date }"  pattern="yyyy-MM-dd"/>
-         <fmt:parseNumber var="endDate_N" value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" /> 
-         
-         <div class="container">
+				<!--   결제버튼 -->
+				<div class="container"
+					style="text-align: center; background-color: white;">
+					<div style="text-align: center;">
+						<button id="check_module"
+							style="color: white; background-color: black; margin-top: 0px; margin-bottom: 20px;"
+							type="button">결제하기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- 쿠폰 -->
+	<fmt:parseDate var="startDate_D" value="${today }" pattern="yyyy-MM-dd" />
+	<fmt:parseNumber var="startDate_N"
+		value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
+	<!-- Button trigger modal -->
 
-               <div class="row">
-                  <div class="col-3">
-                     <h1 class="text-center"
-                        style="transform: translate(0, 65%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
-                  </div>
-                  <div class="col" style="transform: translate(0, 0); text-align:left;">
-                     <b id="c_name" style="font-size: 30px">${coupon.c_name}</b><br>
-                     ${coupon.c_date}까지<br> <span class="text-danger"><small>
-                           ${endDate_N-startDate_N}일 남음</small></span>
-                  </div>
-                  <div class="col-4">
-                         <button id="${coupon.c_num}" style="transform: translate(0, 95%); border:1px solid #7329f7; width:130px; height:45px; background-color: #fff; color: #7329f7; font-size: 18px; font-weight: bold;"  class="align-middle" data-dismiss="modal" aria-label="Close" onclick="useCoupon(${coupon.c_per},${coupon.cb_id});" >적용하기</button>
-                  </div>
-               </div>
-               <hr>
-         </div>
-</c:forEach>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static"
+		data-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">
+						<b>쿠폰 목록</b>
+					</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
 
-   
+					<c:forEach items="${couponList}" var="coupon">
+						<fmt:parseDate var="endDate_D" value="${coupon.c_date }"
+							pattern="yyyy-MM-dd" />
+						<fmt:parseNumber var="endDate_N"
+							value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" />
+
+						<div class="container">
+
+							<div class="row">
+								<div class="col-3">
+									<h1 class="text-center"
+										style="transform: translate(0, 65%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
+								</div>
+								<div class="col"
+									style="transform: translate(0, 0); text-align: left;">
+									<b id="c_name" style="font-size: 30px">${coupon.c_name}</b><br>
+									${coupon.c_date}까지<br> <span class="text-danger"><small>
+											${endDate_N-startDate_N}일 남음</small></span>
+								</div>
+								<div class="col-4">
+									<button id="${coupon.c_num}"
+										style="transform: translate(0, 95%); border: 1px solid #7329f7; width: 130px; height: 45px; background-color: #fff; color: #7329f7; font-size: 18px; font-weight: bold;"
+										class="align-middle" data-dismiss="modal" aria-label="Close"
+										onclick="useCoupon(${coupon.c_per},${coupon.cb_id});">적용하기</button>
+								</div>
+							</div>
+							<hr>
+						</div>
+					</c:forEach>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<%@ include file="../../footer.jsp"%>
 </body>
 </html>

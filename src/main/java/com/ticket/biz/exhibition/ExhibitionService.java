@@ -7,7 +7,10 @@ public interface ExhibitionService {
 	// CRUD 기능의 메소드 구현
 			// 전시 등록
 			void insertExhibition(ExhibitionVO vo);
-
+			
+			// 전시 승인
+			void approvalExhibition(ExhibitionVO vo);
+			
 			// 전시 수정
 			void updateExhibition(ExhibitionVO vo);
 

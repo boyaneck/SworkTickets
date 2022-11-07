@@ -61,6 +61,24 @@
 <!-- <div class="maintext">
 aa
 </div> -->
+
+<!-- 센터 시작 -->
+<section class="rank_box">
+<div class="rank1"><span style="color:#7832f7">♥</span>좋아요<br><br>
+</div>
+
+<div class="rank_center"><h1 class="rank-title">RANK</h1></div>
+
+<div class="rank2"><span style="color:#7832f7">%</span>예매율<br><br>
+</div>
+</section>
+<div class="rank_ex">
+<button type="button" onclick = "location.href= '../ranking'" ><span style="color:#7832f7">+</span>more</button>
+</div>
+
+<!-- 센터 끝 -->
+
+
 <br><br>
 회원 메뉴 
 <br><br>

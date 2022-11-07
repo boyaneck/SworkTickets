@@ -131,6 +131,7 @@ function orderList(){
 		</nav>
 	
 	<c:forEach items="${allPayList}" var="allPayList">
+	<img src="/images/${allPayList.exh_img}" alt="이미지" style="width:100px; height:130px;"><br>
 	상품명: ${allPayList.exh_title} <br>
 	금액: ${allPayList.amount}<br>
 	구매자 : ${allPayList.buyer}<br>

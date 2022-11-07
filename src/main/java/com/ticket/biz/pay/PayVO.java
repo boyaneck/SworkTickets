@@ -10,9 +10,10 @@ public class PayVO {
 	private String buyer_tel;//주문자 연락처
 	private String exh_title;//전시명
 	private int amount;//가격
-	private int p_chk;
-	private int exh_no;
-	private String exh_end_date;
+	private int p_chk; // 환불 유무
+	private int exh_no; // 전시 번호
+	private String exh_end_date; // 종료 날짜
+	private String exh_img; // 전시 사진
 
 	private String searchCondition;
 	private String searchKeyword;
@@ -20,8 +21,14 @@ public class PayVO {
 	private int offset;
 
 
+	
 
-
+	public String getExh_img() {
+		return exh_img;
+	}
+	public void setExh_img(String exh_img) {
+		this.exh_img = exh_img;
+	}
 	public String getExh_end_date() {
 		return exh_end_date;
 	}

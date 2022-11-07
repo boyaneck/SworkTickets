@@ -13,9 +13,11 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+	crossorigin="anonymous"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
-<link href="css/admin.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
@@ -235,7 +237,7 @@ table {
 								<div class="collapse" id="collapseLayouts"
 									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> <a
+										<a class="nav-link" href="/insertMember">회원등록</a> <a
 											class="nav-link" href="/getMemberList">회원목록</a> <a
 											class="nav-link" href="/getAllPayList">회원결제</a>
 									</nav>
@@ -307,11 +309,11 @@ table {
 		<div id="container_box">
 			<div class="wrap" style="padding:40px;">
 				<div class="container">
-					<h2 style="text-align: center; font-weight:bold;">회원 목록</h2>
+					<h2 style="text-align: center;">회원 목록</h2>
 				</div>
 				<br> <br> <br>
 				<div class="res_tbl_wrap">
-					<nav id="searchNav" class="navbar navbar-expand-sm" style="border-bottom:none;">
+					<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
 						<form class="form-inline" action="getMemberList" method="post">
 							<select class="form-control" id="sel1" name="searchCondition"
 								style="display: inline-block !important; margin-right: 10px;">
@@ -322,13 +324,13 @@ table {
 								<%-- 		<option value="${conditionMap['내용']}">${conditionMap['내용']}</option> --%>
 							</select> <input class="form-control mr-sm-2" type="text"
 								name="searchKeyword" placeholder="검색어를 입력하세요.">
-							<button class="btn-purple" type="submit">검색</button>
-							<button type="button" class="btn-purple" onclick="location.href='/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</button>
+							<button class="btn btn-outline-primary" type="submit">검색</button>
 							<br>
 						</form>
 					</nav>
 
-				
+					<button type="button" class="btn btn-outline-primary"
+						onclick="location.href='insertMember.jsp';">회원등록</button>
 					<form name="form" action="updateMember" method="post">
 						<table class="table">
 							<colgroup>
@@ -371,7 +373,8 @@ table {
 						</table>
 						<br> <br>
 					</form>
-					<div class="container text-center">
+					<div class="container ">
+
 						<nav aria-label="Page navigation example">
 							<ul class="pagination justify-content-center">
 								<!-- 		맨처음 -->
