@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
 	   //아이디 중복체크
     @Override
     public int idChk(Map<String, Object> param) {
-       System.out.println(param);
+//       System.out.println(param);
         return memberDAO.idChk(param);
     }
     
@@ -37,7 +37,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void logout(HttpSession session) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -62,21 +61,16 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.deleteMember(vo);
 	}
 
-	@Override
-	public MemberVO getMember(MemberVO vo) {
-		return memberDAO.getMember(vo);
-	}
+	   @Override
+	   public MemberVO getMember(MemberVO vo) {
+//	      System.out.println(vo.getMb_id());
+	      return memberDAO.getMember(vo);
+	   }
 
 	@Override
 	public void updateMember(MemberVO vo) {
 		memberDAO.updateMember(vo);
 	}
-
-
-	// 비밀번호 찾기
-//	public String findPw(Map<String, Object> param) {
-//		return memberDAO.findPw(param);
-//	}
 
 	@Override
 	public MemberVO find(MemberVO vo) {
@@ -87,5 +81,5 @@ public class MemberServiceImpl implements MemberService {
 	public int change(MemberVO vo) {
 		return memberDAO.change(vo);
 	}
-	
+
 }
