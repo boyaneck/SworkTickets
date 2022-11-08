@@ -6,41 +6,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-/* #searchNav { */
-/* 	-webkit-justify-content: flex-end; */
-/* 	justify-content: flex-end; */
-/* } */
 
-/* a { */
-/* 	text-decoration: none; */
-/* 	font-weight: bolder; */
-/* 	display: inline-block; */
-/* 	padding: 5px 10px; */
-/* 	background-color: blue; */
-/* 	color: #fff; */
-/* 	border: 1px solid #777; */
-/* 	border-radius: 5px; */
-/* } */
-
-/* a:hover, a:active { */
-/* 	background-color: red; */
-/* } */
-
-/* a.aSel { */
-/* 	color: red; */
-/* } */
-
-/* div#btnBox { */
-/* 	text-align: center; */
-/* } */
 </style>
 <script>
 
-function getone(val){
+	function getone(val){
 	location.href="getOne?one_no="+val;
 
-}
-function f_write(val){
+ }
+	function f_write(val){
     console.log(val);
     if(val == ''){
         alert("로그인이 되야 작성 가능합니다");
@@ -48,13 +22,12 @@ function f_write(val){
     }else{
         location.href="/goWrite";
     }
-}
+ }
 </script>
 <body>
 	<div class="board">
 		<h1>1:1문의 </h1>
 	</div>
-	<%-- <%@ include file="../../menu.jsp" %> --%>
 	<nav id="searchNav" class="sub_title">
 		<form class="form-inline" action="getOneList" method="post">
 			<select class="form-control" id="sel1" name="searchCondition"
@@ -84,19 +57,19 @@ function f_write(val){
 
 				<c:forEach items="${oneList}" var="one">
 					<c:if test="${one.one_secret eq 'true'}">
-						<c:choose>
-							<c:when
-								test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}">
-								<tr onclick="getone(${one.one_no})" style="cursor: pointer;">
-									<td onclick="getone(${one.one_no})"
-										style="cursor: pointer">${one.one_no}</td>
-									<td>${one.one_title }(비밀글)</td>
-									<td>${one.one_writer }</td>
-									<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+					<c:choose>
+					<c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}">
+					
+					<tr onclick="getone(${one.one_no})" style="cursor: pointer;">
+					 <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter">${one.one_no}</td>
+					 <td class="tdCenter">${one.one_title }(비밀글 아이콘)</td>
+					 <td class="tdCenter">${one.one_writer }</td>
+					 <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+							
 							</c:when>
 							<c:otherwise>
-								<tr><td></td>
-									<td>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td>
+								<tr><td class="tdCenter"></td>
+									<td class="tdCenter">비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td>
 								</tr>
 							</c:otherwise>
 						</c:choose>
@@ -109,7 +82,6 @@ function f_write(val){
 							<td class="tdCenter">${one.one_no}</td>
 							<td class="tdCenter">${one.one_title}</td>
 							<td class="tdCenter">${one.one_writer}</td>
-<%-- 							<td class="tdCenter">${one.one_date}</td> --%>
 							<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
 							
 
@@ -120,8 +92,7 @@ function f_write(val){
 				</c:forEach>
 			</tbody>
 		</table>
-			<%--   <c:if test="${session.getAttribute(mb_id) !==  --%>
-		<%--   <div id="footer"> --%>
+		
 		      <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</button>
 		<br>
 		<br>

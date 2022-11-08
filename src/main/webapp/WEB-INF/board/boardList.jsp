@@ -6,33 +6,7 @@
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-/* #searchNav { */
-/*    -webkit-justify-content: flex-end; */
-/*    justify-content: flex-end; */
-/* } */
-
-/* a { */
-/*    text-decoration: none; */
-/*    font-weight: bolder; */
-/*    display: inline-block; */
-/*    padding: 5px 10px; */
-/*    background-color: blue; */
-/*    color: #fff; */
-/*    border: 1px solid #777; */
-/*    border-radius: 5px; */
-/* } */
-
-/* a:hover, a:active { */
-/*    background-color: red; */
-/* } */
-
-/* a.aSel { */
-/*    color: red; */
-/* } */
-
-/* div#btnBox { */
-/*    text-align: center; */
-/* } */
+/* #searchNav { 
 </style>
 <script>
 
@@ -84,38 +58,18 @@ function f_write(val){
       <table class="table table-hover">
          <thead class="btn-primary">
             <tr>
-               <th style="width:10%; text-align:center;" >번호</th>
-               <th style="width:50%; text-align:center;">제목</th>
-               <th style="width:20%; text-align:center;">작성자</th>
-               <th style="width:20%; text-align:center;">등록일</th>
+               <th style="text-align:center;" >번호</th>
+               <th style="text-align:center;">제목</th>
+               <th style="text-align:center;">작성자</th>
+               <th style="text-align:center;">등록일</th>
 
             </tr>
          </thead>
          <tbody>
 
             <c:forEach items="${boardList}" var="board">
-               <%--                <c:if test="${one.one_secret eq 'true'}"> --%>
-               <%--                   <c:choose> --%>
-               <%--                      <c:when --%>
-               <%--                         test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}"> --%>
-               <!--                         <tr> -->
-               <%--                            <td onclick="getone(${one.one_no})" --%>
-               <%--                               style="cursor: pointer">${one.one_no}</td> --%>
-               <%--                            <td>${one.one_title }</td> --%>
-               <%--                      </c:when> --%>
-               <%--                      <c:otherwise> --%>
-               <!--                         <tr> -->
-               <!--                            <td>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td> -->
-               <!--                         </tr> -->
-               <%--                      </c:otherwise> --%>
-               <%--                   </c:choose> --%>
-
-               <%--                </c:if> --%>
-
-               <%--                <c:if test="${one.one_secret eq 'false'}"> --%>
-
-   <%--             <tr onclick="getboard(${board.noti_no})" style="cursor: pointer;"> --%>
-               <tr onclick="location.href='getBoard?noti_no=${board.noti_no}'" style="cursor: pointer;">
+             
+               <tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"; style="cursor: pointer;">
                   <%--                   <tr onclick="getboard(${board.noti_title}) style="cursor:pointer"> --%>
                   <td class="tdCenter" style="width:10%;" >${board.noti_no}</td>
                   <td class="tdCenter" style="width:50%;" >${board.noti_title}</td>
@@ -123,11 +77,9 @@ function f_write(val){
                   <td class="tdCenter" style="width:20%;" ><fmt:formatDate
                         value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
                         var="today" />${today}</td>
-                  <%--                      <td class="tdCenter">${board.noti_no}</td> --%>
-
+         
                </tr>
 
-               <%--                </c:if> --%>
 
             </c:forEach>
          </tbody>
@@ -161,9 +113,7 @@ function f_write(val){
          <!-- 반복처리할 태그 끝 -->
          </div>
          </div>
-      <%--   <c:if test="${session.getAttribute(mb_id) !==  --%>
-      <%--   <div id="footer"> --%>
-      <%--             <div onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</div> --%>
+    
 
       </body>
 </body>

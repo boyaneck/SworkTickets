@@ -24,13 +24,13 @@ public class OneController {
 	@Autowired
 	private OneService oneService;
 	//검색
-	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<>();
-		conditionMap.put("내용", "CONTENT");
-		conditionMap.put("제목", "TITLE");
-		return conditionMap;
-	}
+//	@ModelAttribute("conditionMap")
+//	public Map<String, String> searchConditionMap() {
+//		Map<String, String> conditionMap = new HashMap<>();
+//		conditionMap.put("내용", "CONTENT");
+//		conditionMap.put("제목", "TITLE");
+//		return conditionMap;
+//	}
 
 	// 이동 컨트롤러
 	@RequestMapping("/goWrite")
@@ -131,6 +131,21 @@ public class OneController {
 		System.out.println("modelAttribute getOneList 기능 실행 후 ");
 		return "one/oneList";
 	}
+	
+	
+	
+	//관리자가 1:1문의 댓글 달아주기
+	@RequestMapping("/oneAnswer")
+	public String oneAnswer(OneVO vo, Model model) {
+		System.out.println("관리자가 1:1문의 글 답변 해주는 controller 타기 ");
+		oneService.doAnswer(vo);
+		
+		System.out.println("1:1문의 답변 기능 수행 컨트롤러 끝");
+//		System.out.println("one_answer"+vo.getOne_answer());
+//		model.addAttribute("answer",vo);
+		return "forward:getOne";
+	}
+	
 
 	//파일다운로드
 //	@GetMapping(value="/download")

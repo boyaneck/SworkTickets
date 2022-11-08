@@ -43,6 +43,9 @@ public class OneServiceImpl implements OneService{
 	public int totalOneListCnt(OneVO vo) {
 		return oneDAO.totalOneListCnt(vo);
 	}
-
-
+	
+	@Override
+	public void doAnswer(OneVO vo) {
+		oneDAO.doAnswer(vo);
+	}
 }
