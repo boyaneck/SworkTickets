@@ -55,38 +55,25 @@ $(document).ready(function(){
 					//여기 위를 form 으로 지정해서 
 					//현재 update에서는 아래의 폼을 물고 있고 , closest는 자신의 조상을 가르키고 있기 때문에 그것 또한 , 잘 생각해서 .할 것 .
 					
-					
-					
-// 					<div><form>
-// <div>
-// <span id="review_writer"><strong><input type="text" name="review_writer" value="+라이터변수넣기+"></strong></span><br>
-// <span id="review_content"><textarea name="review_content">"+내용변수넣기+"</textarea></span><br>
-// <button id="delete" style="cursor:pointer;" onclick="del("+리뷰넘버변수넣기+")">(삭제하기)</button><br>
-// </div><hr><button id="update1" style="cursor:pointer;" onclick="updateReview("+리뷰넘버변수넣기+")">(수정하기)</button><br></form></div><hr>
-					
-					//writer와 content를 input요소로 넣고 하고 
-					
-// 					comment_html +="<form action ='/updateReview'>"	
-// 					commnet_html +="<div class='a'>";
+	
 
-					comment_html +="<div class='aa1'>";
+					comment_html +="<div id='a"+[i]+"' class='aa1'>";
 					comment_html += "<div><span class='review_writer'><strong>"+ writer + "</strong></div><br/>";
 					comment_html +="<div>"+content+"</div>";
 					comment_html +="</div>";
-				
 					
 
-					
-					
-					comment_html += "<div>";
-					comment_html +="<div class='cc'>";
-					comment_html +="<div class='aa2' style = 'display :none'>";
+					comment_html +="<div>"
+					comment_html +="<div id='b"+[i]+"' style='display:none'>";
+// 					comment_html +="<div  class='"+[i]+"' style = 'display :none'>";
 					comment_html +="<form action ='/updateReview'>"	;
-					comment_html +="<div><input type='hidden'  name='review_writer'>"+writer+"</div>";
+					comment_html +="<div><input type='hidden' name='review_no' value='"+review_no+"'></div>";
+// 					comment_html +="<div><input type='hidden'  name='review_writer'>"+writer+"</div>";
 					comment_html +="<div><textarea name='review_content' class='reveiw_content' >"+content+"</textarea></div>";
 					comment_html +="<button  class='btn-comment-update'>수정</button>";
 					comment_html += "</form>";
-					comment_html += "</div>";
+					comment_html +="</div>";
+					
 					
 					console.log("댓글 아래로 쭉 떠야함 ");
 				
@@ -103,7 +90,7 @@ $(document).ready(function(){
 														
 
 											comment_html += "<div><button id='delete' style='cursor:pointer;' onclick='del("+list_no+")'>(삭제하기)</button><br></div><hr>";	 																																
-											comment_html += "<button class='update1' style='cursor:pointer;' onclick='updateReview("+list_no+")'>(수정하기)</button><br><hr>";
+											comment_html += "<button class='update1' style='cursor:pointer;' onclick='updateReview("+[i]+")'>(수정하기)</button><br><hr>";
 											
 											comment_html += "</div>";
 											
@@ -203,11 +190,19 @@ function del(val){
 function updateReview(val){
 //  일단 list.no는 필요 없음
 		console.log("updateReview 함수 실행"+val);
-	
-	    $(this).class
-		$(".aa1").hide();
-		$(".aa2").show();
+		console.log(val);
+// 	    .show();
+// 		$("#'"+val+"'").hide();
+// 		$("#"+val).hide();
+// 		console.log("#"+val);
+// 		console.log("."+val);
+
+		console.log('#a'+val);
+// 		$('.aa1').hide();
+		$('#a'+val).hide();
+		$('#b'+val).show();
 		$(".update1").hide();
+// 		$(".'"+val+"'").show();
 // 		$(this).closest("aa1");		
 		
 // 		$(".update1").closest("div").show();

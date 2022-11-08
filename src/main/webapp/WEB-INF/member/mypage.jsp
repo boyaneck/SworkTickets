@@ -30,11 +30,34 @@ if (session.getAttribute("mb_Id") == null) {
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+input-group mb-3{width: 70% !important;}
+.btn1{
+	height: 38px;
+	color: #7329f7; 
+	background-color: white; 
+	border-color: #7329f7; 
+	border: solid 1px;
+	padding: 3px 10px;
+}
+.btn2{
+	height: 38px;
+	color: red; 
+	background-color: white; 
+	border-color: red; 
+	border: solid 1px;
+	padding: 3px 10px;
+}
+</style>
 </head>
 <body>
-	마이페이지입니다
-	<div class="input-group mb-3">
+	<div class="container"
+	style="width: 40%; padding: 30px;">
+		<h2 style="text-align: center; font-weight: bolder; padding: 30px 0;">마이페이지</h2>
+		<hr>
+	
 		<form name="form" action="updateMember" method="post">
+	<div class="input-group mb-3" style="justify-content: center;">
 			<input type="hidden" name="mb_no" value="${member.mb_no}">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -42,15 +65,15 @@ if (session.getAttribute("mb_Id") == null) {
 				</div>
 				<input type="text" class="form-control innm" name="mb_id" value="${member.mb_id}" readonly="readonly">
 			</div>
-			<div class="mb-3">
+			<div class="mb-3" style="width:100%;">
 				<label for="pw">*비밀번호</label> 
-				  <input type="password" class="form-control" name="mb_pw" id="pw" value="${member.mb_pw}" minlength="4" maxlength="8">
+				  <input type="password" class="form-control" name="mb_pw" id="pw"  minlength="4" maxlength="8">
 			</div>
 
-			<div class="mb-3">
-				<label for="pw2">*비밀번호 확인</label> 
-				  <input type="password" class="form-control" name="mb_pw2" id="pw2" value="${member.mb_pw}" minlength="4" maxlength="8"> 
-					<font id="checkPw" size="2">비밀번호는 4~8글자입니다</font>
+			<div class="mb-3" style="width:100%;">
+				<label for="pw2">*비밀번호 확인</label>
+				  <input type="password" class="form-control" name="mb_pw2" id="pw2"  minlength="4" maxlength="8"> 
+					<span><font id="checkPw" size="2">비밀번호는 4~8글자입니다</font></span>
 			</div>
 
 			<div class="input-group mb-3">
@@ -77,12 +100,14 @@ if (session.getAttribute("mb_Id") == null) {
 					value="${member.mb_email}" <%=sts %>>
 			</div>
 			<div id="footer">
-				<button type="submit" class="btn btn-primary" <%=sts%>>회원정보수정</button>
-				<button id="conDel" type="button" class="btn btn-primary"
-					onclick="quitMember(`${member.mb_id}`)">회원탈퇴</button>
+			<div class="container text-center" >
+				<button type="submit" class="btn1" <%=sts%>>회원정보수정</button>
+				<button id="conDel" type="button" class="btn2"
+					 onclick="quitMember(`${member.mb_id}`)">회원탈퇴</button>
 			</div>
-		</form>
+			</div>
 	</div>
-
+		</form>
+</div>
 </body>
 </html>

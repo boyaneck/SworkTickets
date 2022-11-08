@@ -92,7 +92,7 @@ $(document).ready(function(){
    });
    
    function orderList(){
-//       alert('주문내역 처리할 곳. 컨트롤러 호출');
+      alert('주문내역 처리할 곳. 컨트롤러 호출');
       let fm = document.fm;
       fm.action ="payUserDB";
       fm.method="post";
@@ -200,6 +200,7 @@ $('#testBtn').click(function(e){
 
 </head>
 <body class="d-flex flex-column min-vh-100">
+<form name="fm" style="text-align:-webkit-center;">
 	<!-- 타이틀 -->
 	<div class="container"
 		style="background-color: lightgray; width: 50%; padding: 30px;">
@@ -226,8 +227,7 @@ $('#testBtn').click(function(e){
 							value='${exh_title}' readonly="readonly">
 					</div>
 					<div class="row">
-						${amount}원 <input type="hidden" name="amount" id="amount"
-							value='${amount}' readonly="readonly">
+						${amount}원 
 					</div>
 				</div>
 			</div>
@@ -306,7 +306,7 @@ $('#testBtn').click(function(e){
 							data-toggle="modal" data-target="#staticBackdrop">쿠폰적용</button>
 					</div>
 				</div>
-				<br> <input type="hidden" name="result" id="result"
+				<input type="hidden" name="result" id="result"
 					value='${amount}' style="display: none;"> <input
 					type="hidden" name="md_id" id="md_id" value='${md_id}'
 					style="display: none;"><br>
@@ -335,6 +335,7 @@ $('#testBtn').click(function(e){
 			</div>
 		</div>
 	</div>
+	</form>
 	
 	
 	<!-- 쿠폰 -->

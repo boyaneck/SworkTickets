@@ -49,7 +49,7 @@
 					</ul>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<ul>
-						<li>팀원 : 진민용 김세현 공창일 이수경 신원정</li>
+						<li>팀원 : 진민용 공창일 이수경 신원정</li>
 					</ul>
 				</ul>
 				<br>

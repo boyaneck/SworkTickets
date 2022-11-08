@@ -26,6 +26,9 @@ public interface ExhibitionService {
 			// 전시 목록 개수 조회
 			int totalExhibitionListCnt(ExhibitionVO vo);
 
+			// 전시 번호 최대값
+			int getMaxExhibition(ExhibitionVO vo);
+
 			// 유저 전시 목록 조회
 			List<ExhibitionVO> getUserExhibitionList(ExhibitionVO vo);
 
@@ -37,5 +40,4 @@ public interface ExhibitionService {
 			
 			// 유저 전시 검색 개수 조회
 			int totalsearchUserExhibitionListCnt(ExhibitionVO vo);
-
 	}

@@ -78,9 +78,8 @@ background-color: #777;
 cursor: pointer; 
 } 
 </style>
-
 <body>
-   <div class="jumbotron">
+   <div class="board">
       <h1>상세 보기</h1>
    </div>
    <%-- <%@ include file="../../menu.jsp" %>   --%>
@@ -146,17 +145,19 @@ cursor: pointer;
             </div>
             <%--       <input type="text" class="form-control innm" name="cnt" value="${one.cnt}" readonly <%=sts %>>       --%>
          </div>
-         <div id="footer">
-            <button type="submit" <%=sts%>>글수정</button>
-            <a href="boardwrite.jsp" <%=sts%>>글쓰기</a> 
-            <a href="getBoardList">글목록</a>
+         <div id="btnBox_parent">
+            <button class="btn btn-success" type="submit">글수정</button>
+            <button class="btn btn-success" href="boardwrite.jsp">글쓰기</button> 
+            <button class="btn btn-success" href="getBoardList">글목록</button>
          </div>
       </form>
 
       <form action="deleteboard">
          <input type="hidden" name="noti_no" value="${board.noti_no}">
       </form>
-      <div onclick="deleteboard(${board.noti_no})" style="cursor: pointer">글삭제</div>
+      <div id="btnBox_parent">
+      <div class="btn btn-delete" onclick="deleteboard(${board.noti_no})" style="cursor: pointer">글삭제</div>
+      </div>
    </div>
    <!-- 클릭시 보이는 이미지 start -->
    <div id="imgBox" class="container-fluid">

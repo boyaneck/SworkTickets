@@ -115,12 +115,15 @@ public class ExhibitionController {
 				e.printStackTrace();
 			}
 		}
+		int maxExh_no = exhibitionService.getMaxExhibition(vo);
 		exhibitionService.insertExhibition(vo);
-		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
-		System.out.println("번호 : "+vo.getExh_no());
+//		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
+		System.out.println("최대 번호 : "+maxExh_no);
+		int maxEXNPlus = maxExh_no+1;
+		System.out.println("최대 번호 : "+maxEXNPlus);
 //		return "redirect:getExhibitionList";
 //		return "admin/ExhibitionDetail";
-		return "redirect:getExhibition?exh_no=37";
+		return "redirect:getExhibition?exh_no="+maxEXNPlus;
 	}
 		
 	// 전시 승인

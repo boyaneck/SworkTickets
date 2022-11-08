@@ -95,7 +95,7 @@ function f_write(val){
 									<td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
 							</c:when>
 							<c:otherwise>
-								<tr>
+								<tr><td></td>
 									<td>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td>
 								</tr>
 							</c:otherwise>

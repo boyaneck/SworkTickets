@@ -50,6 +50,11 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	}
 
 	@Override
+	public int getMaxExhibition(ExhibitionVO vo) {
+		return exhibitionDAO.getMaxExhibition(vo);
+	}
+
+	@Override
 	public List<ExhibitionVO> getUserExhibitionList(ExhibitionVO vo) {
 		return exhibitionDAO.getUserExhibitionList(vo);
 	}
@@ -68,5 +73,6 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	public int totalsearchUserExhibitionListCnt(ExhibitionVO vo) {
 		return exhibitionDAO.totalsearchUserExhibitionListCnt(vo);
 	}
+
 
 }
