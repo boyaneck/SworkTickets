@@ -12,12 +12,18 @@
 <title>관리자 모드</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+	rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
 <link href="css/admin.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 <style>
 body {
@@ -58,7 +64,7 @@ nav#nav ul li {
 }
 
 section#container {
-/* 	padding: 20px 0;
+	/* 	padding: 20px 0;
 	border-top: 2px solid #eee; */
 	border-bottom: 2px solid #eee;
 }
@@ -103,10 +109,11 @@ footer#footer ul li {
 	display: inline-block;
 	margin-right: 10px;
 }
-/* #searchNav { 
- 	-webkit-justify-content: flex-end; 
- 	justify-content: flex-end; 
-} 
+
+#searchNav {
+	-webkit-justify-content: flex-end;
+	justify-content: flex-end;
+}
 
 table {
 	margin-left: auto;
@@ -118,7 +125,7 @@ table {
 	position: relative;
 	overflow: hidden;
 	margin: 0 auto;
-	width: 75%;
+	width: 92%;
 }
 
 .res_tbl_wrap table {
@@ -129,16 +136,16 @@ table {
 }
 
 /* desktop only */
-/* @media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
 	.res_tbl_wrap table thead tr th, .res_tbl_wrap table tbody tr td {
 		padding: 12px 20px;
 		font-size: 16px;
 		line-height: 22px;
 	}
 }
- */
+
 /* mobile only */
-/* @media screen and (max-width: 990px) {
+@media screen and (max-width: 990px) {
 	.res_tbl_wrap table col {
 		width: 100% !important;
 	}
@@ -174,13 +181,13 @@ table {
 		font-weight: 700;
 		content: attr(data-label);
 	}
-} */
+}
 
-/* tr:hover { */
-/* 	background-color: #f8f8ff; */
-/* } */
+tr:hover {
+	background-color: #f8f8ff;
+}
 
-/* html, body {
+html, body {
 	height: 100%;
 }
 
@@ -188,7 +195,7 @@ table {
 	position: relative;
 	min-height: 100%;
 	padding-bottom: 200px;
-} */
+}
 </style>
 </head>
 <body>
@@ -196,153 +203,154 @@ table {
 	<!-- 		<nav id="nav">
 			<div id="nav_box"></div>
 		</nav> -->
-	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<!-- Navbar Brand-->
-		<a class="navbar-brand logoimg" href="index.jsp"
-			style="text-align: center;"> <img style="width: 140px;"
-			src="./images/logo.png">&nbsp&nbsp
-		</a>
-		<!-- Sidebar Toggle-->
-		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
-			id="sidebarToggle" href="#!">
-			<i class="fas fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end"
-			id="collapsibleNavbar">
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link header-logout"
-					href="/logoutGO">로그아웃</a></li>
-			</ul>
-		</div>
-	</nav>
-	<section id="container">
-		<aside>
-			<div id="layoutSidenav" style="text-align: center;">
-				<div id="layoutSidenav_nav">
-					<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-						<div class="sb-sidenav-menu">
-							<div class="nav">
-								<div class="sb-sidenav-menu-heading"></div>
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false"
-									aria-controls="collapseLayouts">
-									<div class="sb-nav-link-icon">
-										<i class="fas fa-columns"></i>
-									</div> 회원관리
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
+	<div>
+		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+			<!-- Navbar Brand-->
+			<a class="navbar-brand logoimg" href="index.jsp"
+				style="text-align: center;"> <img style="width: 140px;"
+				src="./images/logo.png">&nbsp&nbsp
+			</a>
+			<!-- Sidebar Toggle-->
+			<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+				id="sidebarToggle" href="#!">
+				<i class="fas fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end"
+				id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link header-logout"
+						href="/logoutGO">로그아웃</a></li>
+				</ul>
+			</div>
+		</nav>
+		<section id="container">
+			<aside>
+				<div id="layoutSidenav" style="text-align: center;">
+					<div id="layoutSidenav_nav">
+						<nav class="sb-sidenav accordion sb-sidenav-dark"
+							id="sidenavAccordion">
+							<div class="sb-sidenav-menu">
+								<div class="nav">
+									<div class="sb-sidenav-menu-heading"></div>
+									<a class="nav-link collapsed" href="#"
+										data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
+										aria-expanded="false" aria-controls="collapseLayouts">
+										<div class="sb-nav-link-icon">
+											<i class="fas fa-columns"></i>
+										</div> 회원관리
+										<div class="sb-sidenav-collapse-arrow">
+											<i class="fas fa-angle-down"></i>
+										</div>
+									</a>
+									<div class="collapse" id="collapseLayouts"
+										aria-labelledby="headingOne"
+										data-bs-parent="#sidenavAccordion">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link"
+												href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a>
+											<a class="nav-link" href="/getMemberList">회원목록</a> <a
+												class="nav-link" href="/getAllPayList">회원결제</a>
+										</nav>
 									</div>
-								</a>
-								<div class="collapse" id="collapseLayouts"
-									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> <a
-											class="nav-link" href="/getMemberList">회원목록</a> <a
-											class="nav-link" href="/getAllPayList">회원결제</a>
-									</nav>
+
+									<a class="nav-link collapsed" href="#"
+										data-bs-toggle="collapse"
+										data-bs-target="#collapseLayouts_exh" aria-expanded="false"
+										aria-controls="collapseLayouts_exh">
+										<div class="sb-nav-link-icon">
+											<i class="fas fa-columns"></i>
+										</div> 전시관리
+										<div class="sb-sidenav-collapse-arrow">
+											<i class="fas fa-angle-down"></i>
+										</div>
+									</a>
+									<div class="collapse" id="collapseLayouts_exh"
+										aria-labelledby="headingOne"
+										data-bs-parent="#sidenavAccordion">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="#">전시등록</a> <a class="nav-link "
+												href="/getExhibitionList">전시목록</a>
+										</nav>
+									</div>
+
+									<a class="nav-link collapsed" href="#"
+										data-bs-toggle="collapse"
+										data-bs-target="#collapseLayouts_coupon" aria-expanded="false"
+										aria-controls="collapseLayouts_coupon">
+										<div class="sb-nav-link-icon">
+											<i class="fas fa-columns"></i>
+										</div> 쿠폰관리
+										<div class="sb-sidenav-collapse-arrow">
+											<i class="fas fa-angle-down"></i>
+										</div>
+									</a>
+									<div class="collapse" id="collapseLayouts_coupon"
+										aria-labelledby="headingOne"
+										data-bs-parent="#sidenavAccordion">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a> <a
+												class="nav-link" href="/getCouponList">쿠폰목록</a>
+										</nav>
+									</div>
+
+
+									<a class="nav-link collapsed" href="#"
+										data-bs-toggle="collapse"
+										data-bs-target="#collapseLayouts_service"
+										aria-expanded="false" aria-controls="collapseLayouts_service">
+										<div class="sb-nav-link-icon">
+											<i class="fas fa-columns"></i>
+										</div> 고객센터
+										<div class="sb-sidenav-collapse-arrow">
+											<i class="fas fa-angle-down"></i>
+										</div>
+									</a>
+									<div class="collapse" id="collapseLayouts_service"
+										aria-labelledby="headingOne"
+										data-bs-parent="#sidenavAccordion">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="/getBoardList">공지사항</a> <a
+												class="nav-link" href="/getFaqList">FAQ</a> <a
+												class="nav-link" href="/getOneList">1:1 문의</a>
+										</nav>
+									</div>
 								</div>
 
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#collapseLayouts_exh" aria-expanded="false"
-									aria-controls="collapseLayouts_exh">
-									<div class="sb-nav-link-icon">
-										<i class="fas fa-columns"></i>
-									</div> 전시관리
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="collapseLayouts_exh"
-									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="#">전시등록</a> <a class="nav-link "
-											href="/getExhibitionList">전시목록</a>
-									</nav>
-								</div>
-
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#collapseLayouts_coupon" aria-expanded="false"
-									aria-controls="collapseLayouts_coupon">
-									<div class="sb-nav-link-icon">
-										<i class="fas fa-columns"></i>
-									</div> 쿠폰관리
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="collapseLayouts_coupon"
-									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a> <a
-											class="nav-link" href="/getCouponList">쿠폰목록</a>
-									</nav>
-								</div>
-
-
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#collapseLayouts_service" aria-expanded="false"
-									aria-controls="collapseLayouts_service">
-									<div class="sb-nav-link-icon">
-										<i class="fas fa-columns"></i>
-									</div> 고객센터
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="collapseLayouts_service"
-									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="/getBoardList">공지사항</a> <a
-											class="nav-link" href="/getFaqList">FAQ</a> <a
-											class="nav-link" href="/getOneList">1:1 문의</a>
-									</nav>
-								</div>
 							</div>
 
-						</div>
-
-					</nav>
+						</nav>
+					</div>
 				</div>
-			</div>
-		</aside>
-		<div id="container_box">
-			<div class="wrap" style="padding:40px;">
-				<div class="container">
-					<h2 style="text-align: center; font-weight:bold;">회원 목록</h2>
-				</div>
-				<br> <br> <br>
-				<div class="res_tbl_wrap">
-					<nav id="searchNav" class="navbar navbar-expand-sm" style="border-bottom:none;">
-						<form class="form-inline" action="getMemberList" method="post">
-							<select class="form-control" id="sel1" name="searchCondition"
-								style="display: inline-block !important; margin-right: 10px;">
-								<c:forEach items="${conditionMap}" var="option">
-									<option value="${option.value}">${option.key}</option>
-								</c:forEach>
-								<%-- 		<option value="${conditionMap['제목']}">${conditionMap['제목']}</option> --%>
-								<%-- 		<option value="${conditionMap['내용']}">${conditionMap['내용']}</option> --%>
-							</select> <input class="form-control mr-sm-2" type="text"
-								name="searchKeyword" placeholder="검색어를 입력하세요.">
-							<button class="btn-purple" type="submit">검색</button>
-							<button type="button" class="btn-purple" onclick="location.href='/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</button>
-							<br>
-						</form>
-					</nav>
-
-				
+			</aside>
+			<div id="container_box">
+				<div class="wrap" style="padding: 40px;">
+					<div class="container">
+						<h2 style="text-align: center; font-weight: bold;">회원 목록</h2>
+					</div>
+					<br> <br> <br>
+					<div class="res_tbl_wrap">
+						<nav id="searchNav" class="navbar navbar-expand-sm"
+							style="border-bottom: none;">
+							<form class="form-inline" action="getMemberList" method="post">
+								<select class="form-control" id="sel1" name="searchCondition"
+									style="display: inline-block !important; margin-right: 10px;">
+									<c:forEach items="${conditionMap}" var="option">
+										<option value="${option.value}">${option.key}</option>
+									</c:forEach>
+									<%-- 		<option value="${conditionMap['제목']}">${conditionMap['제목']}</option> --%>
+									<%-- 		<option value="${conditionMap['내용']}">${conditionMap['내용']}</option> --%>
+								</select> <input class="form-control mr-sm-2" type="text"
+									name="searchKeyword" placeholder="검색어를 입력하세요.">
+								<button class="btn-purple" type="submit" style="margin-right: 10px;">검색</button>
+								<button type="button" class="btn-purple" onclick="location.href='/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</button>
+								<br>
+							</form>
+						</nav>
+					</div>
 					<form name="form" action="updateMember" method="post">
 						<table class="table">
-							<colgroup>
-								<col style="width: 10%">
-								<col style="width: 10%">
-								<col style="width: 10%">
-								<col style="width: 15%">
-								<col style="width: 15%">
-								<col style="width: 20%">
-								<col style="width: 10%">
-								<col style="width: 10%">
-							</colgroup>
-							<thead class="btn-primary">
-								<tr>
+							<thead>
+								<tr class="text-center">
 									<th>번호</th>
 									<th>아이디</th>
 									<th>이름</th>
@@ -416,8 +424,7 @@ table {
 					<div id="footer"></div>
 				</div>
 			</div>
-		</div>
-	</section>
-
+		</section>
+	</div>
 </body>
 </html>
