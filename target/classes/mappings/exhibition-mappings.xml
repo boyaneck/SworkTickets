@@ -90,16 +90,24 @@
 
 	<!-- 유저 전시 조회 -->
 	<select id="getUserExhibitionList" resultType="exhibition">
-		SELECT * FROM
-		EXHIBITION WHERE 1=1
-		and
+		SELECT e.* ,COUNT(g.MB_ID)AS rank_cnt FROM
+		exhibition AS e
+		LEFT JOIN good AS g
+		ON e.EXH_NO=g.EXH_NO
+		 WHERE 1=1
+		 and
 		DATE(EXH_END_DATE) >= DATE(NOW())
 		and
 		EXH_APPROVAL=1
-		ORDER BY
+		 GROUP BY exh_no
+		 ORDER BY
 		EXH_ST_DATE DESC
 		LIMIT 10
-		OFFSET #{offset}
+
+	OFFSET #{offset}
+		 
+		 
+
 	</select>
 
 	<!-- 유저 전시 개수 조회 -->

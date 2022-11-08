@@ -12,35 +12,46 @@ import com.ticket.biz.good.GoodVO;
 @Repository
 public class GoodDAO {
 
-
 	@Autowired
-    private	SqlSessionTemplate mybatis;
-	
-	//좋아요등록
+	private SqlSessionTemplate mybatis;
+
+	// 좋아요등록
 	public int insertGood(GoodVO vo) {
-		return mybatis.insert("GoodDAO.insertGood",vo);
+		return mybatis.insert("GoodDAO.insertGood", vo);
 	}
-	//좋아요삭제
+
+	// 좋아요삭제
 	public int deleteGood(GoodVO vo) {
-		return mybatis.delete("GoodDAO.deleteGood",vo);
+		return mybatis.delete("GoodDAO.deleteGood", vo);
 	}
-	
-	//좋아요 순위 목록
+
+	// 좋아요 순위 목록
 	public List<GoodVO> getGoodList() {
 		return mybatis.selectList("GoodDAO.getGoodList");
 	}
-	
+
+	// 유저 전시 목록 조회
 	public List<ExhibitionVO> getMyGoodList(GoodVO vo) {
-	return mybatis.selectList("GoodDAO.getMyGoodList", vo);
+		return mybatis.selectList("GoodDAO.getMyGoodList", vo);
 	}
-	
+
+	// 유저 전시 목록 조회 카운트
 	public int getMyGoodListCnt(GoodVO vo) {
-		System.out.println("마이바티스 실행");
-		System.out.println(vo.toString());
 		return mybatis.selectOne("GoodDAO.getMyGoodListCnt", vo);
 	}
+
+	// 좋아요체크
+	public GoodVO getGoodChk(GoodVO vo) {
+		return mybatis.selectOne("GoodDAO.getGoodChk", vo);
+	}
+
+	// 좋아요체크
+	public boolean getGoodYN(GoodVO vo) {
+		int cnt = mybatis.selectOne("GoodDAO.getGoodYN", vo);
+		if (cnt == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
-
-
-
-
