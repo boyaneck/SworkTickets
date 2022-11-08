@@ -197,20 +197,16 @@ table {
 		</nav> -->
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand logoimg" href="index.jsp"
-			style="text-align: center;"> <img style="width: 140px;"
-			src="./images/logo.png">&nbsp&nbsp
+		<a class="navbar-brand logoimg" href="index" style="text-align: center;"> 
+			<img style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
 		</a>
 		<!-- Sidebar Toggle-->
-		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
-			id="sidebarToggle" href="#!">
+		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
 			<i class="fas fa-bars"></i>
 		</button>
-		<div class="collapse navbar-collapse justify-content-end"
-			id="collapsibleNavbar">
+		<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link header-logout"
-					href="/logoutGO">로그아웃</a></li>
+				<li class="nav-item"><a class="nav-link header-logout" href="/logoutGO">로그아웃</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -234,9 +230,10 @@ table {
 								<div class="collapse" id="collapseLayouts"
 									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> <a
-											class="nav-link" href="/getMemberList">회원목록</a> <a
-											class="nav-link" href="/getAllPayList">회원결제</a>
+										<!-- <a class="nav-link" href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> --> 
+										<a class="nav-link" href="/admin/member">회원등록</a>
+										<a class="nav-link" href="/getMemberList">회원목록</a>
+										<a class="nav-link" href="/getAllPayList">회원결제</a>
 									</nav>
 								</div>
 

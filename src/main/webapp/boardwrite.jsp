@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ include file="../../header.jsp" %>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,66 +34,22 @@
                <span class="input-group-text">작성자</span>
             </div>
             <input type="text" class="form-control innm" name="noti_writer"
-               value="${board.noti_writer}" readonly>
+               value="<%=session.getAttribute("mb_Id") %>" readonly>
          </div>
          <div class="input-group mb-3">
             <div class="input-group-prepend">
                <span class="input-group-text">내용</span>
             </div>
-            <textarea class="form-control innm" rows="10" id="board_comment"
+            <textarea class="form-control innm" rows="10" id="noti_content"
                name="noti_content" ></textarea>
          </div>
-         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">파일</span>
-            </div>
-            <c:if test="${one.filename ne NULL}">
-               <span style="cursor: pointer; padding: 0 20px;" onclick="seeImg()">[파일보기]</span>
-               <script>
-              function seeImg(){
-                 $("#imgBox").show();
-              }
-<!--            </script> 
-<%--             <span style="cursor:pointer;" onclick="downloadFile('${one.filename}')">[파일다운]</span> --%>
-                           <script>
-               function downloadFile(filename){
-                   window.location ='download?filename='+filename;
-               }
-         </script>
-            </c:if>
-         </div>
-         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">등록일</span>
-            </div>
-            <%--       <input type="text" class="form-control innm" name="regDate" value="${one.regdate}" readonly <%=sts %>>       --%>
-         </div>
-         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">조회수</span>
-            </div>
-            <%--       <input type="text" class="form-control innm" name="cnt" value="${one.cnt}" readonly <%=sts %>>       --%>
-         </div>
+  
          <div class="btnBox_parent" id="btnBox_parent">
             <button class="btn btn-success" href="boardwrite.jsp">글등록</button> 
             <button class="btn btn-success" href="getBoardList">글목록</button>
          </div>
       </form>
 
-   </div>
-   <!-- 클릭시 보이는 이미지 start -->
-   <div id="imgBox" class="container-fluid">
-      <div id="imgContentBox">
-         <div id="imgBoxTitleBar">
-            <span id="closeX" onclick="closeX()">X</span>
-            <script>
-           function closeX(){
-              $("#imgBox").hide();
-           }
-        </script>
-         </div>
-         <img id="imgBoxImg" src="img/${board.filename}">
-      </div>
    </div>
 </body>
 </html>

@@ -23,13 +23,35 @@
 }
 .btn-purple:hover{
    border:1px solid #7329f7; 
-   width:100px; 
+   /* width:100px;  */
    height:37px; 
    background-color: #7329f7; 
    color: #fff; 
-   font-size: 18px;
+   /* font-size: 18px; */
     font-weight: bold;
 }
+
+
+/* 회원결제 */
+.btn-cancel{
+	border-radius: 0.25rem;
+    border: 1px solid #7329f7;
+    width: 91px;
+    height: 37px;
+    background-color: #fff;
+    color: #7329f7;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.btn-cancel:hover{
+   border:1px solid #7329f7; 
+   height:37px; 
+   background-color: #7329f7; 
+   color: #fff; 
+   font-weight: bold;
+}
+/* 회원결제 끝 */
 /* 페이징 */
 .page-st:hover
   { text-decoration:none;

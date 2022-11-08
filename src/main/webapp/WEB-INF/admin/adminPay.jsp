@@ -6,29 +6,19 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>관리자 모드</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- jQuery CDN --->
-<script type="text/javascript"
-	src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
-	rel="stylesheet" />
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
 <link href="css/admin.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 <script>
 var chk = false;
@@ -67,14 +57,14 @@ $("#list_module").click(function(){
 				$("#paylist").append(val.msg);
 			} else {
 				$("#paylist").append("고유ID: "+ val.imp_uid);
-				$("#paylist").append("<br>상점 거래ID: "+ val.merchant_uid);
-				$("#paylist").append("<br>주문상품: "+ val.name);
-				$("#paylist").append("<br>주문자: "+ val.buyer_name);
-				$("#paylist").append("<br>결제금액: "+ val.amount);
-				$("#paylist").append("<br>결제수단: "+ val.pay_method);
-				$("#paylist").append("<br>구매처: "+ val.pg_provider);
-				$("#paylist").append("<br>결제시각: "+ val.started_at);
-				$("#paylist").append("<br>취소시각: "+ val.cancelled_at);
+				$("#paylist").append("상점 거래ID: "+ val.merchant_uid);
+				$("#paylist").append("주문상품: "+ val.name);
+				$("#paylist").append("주문자: "+ val.buyer_name);
+				$("#paylist").append("결제금액: "+ val.amount);
+				$("#paylist").append("결제수단: "+ val.pay_method);
+				$("#paylist").append("구매처: "+ val.pg_provider);
+				$("#paylist").append("결제시각: "+ val.started_at);
+				$("#paylist").append("취소시각: "+ val.cancelled_at);
 			}
 		},
 		error : function(request, status) {
@@ -92,22 +82,22 @@ $("#all_module").click(function() {
 		$("#paylist").empty();
 		$.each(val,function(i,v) {
 			$("#paylist").append("고유ID: "+ v.imp_uid);
-			$("#paylist").append("<br>상점 거래ID: "+ v.merchant_uid);
+			$("#paylist").append("상점 거래ID: "+ v.merchant_uid);
 			if (v.status == 'cancelled')
-				$("#paylist").append("<br><span style=\"color:red;font-weight:bold;\">주문취소</span>");
+				$("#paylist").append("<span style=\"color:red;font-weight:bold;\">주문취소</span>");
 			else if (v.status == 'ready')
-				$("#paylist").append("<br><span style=\"color:pink;font-weight:bold;\">결제오류</span>");
+				$("#paylist").append("<span style=\"color:pink;font-weight:bold;\">결제오류</span>");
 			else if (v.status == 'failed')
-				$("#paylist").append("<br><span style=\"color:pink;font-weight:bold;\">결제오류</span>");
+				$("#paylist").append("<span style=\"color:pink;font-weight:bold;\">결제오류</span>");
 			else
-				$("#paylist").append("<br><span style=\"color:blue;font-weight:bold;\">결제완료</span>");
-			$("#paylist").append("<br>주문상품: "+ v.name);
-			$("#paylist").append("<br>주문자: "+ v.buyer_name);
-			$("#paylist").append("<br>결제금액: "+ v.amount);
-			$("#paylist").append("<br>결제수단: "+ v.pay_method);
-			$("#paylist").append("<br>구매처: "+ v.pg_provider);
-			$("#paylist").append("<br>결제시각: "+ v.started_at);
-			$("#paylist").append("<br>취소시각: "+ v.cancelled_at+ "<hr><br>");
+				$("#paylist").append("<span style=\"color:blue;font-weight:bold;\">결제완료</span>");
+			$("#paylist").append("주문상품: "+ v.name);
+			$("#paylist").append("주문자: "+ v.buyer_name);
+			$("#paylist").append("결제금액: "+ v.amount);
+			$("#paylist").append("결제수단: "+ v.pay_method);
+			$("#paylist").append("구매처: "+ v.pg_provider);
+			$("#paylist").append("결제시각: "+ v.started_at);
+			$("#paylist").append("취소시각: "+ v.cancelled_at);
 			});
 		},
 		error : function(request, status) {
@@ -127,10 +117,6 @@ $("#all_module").click(function() {
 </script>
 </head>
 <body>
-	<!-- <br><br><br> -->
-	<!-- 		<nav id="nav">
-			<div id="nav_box"></div>
-		</nav> -->
 	<div>
 		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 			<!-- Navbar Brand-->
@@ -155,8 +141,7 @@ $("#all_module").click(function() {
 			<aside>
 				<div id="layoutSidenav" style="text-align: center;">
 					<div id="layoutSidenav_nav">
-						<nav class="sb-sidenav accordion sb-sidenav-dark"
-							id="sidenavAccordion" style="height: 3235px;">
+						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 1200px;">
 							<div class="sb-sidenav-menu">
 								<div class="nav">
 									<div class="sb-sidenav-menu-heading"></div>
@@ -170,14 +155,13 @@ $("#all_module").click(function() {
 											<i class="fas fa-angle-down"></i>
 										</div>
 									</a>
-									<div class="collapse" id="collapseLayouts"
-										aria-labelledby="headingOne"
-										data-bs-parent="#sidenavAccordion">
+									<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link"
-												href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a>
-											<a class="nav-link" href="/getMemberList">회원목록</a> <a
-												class="nav-link" href="/getAllPayList">회원결제</a>
+<!-- 											<a class="nav-link" -->
+<!-- 												href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> -->
+											<a class="nav-link" href="/admin/member">회원등록</a>
+											<a class="nav-link" href="/getMemberList">회원목록</a>
+											<a class="nav-link" href="/getAllPayList">회원결제</a>
 										</nav>
 									</div>
 
@@ -258,8 +242,7 @@ $("#all_module").click(function() {
 					<div class="res_tbl_wrap">
 						<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
 							<form class="form-inline" action="getAllPayList" method="post">
-								<select class="form-control" id="sel1" name="searchCondition"
-									style="display: inline-block !important; margin-right: 10px;">
+								<select class="form-control" id="sel1" name="searchCondition" style="display: inline-block !important; margin-right: 10px; appearance:auto;">
 									<c:forEach items="${conditionMap}" var="option">
 										<option value="${option.value}">${option.key}</option>
 									</c:forEach>
@@ -293,7 +276,7 @@ $("#all_module").click(function() {
 						<td data-label="결제일시"> ${allPayList.p_date}</td>
 						<%-- 결제고유ID : ${allPayList.p_id}<br> --%>
 				<%-- 		상점거래ID : ${allPayList.p_mer}<br> --%>
-						<td data-label="전시 종료일">${allPayList.exh_end_date}</td><br>
+						<td data-label="전시 종료일">${allPayList.exh_end_date}</td>
 						<%-- 	환불 여부 : ${myPayList.p_chk}<br> --%>
 						<td data-label="취소여부">
 						<c:set var="today" value="<%=new java.util.Date()%>" />
@@ -310,7 +293,7 @@ $("#all_module").click(function() {
 							<c:if test="${allPayList.exh_end_date > sysYear}">
 								<c:choose>
 									<c:when test="${allPayList.p_chk eq 0}">
-										<button id="cancel_module" type="submit" class="btn-purple">취소하기</button>
+										<button id="cancel_module" type="submit" class="btn-cancel">취소하기</button>
 									</c:when>
 									<c:otherwise>
 										<button type="button" class="btn btn-outline-success">환불완료</button>
@@ -328,42 +311,34 @@ $("#all_module").click(function() {
 							<ul class="pagination justify-content-center">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<li class="page-item "><a class="page-link"
-										href="getAllPayList?nowPageBtn=1">&laquo;</a></li>
+									<li class="page-item "><a class="page-link" href="getAllPayList?nowPageBtn=1">&laquo;</a></li>
 								</c:if>
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<li class="page-item "><a class="page-link"
-										href="getAllPayList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
+									<li class="page-item "><a class="page-link" href="getAllPayList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
 								</c:if>
 
 								<!-- 반복처리 태그 -->
-								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-									step="1" var="i">
+								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
 									<c:choose>
 										<c:when test="${paging.nowPageBtn==i}">
-											<li class="page-item active"><a class="page-link"
-												href="getAllPayList?nowPageBtn=${i}">${i}</a></li>
+											<li class="page-item active"><a class="page-link" href="getAllPayList?nowPageBtn=${i}">${i}</a></li>
 										</c:when>
 										<c:otherwise>
-											<li class="page-item "><a class="page-link"
-												href="getAllPayList?nowPageBtn=${i}">${i}</a></li>
+											<li class="page-item "><a class="page-link" href="getAllPayList?nowPageBtn=${i}">${i}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<!-- 		반복 끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<li class="page-item "><a class="page-link"
-										href="getAllPayList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
+									<li class="page-item "><a class="page-link" href="getAllPayList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
 								</c:if>
 								<!-- 		맨끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<li class="page-item"><a class="page-link"
-										href="getAllPayList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
+									<li class="page-item"><a class="page-link" href="getAllPayList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
 								</c:if>
 							</ul>
 						</nav>
 					</div>
-					<br> <br>
 					<div id="footer"></div>
 				</div>
 			</div>

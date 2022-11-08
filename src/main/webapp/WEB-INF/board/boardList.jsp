@@ -115,7 +115,7 @@ function f_write(val){
                <%--                <c:if test="${one.one_secret eq 'false'}"> --%>
 
    <%--             <tr onclick="getboard(${board.noti_no})" style="cursor: pointer;"> --%>
-               <tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"; style="cursor: pointer;">
+               <tr onclick="location.href='getBoard?noti_no=${board.noti_no}'" style="cursor: pointer;">
                   <%--                   <tr onclick="getboard(${board.noti_title}) style="cursor:pointer"> --%>
                   <td class="tdCenter" style="width:10%;" >${board.noti_no}</td>
                   <td class="tdCenter" style="width:50%;" >${board.noti_title}</td>
