@@ -92,7 +92,7 @@ $(document).ready(function(){
    });
    
    function orderList(){
-//       alert('주문내역 처리할 곳. 컨트롤러 호출');
+      alert('주문내역 처리할 곳. 컨트롤러 호출');
       let fm = document.fm;
       fm.action ="payUserDB";
       fm.method="post";
@@ -200,6 +200,7 @@ $('#testBtn').click(function(e){
 
 </head>
 <body class="d-flex flex-column min-vh-100">
+<form name="fm" style="text-align:-webkit-center;">
 	<!-- 타이틀 -->
 	<div class="container"
 		style="background-color: lightgray; width: 50%; padding: 30px;">
@@ -334,6 +335,7 @@ $('#testBtn').click(function(e){
 			</div>
 		</div>
 	</div>
+	</form>
 	
 	
 	<!-- 쿠폰 -->

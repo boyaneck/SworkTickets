@@ -114,7 +114,7 @@ public class PayController {
 
 	// 결제취소
 	@RequestMapping(value = "/paycan", method = RequestMethod.POST)
-	public String cancelPayment(@RequestParam String mid, PayVO vo) {
+	public String cancelPayment(@RequestParam String mid, PayVO vo, HttpSession session) {
 		String token = getImportToken();
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(IMPORT_CANCEL_URL);
@@ -136,14 +136,35 @@ public class PayController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (asd.equals("null")) {
-			System.err.println("환불실패");
-			return "redirect:getPayList";
-		} else {
-			payService.updatePay(vo);
-			System.err.println("환불성공");
-			return "redirect:getPayList";
+		if(session.getAttribute("mb_Id").equals("admin")) {
+			System.out.println("찍힐려나 "+vo.getMb_id());
+			if (asd.equals("null")) {
+				System.err.println("환불실패");
+				return "redirect:getAllPayList";
+			} else {
+				payService.updatePay(vo);
+				System.err.println("환불성공");
+				return "redirect:getAllPayList";
+			}
+		}else {
+			if (asd.equals("null")) {
+				System.err.println("환불실패");
+				return "redirect:getPayList";
+			} else {
+				payService.updatePay(vo);
+				System.err.println("환불성공");
+				return "redirect:getPayList";
 		}
+		}
+		
+//		if (asd.equals("null")) {
+//			System.err.println("환불실패");
+//			return "redirect:getPayList";
+//		} else {
+//			payService.updatePay(vo);
+//			System.err.println("환불성공");
+//			return "redirect:getPayList";
+//		}
 	}
 
 
