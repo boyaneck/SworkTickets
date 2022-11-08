@@ -19,7 +19,11 @@ public interface GoodService {
 
 		public List<ExhibitionVO> getMyGoodList(GoodVO vo);
 
-		
+				//좋아요 체크
+				GoodVO getGoodChk(GoodVO vo);
+				
+				//좋아요 체크
+				boolean getGoodYN(GoodVO vo);
 }
 	
 

@@ -21,6 +21,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.exhibition.ExhibitionService;
 import com.ticket.biz.exhibition.ExhibitionVO;
+import com.ticket.biz.good.GoodService;
+import com.ticket.biz.good.GoodVO;
 
 @Controller
 @SessionAttributes("exhibition")
@@ -218,9 +220,21 @@ public class ExhibitionController {
 				return "admin/ExhibitionList";
 	}
 	
+	@Autowired
+	GoodService goodService;
 	// 유저 전시 상세 조회
 		@RequestMapping("/getUserExhibition")
-		public String getUserExhibition(ExhibitionVO vo, Model model) {
+		public String getUserExhibition(ExhibitionVO vo, Model model,HttpSession session,GoodVO gvo) {
+	
+		
+			String id=(String)session.getAttribute("mb_Id");
+			
+			gvo.setExh_no(vo.getExh_no());
+			gvo.setMb_id(id);
+	
+				
+				model.addAttribute("good_check",goodService.getGoodYN(gvo));
+			
 			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "exhibition/UserExhibitionDetail";
 		}

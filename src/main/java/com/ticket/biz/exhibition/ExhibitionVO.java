@@ -47,7 +47,16 @@ public class ExhibitionVO {
 	private String exh_period_use;
 	private String exh_refund_info;
 	
-	//랭킹 추가
+	private String mb_id;
+	
+	public String getMb_id() {
+		return mb_id;
+	}
+	public void setMb_id(String mb_id) {
+		this.mb_id = mb_id;
+	}
+
+		//랭킹 추가
 		private int rank_cnt;
 		
 		public int getRank_cnt() {
