@@ -169,6 +169,7 @@ public class PayController {
 		String amount = request.getParameter("amount");
 		String exh_title = request.getParameter("exh_title");
 		String exh_no = request.getParameter("exh_no");
+		String exh_img = request.getParameter("exh_img");
 		System.out.println(request.getParameter("exh_no"));
 
 		// 총 목록 수
@@ -191,6 +192,7 @@ public class PayController {
 		model.addAttribute("amount", amount);
 		model.addAttribute("exh_title", exh_title);
 		model.addAttribute("exh_no", exh_no);
+		model.addAttribute("exh_img", exh_img);
 		model.addAttribute("today", today);
 		model.addAttribute("paging", pvo);
 		model.addAttribute("couponList", couponBoxService.myCouponList(vo));
@@ -229,6 +231,7 @@ public class PayController {
 		      String exh_title = request.getParameter("exh_title");
 		      String p_mer = request.getParameter("p_mer");
 		      String exh_no = request.getParameter("exh_no");
+		      String exh_img = request.getParameter("exh_img");
 		      cb_id = Integer.parseInt(request.getParameter("cb_id"));
 		      cb_vo.setCb_id(cb_id);
 		      if(cb_id!=0) {
@@ -248,6 +251,7 @@ public class PayController {
 		vo.setBuyer_email(buyer_email);
 		vo.setBuyer_tel(buyer_tel);
 		vo.setExh_title(exh_title);
+		vo.setExh_img(exh_img);
 		vo.setExh_no(Integer.parseInt(exh_no));
 		vo.setP_date(StartDatetime);
 		vo.setMb_id(mb_id);

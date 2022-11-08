@@ -49,8 +49,8 @@
 		on e.exh_no= g.exh_no
 		WHERE 1=1
 		AND mb_id= #{mb_id}
-		LIMIT 10
-		 OFFSET #{offset};
+<!-- 		LIMIT 10 -->
+<!-- 		 OFFSET #{offset}; -->
 	</select>
 
 	<!-- 내 좋아요 목록수 -->

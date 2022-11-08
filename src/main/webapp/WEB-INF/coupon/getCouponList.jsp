@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,127 +9,115 @@
 <meta charset="UTF-8">
 <title>쿠폰 목록</title>
 
-
-
- <script>
-  
-     function notlogin() {
-        alert("로그인 후 진행 해 주시기 바랍니다.");
-        location.href ="/login.jsp"
-     };
-    </script>
+<script>
+	function notlogin() {
+		alert("로그인 후 진행 해 주시기 바랍니다.");
+		location.href = "/login.jsp"
+	};
+</script>
 
 <%@ include file="/header.jsp"%>
 </head>
 <body>
-<fmt:parseDate var="startDate_D"  value="${today }" pattern="yyyy-MM-dd"/>
-<fmt:parseNumber var="startDate_N" value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
+	<fmt:parseDate var="startDate_D" value="${today }" pattern="yyyy-MM-dd" />
+	<fmt:parseNumber var="startDate_N"
+		value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
 
- 
-
-
-<div class="container" style="text-align: -webkit-center;">
-<br>
-<h1 style="text-align: center;">쿠폰 목록</h1><br>
-
-<c:forEach items="${couponList}" var="coupon">
-<fmt:parseDate var="endDate_D" value="${coupon.c_date }"  pattern="yyyy-MM-dd"/>
-<fmt:parseNumber var="endDate_N" value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" /> 
-
-   
-<!--    <div class="rectangle" style="-webkit-mask-image: radial-gradient(circle at 148px 16px, transparent 16px, red 16.5px); -webkit-mask-position: 0 -16px;">  -->
-<!-- <div class="rectangle" style="-webkit-mask-image: radial-gradient(circle at 120px 15px, transparent 15px, red 15.5px); -webkit-mask-position: 0 -15px;"> -->
-         <div class="container">
-
-            <div class="rectangle">
-               <div class="row">
-                  <div class="col-4">
-                     <h1 class="text-center"
-                        style="transform: translate(0, 80%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
-                  </div>
-                  <div class="col" style="transform: translate(0, 0); text-align:left;">
-                     <b id="c_name" style="font-size: 40px">${coupon.c_name}</b><br>
-                     ${coupon.c_date}까지<br> <span class="text-danger"><small>
-                           ${endDate_N-startDate_N}일 남음 &nbsp;</small></span>
-
-                     <c:choose>
-                        <c:when test="${mb_Id eq 'admin'}">
-                           <button class="btn btn-danger"
-                              onclick="location.href='/getCoupon?c_num=${coupon.c_num}'">수정</button>
-                           <button class="btn btn-danger"
-                              onclick="location.href='/deleteCoupon?c_num=${coupon.c_num}'">삭제
-                           </button>
-                        </c:when>
-                        <c:when test="${mb_Id ne null}">
-                           <c:choose>
-                              <c:when test="${error!=1}">
-                                 <button class="btn btn-dark"
-                                    onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
-                              </c:when>
-                           </c:choose>
-
-                        </c:when>
-                        <c:otherwise>
-                           <button class="btn btn-dark" onclick="notlogin()">쿠폰받기</button>
-                        </c:otherwise>
-                     </c:choose>
-
-                  </div>
-
-               </div>
-            </div>
-         </div>
+	<div class="container" style="text-align: -webkit-center;">
+		<h1 style="text-align: center; ">쿠폰 목록</h1>
+		<br>
 
 
-      </c:forEach>
+			<div class="container">
+				<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-xl-2">
+		<c:forEach items="${couponList}" var="coupon">
+			<fmt:parseDate var="endDate_D" value="${coupon.c_date }"
+				pattern="yyyy-MM-dd" />
+			<fmt:parseNumber var="endDate_N"
+				value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" />
+				<div class="col">
+				
+				
+				<div class="rectangle"
+					style="-webkit-mask-image: radial-gradient(circle at 18px 50%, transparent 18px, red 18.5px); -webkit-mask-position: -18px;">
+					<div class="row ">
+						<div class="col-3">
+							<h1 class="text-center"
+								style="transform: translate(0, 80%); font-weight: bolder; padding-left: 17px">${coupon.c_per}%</h1>
+						</div>
+						<div class="col"
+							style="font-size: 18px; padding-left: 15px; transform: translate(0, 30%); text-align: left;">
+							<b id="c_name" style="font-size: 23px">${coupon.c_name}</b><br>
+							${coupon.c_date}까지<br> <span class="text-danger"><small>
+									${endDate_N-startDate_N}일 남음 &nbsp;</small></span>
+						</div>
 
+						<div class="col" style="transform: translate(0, 15%);">
+							<c:choose>
+								<c:when test="${mb_Id eq 'admin'}">
+									<button class="btn-coupon2"
+										onclick="location.href='/getCoupon?c_num=${coupon.c_num}'">수정</button>
+									<button class="btn-coupon1"
+										onclick="location.href='/deleteCoupon?c_num=${coupon.c_num}'">삭제
+									</button>
+								</c:when>
+								<c:when test="${mb_Id ne null}">
+									<c:choose>
+										<c:when test="${error!=1}">
+											<button class="btn-coupon3" style="transform: translate(0, 65%);"
+												onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
+										</c:when>
+									</c:choose>
+
+								</c:when>
+								<c:otherwise>
+									<button class="btn-coupon3" style="transform: translate(0, 65%);" onclick="notlogin()">쿠폰받기</button>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+					</div>
+				</div>
+
+		</c:forEach>
+				</div>
+			</div>
 </div>
-  <div class="container ">
-         
-            <nav aria-label="Page navigation example">
-               <ul class="pagination justify-content-center">
-<!--       맨처음 -->
-               <c:if test="${paging.nowPageBtn > 1 }">
-                  <li class="page-item "><a class="page-link"
-                     href="getCouponList?nowPageBtn=1">&laquo;</a></li>
-                     </c:if>
-                     <c:if test="${paging.nowPageBtn > 1 }">
-                     <li class="page-item "><a class="page-link"
-                     href="getCouponList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
-                     </c:if>
+	
+	<div class="container text-center">
 
-<!-- 반복처리 태그 -->            
-                     <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i" >
-                        <c:choose>
-                           <c:when test="${paging.nowPageBtn==i}">
-                           <li class="page-item active"><a class="page-link"
-                           href="getCouponList?nowPageBtn=${i}">${i}</a></li>
-                           </c:when>
-                           <c:otherwise>
-                           <li class="page-item "><a class="page-link"
-                           href="getCouponList?nowPageBtn=${i}">${i}</a></li>
-                           </c:otherwise>
-                        </c:choose>
-                     </c:forEach>
-<!--       반복 끝 -->
-                        <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-                     <li class="page-item "><a class="page-link"
-                     href="getCouponList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
-                     </c:if>
-<!--       맨끝 -->         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-                        <li class="page-item"><a class="page-link"
-                     href="getCouponList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
-                     </c:if>   
-               </ul>
-            </nav>
-         
-            </div>
-  
-  
-  
-  
-  
-  
-  
+		<!--       맨처음 -->
+		<c:if test="${paging.nowPageBtn > 1 }">
+			<a class="page-link" href="getCouponList?nowPageBtn=1">&laquo;</a>
+		</c:if>
+		<c:if test="${paging.nowPageBtn > 1 }">
+			<a class="page-link"
+				href="getCouponList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+		</c:if>
+
+		<!-- 반복처리 태그 -->
+		<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1"
+			var="i">
+			<c:choose>
+				<c:when test="${paging.nowPageBtn==i}">
+					<a class="page-st" style="font-weight: bold; color: #7329f7;"
+						href="getCouponList?nowPageBtn=${i}">${i}</a>
+				</c:when>
+				<c:otherwise>
+					<a class="page-st" href="getCouponList?nowPageBtn=${i}">${i}</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<!--       반복 끝 -->
+		<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+			<a class="page-st"
+				href="getCouponList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+		</c:if>
+		<!--       맨끝 -->
+		<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+			<a class="page-st"
+				href="getCouponList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+		</c:if>
+		</div>
 </body>
 </html>
