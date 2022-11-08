@@ -376,28 +376,21 @@ function numberMaxLength(e){
 							<form action="insertMember" name="insertMember" method="post"
 								onSubmit="return validate()">
 								<div class="col-md-12">
-									<input type="text" class="form-control" name="mb_id" id="mb_id"
-										placeholder="아이디" maxlength="12" minlength="8"
-										pattern="^[0-9|a-z|A-Z|]*$" required>
-									<button type="button" id="idChk" name="idChk"
-										onclick='chkBtn()'>중복확인</button>
+									<input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="아이디" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
+									<button type="button" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
 									<span class="id_notice">아이디는 영문과 숫자로만 입력해주세요.</span>
 									<div class="valid-feedback">유효한아이디입니다.</div>
 									<div class="invalid-feedback">공백없이 입력해주세요</div>
 
 								</div>
 								<div class="col-md-12">
-									<input type="password" class="form-control" name="mb_pw"
-										placeholder="패스워드" maxlength="20" minlength="8"
-										pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+									<input type="password" class="form-control" name="mb_pw" placeholder="패스워드" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
 										required>
 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
 									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
 								</div>
-
 								<div class="col-md-12">
-									<input type="text" class="form-control" name="mb_name"
-										placeholder="이름" maxlength="5" minlength="2" required>
+									<input type="text" class="form-control" name="mb_name" placeholder="이름" maxlength="5" minlength="2" required>
 									<!--                            <div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
                            <div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
  -->

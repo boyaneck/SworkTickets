@@ -84,10 +84,10 @@ function f_write(val){
       <table class="table table-hover">
          <thead class="btn-primary">
             <tr>
-               <th style="text-align:center;" >번호</th>
-               <th style="text-align:center;">제목</th>
-               <th style="text-align:center;">작성자</th>
-               <th style="text-align:center;">등록일</th>
+               <th style="width:10%; text-align:center;" >번호</th>
+               <th style="width:50%; text-align:center;">제목</th>
+               <th style="width:20%; text-align:center;">작성자</th>
+               <th style="width:20%; text-align:center;">등록일</th>
 
             </tr>
          </thead>

@@ -83,7 +83,8 @@
                <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 회원관리 </a>
                <div class="dropdown-menu header-menu" aria-labelledby="member">
                <!-- <a class="nav-link header-logout" href="/logoutGO">로그아웃</a> -->
-               <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a>
+               <!-- <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a> -->
+               <a class="dropdown-item header-item" href="/admin" >관리자페이지 이동</a>
                <a class="dropdown-item header-item" href="/getAllPayList">&nbsp회원결제내역</a>
                </div>
                </li>
