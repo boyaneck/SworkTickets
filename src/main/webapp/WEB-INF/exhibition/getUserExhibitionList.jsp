@@ -14,6 +14,7 @@
 <!-- header end -->
 
 
+</head>
 <body>
 	<div class="jumbotron">
 		<h1>전시 목록</h1>
@@ -38,8 +39,6 @@
 				</tr>
 			</thead>
 		
-</head>
-<body>
 			<tbody>
 				<c:forEach items="${UserExhibitionList}" var="exhibition">
 					<tr onclick="selTr(${exhibition.exh_no})" style="cursor: pointer;">

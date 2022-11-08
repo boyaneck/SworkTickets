@@ -39,7 +39,7 @@
 		GROUP BY e.exh_no
 		ORDER BY
 		rank_cnt DESC
-		LIMIT 3;
+		LIMIT 10;
 	</select>
 
 	<!-- 내 좋아요 목록 -->
