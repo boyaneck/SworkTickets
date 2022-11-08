@@ -5,7 +5,11 @@
 <%-- <title>${exhibition.exh_title}</title> --%>
 <!-- </head> -->
 <!-- <body> -->
-			<div id="map" style="width: 500px; height: 500px;"></div>
+<div class="container" style="text-align: center; padding-top: 30px;">
+		<h3 style="font-weight: bold;">${exhibition.exh_title}</h3>
+		<h5>${exhibition.exh_hall}</h5>
+
+			<div id="map" style="width: 800px; height: 700px; margin: 0 auto;"></div>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script
@@ -43,5 +47,6 @@
 		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 		// marker.setMap(null);
 	</script>
+	</div>
 <!-- </body> -->
 <!-- </html> -->

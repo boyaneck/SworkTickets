@@ -215,6 +215,7 @@ $('#testBtn').click(function(e){
 			</h3>
 			<div class="row">
 				<div class="col">
+<%-- 				<img src="/images/${exh_thumbnail }" alt="이미지" style="width: 200px; height: 250px;"> --%>
 					<img src="/images/2.png" alt="이미지"
 						style="width: 200px; height: 250px;">
 				</div>

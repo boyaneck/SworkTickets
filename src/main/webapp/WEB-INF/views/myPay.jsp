@@ -46,7 +46,7 @@
 	<c:forEach items="${myPayList}" var="myPayList">
 	<div class="row">
 	<div class="col-3">
-	<img src="/images/${myPayList.exh_img}" alt="이미지" style="width:200px; height: 300px;">
+	<img src="/images/${myPayList.exh_thumbnail }" alt="이미지" style="width:200px; height: 300px;">
 	</div>
 	<div class="col-6" style="line-height: 200%;">
 	<h4>${myPayList.exh_title}</h4>
