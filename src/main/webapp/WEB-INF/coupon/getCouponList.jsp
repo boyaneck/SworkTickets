@@ -9,8 +9,6 @@
 <meta charset="UTF-8">
 <title>쿠폰 목록</title>
 
-
-
 <script>
 	function notlogin() {
 		alert("로그인 후 진행 해 주시기 바랍니다.");
@@ -25,29 +23,24 @@
 	<fmt:parseNumber var="startDate_N"
 		value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
 
-
-
-
 	<div class="container" style="text-align: -webkit-center;">
-		<br>
-		<h2 style="text-align: center; font-weight: bold">쿠폰 목록</h2>
+		<h1 style="text-align: center; ">쿠폰 목록</h1>
 		<br>
 
+
+			<div class="container">
+				<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-xl-2">
 		<c:forEach items="${couponList}" var="coupon">
 			<fmt:parseDate var="endDate_D" value="${coupon.c_date }"
 				pattern="yyyy-MM-dd" />
 			<fmt:parseNumber var="endDate_N"
 				value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" />
-
-
-			<!--    <div class="rectangle" style="-webkit-mask-image: radial-gradient(circle at 148px 16px, transparent 16px, red 16.5px); -webkit-mask-position: 0 -16px;">  -->
-			<!-- <div class="rectangle" style="-webkit-mask-image: radial-gradient(circle at 120px 15px, transparent 15px, red 15.5px); -webkit-mask-position: 0 -15px;"> -->
-			<div class="container">
-
-
+				<div class="col">
+				
+				
 				<div class="rectangle"
 					style="-webkit-mask-image: radial-gradient(circle at 18px 50%, transparent 18px, red 18.5px); -webkit-mask-position: -18px;">
-					<div class="row">
+					<div class="row ">
 						<div class="col-3">
 							<h1 class="text-center"
 								style="transform: translate(0, 80%); font-weight: bolder; padding-left: 17px">${coupon.c_per}%</h1>
@@ -71,26 +64,26 @@
 								<c:when test="${mb_Id ne null}">
 									<c:choose>
 										<c:when test="${error!=1}">
-											<button class="btn btn-dark"
+											<button class="btn-coupon3" style="transform: translate(0, 65%);"
 												onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
 										</c:when>
 									</c:choose>
 
 								</c:when>
 								<c:otherwise>
-									<button class="btn btn-dark" onclick="notlogin()">쿠폰받기</button>
+									<button class="btn-coupon3" style="transform: translate(0, 65%);" onclick="notlogin()">쿠폰받기</button>
 								</c:otherwise>
 							</c:choose>
 						</div>
-
+					</div>
 					</div>
 				</div>
-			</div>
-
 
 		</c:forEach>
-
-	</div>
+				</div>
+			</div>
+</div>
+	
 	<div class="container text-center">
 
 		<!--       맨처음 -->
@@ -125,5 +118,6 @@
 			<a class="page-st"
 				href="getCouponList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
 		</c:if>
+		</div>
 </body>
 </html>
