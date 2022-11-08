@@ -41,23 +41,206 @@
    }
    
 /*    쿠폰목록 버튼 */
- .btn-coupon1{
-    margin:8px;
-   border:none;
-   width:100px; 
-   height:37px; 
-   background-color: #ea5e5e; 
-   color: #fff; 
-   font-size: 18px;
+ /* .btn-coupon1{
+ 	margin:8px;
+	border:none;
+	width:100px; 
+	height:37px; 
+	background-color: #ea5e5e; 
+	color: #fff; 
+	font-size: 18px;
 
 } 
    .btn-coupon2{
-   margin:8px;
-   border:none;
-   width:100px; 
-   height:37px; 
-   background-color: #7329f7; 
-   color: #fff; 
-   font-size: 18px;
+	margin:8px;
+	border:none;
+	width:100px; 
+	height:37px; 
+	background-color: #7329f7; 
+	color: #fff; 
+	font-size: 18px;
 
+} 
+  .btn-coupon3{
+	margin:8px;
+	border:1px solid #fff;
+	width:100px; 
+	height:37px; 
+	background-color: transparent; 
+	color: #fff; 
+	font-size: 18px;
+
+}  */
+
+
+
+body {
+	font-family: '맑은 고딕', verdana;
+	padding: 0;
+	margin: 0;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+div#root {
+	width: 90%;
+	margin: 0 auto;
+}
+
+header#header {
+	font-size: 60px;
+	padding: 20px 0;
+}
+
+header#header h1 a {
+	color: #000;
+	font-weight: bold;
+}
+
+nav#nav {
+	padding: 10px;
+	text-align: right;
+}
+
+nav#nav ul li {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+section#container {
+	/* 	padding: 20px 0;
+	border-top: 2px solid #eee; */
+	border-bottom: 2px solid #eee;
+}
+
+section#container::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+aside {
+	float: left;
+	width: 200px;
+}
+
+div#container_box {
+	float: right;
+	width: calc(100% - 200px - 20px);
+}
+
+aside ul li {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+aside ul li a {
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+}
+
+aside ul li a:hover {
+	background: #eee;
+}
+
+footer#footer {
+	background: #f9f9f9;
+	padding: 20px;
+}
+
+footer#footer ul li {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#searchNav {
+	-webkit-justify-content: flex-end;
+	justify-content: flex-end;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90% !important;
+}
+
+.res_tbl_wrap {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 92%;
+}
+
+.res_tbl_wrap table {
+	display: table;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* desktop only */
+@media screen and (min-width: 1200px) {
+	.res_tbl_wrap table thead tr th, .res_tbl_wrap table tbody tr td {
+		padding: 12px 20px;
+		font-size: 16px;
+		line-height: 22px;
+	}
+}
+
+/* mobile only */
+@media screen and (max-width: 990px) {
+	.res_tbl_wrap table col {
+		width: 100% !important;
+	}
+	.res_tbl_wrap table thead {
+		display: none;
+	}
+	.res_tbl_wrap table tbody tr {
+		border-bottom: 1px solid #efefef;
+	}
+	.res_tbl_wrap table tbody tr td {
+		width: 100%;
+		display: flex;
+		margin-bottom: 2px;
+		padding: 5px;
+		border-bottom: none;
+		font-size: 14px;
+		line-height: 18px;
+	}
+	.res_tbl_wrap table tbody tr td:first-child, .res_tbl_wrap table tbody tr th:first-child
+		{
+		padding-top: 16px;
+	}
+	.res_tbl_wrap table tbody tr td:last-child, .res_tbl_wrap table tbody tr th:last-child
+		{
+		padding-bottom: 15px;
+	}
+	.res_tbl_wrap table tbody tr td:before {
+		display: inline-block;
+		margin-right: 12px;
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 100px;
+		flex: 0 0 100px;
+		font-weight: 700;
+		content: attr(data-label);
+	}
+}
+
+tr:hover {
+	background-color: #f8f8ff;
+}
+
+html, body {
+	height: 100%;
+}
+
+.wrap {
+	position: relative;
+	min-height: 100%;
+	padding-bottom: 200px;
 }
