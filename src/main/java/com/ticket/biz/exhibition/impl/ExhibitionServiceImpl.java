@@ -56,23 +56,24 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 
 	@Override
 	public List<ExhibitionVO> getUserExhibitionList(ExhibitionVO vo) {
+		System.out.println("db");
 		return exhibitionDAO.getUserExhibitionList(vo);
 	}
 
 	@Override
-	public int totalUSerExhibitionListCnt(ExhibitionVO vo) {
+	public int totalUserExhibitionListCnt(ExhibitionVO vo) {
 		return exhibitionDAO.totalUserExhibitionListCnt(vo);
 	}
 
-	@Override
-	public List<ExhibitionVO> searchUserExhibitionList(ExhibitionVO vo) {
-		return exhibitionDAO.searchUserExhibitionList(vo);
-	}
-
-	@Override
-	public int totalsearchUserExhibitionListCnt(ExhibitionVO vo) {
-		return exhibitionDAO.totalsearchUserExhibitionListCnt(vo);
-	}
+//	@Override
+//	public List<ExhibitionVO> searchUserExhibitionList(ExhibitionVO vo) {
+//		return exhibitionDAO.searchUserExhibitionList(vo);
+//	}
+//
+//	@Override
+//	public int totalsearchUserExhibitionListCnt(ExhibitionVO vo) {
+//		return exhibitionDAO.totalsearchUserExhibitionListCnt(vo);
+//	}
 
 
 }

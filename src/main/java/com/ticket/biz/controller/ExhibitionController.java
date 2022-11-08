@@ -237,12 +237,13 @@ public class ExhibitionController {
 	
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")
-		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
+		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model, HttpSession session) {
 			//총 목록 수
-					int totalPageCnt = exhibitionService.totalUSerExhibitionListCnt(vo);
+			
+					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
 					//현재 페이지 설정
 					int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-					System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+					System.out.println("totaluserPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 					//한페이지당 보여줄 목록 수
 					int onePageCnt = 10;
 					//한 번에 보여질 버튼 수
@@ -251,8 +252,10 @@ public class ExhibitionController {
 					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 					vo.setOffset(pvo.getOffset());
 					
+					
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
+					System.out.println("검색어-"+vo.getExSearchKeyword());
 					
 					return "exhibition/getUserExhibitionList";
 		}
