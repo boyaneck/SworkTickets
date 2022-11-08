@@ -72,7 +72,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" />
+          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -120,7 +120,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" />
+          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -169,7 +169,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" />
+          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -216,7 +216,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" />
+          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
       <!-- 검색 -->
@@ -236,6 +236,15 @@
    
 </nav>
 <script>
+//input에 keyup 이벤트 등록
+$(document).ready(function(){
+$("#exSearchKeyword").keyup(function(){
+	var skey = $(this).val();
+	   location.href="getUserExhibitionList";
+console.log(skey);
+});
+});
+
 /* $(document).ready(function(){
     $("#memberUpdate").click(function(){
         // 확인 대화상자    
