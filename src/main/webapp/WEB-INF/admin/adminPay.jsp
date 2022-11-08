@@ -255,7 +255,6 @@ $("#all_module").click(function() {
 					<div class="container">
 						<h2 style="text-align: center; font-weight: bold;">회원결제</h2>
 					</div>
-					<br> <br> <br>
 					<div class="res_tbl_wrap">
 						<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
 							<form class="form-inline" action="getAllPayList" method="post">
@@ -267,7 +266,6 @@ $("#all_module").click(function() {
 								</select> <input class="form-control mr-sm-2" type="text"
 									name="searchKeyword" placeholder="검색어를 입력하세요.">
 								<button class="btn-purple" type="submit">검색</button>
-								<br>
 							</form>
 						</nav>
 					</div>
@@ -283,11 +281,10 @@ $("#all_module").click(function() {
 									<th>취소여부</th>
 								</tr>
 							</thead>
-				<tbody>
+					<tbody>
 					<c:forEach items="${allPayList}" var="allPayList">
 						<%-- <img src="/images/${allPayList.exh_img}" alt="이미지"
 							style="width: 100px; height: 130px;"> --%>
-						<br>
 						<tr style="cursor: pointer;" class="text-center">
 						<td data-label="상품명"> ${allPayList.exh_title}</td>
 						<td data-label="금액"> ${allPayList.amount}</td>
@@ -304,8 +301,7 @@ $("#all_module").click(function() {
 							<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />
 						</c:set>
 						<form action="paycan" method="POST">
-							<input type="hidden" name="mid" id="merchant_uid"
-								value="${allPayList.p_mer}">
+							<input type="hidden" name="mid" id="merchant_uid" value="${allPayList.p_mer}">
 							<c:if test="${allPayList.exh_end_date < sysYear}">
 								<button class="btn btn-outline-danger" onclick="" type="button">종료된
 									전시</button>
@@ -366,9 +362,7 @@ $("#all_module").click(function() {
 								</c:if>
 							</ul>
 						</nav>
-
 					</div>
-
 					<br> <br>
 					<div id="footer"></div>
 				</div>
