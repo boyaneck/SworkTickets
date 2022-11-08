@@ -113,23 +113,19 @@ public class ExhibitionController {
 				e.printStackTrace();
 			}
 		}
-		int maxExh_no = exhibitionService.getMaxExhibition(vo);
+		int autoExh_no = exhibitionService.getMaxExhibition(vo);
 		exhibitionService.insertExhibition(vo);
 //		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
-		System.out.println("최대 번호 : "+maxExh_no);
-		int maxEXNPlus = maxExh_no+1;
-		System.out.println("최대 번호 : "+maxEXNPlus);
+		System.out.println("최대 번호 : "+autoExh_no);
 //		return "redirect:getExhibitionList";
 //		return "admin/ExhibitionDetail";
-		return "redirect:getExhibition?exh_no="+maxEXNPlus;
+		return "redirect:getExhibition?exh_no="+autoExh_no;
 	}
 		
 	// 전시 승인
 	@RequestMapping("/approvalExhibition")
 	public String approvalExhibition(@ModelAttribute("exhibition") ExhibitionVO vo, HttpSession session) {
 		exhibitionService.approvalExhibition(vo);
-		System.out.println("전시 승인 서비스 실행");
-		System.out.println("exh_no="+vo.getExh_no());
 		return "redirect:getExhibition?exh_no="+vo.getExh_no();
 	}
 	

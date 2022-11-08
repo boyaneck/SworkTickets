@@ -55,7 +55,7 @@
 </div>
 
 <div class="new_ex">
-<button type="button" onclick = "location.href= '../getUserExhibitionList'" ><span style="color:#7832f7">+</span>more</button>
+<button type="button" class="newEx_btn" onclick = "location.href= '../getUserExhibitionList'" ><span style="color:#7832f7">+</span>more</button>
 </div>
 
 <!-- <div class="maintext">
@@ -63,14 +63,42 @@ aa
 </div> -->
 
 <!-- 센터 시작 -->
-<section class="rank_box">
-<div class="rank1"><span style="color:#7832f7">♥</span>좋아요<br><br>
-</div>
 
 <div class="rank_center"><h1 class="rank-title">RANK</h1></div>
 
-<div class="rank2"><span style="color:#7832f7">%</span>예매율<br><br>
+<section class="rank_box">
+<div class="rank1"><span style="color:#7832f7">♥</span>좋아요<br><br>
+<c:forEach items="${getGoodList}" var="getGoodList" varStatus="status">
+               <div class="row "><div class="col">
+                  <a href="getUserExhibition?exh_no=${getGoodList.exh_no}">
+                  ${status.count} 
+                     ${getGoodList.exh_title}</a> ${getGoodList.rank_cnt }<br>
+               </div></div>
+</c:forEach>
 </div>
+<div class="rank2"><span style="color:#7832f7">%</span>예매율<br><br>
+
+<!-- 예매율 애니메이션 시작 -->
+<!-- <div class="container"> -->
+      <div class="circular-progress">
+        <div class="value-container">0%</div>
+      </div>
+<!--     </div> -->
+<!-- <div class="container"> -->
+      <div class="circular-progress">
+        <div class="value-container">0%</div>
+      </div>
+<!--     </div> -->
+<!-- <div class="container"> -->
+      <div class="circular-progress">
+        <div class="value-container">0%</div>
+      </div>
+<!--     </div> -->
+<!-- 예매율 애니메이션 끝 -->
+
+</div>
+
+
 </section>
 <div class="rank_ex">
 <button type="button" onclick = "location.href= '../ranking'" ><span style="color:#7832f7">+</span>more</button>
@@ -105,5 +133,7 @@ aa
 <!-- footer start -->
 <%@ include file="footer.jsp" %>
 <!-- footer end -->
+    <!-- Script -->
+    <script src="./js/circular-progress.js"></script>
 </body>
 </html>

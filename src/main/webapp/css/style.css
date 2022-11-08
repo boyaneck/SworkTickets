@@ -229,6 +229,66 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
 }
 
 
+/* rank시작 */
+
+
+.rank_box {
+   margin-top: 10px;
+}
+
+.rank_box > div {
+   position:relative;
+   display: inline-block;
+   text-align: center;
+    height: 1000px;
+    line-height: 100px;
+}
+
+.rank_box > img {
+   position:relative;
+   display: inline-block;
+   
+}
+
+
+.rank1 {
+   width: 50%;
+}
+
+.rank2 {
+   width: 49%;
+   border-left: 1px solid;
+}
+
+
+.rank-title {
+   text-align: center;
+    position: sticky;
+    margin-top: 70px; 
+}
+
+
+.rank-title {
+   font-size: 50px;
+   top:40%;
+}
+
+.rank_ex {
+   text-align: center;
+}
+
+.rank_ex > button {
+   height: 50px;
+   width: 120px;
+   font-size: 25px;
+   background-color: #fff;
+   border-width: 1px;
+   border-color: #1f1f1f;
+}
+
+/* rank 끝 */
+
+
 .center_line{
       position:center;
        border: 1px solid black;
@@ -457,3 +517,30 @@ footer {
 	font-size: 18px;
 
 } 
+
+/* 예매율 애니메이션 */
+.circular-progress {
+  position: relative;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.circular-progress:before {
+  content: "";
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+.value-container {
+  position: relative;
+  /* font-family: "Poppins", sans-serif; */
+  font-weight: bold;
+  font-size: 20px;
+  color: #231c3d;
+}
+
+
