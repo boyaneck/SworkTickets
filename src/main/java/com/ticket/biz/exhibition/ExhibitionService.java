@@ -31,5 +31,11 @@ public interface ExhibitionService {
 
 			// 유저 전시 목록 개수 조회
 			int totalUSerExhibitionListCnt(ExhibitionVO vo);
+			
+			// 유저 전시 검색
+			List<ExhibitionVO> searchUserExhibitionList(ExhibitionVO vo);
+			
+			// 유저 전시 검색 개수 조회
+			int totalsearchUserExhibitionListCnt(ExhibitionVO vo);
 
 	}

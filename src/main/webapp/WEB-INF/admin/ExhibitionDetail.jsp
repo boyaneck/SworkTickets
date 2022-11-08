@@ -46,9 +46,12 @@
 <p>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</p>
    <div id="footer">
 <%-- 			<a href="WEB-INF/admin/ExhibitionInsert?exh_no=${exhibition.exh_no}.jsp"><button type="button" id="modify" class="btn btn-primary">수정</button></a> --%>
-			<a href="modifymoveExhibition?exh_no=${exhibition.exh_no}&page=${page}"><button type="button" id="modify" class="btn btn-primary">수정</button></a>
+			<a href="modifymoveExhibition?"><button type="button" id="modify" class="btn btn-primary">수정</button></a>
+<%-- 			<a href="modifymoveExhibition?exh_no=${exhibition.exh_no}&page=${page}"><button type="button" id="modify" class="btn btn-primary">수정</button></a> --%>
 			<button type="button" id="del" class="btn btn-primary" onclick="del('${page}')">삭제</button>
-			<a href="approvalExhibition?exh_no=${exhibition.exh_no}"><button type="button" id="approval" class="btn btn-primary">승인</button></a>
+<%-- 			<a href="approvalExhibition?exh_no=${exhibition.exh_no}"><button type="button" id="approval" class="btn btn-primary">승인</button></a> --%>
+			<button type="button" id="approval" class="btn btn-primary" onclick="approval()">승인</button></a>
+			<a href="getExhibitionList"><button type="button" id="exh_List" class="btn btn-primary">목록</button></a>
 		</div>
 		<script>
 		 var edate = new Date('${exhibition.exh_end_date}');
@@ -89,6 +92,18 @@
          }
          else {
             alert('삭제가 취소되었습니다.');
+         }
+       }
+		
+       function approval(){
+          var approvalConfirm = confirm('정말 승인하시겠습니까?');
+         if (approvalConfirm == true) {
+
+            location.href = 'approvalExhibition?exh_no=${exhibition.exh_no}';
+            alert('승인 되었습니다.');
+         }
+         else {
+            alert('승인이 취소되었습니다.');
          }
        }
        

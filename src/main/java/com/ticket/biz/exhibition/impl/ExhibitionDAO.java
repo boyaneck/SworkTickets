@@ -60,6 +60,16 @@ public class ExhibitionDAO {
 	public int totalUserExhibitionListCnt(ExhibitionVO vo) {
 		return mybatis.selectOne("ExhibitionDAO.totalUserExhibitionListCnt", vo);
 		}
+	
+	// 유저 전시 검색
+	public List<ExhibitionVO> searchUserExhibitionList(ExhibitionVO vo) {
+		return mybatis.selectList("ExhibitionDAO.searchUserExhibitionList",vo);
+	}
+	
+	// 유저 전시 검색 개수 조회
+	public int totalsearchUserExhibitionListCnt(ExhibitionVO vo) {
+		return mybatis.selectOne("ExhibitionDAO.totalsearchUserExhibitionListCnt", vo);
+	}
 
 
 }

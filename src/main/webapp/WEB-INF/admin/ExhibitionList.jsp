@@ -27,8 +27,8 @@
 					<th>번호</th>
 					<th>전시명</th>
 					<th>가격</th>
-					<th>전시시작일자</th>
-					<th>전시종료일자</th>
+					<th>시작일</th>
+					<th>종료일</th>
 					<th>장소</th>
 					<th>승인여부</th>
 					<th>전시종료여부</th>
@@ -87,7 +87,9 @@
 	</script>
 	<script>
 		$(document).ready(function() {
-			$('#myTable').dataTable();
+			$('#myTable').dataTable({
+				stateSave: true
+			});
 		});
 		
 		function selTr(val, val2){
