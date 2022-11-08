@@ -32,6 +32,8 @@
 	UPDATE REVIEW 
 	SET 
 	REVIEW_CONTENT=#{review_content}
+	WHERE REVIEW_NO =#{review_no}
+	<!-- 글번호 조건걸기 -->
 
 	
 </update>

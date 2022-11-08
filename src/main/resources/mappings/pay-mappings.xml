@@ -4,17 +4,26 @@
 
 <mapper namespace="PayDAO">
 
+<!-- 	<insert id="insertPay"> -->
+<!-- 		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT, EXH_NO, EXH_IMG)  -->
+<!-- 		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no}, #{exh_img}) -->
+<!-- 	</insert> -->
+	
 	<insert id="insertPay">
-		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT, EXH_NO, EXH_IMG) 
-		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no}, #{exh_img})
+		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT, EXH_NO) 
+		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no})
 	</insert>
 
 	<select id="getPayList" resultType="pay">
 		SELECT p.*,e.exh_end_date
 		FROM PAY P, MEMBER MB, exhibition e
-		WHERE 1=1 AND P.MB_ID=MB.MB_ID
+		WHERE 1=1 
+		<if test="searchCondition == 'BUYER' "> AND buyer LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		<if test="searchCondition == 'BUYER_TEL' "> AND buyer_tel LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		<if test="searchCondition == 'P_DATE' "> AND p_date LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		AND P.MB_ID=MB.MB_ID
 		AND P.MB_ID = #{mb_id}
-		AND p.EXH_TITLE = e.EXH_TITLE
+		AND p.EXH_NO = e.EXH_NO
 		ORDER BY P_DATE DESC
 	</select>
 	
@@ -26,6 +35,7 @@
 		<if test="searchCondition == 'BUYER' "> AND buyer LIKE CONCAT('%', #{searchKeyword},'%')</if>
 		<if test="searchCondition == 'BUYER_TEL' "> AND buyer_tel LIKE CONCAT('%', #{searchKeyword},'%')</if>
 		<if test="searchCondition == 'P_DATE' "> AND p_date LIKE CONCAT('%', #{searchKeyword},'%')</if>
+		AND p.EXH_NO = e.EXH_NO
 		ORDER BY P_DATE DESC	
 		LIMIT 10 OFFSET #{offset}
 		</select>

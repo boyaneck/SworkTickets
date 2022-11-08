@@ -29,6 +29,16 @@
   VALUES ( #{one_title}, #{one_writer}, #{one_content}, now(), #{one_category}, now(), #{one_secret})
 </insert>
 
+<update id="oneAnswer">
+	UPDATE ONEONE
+	SET ONE_ANSWER=#{one_answer} 
+	WHERE ONE_NO=#{one_no}
+	
+	
+	
+
+</update>
+
 <update id="updateOne">
 	UPDATE ONEONE 
 	SET ONE_TITLE=#{one_title},

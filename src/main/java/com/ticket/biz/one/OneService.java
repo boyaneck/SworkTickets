@@ -18,5 +18,8 @@ public interface OneService {
 	List<OneVO> getOneList(OneVO vo);
 
 	int totalOneListCnt(OneVO vo);
+	
+	void doAnswer(OneVO vo);
+	
 
 }

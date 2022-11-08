@@ -6,6 +6,7 @@
   --button-color: #23263b;
   --menubar-color: #4B5563;
 }
+
 /* 통합 css */
 body {
   background-color: var(--background-color1) !important;
@@ -47,6 +48,11 @@ input::-webkit-inner-spin-button {
 
 /* 헤더시작*/
 
+.navbar-toggler {
+   border: none;
+}
+
+
 /* 최신전시 시작 */
 .new_title{
     text-align: center;
@@ -83,17 +89,39 @@ input::-webkit-inner-spin-button {
    font-weight:300;
 }
 
-
 .nav-link.header:hover{
    color:#7832f7!important;
    font-weight:500;
 }
+@media (max-width: 576px){
+   .nav-link.header{
+         display:none;
+   }
+}
 
+@media (min-width: 576px){
+   .nav-link.hambuger{
+         display:none;
+   }
+}
 
-.nav-hello{
+@media (min-width: 576px){
+   .navbar-nav.hambuger{
+         display:none;
+   }
+}
+
+.nav-hello-main{
    color:gray;
    font-size:16px;
 }
+
+@media (max-width: 576px){
+   .nav-hello-main{
+      display:none;
+   }
+}
+
 
 
 
@@ -164,7 +192,11 @@ a.dropdown-item.header-item-login:hover
 {
    background-color:#7832f7!important;
 }
-
+@media (max-width: 750px) {
+  a.dropdown-item.header-item-login{
+  font-size:14px;
+  }
+}
 
 a.nav-link.header-logout
 {   
@@ -179,6 +211,12 @@ a.nav-link.header-logout:hover
    background-color:#7832f7!important;
 }
 
+@media (max-width: 750px) {
+  a.nav-link.header-logout{
+  font-size:14px;
+  }
+}
+
 a.nav-link.dropdown-toggle.header-toggle-login::after{
    content:inherit;
 }
@@ -188,6 +226,18 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
    font-weight:300;
    color:#1f1f1f!important;
    margin: 6px 10px 0 0;
+}
+
+@media (max-width: 576px) {
+  a.nav-link.mypage{
+  display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  #addonMain{
+  display: none;
+  }
 }
 
 /* 헤더 로그인 끝 */
@@ -459,22 +509,22 @@ footer {
 
 /* 결제 모달창 쿠폰 버튼 */
 .btn-purple{
-	border:1px solid #7329f7; 
-	width:100px; 
-	height:37px; 
-	background-color: #fff; 
-	color: #7329f7; 
-	font-size: 18px;
-	 font-weight: bold;
+   border:1px solid #7329f7; 
+   width:100px; 
+   height:37px; 
+   background-color: #fff; 
+   color: #7329f7; 
+   font-size: 18px;
+    font-weight: bold;
 }
 .btn-purple:hover{
-	border:1px solid #7329f7; 
-	width:100px; 
-	height:37px; 
-	background-color: #7329f7; 
-	color: #fff; 
-	font-size: 18px;
-	 font-weight: bold;
+   border:1px solid #7329f7; 
+   width:100px; 
+   height:37px; 
+   background-color: #7329f7; 
+   color: #fff; 
+   font-size: 18px;
+   font-weight: bold;
 }
 /* 페이징 */
 .page-st:hover
@@ -488,33 +538,33 @@ footer {
    
 /*    쿠폰목록 버튼 */
  .btn-coupon1{
- 	margin:8px;
-	border:none;
-	width:100px; 
-	height:37px; 
-	background-color: #ea5e5e; 
-	color: #fff; 
-	font-size: 18px;
+    margin:8px;
+   border:none;
+   width:100px; 
+   height:37px; 
+   background-color: #ea5e5e; 
+   color: #fff; 
+   font-size: 18px;
 
 } 
    .btn-coupon2{
-	margin:8px;
-	border:none;
-	width:100px; 
-	height:37px; 
-	background-color: #7329f7; 
-	color: #fff; 
-	font-size: 18px;
+   margin:8px;
+   border:none;
+   width:100px; 
+   height:37px; 
+   background-color: #7329f7; 
+   color: #fff; 
+   font-size: 18px;
 
 } 
   .btn-coupon3{
-	margin:8px;
-	border:1px solid #fff;
-	width:100px; 
-	height:37px; 
-	background-color: transparent; 
-	color: #fff; 
-	font-size: 18px;
+   margin:8px;
+   border:1px solid #fff;
+   width:100px; 
+   height:37px; 
+   background-color: transparent; 
+   color: #fff; 
+   font-size: 18px;
 
 } 
 

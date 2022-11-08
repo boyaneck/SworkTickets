@@ -76,29 +76,7 @@ aa
                </div></div>
 </c:forEach>
 </div>
-<div class="rank2"><span style="color:#7832f7">%</span>예매율<br><br>
-
-<!-- 예매율 애니메이션 시작 -->
-<!-- <div class="container"> -->
-      <div class="circular-progress">
-        <div class="value-container">0%</div>
-      </div>
-<!--     </div> -->
-<!-- <div class="container"> -->
-      <div class="circular-progress">
-        <div class="value-container">0%</div>
-      </div>
-<!--     </div> -->
-<!-- <div class="container"> -->
-      <div class="circular-progress">
-        <div class="value-container">0%</div>
-      </div>
-<!--     </div> -->
-<!-- 예매율 애니메이션 끝 -->
-
-</div>
-
-
+<div class="rank2"><span style="color:#7832f7">%</span>예매율<br><br></div>
 </section>
 <div class="rank_ex">
 <button type="button" onclick = "location.href= '../ranking'" ><span style="color:#7832f7">+</span>more</button>
@@ -127,13 +105,11 @@ aa
 <a href="/getCouponList">- 쿠폰목록</a><br>
 <a href="/pay">- 관리자 결제목록</a><br>
 <div class="container-fluid">
-	<div class="h-100 d-inline-block bg-dark text-white">디브</div>
+   <div class="h-100 d-inline-block bg-dark text-white">디브</div>
 </div>
 
 <!-- footer start -->
 <%@ include file="footer.jsp" %>
 <!-- footer end -->
-    <!-- Script -->
-    <script src="./js/circular-progress.js"></script>
 </body>
 </html>

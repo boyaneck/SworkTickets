@@ -281,6 +281,22 @@ public class MemberController {
 	//관리자페이지로 이동
 	@RequestMapping(value = "/admin")
 	public String adminView() {
-		return "admin/admin_index";
+		return "admin/adminIndex";
+	}
+	
+	
+	//관리자회원등록 페이지로 이동
+	@RequestMapping(value = "/admin/member")
+	public String admin_memberView() {
+		return "admin/adminMember";
+	}
+	@RequestMapping(value = "/admin/insertMember", method = RequestMethod.POST)
+	public String admin_insertMember(MemberVO vo) throws IllegalStateException {
+		String password = vo.getMb_pw();
+		// 창일 추가
+		vo.setMb_pw(pwCheck.encrypt(password));
+		// ---
+		memberService.insertMember(vo);
+		return "redirect:/getMemberList";
 	}
 }
