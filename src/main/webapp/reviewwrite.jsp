@@ -57,14 +57,14 @@ $(document).ready(function(){
 					
 	
 
-					comment_html +="<div id='"+[i]+"' class='aa1'>";
+					comment_html +="<div id='a"+[i]+"' class='aa1'>";
 					comment_html += "<div><span class='review_writer'><strong>"+ writer + "</strong></div><br/>";
 					comment_html +="<div>"+content+"</div>";
 					comment_html +="</div>";
 					
 
 					comment_html +="<div>"
-					comment_html +="<div class='b' style='display:none'>";
+					comment_html +="<div id='b"+[i]+"' style='display:none'>";
 // 					comment_html +="<div  class='"+[i]+"' style = 'display :none'>";
 					comment_html +="<form action ='/updateReview'>"	;
 					comment_html +="<div><input type='hidden' name='review_no' value='"+review_no+"'></div>";
@@ -196,8 +196,11 @@ function updateReview(val){
 // 		$("#"+val).hide();
 // 		console.log("#"+val);
 // 		console.log("."+val);
-		$('.aa1').hide();
-		$('.b').show();
+
+		console.log('#a'+val);
+// 		$('.aa1').hide();
+		$('#a'+val).hide();
+		$('#b'+val).show();
 		$(".update1").hide();
 // 		$(".'"+val+"'").show();
 // 		$(this).closest("aa1");		
