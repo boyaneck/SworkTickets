@@ -226,8 +226,7 @@ $('#testBtn').click(function(e){
 							value='${exh_title}' readonly="readonly">
 					</div>
 					<div class="row">
-						${amount}원 <input type="hidden" name="amount" id="amount"
-							value='${amount}' readonly="readonly">
+						${amount}원 
 					</div>
 				</div>
 			</div>
@@ -306,7 +305,7 @@ $('#testBtn').click(function(e){
 							data-toggle="modal" data-target="#staticBackdrop">쿠폰적용</button>
 					</div>
 				</div>
-				<br> <input type="hidden" name="result" id="result"
+				<input type="hidden" name="result" id="result"
 					value='${amount}' style="display: none;"> <input
 					type="hidden" name="md_id" id="md_id" value='${md_id}'
 					style="display: none;"><br>
