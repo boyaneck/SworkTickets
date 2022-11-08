@@ -13,7 +13,9 @@ public class OneVO {
 	private Date one_date;
 	private String one_category;
 	private Date one_modify;
-
+	private String one_answer;
+	
+	
 	private String searchCondition;
 	private String searchKeyword;
 
@@ -26,7 +28,16 @@ public class OneVO {
 
 	private boolean one_secret;
 
-
+	
+	public String getOne_answer() {
+		return one_answer;
+	}
+	public void setOne_answer(String one_answer) {
+		this.one_answer = one_answer;
+	}
+	
+	
+	
 	public boolean isOne_secret() {
 		return one_secret;
 	}
