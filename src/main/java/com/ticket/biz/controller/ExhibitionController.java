@@ -224,7 +224,7 @@ public class ExhibitionController {
 					int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
 					System.out.println("totaluserPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 					//한페이지당 보여줄 목록 수
-					int onePageCnt = 10;
+					int onePageCnt = 16;
 					//한 번에 보여질 버튼 수
 					int oneBtnCnt = 5;
 
