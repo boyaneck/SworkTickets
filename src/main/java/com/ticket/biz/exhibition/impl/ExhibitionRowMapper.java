@@ -23,6 +23,8 @@ public class ExhibitionRowMapper implements RowMapper<ExhibitionVO>{
 		exhibition.setExh_location(rs.getString("exh_location"));
 		exhibition.setExh_hall(rs.getString("exh_hall"));
 		exhibition.setExh_content(rs.getString("exh_content"));
+		exhibition.setExh_thumbnail(rs.getString("exh_thumbnail"));
+		exhibition.setExh_banne(rs.getString("exh_banne"));
 		exhibition.setExh_img(rs.getString("exh_img"));
 		exhibition.setExh_planner(rs.getString("exh_planner"));
 		exhibition.setExh_time(rs.getString("exh_time"));

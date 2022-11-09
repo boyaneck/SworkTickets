@@ -42,13 +42,6 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav hambuger">
     
-      <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon" name="addonHambuger">
-          <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
-        </div>
-      </div>
-    
       <li class="nav-item">
         <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span>
       </li>
@@ -81,6 +74,7 @@
       </li>
          
     </ul>
+    
   </div>
 <!--   햄버거 끝 -->
   
@@ -114,11 +108,11 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
+           <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon" name="addonMain">
+        <div class="inner-addon right-addon">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control" placeholder="검색" id="exSearchKeyword" name="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -163,11 +157,11 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
+           <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon " name="addonMain">
+        <div class="inner-addon right-addon">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control" placeholder="검색" id="exSearchKeyword" name="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -212,11 +206,11 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
+           <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon" name="addonMain">
+        <div class="inner-addon right-addon">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control" placeholder="검색" id="exSearchKeyword" name="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -259,11 +253,11 @@
             </div>
          </li>
       </ul>
-      <!-- 검색 -->
+       <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon" name="addonMain">
+        <div class="inner-addon right-addon">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control" placeholder="검색" id="exSearchKeyword" name="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -283,14 +277,17 @@
    
 </nav>
 <script>
-//input에 keyup 이벤트 등록
-$(document).ready(function(){
-$("#exSearchKeyword").keyup(function(){
-   var skey = $(this).val();
-      location.href="getUserExhibitionList";
-console.log(skey);
-});
-});
+function searchkey() {
+    if (window.event.keyCode == 13) {
+
+ // 엔터키가 눌렸을 때 실행하는 반응
+    var exs = document.getElementById("exSearchKeyword").value;
+    	console.log(exs);
+
+    location.href="getUserExhibitionList?exSearchKeyword="+exs;
+    
+    }
+}
 
 /* $(document).ready(function(){
     $("#memberUpdate").click(function(){

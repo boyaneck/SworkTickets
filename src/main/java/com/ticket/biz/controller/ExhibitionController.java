@@ -43,22 +43,12 @@ public class ExhibitionController {
 //		exFilterMap.put("전시삭제여부", "EXH_CANCELL");
 //		return exFilterMap;
 //	}
-	
-	// 전시 검색
-	@ModelAttribute("exSearchConditionMap")
-	public Map<String, String> exSearchConditionMap(){
-		Map<String, String> exConditionMap = new HashMap<String, String>();
-		exConditionMap.put("전시명", "EXH_TITLE");
-//		exConditionMap.put("장소", "EXH_HALL");
-	return exConditionMap;
-	}
 
+	
 	// 전시 등록 이동
 		@RequestMapping("/insertmoveExhibition")
-//		public String insertmoveExhibition(ExhibitionVO vo) {
 			public String insertmoveExhibition(ExhibitionVO vo, Model model) {
 			System.out.println("상세보기 갔다가 다시 등록하기 누름"+vo.toString());
-//			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "admin/ExhibitionInsert";
 		}
 	
@@ -73,7 +63,6 @@ public class ExhibitionController {
 		String fileName_thumb = uploadFile_thumb.getOriginalFilename();
 		
 		String realPath = "C:/swork/tickets/src/main/webapp/images/";
-//		String realPath = "D:/swork/tickets/src/main/webapp/images/";
 		String fileName="";
 		
 		List<MultipartFile> fileList = mRequest.getFiles("uploadFile");
@@ -115,35 +104,23 @@ public class ExhibitionController {
 				e.printStackTrace();
 			}
 		}
-		int maxExh_no = exhibitionService.getMaxExhibition(vo);
+		int autoExh_no = exhibitionService.getMaxExhibition(vo);
 		exhibitionService.insertExhibition(vo);
-//		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
-		System.out.println("최대 번호 : "+maxExh_no);
-		int maxEXNPlus = maxExh_no+1;
-		System.out.println("최대 번호 : "+maxEXNPlus);
-//		return "redirect:getExhibitionList";
-//		return "admin/ExhibitionDetail";
-		return "redirect:getExhibition?exh_no="+maxEXNPlus;
+		System.out.println("최대 번호 : "+autoExh_no);
+		return "redirect:getExhibition?exh_no="+autoExh_no;
 	}
 		
 	// 전시 승인
 	@RequestMapping("/approvalExhibition")
 	public String approvalExhibition(@ModelAttribute("exhibition") ExhibitionVO vo, HttpSession session) {
 		exhibitionService.approvalExhibition(vo);
-		System.out.println("전시 승인 서비스 실행");
-		System.out.println("exh_no="+vo.getExh_no());
 		return "redirect:getExhibition?exh_no="+vo.getExh_no();
 	}
 	
 	// 전시 수정 이동
 	@RequestMapping("/modifymoveExhibition")
-//	public String insertmoveExhibition(ExhibitionVO vo) {
-//		public String modifymoveExhibition(ExhibitionVO vo, Model model, HttpServletRequest request) {
 		public String modifymoveExhibition(ExhibitionVO vo, Model model) {
-//		String page= request.getParameter("page");
 		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
-//		model.addAttribute("page",page);
-//		System.out.println("수정이동 : "+page);
 		System.out.println("수정이동 : "+vo.getExh_no());
 		
 		return "admin/ExhibitionModify";
@@ -155,14 +132,12 @@ public class ExhibitionController {
 		
 		exhibitionService.updateExhibition(vo);
 		System.out.println("수정이동 : "+vo.getExh_no());
-//		return "redirect:getExhibitionList";
 		return "redirect:getExhibition";
 	}
 	
 	// 전시 삭제
 	@RequestMapping("/deleteExhibition")
 	public String deleteExhibition(ExhibitionVO vo, HttpSession session,HttpServletRequest request) {
-//		String realPath = "D:/swork/tickets/src/main/webapp/images/";
 		String realPath = "C:/swork/tickets/src/main/webapp/images/";
 		vo = exhibitionService.getExhibition(vo);
 		if (vo.getExh_img() != null || vo.getExh_thumbnail() != null ||  vo.getExh_banne() != null ) {
@@ -243,10 +218,11 @@ public class ExhibitionController {
 		@RequestMapping("/getUserExhibitionList")
 		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
 			//총 목록 수
-					int totalPageCnt = exhibitionService.totalUSerExhibitionListCnt(vo);
+			
+					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
 					//현재 페이지 설정
 					int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-					System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+					System.out.println("totaluserPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 					//한페이지당 보여줄 목록 수
 					int onePageCnt = 10;
 					//한 번에 보여질 버튼 수
@@ -255,8 +231,10 @@ public class ExhibitionController {
 					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 					vo.setOffset(pvo.getOffset());
 					
+					
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
+					System.out.println("검색어-"+vo.getExSearchKeyword());
 					
 					return "exhibition/getUserExhibitionList";
 		}

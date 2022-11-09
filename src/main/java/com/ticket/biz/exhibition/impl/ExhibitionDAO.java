@@ -61,20 +61,8 @@ public class ExhibitionDAO {
 		return mybatis.selectList("ExhibitionDAO.getUserExhibitionList",vo);
 	}
 
-	// 전시 목록 개수 조회
+	// 유저 전시 목록 개수 조회
 	public int totalUserExhibitionListCnt(ExhibitionVO vo) {
 		return mybatis.selectOne("ExhibitionDAO.totalUserExhibitionListCnt", vo);
 		}
-	
-	// 유저 전시 검색
-	public List<ExhibitionVO> searchUserExhibitionList(ExhibitionVO vo) {
-		return mybatis.selectList("ExhibitionDAO.searchUserExhibitionList",vo);
-	}
-	
-	// 유저 전시 검색 개수 조회
-	public int totalsearchUserExhibitionListCnt(ExhibitionVO vo) {
-		return mybatis.selectOne("ExhibitionDAO.totalsearchUserExhibitionListCnt", vo);
-	}
-
-
 }

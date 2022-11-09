@@ -76,7 +76,28 @@ aa
                </div></div>
 </c:forEach>
 </div>
-<div class="rank2"><span style="color:#7832f7">%</span>예매율<br><br></div>
+<div class="rank2"><span style="color:#7832f7">%</span>예매율<br><br>
+
+<!-- 예매율 애니메이션 시작 -->
+<!-- <div class="container"> -->
+      <div class="circular-progress">
+        <div class="value-container">0%</div>
+      </div>
+<!--     </div> -->
+<!-- <div class="container"> -->
+      <div class="circular-progress">
+        <div class="value-container">0%</div>
+      </div>
+<!--     </div> -->
+<!-- <div class="container"> -->
+      <div class="circular-progress">
+        <div class="value-container">0%</div>
+      </div>
+<!--     </div> -->
+<!-- 예매율 애니메이션 끝 -->
+
+
+</div>
 </section>
 <div class="rank_ex">
 <button type="button" onclick = "location.href= '../ranking'" ><span style="color:#7832f7">+</span>more</button>
