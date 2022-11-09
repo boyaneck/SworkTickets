@@ -215,9 +215,8 @@ $('#testBtn').click(function(e){
 			</h3>
 			<div class="row">
 				<div class="col">
-<%-- 				<img src="/images/${exh_thumbnail }" alt="이미지" style="width: 200px; height: 250px;"> --%>
-					<img src="/images/2.png" alt="이미지"
-						style="width: 200px; height: 250px;">
+				<img src="/images/${exh_thumbnail }" alt="이미지" style="width: 200px; height: 250px;">
+<!-- 					<img src="/images/2.png" alt="이미지" style="width: 200px; height: 250px;"> -->
 				</div>
 				<div class="col">
 					<div class="row">
@@ -297,7 +296,7 @@ $('#testBtn').click(function(e){
 						<b>결제금액</b>
 					</div>
 					<div class="col-6" style="border-bottom: 2px solid black;">
-						<input type="text" name="amount" id="amount" value='${amount}원'
+						<input type="text" name="amount" id="amount" value='${amount}'
 							style="font-weight: bold; text-align: right !important; color: #7329f7; border: none;"
 							readonly="readonly">
 					</div>
@@ -318,11 +317,13 @@ $('#testBtn').click(function(e){
 				<!--    회원아이디<input type="text" name="mb_id" id="mb_id" > -->
 				<!--    결제일시 -->
 				<input type="hidden" name="p_date" id="p_date"
-					style="display: none;"> <input type="hidden" name="cb_id"
-					id="cb_id" value=0 style="display: none;"> <input
+					style="display: none;"> 
+					<input type="hidden" name="cb_id" id="cb_id" value=0 style="display: none;"> 
+					<input
 					type="hidden" name="exh_no" id="exh_no" value="${exh_no }"
 					style="display: none;">
-
+<!-- 				썸네일 -->
+				<input type=hidden name="exh_thumbnail" id="exh_thumbnail" value="${exh_thumbnail }" style="display: none;">
 
 				<!--   결제버튼 -->
 				<div class="container"
