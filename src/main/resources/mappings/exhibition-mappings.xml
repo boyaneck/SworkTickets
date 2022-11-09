@@ -91,7 +91,7 @@
 		FROM EXHIBITION WHERE 1=1
 	</select>
 
-	<!-- 유저 전시 조회 -->
+<!-- 유저 전시 조회 -->
 	<select id="getUserExhibitionList" resultType="exhibition">
 		SELECT * FROM (SELECT e.* ,COUNT(g.MB_ID)AS RANK_CNT FROM
 		EXHIBITION AS

@@ -43,22 +43,12 @@ public class ExhibitionController {
 //		exFilterMap.put("전시삭제여부", "EXH_CANCELL");
 //		return exFilterMap;
 //	}
-	
-	// 전시 검색
-	@ModelAttribute("exSearchConditionMap")
-	public Map<String, String> exSearchConditionMap(){
-		Map<String, String> exConditionMap = new HashMap<String, String>();
-		exConditionMap.put("전시명", "EXH_TITLE");
-//		exConditionMap.put("장소", "EXH_HALL");
-	return exConditionMap;
-	}
 
+	
 	// 전시 등록 이동
 		@RequestMapping("/insertmoveExhibition")
-//		public String insertmoveExhibition(ExhibitionVO vo) {
 			public String insertmoveExhibition(ExhibitionVO vo, Model model) {
 			System.out.println("상세보기 갔다가 다시 등록하기 누름"+vo.toString());
-//			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 			return "admin/ExhibitionInsert";
 		}
 	
@@ -73,7 +63,6 @@ public class ExhibitionController {
 		String fileName_thumb = uploadFile_thumb.getOriginalFilename();
 		
 		String realPath = "C:/swork/tickets/src/main/webapp/images/";
-//		String realPath = "D:/swork/tickets/src/main/webapp/images/";
 		String fileName="";
 		
 		List<MultipartFile> fileList = mRequest.getFiles("uploadFile");
@@ -117,10 +106,7 @@ public class ExhibitionController {
 		}
 		int autoExh_no = exhibitionService.getMaxExhibition(vo);
 		exhibitionService.insertExhibition(vo);
-//		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
 		System.out.println("최대 번호 : "+autoExh_no);
-//		return "redirect:getExhibitionList";
-//		return "admin/ExhibitionDetail";
 		return "redirect:getExhibition?exh_no="+autoExh_no;
 	}
 		
@@ -133,13 +119,8 @@ public class ExhibitionController {
 	
 	// 전시 수정 이동
 	@RequestMapping("/modifymoveExhibition")
-//	public String insertmoveExhibition(ExhibitionVO vo) {
-//		public String modifymoveExhibition(ExhibitionVO vo, Model model, HttpServletRequest request) {
 		public String modifymoveExhibition(ExhibitionVO vo, Model model) {
-//		String page= request.getParameter("page");
 		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
-//		model.addAttribute("page",page);
-//		System.out.println("수정이동 : "+page);
 		System.out.println("수정이동 : "+vo.getExh_no());
 		
 		return "admin/ExhibitionModify";
@@ -151,14 +132,12 @@ public class ExhibitionController {
 		
 		exhibitionService.updateExhibition(vo);
 		System.out.println("수정이동 : "+vo.getExh_no());
-//		return "redirect:getExhibitionList";
 		return "redirect:getExhibition";
 	}
 	
 	// 전시 삭제
 	@RequestMapping("/deleteExhibition")
 	public String deleteExhibition(ExhibitionVO vo, HttpSession session,HttpServletRequest request) {
-//		String realPath = "D:/swork/tickets/src/main/webapp/images/";
 		String realPath = "C:/swork/tickets/src/main/webapp/images/";
 		vo = exhibitionService.getExhibition(vo);
 		if (vo.getExh_img() != null || vo.getExh_thumbnail() != null ||  vo.getExh_banne() != null ) {
@@ -237,7 +216,7 @@ public class ExhibitionController {
 	
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")
-		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model, HttpSession session) {
+		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
 			//총 목록 수
 			
 					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);

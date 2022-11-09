@@ -18,13 +18,6 @@
 	   <div class="board">
       <h1>전시 목록</h1>
    </div>
-   <nav id="searchNav" class="sub_title">
-      <form class="form-inline" action="#" method="post">
-         <input class="form-control mr-sm-2" type="text" name="searchKeyword"
-            placeholder="전시명 및 전시장을 검색하세요.">
-         <button class="btn btn-success" type="submit">검색</button>
-      </form>
-   </nav>
 	<div class="container-fluid">
 		<table class="table table-hover">
 			<thead class="btn-primary">
