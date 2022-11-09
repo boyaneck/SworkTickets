@@ -15,7 +15,7 @@
 
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	   <div class="board">
       <h1>전시 목록</h1>
    </div>
@@ -96,5 +96,8 @@
 			</div>
 			<!-- 		반복처리할 태그 끝 -->
 			</div>
+			<!-- footer start -->
+<%@ include file="../../footer.jsp" %>
+<!-- footer end -->
 </body>
 </html>

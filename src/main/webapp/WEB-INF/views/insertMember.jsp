@@ -228,7 +228,7 @@ small{margin-left: 15px; margin-bottom: 0px !important;}
 </style>
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <div class="container" style="width: 50%;">
 		<h3 style="text-align: center; font-weight: bolder; padding: 30px 0; ">회원가입</h3>
 		<hr>

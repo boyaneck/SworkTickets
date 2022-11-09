@@ -23,7 +23,7 @@ function pwChk(){
    })
 }
 </script>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<%-- <form action="mypage">
 		<div class="card-body">
 			<div class="text-start">
@@ -92,6 +92,6 @@ function pwChk(){
 		</div>
 	</form>
 	
-
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>
