@@ -101,12 +101,26 @@ function is_checked(eno) {//eno=3
 	
 	  
 }
-$( function() {
-    $( "#tabs" ).tabs();
-  } );
+
+</script>
+<script>
+$(function(){
+	$("#menu1").css({"border":"1px solid #999", "border-bottom":"1px solid white"});
+	$("#menu1").siblings("div.tabDiv").css({"background-color":"white", "border-bottom":"1px solid #999"});
+	$("#con1").show();
+	$("#con1").siblings("div.conBox").hide();
+	
+	$("div.tabDiv").on("click",function(){
+		let id = $(this).attr("id");
+		$('#'+id).css({"border":"1px solid #999", "border-bottom":"1px solid white","background-color":"#fff"});
+		$('#'+id).siblings("div.tabDiv").css({"border":"1px solid white","background-color":"white", "border-bottom":"1px solid #999"});
+		$('#con'+id.substring(4,5)).show();
+		$('#con'+id.substring(4,5)).siblings("div.conBox").hide();
+	});
+});
 </script>
 <style>
-.btn{
+.btn11{
 	width: 160px;
 	height: 45px;
 	color: white; 
@@ -115,18 +129,16 @@ $( function() {
 	font-weight: bold;
 	font-size: 16pt;
 	margin-bottom: 10px;
+	padding-bottom: 50px;
 }
 #col{text-align: left;}
 #col1{color: #7329f7; font-weight: bold; }
-#tabs{
-color: #7329f7;
-font-weight: bold;
-}
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
-    color: #7329f7;
-font-weight: bold;
-    }
-</style>
+
+  div.row a{text-align:center;margin-right:0px;margin-left:0px; padding-top: 50px; background-color: white !important;}
+  div.tabDiv:hover{cursor:pointer;}
+  div.conBox{width:100%; height: 500px;}
+  .col{background-color: white;}
+  </style>
 </head>
 <body>
 <div class="container" style="text-align:center; padding: 50px 0;">
@@ -179,33 +191,25 @@ font-weight: bold;
 			<input type="hidden" name="exh_no" value="${exhibition.exh_no}">
 			<input type="hidden" name="exh_title" value="${exhibition.exh_title}">
 			<input type="hidden" name="amount" value="${exhibition.exh_price}">
-			<button type="submit" class="btn">예매하기</button>
+			<button type="submit" class="btn11">예매하기</button>
 		</form>
 </div>
 	</div>
 	</div>
 	</div>
 <!-- 하단 -->
-	<div id="tabs" style="border: 1px solid white; padding-top: 50px;">
-  <ul style="border: 1px solid white; border-bottom:1px solid gray; background-color: white; color:black; text-align: center; margin: 0 auto;
-  margin-right: auto;">
-    <li style="display:inline-block; background-color: white; color:black;"><a href="#tabs-1">상세정보</a></li>
-    <li style="display:inline-block; background-color: white; color:black;"><a href="#tabs-2">관람후기</a></li>
-    <li style="display:inline-block; background-color: white; color:black;"><a href="#tabs-3">장소정보</a></li>
-  </ul>
-  <div id="tabs-1">
-    <p>..</p>
+<div class="container">
+  <div class="row a" style="padding-top: 50px;">
+    <div class="col tabDiv pt-3 pb-2" id="menu1"><h5>상세정보</h5></div>
+    <div class="col tabDiv pt-3 pb-2" id="menu2"><h5>관람후기</h5></div>
+    <div class="col tabDiv pt-3 pb-2" id="menu3"><h5>장소정보</h5></div>
   </div>
-  <div id="tabs-2">
-    <p>..</p>
-  </div>
-  <div id="tabs-3">
-  <%@ include file="UserExhibitionLocation.jsp"%>
-  </div>
+  <div id="con1" class="conBox p-3" style="background-color: white;">내용 1</div>
+  <div id="con2" class="conBox p-3" style="background-color: white; text-align:left !important;"><%@ include file="reviewwrite.jsp"%></div>
+  <div id="con3" class="conBox p-3" style="background-color: white;"><%@ include file="UserExhibitionLocation.jsp"%></div>
 </div>
-	</div>
 	<br>
-	
+	</div>
 	<br>
 </body>
 </html>
