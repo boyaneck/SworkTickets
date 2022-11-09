@@ -508,6 +508,15 @@ footer {
 }
 
 /* 결제 모달창 쿠폰 버튼 */
+.btn-black{
+   border:1px solid #000; 
+   width:280px; 
+   height:37px; 
+   background-color: #000; 
+   color: #fff; 
+   font-size: 18px;
+    font-weight: bold;
+}
 .btn-purple{
    border:1px solid #7329f7; 
    width:100px; 
