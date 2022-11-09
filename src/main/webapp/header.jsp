@@ -50,7 +50,7 @@
          <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
       </li>
       <li class="nav-item">
-        <a class="nav-link hambuger" href="/getExhibitionList" > 전시 </a>
+        <a class="nav-link hambuger" href="/getUserExhibitionList" > 전시 </a>
       </li>
       <li class="nav-item">
         <a class="nav-link hambuger" href="/ranking"> 랭킹 </a>

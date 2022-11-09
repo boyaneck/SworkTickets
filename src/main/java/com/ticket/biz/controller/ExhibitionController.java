@@ -231,7 +231,6 @@ public class ExhibitionController {
 					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 					vo.setOffset(pvo.getOffset());
 					
-					
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
 					System.out.println("검색어-"+vo.getExSearchKeyword());
