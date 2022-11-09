@@ -12,7 +12,7 @@
 <body class="d-flex flex-column min-vh-100">
 <!-- <img class="picture" src="./images/main_image.png" /> -->
 
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="false">
+<div id="carouselExampl	eCaptions" class="carousel slide" data-ride="carousel" data-interval="false">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -67,7 +67,15 @@ aa
 <div class="rank_center"><h1 class="rank-title">RANK</h1></div>
 
 <section class="rank_box">
-<div class="rank1"><span style="color:#7832f7">♥</span>좋아요<br><br>
+<div class="rank1">
+        <i class="bi bi-suit-heart-fill"></i>
+	좋아요<br><br>
+	
+		<div>
+        <i class="bi bi-suit-heart-fill"></i>
+        <span class="num" data-val="340">000</span>
+		</div>
+
 <c:forEach items="${getGoodList}" var="getGoodList" varStatus="status">
                <div class="row "><div class="col">
                   <a href="getUserExhibition?exh_no=${getGoodList.exh_no}">
@@ -80,18 +88,18 @@ aa
 
 <!-- 예매율 애니메이션 시작 -->
 <!-- <div class="container"> -->
-      <div class="circular-progress">
-        <div class="value-container">0%</div>
+      <div class="circular-progress1">
+        <div class="value-container1">0%</div>
       </div>
 <!--     </div> -->
 <!-- <div class="container"> -->
-      <div class="circular-progress">
-        <div class="value-container">0%</div>
+      <div class="circular-progress2">
+        <div class="value-container2">0%</div>
       </div>
-<!--     </div> -->
+<!--     </div> -->  
 <!-- <div class="container"> -->
-      <div class="circular-progress">
-        <div class="value-container">0%</div>
+      <div class="circular-progress3">
+        <div class="value-container3">0%</div>
       </div>
 <!--     </div> -->
 <!-- 예매율 애니메이션 끝 -->
@@ -129,8 +137,11 @@ aa
    <div class="h-100 d-inline-block bg-dark text-white">디브</div>
 </div>
 
+
 <!-- footer start -->
 <%@ include file="footer.jsp" %>
 <!-- footer end -->
+   <!-- Script -->
+    <script src="js/circular-progress.js"></script>
 </body>
 </html>

@@ -123,9 +123,14 @@
 
 	<!-- 유저 전시 개수 조회 -->
 	<select id="totalUserExhibitionListCnt" resultType="_int">
-		SELECT COUNT(*)
-		FROM
+		<if test="exSearchKeyword == null">
+			SELECT COUNT(*)
+			FROM
+			EXHIBITION
+		</if>
 		<if test="exSearchKeyword != null">
+			SELECT COUNT(*)
+		FROM
 			(select ex.* from exhibition AS ex WHERE 1=1
 			AND REPLACE(UPPER(EXH_TITLE),'
 			','') LIKE
