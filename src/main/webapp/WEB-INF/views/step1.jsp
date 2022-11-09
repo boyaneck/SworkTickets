@@ -4,34 +4,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 약관</title>
+<title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
 	<script>
-	/* 약관 전체동의 시작 */
 	$(function(){
 		$("input[name=agreeAll]").click(function(){
 			$("input[name=agree1").prop("checked", this.checked);
 			$("input[name=agree2").prop("checked", this.checked);
 			});
 		});
-	/* 약관 전체동의 끝 */
 	</script>
 </head>
 <body>
   <div class="container">
 	<form role="form" action="registerTerm">
-	  <div class="card w-100 p-5 mt-3 justify-content-lg-center align-items-lg-center">
+	  <div class="card w-100 p-3 mt-3 justify-content-lg-center align-items-lg-center">
 		<div class="form-group">
-		  <div class="card-header">회원가입 약관</div>
-			<div class="card-body">
+		  <div class="card-header text-center">회원가입 약관</div>
+			<div class="card-body" style="font-size: 16px;">
+				<label class="checkbox-inline">   
+							<input type="checkbox" name="agreeAll" id="agreeAll" value="true">전체 동의합니다.
+						</label>  
 			  <div class="col-lg-12">
-				<div class="card w-100 p-5">
+				<div class="card w-100 p-3">
 				  <label class="checkbox-inline">   
-					<input type="checkbox" name="agree1" value="true" required="required">동의합니다.
+					<input type="checkbox" name="agree1" value="true" required="required">전자상거래 표준약관<span class="text-success">(필수)</span>
 				  </label>    
-				  <h5 class="card-title">전자상거래 표준약관</h5>
 				<!-- <div class="panel-body" style="border:  1px solid  #ccc"> -->
-				<p class="card-text">
+				<p class="card-text" style="overflow: scroll; height: 150px;">
 					제1조(목적) 본 회원약관은 OOOO-업체명(이하 '갑'라 한다)이 운영하는 인터넷관련 서비스(이하 '서비스'라
 					한다)를 이용함에 있어 관리자와 이용자(이하 '회원'라 한다)의 권리, 의무 및 책임사항을 규정함을 목적으로
 					한다.<br> 제2조 (약관의 효력) 1.본 약관은 '갑'에 회원 가입 시 회원들에게 통지함으로써 효력을
@@ -50,15 +50,14 @@
 				 </div>
 			    </div>
 		      </div>
-			<div class="card-body">
+			<div class="card-body" style="font-size: 16px;">
 				<div class="col-lg-12">
-					<div class="card w-100 p-5">
+					<div class="card  w-100 p-3">
 						<label class="checkbox-inline">   
-							<input type="checkbox" name="agree2" value="true" required="required">동의합니다.
+							<input type="checkbox" name="agree2" value="true" required="required">개인정보<span class="text-success">(필수)</span>
 						</label>  
-						<h5 class="card-title">개인정보</h5>
 						<!-- <div class="panel-body" style="border:  1px solid  #ccc"> -->
-						<p class="card-text">
+						<p class="card-text" style="overflow: scroll; height: 150px;" >
 							<뉴전시스>('http://localhost:8090/'이하 '뉴전시스')은(는) 「개인정보 보호법」
 							제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여
 							다음과 같이 개인정보 처리방침을 수립·공개합니다. ○ 이 개인정보처리방침은 2022년 10월 21부터 적용됩니다.
@@ -76,11 +75,9 @@
 					</div>
 				</div>
 			</div>
-				<label class="checkbox-inline">   
-							<input type="checkbox" name="agreeAll" id="agreeAll" value="true" required="required">전체 동의합니다.
-						</label>  
+			
 		  </div>
-			<button type="submit" class="btn btn-default">회원가입 단계로 넘어가기</button>
+		<button type="submit" class="btn-purple text-center" style="width:300px; height: 50px;">확인</button>
 		</div>
 		<br />         
 		<!-- 	<form role="form" action="registerForm">
