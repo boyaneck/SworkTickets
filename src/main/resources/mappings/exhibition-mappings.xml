@@ -92,59 +92,59 @@
 	</select>
 
 <!-- 유저 전시 조회 -->
-	<select id="getUserExhibitionList" resultType="exhibition">
-		SELECT * FROM (SELECT e.* ,COUNT(g.MB_ID)AS RANK_CNT FROM
-		EXHIBITION AS
-		e
-		LEFT JOIN GOOD AS g
-		ON e.EXH_NO=g.EXH_NO
-		WHERE 1=1
-		AND
-		DATE(EXH_END_DATE) >= DATE(NOW())
-		AND
-		EXH_APPROVAL=1
-		GROUP BY EXH_NO) AS
-		rk
-		WHERE 1=1
-		<if test="exSearchKeyword != null">
-			AND REPLACE(UPPER(EXH_TITLE),' ','')
-			LIKE
-			REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
-			OR REPLACE
-			(UPPER(EXH_HALL),' ','')
-			LIKE
-			REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
-		</if>
-		ORDER BY
-		EXH_ST_DATE DESC
-		LIMIT 10
-		OFFSET #{offset}
-	</select>
+   <select id="getUserExhibitionList" resultType="exhibition">
+      SELECT * FROM (SELECT e.* ,COUNT(g.MB_ID)AS RANK_CNT FROM
+      EXHIBITION AS
+      e
+      LEFT JOIN GOOD AS g
+      ON e.EXH_NO=g.EXH_NO
+      WHERE 1=1
+      AND
+      DATE(EXH_END_DATE) >= DATE(NOW())
+      AND
+      EXH_APPROVAL=1
+      GROUP BY EXH_NO) AS
+      rk
+      WHERE 1=1
+      <if test="exSearchKeyword != null">
+         AND REPLACE(UPPER(EXH_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
+         OR REPLACE
+         (UPPER(EXH_HALL),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
+      </if>
+      ORDER BY
+      EXH_ST_DATE DESC
+      LIMIT 10
+      OFFSET #{offset}
+   </select>
 
-	<!-- 유저 전시 개수 조회 -->
-	<select id="totalUserExhibitionListCnt" resultType="_int">
-		<if test="exSearchKeyword == null">
-			SELECT COUNT(*)
-			FROM
-			EXHIBITION
-		</if>
-		<if test="exSearchKeyword != null">
-			SELECT COUNT(*)
-		FROM
-			(select ex.* from exhibition AS ex WHERE 1=1
-			AND REPLACE(UPPER(EXH_TITLE),'
-			','') LIKE
-			REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
-			OR
-			REPLACE(UPPER(EXH_HALL),' ','') LIKE
-			REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')) AS cd
-		</if>
-		WHERE 1=1
-		and
-		DATE(EXH_END_DATE) >=
-		DATE(NOW())
-		AND
-		EXH_APPROVAL=1
-	</select>
+   <!-- 유저 전시 개수 조회 -->
+   <select id="totalUserExhibitionListCnt" resultType="_int">
+      <if test="exSearchKeyword == null">
+         SELECT COUNT(*)
+         FROM
+         EXHIBITION
+      </if>
+      <if test="exSearchKeyword != null">
+         SELECT COUNT(*)
+      FROM
+         (select ex.* from exhibition AS ex WHERE 1=1
+         AND REPLACE(UPPER(EXH_TITLE),'
+         ','') LIKE
+         REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
+         OR
+         REPLACE(UPPER(EXH_HALL),' ','') LIKE
+         REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')) AS cd
+      </if>
+      WHERE 1=1
+      and
+      DATE(EXH_END_DATE) >=
+      DATE(NOW())
+      AND
+      EXH_APPROVAL=1
+   </select>
 
 </mapper>

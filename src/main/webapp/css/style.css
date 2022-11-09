@@ -53,11 +53,15 @@ input::-webkit-inner-spin-button {
 }
 
 
+
 /* 최신전시 시작 */
 .new_title{
     text-align: center;
     position:relative;
 }
+
+
+
 .new_title > h2{
     font-size: 70px;
     margin:50px 0 30px 0px;
@@ -73,7 +77,17 @@ input::-webkit-inner-spin-button {
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
+@media (max-width: 768px){
+   .new_title > h2{
+    font-size: 50px;
+   }
+}
 
+@media (max-width: 768px){
+   .new_title > h3{
+    font-size: 50px;
+   }
+}
 
 /* 최신전시 끝 */
 
@@ -145,6 +159,15 @@ input::-webkit-inner-spin-button {
    border-radius:20px!important;
    border: 2px solid #7832f7!important;
 }
+
+
+@media (max-width: 768px){
+   .inner-addon.right-addon.main{
+   display:none;
+   }
+}
+
+
 .inner-addon {
    position: relative;
 }
@@ -192,7 +215,7 @@ a.dropdown-item.header-item-login:hover
 {
    background-color:#7832f7!important;
 }
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   a.dropdown-item.header-item-login{
   font-size:14px;
   }
@@ -211,9 +234,15 @@ a.nav-link.header-logout:hover
    background-color:#7832f7!important;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   a.nav-link.header-logout{
   font-size:14px;
+  }
+}
+
+@media (max-width: 576px) {
+  a.nav-link.header-logout.main{
+  display:none;
   }
 }
 
@@ -452,7 +481,7 @@ footer {
 
 
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
 .footer_row {
    flex-direction: column;
    margin-left:0%;
@@ -480,7 +509,7 @@ footer {
     font-size:18px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
 .footer-load{
    border:0;
    background-color:#23263b;
@@ -508,6 +537,15 @@ footer {
 }
 
 /* 결제 모달창 쿠폰 버튼 */
+.btn-black{
+   border:1px solid #000; 
+   width:280px; 
+   height:37px; 
+   background-color: #000; 
+   color: #fff; 
+   font-size: 18px;
+    font-weight: bold;
+}
 .btn-purple{
    border:1px solid #7329f7; 
    width:100px; 

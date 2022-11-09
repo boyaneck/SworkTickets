@@ -1,33 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>관리자 모드</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link href="css/style_admin.css" rel="stylesheet" />
-<link href="css/admin.css" rel="stylesheet" />
+<link href="../css/style_admin.css" rel="stylesheet" />
+<link href="../css/admin.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
-<title>Insert title here</title>
-<!-- header -->
+<script src="../js/scripts.js"></script>
+<title>쿠폰 목록</title>
+
+<script>
+	function notlogin() {
+		alert("로그인 후 진행 해 주시기 바랍니다.");
+		location.href = "/login.jsp"
+	};
+</script>
+
 <%-- <%@ include file="/header.jsp"%> --%>
-<!-- header end -->
 </head>
 <body>
 	<div>
 		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 			<!-- Navbar Brand-->
-			<a class="navbar-brand logoimg" href="index.jsp" style="text-align: center;"> 
-				<img style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
+			<a class="navbar-brand logoimg" href="../index.jsp" style="text-align: center;"> <img style="width: 140px;"
+				src="../images/logo.png">&nbsp&nbsp
 			</a>
 			<!-- Sidebar Toggle-->
 			<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -43,7 +53,8 @@
 			<aside>
 				<div id="layoutSidenav" style="text-align: center;">
 					<div id="layoutSidenav_nav">
-						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 1200px;">
+						<nav class="sb-sidenav accordion sb-sidenav-dark"
+							id="sidenavAccordion">
 							<div class="sb-sidenav-menu">
 								<div class="nav">
 									<div class="sb-sidenav-menu-heading"></div>
@@ -61,10 +72,10 @@
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<!-- <a class="nav-link" -->
-											<!-- href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> -->
-											<a class="nav-link" href="/admin/member">회원등록</a> <a
-												class="nav-link" href="/getMemberList">회원목록</a> <a
+<!-- 											<a class="nav-link" -->
+<!-- 												href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> -->
+											<a class="nav-link" href="/admin/member">회원등록</a>
+											<a class="nav-link" href="/getMemberList">회원목록</a> <a
 												class="nav-link" href="/getAllPayList">회원결제</a>
 										</nav>
 									</div>
@@ -104,8 +115,8 @@
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a>
-											<a class="nav-link" href="admin/CouponList">쿠폰목록</a>
+											<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a> <a
+												class="nav-link" href="/admin/CouponList">쿠폰목록</a>
 										</nav>
 									</div>
 
@@ -131,7 +142,9 @@
 										</nav>
 									</div>
 								</div>
+
 							</div>
+
 						</nav>
 					</div>
 				</div>
@@ -139,63 +152,103 @@
 			<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
 					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">쿠폰등록</h2>
+						<h2 style="text-align: center; font-weight: bold;">쿠폰목록</h2>
 					</div>
-					<div id="layoutAuthentication">
-						<div id="layoutAuthentication_content">
-							<div class="row justify-content-md-center">
-								<div class="container">
-									<div class="row justify-content-center">
-										<div class="col-lg-7">
-											<div class="card shadow-lg border-0 rounded-lg mt-5">
-<!-- 												<div class="card-header"> -->
-<!-- 													<h1 style="text-align: center;">쿠폰등록</h1> -->
-<!-- 												</div> -->
-												<div class="card-body">
-													<form action="/insertCoupon" method="post">
-														<div class="form-floating py-5">
-															<label for="c_name" style="font-weight: bold;">쿠폰명</label>
-															<input class="form-control" type="text" name="c_name"
-																id="c_name" required="required" autocomplete="off">
-														</div>
-														<div class="form-floating py-5">
-															<label for="c_per" style="font-weight: bold;">할인율</label>
-															<input class="form-control" type="number" name="c_per"
-																id="c_per" required="required" max="100"
-																placeholder="ex) 99">
-														</div>
+	<fmt:parseDate var="startDate_D" value="${today }" pattern="yyyy-MM-dd" />
+	<fmt:parseNumber var="startDate_N"
+		value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
+
+<!-- 	<div class="container" style="text-align: -webkit-center;"> -->
+<!-- 		<h1 style="text-align: center; ">쿠폰 목록</h1> -->
+<!-- 		<br> -->
 
 
+			<div class="container">
+				<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-xl-2">
+		<c:forEach items="${couponList}" var="coupon">
+			<fmt:parseDate var="endDate_D" value="${coupon.c_date }"
+				pattern="yyyy-MM-dd" />
+			<fmt:parseNumber var="endDate_N"
+				value="${endDate_D.time / (1000*60*60*24)}" integerOnly="true" />
+				<div class="col">
+				<div class="rectangle" style="-webkit-mask-image: radial-gradient(circle at 18px 50%, transparent 18px, red 18.5px); -webkit-mask-position: -18px;">
+					<div class="row ">
+						<div class="col-3">
+							<h1 class="text-center" style="transform: translate(0, 80%); font-weight: bolder; padding-left: 17px">${coupon.c_per}%</h1>
+						</div>
+						<div class="col" style="font-size: 18px; padding-left: 15px; transform: translate(0, 30%); text-align: left;">
+							<b id="c_name" style="font-size: 23px">${coupon.c_name}</b><br>
+							${coupon.c_date}까지<br> <span class="text-danger"><small>
+									${endDate_N-startDate_N}일 남음 &nbsp;</small></span>
+						</div>
 
-														<div class="form-floating py-5">
-															<label for="c_date" style="font-weight: bold;">만료날짜</label>
-															<input class="form-control" type="date" name="c_date"
-																id="c_date" required="required">
-														</div>
+						<div class="col" style="transform: translate(0, 15%);">
+							<c:choose>
+								<c:when test="${mb_Id eq 'admin'}">
+									<button class="btn-coupon2" onclick="location.href='/getCoupon?c_num=${coupon.c_num}'">수정</button>
+									<button class="btn-coupon1" onclick="location.href='/deleteCoupon?c_num=${coupon.c_num}'">삭제
+									</button>
+								</c:when>
+								<c:when test="${mb_Id ne null}">
+									<c:choose>
+										<c:when test="${error!=1}">
+											<button class="btn-coupon3" style="transform: translate(0, 65%);"
+												onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
+										</c:when>
+									</c:choose>
 
-<!-- 														<div class="mt-4 mb-0"> -->
-<!-- 															<div class="d-grid justify-content-center"> -->
-<!-- 																<button class="btn-purple" type="submit">등록</button> -->
-<!-- 															</div> -->
-<!-- 														</div> -->
-													</form>
-												</div>
-												<div class="card-footer text-center py-3">
-													<div class="small">
-														<a href="/getCouponList" style="font-size:1.25rem;text-decoration: none;color: #7329f7;">쿠폰
-															목록으로</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+								</c:when>
+								<c:otherwise>
+									<button class="btn-coupon3" style="transform: translate(0, 65%);" onclick="notlogin()">쿠폰받기</button>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
+					</div>
 				</div>
-			</div>
+
+		</c:forEach>
+				</div>
+	
+	<div class="container text-center">
+
+		<!--       맨처음 -->
+		<c:if test="${paging.nowPageBtn > 1 }">
+			<a class="page-link" href="getCouponList?nowPageBtn=1">&laquo;</a>
+		</c:if>
+		<c:if test="${paging.nowPageBtn > 1 }">
+			<a class="page-link"
+				href="getCouponList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+		</c:if>
+
+		<!-- 반복처리 태그 -->
+		<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1"
+			var="i">
+			<c:choose>
+				<c:when test="${paging.nowPageBtn==i}">
+					<a class="page-st" style="font-weight: bold; color: #7329f7;"
+						href="getCouponList?nowPageBtn=${i}">${i}</a>
+				</c:when>
+				<c:otherwise>
+					<a class="page-st" href="getCouponList?nowPageBtn=${i}">${i}</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<!--       반복 끝 -->
+		<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+			<a class="page-st"
+				href="getCouponList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+		</c:if>
+		<!--       맨끝 -->
+		<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+			<a class="page-st"
+				href="getCouponList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+		</c:if>
+		</div>
+		</div>
+		</div>
+		</div>
 		</section>
-	</div>
+		</div>
 </body>
 </html>

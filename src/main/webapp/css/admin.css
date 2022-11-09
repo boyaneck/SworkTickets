@@ -1,16 +1,3 @@
-/* 쿠폰 네모 추가*/
-.rectangle {
-
-  width: 440px;
-  height: 150px;
-  box-shadow: 10px 5px 10px #e4e4e4;
-  background: linear-gradient(to bottom right, #784fdc,#5888d2 );
-  margin:10px;
-  padding: 5px;
-  color:#fff;
-  margin-bottom: 10px;
-}
-
 /* 결제 모달창 쿠폰 버튼 */
 .btn-purple{
    border:1px solid #7329f7; 
@@ -61,38 +48,49 @@
   { text-decoration:none;
    color:#000; 
    }
-   
-/*    쿠폰목록 버튼 */
- /* .btn-coupon1{
- 	margin:8px;
-	border:none;
-	width:100px; 
-	height:37px; 
-	background-color: #ea5e5e; 
-	color: #fff; 
-	font-size: 18px;
 
+/* 쿠폰 네모 추가*/
+.rectangle {
+
+  /* width: 440px; */
+  height: 150px;
+  box-shadow: 10px 5px 10px #e4e4e4;
+  background: linear-gradient(to bottom right, #784fdc,#5888d2 );
+  margin:10px;
+  padding: 5px;
+  color:#fff;
+  margin-bottom: 10px;
+}
+
+/*    쿠폰목록 버튼 */
+.btn-coupon1{
+margin:8px;
+border:none;
+width:100px; 
+height:37px; 
+background-color: #ea5e5e; 
+color: #fff; 
+font-size: 18px;
 } 
-   .btn-coupon2{
-	margin:8px;
+.btn-coupon2{
+margin:8px;
 	border:none;
 	width:100px; 
 	height:37px; 
 	background-color: #7329f7; 
 	color: #fff; 
 	font-size: 18px;
+} 
+.btn-coupon3{
+margin:8px;
+border:1px solid #fff;
+width:100px; 
+height:37px; 
+background-color: transparent; 
+color: #fff; 
+font-size: 18px;
 
 } 
-  .btn-coupon3{
-	margin:8px;
-	border:1px solid #fff;
-	width:100px; 
-	height:37px; 
-	background-color: transparent; 
-	color: #fff; 
-	font-size: 18px;
-
-}  */
 
 
 

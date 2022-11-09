@@ -22,7 +22,6 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
     <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/board.css">
 
@@ -36,47 +35,53 @@
       style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
    </a>
 <!-- 햄버거 시작-->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> -->
+<!--     <span class="navbar-toggler-icon"></span> -->
+<!--   </button> -->
      
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav hambuger">
+<!--     <div class="collapse navbar-collapse" id="collapsibleNavbar"> -->
+<!--     <ul class="navbar-nav hambuger"> -->
     
-      <li class="nav-item">
-        <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span>
-      </li>
-      <li class="nav-item">
-         <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
-      </li>
-      <li class="nav-item">
-        <a class="nav-link hambuger" href="/getUserExhibitionList" > 전시 </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link hambuger" href="/ranking"> 랭킹 </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link hambuger" href="#"> 지역 </a>
-      </li>
-      <li class="nav-item hambuger">
-        <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
-         <div class="dropdown-menu header-menu" aria-labelledby="coupon">
-            <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
-            <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link hambuger" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
-         <div class="dropdown-menu header-menu" aria-labelledby="cs">
-               <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
-               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
-               <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
-        </div>
-      </li>
-         
-    </ul>
+<!--       <div class="form-group col-xs-6 my-2"> -->
+<!--         <div class="inner-addon right-addon" name="addonHambuger"> -->
+<!--           <i class="glyphicon fas fa-search"></i> -->
+<!--           <input type="text" class="form-control hambuger" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" /> -->
+<!--         </div> -->
+<!--       </div> -->
     
-  </div>
+<!--       <li class="nav-item"> -->
+<%--         <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span> --%>
+<!--       </li> -->
+<!--       <li class="nav-item"> -->
+<!--          <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>             -->
+<!--       </li> -->
+<!--       <li class="nav-item"> -->
+<!--         <a class="nav-link hambuger" href="/getExhibitionList" > 전시 </a> -->
+<!--       </li> -->
+<!--       <li class="nav-item"> -->
+<!--         <a class="nav-link hambuger" href="/ranking"> 랭킹 </a> -->
+<!--       </li> -->
+<!--       <li class="nav-item"> -->
+<!--         <a class="nav-link hambuger" href="#"> 지역 </a> -->
+<!--       </li> -->
+<!--       <li class="nav-item hambuger"> -->
+<!--         <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a> -->
+<!--          <div class="dropdown-menu header-menu" aria-labelledby="coupon"> -->
+<!--             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a> -->
+<!--             <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a> -->
+<!--         </div> -->
+<!--       </li> -->
+<!--       <li class="nav-item"> -->
+<!--         <a class="nav-link hambuger" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a> -->
+<!--          <div class="dropdown-menu header-menu" aria-labelledby="cs"> -->
+<!--                <a class="dropdown-item header-item" href="/getBoardList">공지사항</a> -->
+<!--                <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a> -->
+<!--                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a> -->
+<!--         </div> -->
+<!--       </li> -->
+<!--          <a class="nav-link header-logout hamburger" href="/logoutGO">로그아웃</a> -->
+<!--     </ul> -->
+<!--   </div> -->
 <!--   햄버거 끝 -->
   
    <c:choose>
@@ -109,11 +114,11 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-           <!-- 검색 -->
+            <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon">
+        <div class="inner-addon right-addon main" name="addonMain">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" id="exSearchKeyword" name="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -130,7 +135,7 @@
                </div>
                </li>
             </ul>
-               <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
+               <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
       </c:when>
       
        <c:when test="${mb_Id ne NULL}">
@@ -158,11 +163,11 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-           <!-- 검색 -->
+            <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon">
+        <div class="inner-addon right-addon main" name="addonMain">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" id="exSearchKeyword" name="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
         </div>
       </div>
       <!-- 검색 -->
@@ -180,7 +185,7 @@
                </li>
             </ul>
             
-               <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
+               <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
       </c:when>
         <c:when test="${kakaoId ne NULL || naverLogin ne NULL}">
          <ul class="nav navbar-nav mr-auto ml-3">
@@ -207,12 +212,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-           <!-- 검색 -->
+            <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon">
+        <div class="inner-addon right-addon main" name="addonMain">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" id="exSearchKeyword" name="exSearchKeyword" onkeyup="searchkey()" />
-        </div>
+          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+        </div> 
       </div>
       <!-- 검색 -->
                <li class="nav-item">
@@ -228,7 +233,7 @@
                </li>
             </ul>
             
-               <a class="nav-link header-logout" href="/logoutGO">로그아웃</a>
+               <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
       </c:when>
       
       <c:otherwise> 
@@ -254,11 +259,11 @@
             </div>
          </li>
       </ul>
-       <!-- 검색 -->
+      <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
-        <div class="inner-addon right-addon">
+        <div class="inner-addon right-addon main" name="addonMain">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control" placeholder="검색" id="exSearchKeyword" name="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
       <!-- 검색 -->
@@ -267,7 +272,7 @@
             <li class="nav-item dropdown header-title">
             <!-- <a class="nav-link dropdown-toggle header-toggle-login" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 로그인 </a>
                <div class="dropdown-menu header-menu" aria-labelledby="login"> -->
-            <a class="dropdown-item header-item-login" href="login.jsp">&nbsp로그인</a>
+            <a class="dropdown-item header-item-login main" href="login.jsp">&nbsp로그인</a>
             <!-- <a class="dropdown-item header-item" href="/login/kakao">&nbsp카카오로그인</a> -->
             <!-- <a class="dropdown-item header-item" href="insertMember.jsp">&nbsp회원가입</a> -->
             <!-- </div> -->
@@ -278,17 +283,14 @@
    
 </nav>
 <script>
-function searchkey() {
-    if (window.event.keyCode == 13) {
-
- // 엔터키가 눌렸을 때 실행하는 반응
-    var exs = document.getElementById("exSearchKeyword").value;
-    	console.log(exs);
-
-    location.href="getUserExhibitionList?exSearchKeyword="+exs;
-    
-    }
-}
+//input에 keyup 이벤트 등록
+$(document).ready(function(){
+$("#exSearchKeyword").keyup(function(){
+   var skey = $(this).val();
+      location.href="getUserExhibitionList";
+console.log(skey);
+});
+});
 
 /* $(document).ready(function(){
     $("#memberUpdate").click(function(){
