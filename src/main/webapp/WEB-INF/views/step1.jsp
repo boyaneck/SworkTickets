@@ -6,11 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
+
 	<script>
 	$(function(){
 		$("input[name=agreeAll]").click(function(){
 			$("input[name=agree1").prop("checked", this.checked);
 			$("input[name=agree2").prop("checked", this.checked);
+			});
+		
+		$("input[name=agree1]").click(function(){
+			$("input[name=agreeAll").prop("checked", false);
+			});
+		$("input[name=agree2]").click(function(){
+			$("input[name=agreeAll").prop("checked", false);
 			});
 		});
 	</script>
@@ -18,7 +26,7 @@
 <body>
   <div class="container">
 	<form role="form" action="registerTerm">
-	  <div class="card w-100 p-3 mt-3 justify-content-lg-center align-items-lg-center">
+	  <div class="card w-100 p-3 mt-3 justify-content-sm-center align-items-sm-center ">
 		<div class="form-group">
 		  <div class="card-header text-center">회원가입 약관</div>
 			<div class="card-body" style="font-size: 16px;">
@@ -77,7 +85,9 @@
 			</div>
 			
 		  </div>
+		 <div class="col-xs-6"></div>
 		<button type="submit" class="btn-purple text-center" style="width:300px; height: 50px;">확인</button>
+		
 		</div>
 		<br />         
 		<!-- 	<form role="form" action="registerForm">
