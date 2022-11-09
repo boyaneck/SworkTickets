@@ -35,53 +35,53 @@
       style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
    </a>
 <!-- 햄버거 시작-->
-<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> -->
-<!--     <span class="navbar-toggler-icon"></span> -->
-<!--   </button> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
      
-<!--     <div class="collapse navbar-collapse" id="collapsibleNavbar"> -->
-<!--     <ul class="navbar-nav hambuger"> -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav hambuger">
     
-<!--       <div class="form-group col-xs-6 my-2"> -->
-<!--         <div class="inner-addon right-addon" name="addonHambuger"> -->
-<!--           <i class="glyphicon fas fa-search"></i> -->
-<!--           <input type="text" class="form-control hambuger" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" /> -->
-<!--         </div> -->
-<!--       </div> -->
+      <div class="form-group col-xs-6 my-2">
+        <div class="inner-addon right-addon" name="addonHambuger">
+          <i class="glyphicon fas fa-search"></i>
+          <input type="text" class="form-control hambuger" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+        </div>
+      </div>
     
-<!--       <li class="nav-item"> -->
-<%--         <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span> --%>
-<!--       </li> -->
-<!--       <li class="nav-item"> -->
-<!--          <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>             -->
-<!--       </li> -->
-<!--       <li class="nav-item"> -->
-<!--         <a class="nav-link hambuger" href="/getExhibitionList" > 전시 </a> -->
-<!--       </li> -->
-<!--       <li class="nav-item"> -->
-<!--         <a class="nav-link hambuger" href="/ranking"> 랭킹 </a> -->
-<!--       </li> -->
-<!--       <li class="nav-item"> -->
-<!--         <a class="nav-link hambuger" href="#"> 지역 </a> -->
-<!--       </li> -->
-<!--       <li class="nav-item hambuger"> -->
-<!--         <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a> -->
-<!--          <div class="dropdown-menu header-menu" aria-labelledby="coupon"> -->
-<!--             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a> -->
-<!--             <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a> -->
-<!--         </div> -->
-<!--       </li> -->
-<!--       <li class="nav-item"> -->
-<!--         <a class="nav-link hambuger" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a> -->
-<!--          <div class="dropdown-menu header-menu" aria-labelledby="cs"> -->
-<!--                <a class="dropdown-item header-item" href="/getBoardList">공지사항</a> -->
-<!--                <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a> -->
-<!--                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a> -->
-<!--         </div> -->
-<!--       </li> -->
-<!--          <a class="nav-link header-logout hamburger" href="/logoutGO">로그아웃</a> -->
-<!--     </ul> -->
-<!--   </div> -->
+      <li class="nav-item">
+        <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
+      </li>
+      <li class="nav-item">
+        <a class="nav-link hambuger" href="/getExhibitionList" > 전시 </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link hambuger" href="/ranking"> 랭킹 </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link hambuger" href="#"> 지역 </a>
+      </li>
+      <li class="nav-item hambuger">
+        <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
+         <div class="dropdown-menu header-menu" aria-labelledby="coupon">
+            <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
+            <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link hambuger" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
+         <div class="dropdown-menu header-menu" aria-labelledby="cs">
+               <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
+               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
+        </div>
+      </li>
+         <a class="nav-link header-logout hamburger" href="/logoutGO">로그아웃</a>
+    </ul>
+  </div>
 <!--   햄버거 끝 -->
   
    <c:choose>
