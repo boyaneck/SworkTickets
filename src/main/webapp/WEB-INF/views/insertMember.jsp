@@ -8,157 +8,8 @@
 <title>회원가입</title>
 <%@ include file="../../header.jsp"%>
 
-<style>
-html, body {
-	height: 100%;
-	background-color: #152733;
-	/* overflow: hidden; */
-}
-
-.form-holder {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	min-height: 100vh;
-	margin: 0 auto;
-}
-
-.form-holder .form-content {
-	position: relative;
-	text-align: center;
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-justify-content: center;
-	justify-content: center;
-	-webkit-align-items: center;
-	align-items: center;
-	padding: 60px;
-}
-
-.form-content .form-items {
-	border: 3px solid #fff;
-	padding: 40px;
-	display: inline-block;
-	width: 100%;
-	min-width: 540px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	text-align: left;
-	-webkit-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-}
-
-.form-content h3 {
-	color: #fff;
-	text-align: left;
-	font-size: 28px;
-	font-weight: 600;
-	margin-bottom: 5px;
-}
-
-.form-content h3.form-title {
-	margin-bottom: 30px;
-}
-
-.form-content p {
-	color: #fff;
-	text-align: left;
-	font-size: 17px;
-	font-weight: 300;
-	line-height: 20px;
-	margin-bottom: 30px;
-}
-
-.form-content label, .was-validated .form-check-input:invalid ~.form-check-label,
-	.was-validated .form-check-input:valid ~.form-check-label {
-	color: #fff;
-}
-
-.form-content input[type=text], .form-content input[type=password],
-	.form-content input[type=email], .form-content select {
-	width: 100%;
-	padding: 9px 20px;
-	text-align: left;
-	border: 0;
-	outline: 0;
-	border-radius: 6px;
-	background-color: #fff;
-	font-size: 15px;
-	font-weight: 300;
-	color: #8D8D8D;
-	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease;
-	margin-top: 16px;
-}
-
-.btn-primary {
-	background-color: #6C757D;
-	outline: none;
-	border: 0px;
-	box-shadow: none;
-}
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-	background-color: #495056;
-	outline: none !important;
-	border: none !important;
-	box-shadow: none;
-}
-
-.form-content textarea {
-	position: static !important;
-	width: 100%;
-	padding: 8px 20px;
-	border-radius: 6px;
-	text-align: left;
-	background-color: #fff;
-	border: 0;
-	font-size: 15px;
-	font-weight: 300;
-	color: #8D8D8D;
-	outline: none;
-	resize: none;
-	height: 120px;
-	-webkit-transition: none;
-	transition: none;
-	margin-bottom: 14px;
-}
-
-.form-content textarea:hover, .form-content textarea:focus {
-	border: 0;
-	background-color: #ebeff8;
-	color: #8D8D8D;
-}
-
-.mv-up {
-	margin-top: -9px !important;
-	margin-bottom: 8px !important;
-}
-
-.invalid-feedback {
-	color: #ff606e;
-}
-
-.valid-feedback {
-	color: #2acc80;
-}
-
-.jumbotron.member-jumbo {
-	margin-bottom: -2rem !important;
-	padding: 2rem 3rem !important;
-}
-</style>
-
-
 
 <script>
-
 
 $(function() {
       //핸드폰 번호 인증 
@@ -361,64 +212,116 @@ function numberMaxLength(e){
 } */
 /* 이메일 인증번호 일치 여부 start */
 </script>
+<style>
+input[type="text"]{ width: 100%;}
+input[type="password"]{ width: 100%;}
+input[type="number"]{ width: 100%;}
+input[type="email"]{ width: 100%;}
+button[type="button"]{
+width: 100%;
+height: 100%;
+}
+#phoneChk{width: 150px !important;}
+col-2{text-align: right;}
+small{margin-left: 15px; margin-bottom: 0px !important;}
+.row{margin-bottom: 10px;}
+</style>
 
 </head>
-<body class="d-flex flex-column min-vh-100">
-	<div class="container">
-		<div class="form-body">
-			<div class="row">
-				<div class="form-holder">
-					<div class="form-content">
-						<div class="form-items">
-							<h3>회원가입</h3>
-							<p>정보입력</p>
+<body>
+<div class="container" style="width: 50%;">
+		<h3 style="text-align: center; font-weight: bolder; padding: 30px 0; ">회원가입</h3>
+		<hr>
+<!-- 							<p>정보입력</p> -->
 							<!--                      <form class="requires-validation" action="insertMember" name="insertMember" method="post"> -->
 							<form action="insertMember" name="insertMember" method="post"
 								onSubmit="return validate()">
-								<div class="col-md-12">
-									<input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="아이디" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
-									<button type="button" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
-									<span class="id_notice">아이디는 영문과 숫자로만 입력해주세요.</span>
+								<div class="container" >
+								 <div class="row">
+								 <div class="col-3" >
+									<label for="mb_id">아이디</label></div>
+								<div class="col-6" >	
+									<input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
+									</div>
+								<div class="col-3" >
+									<button type="button" class="btn-purple" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
+									</div>
+								
+								 <div class="row">
+								 <div class="col-3"></div>
+								 <div class="col-6">
+									<small>아이디는 영문과 숫자로만 입력해주세요.</small>
+									</div>
 									<div class="valid-feedback">유효한아이디입니다.</div>
 									<div class="invalid-feedback">공백없이 입력해주세요</div>
-
+									</div>
 								</div>
-								<div class="col-md-12">
-									<input type="password" class="form-control" name="mb_pw" placeholder="패스워드" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+								
+								
+								 <div class="row">
+								  <div class="col-3">
+									<label for="mb_pw">비밀번호</label></div>
+									  <div class="col-9">
+									<input type="password" name="mb_pw" placeholder="비밀번호" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
 										required>
+										</div>
 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
 									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
 								</div>
-								<div class="col-md-12">
-									<input type="text" class="form-control" name="mb_name" placeholder="이름" maxlength="5" minlength="2" required>
+								
+							 <div class="row">
+							 <div class="col-3">
+									<label for="mb_name">이름</label></div>
+									 <div class="col-9">
+									<input type="text" name="mb_name" placeholder="이름" maxlength="5" minlength="2" required>
+									</div>
+									
+								</div>
+									
 									<!--                            <div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
                            <div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
  -->
-								</div>
-								<div class="col-md-12">
-									<tr class="mobileNo">
-										<th><label for="phone">휴대폰 번호</label></th>
-										<td>
-											<p>
-												<input id="mb_phone" type="number" name="mb_phone"
+								 <div class="row">
+								 <div class="col-3">
+									<label for="mb_id">연락처</label></div>
+								
+											<div class="col-6">
+										<input id="mb_phone" type="number" name="mb_phone"
 													title="전화번호 입력" maxlength="11" minlength="10"
 													oninput="numberMaxLength(this);" required />
+											</div>
+											<div class="col-3">
 												<button type="button" id="phoneChk"
-													class="btn btn-dark doubleChk"
-													onclick="javascript:sendAuthNum()">인증번호 보내기</button>
-												<span id="timer"></span> <br /> <input id="phone2"
-													type="text" name="phone2" title="인증번호 입력" disabled required />
-												<button type="button" id="phoneChk2"
-													class="btn btn-dark doubleChk">인증확인</button>
-												<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호
-													보내기를 해주십시오.</span> <input type="hidden" id="phoneDoubleChk" />
-											</p>
-										</td>
-									</tr>
+													class="btn-purple doubleChk" 
+													onclick="javascript:sendAuthNum()">인증번호 보내기</button><span id="timer"></span>
+											</div>
 								</div>
-								<div class="col-md-12">
-									<div id="menu-text">E-mail 인증</div>
-									<input id="mb_email" class="text_box" type="email"
+												
+												
+													 <div class="row">
+												 <div class="col-3"></div>
+												 <div class="col-4">
+												<input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required /></div>
+													<div class="col-2">
+												<button type="button" id="phoneChk2"
+													class="btn-purple doubleChk">인증확인</button></div>
+													<div class="col-3"></div>
+													<div class="row">
+													<div class="col-3"></div>
+													<div class="col-6">
+												<small class="point successPhoneChk">휴대폰 번호 입력후 인증번호
+													보내기를 해주십시오.</small> 
+													<input type="hidden" id="phoneDoubleChk" /></div>
+													<div class="col-3"></div>
+													</div>
+												</div>
+									
+								
+								 <div class="row">
+								 <div class="col-3">
+									<label for="mb_email">이메일</label></div>
+										 <div class="col-6">
+									<input id="mb_email" type="email"
 										name="mb_email" placeholder="이메일 입력" maxlength="50"	autofocus>
 									<!--                            <button type="button" id="sendMail" -->
 									<!--                               class="btn btn-primary btn-sm">발송하기</button> -->
@@ -430,17 +333,14 @@ function numberMaxLength(e){
 									<!--                                  onclick='qweemailCheck(); return false;'>인증확인</button> -->
 									<!--                            </div> -->
 								</div>
-
+								 <div class="col-3"></div>
+								</div>
+							</div>
 								<div class="mx-auto" id="footer">
 									<button id="conRegister" type="submit" class="btn btn-dark">회원가입</button>
 								</div>
 							</form>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<script>
 		/* 휴대폰 인증번호 보내고 타이머 스크립트 시작 */
 		var timer;
