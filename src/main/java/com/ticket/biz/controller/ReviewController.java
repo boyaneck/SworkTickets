@@ -60,7 +60,7 @@ public class ReviewController {
 		System.out.println("컨트롤러 to string"+ vo.toString());
 			reviewservice.deleteReview(vo);
 			System.out.println("delete 컨트롤러 다 탔음");
-			return "redirect:reviewwrite.jsp";
+			return "exhibition/UserExhibitionDetail";
 	}
 
 	
@@ -72,7 +72,7 @@ public class ReviewController {
 		reviewservice.updateReview(vo);
 		
 	
-			return "redirect:reviewwrite.jsp";
+			return "exhibition/UserExhibitionDetail";
 		
 	}
 	

@@ -1,16 +1,17 @@
    <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <link rel="stylesheet"
+   href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
- <%@ include file="header.jsp"%>
 </head>
-<body>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 
 <script>
 	$(document).ready(function(){
@@ -45,13 +46,14 @@
 					var content  =  list[i].review_content;
 					var writer   =  list[i].review_writer;
 					var review_no=  list[i].review_no;
+					var date= list[i].review_reg;
 					
 					console.log("댓글번호받아라!!!" +review_no);
 					console.log("writer!!!" +writer);
 					
 					comment_html +="<div id='a"+[i]+"' class='aa1'>";
-					comment_html += "<div><span class='review_writer'><strong>"+ writer + "</strong></div><br/>";
-					comment_html +="<div>"+content+"</div>";
+					comment_html += "<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
+					comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ date+ "</div>";
 					comment_html +="</div>";
 					
 					comment_html +="<div>"
@@ -74,10 +76,11 @@
 				var list_no=review_no;
 				console.log(list_no);
 														
-					comment_html += "<div><button id='delete' style='cursor:pointer;' onclick='del("+list_no+")'>(삭제하기)</button><br></div><hr>";	 																																
-					comment_html += "<button class='update1' style='cursor:pointer;' onclick='updateReview("+[i]+")'>(수정하기)</button><br><hr>";											
-				    comment_html += "</div>";
-											
+					comment_html += "<div style='text-align:right;'><button class='update1' style='cursor:pointer; background-color: white; border: none; font-size: 25px; margin-right: 20px;' onclick='updateReview("+[i]+")' ><i class = 'xi-pen-o'></i></button>";	 																																
+					comment_html += "<button id='delete' style='cursor:pointer; background-color: white; border: none; font-size: 25px;' onclick='del("+list_no+")'><i class = 'xi-trash-o'></i></button>";											
+				    comment_html += "</div><hr>";
+// 				    							<i class = "xi-pen-o " style="margin-bottom: 0px; font-size: 33px; cursor:pointer;"></i>
+// 				    							<i class = "xi-trash-o " style="margin-bottom: 0px; font-size: 33px; cursor:pointer;"></i>
 					}
 					else  comment_html += "</div><hr>";
 					
@@ -93,6 +96,7 @@
 			       console.log("total 이 0 일때 ");
 				   var comment_html = "<div>등록된 댓글이 없습니다.</div>";
 				   $(".comment_Box").html(comment_html);
+				   
 			}
 		}
    });	
@@ -228,36 +232,63 @@
 			
 }
 
-
 </script>
+<style>
+#Comment_regist{
+	width: 200px;
+	height: 45px;
+	color: #7329f7; 
+	background-color: white; 
+	border: solid 1px;
+	font-size: 16pt;
+	}
+#Comment_regist:hover{
+width: 200px;
+	height: 45px;
+	color: white; 
+	background-color: #7329f7; 
+	border: solid 1px;
+	font-size: 16pt;
+}
 
-	<div class="comment-box">
+textarea:focus, input:focus{ outline: none; }
+</style>
+<body>
+<div class="container" >
+	<div class="comment-box" >
                     
-   		              <div class="comment-count">댓글 <span id="count">0</span></div>
+   		              <div class="comment-count" style="margin-top: 30px;">댓글 <span id="count">0</span></div>
    		          
 					  <input type="hidden" id="review_no" name="review_no" value="2">
-	                 	  
-   		              <div class="comment-name">
-	                        <span class="anonym">작성자  <input type="text" class="form-control review_writer"  placeholder="아이디" name ="review_writer" value="${mb_Id}" readonly style="width: 300px; border:none;">
-	                        </span>
-	                  </div>   
-	                  
-	                  
-	                  <div class="content"> 내용:
-	                        	
-	                   <span><input type="text" class="form-control review_content"   name="review_content" placeholder="내용을 입력하세요" style="width: 300px; border:none;">
-	                   </span>
+	                  <div class="row">
+	                  <div class="col" style="font-size: 15px;">
+	                  <small>
+	                 <span class="text-danger">매매, 욕설</span>  등 게시판 운영 규정에 위반되는 글은 사전 통보없이 삭제될 수 있습니다.<br>
+ 					<span class="text-danger">개인정보</span>가 포함된 내용은 삼가 주시기 바라며, 게시물로 인해 발생하는 문제는 작성자  <span class="text-danger">본인</span>에게 책임이 있습니다.
+	                  </small>
+	                  </div>
+	            
+	   		              <div class="comment-name ">
+		                        <span class="anonym">  
+		                        <input type="hidden" class="form-control review_writer"  placeholder="아이디" name ="review_writer" value="${mb_Id}" readonly style="width: 300px; border:none;">
+		                        </span>
+		                  </div>   
+		                  
+	                  </div>
+	                  <div class="container" style="border:1px solid lightgray;">
+	                  <div class="content" style="font-size: 13px;">
+	                   <span><textarea class="review_content"   name="review_content" placeholder="관람후기를 남겨주세요" style="resize:none; width: 100%; height: 8em;  border:none;"></textarea></span>
 	                   </div>
-	                   
-	                   <div class="regBtn">
-                    	   <button id="Comment_regist"> 댓글등록</button>
+	                   <hr>
+	                   <div class="regBtn" style="text-align:right; margin: 20px;">
+                    	   <button id="Comment_regist">등록</button>
                        </div>
-
+					</div>
              
                          <div class="comment_Box"></div> 
       </div>
                     
                     	
-                    	 
+   </div>                 	 
 </body>
 </html>

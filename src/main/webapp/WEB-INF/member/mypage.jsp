@@ -57,6 +57,7 @@ input-group mb-3{width: 70% !important;}
 		<hr>
 	
 		<form name="form" action="updateMember" method="post">
+		
 	<div class="input-group mb-3" style="justify-content: center;">
 			<input type="hidden" name="mb_no" value="${member.mb_no}">
 			<div class="input-group mb-3">

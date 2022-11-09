@@ -65,7 +65,7 @@
 		GROUP BY e.exh_no
 		ORDER BY
 		p.exh_no DESC
-		LIMIT 3;
+		LIMIT 10;
 
 	</select>
 
@@ -77,7 +77,7 @@
 		GROUP BY e.exh_no
 		ORDER BY
 		p.exh_no DESC
-		LIMIT 3
+		LIMIT 10
 		)a;
 	</select>
 
