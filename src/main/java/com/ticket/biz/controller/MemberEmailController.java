@@ -65,7 +65,7 @@ public class MemberEmailController {
 		if (emailCheck.equals(emailKey)) {
 			result = true;
 		}
-		session.removeAttribute("emailKey");
+		/* session.removeAttribute("emailKey"); */
 		return result;
 	}
 

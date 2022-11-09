@@ -180,7 +180,7 @@ $("#all_module").click(function() {
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="#">전시등록</a> <a class="nav-link "
+											<a class="nav-link" href="/insertmoveExhibition">전시등록</a> <a class="nav-link "
 												href="/getExhibitionList">전시목록</a>
 										</nav>
 									</div>
@@ -200,8 +200,8 @@ $("#all_module").click(function() {
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a> <a
-												class="nav-link" href="/getCouponList">쿠폰목록</a>
+											<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a>
+											<a class="nav-link" href="admin/CouponList">쿠폰목록</a>
 										</nav>
 									</div>
 

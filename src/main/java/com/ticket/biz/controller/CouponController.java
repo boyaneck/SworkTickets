@@ -68,7 +68,34 @@ public class CouponController {
 		}
 
 
-	// 쿠폰목록
+		//쿠폰목록 폼
+		@RequestMapping(value="/admin/CouponList")
+		public String adminCouponList(CouponVO vo, String nowPageBtn, Model model ,HttpSession session) {
+			vo.setMb_id((String)session.getAttribute("mb_Id"));
+			//총 목록 수
+			int totalPageCnt = couponService.totalCouponListCnt(vo);
+			//현재 페이지 설정
+			int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+			System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+			//한페이지당 보여줄 목록 수
+			int onePageCnt = 10;
+			//한 번에 보여질 버튼 수
+			int oneBtnCnt = 5;
+
+			PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+			vo.setOffset(pvo.getOffset());
+
+			Date now = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			 String today = sdf.format(now);
+
+
+			model.addAttribute("today",today);
+			model.addAttribute("paging", pvo);
+			model.addAttribute("couponList", couponService.getCouponList(vo));
+			return "admin/adminCouponList";
+		}
+	// 쿠폰목록 
 	@RequestMapping("/getCouponList")
 	public String getCouponListPost(CouponVO vo, String nowPageBtn, Model model ,HttpSession session) {
 		vo.setMb_id((String)session.getAttribute("mb_Id"));

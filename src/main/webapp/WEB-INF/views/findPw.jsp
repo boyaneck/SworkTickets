@@ -114,15 +114,18 @@ $(function() {
 			} else {
 				passwordCheck = true;
 			}
-		})
-	})
-	
-	function change(){
+		});
+
+	});
+	function changePW(){
+		console.log("aa");
 		if(passwordCheck){
 			$('#pwchange').submit();
 			alert("변경이 완료되었습니다.")
 		}
 	}
+	
+
 	
 </script>
 <%@ include file="../../header.jsp"%>
@@ -175,7 +178,7 @@ $(function() {
 		<input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
 		<input type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
 		<input type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
-		<div class="col-3"><button type="button" id="change" onclick="change()">변경하기</button></div>
+		<div class="col-3"><button type="button" id="change" onclick="changePW()">변경하기</button></div>
 		</form>
 		<%} %>
 	</div>
