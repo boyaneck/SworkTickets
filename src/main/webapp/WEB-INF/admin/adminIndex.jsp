@@ -197,7 +197,7 @@ table {
 		</nav> -->
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand logoimg" href="index" style="text-align: center;"> 
+		<a class="navbar-brand logoimg" href="index.jsp" style="text-align: center;"> 
 			<img style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
 		</a>
 		<!-- Sidebar Toggle-->
@@ -250,8 +250,8 @@ table {
 								<div class="collapse" id="collapseLayouts_exh"
 									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="#">전시등록</a> <a class="nav-link "
-											href="/getExhibitionList">전시목록</a>
+										<a class="nav-link" href="insertmoveExhibition">전시등록</a>
+										<a class="nav-link" href="/getExhibitionList">전시목록</a>
 									</nav>
 								</div>
 
@@ -268,8 +268,8 @@ table {
 								<div class="collapse" id="collapseLayouts_coupon"
 									aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a> <a
-											class="nav-link" href="/getCouponList">쿠폰목록</a>
+										<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a>
+										<a class="nav-link" href="admin/CouponList">쿠폰목록</a>
 									</nav>
 								</div>
 
