@@ -241,7 +241,7 @@ small{margin-left: 15px; margin-bottom: 0px !important;}
 								 <div class="col-3" >
 									<label for="mb_id">아이디</label></div>
 								<div class="col-6" >	
-									<input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
+									<input type="text"  name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
 									</div>
 								<div class="col-3" >
 									<button type="button" class="btn-purple" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
