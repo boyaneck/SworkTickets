@@ -4,92 +4,92 @@
 
 <mapper namespace="ExhibitionDAO">
 
-   <!-- 전시 등록 -->
-   <insert id="insertExhibition">
-      INSERT INTO EXHIBITION
-      (EXH_TITLE, EXH_PRICE,
-      EXH_ST_DATE, EXH_END_DATE, EXH_RGE_DATE, EXH_LOCATION,
-      EXH_HALL,
-      EXH_CONTENT,
-      EXH_THUMBNAIL, EXH_BANNE, EXH_IMG
-      , EXH_PLANNER,
-      EXH_TIME,
-      EXH_RATING, EXH_ARTIST,
-      EXH_PLACE_X, EXH_PLACE_Y,
-      EXH_LOCAL_NAME,
-      EXH_CS_PHONE, EXH_FEE,
-      EXH_SHIPPING_INFO, EXH_PERIOD_USE,
-      EXH_REFUND_INFO)
-      VALUES
-      (
-      #{exh_title}, #{exh_price}, #{exh_st_date},
-      #{exh_end_date}, now(),
-      #{exh_location},
-      #{exh_hall}, #{exh_content},
-      #{exh_thumbnail}, #{exh_banne},
-      #{exh_img}, #{exh_planner},
-      #{exh_time}, #{exh_rating}, #{exh_artist},
-      #{exh_place_x},
-      #{exh_place_y}, #{exh_local_name}, #{exh_cs_phone}, #{exh_fee},
-      #{exh_shipping_info}, #{exh_period_use}, #{exh_refund_info})
-   </insert>
+	<!-- 전시 등록 -->
+	<insert id="insertExhibition">
+		INSERT INTO EXHIBITION
+		(EXH_TITLE, EXH_PRICE,
+		EXH_ST_DATE, EXH_END_DATE, EXH_RGE_DATE, EXH_LOCATION,
+		EXH_HALL,
+		EXH_CONTENT,
+		EXH_THUMBNAIL, EXH_BANNE, EXH_IMG
+		, EXH_PLANNER,
+		EXH_TIME,
+		EXH_RATING, EXH_ARTIST,
+		EXH_PLACE_X, EXH_PLACE_Y,
+		EXH_LOCAL_NAME,
+		EXH_CS_PHONE, EXH_FEE,
+		EXH_SHIPPING_INFO, EXH_PERIOD_USE,
+		EXH_REFUND_INFO)
+		VALUES
+		(
+		#{exh_title}, #{exh_price}, #{exh_st_date},
+		#{exh_end_date}, now(),
+		#{exh_location},
+		#{exh_hall}, #{exh_content},
+		#{exh_thumbnail}, #{exh_banne},
+		#{exh_img}, #{exh_planner},
+		#{exh_time}, #{exh_rating}, #{exh_artist},
+		#{exh_place_x},
+		#{exh_place_y}, #{exh_local_name}, #{exh_cs_phone}, #{exh_fee},
+		#{exh_shipping_info}, #{exh_period_use}, #{exh_refund_info})
+	</insert>
 
-   <!-- 전시 수정 -->
-   <update id="updateExhibition">
-      UPDATE EXHIBITION SET EXH_TITLE=#{exh_title},
-      EXH_PRICE=#{exh_price}, EXH_ST_DATE=#{exh_st_date},
-      EXH_END_DATE=#{exh_end_date}, EXH_MDF_DATE=now(),
-      EXH_LOCATION=#{exh_location}, EXH_HALL=#{exh_hall}, EXH_CONTENT
-      =#{exh_content}, EXH_THUMBNAIL=#{exh_thumbnail},
-      EXH_BANNE=#{exh_banne}, EXH_IMG=#{exh_img},
-      EXH_PLANNER=#{exh_planner},
-      EXH_TIME=#{exh_time},
-      EXH_RATING=#{exh_rating},
-      EXH_ARTIST=#{exh_artist},
-      EXH_LOCAL_NAME=#{exh_local_name}, EXH_APPROVAL=#{exh_approval}
-      WHERE
-      EXH_NO=#{exh_no}
-   </update>
+	<!-- 전시 수정 -->
+	<update id="updateExhibition">
+		UPDATE EXHIBITION SET EXH_TITLE=#{exh_title},
+		EXH_PRICE=#{exh_price}, EXH_ST_DATE=#{exh_st_date},
+		EXH_END_DATE=#{exh_end_date}, EXH_MDF_DATE=now(),
+		EXH_LOCATION=#{exh_location}, EXH_HALL=#{exh_hall}, EXH_CONTENT
+		=#{exh_content}, EXH_THUMBNAIL=#{exh_thumbnail},
+		EXH_BANNE=#{exh_banne}, EXH_IMG=#{exh_img},
+		EXH_PLANNER=#{exh_planner},
+		EXH_TIME=#{exh_time},
+		EXH_RATING=#{exh_rating},
+		EXH_ARTIST=#{exh_artist},
+		EXH_LOCAL_NAME=#{exh_local_name}, EXH_APPROVAL=#{exh_approval}
+		WHERE
+		EXH_NO=#{exh_no}
+	</update>
 
-   <!-- 전시 승인 -->
-   <update id="approvalExhibition">
-      UPDATE EXHIBITION SET EXH_APPROVAL=1
-      WHERE
-      EXH_NO=#{exh_no}
-   </update>
+	<!-- 전시 승인 -->
+	<update id="approvalExhibition">
+		UPDATE EXHIBITION SET EXH_APPROVAL=1
+		WHERE
+		EXH_NO=#{exh_no}
+	</update>
 
-   <!-- 전시 삭제 -->
-   <delete id="deleteExhibition">
-      DELETE FROM exhibition
-      WHERE 1=1
-      AND EXH_NO=#{exh_no}
-   </delete>
+	<!-- 전시 삭제 -->
+	<delete id="deleteExhibition">
+		DELETE FROM exhibition
+		WHERE 1=1
+		AND EXH_NO=#{exh_no}
+	</delete>
 
-   <!-- 전시 상세 -->
-   <select id="getExhibition" resultType="exhibition">
-      SELECT * FROM EXHIBITION
-      WHERE EXH_NO=#{exh_no}
-   </select>
+	<!-- 전시 상세 -->
+	<select id="getExhibition" resultType="exhibition">
+		SELECT * FROM EXHIBITION
+		WHERE EXH_NO=#{exh_no}
+	</select>
 
-   <!-- 전시 번호 최대값 -->
-   <select id="getMaxExhibition" resultType="_int">
-      SELECT AUTO_INCREMENT
-      FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'TICKET' AND
-      TABLE_NAME = 'EXHIBITION'
-   </select>
+	<!-- 전시 번호 최대값 -->
+	<select id="getMaxExhibition" resultType="_int">
+		SELECT AUTO_INCREMENT
+		FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'TICKET' AND
+		TABLE_NAME = 'EXHIBITION'
+	</select>
 
 
-   <!-- 전시 조회 -->
-   <select id="getExhibitionList" resultType="exhibition">
-      SELECT * FROM
-      EXHIBITION WHERE 1=1
-   </select>
+	<!-- 전시 조회 -->
+	<select id="getExhibitionList" resultType="exhibition">
+		SELECT * FROM
+		EXHIBITION WHERE 1=1
+	</select>
 
-   <!-- 전시 개수 조회 -->
-   <select id="totalExhibitionListCnt" resultType="_int">
-      SELECT COUNT(*)
-      FROM EXHIBITION WHERE 1=1
-   </select>
+	<!-- 전시 개수 조회 -->
+	<select id="totalExhibitionListCnt" resultType="_int">
+		SELECT COUNT(*)
+		FROM EXHIBITION WHERE 1=1
+	</select>
 
 <!-- 유저 전시 조회 -->
    <select id="getUserExhibitionList" resultType="exhibition">
@@ -117,7 +117,7 @@
       </if>
       ORDER BY
       EXH_ST_DATE DESC
-      LIMIT 16
+      LIMIT 10
       OFFSET #{offset}
    </select>
 
