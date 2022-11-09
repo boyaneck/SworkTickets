@@ -10,8 +10,8 @@
 <!-- 	</insert> -->
 	
 	<insert id="insertPay">
-		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT, EXH_NO) 
-		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no})
+		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT, EXH_NO, EXH_THUMBNAIL) 
+		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no}, #{exh_thumbnail})
 	</insert>
 
 	<select id="getPayList" resultType="pay">
@@ -65,7 +65,7 @@
 		GROUP BY e.exh_no
 		ORDER BY
 		p.exh_no DESC
-		LIMIT 3;
+		LIMIT 10;
 
 	</select>
 
@@ -77,7 +77,7 @@
 		GROUP BY e.exh_no
 		ORDER BY
 		p.exh_no DESC
-		LIMIT 3
+		LIMIT 10
 		)a;
 	</select>
 

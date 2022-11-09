@@ -60,19 +60,8 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	}
 
 	@Override
-	public int totalUSerExhibitionListCnt(ExhibitionVO vo) {
+	public int totalUserExhibitionListCnt(ExhibitionVO vo) {
 		return exhibitionDAO.totalUserExhibitionListCnt(vo);
 	}
-
-	@Override
-	public List<ExhibitionVO> searchUserExhibitionList(ExhibitionVO vo) {
-		return exhibitionDAO.searchUserExhibitionList(vo);
-	}
-
-	@Override
-	public int totalsearchUserExhibitionListCnt(ExhibitionVO vo) {
-		return exhibitionDAO.totalsearchUserExhibitionListCnt(vo);
-	}
-
 
 }

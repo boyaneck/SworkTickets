@@ -45,16 +45,19 @@ public class OneDAOMybatis {
 	//글 목록 조회
 	public List<OneVO> getOneList(OneVO vo){
 		System.out.println("getOneList 기능 처리 전 ");
-
-
-		return mybatis.selectList("OneDAO.getOneList", vo);
-		}
+	return mybatis.selectList("OneDAO.getOneList", vo);
+	}
 
 
 	//전체글 목록 갯수
-		 public int totalOneListCnt(OneVO vo) {
-			 System.out.println("===> mybatis로 getOneListCnt() 기능 처리");
-			 return mybatis.selectOne("OneDAO.totalOneListCnt",vo);
-
-		 }
+	 public int totalOneListCnt(OneVO vo) {
+		 System.out.println("===> mybatis로 getOneListCnt() 기능 처리");
+	return mybatis.selectOne("OneDAO.totalOneListCnt",vo);
+	 }
+	 
+	//관리자가 1:1 문의 답변 달기
+	 public void doAnswer(OneVO vo) {
+		 System.out.println("Mybatis 에서 doAnswer로 답변달기 기능 처리");
+		mybatis.update("OneDAO.oneAnswer",vo);
+	 }
 }
