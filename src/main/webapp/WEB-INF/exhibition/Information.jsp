@@ -8,6 +8,12 @@
 .div{font-size: 20pt;}
 .row1{line-height: 40px;}
 .t{border: thin solid lightgray !important;}
+.ta{
+	padding-left: 0px !important;
+    margin-left: 15px !important;
+    padding-right: 0px !important;
+    padding-top: 50px;
+    }
 </style>
 <body>
 
@@ -16,6 +22,7 @@
 		<div style="text-align: center;"><img src="/images/${exhibition.exh_banne }" alt="이미지" style="width:100%;"></div>
 		<div style="text-align: center;"><img src="/images/${exhibition.exh_img }" alt="이미지" style="width:100%;"></div>
 <!-- 	테이블 -->	
+	<div class="container ta">
 		<div class="row row1">
 			<div class="col-2 t">주최</div>
 			<div class="col-5 t">${exhibition.exh_planner }</div>
@@ -48,6 +55,7 @@
 			<div class="col-2 t">취소/환불안내</div>
 			<div class="col-10 t">${exhibition.exh_refund_info }</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
