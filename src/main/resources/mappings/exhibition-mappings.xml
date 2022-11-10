@@ -117,7 +117,7 @@
       </if>
       ORDER BY
       EXH_ST_DATE DESC
-      LIMIT 10
+      LIMIT 16
       OFFSET #{offset}
    </select>
 
