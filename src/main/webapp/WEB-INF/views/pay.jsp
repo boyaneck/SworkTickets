@@ -17,10 +17,14 @@
 	<link rel="stylesheet" href="./css/pay.css">
 <script>
 var chk = false;
+
 $(document).ready(function(){
    var IMP = window.IMP; // 생략가능
    IMP.init('${impKey}');
    $("#check_module").click(function () {
+	   $('#exh_title').val('${exh_title}')	
+	   console.log($('#exh_title').val());
+	   var formValues = $("form[name=fm]").serialize() ;
       IMP.request_pay({
          pg: 'html5_inicis.INIpayTest', // 자신이 설정한 pg사 설정
 //          pay_method: 'card',
@@ -34,7 +38,7 @@ $(document).ready(function(){
          paid_at: $("#p_date").val() ,
 //          buyer_addr: $("#uaddr").val() ,//주소
 //          buyer_postcode: '123-456',//우편번호
-         m_redirect_url: 'http://localhost:8090/payments/complete'//내 url 
+         m_redirect_url: "http://localhost:8090/payUserM?formValues="+formValues//내 url 
          }, function (rsp) {
             console.log(rsp);
             if (rsp.success) {
@@ -190,7 +194,7 @@ $('#testBtn').click(function(e){
 						<h4>
 							<b id="ptitle">${exh_title}</b>
 						</h4>
-						<input type="hidden" name="exh_title" id="exh_title"
+						<input type="hidden" name="exh_title" class = "exh_title" id="exh_title"
 							value='${exh_title}' readonly="readonly">
 					</div>
 					<div class="row" id="pamount">
@@ -291,7 +295,7 @@ $('#testBtn').click(function(e){
 					style="display: none;">
 <!-- 				썸네일 -->
 				<input type=hidden name="exh_thumbnail" id="exh_thumbnail" value="${exh_thumbnail }" style="display: none;">
-
+				<input type=hidden name="exh_title" id="exh_title" value="${exh_title }" style="display: none;">
 				<!--   결제버튼 -->
 				<div class="container" id="pay"
 					style="text-align: center; background-color: white;">
