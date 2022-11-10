@@ -10,20 +10,29 @@
    <script>
    $(function(){
       $("input[name=agreeAll]").click(function(){
-         $("input[name=agree1").prop("checked", this.checked);
-         $("input[name=agree2").prop("checked", this.checked);
+         $("input[name=agree").prop("checked", this.checked);
          });
-      
-      $("input[name=agree1]").click(function(){
-         $("input[name=agreeAll").prop("checked", false);
-         });
-      $("input[name=agree2]").click(function(){
+      $("input[name=agree]").click(function(){
          $("input[name=agreeAll").prop("checked", false);
          });
       });
+   $(function(){
+      $("input[name=agree]").click(function(){
+         var total = $("input[name=agree]").length;
+         var checked = $("input[name=agree]:checked").length;
+         
+         if(total != checked){
+            $("input[name=agreeAll").prop("checked", false);
+         } else {
+            $("input[name=agreeAll").prop("checked", true);
+         }
+      });
+   });
+   
+   
    </script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
   <div class="container">
    <form role="form" action="registerTerm">
      <div class="card w-100 p-3 mt-3 justify-content-sm-center align-items-sm-center ">
@@ -36,7 +45,7 @@
            <div class="col-lg-12">
             <div class="card w-100 p-3">
               <label class="checkbox-inline">   
-               <input type="checkbox" name="agree1" value="true" required="required">전자상거래 표준약관<span class="text-success">(필수)</span>
+               <input type="checkbox" name="agree" value="true" required="required">전자상거래 표준약관<span class="text-success">(필수)</span>
               </label>    
             <!-- <div class="panel-body" style="border:  1px solid  #ccc"> -->
             <p class="card-text" style="overflow: scroll; height: 150px;">
@@ -62,7 +71,7 @@
             <div class="col-lg-12">
                <div class="card  w-100 p-3">
                   <label class="checkbox-inline">   
-                     <input type="checkbox" name="agree2" value="true" required="required">개인정보<span class="text-success">(필수)</span>
+                     <input type="checkbox" name="agree" value="true" required="required">개인정보<span class="text-success">(필수)</span>
                   </label>  
                   <!-- <div class="panel-body" style="border:  1px solid  #ccc"> -->
                   <p class="card-text" style="overflow: scroll; height: 150px;" >
@@ -100,5 +109,6 @@
 </form> -->
    </form>
  </div>
+ <%@ include file="../../footer.jsp" %>
 </body>
 </html>

@@ -444,14 +444,30 @@ li.dropdown {
 /* 푸터 style */
 footer {
    width: 100%;
-   background: #23263b;
+   background: #fff;
    padding-left:1%;
-   margin-top:50px;
-   
 }
 
+.mt-auto{
+/*    margin-top:100px!important; */
+   border-top:1px solid #1f1f1f;
+}
+
+.container.footer{
+   max-width:100%;
+}
+
+div.footer_info{
+   text-align: center;
+}
+
+div.inner{
+   display: inline-block;
+   text-align: center;
+}
 
   .footer_row {
+  
       display: flex;
       justify-content: flex-start;
       padding-top: 60px;
@@ -475,7 +491,7 @@ footer {
    }
    .footer_row {
       letter-spacing:2px;
-      margin-left:1%;
+/*       margin-left:1%; */
       color: #808080;
    }
 
@@ -536,6 +552,34 @@ footer {
   margin-bottom: 10px;
 }
 
+
+
+@media (max-width: 768px) {
+div.rectangle{
+   margin:20px 0 20px 0;
+}
+}
+
+@media (max-width: 768px) {
+.rectangle {
+  width: 300px;
+  height: 170px;
+}
+}
+
+.col.title{
+   padding-left:40px;
+   padding-right:0px;
+}
+
+@media (max-width: 768px) {
+.col.title{
+   padding-left:70px;
+}
+}
+
+
+
 /* 결제 모달창 쿠폰 버튼 */
 .btn-black{
    border:1px solid #000; 
@@ -558,6 +602,26 @@ footer {
 .btn-purple:hover{
    border:1px solid #7329f7; 
    width:100px; 
+   height:37px; 
+   background-color: #7329f7; 
+   color: #fff; 
+   font-size: 18px;
+   font-weight: bold;
+}
+
+/* 비밀번호 확인버튼 */
+.btn-purple-pw{
+   border:1px solid #7329f7; 
+/*    width:100px;  */
+   height:37px; 
+   background-color: #fff; 
+   color: #7329f7; 
+   font-size: 18px;
+    font-weight: bold;
+}
+.btn-purple-pw:hover{
+   border:1px solid #7329f7; 
+/*    width:100px;  */
    height:37px; 
    background-color: #7329f7; 
    color: #fff; 
@@ -597,14 +661,21 @@ footer {
 } 
   .btn-coupon3{
    margin:8px;
-   border:1px solid #fff;
+   border:none;
    width:100px; 
    height:37px; 
    background-color: transparent; 
    color: #fff; 
    font-size: 18px;
-
+   transform: translate(0, 85%);
 } 
+
+
+@media (max-width: 768px) {
+  .btn-coupon3{
+   transform: translate(0, 60%);
+} 
+}
 
 /* 예매율 애니메이션 */
 .circular-progress3,.circular-progress2,.circular-progress1{
@@ -632,6 +703,7 @@ footer {
 }
 
 
+
 /* 카운팅 효과 */
 span.num {
   color: #000000;
@@ -641,8 +713,7 @@ span.num {
   font-size: 1.3em;
 }
 .bi-suit-heart-fill {
-	font-size: 1.3rem; 
-	color: #f90b57;"
+   font-size: 1.3rem; 
+   color: #f90b57;"
 }
-
 

@@ -72,7 +72,7 @@ public class MemberController {
 //			System.out.println("aaaa");
 
 	// 회원마이페이지
-	@RequestMapping(value = "/mypage")
+	@RequestMapping(value = "/mypage", method= RequestMethod.POST)
 	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response) {
 //		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
@@ -125,12 +125,12 @@ public class MemberController {
 			
 			if(vo.getMb_pw().equals(memberService.getMember(vo).getMb_pw())) {
 				memberService.updateMember(vo);
-				return "redirect:member/mypage";
+				return "member/mypage";
 			}else {
 				String password = pwCheck.encrypt(vo.getMb_pw());
 				vo.setMb_pw(password);
 				memberService.updateMember(vo);
-				return "redirect:member/mypage";
+				return "member/mypage";
 			}
 //			if (vo.getMb_pw().equals((memberService.getMember(vo).getMb_pw()))) {
 //				System.out.println("이프문");
@@ -173,20 +173,36 @@ public class MemberController {
 		return "redirect:index.jsp";
 	}
 
-	/* 이용약관 */
-	@RequestMapping("/registerTerm")
-	public ModelAndView registerTerm(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1,
-			@RequestParam(value = "agree2", defaultValue = "false") Boolean agree2, MemberVO vo) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		if (agree1 == true && agree2 == true) {
-			mv.setViewName("views/insertMember");
-			return mv;
-		} else {
-			mv.setViewName("views/step1");
-			return mv;
-		}
+//	/* 이용약관 */
+//	@RequestMapping("/registerTerm")
+//	public ModelAndView registerTerm(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1,
+//			@RequestParam(value = "agree2", defaultValue = "false") Boolean agree2, MemberVO vo) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		if (agree1 == true && agree2 == true) {
+//			mv.setViewName("views/insertMember");
+//			return mv;
+//		} else {
+//			mv.setViewName("views/step1");
+//			return mv;
+//		}
+//
+//	}
+	
+	   /* 이용약관 */
+	   @RequestMapping("/registerTerm")
+	   public ModelAndView registerTerm(@RequestParam(value = "agree", defaultValue = "false") Boolean agree,
+	         MemberVO vo) throws Exception {
+	      ModelAndView mv = new ModelAndView();
+	      if (agree == true) {
+	         mv.setViewName("views/insertMember");
+	         return mv;
+	      } else {
+	         mv.setViewName("views/step1");
+	         return mv;
+	      }
 
-	}
+	   }
+
 	// 이용약관 뷰
 
 	@RequestMapping(value = "/step1")

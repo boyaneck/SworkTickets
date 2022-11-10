@@ -15,8 +15,7 @@
 	<div id="carouselExampl   eCaptions" class="carousel slide"
 		data-ride="carousel" data-interval="false">
 		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleCaptions" data-slide-to="0"
-				class="active"></li>
+			<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
 			<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
 			<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
 		</ol>

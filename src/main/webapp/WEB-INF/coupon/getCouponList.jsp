@@ -24,7 +24,8 @@
       value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
 
    <div class="container" style="text-align: -webkit-center;">
-      <h1 style="text-align: center; ">쿠폰 목록</h1>
+   <div class="board"><h1>쿠폰 목록</h1></div>
+      
       <br>
 
 
@@ -40,13 +41,13 @@
             
             <div class="rectangle"
                style="-webkit-mask-image: radial-gradient(circle at 18px 50%, transparent 18px, red 18.5px); -webkit-mask-position: -18px;">
-               <div class="row ">
+               <div class="row">
                   <div class="col-3">
                      <h1 class="text-center"
-                        style="transform: translate(0, 110%); font-size:50px; font-weight: bolder; padding-left: 17px">${coupon.c_per}%</h1>
+                        style="transform: translate(0, 70%); font-size:50px; font-weight: bolder; padding-left: 17px">${coupon.c_per}%</h1>
                   </div>
-                  <div class="col"
-                     style="font-size: 15px; padding-left: 40px; padding-right: 0px; transform: translate(0, 65%); text-align: left;">
+                  <div class="col title"
+                     style="font-size: 15px; transform: translate(0, 40%); text-align: left;">
                      <b id="c_name" style="font-size: 23px">${coupon.c_name}</b><br>
                      ${coupon.c_date}까지<br> <span class="text-danger"><small>
                            ${endDate_N-startDate_N}일 남음 &nbsp;</small></span>
@@ -64,14 +65,14 @@
                         <c:when test="${mb_Id ne null}">
                            <c:choose>
                               <c:when test="${error!=1}">
-                                 <button class="btn-coupon3" style="transform: translate(0, 140%);"
+                                 <button class="btn-coupon3" 
                                     onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
                               </c:when>
                            </c:choose>
 
                         </c:when>
                         <c:otherwise>
-                           <button class="btn-coupon3" style="transform: translate(0, 140%);" onclick="notlogin()">쿠폰받기</button>
+                           <button class="btn-coupon3"  onclick="notlogin()">쿠폰받기</button>
                         </c:otherwise>
                      </c:choose>
                   </div>

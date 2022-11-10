@@ -64,8 +64,7 @@
 			<aside>
 				<div id="layoutSidenav" style="text-align: center;">
 					<div id="layoutSidenav_nav">
-						<nav class="sb-sidenav accordion sb-sidenav-dark"
-							id="sidenavAccordion">
+						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 1200px;">
 							<div class="sb-sidenav-menu">
 								<div class="nav">
 									<div class="sb-sidenav-menu-heading"></div>

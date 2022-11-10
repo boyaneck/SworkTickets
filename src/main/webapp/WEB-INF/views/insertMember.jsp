@@ -228,7 +228,7 @@ font-size: 13px;}
 </style>
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <div class="container" style="margin-top: 50px; width:780px;">
       <h3 style="text-align: left; font-weight: bold;  ">회원가입</h3>
       <hr style=" border:solid 1px gray;">

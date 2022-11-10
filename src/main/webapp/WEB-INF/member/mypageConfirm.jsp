@@ -78,7 +78,7 @@
 	<!-- </div>
 	</form> -->
 	<div class="container">
-		<form action="mypage">
+		<form action="mypage" method="post">
 			<div class="form-group row justify-content-center">
 				<div class="col-md-6">
 				<div class="input-group justify-content-center mt-5">
