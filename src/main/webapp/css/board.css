@@ -20,7 +20,31 @@
 
 .sub_title {
    float: right;
-   padding: 0 10% 0 0;
+   padding: 0 10% 0 10%;
+}
+
+@media (max-width: 576px){
+   .nav-link.header{
+         display:none;
+   }
+}
+
+.form-control.content{
+   margin-right: 10px;
+}
+
+@media (max-width: 768px){
+   .form-control.content{
+   margin-right: 0px;
+   margin-bottom: 10px;
+   }
+}
+
+@media (max-width: 768px){
+   .form-control.input{
+   margin-right: 0px;
+   margin-bottom: 10px;
+   }
 }
 
 .btn-success {
@@ -31,8 +55,29 @@
    color: #7832f7;
 }
 
+@media (max-width: 576px){
+   .nav-link.header{
+         display:none;
+   }
+}
+
 .btn-success:hover {
    background-color: #7832f7;
+   color: #fff;
+}
+
+.btn-delete {
+   margin-top:20px;
+   margin-bottom:50px;
+   border: 1px solid red;
+   border-radius: 0px;
+   background-color: #fff;
+   width: 100px;
+   color: red;
+}
+
+.btn-delete:hover {
+   background-color: red;
    color: #fff;
 }
 
@@ -61,12 +106,10 @@
    text-align:center;
    font-size: 16px;
    border-bottom: 1px solid #dbdbdb;
-  
 }
 
 .table td {
    padding: 20px 0 20px 0;
-    vertical-align : middle;
 }
 
 .write {
@@ -106,4 +149,12 @@
 
 #btnBox>a:hover{
    color: #7832f7;
+}
+
+#footer{
+   margin: auto;
+}
+
+.btnBox_parent{
+   margin-bottom:20px;
 }

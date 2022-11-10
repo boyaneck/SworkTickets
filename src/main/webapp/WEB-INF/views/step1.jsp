@@ -23,7 +23,7 @@
 		});
 	</script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
   <div class="container">
 	<form role="form" action="registerTerm">
 	  <div class="card w-100 p-3 mt-3 justify-content-sm-center align-items-sm-center ">
@@ -100,5 +100,6 @@
 </form> -->
 	</form>
  </div>
+ <%@ include file="../../footer.jsp" %>
 </body>
 </html>

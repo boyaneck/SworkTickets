@@ -42,14 +42,14 @@ function f_write(val){
    <%-- <%@ include file="../../menu.jsp" %> --%>
    <nav id="searchNav" class="sub_title">
       <form class="form-inline" action="getOneList.do" method="post">
-         <select class="form-control" id="sel1" name="searchCondition"
-            style="display: inline-block !important; margin-right: 10px;">
+         <select class="form-control content" id="sel1" name="searchCondition"
+            style="display: inline-block !important;">
             <c:forEach items="${conditionMap}" var="option">
                <option value="${option.value}">${option.key}</option>
             </c:forEach>
             <option value="${conditionMap['제목']}">${conditionMap['제목']}</option>
 
-         </select> <input class="form-control mr-sm-2" type="text" name="searchKeyword"
+         </select> <input class="form-control mr-sm-2 input" type="text" name="searchKeyword"
             placeholder="검색어를 입력하세요.">
          <button class="btn btn-success" type="submit">검색</button>
       </form>

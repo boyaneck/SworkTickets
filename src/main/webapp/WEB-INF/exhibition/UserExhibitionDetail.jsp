@@ -140,7 +140,7 @@ $(function(){
   .col{background-color: white;}
   </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <div class="container" style="text-align:center; padding: 50px 0;">
 	<div class="row">
 	<div class="col-5">
@@ -212,5 +212,7 @@ $(function(){
 	<br>
 	</div>
 	<br>
+<%@ include file="../../footer.jsp" %>
 </body>
+
 </html>

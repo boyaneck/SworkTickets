@@ -527,7 +527,7 @@ footer {
 .rectangle {
 
   width: 440px;
-  height: 150px;
+  height: 200px;
   box-shadow: 10px 5px 10px #e4e4e4;
   background: linear-gradient(to bottom right, #784fdc,#5888d2 );
   margin:10px;
@@ -535,6 +535,27 @@ footer {
   color:#fff;
   margin-bottom: 10px;
 }
+
+@media (max-width: 768px) {
+   .rectangle {
+     width: 300px;
+     height: 120px;
+     box-shadow: 10px 5px 10px #e4e4e4;
+    background: linear-gradient(to bottom right, #784fdc,#5888d2 );
+      margin:10px;
+     padding: 5px;
+    color:#fff;
+     margin-bottom: 10px;
+   }
+}
+
+
+@media (max-width: 768px) {
+   .text-center{
+   font-size:10px;
+   }
+}
+
 
 /* 결제 모달창 쿠폰 버튼 */
 .btn-black{
@@ -553,7 +574,7 @@ footer {
    background-color: #fff; 
    color: #7329f7; 
    font-size: 18px;
-    font-weight: bold;
+   font-weight: bold;
 }
 .btn-purple:hover{
    border:1px solid #7329f7; 
@@ -605,30 +626,3 @@ footer {
    font-size: 18px;
 
 } 
-
-/* 예매율 애니메이션 */
-.circular-progress {
-  position: relative;
-  height: 90px;
-  width: 90px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-}
-.circular-progress:before {
-  content: "";
-  position: absolute;
-  height: 80%;
-  width: 80%;
-  background-color: #ffffff;
-  border-radius: 50%;
-}
-.value-container {
-  position: relative;
-  /* font-family: "Poppins", sans-serif; */
-  font-weight: bold;
-  font-size: 20px;
-  color: #231c3d;
-}
-
-
