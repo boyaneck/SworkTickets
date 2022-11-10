@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <link rel="stylesheet"
    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script
@@ -92,7 +93,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="/local"> 지역 </a>
+            <a class="nav-link header" href="/exhibition/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
@@ -145,7 +146,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="/local"> 지역 </a>
+            <a class="nav-link header" href="/exhibition/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
@@ -194,7 +195,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="/local"> 지역 </a>
+            <a class="nav-link header" href="/exhibition/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
