@@ -125,12 +125,12 @@ public class MemberController {
 			
 			if(vo.getMb_pw().equals(memberService.getMember(vo).getMb_pw())) {
 				memberService.updateMember(vo);
-				return "member/mypage";
+				return "redirect:member/mypage";
 			}else {
 				String password = pwCheck.encrypt(vo.getMb_pw());
 				vo.setMb_pw(password);
 				memberService.updateMember(vo);
-				return "member/mypage";
+				return "redirect:member/mypage";
 			}
 //			if (vo.getMb_pw().equals((memberService.getMember(vo).getMb_pw()))) {
 //				System.out.println("이프문");
@@ -198,17 +198,23 @@ public class MemberController {
 	/* @ResponseBody */
 	@RequestMapping(value = "/deleteMember")
 	public String deleteMember(MemberVO vo, HttpSession session) {
-		session.invalidate();
+		
 		int result = memberService.deleteMember(vo);
-//		System.out.println(result);
-		return "redirect:login.jsp";
+		if(session.getAttribute("mb_Id").equals("admin")) {
+			return "redirect:/getMemberList";
+		}else {
+			session.invalidate();
+			return "redirect:login.jsp";
+		}
 	}
 
 	// 관리자 회원조회
 	@RequestMapping("/getMemberList")
 	public String getMemberListPost(MemberVO vo, String nowPageBtn, Model model) {
 		System.out.println("회원목록 검색 처리");
-
+		
+		memberService.deleteMember2();
+		
 		// 총 목록 수
 		int totalPageCnt = memberService.totalMemberListCnt(vo);
 
