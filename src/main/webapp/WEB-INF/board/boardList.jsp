@@ -75,7 +75,7 @@ function f_write(val){
                   <td class="tdCenter" style="width:50%;" >${board.noti_title}</td>
                   <td class="tdCenter" style="width:20%;" >${board.noti_writer}</td>
                   <td class="tdCenter" style="width:20%;" ><fmt:formatDate
-                        value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
+                        value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm"
                         var="today" />${today}</td>
          
                </tr>

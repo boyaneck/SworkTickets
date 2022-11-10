@@ -173,11 +173,11 @@
 																id="c_date" required="required">
 														</div>
 
-<!-- 														<div class="mt-4 mb-0"> -->
-<!-- 															<div class="d-grid justify-content-center"> -->
-<!-- 																<button class="btn-purple" type="submit">등록</button> -->
-<!-- 															</div> -->
-<!-- 														</div> -->
+														<div class="mt-4 mb-0">
+															<div class="d-grid justify-content-center">
+																<button class="btn-purple" type="submit">등록</button>
+															</div>
+														</div>
 													</form>
 												</div>
 												<div class="card-footer text-center py-3">
