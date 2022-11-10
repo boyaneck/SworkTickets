@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -213,176 +213,171 @@ function numberMaxLength(e){
 /* 이메일 인증번호 일치 여부 start */
 </script>
 <style>
-input[type="text"]{ width: 100%;}
-input[type="password"]{ width: 100%;}
-input[type="number"]{ width: 100%;}
-input[type="email"]{ width: 100%;}
-button[type="button"]{
-width: 100%;
-height: 100%;
+input{ width: 100%;
+border-radius: none;
+
 }
+
+
 #phoneChk{width: 150px !important;}
 col-2{text-align: right;}
 small{margin-left: 15px; margin-bottom: 0px !important;}
 .row{margin-bottom: 10px;}
+span{
+font-size: 13px;}
 </style>
 
 </head>
-<body class="d-flex flex-column min-vh-100">
-<div class="container" style="width: 50%;">
-		<h3 style="text-align: center; font-weight: bolder; padding: 30px 0; ">회원가입</h3>
-		<hr>
-<!-- 							<p>정보입력</p> -->
-							<!--                      <form class="requires-validation" action="insertMember" name="insertMember" method="post"> -->
-							<form action="insertMember" name="insertMember" method="post"
-								onSubmit="return validate()">
-								<div class="container" >
-								 <div class="row">
-								 <div class="col-3" >
-									<label for="mb_id">아이디</label></div>
-								<div class="col-6" >	
-									<input type="text"  name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
-									</div>
-								<div class="col-3" >
-									<button type="button" class="btn-purple" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
-									</div>
-								
-								 <div class="row">
-								 <div class="col-3"></div>
-								 <div class="col-6">
-									<small>아이디는 영문과 숫자로만 입력해주세요.</small>
-									</div>
-									<div class="valid-feedback">유효한아이디입니다.</div>
-									<div class="invalid-feedback">공백없이 입력해주세요</div>
-									</div>
-								</div>
-								
-								
-								 <div class="row">
-								  <div class="col-3">
-									<label for="mb_pw">비밀번호</label></div>
-									  <div class="col-9">
-									<input type="password" name="mb_pw" placeholder="비밀번호" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
-										required>
-										</div>
-									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
-									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
-								</div>
-								
-							 <div class="row">
-							 <div class="col-3">
-									<label for="mb_name">이름</label></div>
-									 <div class="col-9">
-									<input type="text" name="mb_name" placeholder="이름" maxlength="5" minlength="2" required>
-									</div>
-									
-								</div>
-									
-									<!--                            <div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
+<body>
+<div class="container" style="margin-top: 50px; width:780px;">
+      <h3 style="text-align: left; font-weight: bold;  ">회원가입</h3>
+      <hr style=" border:solid 1px gray;">
+<!--                      <p>정보입력</p> -->
+                     <!--                      <form class="requires-validation" action="insertMember" name="insertMember" method="post"> -->
+                     <form action="insertMember" name="insertMember" method="post"
+                        onSubmit="return validate()">
+                        
+                         <div class="mb-3 row">
+                        
+                           <label for="mb_id" class="col-sm-3 col-form-label">아이디</label>
+                         <div class="col-sm-7">
+                           <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
+                           </div>
+                            <div class="col-sm-2">
+                           <button type="button" class="btn-purple" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
+                           </div>
+                                           
+                           <div class="valid-feedback">유효한아이디입니다.</div>
+                           <div class="invalid-feedback">공백없이 입력해주세요</div>
+                           
+                        </div>
+                        
+                        
+                         <div class="mb-3 row">
+                         
+                           <label for="mb_pw" class="col-sm-3 col-form-label">비밀번호</label>
+                            <div class="col-sm-9">
+                           <input type="password" name="mb_pw" class="form-control" placeholder="비밀번호를 입력하세요" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+                              required>
+                              </div>
+                           <div class="valid-feedback"><span>사용할 수 있는 패스워드입니다.</span></div>
+                           <div class="invalid-feedback"><span>패스워드가 적합히 입력해주세요</span></div>
+                        </div>
+                        
+                      <div class="mb-3 row">
+                  
+                           <label for="mb_name" class="col-sm-3 col-form-label">이름</label>
+                             <div class="col-sm-9">
+                           <input type="text" name="mb_name" class="form-control" placeholder="신원정" maxlength="5" minlength="2" required>
+                           </div>
+                           
+                        </div>
+                           
+                           <!--                            <div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
                            <div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
  -->
-								 <div class="row">
-								 <div class="col-3">
-									<label for="mb_id">연락처</label></div>
-								
-											<div class="col-6">
-										<input id="mb_phone" type="number" name="mb_phone"
-													title="전화번호 입력" maxlength="11" minlength="10"
-													oninput="numberMaxLength(this);" required />
-											</div>
-											<div class="col-3">
-												<button type="button" id="phoneChk"
-													class="btn-purple doubleChk" 
-													onclick="javascript:sendAuthNum()">인증번호 보내기</button><span id="timer"></span>
-											</div>
-								</div>
-												
-												
-													 <div class="row">
-												 <div class="col-3"></div>
-												 <div class="col-4">
-												<input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required /></div>
-													<div class="col-2">
-												<button type="button" id="phoneChk2"
-													class="btn-purple doubleChk">인증확인</button></div>
-													<div class="col-3"></div>
-													<div class="row">
-													<div class="col-3"></div>
-													<div class="col-6">
-												<small class="point successPhoneChk">휴대폰 번호 입력후 인증번호
-													보내기를 해주십시오.</small> 
-													<input type="hidden" id="phoneDoubleChk" /></div>
-													<div class="col-3"></div>
-													</div>
-												</div>
-									
-								
-								 <div class="row">
-								 <div class="col-3">
-									<label for="mb_email">이메일</label></div>
-										 <div class="col-6">
-									<input id="mb_email" type="email"
-										name="mb_email" placeholder="이메일 입력" maxlength="50"	autofocus>
-									<!--                            <button type="button" id="sendMail" -->
-									<!--                               class="btn btn-primary btn-sm">발송하기</button> -->
-									<!--                            <div class="text_box" id="cert"> -->
-									<!--                               <input id='emailCheck' class='text_box' type='text' required -->
-									<!--                                  disabled> -->
-									<!--                               <button type="button" id='check' -->
-									<!--                                  class='btn btn-primary btn-sm' -->
-									<!--                                  onclick='qweemailCheck(); return false;'>인증확인</button> -->
-									<!--                            </div> -->
-								</div>
-								 <div class="col-3"></div>
-								</div>
-							</div>
-								<div class="mx-auto" id="footer">
-									<button id="conRegister" type="submit" class="btn btn-dark">회원가입</button>
-								</div>
-							</form>
-						</div>
-	<script>
-		/* 휴대폰 인증번호 보내고 타이머 스크립트 시작 */
-		var timer;
-		var isRunning = false;
+                         <div class="mb-3 row">
+                        
+                           <label for="mb_id" class="col-sm-3 col-form-label">연락처</label>
+                        
+                               <div class="col-sm-7">
+                              <input id="mb_phone" type="number" name="mb_phone" class="form-control" title="전화번호 입력"
+                                       placeholder="010-6809-3332" maxlength="11" minlength="10"
+                                       oninput="numberMaxLength(this);" required />
+                              </div>
+                               <div class="col-sm-2">
+                               
+                                    <button type="button" id="phoneChk"
+                                       class="btn-purple doubleChk" 
+                                       onclick="javascript:sendAuthNum()">인증번호 받기</button><span id="timer"></span>
+                                 </div>
+                        </div>
+                                    
+                                     <div class="mb-3 row">
+                                    <div class="col-sm-3"></div>
+                                      <div class="col-sm-3">
+                                    <input id="phone2" type="text" class="form-control" name="phone2" title="인증번호 입력" disabled required /></div>
+                                       <div class="col-sm-6">
+                                    <button type="button" id="phoneChk2"
+                                       class="btn-purple doubleChk">인증확인</button></div>
+                                       </div>
+                                     <div class="mb-3 row">
+                                       
+<!--                                     <span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 -->
+<!--                                        보내기를 해주십시오.</span>  -->
+                                       <input type="hidden" id="phoneDoubleChk" />
+                                    
+                                       
+                                    </div>
+                           
+                        
+                         <div class="mb-3 row">
+                        
+                           <label for="mb_email" class="col-sm-3 col-form-label">이메일</label>
+                              
+                           <div class="col-sm-9">
+                           <input id="mb_email" type="email" class="form-control"
+                              name="mb_email" placeholder="shinwjasdf38@gmail.com" maxlength="50"   autofocus>
+                           <!--                            <button type="button" id="sendMail" -->
+                           <!--                               class="btn btn-primary btn-sm">발송하기</button> -->
+                           <!--                            <div class="text_box" id="cert"> -->
+                           <!--                               <input id='emailCheck' class='text_box' type='text' required -->
+                           <!--                                  disabled> -->
+                           <!--                               <button type="button" id='check' -->
+                           <!--                                  class='btn btn-primary btn-sm' -->
+                           <!--                                  onclick='qweemailCheck(); return false;'>인증확인</button> -->
+                           <!--                            </div> -->
+                           </div>
+                        </div>
+                        <div class="mx-auto mb-3 row " id="footer" style="margin: 50px;">
+                           <div class="col-sm-12 text-center ">
+                           <button id="conRegister" type="submit" class="btn-black">회원가입</button>
+                        </div>
+                        </div>
+                     </form>
+                  </div>
+   <script>
+      /* 휴대폰 인증번호 보내고 타이머 스크립트 시작 */
+      var timer;
+      var isRunning = false;
 
-		// 인증번호 발송하고 타이머 함수 실행
-		function sendAuthNum() {
-			// 남은시간 3분으로 타이머 시작
-			var leftTime = 180, display = document.querySelector('#timer');
+      // 인증번호 발송하고 타이머 함수 실행
+      function sendAuthNum() {
+         // 남은시간 3분으로 타이머 시작
+         var leftTime = 180, display = document.querySelector('#timer');
 
-			// 이미 타이머가 작동중이면 정지
-			if (isRunning) {
-				clearInterval(timer);
-			} else {
-				isRunning = true;
-			}
-			startTimer(leftTime, display);
-		}
-		//타이머시작
-		function startTimer(count, display) {
-			var minutes, seconds;
-			timer = setInterval(function() {
-				minutes = parseInt(count / 60, 10);
-				seconds = parseInt(count % 60, 10);
-				minutes = minutes < 10 ? "0" + minutes : minutes;
-				seconds = seconds < 10 ? "0" + seconds : seconds;
+         // 이미 타이머가 작동중이면 정지
+         if (isRunning) {
+            clearInterval(timer);
+         } else {
+            isRunning = true;
+         }
+         startTimer(leftTime, display);
+      }
+      //타이머시작
+      function startTimer(count, display) {
+         var minutes, seconds;
+         timer = setInterval(function() {
+            minutes = parseInt(count / 60, 10);
+            seconds = parseInt(count % 60, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
 
-				display.textContent = minutes + ":" + seconds;
+            display.textContent = minutes + ":" + seconds;
 
-				// 타이머 끝
-				if (--count < 0) {
-					clearInterval(timer);
-					display.textContent = "";
-					isRunning = false;
-				}
-			}, 1000);
-		}
-		/* 휴대폰 인증번호 보내고 타이머 스크립트 끝 */
-	</script>
+            // 타이머 끝
+            if (--count < 0) {
+               clearInterval(timer);
+               display.textContent = "";
+               isRunning = false;
+            }
+         }, 1000);
+      }
+      /* 휴대폰 인증번호 보내고 타이머 스크립트 끝 */
+   </script>
 
-	<!-- footer -->
-	<%@ include file="../../footer.jsp"%>
-	<!-- footer end -->
+   <!-- footer -->
+   <%@ include file="../../footer.jsp"%>
+   <!-- footer end -->
 </body>
 </html>
