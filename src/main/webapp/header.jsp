@@ -55,7 +55,7 @@
         <a class="nav-link hambuger" href="/ranking"> 랭킹 </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link hambuger" href="#"> 지역 </a>
+        <a class="nav-link hambuger" href="/local"> 지역 </a>
       </li>
       <li class="nav-item hambuger">
         <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
@@ -87,7 +87,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 지역 </a>
+            <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
@@ -140,7 +140,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 지역 </a>
+            <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
@@ -189,7 +189,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 지역 </a>
+            <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
@@ -238,7 +238,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 지역 </a>
+            <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
