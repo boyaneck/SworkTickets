@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <title>전시 목록</title>
 
 
@@ -14,45 +15,49 @@
 <!-- header end -->
 
 
+<style>
+/* .heart{ */
+/*   position: relative; */
+/* } */
+/* .top-right { */
+/*   position: absolute; */
+/*   top: 5px; */
+/*   right: 12px; */
+/* } */
+/* .heart:before{ */
+/* content:''; */
+/* /* background: linear-gradient(to top,black 30%,transparent 30%); */ */
+/* background: linear-gradient(0deg, rgba(46,47,50,1) 0%, rgba(72,75,77,0) 100%, rgba(72,75,77,0) 100%); */
+/* position:absolute; */
+/* left:0; */
+/* height:73%; */
+/* width:100%; */
+/* } */
+</style>
 </head>
 <body>
-	   <div class="board">
-      <h1>전시 목록</h1>
-   </div>
-	<div class="container-fluid">
-		<table class="table table-hover">
-			<thead class="btn-primary">
-				<tr>
-					<th>번호</th>
-					<th>전시명</th>
-					<th>가격</th>
-					<th>전시일자</th>
-					<th>장소</th>
-					<th>좋아요</th>
-				</tr>
-			</thead>
-		
-			<tbody>
-				<c:forEach items="${UserExhibitionList}" var="exhibition">
-					<tr onclick="selTr(${exhibition.exh_no})" style="cursor: pointer;">
-						<td class="tdCenter" style="width:8%; text-align:center;">${exhibition.exh_no}</td>
-						<td class="tdCenter" style="width:40%;"><a href="getUserExhibition?exh_no=${exhibition.exh_no}&page=${paging.nowPageBtn}">${exhibition.exh_title}</a></td>
-						<td class="tdCenter" style="width:10%; text-align:center;"><fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</td>
-						<td class="tdCenter" style="width:20%; text-align:center;">${exhibition.exh_st_date}~
-							${exhibition.exh_end_date}</td>
-						<td class="tdCenter" style="width:12%; text-align:center;">${exhibition.exh_hall}</td>
-						<td class="tdCenter" style="width:10%; text-align:center;"> 
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill good" viewBox="0 0 16 16">
-		  <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
-		</svg>
-					${exhibition.rank_cnt}
-					
-					</td>
-						 
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+	   <div class="board"><h1>전시</h1></div>
+	<div class="container">
+		<div class="row row-cols-1 row-cols-md-4 g-4" style="margin-bottom: 30px;">
+	<c:forEach items="${UserExhibitionList}" var="exhibition">
+
+
+			<div class="col" style="margin-bottom: 30px; cursor:pointer;" onclick="location.href='getUserExhibition?exh_no=${exhibition.exh_no}'" >
+				<div class="card h-100 heart">
+					<img src="/images/${exhibition.exh_thumbnail }"
+						class="card-img-top" alt="이미지" style="height: 300px;">
+					<div class="card-body" >
+						<b class="card-title">${exhibition.exh_title}</b>
+						<p class="card-text" style="font-size: 14px; color: gray;">${exhibition.exh_hall }<br>
+						${exhibition.exh_st_date}~${exhibition.exh_end_date}
+						<span style="text-align: right;"><i class = "xi-heart good" style="color:red;"></i> 
+					<b style="color: black; text-align: center;">${exhibition.rank_cnt}</b></span></p>
+					</div>
+				</div>
+			</div>
+	</c:forEach>
+		</div>
+</div>
 	
 		<br> <br>
 			<!-- 		반복처리할 태그 시작 -->

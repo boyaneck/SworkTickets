@@ -140,12 +140,12 @@ $(function(){
   .col{background-color: white;}
   </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <div class="container" style="text-align:center; padding: 50px 0;">
 	<div class="row">
 	<div class="col-5">
-<%-- 	<img src="/images/${myPayList.exh_thumbnail }" alt="이미지" style="width:200px; height: 300px;"> --%>
-	<img src="/images/poroly.png" alt="이미지" style="width:400px; height: 500px;">
+	<img src="/images/${exhibition.exh_thumbnail }" alt="이미지" style="width:400px; height: 500px;">
+<!-- 	<img src="/images/poroly.png" alt="이미지" style="width:400px; height: 500px;"> -->
 	</div>
 	<div class="col-7" style="text-align: left; font-size: 13pt;">
 		<h3 style="font-weight: bold;">${exhibition.exh_title}</h3>
@@ -191,6 +191,7 @@ $(function(){
 			<input type="hidden" name="exh_no" value="${exhibition.exh_no}">
 			<input type="hidden" name="exh_title" value="${exhibition.exh_title}">
 			<input type="hidden" name="amount" value="${exhibition.exh_price}">
+			<input type="hidden" name="exh_thumbnail" value="${exhibition.exh_thumbnail}">
 			<button type="submit" class="btn11">예매하기</button>
 		</form>
 </div>
@@ -199,17 +200,19 @@ $(function(){
 	</div>
 <!-- 하단 -->
 <div class="container">
-  <div class="row a" style="padding-top: 50px;">
+  <div class="row a" style="padding-top: 50px; margin-left: 0; margin-right: 0;">
     <div class="col tabDiv pt-3 pb-2" id="menu1"><h5>상세정보</h5></div>
     <div class="col tabDiv pt-3 pb-2" id="menu2"><h5>관람후기</h5></div>
     <div class="col tabDiv pt-3 pb-2" id="menu3"><h5>장소정보</h5></div>
   </div>
-  <div id="con1" class="conBox p-3" style="background-color: white;">내용 1</div>
+  <div id="con1" class="conBox p-3" style="background-color: white; text-align:left !important;"><%@ include file="Information.jsp"%></div>
   <div id="con2" class="conBox p-3" style="background-color: white; text-align:left !important;"><%@ include file="reviewwrite.jsp"%></div>
   <div id="con3" class="conBox p-3" style="background-color: white;"><%@ include file="UserExhibitionLocation.jsp"%></div>
 </div>
 	<br>
 	</div>
 	<br>
+<%@ include file="../../footer.jsp" %>
 </body>
+
 </html>
