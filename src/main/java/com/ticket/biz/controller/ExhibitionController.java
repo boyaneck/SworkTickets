@@ -2,9 +2,7 @@ package com.ticket.biz.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -236,5 +234,35 @@ public class ExhibitionController {
 					System.out.println("검색어-"+vo.getExSearchKeyword());
 					
 					return "exhibition/getUserExhibitionList";
+		}
+		
+		
+		// 지역 목록 조회
+		@RequestMapping("/local")
+		public String getLocalList(ExhibitionVO vo, String nowPageBtn, Model model,HttpServletRequest request) {
+			//총 목록 수
+			   String[] loc = {"서울", "경기/인천", "충청/강원","대구/경북","부산/경남","광주/전라","제주"}; 
+			   		String a="서울";	
+			   		if(request.getParameter("exh_local_name")!=null) {	
+			   		a=request.getParameter("exh_local_name");
+			   		}
+		        	System.out.println(a);
+		        	vo.setExh_local_name(a);
+					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
+					//현재 페이지 설정
+					int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+					System.out.println("totaluserPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+					//한페이지당 보여줄 목록 수
+					int onePageCnt = 16;
+					//한 번에 보여질 버튼 수
+					int oneBtnCnt = 5;
+
+					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+					vo.setOffset(pvo.getOffset());
+				   System.out.println("토페카"+totalPageCnt);
+					model.addAttribute("paging", pvo);
+					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
+					model.addAttribute("loc",loc);
+					return "exhibition/local";
 		}
 }
