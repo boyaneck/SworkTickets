@@ -10,6 +10,19 @@
    href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <head>
 <meta charset="UTF-8">
+<style>
+textarea {
+			margin-top:30px;
+			width: 100%;
+			height: 200px;
+			padding: 10px;
+			box-sizing: border-box;
+			border: solid 2px #1E90FF;
+			border-radius: 5px;
+			font-size: 16px;
+			resize: both;
+		}
+</style>
 </head>
 <% pageContext.setAttribute("replaceChar", "\n"); %>
 
@@ -28,15 +41,16 @@
 		
 				success:function(data) {
 				console.log(data);
-			if(data.total > 0){
+			 if(data.total > 0){
 				console.log("get list 실행 중");
 				
 				var list = data.list;
-				
+				var reg=data.list.review_reg_date;
 				console.log("받아온 데이터의 리스트와, 총 댓글 수 ")
 				console.log(list);
 				console.log(data.total);
-		
+				console.log("등록일!!!!!"+reg);
+				
 				
 				var comment_html = "<div>";
 				
@@ -46,16 +60,18 @@
 					var content  =  list[i].review_content;
 					var writer   =  list[i].review_writer;
 					var review_no=  list[i].review_no;
-					var date= list[i].review_reg;
+					var date= list[i].review_reg_date;
+					
 					
 					console.log("댓글번호받아라!!!" +review_no);
 					console.log("writer!!!" +writer);
 					
 					comment_html +="<div id='a"+[i]+"' class='aa1'>";
-					comment_html += "<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
+					comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
 					comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ date+ "</div>";
 					comment_html +="</div>";
 					
+			
 					comment_html +="<div>"
 					comment_html +="<div id='b"+[i]+"' style='display:none'>";
 					comment_html +="<form action ='/updateReview'>"	;
@@ -79,8 +95,6 @@
 					comment_html += "<div style='text-align:right;'><button class='update1' style='cursor:pointer; background-color: white; border: none; font-size: 25px; margin-right: 20px;' onclick='updateReview("+[i]+")' ><i class = 'xi-pen-o'></i></button>";	 																																
 					comment_html += "<button id='delete' style='cursor:pointer; background-color: white; border: none; font-size: 25px;' onclick='del("+list_no+")'><i class = 'xi-trash-o'></i></button>";											
 				    comment_html += "</div><hr>";
-// 				    							<i class = "xi-pen-o " style="margin-bottom: 0px; font-size: 33px; cursor:pointer;"></i>
-// 				    							<i class = "xi-trash-o " style="margin-bottom: 0px; font-size: 33px; cursor:pointer;"></i>
 					}
 					else  comment_html += "</div><hr>";
 					
@@ -286,9 +300,42 @@ textarea:focus, input:focus{ outline: none; }
 					</div>
              
                          <div class="comment_Box"></div> 
-      </div>
-                    
+        
                     	
-   </div>                 	 
+   </div>         
+      </div>
+      
+      <div id="btnBox_parent">
+      <div id="btnBox">
+         <!-- 반복처리할 태그 시작-->
+         <c:if test="${paging.nowPageBtn > 1 }">
+            <a href="reviewList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+         </c:if>
+         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
+            step="1" var="i">
+            <c:choose>
+               <c:when test="${paging.nowPageBtn == i}">
+                  <a class="aSel">${i}</a>
+               </c:when>
+               <c:otherwise>
+                  <a href="reviewList?nowPageBtn=${i}">${i}</a>
+               </c:otherwise>
+            </c:choose>
+         </c:forEach>
+         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+            <a href="reviewList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+         </c:if>
+         <!-- 반복처리할 태그 끝 -->
+      </div>
+      <br>
+      <br>
+       
+           
+   </div>
+		시작:${paging.startBtn}
+       값:${paging.nowPageBtn}
+     
+     끝:${paging.endBtn }
+                   	 
 </body>
 </html>

@@ -38,7 +38,9 @@
 <textarea placeholder="내용을 입력하세요" name="noti_content" rows="15" cols="100"></textarea>
          </div>
 
-<button>새글 등록</button>
+<div class="regBtn" style="text-align:center; margin: 20px;">
+<button class="btn btn-success"  style="cursor: pointer">글 등록</button>
+</div>
 
 </div>
 </form>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.review.ReviewService;
 import com.ticket.biz.review.ReviewVO;
 
@@ -82,29 +83,41 @@ public class ReviewController {
 	//댓글 목록 조회
 	@ResponseBody
 	@RequestMapping("/reviewList")
-	public Map<String, Object> getReviewList(ReviewVO vo, Model model) {
-		System.out.println("댓글 목록 컨트롤러 동작");
-		System.out.println("bno"+vo.getReview_bno());
-		System.out.println("writer"+vo.getReview_writer());
+	public Map<String, Object> getReviewList(ReviewVO vo,String nowPageBtn, Model model) {
 		
-		
-//		System.out.println("toString"+reviewList.toString());
-				List<ReviewVO> list = reviewservice.getReviewList(vo);
-				
-				System.out.println("getReviewList 실행후 컨트롤러 안  그리고 list toString" +list.toString());
-
-
 		
 		int total = reviewservice.getTotal(vo);
-		ModelAndView view = new ModelAndView();
-		System.out.println("댓글 갯수 " + reviewservice.getTotal(vo));
+		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+		System.out.println("totalPageCnt: "+total +", nowPage: "+nowPage);
+
+		//한페이지당 보여줄 목록 수
+		int onePageCnt = 5;
+
+		//한 번에 보여질 버튼 수
+		int oneBtnCnt = 5;
 		
+		
+		System.out.println("페이징처리전 ");
+		PagingVO pvo = new PagingVO(total, onePageCnt, nowPage, oneBtnCnt);
+		vo.setOffset(pvo.getOffset());
+
+		System.out.println("nowpage 찍혀라"+pvo.getNowPageBtn());
+		List<ReviewVO> list = reviewservice.getReviewList(vo);
+		
+		
+		ModelAndView view = new ModelAndView();
+		
+		System.out.println("오프셋출력!!!!!"+vo.getOffset());
 		Map<String, Object> map = new HashMap<>();
+		model.addAttribute("reviewList",list);
+		model.addAttribute("paging", pvo);
 		map.put("list", list);
 		map.put("total", total);
-//		map.put("reviewlist",reviewList);
+		
 		view.setViewName("reviewwrite");
+		System.out.println(vo.getReview_bno());
 		System.out.println("review list 가져오는 controller 다 탔음");
+		
 		
 		return map;
 	}

@@ -13,11 +13,27 @@
 	</select>
 	
 	<select id="getOneList" resultType="one">
+	<if test="searchKeyword ==null">
 		SELECT * FROM ONEONE WHERE 1=1 
-<!-- 		<if test="searchCondition == 'TITLE' "> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if> -->
-<!-- 		<if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE  CONCAT('%',#{searchKeyword},'%')</if> -->
 		ORDER BY ONE_NO DESC
 		LIMIT 10 OFFSET #{offset}
+		</if>
+		
+		<if test="searchKeyword !=null">
+		SELECT * FROM ONEONE WHERE 1=1 
+		AND
+	     REPLACE(UPPER(ONE_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		 OR REPLACE
+         (UPPER(ONE_WRITER),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+         
+         ORDER BY ONE_NO DESC
+		LIMIT 10 OFFSET #{offset}
+		
+		</if>
 	</select>
 	
 	<select id="getOne" resultType="one">  

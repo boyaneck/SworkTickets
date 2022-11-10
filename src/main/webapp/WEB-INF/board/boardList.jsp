@@ -3,10 +3,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../../header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link rel="stylesheet"
+   href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-/* #searchNav { 
+ .table tr:hover{
+ background-color:#e8dbfe !important;
+
+
+}
+
+.write{
+border-radius:4px;
+border: 1px solid #1f1f1f;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    color: #f4f4f4;
+    font-size: 18px;
+    color: black;
+}
+
 </style>
 <script>
 
@@ -24,39 +42,24 @@ function f_write(val){
     }
 }
 
-// function f_write(val){
-//     console.log(val);
-//     if(val == ''){
-//         alert("로그인이 되야 작성 가능합니다");
-//         location.href="/getOneList";
-//     }else{
-//         location.href="/goWrite";
-//     }
-// }
+
 </script>
 <body>
    <div class="board" >
       <h1>공 지 사 항</h1>
    </div>
    
-   <%-- <%@ include file="../../menu.jsp" %> --%>
+   
    <nav id="searchNav" class="sub_title">
-      <form class="form-inline" action="getOneList.do" method="post">
-         <select class="form-control" id="sel1" name="searchCondition"
-            style="display: inline-block !important; margin-right: 10px;">
-            <c:forEach items="${conditionMap}" var="option">
-               <option value="${option.value}">${option.key}</option>
-            </c:forEach>
-            <option value="${conditionMap['제목']}">${conditionMap['제목']}</option>
-
-         </select> <input class="form-control mr-sm-2" type="text" name="searchKeyword"
-            placeholder="검색어를 입력하세요.">
-         <button class="btn btn-success" type="submit">검색</button>
+      <form class="form-inline" action="getBoardList" method="post">
+          <input class="form-control mr-sm-2" type="text" name="searchKeyword"
+        placeholder="검색어를 입력하세요" >
+         <button class="btn btn-success" type="submit" style="border-radius:4px">검색</button>
       </form>
    </nav>
-   <div class="container-fluid">
+   <div class="container-fluid" >
       <table class="table table-hover">
-         <thead class="btn-primary">
+         <thead class="btn-primary" style="background-color:blue;">
             <tr>
                <th style="text-align:center;" >번호</th>
                <th style="text-align:center;">제목</th>
@@ -69,8 +72,7 @@ function f_write(val){
 
             <c:forEach items="${boardList}" var="board">
              
-               <tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"; style="cursor: pointer;">
-                  <%--                   <tr onclick="getboard(${board.noti_title}) style="cursor:pointer"> --%>
+               <tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"; style="cursor: pointer;" class="aa" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                   <td class="tdCenter" style="width:10%;" >${board.noti_no}</td>
                   <td class="tdCenter" style="width:50%;" >${board.noti_title}</td>
                   <td class="tdCenter" style="width:20%;" >${board.noti_writer}</td>
@@ -103,12 +105,12 @@ function f_write(val){
                   <a style="font-weight:400; color:#7832f7;" class="aSel">${i}</a>
                </c:when>
                <c:otherwise>
-                  <a href="getBoardList?nowPageBtn=${i}">${i}</a>
+                  <a href="getBoardList?nowPageBtn=${i}"><strong>${i}</strong></a>
                </c:otherwise>
             </c:choose>
          </c:forEach>
          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="getBoardList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+           <strong> <a href="getBoardList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a></strong>
          </c:if>
          <!-- 반복처리할 태그 끝 -->
          </div>
