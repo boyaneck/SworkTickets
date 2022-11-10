@@ -49,8 +49,7 @@ $( function() {
 							comment_html +="<div class='col' style='margin-bottom: 30px; cursor:pointer;' onclick='location.href='getUserExhibition?exh_no=${exhibition.exh_no}' >";
 							
 							comment_html  +=    "<div class='card h-100 heart'>";
-							comment_html  +=   "<img src='/images/"+exh_thumbnail+"'";
-							comment_html  +=      "class='card-img-top' alt='이미지' style='height: 300px;'>";
+							comment_html  +=   "<img src='/images/"+exh_thumbnail+"' class='card-img-top' alt='이미지' style='height: 300px;'>";
 							comment_html  +=   "<div class='card-body' >";
  							comment_html  +=     "<b class='card-title'>"+ exh_title+"</b>";
 				            comment_html  +=      "<p class='card-text' style='font-size: 14px; color: gray;'>"+exh_hall+"<br>";
@@ -71,8 +70,6 @@ $( function() {
 		     });
 		
 	}
-
-
 
 </script>
 </head>

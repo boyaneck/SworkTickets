@@ -248,7 +248,6 @@ public class ExhibitionController {
 				   		if(request.getParameter("exh_local_name")!=null) {	
 				   		a=request.getParameter("exh_local_name");
 				   		}
-			        	System.out.println(a);
 			        	vo.setExh_local_name(a);
 						int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
 						//현재 페이지 설정
@@ -261,7 +260,6 @@ public class ExhibitionController {
 
 						PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 						vo.setOffset(pvo.getOffset());
-					   System.out.println("토페카"+totalPageCnt);
 						model.addAttribute("paging", pvo);
 							model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
 							model.addAttribute("loc",loc);
@@ -278,7 +276,6 @@ public class ExhibitionController {
 			   		if(request.getParameter("exh_local_name")!=null) {	
 			   		a=request.getParameter("exh_local_name");
 			   		}
-		        	System.out.println(a);
 		        	vo.setExh_local_name(a);
 					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
 					//현재 페이지 설정
@@ -291,7 +288,6 @@ public class ExhibitionController {
 
 					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 					vo.setOffset(pvo.getOffset());
-				   System.out.println("토페카"+totalPageCnt);
 					model.addAttribute("paging", pvo);
 					
 					ModelAndView view = new ModelAndView();
