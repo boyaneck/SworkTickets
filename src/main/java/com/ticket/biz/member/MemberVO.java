@@ -11,6 +11,7 @@ public class MemberVO {
 	private String mb_email;
 	private int mb_check;
 	private String mb_yn;
+	private String mb_ndate;
 
 	private String searchCondition;
 	private String searchKeyword;
@@ -18,6 +19,15 @@ public class MemberVO {
 	private int offset;
 	private String find;
 
+	
+	
+	public String getMb_ndate() {
+		return mb_ndate;
+	}
+
+	public void setMb_ndate(String mb_ndate) {
+		this.mb_ndate = mb_ndate;
+	}
 
 	public String getFind() {
 		return find;

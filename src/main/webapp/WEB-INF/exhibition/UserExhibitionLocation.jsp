@@ -5,11 +5,13 @@
 <%-- <title>${exhibition.exh_title}</title> --%>
 <!-- </head> -->
 <!-- <body> -->
+<link rel="stylesheet" href="./css/exhibitionDetail.css">
 <div class="container" style="text-align: center; padding-top: 30px;">
 		<h3 style="font-weight: bold;">${exhibition.exh_title}</h3>
 		<h5>${exhibition.exh_hall}</h5>
 
-			<div id="map" style="width: 800px; height: 700px; margin: 0 auto;"></div>
+			<div id="map" style="width: 800px; height: 700px; margin: 0 auto; margin-bottom: 50px;"></div>
+			
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script

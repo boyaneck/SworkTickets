@@ -10,44 +10,11 @@
 <title>Insert title here</title>
 <%@ include file="../../header.jsp"%>
 
-<style>
-.rectangle {
-	border-radius: 30px;
-	width: 430px;
-	height: 150px;
-	border: solid black;
-	background-color: white;
-	margin: 10px;
-	padding: 5px;
-}
 
-.row {
-	align: left;
-}
-input[type="button"] {
-	height: calc(1.5em + 0.75rem + 2px);
-}
-
-input[type="text"] {
-	align: left !important;
-	width: 100%;
-}
-
-h3 {
-	padding: 20px 0;
-	text-align: left;
-}
-
-#check_module {
-	color: white;
-	background-color: black;
-	width: 15%;
-	margin-top: 5%;
-}
-</style>
 
 <script type="text/javascript"
 	src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<link rel="stylesheet" href="./css/pay.css">
 <script>
 var chk = false;
 $(document).ready(function(){
@@ -214,45 +181,45 @@ $('#testBtn').click(function(e){
 				<b>주문 상세 정보</b>
 			</h3>
 			<div class="row">
-				<div class="col">
-				<img src="/images/${exh_thumbnail }" alt="이미지" style="width: 200px; height: 250px;">
+				<div class="col-md-6">
+				<img src="/images/${exh_thumbnail }" alt="이미지" style="width: 200px; height: 250px;" id="thum1">
 <!-- 					<img src="/images/2.png" alt="이미지" style="width: 200px; height: 250px;"> -->
 				</div>
-				<div class="col">
+				<div class="col-md-6">
 					<div class="row">
 						<h4>
-							<b>${exh_title}</b>
+							<b id="ptitle">${exh_title}</b>
 						</h4>
 						<input type="hidden" name="exh_title" id="exh_title"
 							value='${exh_title}' readonly="readonly">
 					</div>
-					<div class="row">
+					<div class="row" id="pamount">
 						${amount}원 
 					</div>
 				</div>
 			</div>
 			<hr style="margin: 30px; text-align: left;">
 			<!-- 주문자 정보 -->
-			<div class="container"
+			<div class="container"  id="pay2"
 				style="text-align: left; padding: 20px 0; background-color: white;">
 
 				<div class="row">
-					<div class="col-1"></div>
-					<div class="col-5">
+					<div class="col-md-1"></div>
+					<div class="col-md-5">
 						<h3 style="padding: 0 0;">주문자 정보</h3>
 					</div>
-					<div class="col-6">
+					<div class="col-md-6">
 						<input type="hidden" style="width: 100%">
 					</div>
 				</div>
 				<br>
 
 				<div class="row">
-					<div class="col-1"></div>
-					<div class="col-2">
+					<div class="col-md-1"></div>
+					<div class="col-md-2">
 						<b>이름</b>
 					</div>
-					<div class="col-9">
+					<div class="col-md-9">
 						<input type="text" name="buyer" id="buyer" placeholder="이름 입력"
 							value="${member.mb_name}" style="width: 100%">
 					</div>
@@ -260,11 +227,11 @@ $('#testBtn').click(function(e){
 				<br>
 
 				<div class="row">
-					<div class="col-1"></div>
-					<div class="col-2">
+					<div class="col-md-1"></div>
+					<div class="col-md-2">
 						<b>전화번호</b>
 					</div>
-					<div class="col-9">
+					<div class="col-md-9">
 						<input type="text" name="buyer_tel" id="buyer_tel"
 							placeholder="예시: 010-1111-2222" value='${member.mb_phone}'>
 					</div>
@@ -272,11 +239,11 @@ $('#testBtn').click(function(e){
 				<br>
 
 				<div class="row">
-					<div class="col-1"></div>
-					<div class="col-2">
+					<div class="col-md-1"></div>
+					<div class="col-md-2">
 						<b>이메일</b>
 					</div>
-					<div class="col-9">
+					<div class="col-md-9">
 						<input type="text" name="buyer_email" id="buyer_email"
 							placeholder="이메일 입력" value='${member.mb_email}'>
 					</div>
@@ -286,21 +253,21 @@ $('#testBtn').click(function(e){
 		<!-- <hr style="margin-bottom:30px; "> -->
 
 		<!-- 결제창 -->
-		<div class="container"
+		<div class="container" id="pay3"
 			style="text-align: center; padding: 20px 0; margin-top:50px; background-color: white;">
 			<div class="container"
 				style="text-align: center; background-color: white;">
 				<div class="row">
-					<div class="col-1"></div>
-					<div class="col-2" style="border-bottom: 2px solid black;">
+					<div class="col-md-1"></div>
+					<div class="col-5 line" style="border-bottom: 2px solid black; text-align:left; padding-right: 0px;">
 						<b>결제금액</b>
 					</div>
-					<div class="col-6" style="border-bottom: 2px solid black;">
+					<div class="col-4 line" style="border-bottom: 2px solid black;">
 						<input type="text" name="amount" id="amount" value='${amount}'
 							style="font-weight: bold; text-align: right !important; color: #7329f7; border: none;"
 							readonly="readonly">
 					</div>
-					<div class="col-3">
+					<div class="col-md-2">
 						<button type="button"
 							style="color: #7329f7; width: 100%; background-color: white; border-color: #7329f7; border: solid 1px;"
 							data-toggle="modal" data-target="#staticBackdrop">쿠폰적용</button>
@@ -326,7 +293,7 @@ $('#testBtn').click(function(e){
 				<input type=hidden name="exh_thumbnail" id="exh_thumbnail" value="${exh_thumbnail }" style="display: none;">
 
 				<!--   결제버튼 -->
-				<div class="container"
+				<div class="container" id="pay"
 					style="text-align: center; background-color: white;">
 					<div style="text-align: center;">
 						<button id="check_module"
