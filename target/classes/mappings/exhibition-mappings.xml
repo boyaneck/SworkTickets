@@ -115,6 +115,9 @@
          LIKE
          REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
       </if>
+       <if test="exh_local_name != null">
+         AND exh_local_name= #{exh_local_name}
+      </if>
       ORDER BY
       EXH_ST_DATE DESC
       LIMIT 16
@@ -139,7 +142,11 @@
          REPLACE(UPPER(EXH_HALL),' ','') LIKE
          REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')) AS cd
       </if>
+    
       WHERE 1=1
+        <if test="exh_local_name != null">
+         AND exh_local_name= #{exh_local_name}
+      </if>
       and
       DATE(EXH_END_DATE) >=
       DATE(NOW())

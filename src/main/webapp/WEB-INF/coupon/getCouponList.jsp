@@ -85,15 +85,14 @@
          </div>
 </div>
    
-   <div class="container text-center">
-
+   <div id="btnBox_parent">
+      <div id="btnBox">
       <!--       맨처음 -->
       <c:if test="${paging.nowPageBtn > 1 }">
-         <a class="page-link" href="getCouponList?nowPageBtn=1">&laquo;</a>
+         <a  href="getCouponList?nowPageBtn=1">&laquo;</a>
       </c:if>
       <c:if test="${paging.nowPageBtn > 1 }">
-         <a class="page-link"
-            href="getCouponList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+         <a  href="getCouponList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
       </c:if>
 
       <!-- 반복처리 태그 -->
@@ -101,24 +100,23 @@
          var="i">
          <c:choose>
             <c:when test="${paging.nowPageBtn==i}">
-               <a class="page-st" style="font-weight: bold; color: #7329f7;"
+               <a id="btnBox_a" class="aSel"
                   href="getCouponList?nowPageBtn=${i}">${i}</a>
             </c:when>
             <c:otherwise>
-               <a class="page-st" href="getCouponList?nowPageBtn=${i}">${i}</a>
+               <a href="getCouponList?nowPageBtn=${i}">${i}</a>
             </c:otherwise>
          </c:choose>
       </c:forEach>
       <!--       반복 끝 -->
       <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-         <a class="page-st"
-            href="getCouponList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+         <a href="getCouponList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
       </c:if>
       <!--       맨끝 -->
       <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-         <a class="page-st"
-            href="getCouponList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+         <a href="getCouponList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
       </c:if>
+      </div>
       </div>
 </body>
 </html>

@@ -85,13 +85,32 @@
    padding: 0 10% 0 10%;
 }
 
+.table thead th {
+   background-color: #fff;
+   border-top: 0px;
+   border-bottom:1.5px solid #1f1f1f;
+   padding-bottom: 5px;
+   color: #1f1f1f;
+   font-size: 18px;
+   text-align:center;
+}
 
+ 
+@media (max-width: 640px) {
+  .table thead th {
+  font-size: 14px;
+}
+}
 
+.tdCenter {
+   text-align:center;
+   font-size: 16px;
+   border-bottom: 1px solid #dbdbdb;
+}
 
 .table td {
    padding: 20px 0 20px 0;
-   vertical-align : middle;
-   
+   vertical-align: middle;
 }
 
 .write {
@@ -139,4 +158,9 @@
 
 .btnBox_parent{
    margin-bottom:20px;
+}
+
+#btnBox_a{
+	font-weight:400;
+	 color:#7832f7;
 }
