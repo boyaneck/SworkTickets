@@ -540,8 +540,17 @@ footer {
 .btn-black{
    border:1px solid #000; 
    width:280px; 
-   height:37px; 
+   height:50px; 
    background-color: #000; 
+   color: #fff; 
+   font-size: 18px;
+    font-weight: bold;
+}
+.btn-black:hover{
+   border:1px solid #000; 
+   width:280px; 
+   height:50px; 
+   background-color: #7329f7; 
    color: #fff; 
    font-size: 18px;
     font-weight: bold;

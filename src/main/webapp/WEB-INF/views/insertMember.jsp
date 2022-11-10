@@ -185,7 +185,7 @@ function numberMaxLength(e){
 }
 
 //아이디 중복체크
-/* function chkBtn(){
+ function chkBtn(){
    var idRegex = /^[0-9|a-z|A-Z|]*$/;
     $.ajax({
         url : "/idChk",
@@ -209,7 +209,7 @@ function numberMaxLength(e){
              }
         }
     })
-} */
+} 
 /* 이메일 인증번호 일치 여부 start */
 </script>
 <style>
@@ -217,6 +217,13 @@ input{ width: 100%;
 border-radius: none;
 
 }
+.btn-purple{
+font-size:15px;
+padding:5px;}
+
+.btn-purple:hover{
+font-size:15px;
+padding:5px;}
 
 
 #phoneChk{width: 150px !important;}
@@ -225,11 +232,38 @@ small{margin-left: 15px; margin-bottom: 0px !important;}
 .row{margin-bottom: 10px;}
 span{
 font-size: 13px;}
+@media (max-width:768px) {
+		.container{
+		/*  margin: 0 !important;   */
+					} 
+		.btn-purple{
+		margin-top: 10px !important;
+		}
+		hr{
+		width:100%;
+		}
+		input{
+		width:100%;
+		padding:0;
+		}
+		.lb-emp{
+		display: none;
+		}
+		.btn-black{
+		width:100%;
+		}
+		.btn-black:hover{
+		width:100%;
+		}
+}
+.col-form-label{
+font-size:16px !important;
+}
 </style>
 
 </head>
-<body>
-<div class="container" style="margin-top: 50px; width:780px;">
+<body class="d-flex flex-column min-vh-100">
+<div class="container" style="margin: 50px auto; width:780px;">
       <h3 style="text-align: left; font-weight: bold;  ">회원가입</h3>
       <hr style=" border:solid 1px gray;">
 <!--                      <p>정보입력</p> -->
@@ -239,11 +273,14 @@ font-size: 13px;}
                         
                          <div class="mb-3 row">
                         
-                           <label for="mb_id" class="col-sm-3 col-form-label">아이디</label>
-                         <div class="col-sm-7">
+                           <label for="mb_id" class="col-md-2 col-form-label">아이디</label>
+                         <div class="col-md-10">
                            <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
                            </div>
-                            <div class="col-sm-2">
+                             </div>
+                                <div class="mb-3 row">
+                            <div class="col-md-2 col-form-label lb-emp"></div>
+                            <div class="col-md-3 ">
                            <button type="button" class="btn-purple" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button>
                            </div>
                                            
@@ -255,9 +292,9 @@ font-size: 13px;}
                         
                          <div class="mb-3 row">
                          
-                           <label for="mb_pw" class="col-sm-3 col-form-label">비밀번호</label>
-                            <div class="col-sm-9">
-                           <input type="password" name="mb_pw" class="form-control" placeholder="비밀번호를 입력하세요" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+                           <label for="mb_pw" class="col-md-2 col-form-label">비밀번호</label>
+                            <div class="col-md-10">
+                           <input type="password" name="mb_pw" id="mb_pw" class="form-control" placeholder="비밀번호를 입력하세요" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
                               required>
                               </div>
                            <div class="valid-feedback"><span>사용할 수 있는 패스워드입니다.</span></div>
@@ -266,9 +303,9 @@ font-size: 13px;}
                         
                       <div class="mb-3 row">
                   
-                           <label for="mb_name" class="col-sm-3 col-form-label">이름</label>
-                             <div class="col-sm-9">
-                           <input type="text" name="mb_name" class="form-control" placeholder="신원정" maxlength="5" minlength="2" required>
+                           <label for="mb_name" class="col-md-2 col-form-label">이름</label>
+                             <div class="col-md-10">
+                           <input type="text" name="mb_name" id="mb_name" class="form-control" placeholder="신원정" maxlength="5" minlength="2" required>
                            </div>
                            
                         </div>
@@ -278,14 +315,18 @@ font-size: 13px;}
  -->
                          <div class="mb-3 row">
                         
-                           <label for="mb_id" class="col-sm-3 col-form-label">연락처</label>
+                           <label for="mb_phone" class="col-md-2 col-form-label">연락처</label>
                         
-                               <div class="col-sm-7">
+                               <div class="col-md-10">
                               <input id="mb_phone" type="number" name="mb_phone" class="form-control" title="전화번호 입력"
                                        placeholder="010-6809-3332" maxlength="11" minlength="10"
                                        oninput="numberMaxLength(this);" required />
                               </div>
-                               <div class="col-sm-2">
+               
+                               </div>
+                               <div class="mb-3 row">
+                                 <label  class="col-md-2 col-form-label lb-emp"></label>
+                               <div class="col-md-3">
                                
                                     <button type="button" id="phoneChk"
                                        class="btn-purple doubleChk" 
@@ -294,10 +335,10 @@ font-size: 13px;}
                         </div>
                                     
                                      <div class="mb-3 row">
-                                    <div class="col-sm-3"></div>
-                                      <div class="col-sm-3">
+                                    <div class="col-md-2"></div>
+                                      <div class="col-md-3">
                                     <input id="phone2" type="text" class="form-control" name="phone2" title="인증번호 입력" disabled required /></div>
-                                       <div class="col-sm-6">
+                                       <div class="col-md-7">
                                     <button type="button" id="phoneChk2"
                                        class="btn-purple doubleChk">인증확인</button></div>
                                        </div>
@@ -313,26 +354,24 @@ font-size: 13px;}
                         
                          <div class="mb-3 row">
                         
-                           <label for="mb_email" class="col-sm-3 col-form-label">이메일</label>
+                           <label for="mb_email" class="col-md-2 col-form-label">이메일</label>
                               
-                           <div class="col-sm-9">
+                           <div class="col-md-10">
                            <input id="mb_email" type="email" class="form-control"
                               name="mb_email" placeholder="shinwjasdf38@gmail.com" maxlength="50"   autofocus>
                            <!--                            <button type="button" id="sendMail" -->
-                           <!--                               class="btn btn-primary btn-sm">발송하기</button> -->
+                           <!--                               class="btn btn-primary btn-md">발송하기</button> -->
                            <!--                            <div class="text_box" id="cert"> -->
                            <!--                               <input id='emailCheck' class='text_box' type='text' required -->
                            <!--                                  disabled> -->
                            <!--                               <button type="button" id='check' -->
-                           <!--                                  class='btn btn-primary btn-sm' -->
+                           <!--                                  class='btn btn-primary btn-md' -->
                            <!--                                  onclick='qweemailCheck(); return false;'>인증확인</button> -->
                            <!--                            </div> -->
                            </div>
                         </div>
-                        <div class="mx-auto mb-3 row " id="footer" style="margin: 50px;">
-                           <div class="col-sm-12 text-center ">
-                           <button id="conRegister" type="submit" class="btn-black">회원가입</button>
-                        </div>
+                        <div class="class="d-grid gap-2 d-md-block " style="text-align: center;" >
+                           <button id="conRegister" type="submit" class=" btn-black">회원가입</button>
                         </div>
                      </form>
                   </div>
