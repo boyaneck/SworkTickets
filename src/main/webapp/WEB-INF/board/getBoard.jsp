@@ -16,6 +16,11 @@ if (session.getAttribute("mb_Id") == null) {
 }
 %>
 <script>
+
+function list()
+{
+	location.href="/getBoardList";
+	}
 function deleteboard(val){
     var delConfirm = confirm('정말 삭제하시겠습니까?');
     if (delConfirm == true) {
@@ -124,9 +129,9 @@ cursor: pointer;
                name="noti_comment" <%=sts%>>${board.noti_content}</textarea>
          </div>
          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">파일</span>
-            </div>
+<!--             <div class="input-group-prepend"> -->
+<!--                <span class="input-group-text">파일</span> -->
+<!--             </div> -->
             <c:if test="${one.filename ne NULL}">
                <span style="cursor: pointer; padding: 0 20px;" onclick="seeImg()">[파일보기]</span>
                <script>
@@ -153,17 +158,23 @@ cursor: pointer;
             
             <%--       <input type="text" class="form-control innm" name="cnt" value="${one.cnt}" readonly <%=sts %>>       --%>
          </div>
-         <div id="btnBox_parent">
-            <button class="btn btn-success" type="submit"<%=sts %>>글수정</button>
-            <button class="btn btn-success" onclick="f_write()">글쓰기</button> 
-            <button class="btn btn-success" href="getBoardList">글목록</button>
-            <button class="btn btn-success" div class="btn btn-delete" onclick="deleteboard(${board.noti_no})" style="cursor: pointer">글삭제</button>
-         </div>
+         
+            <button class="btn btn-success" type="submit"<%=sts %> style="float:left; margin-left:610px">글수정</button>
       </form>
+      
+      
+            <button class="btn btn-success" onclick="list()" style="margin-left:7px;" >글목록</button>
+            <button class="btn btn-success" onclick="f_write()">글쓰기</button> 
+      </div>
+      
+            
 
       <form action="deleteboard">
          <input type="hidden" name="noti_no" value="${board.noti_no}">
       </form>
+      <div id="btnBox_parent">
+      <button class="btn btn-delete" onclick="deleteboard(${board.noti_no})" style="cursor: pointer; margin-top:50px;">글삭제</button>
+      </div>
     
    </div>
    <!-- 클릭시 보이는 이미지 start -->

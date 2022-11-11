@@ -184,32 +184,32 @@ function numberMaxLength(e){
     }
 }
 
-//아이디 중복체크
- function chkBtn(){
-   var idRegex = /^[0-9|a-z|A-Z|]*$/;
-    $.ajax({
-        url : "/idChk",
-        type : "post", 
-        dataType : "json", 
-        data : {"mb_id" : $("#mb_id").val()},  
-        success : function(data){
-            if(data == 1){
-                alert("중복된 아이디입니다.");
-            }else {
-               if(data == 0 && $("#mb_id").val().length > 7 && idRegex.test($("#mb_id").val())) {
-                alert("사용가능한 아이디입니다.");
-               } 
-               else {
-                  if(idRegex.test($("#mb_id").val())) {
-                     alert("8~12자 사이의 아이디를 입력해주세요.");
-                  } else {
-                     alert("특수문자는 입력하실 수 없습니다.");
-                  }
-                }
-             }
-        }
-    })
-} 
+// //아이디 중복체크
+//  function chkBtn(){
+//    var idRegex = /^[0-9|a-z|A-Z|]*$/;
+//     $.ajax({
+//         url : "/idChk",
+//         type : "post", 
+//         dataType : "json", 
+//         data : {"mb_id" : $("#mb_id").val()},  
+//         success : function(data){
+//             if(data == 1){
+//                 alert("중복된 아이디입니다.");
+//             }else {
+//                if(data == 0 && $("#mb_id").val().length > 7 && idRegex.test($("#mb_id").val())) {
+//                 alert("사용가능한 아이디입니다.");
+//                } 
+//                else {
+//                   if(idRegex.test($("#mb_id").val())) {
+//                      alert("8~12자 사이의 아이디를 입력해주세요.");
+//                   } else {
+//                      alert("특수문자는 입력하실 수 없습니다.");
+//                   }
+//                 }
+//              }
+//         }
+//     })
+// } 
 /* 이메일 인증번호 일치 여부 start */
 </script>
 <style>
@@ -275,7 +275,7 @@ font-size:16px !important;
                         
                            <label for="mb_id" class="col-md-2 col-form-label">아이디</label>
                          <div class="col-md-10">
-                           <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
+                           <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내"  pattern="^[0-9|a-z|A-Z|]*$" required>
                            </div>
                              </div>
                                 <div class="mb-3 row">

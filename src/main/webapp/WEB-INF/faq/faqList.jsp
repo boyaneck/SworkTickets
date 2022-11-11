@@ -7,7 +7,30 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>관리자 모드</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+	rel="stylesheet" />
+<link href="css/style_admin.css" rel="stylesheet" />
+<link href="css/admin.css" rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
 <style>
+
 /* Custom style */
 .accordion-button:not(.collapsed) {
 	padding:60px;
@@ -46,7 +69,21 @@
    font-weight:bold;
    font-size:22px;
    }
+   .write{
+border-radius:4px;
+border: 1px solid #1f1f1f;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    color: #f4f4f4;
+    font-size: 18px;
+    color: black;
+}
    
+   .table tr:hover{
+ background-color:#e8dbfe!important;
+
+}
 </style>
 <script>
 
@@ -65,7 +102,6 @@ function f_write(val){
 }
 </script>
 <body>
-<<<<<<< HEAD
 <div>
 		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 			<!-- Navbar Brand-->
@@ -187,19 +223,13 @@ function f_write(val){
 					<div class="container">
 						<h2 style="text-align: center; font-weight: bold;">FAQ</h2>
 					</div>
-<!--    <div class="board"> -->
-<!--       <h1>FAQ</h1> -->
-<!--    </div> -->
-   <%-- <%@ include file="../../menu.jsp" %> --%>
    <nav id="searchNav" class="sub_title">
-      <form class="form-inline" action="getOneList.do" method="post">
+      <form class="form-inline" action="getFaqList" method="post">
          <select class="form-control" id="sel1" name="searchCondition"
             style="display: inline-block !important; margin-right: 10px;">
             <c:forEach items="${conditionMap}" var="option">
                <option value="${option.value}">${option.key}</option>
             </c:forEach>
-            <%--       <option value="${conditionMap['제목']}">${conditionMap['제목']}</option> --%>
-            <%--       <option value="${conditionMap['내용']}">${conditionMap['내용']}</option> --%>
          </select> <input class="form-control mr-sm-2" type="text" name="searchKeyword"
             placeholder="검색어를 입력하세요.">
          <button class="btn btn-success" type="submit">검색</button>
@@ -220,46 +250,21 @@ function f_write(val){
          <tbody>
 
             <c:forEach items="${faqList}" var="faq">
-<%--                <c:if test="${one.one_secret eq 'true'}"> --%>
-<%--                   <c:choose> --%>
-<%--                      <c:when --%>
-<%--                         test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}"> --%>
-<!--                         <tr> -->
-<%--                            <td onclick="getone(${one.one_no})" --%>
-<%--                               style="cursor: pointer">${one.one_no}</td> --%>
-<%--                            <td>${one.one_title }</td> --%>
-<%--                      </c:when> --%>
-<%--                      <c:otherwise> --%>
-<!--                         <tr> -->
-<!--                            <td>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td> -->
-<!--                         </tr> -->
-<%--                      </c:otherwise> --%>
-<%--                   </c:choose> --%>
-
-<%--                </c:if> --%>
-
-<%--                <c:if test="${one.one_secret eq 'false'}"> --%>
-
-<%--                   <tr onclick="getfaq(${faq.faq_title})" style="cursor: pointer;"> //faq_no 칼럼 추가 예정 --%>
-<%--                      <td class="tdCenter">${one.one_no}</td> --%>
                      <tr onclick="getfaq(${faq.faq_no})" style="cursor: pointer;">
                      <td class="tdCenter" style="width:10%;" >${faq.faq_no}</td>
                      <td class="tdCenter" style="width:60%;"  onclick="getfaq(${faq.faq_no}")">${faq.faq_title}</td>
                      <td class="tdCenter" style="width:15%;" >${faq.cate_name}</td>
                      
-<%--                      <td class="tdCenter">${faq.faq_reg}</td> --%>
                      <td class="tdCenter" style="width:15%;" ><fmt:formatDate value="${faq.faq_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
-<%--                      <td class="tdCenter">${faq.faq_content}</td> --%>
    
                   </tr>
 
-<%--                </c:if> --%>
 
             </c:forEach>
          </tbody>
       </table>
       <div>
-      <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</button>
+      <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer; margin-left:100px">글쓰기</button>
       </div>
       </div>
       <div id="btnBox_parent">
@@ -290,10 +295,10 @@ function f_write(val){
       <%--   <c:if test="${session.getAttribute(mb_id) !==  --%>
       <%--   <div id="footer"> --%>
            
-=======
+
    <div class="board">
       <h1>FAQ</h1>
->>>>>>> origin/jin
+
    </div>
  
  

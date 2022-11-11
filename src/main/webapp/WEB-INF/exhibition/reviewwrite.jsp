@@ -22,6 +22,11 @@ textarea {
 			font-size: 16px;
 			resize: both;
 		}
+		
+		.btn_comment_update:hover{
+		
+		color:red;
+		}
 </style>
 </head>
 <% pageContext.setAttribute("replaceChar", "\n"); %>
@@ -29,7 +34,8 @@ textarea {
 <script>
 	$(document).ready(function(){
 	
-	const review_bno1=2;
+	const review_bno1=${exhno2}
+// 	console.log("exhno!!!!!!!!!!"+review_bno)
 	var objparams={review_bno:review_bno1};
 		
 	console.log("안됨");
@@ -60,7 +66,9 @@ textarea {
 					var content  =  list[i].review_content;
 					var writer   =  list[i].review_writer;
 					var review_no=  list[i].review_no;
+					var review_bno =list[i].review_bno;
 					var date= list[i].review_reg_date;
+					console.log("등록일!!!!!!!!!!!!!!!"+ date);
 					
 					
 					console.log("댓글번호받아라!!!" +review_no);
@@ -75,9 +83,10 @@ textarea {
 					comment_html +="<div>"
 					comment_html +="<div id='b"+[i]+"' style='display:none'>";
 					comment_html +="<form action ='/updateReview'>"	;
+					comment_html +="<div><input type='hidden' name='review_bno' value='"+review_bno+"'></div>";
 					comment_html +="<div><input type='hidden' name='review_no' value='"+review_no+"'></div>";
 					comment_html +="<div><textarea name='review_content' class='reveiw_content' >"+content+"</textarea></div>";
-					comment_html +="<button  class='btn-comment-update'>수정</button>";
+					comment_html +="<button  class='btn_comment_update' style='background-color:white; border:1px solid black; border-radius:3px; '><i class = 'xi-check'></i></button>";
 					comment_html += "</form>";
 					comment_html +="</div>";
 										
@@ -204,7 +213,7 @@ textarea {
 				$(".update1").hide();
 
 	
-		document.querySelectorAll('.btn-comment-update').forEach(function (item) {
+		document.querySelectorAll('.btn_comment_update').forEach(function (item) {
         		item.addEventListener('click', function () { 
         	
              	const form = this.closest('form'); 
@@ -309,7 +318,7 @@ textarea:focus, input:focus{ outline: none; }
       <div id="btnBox">
          <!-- 반복처리할 태그 시작-->
          <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="reviewList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+            <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
          </c:if>
          <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
             step="1" var="i">
@@ -318,12 +327,12 @@ textarea:focus, input:focus{ outline: none; }
                   <a class="aSel">${i}</a>
                </c:when>
                <c:otherwise>
-                  <a href="reviewList?nowPageBtn=${i}">${i}</a>
+                  <a href="getUserExhibition?nowPageBtn=${i}">${i}</a>
                </c:otherwise>
             </c:choose>
          </c:forEach>
          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="reviewList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+            <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
          </c:if>
          <!-- 반복처리할 태그 끝 -->
       </div>

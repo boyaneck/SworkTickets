@@ -18,6 +18,7 @@ public class FaqRowMapper implements RowMapper<FaqVO>{
 	faq.setFaq_reg(rs.getDate("faq_reg"));
 	faq.setFaq_content(rs.getString("faq_content"));
 	faq.setCate_name(rs.getString("cate_name"));
+	faq.setSearchKeyword(rs.getString("searchkeyword"));
 	return faq;
 	}
 

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%@ include file="../../header.jsp" %> --%>
+<%@ include file="../../header.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<<<<<<< HEAD
+
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -27,7 +27,7 @@
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 </head>
-=======
+
 <link rel="stylesheet"
    href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <script
@@ -53,7 +53,7 @@ border: 1px solid #1f1f1f;
 
 
 </style>
->>>>>>> origin/jin
+
 <script>
 
    function getone(val){
@@ -254,11 +254,11 @@ border: 1px solid #1f1f1f;
          </tbody>
       </table>
       
-            <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer" ">글쓰기</button>
+            <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer; margin-left:100px">글쓰기</button>
       <br>
       <br>
       <div id="btnBox_parent">
-      <div id="btnBox">
+       <div id="btnBox">
          <!-- 반복처리할 태그 시작-->
          <c:if test="${paging.nowPageBtn > 1 }">
             <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
@@ -270,7 +270,7 @@ border: 1px solid #1f1f1f;
                   <a class="aSel">${i}</a>
                </c:when>
                <c:otherwise>
-                  <a href="getOneList?nowPageBtn=${i}"><Strong>${i}</Strong></a>
+                  <a href="getOneList?nowPageBtn=${i}">${i}</a>
                </c:otherwise>
             </c:choose>
          </c:forEach>

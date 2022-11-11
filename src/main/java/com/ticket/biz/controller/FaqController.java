@@ -32,7 +32,7 @@ public class FaqController {
 		return conditionMap;
 	}
 
-	//이동 컨트롤러
+	//글쓰기 이동 컨트롤러
 	@RequestMapping("/goWriteFaq")
 	public String goFaq(FaqVO vo , Model model) {
 		System.out.println("goWriteFaq 글쓰기 작성");
