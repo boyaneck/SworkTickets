@@ -125,8 +125,10 @@ public class MemberController {
 //			System.out.println("로그인"+login);
 			System.out.println("Match: "+pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw()));
 			System.out.println("Match222: "+vo.getMb_pw().equals(memberService.getMember(vo).getMb_pw()));
-			
-			if(vo.getMb_pw().equals(memberService.getMember(vo).getMb_pw())) {
+			System.out.println(vo.getMb_pw());
+			if(vo.getMb_pw().equals("")&& vo.getMb_pw()!=null) {
+				System.out.println("pass");
+				vo.setMb_pw(null);
 				memberService.updateMember(vo);
 				return "member/mypage";
 			} else if(request.getParameter("mb_pw").equals("")) {
