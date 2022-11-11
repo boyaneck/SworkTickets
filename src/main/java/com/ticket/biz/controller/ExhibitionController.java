@@ -14,9 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ticket.biz.common.PagingVO;
 import com.ticket.biz.exhibition.ExhibitionService;
@@ -236,5 +238,68 @@ public class ExhibitionController {
 					System.out.println("검색어-"+vo.getESearchKeyword());
 					
 					return "exhibition/getUserExhibitionList";
+		}
+		// 유저 전시 목록 조회
+				@RequestMapping("/local")
+				public String getLocalList(ExhibitionVO vo, String nowPageBtn, Model model,HttpServletRequest request) {
+					//총 목록 수
+					 String[] loc = {"서울", "경기/인천", "충청/강원","대구/경북","부산/경남","광주/전라","제주"}; 
+				   		String a="서울";	
+				   		if(request.getParameter("exh_local_name")!=null) {	
+				   		a=request.getParameter("exh_local_name");
+				   		}
+			        	vo.setExh_local_name(a);
+						int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
+						//현재 페이지 설정
+						int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+						System.out.println("totaluserPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+						//한페이지당 보여줄 목록 수
+						int onePageCnt = 16;
+						//한 번에 보여질 버튼 수
+						int oneBtnCnt = 5;
+
+						PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+						vo.setOffset(pvo.getOffset());
+						model.addAttribute("paging", pvo);
+							model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
+							model.addAttribute("loc",loc);
+							return "exhibition/local";
+				}
+		
+		// 지역 목록 조회
+		@ResponseBody
+		@RequestMapping("/local_search")
+		public HashMap<String, Object> getLocalSearchList(ExhibitionVO vo, String nowPageBtn, Model model,HttpServletRequest request) {
+			//총 목록 수
+			   String[] loc = {"서울", "경기/인천", "충청/강원","대구/경북","부산/경남","광주/전라","제주"}; 
+			   		String a="서울";	
+			   		if(request.getParameter("exh_local_name")!=null) {	
+			   		a=request.getParameter("exh_local_name");
+			   		}
+		        	vo.setExh_local_name(a);
+					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
+					//현재 페이지 설정
+					int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+					System.out.println("totaluserPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+					//한페이지당 보여줄 목록 수
+					int onePageCnt = 16;
+					//한 번에 보여질 버튼 수
+					int oneBtnCnt = 5;
+
+					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+					vo.setOffset(pvo.getOffset());
+					model.addAttribute("paging", pvo);
+					
+					ModelAndView view = new ModelAndView();
+					Map<String, Object> map = new HashMap<>();
+					
+//					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
+//					model.addAttribute("loc",loc);
+//					model.addAttribute("paging", pvo);
+					map.put("UserExhibitionList",exhibitionService.getUserExhibitionList(vo));
+					map.put("paging", pvo);
+					map.put("loc", loc);
+					view.setViewName("local");
+					return (HashMap<String, Object>) map;
 		}
 }

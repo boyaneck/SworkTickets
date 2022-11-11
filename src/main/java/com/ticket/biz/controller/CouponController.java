@@ -35,7 +35,7 @@ public class CouponController {
 	@PostMapping(value = "/insertCoupon")
 	public String insertCoupon(CouponVO vo) throws IllegalStateException, IOException {
 		couponService.insertCoupon(vo);
-		return "redirect:getCouponList";
+		return "redirect:admin/CouponList";
 	}
 
 	// 쿠폰 수정
@@ -93,7 +93,7 @@ public class CouponController {
 			model.addAttribute("today",today);
 			model.addAttribute("paging", pvo);
 			model.addAttribute("couponList", couponService.getCouponList(vo));
-			return "admin/adminCouponList";
+			return "/admin/adminCouponList";
 		}
 	// 쿠폰목록 
 	@RequestMapping("/getCouponList")

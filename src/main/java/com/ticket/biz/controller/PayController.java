@@ -224,6 +224,95 @@ public class PayController {
 		return "views/pay";
 	}
 
+	// 모바일 결제
+	@RequestMapping(value = { "/payUserM" }, method = RequestMethod.GET)
+	public String pay2(HttpServletRequest request, Model model, String nowPageBtn, HttpSession session, CouponBoxVO cb_vo,
+			MemberVO mem_vo, PayVO vo) {
+		cb_vo.setMb_id((String) session.getAttribute("mb_Id"));
+		String amount = request.getParameter("amount");
+		String exh_title = request.getParameter("exh_title");
+		String exh_no = request.getParameter("exh_no");
+		String exh_thumbnail = request.getParameter("exh_thumbnail");
+		System.out.println(request.getParameter("exh_no"));
+
+		// 총 목록 수
+		int totalPageCnt = couponBoxService.myCouponListCnt(cb_vo);
+		// 현재 페이지 설정
+		int nowPage = Integer.parseInt(nowPageBtn == null || nowPageBtn.equals("") ? "1" : nowPageBtn);
+		System.out.println("totalPageCnt: " + totalPageCnt + ", nowPage: " + nowPage);
+		// 한페이지당 보여줄 목록 수
+		int onePageCnt = 10;
+		// 한 번에 보여질 버튼 수
+		int oneBtnCnt = 5;
+		PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+		cb_vo.setOffset(pvo.getOffset());
+
+		Date now = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(now);
+		mem_vo.setMb_id((String) session.getAttribute("mb_Id"));
+		model.addAttribute("member", memberService.getMember(mem_vo));
+		model.addAttribute("amount", amount);
+		model.addAttribute("couponList", couponBoxService.myCouponList(cb_vo));
+
+		model.addAttribute("exh_title", exh_title);
+		model.addAttribute("exh_no", exh_no);
+		model.addAttribute("exh_thumbnail", exh_thumbnail);
+		model.addAttribute("today", today);
+		model.addAttribute("paging", pvo);
+		String nm = request.getParameter("unm");
+		// 값은 아임포트의 가맹점 식별코드 입력
+		model.addAttribute("impKey", "imp32470313");
+		System.out.println("모델" +vo.toString());
+		 int cb_id=0;
+	      String p_id = request.getParameter("imp_uid");
+	      System.out.println("값" + amount);
+//	      int amount = Integer.parseInt(request.getParameter("amount"));
+	      String mid = request.getParameter("mid");
+	      String buyer_tel = request.getParameter("buyer_tel");
+	      String buyer_email = request.getParameter("buyer_email");
+	      String p_date = request.getParameter("p_date");
+	      String p_mer = request.getParameter("merchant_uid");
+	      
+//	      cb_id = Integer.parseInt(request.getParameter("cb_id"));
+	      cb_vo.setCb_id(cb_id);
+	      if(cb_id!=0) {
+	      couponBoxService.updateCouponBox(cb_vo);
+	      }
+	      LocalDateTime  now1 = LocalDateTime.now();
+	      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+	        String formatedNow = now1.format(formatter);
+	        
+	      
+	      
+//	      String unixTimeStamp = p_date;
+//
+//	long timestamp = Long.parseLong(unixTimeStamp);
+//	Date date = new java.util.Date(timestamp * 1000L);
+//	SimpleDateFormat sdf1 = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//	sdf1.setTimeZone(java.util.TimeZone.getTimeZone("GMT+9"));
+//	String StartDatetime = sdf1.format(date);
+
+	String mb_id = (String) session.getAttribute("mb_Id");
+	vo.setAmount(Integer.parseInt(amount));
+	vo.setBuyer_email(buyer_email);
+	vo.setBuyer_tel(buyer_tel);
+	vo.setExh_title(exh_title);
+	vo.setExh_thumbnail(exh_thumbnail);
+	vo.setExh_no(Integer.parseInt(exh_no));
+	vo.setP_date(formatedNow);
+	vo.setMb_id(mb_id);
+	vo.setP_id(p_id);
+	vo.setP_mer(p_mer);
+
+	String token = getImportToken();
+	setHackCheck(amount, mid, token);
+
+	payService.insertPay(vo);
+	return "redirect:getPayList";
+	}
+	
+	
 	// 관리자 검색 기능
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
@@ -247,7 +336,7 @@ public class PayController {
 //		      int amount = Integer.parseInt(request.getParameter("amount"));
 		      String mid = request.getParameter("mid");
 		      String buyer_tel = request.getParameter("buyer_tel");
-		      String buyer_email = request.getParameter("buyer_tel");
+		      String buyer_email = request.getParameter("buyer_email");
 		      String p_date = request.getParameter("p_date");
 		      String exh_title = request.getParameter("exh_title");
 		      String p_mer = request.getParameter("p_mer");

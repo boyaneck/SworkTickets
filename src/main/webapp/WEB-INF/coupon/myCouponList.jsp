@@ -23,8 +23,9 @@
 <fmt:parseDate var="startDate_D"  value="${today }" pattern="yyyy-MM-dd"/>
 <fmt:parseNumber var="startDate_N" value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
 
-	<div class="container" style="text-align: -webkit-center;">
-		<h1 style="text-align: center; ">내 쿠폰함</h1>
+	<div class="board" >
+		<h1 >내 쿠폰함</h1>
+	</div>
 		<br>
 	<div class="container">
 				<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-xl-2">

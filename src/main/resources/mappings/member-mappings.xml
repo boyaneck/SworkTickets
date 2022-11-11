@@ -23,7 +23,7 @@
 		<if test="searchCondition == 'MB_NAME' "> AND MB_NAME LIKE CONCAT('%', #{searchKeyword},'%')</if>
 		<if test="searchCondition == 'MB_PHONE' "> AND MB_PHONE LIKE CONCAT('%', #{searchKeyword},'%')</if>
 		<if test="searchCondition == 'MB_EMAIL' "> AND MB_EMAIL LIKE CONCAT('%', #{searchKeyword},'%')</if>
-		ORDER BY MB_ID DESC
+		ORDER BY MB_NAME ASC
 		LIMIT 10 OFFSET #{offset}
 	</select>
 
@@ -35,6 +35,12 @@
 		<if test="searchCondition == 'MB_EMAIL' "> AND MB_EMAIL LIKE CONCAT('%', #{searchKeyword},'%')</if>
 	</select>
 
+<!-- 	회원 완전삭제 -->
+	<delete id="deleteMember2">
+      DELETE FROM MEMBER WHERE DATEDIFF(NOW(), MB_NDATE) > 30 AND MB_YN='N';
+   </delete>
+
+
 	<!-- 멤버수정 -->
 	 <update id="updateMember">
       UPDATE IGNORE MEMBER
@@ -45,7 +51,7 @@
    </update>
 	<!-- 멤버삭제 -->
 	<delete id="deleteMember">
-		UPDATE MEMBER SET MB_YN = 'N' WHERE MB_ID = #{mb_id}
+		UPDATE MEMBER SET MB_YN = 'N', MB_NDATE = NOW() WHERE MB_ID = #{mb_id}
 	</delete>
 
 	<!-- 마이페이지 회원조회 -->

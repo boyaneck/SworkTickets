@@ -52,7 +52,7 @@
 			<aside>
 				<div id="layoutSidenav" style="text-align: center;">
 					<div id="layoutSidenav_nav">
-						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 2000px;">
+						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 2300px;">
 							<div class="sb-sidenav-menu">
 								<div class="nav">
 									<div class="sb-sidenav-menu-heading"></div>
@@ -164,7 +164,7 @@
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<label for="exh_price" class="input-group-text">가격</label>
+					<label for="exh_price" class="input-group-text"><i class="fas fa-won-sign"></i></label>
 				</div>
 				<input type="number" min="0" max="1000000" step="1000" value="10000"
 					class="form-control innm" id="exh_price" name="exh_price">
@@ -188,10 +188,9 @@
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<label for="exh_location" class="input-group-text">위치</label>
+					<label for="exh_location" class="input-group-text"><i class="fas fa-location"></i></label>
 				</div>
-				<input type="text" class="form-control innm" id="exh_location"
-					name="exh_location" placeholder="주소검색 버튼으로 검색하세요."> 
+				<input type="text" class="form-control innm mr-3" id="exh_location" name="exh_location" placeholder="주소검색 버튼으로 검색하세요."> 
 					<input class="btn-purple" type="button" onclick="sample5_execDaumPostcode()" value="주소검색"><br>
 			</div>
 			
@@ -345,7 +344,7 @@
 			</div>
 
 			<div id="footer">
-				<button id="conComplete" type="submit" class="btn btn-primary">등록하기</button>
+				<button id="conComplete" type="submit" class="btn-purple">등록하기</button>
 <!-- 				<button id="conList" type="button" class="btn btn-primary">글목록</button> -->
 			</div>
 		</form>

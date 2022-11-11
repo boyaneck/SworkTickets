@@ -101,5 +101,6 @@
 			</div>
 			<!-- 		반복처리할 태그 끝 -->
 			</div>
+			<%@ include file="../../footer.jsp" %>
 </body>
 </html>

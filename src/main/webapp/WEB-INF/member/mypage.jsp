@@ -34,6 +34,7 @@ if (session.getAttribute("mb_Id") == null) {
           } else {
              if(document.form.mb_phone.value.length < document.form.mb_phone.minLength){
                 alert("번호를 형식에 맞게 입력하세요 제발");
+                return false;
              }
           }
       }
@@ -96,7 +97,14 @@ input-group mb-3{width: 70% !important;}
 }
 </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+<%    
+response.setHeader("Cache-Control","no-store");    
+response.setHeader("Pragma","no-cache");    
+response.setDateHeader("Expires",0);    
+if (request.getProtocol().equals("HTTP/1.1"))  
+        response.setHeader("Cache-Control", "no-cache");  
+%>
    <div class="container"
    style="width: 40%; padding: 30px;">
       <h2 style="text-align: center; font-weight: bolder; padding: 30px 0;">마이페이지</h2>
@@ -155,5 +163,6 @@ input-group mb-3{width: 70% !important;}
    </div>
       </form>
 </div>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>

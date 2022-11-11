@@ -52,7 +52,7 @@
 					console.log("writer!!!" +writer);
 					
 					comment_html +="<div id='a"+[i]+"' class='aa1'>";
-					comment_html += "<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
+					comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
 					comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ date+ "</div>";
 					comment_html +="</div>";
 					

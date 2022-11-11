@@ -6,24 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-   href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-   src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-   integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-   crossorigin="anonymous"></script>
-<script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
    crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+   crossorigin="anonymous"></script>
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
-    <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+   <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/board.css">
-
+<link rel="stylesheet" href="./css/ranking.css">
 <title>헤더입니다.</title>
 </head>
 
@@ -55,13 +49,13 @@
          <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
       </li>
       <li class="nav-item">
-        <a class="nav-link hambuger" href="/getExhibitionList" > 전시 </a>
+        <a class="nav-link hambuger" href="/getUserExhibitionList" > 전시 </a>
       </li>
       <li class="nav-item">
         <a class="nav-link hambuger" href="/ranking"> 랭킹 </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link hambuger" href="#"> 지역 </a>
+        <a class="nav-link hambuger" href="/local"> 지역 </a>
       </li>
       <li class="nav-item hambuger">
         <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
@@ -93,7 +87,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 지역 </a>
+            <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
@@ -146,7 +140,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 지역 </a>
+            <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
@@ -195,7 +189,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 지역 </a>
+            <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
@@ -244,7 +238,7 @@
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="#"> 지역 </a>
+            <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getCouponList"> 쿠폰 </a>
@@ -262,7 +256,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
       <!-- 검색 -->
@@ -282,18 +276,15 @@
    
 </nav>
 <script>
-function searchkey() {
-    if (window.event.keyCode == 13) {
+//input에 keyup 이벤트 등록
+$(document).ready(function(){
+$("#exSearchKeyword").keyup(function(){
+   var skey = $(this).val();
+      location.href="getUserExhibitionList";
+console.log(skey);
+});
+});
 
- // 엔터키가 눌렸을 때 실행하는 반응
-    var exs = document.getElementById("eSearchKeyword").value;
-    	console.log(exs);
-
-    location.href="getUserExhibitionList?eSearchKeyword="+exs;
-//     location.href="getUserExhibitionList?eSearchKeyword="+exs;
-    
-    }
-}
 /* $(document).ready(function(){
     $("#memberUpdate").click(function(){
         // 확인 대화상자    
