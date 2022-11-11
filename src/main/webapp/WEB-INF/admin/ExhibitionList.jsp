@@ -171,12 +171,14 @@ margin-right:4%;
 								<tr>
 									<th>번호</th>
 									<th>전시명</th>
-									<th>가격</th>
+<!-- 									<th>가격</th> -->
 									<th>시작일</th>
 									<th>종료일</th>
 									<th>장소</th>
-									<th>승인여부</th>
-									<th>전시종료여부</th>
+									<th>등록</th>
+									<th>수정</th>
+									<th>승인</th>
+									<th>종료</th>
 								</tr>
 							</thead>
 		    <%-- 			<td><a href="getExhibition?exh_no=${exhibition.exh_no}&page=${paging.nowPageBtn}">${exhibition.exh_title}</a></td> --%>
@@ -186,11 +188,13 @@ margin-right:4%;
 						style="cursor: pointer;">
 						<td class="tdCenter">${exhibition.exh_no}</td>
 						<td class="tdCenter">${exhibition.exh_title}</td>
-						<td class="tdCenter"><fmt:formatNumber
-								value="${exhibition.exh_price}" groupingUsed="true" />원</td>
+<%-- 						<td class="tdCenter"><fmt:formatNumber --%>
+<%-- 								value="${exhibition.exh_price}" groupingUsed="true" />원</td> --%>
 						<td class="tdCenter">${exhibition.exh_st_date}</td>
 						<td class="tdCenter">${exhibition.exh_end_date}</td>
 						<td class="tdCenter">${exhibition.exh_hall}</td>
+						<td class="tdCenter"><fmt:formatDate value="${exhibition.exh_rge_date}" pattern="yyyy-MM-dd HH:mm:ss" var="todate" />${todate}</td>
+						<td class="tdCenter"><fmt:formatDate value="${exhibition.exh_mdf_date}" pattern="yyyy-MM-dd HH:mm:ss" var="mdfdate"/>${mdfdate}</td>
 						<jsp:useBean id="now" class="java.util.Date" /> <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> 
 						<td class="tdCenter">
 						<c:choose>

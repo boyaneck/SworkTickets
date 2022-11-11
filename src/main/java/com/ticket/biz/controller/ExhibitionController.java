@@ -169,6 +169,12 @@ public class ExhibitionController {
 		model.addAttribute("page",page);
 		System.out.println("page 상세 : "+page);
 		model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
+		
+		System.out.println("상세 등록일자"+vo.getExh_rge_date());
+		System.out.println("상세 수정일자"+vo.getExh_mdf_date());
+		System.out.println("시작일자"+vo.getExh_st_date());
+		System.out.println("종료일자"+vo.getExh_end_date());
+		
 		return "admin/ExhibitionDetail";
 	}
 	
@@ -195,6 +201,8 @@ public class ExhibitionController {
 				model.addAttribute("paging", pvo);
 				model.addAttribute("exhibitionList", exhibitionService.getExhibitionList(vo));
 				
+				System.out.println("등록일자"+vo.getExh_rge_date());
+				System.out.println("수정일자"+vo.getExh_mdf_date());
 				System.out.println("컨트롤러 완료");
 				return "admin/ExhibitionList";
 	}

@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
-// if(session.getAttribute("userId") == null){
-// 	response.sendRedirect("login.jsp");	
-// }else{
-%>
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -175,7 +170,7 @@
 					<label for="exh_st_date" class="input-group-text">시작일</label>
 				</div>
 				<input type="date" class="form-control innm" id="exh_st_date"
-					name="exh_st_date">
+					name="exh_st_date" required oninput="ex_st_validate()">
 			</div>
 
 			<div class="input-group mb-3">
@@ -183,14 +178,14 @@
 					<label for="exh_end_date" class="input-group-text">종료일</label>
 				</div>
 				<input type="date" class="form-control innm" id="exh_end_date"
-					name="exh_end_date">
+					name="exh_end_date" required oninput="ex_end_validate()">
 			</div>
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_location" class="input-group-text"><i class="fas fa-location"></i></label>
 				</div>
-				<input type="text" class="form-control innm mr-3" id="exh_location" name="exh_location" placeholder="주소검색 버튼으로 검색하세요."> 
+				<input type="text" class="form-control innm mr-3" id="exh_location" name="exh_location" placeholder="주소검색 버튼으로 검색하세요." required> 
 					<input class="btn-purple" type="button" onclick="sample5_execDaumPostcode()" value="주소검색"><br>
 			</div>
 			
@@ -206,14 +201,14 @@
 					<label for="exh_hall" class="input-group-text">전시 장소</label>
 				</div>
 				<input type="text" class="form-control innm" id="exh_hall"
-					name="exh_hall" placeholder="상세주소를 입력해주세요.">
+					name="exh_hall" placeholder="상세주소를 입력해주세요." required>
 			</div>
 
-<!-- 			<input type="hidden" id="exh_place_x" name="exh_place_x"> -->
-<!-- 			<input type="hidden" id="exh_place_y" name="exh_place_y"> -->
-			<input type="text" id="exh_place_x" name="exh_place_x" placeholder="x좌표">
-			<input type="text" id="exh_place_y" name="exh_place_y" placeholder="y좌표">
-			<span> - 해당 내용은 히든처리할 예정입니다.</span>
+			<input type="hidden" id="exh_place_x" name="exh_place_x">
+			<input type="hidden" id="exh_place_y" name="exh_place_y">
+<!-- 			<input type="text" id="exh_place_x" name="exh_place_x" placeholder="x좌표"> -->
+<!-- 			<input type="text" id="exh_place_y" name="exh_place_y" placeholder="y좌표"> -->
+<!-- 			<span> - 해당 내용은 히든처리할 예정입니다.</span> -->
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -228,7 +223,7 @@
 					<label for="exh_thumbnail" class="input-group-text">썸네일</label>
 				</div>
 				<input type="file" class="form-control innm" id="exh_thumbnail"
-					name="uploadFile_thumb">
+					name="uploadFile_thumb" required>
 			</div>
 
 			<div class="input-group mb-3">
@@ -243,7 +238,7 @@
 				<div class="input-group-prepend">
 					<label for="exh_img" class="input-group-text">이미지</label>
 				</div>
-				<input type="file" multiple="multiple" class="form-control innm" id="exh_img" name="uploadFile">
+				<input type="file" multiple="multiple" class="form-control innm" id="exh_img" name="uploadFile" required>
 			</div>
 
 			<div class="input-group mb-3">
@@ -251,7 +246,7 @@
 					<label for="exh_planner" class="input-group-text">주최/기획</label>
 				</div>
 				<input type="text" class="form-control innm" id="exh_planner"
-					name="exh_planner">
+					name="exh_planner" required>
 			</div>
 
 			<div class="input-group mb-3">
@@ -259,7 +254,7 @@
 					<label for="exh_time" class="input-group-text">관람시간</label>
 				</div>
 				<input type="text" class="form-control innm" id="exh_time"
-					name="exh_time" value="오전 10시 ~ 오후 8시 (입장마감: 오후 7시)">
+					name="exh_time" value="오전 10시 ~ 오후 8시 (입장마감: 오후 7시)" required>
 			</div>
 
 			<div class="input-group mb-3">
@@ -287,13 +282,6 @@
 					<label for="exh_local_name" class="input-group-text">지역명</label>
 				</div>
 				<select id="exh_local_name" name="exh_local_name">
-<!-- 					<option value="1">서울</option> -->
-<!-- 					<option value="2">경기/인천</option> -->
-<!-- 					<option value="3">충청/강원</option> -->
-<!-- 					<option value="4">대구/경북</option> -->
-<!-- 					<option value="5">부산/경남</option> -->
-<!-- 					<option value="6">광주/전라</option> -->
-<!-- 					<option value="7">제주</option> -->
 					<option>서울</option>
 					<option>경기/인천</option>
 					<option>충청/강원</option>
@@ -309,34 +297,34 @@
 					<label for="exh_cs_phone" class="input-group-text">고객문의처</label>
 				</div>
 				<input type="text" class="form-control innm" id="exh_cs_phone"
-					name="exh_cs_phone" value="0505-16887-05361">
+					name="exh_cs_phone" value="0505-16887-05361" required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_fee" class="input-group-text">예매수수료</label>
 				</div>
 				<input type="text" class="form-control innm" id="exh_fee"
-					name="exh_fee" value="0">
+					name="exh_fee" value="0" required maxlength='5'  pattern="[0-9]+">
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_shipping_info" class="input-group-text">발권정보</label>
 				</div>
-				<input type="text" class="form-control innm" id="exh_shipping_info" name="exh_shipping_info" value="현장수령">
+				<input type="text" class="form-control innm" id="exh_shipping_info" name="exh_shipping_info" value="현장수령" required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_period_use" class="input-group-text">유효기간/이용조건</label>
 				</div>
 				<input type="text" class="form-control innm" id="exh_period_use"
-					name="exh_period_use" value="전시 기간내에 1일동안만 이용가능합니다.">
+					name="exh_period_use" value="전시 기간내에 1일동안만 이용가능합니다." required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_refund_info" class="input-group-text">취소/환불안내</label>
 				</div>
 				<textarea class="form-control" rows="10" id="exh_refund_info"
-					id="exh_refund_info" name="exh_refund_info">
+					id="exh_refund_info" name="exh_refund_info" required>
 취소수수료 없음
 마이페이지 -> 나의 결제내역에서 취소 가능합니다.
 문의사항은 고객문의처로 문의바랍니다.
@@ -420,6 +408,66 @@ console.log("${exhibition.exh_title}");
             }
         }).open();
     }
+
+    
+	var now_utc = Date.now() // 지금 날짜를 밀리초로
+	 console.log("현재 : ", now_utc);
+	var daftomo = now_utc + (1000*60*60*24*2);
+	var oneyearday = now_utc + (1000*60*60*24*365);
+	var daftomopone = now_utc + (1000*60*60*24*3);
+	var oneyeardayone = now_utc + (1000*60*60*24*366);
+	
+	// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
+	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+	 console.log("timeOff : ", timeOff);
+	// new Date(now_utc-timeOff).toISOString()은 '2022-11-11T13:09:38.134Z'를 반환
+	var today = new Date(daftomo-timeOff).toISOString().split("T")[0];
+	 console.log("today : ", today);
+	var oneyear = new Date(oneyearday-timeOff).toISOString().split("T")[0];
+	 console.log("oneyear : ", oneyear);
+	var todayone = new Date(daftomopone-timeOff).toISOString().split("T")[0];
+	 console.log("todayone : ", todayone);
+	var yearone = new Date(oneyeardayone-timeOff).toISOString().split("T")[0];
+	 console.log("yearone : ", yearone);
+
+	document.getElementById("exh_st_date").setAttribute("min", today);
+	document.getElementById("exh_st_date").setAttribute("max", oneyear);
+	document.getElementById("exh_end_date").setAttribute("min", todayone);
+	document.getElementById("exh_end_date").setAttribute("max", yearone);
+
+	//유효성 검사
+	function ex_st_validate() {
+		
+		console.log($("#exh_st_date").val());
+		if($("#exh_st_date").val() < today){
+		console.log("if:"+$("#exh_st_date").val());
+		alert(today+" 이후 날짜를 입력하세요.");
+		return false;
+	      }else{
+		if($("#exh_st_date").val() > oneyear){
+		console.log("if:"+$("#exh_st_date").val());
+		alert(oneyear+" 이전 날짜를 입력하세요.");
+		return false;
+	      }
+	     }
+	}
+	
+	function ex_end_validate() {
+		console.log($("#exh_end_date").val());
+		if($("#exh_end_date").val() < todayone){
+		console.log("if:"+$("#exh_end_date").val());
+		alert(todayone+" 이후 날짜를 입력하세요.");
+		return false;
+	      }else{
+		console.log($("#exh_end_date").val());
+		if($("#exh_end_date").val() > yearone){
+		console.log("if:"+$("#exh_end_date").val());
+		alert(yearone+" 이전 날짜를 입력하세요.");
+		return false;
+	      }
+	     }
+	}
+	
 </script>
 </body>
 </html>

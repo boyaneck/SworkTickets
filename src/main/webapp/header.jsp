@@ -256,7 +256,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
       <!-- 검색 -->
@@ -276,14 +276,18 @@
    
 </nav>
 <script>
-//input에 keyup 이벤트 등록
-$(document).ready(function(){
-$("#exSearchKeyword").keyup(function(){
-   var skey = $(this).val();
-      location.href="getUserExhibitionList";
-console.log(skey);
-});
-});
+function searchkey() {
+    if (window.event.keyCode == 13) {
+
+ // 엔터키가 눌렸을 때 실행하는 반응
+    var exs = document.getElementById("eSearchKeyword").value;
+    	console.log(exs);
+
+    location.href="getUserExhibitionList?eSearchKeyword="+exs;
+//     location.href="getUserExhibitionList?eSearchKeyword="+exs;
+    
+    }
+}
 
 /* $(document).ready(function(){
     $("#memberUpdate").click(function(){

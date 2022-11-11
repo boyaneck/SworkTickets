@@ -169,105 +169,6 @@ a.read_more:hover {
 	font-style: normal;
 }
 
-.body {
-	padding: 0;
-	margin: 0;
-	height: 600vh;
-	width: 100vw;
-	font-family: "Nunito", sans-serif;
-	background-color: #e34f37;
-	color: white;
-}
-
-h1 {
-	font-family: "longline";
-}
-
-.slider-section {
-	height: 22hv;
-	bottom: 0;
-	position: fixed;
-	width: 100%;
-}
-
-h1 {
-	font-size: 10vw;
-}
-
-.wheel {
-	position: absolute;
-	top: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 300vw;
-	height: 300vw;
-	max-width: 2000px;
-	max-height: 2000px;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.wheel__card {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 6%;
-	max-width: 200px;
-	aspect-ratio: 1 / 1;
-	cursor: pointer;
-}
-
-img {
-	width: 300%;
-	height: 400%;
-	pointer-events: none;
-	z-index: 999;
-	cursor: pointer;
-}
-
-.hi {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 60vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-}
-
-.hi img {
-	width: 100vw;
-	height: 100vw;
-	max-height: 500px;
-	max-width: 500px;
-}
-
-/* SCROLL DOWN */
-.scroll-down {
-	position: fixed;
-	bottom: 20px;
-	left: 50%;
-	transform: translate(-50%, 0);
-	color: white;
-	font-weight: 400;
-	text-transform: uppercase;
-	font-size: 14px;
-	overflow: visible;
-}
-
-.scroll-down .arrow {
-	position: relative;
-	top: 0px;
-	margin: 0 auto;
-	width: 15px;
-	height: 15px;
-	filter: invert(1);
-	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZmlsbD0iYmxhY2siIGQ9Ik00ODMuMiwxOTIuMmMtMjAuNS0yMC41LTUzLjUtMjAuOC03My43LTAuNkwyNTcsMzQ0LjFMMTA0LjUsMTkxLjZjLTIwLjItMjAuMi01My4yLTE5LjktNzMuNywwLjYKCWMtMjAuNSwyMC41LTIwLjgsNTMuNS0wLjYsNzMuN2wxOTAsMTkwYzEwLjEsMTAuMSwyMy40LDE1LjEsMzYuOCwxNWMxMy4zLDAuMSwyNi43LTQuOSwzNi44LTE1bDE5MC0xOTAKCUM1MDMuOSwyNDUuNyw1MDMuNywyMTIuNyw0ODMuMiwxOTIuMnoiLz4KPC9zdmc+);
-	background-size: contain;
-}
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -313,61 +214,33 @@ img {
 <div class="new_title">
 <h2><span style="color:#7832f7">NEW</span> EXHIBITION</h2>
 <h3 style="color:#fff">NEW EXHIBITION</h3>
-<!-- <section> -->
-<!-- <div class="body"> -->
-<!-- <!-- partial:index.partial.html --> -->
-<!-- <!-- <div class="hi"> --> -->
-<!-- <!-- 		<h1>Spinny Flipz</h1> --> -->
-<!-- <!-- </div> --> -->
-<!-- <div class="slider-section"> -->
-<!-- 	<div class="wheel"> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/아라의소설.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/이기적유전자.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/아라의소설.jpg.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/이기적유전자.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 		<div class="wheel__card"> -->
-<!-- 			<img src="/images/평면의역사.jpg" /> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
 
-<!-- <div class="scroll-down">Scroll down<div class="arrow"></div> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- </section class> -->
+<div class="stage">
+  
+  
+<div class="container">
+  <div class="ring">
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+  </div>
+</div>
+
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js'></script><script  src="./script.js"></script>
+
+
+</div>
+
 <div class="new_ex">
 <button type="button" class="newEx_btn" onclick = "location.href= '../getUserExhibitionList'" ><span style="color:#7832f7">+</span>more</button>
 </div>
