@@ -53,11 +53,15 @@ input::-webkit-inner-spin-button {
 }
 
 
+
 /* 최신전시 시작 */
 .new_title{
     text-align: center;
     position:relative;
 }
+
+
+
 .new_title > h2{
     font-size: 70px;
     margin:50px 0 30px 0px;
@@ -73,7 +77,17 @@ input::-webkit-inner-spin-button {
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
+@media (max-width: 768px){
+   .new_title > h2{
+    font-size: 50px;
+   }
+}
 
+@media (max-width: 768px){
+   .new_title > h3{
+    font-size: 50px;
+   }
+}
 
 /* 최신전시 끝 */
 
@@ -145,6 +159,15 @@ input::-webkit-inner-spin-button {
    border-radius:20px!important;
    border: 2px solid #7832f7!important;
 }
+
+
+@media (max-width: 768px){
+   .inner-addon.right-addon.main{
+   display:none;
+   }
+}
+
+
 .inner-addon {
    position: relative;
 }
@@ -192,7 +215,7 @@ a.dropdown-item.header-item-login:hover
 {
    background-color:#7832f7!important;
 }
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   a.dropdown-item.header-item-login{
   font-size:14px;
   }
@@ -211,9 +234,15 @@ a.nav-link.header-logout:hover
    background-color:#7832f7!important;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   a.nav-link.header-logout{
   font-size:14px;
+  }
+}
+
+@media (max-width: 576px) {
+  a.nav-link.header-logout.main{
+  display:none;
   }
 }
 
@@ -290,7 +319,7 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
    position:relative;
    display: inline-block;
    text-align: center;
-    height: 1000px;
+    height: 3000px;
     line-height: 100px;
 }
 
@@ -415,14 +444,30 @@ li.dropdown {
 /* 푸터 style */
 footer {
    width: 100%;
-   background: #23263b;
+   background: #fff;
    padding-left:1%;
-   margin-top:50px;
-   
 }
 
+.mt-auto{
+/*    margin-top:100px!important; */
+   border-top:1px solid #1f1f1f;
+}
+
+.container.footer{
+   max-width:100%;
+}
+
+div.footer_info{
+   text-align: center;
+}
+
+div.inner{
+   display: inline-block;
+   text-align: center;
+}
 
   .footer_row {
+  
       display: flex;
       justify-content: flex-start;
       padding-top: 60px;
@@ -446,13 +491,13 @@ footer {
    }
    .footer_row {
       letter-spacing:2px;
-      margin-left:1%;
+/*       margin-left:1%; */
       color: #808080;
    }
 
 
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
 .footer_row {
    flex-direction: column;
    margin-left:0%;
@@ -480,7 +525,7 @@ footer {
     font-size:18px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
 .footer-load{
    border:0;
    background-color:#23263b;
@@ -507,7 +552,53 @@ footer {
   margin-bottom: 10px;
 }
 
+
+
+@media (max-width: 768px) {
+div.rectangle{
+   margin:20px 0 20px 0;
+}
+}
+
+@media (max-width: 768px) {
+.rectangle {
+  width: 300px;
+  height: 170px;
+}
+}
+
+.col.title{
+   padding-left:40px;
+   padding-right:0px;
+}
+
+@media (max-width: 768px) {
+.col.title{
+   padding-left:70px;
+}
+}
+
+
+
 /* 결제 모달창 쿠폰 버튼 */
+.btn-black{
+   border:1px solid #000; 
+   width:280px; 
+   height:50px; 
+   background-color: #000; 
+   color: #fff; 
+   font-size: 18px;
+    font-weight: bold;
+}
+.btn-black:hover{
+   border:1px solid #000; 
+   width:280px; 
+   height:50px; 
+   background-color: #7329f7; 
+   color: #fff; 
+   font-size: 18px;
+    font-weight: bold;
+}
 .btn-purple{
    border:1px solid #7329f7; 
    width:100px; 
@@ -520,6 +611,26 @@ footer {
 .btn-purple:hover{
    border:1px solid #7329f7; 
    width:100px; 
+   height:37px; 
+   background-color: #7329f7; 
+   color: #fff; 
+   font-size: 18px;
+   font-weight: bold;
+}
+
+/* 비밀번호 확인버튼 */
+.btn-purple-pw{
+   border:1px solid #7329f7; 
+/*    width:100px;  */
+   height:37px; 
+   background-color: #fff; 
+   color: #7329f7; 
+   font-size: 18px;
+    font-weight: bold;
+}
+.btn-purple-pw:hover{
+   border:1px solid #7329f7; 
+/*    width:100px;  */
    height:37px; 
    background-color: #7329f7; 
    color: #fff; 
@@ -559,17 +670,24 @@ footer {
 } 
   .btn-coupon3{
    margin:8px;
-   border:1px solid #fff;
+   border:none;
    width:100px; 
    height:37px; 
    background-color: transparent; 
    color: #fff; 
    font-size: 18px;
-
+   transform: translate(0, 85%);
 } 
 
+
+@media (max-width: 768px) {
+  .btn-coupon3{
+   transform: translate(0, 60%);
+} 
+}
+
 /* 예매율 애니메이션 */
-.circular-progress {
+.circular-progress3,.circular-progress2,.circular-progress1{
   position: relative;
   height: 90px;
   width: 90px;
@@ -577,7 +695,7 @@ footer {
   display: grid;
   place-items: center;
 }
-.circular-progress:before {
+.circular-progress3:before,.circular-progress2:before,.circular-progress1:before{
   content: "";
   position: absolute;
   height: 80%;
@@ -585,7 +703,7 @@ footer {
   background-color: #ffffff;
   border-radius: 50%;
 }
-.value-container {
+.value-container3,.value-container2,.value-container1{
   position: relative;
   /* font-family: "Poppins", sans-serif; */
   font-weight: bold;
@@ -593,4 +711,18 @@ footer {
   color: #231c3d;
 }
 
+
+
+/* 카운팅 효과 */
+span.num {
+  color: #000000;
+/*   display: grid; */
+  place-items: center;
+/*   font-weight: 550; */
+  font-size: 1.3em;
+}
+.bi-suit-heart-fill {
+   font-size: 1.3rem; 
+   color: #f90b57;"
+}
 

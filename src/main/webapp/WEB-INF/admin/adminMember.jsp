@@ -104,7 +104,7 @@ function numberMaxLength(e){
 			<aside>
 				<div id="layoutSidenav" style="text-align: center;">
 					<div id="layoutSidenav_nav">
-						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 1200px;">
+						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 2150px;">
 							<div class="sb-sidenav-menu">
 								<div class="nav">
 									<div class="sb-sidenav-menu-heading"></div>
@@ -143,8 +143,8 @@ function numberMaxLength(e){
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="#">전시등록</a> <a class="nav-link "
-												href="/getExhibitionList">전시목록</a>
+											<a class="nav-link" href="/insertmoveExhibition">전시등록</a>
+											<a class="nav-link" href="/getExhibitionList">전시목록</a>
 										</nav>
 									</div>
 
@@ -163,8 +163,8 @@ function numberMaxLength(e){
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a> <a
-												class="nav-link" href="/getCouponList">쿠폰목록</a>
+											<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a>
+											<a class="nav-link" href="/admin/CouponList">쿠폰목록</a>
 										</nav>
 									</div>
 

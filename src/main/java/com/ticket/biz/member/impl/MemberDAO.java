@@ -54,6 +54,11 @@ public class MemberDAO {
 		return mybatis.selectOne("MemberDAO.login", vo);
 	}
 
+	// 탈퇴회원 완전삭제
+	public void deleteMember2() {
+		mybatis.delete("MemberDAO.deleteMember2");
+	}
+	
 	// 회원목록 조회
 	public List<MemberVO> getMemberList(MemberVO vo) {
 		return mybatis.selectList("MemberDAO.getMemberList", vo);
