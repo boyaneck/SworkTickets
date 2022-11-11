@@ -138,8 +138,8 @@
 			</aside>
 			<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
-					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">쿠폰등록</h2>
+					<div class="container border-bottom border-dark">
+						<h2 style="font-weight: bold;">쿠폰등록</h2>
 					</div>
 					<div id="layoutAuthentication">
 						<div id="layoutAuthentication_content">

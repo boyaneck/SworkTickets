@@ -72,7 +72,7 @@ public class MemberController {
 //			System.out.println("aaaa");
 
 	// 회원마이페이지
-	@RequestMapping(value = "/mypage", method= RequestMethod.POST)
+	@RequestMapping(value = "/mypage")
 	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response) {
 //		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));

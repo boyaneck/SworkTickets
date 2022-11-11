@@ -83,9 +83,7 @@ function numberMaxLength(e){
 	<div>
 		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 			<!-- Navbar Brand-->
-			<a class="navbar-brand logoimg" href="../index.jsp"
-				style="text-align: center;"> <img style="width: 140px;"
-				src="../images/logo.png">&nbsp&nbsp
+			<a class="navbar-brand logoimg" href="../index.jsp" style="text-align: center;"> <img style="width: 140px;" src="../images/logo.png">&nbsp&nbsp
 			</a>
 			<!-- Sidebar Toggle-->
 			<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
@@ -104,7 +102,7 @@ function numberMaxLength(e){
 			<aside>
 				<div id="layoutSidenav" style="text-align: center;">
 					<div id="layoutSidenav_nav">
-						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 2150px;">
+						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 1050px;">
 							<div class="sb-sidenav-menu">
 								<div class="nav">
 									<div class="sb-sidenav-menu-heading"></div>
@@ -199,8 +197,8 @@ function numberMaxLength(e){
 			</aside>
 <div id="container_box">
 	<div class="wrap" style="padding: 40px;">
-		<div class="container">
-			<h2 style="text-align: center; font-weight: bold;">회원등록</h2>
+		<div class="container border-bottom border-dark">
+			<h2 style="font-weight: bold;">회원등록</h2>
 		</div>
 <!-- 		<div class="res_tbl_wrap"> -->
 <!-- 			<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark"> -->
@@ -217,49 +215,46 @@ function numberMaxLength(e){
 <!-- 		</div> -->
 		<div class="container">
 			<div class="form-body">
-				<div class="row">
+				<div class="row" style="text-align: -webkit-center;">
 					<div class="form-holder">
 						<div class="form-content">
 							<div class="form-items">
-							<h3>회원가입</h3>
-							<p>정보입력</p>
 							<!--                      <form class="requires-validation" action="insertMember" name="insertMember" method="post"> -->
-							<form action="/admin/insertMember" name="insertMember" method="post"
-								onSubmit="return validate()">
-								<div class="col-md-12">
-									<input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="아이디" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
+							<form action="/admin/insertMember" name="insertMember" method="post" onSubmit="return validate()">
+								<div class="col-md-3 mt-3">
+									<input type="text" class="form-control form-control-sm" name="mb_id" id="mb_id" placeholder="아이디" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
 									<!-- <button type="button" id="idChk" name="idChk" onclick='chkBtn()'>중복확인</button> -->
-									<span class="id_notice">아이디는 영문과 숫자로만 입력해주세요.</span>
+<!-- 									<span class="id_notice">아이디는 영문과 숫자로만 입력해주세요.</span> -->
 									<div class="valid-feedback">유효한아이디입니다.</div>
 									<div class="invalid-feedback">공백없이 입력해주세요</div>
 
 								</div>
-								<div class="col-md-12">
-									<input type="password" class="form-control" name="mb_pw" placeholder="패스워드" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+								<div class="col-md-3 mt-3">
+									<input type="password" class="form-control form-control-sm" name="mb_pw" placeholder="패스워드" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
 										required>
 									<div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
 									<div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
 								</div>
-								<div class="col-md-12">
-									<input type="text" class="form-control" name="mb_name" placeholder="이름" maxlength="5" minlength="2" required>
+								<div class="col-md-3 mt-3">
+									<input type="text" class="form-control form-control-sm" name="mb_name" placeholder="이름" maxlength="5" minlength="2" required>
 									<!--                            <div class="valid-feedback">사용할 수 있는 패스워드입니다.</div>
                            <div class="invalid-feedback">패스워드가 적합히 입력해주세요</div>
  -->
 								</div>
-								<div class="col-md-12">
+								<div class="col-md-3 mt-3">
 									<tr class="mobileNo">
-										<th><label for="phone">휴대폰 번호</label></th>
+<!-- 										<th><label for="phone">휴대폰 번호</label></th> -->
 										<td>
 											<p>
-												<input id="mb_phone" type="number" name="mb_phone" title="전화번호 입력" maxlength="11" minlength="10"
+												<input class="form-control form-control-sm" id="mb_phone" type="text" name="mb_phone" title="전화번호 입력" placeholder="전화번호 입력" maxlength="11" minlength="10"
 													oninput="numberMaxLength(this);" required />
 											</p>
 										</td>
 									</tr>
 								</div>
-								<div class="col-md-12">
-									<div id="menu-text">E-mail 인증</div>
-									<input id="mb_email" class="text_box" type="email"
+								<div class="col-md-3 mt-3">
+<!-- 									<div id="menu-text">E-mail 인증</div> -->
+									<input class="form-control form-control-sm" id="mb_email" class="text_box" type="email"
 										name="mb_email" placeholder="이메일 입력" maxlength="50"	autofocus>
 									<!--                            <button type="button" id="sendMail" -->
 									<!--                               class="btn btn-primary btn-sm">발송하기</button> -->
@@ -272,8 +267,8 @@ function numberMaxLength(e){
 									<!--                            </div> -->
 								</div>
 
-								<div class="mx-auto" id="footer">
-									<button id="conRegister" type="submit" class="btn btn-dark">회원가입</button>
+								<div class="mx-auto mt-3" id="footer">
+									<button id="conRegister" type="submit" class="btn-purple">회원등록</button>
 								</div>
 							</form>
 						</div>

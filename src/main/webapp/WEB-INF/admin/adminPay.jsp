@@ -236,8 +236,8 @@ $("#all_module").click(function() {
 			</aside>
 			<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
-					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">회원결제</h2>
+					<div class="container border-bottom border-dark">
+						<h2 style="font-weight: bold;">회원결제</h2>
 					</div>
 					<div class="res_tbl_wrap">
 						<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">

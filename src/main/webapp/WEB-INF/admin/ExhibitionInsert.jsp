@@ -149,8 +149,8 @@
 			</aside>
 			<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
-					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">전시등록</h2>
+					<div class="container border-bottom border-dark mb-3">
+						<h2 style="font-weight: bold;">전시등록</h2>
 					</div>
 	<div class="container-fluid">
 		<form action="insertExhibition" method="post" enctype="multipart/form-data">
