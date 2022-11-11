@@ -29,6 +29,7 @@ public class ReviewServiceImpl implements ReviewService{
 		System.out.println("getReviewList service Impl기능 처리 " +vo.getReview_bno());
 	return reviewDAO.getReviewList(vo);
 	
+	
 	}
 
 	@Override

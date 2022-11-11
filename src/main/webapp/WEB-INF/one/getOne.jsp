@@ -105,6 +105,30 @@ color: #fff;
 background-color: #777; 
 cursor: pointer; 
 } 
+
+textarea {
+			
+			width: 100%;
+			height: 200px;
+			padding: 10px;
+			box-sizing: border-box;
+			border: solid 2px #1E90FF;
+			border-radius: 5px;
+			font-size: 16px;
+			resize: both;
+		}
+ .one_answer {
+	margin-top:30px;
+ 
+}
+
+ a:hover{
+ color:white !important;
+ text-decoration:none;
+}
+.btn-success:hover{
+    background-color: #7832f7 !important;
+    color:white !important;
 </style>
 
 <body>
@@ -140,7 +164,7 @@ cursor: pointer;
 				<div class="input-group-prepend">
 					<span class="input-group-text">내용</span>
 				</div>
-				<textarea class="form-control innm" rows="10" id="one_comment"
+				<textarea class="form-control innm" rows="10" cols="10" id="one_comment"
 					name="one_content" <%=sts%>>${one.one_content}</textarea>
 			</div>
 			<div class="input-group mb-3">
@@ -164,7 +188,8 @@ cursor: pointer;
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text">등록일</span><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+					<span class="input-group-text">등록일</span>
+					<span class="input-group-text"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today} </span>
 				</div>
 				<%--       <input type="text" class="form-control innm" name="regDate" value="${one.regdate}" readonly <%=sts %>>       --%>
 			</div>
@@ -174,42 +199,46 @@ cursor: pointer;
 					
 
 			
-			
-			<div id="footer">
-				<button type="submit" <%=sts%>>글수정</button>
-				<a href="write.jsp" <%=sts%>>글쓰기</a> 
-				<a href="getOneList">글목록</a>
+			<div id="btnBox_parent">
+            <button class="btn btn-success col-lg-6 col-sm-12" type="submit" <%=sts%>>글수정</button>
+            <button class="btn btn-success "  <%=sts%>><a href="write.jsp" style="color: #7832f7"> 글쓰기</a></button>
+            <button class="btn btn-success" <%=sts%>><a href="getOneList" style="color: #7832f7"  > 글목록</a></button>
+            <button class="btn btn-success" div class="btn btn-delete" onclick="deleteone(${one.one_no})" style="cursor: pointer">글삭제</button>
+            
 			</div>
+		
 			</form>
 			
 			<!-- 					1:1문의 답변 -->
 					<div style="display:none" class="answer"> 
 					<form action="/oneAnswer">
 					<div><input type='hidden' name='one_no' value='${one.one_no}'></div>
-					<div><textarea name='one_answer' class="one_answer" cols="70" rows="4">${one.one_answer}</textarea></div>
-					<button class='answer_update'>답변하기</button>
+					<div class="regBtn"><textarea name='one_answer' class="one_answer" cols="70" rows="4">${one.one_answer}</textarea></div>
+					<div class="regBtn" style="text-align:center; margin: 20px;">
+					<button class="btn btn-success"  style="cursor: pointer">답변하기</button>
+				
+					</div>
 					</form>
 					</div>
-			
-			<button id="oneanswer" onclick="answer(${one.one_no})">답변달기(관리자만 접근 가능)</button>
-	
+				<div class="regBtn" style="text-align:right; margin: 20px;">
+			<button class="btn btn-success"  id="oneanswer" onclick="answer(${one.one_no})">답변달기</button>
+		</div>
 			
 			<!-- 		답변한것 보여주기 -->
 			
 			<div class="didanswer">
-			관리자의 답변:
-			<div style="border:4px solid skyblue; border-radius:4px;">${one.one_answer}</div>
+								
+			<div class="regBtn" style="text-align:center; margin: 20px;">답변 </div>		
+			<div style="text-align:center; margin:30px; padding:20px; border:2px solid #cdb3fc; border-radius:4px;">${one.one_answer}</div>
 					</div>
 	
 
 
 
-
+		<div id="btnBox_parent">
 		<form action="deleteOne">
 			<input type="hidden" name="one_no" value="${one.one_no}">
 		</form>
-		<div onclick="deleteone(${one.one_no},${one.one_writer})" style="cursor: pointer">글삭제</div>
-	</div>
 		
 
 		<!-- 클릭시 보이는 이미지 start -->

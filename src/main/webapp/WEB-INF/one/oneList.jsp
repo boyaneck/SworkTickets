@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <%@ include file="../../header.jsp" %> --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<<<<<<< HEAD
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -26,6 +27,33 @@
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 </head>
+=======
+<link rel="stylesheet"
+   href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.table tr:hover{
+ background-color:#e8dbfe!important;
+
+}
+.aa{
+color:
+}
+.write{
+border-radius:4px;
+border: 1px solid #1f1f1f;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    color: #f4f4f4;
+    font-size: 18px;
+    color: black;
+}
+
+
+</style>
+>>>>>>> origin/jin
 <script>
 
    function getone(val){
@@ -169,16 +197,9 @@
 						<div class="res_tbl_wrap">
    <nav id="searchNav" class="navbar navbar-expand-sm sub_title" style="border-bottom: none;">
       <form class="form-inline" action="getOneList" method="post">
-         <select class="form-control content" id="sel1" name="searchCondition"
-            style="display: inline-block !important; margin-right: 10px;">
-            <c:forEach items="${conditionMap}" var="option">
-               <option value="${option.value}">${option.key}</option>
-            </c:forEach>
-            <%--       <option value="${conditionMap['제목']}">${conditionMap['제목']}</option> --%>
-            <%--       <option value="${conditionMap['내용']}">${conditionMap['내용']}</option> --%>
-         </select> <input class="form-control mr-sm-2 input" type="text" name="searchKeyword"
+          <input class="form-control mr-sm-2" type="text" name="searchKeyword"
             placeholder="검색어를 입력하세요.">
-         <button class="btn btn-success" type="submit">검색</button>
+         <button class="btn btn-success" type="submit" style="border-radius:4px">검색</button>
       </form>
    </nav>
    <div class="container-fluid">
@@ -199,16 +220,19 @@
                <c:choose>
                <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}">
                
-               <tr onclick="getone(${one.one_no})" style="cursor: pointer;">
+               <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                 <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter">${one.one_no}</td>
-                <td class="tdCenter">${one.one_title }(비밀글 아이콘)</td>
+                <td class="tdCenter">${one.one_title }<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
                 <td class="tdCenter">${one.one_writer }</td>
                 <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      
                      </c:when>
                      <c:otherwise>
-                        <tr><td class="tdCenter"></td>
-                           <td class="tdCenter">비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td>
+                     
+                        <tr><td class="tdCenter" >${one.one_no}</td>
+                           <td class="tdCenter aa">비밀게시글은 작성자와 관리자만 볼 수 있습니다.<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
+                           <td class="tdCenter">${one.one_writer }</td>
+                           <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                         </tr>
                      </c:otherwise>
                   </c:choose>
@@ -217,7 +241,7 @@
 
                <c:if test="${one.one_secret eq 'false'}">
 
-                  <tr onclick="getone(${one.one_no})" style="cursor: pointer;">
+                  <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                      <td class="tdCenter">${one.one_no}</td>
                      <td class="tdCenter">${one.one_title}</td>
                      <td class="tdCenter">${one.one_writer}</td>
@@ -230,7 +254,7 @@
          </tbody>
       </table>
       
-            <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</button>
+            <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer" ">글쓰기</button>
       <br>
       <br>
       <div id="btnBox_parent">
@@ -246,7 +270,7 @@
                   <a class="aSel">${i}</a>
                </c:when>
                <c:otherwise>
-                  <a style="font-weight:400; color:#7832f7;" href="getOneList?nowPageBtn=${i}">${i}</a>
+                  <a href="getOneList?nowPageBtn=${i}"><Strong>${i}</Strong></a>
                </c:otherwise>
             </c:choose>
          </c:forEach>
@@ -255,7 +279,11 @@
          </c:if>
          <!-- 반복처리할 태그 끝 -->
       </div>
-      </div>
+      <br>
+      <br>
+
+           
+   </div>
       <br>
       <br>
 
