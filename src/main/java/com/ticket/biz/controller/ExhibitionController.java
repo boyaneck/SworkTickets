@@ -216,7 +216,7 @@ public class ExhibitionController {
 	
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")
-		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
+		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model, HttpSession session) {
 			//총 목록 수
 			
 					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
@@ -233,7 +233,7 @@ public class ExhibitionController {
 					
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
-					System.out.println("검색어-"+vo.getExSearchKeyword());
+					System.out.println("검색어-"+vo.getESearchKeyword());
 					
 					return "exhibition/getUserExhibitionList";
 		}
