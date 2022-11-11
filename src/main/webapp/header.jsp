@@ -44,6 +44,15 @@
       <li class="nav-item">
         <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span>
       </li>
+      <li class="nav-item dropdown hambuger">
+               <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
+               <div class="dropdown-menu header-menu" aria-labelledby="member">
+               <a class="dropdown-item header-item" id="memberUpdate" href="mypageView">&nbsp회원수정</a>
+               <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
+               <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
+               <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
+               </div>
+      </li>
       <li class="nav-item">
          <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
       </li>
@@ -71,13 +80,14 @@
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
         </div>
       </li>
-         <a class="nav-link header-logout hamburger" href="/logoutGO">로그아웃</a>
+         <a class="dropdown-item header-item-login main" href="login.jsp">&nbsp로그인</a>
     </ul>
   </div>
 <!--   햄버거 끝 -->
   
    <c:choose>
       <c:when test='${mb_Id eq "admin"}'>
+      
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getExhibitionList" > 전시 </a>

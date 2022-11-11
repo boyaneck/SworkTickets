@@ -81,7 +81,7 @@ if(i==1){
    <div class="container rank">
       <table class="table table-hover">
          <thead class="btn-primary">
-            <tr>
+            <tr class="rank_title">
                <th>랭킹</th>
                <th></th>
                <th>전시명</th>

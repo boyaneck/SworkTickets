@@ -37,7 +37,7 @@
 
  
 @media (max-width: 768px) {
-  .table thead th {
+  .rank_title {
   display:none;
 }
 }
@@ -84,10 +84,5 @@
 }
 }
 
-@media (max-width: 768px) {
-      .btn-primary{
-   display:none;
-}
-}
 
 

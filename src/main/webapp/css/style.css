@@ -670,7 +670,7 @@ div.rectangle{
 } 
   .btn-coupon3{
    margin:8px;
-   border:none;
+   border: 1px solid white;
    width:100px; 
    height:37px; 
    background-color: transparent; 
@@ -725,7 +725,3 @@ span.num {
    font-size: 1.3rem; 
    color: #f90b57;"
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/member

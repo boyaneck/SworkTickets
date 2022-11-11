@@ -535,11 +535,11 @@ img {
 		<%@ include file="footer.jsp"%>
 		<!-- footer end -->
 		<!-- Script -->
-		<script src="js/circular-progress.js"></script>
+<!-- 		<script src="js/circular-progress.js"></script> -->
 		<script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
 		<script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
 		<script src='https://unpkg.com/gsap@3/dist/MotionPathPlugin.min.js'></script>
 		<script src='https://assets.codepen.io/16327/Flip.min.js'></script>
-		<script src="js/semicircle-script.js"></script>
+<!-- 		<script src="js/semicircle-script.js"></script> -->
 </body>
 </html>
