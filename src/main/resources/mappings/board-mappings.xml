@@ -13,11 +13,27 @@
 	</select>
 	
 	<select id="getBoardList" resultType="board">
+		<if test="searchKeyword ==null">
 		SELECT * FROM NOTICE WHERE 1=1 
-<!-- 		<if test="searchCondition == 'TITLE' "> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if> -->
-<!-- 		<if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE  CONCAT('%',#{searchKeyword},'%')</if> -->
-		ORDER BY NOTI_NO DESC
+		 ORDER BY NOTI_NO DESC
 		LIMIT 10 OFFSET #{offset}
+		</if>
+		<if test="searchKeyword !=null">
+		SELECT * FROM NOTICE WHERE 1=1 
+		AND
+	     REPLACE(UPPER(NOTI_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		 OR REPLACE
+         (UPPER(NOTI_WRITER),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+         
+         ORDER BY NOTI_NO DESC
+		LIMIT 10 OFFSET #{offset}
+         
+		</if>
+	    
 	</select>
 	
 	<select id="getBoard" resultType="board">  
@@ -45,5 +61,7 @@
 <delete id="deleteBoard">
 	DELETE FROM NOTICE WHERE NOTI_NO=#{noti_no}
 </delete>
+
+
 
 </mapper>

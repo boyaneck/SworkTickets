@@ -1,3 +1,4 @@
+
 package com.ticket.biz.controller;
 
 import java.util.HashMap;
@@ -24,13 +25,13 @@ public class OneController {
 	@Autowired
 	private OneService oneService;
 	//검색
-//	@ModelAttribute("conditionMap")
-//	public Map<String, String> searchConditionMap() {
-//		Map<String, String> conditionMap = new HashMap<>();
-//		conditionMap.put("내용", "CONTENT");
-//		conditionMap.put("제목", "TITLE");
-//		return conditionMap;
-//	}
+	@ModelAttribute("conditionMap")
+	public Map<String, String> searchConditionMap() {
+		Map<String, String> conditionMap = new HashMap<>();
+		conditionMap.put("내용", "CONTENT");
+		conditionMap.put("제목", "TITLE");
+		return conditionMap;
+	}
 
 	// 이동 컨트롤러
 	@RequestMapping("/goWrite")
@@ -115,7 +116,7 @@ public class OneController {
 		System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 
 		//한페이지당 보여줄 목록 수
-		int onePageCnt = 10;
+		int onePageCnt = 5;
 
 		//한 번에 보여질 버튼 수
 		int oneBtnCnt = 5;

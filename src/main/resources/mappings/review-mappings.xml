@@ -19,13 +19,16 @@
 	</delete>
 
 	<select id="totalReviewListCnt" resultType="_int">
-		SELECT COUNT(*) FROM REVIEW WHERE REVIEW_BNO = #{review_bno}
+		SELECT COUNT(*) FROM REVIEW WHERE REVIEW_BNO = #{review_bno} 
+		
 	</select>
 
 	<select id="getReviewList" resultType="review">
 		SELECT * FROM REVIEW 
 		WHERE
 		REVIEW_BNO=#{review_bno}
+		ORDER BY REVIEW_NO DESC
+		LIMIT 5 OFFSET #{offset}
 	</select>
 
 <update id="updateReview">
@@ -33,21 +36,19 @@
 	SET 
 	REVIEW_CONTENT=#{review_content}
 	WHERE REVIEW_NO =#{review_no}
-	<!-- 글번호 조건걸기 -->
 
-	
 </update>
 
 
-<!-- 	<select id="getList" resultType="review"> -->
-<!-- 	SELECT * FROM REVIEW WHERE REVIEW_TYPE = #{review_type} -->
-<!-- 	</select> -->
+	<select id="getList" resultType="review">
+	SELECT * FROM REVIEW WHERE REVIEW_TYPE = #{review_type}
+	</select>
 
-	<!-- <select id="myRecord" resultType="review"> -->
-	<!-- SELECT * FROM REVIEW -->
-	<!-- WHERE -->
-	<!-- REVIEW_WRITER = #{writer} -->
-	<!-- </select> -->
+	<select id="myRecord" resultType="review">
+	SELECT * FROM REVIEW
+	WHERE
+	REVIEW_WRITER = #{writer}
+	</select>
 
 
 </mapper>

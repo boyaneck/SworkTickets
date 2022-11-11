@@ -25,6 +25,8 @@ import com.ticket.biz.exhibition.ExhibitionService;
 import com.ticket.biz.exhibition.ExhibitionVO;
 import com.ticket.biz.good.GoodService;
 import com.ticket.biz.good.GoodVO;
+import com.ticket.biz.review.ReviewService;
+import com.ticket.biz.review.ReviewVO;
 
 @Controller
 @SessionAttributes("exhibition")
@@ -196,13 +198,49 @@ public class ExhibitionController {
 				System.out.println("컨트롤러 완료");
 				return "admin/ExhibitionList";
 	}
-	
+	@Autowired
+	ReviewService reviewService;
 	@Autowired
 	GoodService goodService;
 	// 유저 전시 상세 조회
 		@RequestMapping("/getUserExhibition")
-		public String getUserExhibition(ExhibitionVO vo, Model model,HttpSession session,GoodVO gvo) {
-	
+		public String getUserExhibition(ExhibitionVO vo, Model model,HttpSession session,GoodVO gvo,ReviewVO rvo,String nowPageBtn,HttpServletRequest request) {
+			int exh_no=Integer.parseInt(request.getParameter("exh_no")); 
+			rvo.setReview_bno(exh_no);
+//			System.out.println("전시회번호1!!!!!"+rvo.exh_no);
+			int total = reviewService.getTotal(rvo);
+			int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+			System.out.println("totalPageCnt: "+total +", nowPage: "+nowPage);
+
+			//한페이지당 보여줄 목록 수
+			int onePageCnt = 5;
+
+			//한 번에 보여질 버튼 수
+			int oneBtnCnt = 5;
+			
+			
+			System.out.println("페이징처리전 ");
+			PagingVO pvo = new PagingVO(total, onePageCnt, nowPage, oneBtnCnt);
+			vo.setOffset(pvo.getOffset());
+
+			System.out.println("nowpage 찍혀라"+pvo.getNowPageBtn());
+			System.out.println("마지막 버튼!!!!"+pvo.getEndBtn());
+			List<ReviewVO> list = reviewService.getReviewList(rvo);
+			
+			ModelAndView view = new ModelAndView();
+			
+			System.out.println("오프셋출력!!!!!"+vo.getOffset());
+			Map<String, Object> map = new HashMap<>();
+			model.addAttribute("reviewList",list);
+			model.addAttribute("paging", pvo);
+			map.put("list", list);
+			map.put("total", total);
+			
+			view.setViewName("reviewwrite");
+			System.out.println(rvo.getReview_bno());
+			System.out.println("review list 가져오는 controller 다 탔음");
+			
+			
 		
 			String id=(String)session.getAttribute("mb_Id");
 			
@@ -218,7 +256,7 @@ public class ExhibitionController {
 	
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")
-		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model) {
+		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model, HttpSession session) {
 			//총 목록 수
 			
 					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
@@ -235,13 +273,14 @@ public class ExhibitionController {
 					
 					model.addAttribute("paging", pvo);
 					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
-					System.out.println("검색어-"+vo.getExSearchKeyword());
+					System.out.println("검색어-"+vo.getESearchKeyword());
 					
 					return "exhibition/getUserExhibitionList";
 		}
 		// 유저 전시 목록 조회
 				@RequestMapping("/local")
 				public String getLocalList(ExhibitionVO vo, String nowPageBtn, Model model,HttpServletRequest request) {
+					System.out.println("전시컨트롤러");
 					//총 목록 수
 					 String[] loc = {"서울", "경기/인천", "충청/강원","대구/경북","부산/경남","광주/전라","제주"}; 
 				   		String a="서울";	
