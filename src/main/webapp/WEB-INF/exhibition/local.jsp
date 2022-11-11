@@ -28,18 +28,19 @@ $( function() {
 		        success : function(data) {
 // 		        	debugger;
 		           console.log(data);
-		           if (data == "error") {
+		           if (data == null) {
 		        	   
 		              alert("시스템에 문제가 발생했습니다")
 
 		           } else {
 		        	   var UserExhibitionList = data.UserExhibitionList;
+		        	   var error = data.error;
 		        	   console.log(UserExhibitionList);
 		        
 		        	   const element = document.getElementById('tab-r');
 // 		        	   element.innerHTML = "<div style='color:red'>a</div>";
 		        		var comment_html = "";
-		        	   
+		        	   if(error!=1){
 		        		$.each(UserExhibitionList, function(i, v){
 		        			var exh_no  =  UserExhibitionList[i].exh_no;
 							var exh_thumbnail  =  UserExhibitionList[i].exh_thumbnail;
@@ -66,13 +67,12 @@ $( function() {
 				            comment_html  +=    "  <span style='text-align: right;'><i class = 'xi-heart good' style='color:red;'></i> ";
 				            comment_html  +=    "<b style='color: black; text-align: center;'>"+rank_cnt+"</b></span></p>";
 				            comment_html  +=     "</div>   </div>  </a>  </div>";
-							      
-				         
-				         
-							
+	
 							element.innerHTML=comment_html;
 							});
-		        	   
+		        	   }else{
+		        		   element.innerHTML="해당 지역의 전시가 없습니다.";
+		        	   }
 		        	   
 		           }
 		        }
@@ -82,7 +82,7 @@ $( function() {
 
 </script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
       <div id="tabs">
          <ul>
