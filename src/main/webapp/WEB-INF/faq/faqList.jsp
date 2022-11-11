@@ -192,7 +192,7 @@ function f_write(val){
 			<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
 					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">FAQ 등록</h2>
+						<h2 style="text-align: center; font-weight: bold;">FAQ</h2>
 					</div>
 <!--    <div class="board"> -->
 <!--       <h1>FAQ</h1> -->

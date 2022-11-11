@@ -242,6 +242,7 @@ public class ExhibitionController {
 		// 유저 전시 목록 조회
 				@RequestMapping("/local")
 				public String getLocalList(ExhibitionVO vo, String nowPageBtn, Model model,HttpServletRequest request) {
+					System.out.println("전시컨트롤러");
 					//총 목록 수
 					 String[] loc = {"서울", "경기/인천", "충청/강원","대구/경북","부산/경남","광주/전라","제주"}; 
 				   		String a="서울";	
