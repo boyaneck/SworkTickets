@@ -8,51 +8,114 @@
 <title>로그인</title>
 <%@ include file="header.jsp"%>
 <style>
-.login-kakao {
-	border: 0;
-	background-color: transparent;
+.a_oth {
+	text-decoration: none;
+	color: #000;
+	font-size: 14px;
+}
+
+.a_oth:hover {
+	text-decoration: none;
+	color: #000;
+	font-size: 14px;
+}
+
+.logo {
+	margin: 20px;
+}
+
+.btn-login {
+	background-color: #7329f7;
+	width: 100%;
+	border: none;
+	color: white;
+	padding: 5px;
+	height: 40px;
 }
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-	<div class="jumbotron">
-		<h1>로그인</h1>
-	</div>
-	<div class="container" align="center">
-		<div class="col-md-4 col-md-offset-4">
 
-			<%
-			if (request.getParameter("error") != null) {
-				out.println("<div class='alert alert-danger'>");
-				out.println("아이디와 비밀번호를 확인해 주세요");
-				out.println("</div>");
-			}
-			%>
-			<form class="form-signin" action="logincheck" method="post">
-				<div class="form-group">
-					<label for="inputUserName" class="sr-only">User Name</label>
-					<!-- 					name속성(파라미터) 있어야 데이터 전송됨  -->
-					<input type="text" class="form-control" placeholder="ID" name="mb_id"  autofocus>
+	<div class="container" style="margin-top: 50px;">
+		<div class="row justify-content-center">
+		
+			  <div class="col-xl-10 col-lg-12 col-md-9">
+			  
+				<div class="card o-hidden border-0 shadow-lg my-5">
+						<div class="card-body p-0">
+								  <div class="row ">
+					    <div class="col-lg-5 d-none d-lg-block bg">
+					      <img src="/images/고구마.png" class="img-fluid rounded-start" alt="...">
+					    </div>
+						<div class="col-lg-7">
+							<div class="p-5">
+								<div class="text-center">
+									<h1 class="h4 text-gray-900 md-4">로그인</h1>
+								</div>
+								<%
+								if (request.getParameter("error") != null) {
+									out.println("<div class='alert alert-danger'>");
+									out.println("아이디와 비밀번호를 확인해 주세요");
+									out.println("</div>");
+								}
+								%>
+								<form class="form-signin" action="logincheck" method="post">
+									<div class="form-group">
+										<label for="inputUserName" class="sr-only">User Name</label>
+										<!-- 					name속성(파라미터) 있어야 데이터 전송됨  -->
+										<input type="text" class="form-control" placeholder="아이디"
+											name="mb_id" autofocus>
+									</div>
+									<div class="form-group">
+										<label for="inputPassword" class="sr-only">Password</label> <input
+											type="password" class="form-control" placeholder="비밀번호"
+											name="mb_pw">
+									</div>
+
+									<div class="form-group">
+										<button class="btn-login btn-block" type="submit">로그인</button>
+									</div>
+
+
+								</form>
+
+								<div class="row text-center otherBox">
+									<div class="col-sm-4">
+										<a class="a_oth" href="/step1">회원가입 </a>
+									</div>
+									<div class="col-sm-4">
+										<a class="a_oth" href="/findIdform">아이디찾기</a>
+									</div>
+									<div class="col-sm-4">
+										<a class="a_oth" href="/findPwform">비밀번호찾기</a>
+									</div>
+								</div>
+
+								<div class="row text-center otherBox">
+									<div class="col">
+										<a href="/getAuthUrl"> <img class="logo"
+											src="images/KakaoTalk_login.png" style="height: 30px">
+										</a> <a href="/getNaverAuthUrl"> <img class="logo"
+											src="images/Naver_login.png" style="height: 30px">
+										</a>
+									</div>
+
+
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="inputPassword" class="sr-only">Password</label> 
-					<input type="password" class="form-control" placeholder="Password" name="mb_pw" >
-				</div>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
-				<!-- <a class="dropdown-item header-item" href="insertMember.jsp">&nbsp회원가입</a> -->
-			
-			<a href="/step1">회원가입 </a>
-				
-				<a href="/getAuthUrl">
-					<img src="images/kakao_login_medium_narrow.png" style="height: 30px" />
-				</a>
-				<a href="/getNaverAuthUrl"><img src="images/naver.png" style="height: 30px" />
-				</a><br>
-				<a href="/findIdform">아이디찾기</a>
-				<a href="/findPwform">비밀번호찾기</a>
-			</form>
+			</div>
+
 		</div>
+
 	</div>
+
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
