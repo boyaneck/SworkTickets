@@ -293,7 +293,7 @@ public class ExhibitionController {
 						int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
 						System.out.println("totaluserPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 						//한페이지당 보여줄 목록 수
-						int onePageCnt = 16;
+						int onePageCnt = totalPageCnt;
 						//한 번에 보여질 버튼 수
 						int oneBtnCnt = 5;
 
@@ -321,13 +321,13 @@ public class ExhibitionController {
 					int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
 					System.out.println("totaluserPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 					//한페이지당 보여줄 목록 수
-					int onePageCnt = 16;
+					int onePageCnt = totalPageCnt;
 					//한 번에 보여질 버튼 수
-					int oneBtnCnt = 5;
+//					int oneBtnCnt = 5;
 
-					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
-					vo.setOffset(pvo.getOffset());
-					model.addAttribute("paging", pvo);
+//					PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+//					vo.setOffset(pvo.getOffset());
+//					model.addAttribute("paging", pvo);
 					
 					ModelAndView view = new ModelAndView();
 					Map<String, Object> map = new HashMap<>();
@@ -335,9 +335,13 @@ public class ExhibitionController {
 //					model.addAttribute("UserExhibitionList", exhibitionService.getUserExhibitionList(vo));
 //					model.addAttribute("loc",loc);
 //					model.addAttribute("paging", pvo);
+					if(totalPageCnt>0) {
 					map.put("UserExhibitionList",exhibitionService.getUserExhibitionList(vo));
-					map.put("paging", pvo);
-					map.put("loc", loc);
+					}else {
+						map.put("error","1");
+					}
+//					map.put("paging", pvo);
+//					map.put("loc", loc);
 					view.setViewName("local");
 					return (HashMap<String, Object>) map;
 		}
