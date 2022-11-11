@@ -58,49 +58,42 @@
 	</c:forEach>
 		</div>
 </div>
-	
-		<br> <br>
-			<!-- 		반복처리할 태그 시작 -->
-			<div class="container ">
+	<!-- 		반복처리할 태그 시작 -->
+			<div id="btnBox_parent">
+				<div id="btnBox">
+								<!-- 		맨처음 -->
+								<c:if test="${paging.nowPageBtn > 1 }">
+									<a href="getUserExhibitionList?nowPageBtn=1">&laquo;</a>
+								</c:if>
+								<c:if test="${paging.nowPageBtn > 1 }">
+									<a  href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+								</c:if>
 
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-center">
-						<!-- 		맨처음 -->
-						<li class="page-item "><a class="page-link" href="getUserExhibitionList?nowPageBtn=1">&laquo;</a></li>
-
-						<c:if test="${paging.nowPageBtn > 1 }">
-							<li class="page-item "><a class="page-link" href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
-						</c:if>
-	
-						<!-- 반복처리 태그				 -->
-						<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-							step="1" var="i">
-							<c:choose>
-								<c:when test="${paging.nowPageBtn==i}">
-									<li class="page-item active"><a class="page-link"
-										href="getUserExhibitionList?nowPageBtn=${i}">${i}</a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item "><a class="page-link"
-										href="getUserExhibitionList?nowPageBtn=${i}">${i}</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<!-- 		반복 끝 -->
-						<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-							<li class="page-item "><a class="page-link"
-								href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
-						</c:if>
-						<!-- 		맨끝 -->
-						<li class="page-item"><a class="page-link"
-							href="getUserExhibitionList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
-
-					</ul>
-				</nav>
-
-			</div>
+								<!-- 반복처리 태그 -->
+								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
+									<c:choose>
+										<c:when test="${paging.nowPageBtn==i}">
+											<a style="font-weight:400; color:#7832f7;" href="getUserExhibitionList?nowPageBtn=${i}">${i}</a>
+										</c:when>
+										<c:otherwise>
+											<a  href="getUserExhibitionList?nowPageBtn=${i}">${i}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- 		반복 끝 -->
+								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+									<a href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+								</c:if>
+								<!-- 		맨끝 -->
+								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+									<a href="getUserExhibitionList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+								</c:if>
+					</div>
+					</div>
+					
 			<!-- 		반복처리할 태그 끝 -->
-			</div>
+		<br> <br>
+		
 			<%@ include file="../../footer.jsp" %>
 </body>
 </html>

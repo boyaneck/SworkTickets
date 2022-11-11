@@ -98,7 +98,7 @@ if(i==1){
                varStatus="status">
                   <tr onclick="location.href='getUserExhibition?exh_no=${payRankList.exh_no}'" style="cursor: pointer;">
                   <td class="tdCenter rank" >${status.count}</td>
-                  <td class="tdCenter" ><img src="/images/2-1.jpg"
+                  <td class="tdCenter" ><img src="/images/${payRankList.exh_thumbnail}"
                      <%--                   '${payRankList.exh_thumbnail}' --%>
                   alt="이미지"
                      style="width: 100px; height: 150px;"></td>
@@ -119,8 +119,8 @@ if(i==1){
                <tr onclick="location.href='getUserExhibition?exh_no=${getGoodList.exh_no}'" style="cursor: pointer;">
                   <td class="tdCenter rank">${status.count}</td>
                   <div></div>
-                     <td class="tdCenter"><img src="/images/2-1.jpg"
-                     <%--                   '${payRankList.exh_thumbnail}' --%>
+                     <td class="tdCenter"><img src="/images/${getGoodList.exh_thumbnail}"
+                     <%--                   '${getGoodList.exh_thumbnail}' --%>
                   alt="이미지"
                      style="width: 100px; height: 150px;"></td>
                   <td class="tdCenter">
