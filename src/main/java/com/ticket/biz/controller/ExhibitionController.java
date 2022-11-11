@@ -298,7 +298,7 @@ public class ExhibitionController {
 //					model.addAttribute("paging", pvo);
 					map.put("UserExhibitionList",exhibitionService.getUserExhibitionList(vo));
 					map.put("paging", pvo);
-					map.put("loc", loc);
+//					map.put("loc", loc);
 					view.setViewName("local");
 					return (HashMap<String, Object>) map;
 		}
