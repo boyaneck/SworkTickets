@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -73,11 +74,11 @@ public class MemberController {
 
 	// 회원마이페이지
 	@RequestMapping(value = "/mypage")
-	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response) {
+	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
+		
 //		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
 //		System.out.println(memberService.getMember(vo));
-		System.out.println("패스워드"+vo.getMb_pw());
 		if (memberService.getMember(vo) != null) {
 			if (session.getAttribute("mb_Id").equals("admin")) {
 				System.out.println("어드민");
@@ -113,6 +114,7 @@ public class MemberController {
 	}
 
 	// 회원 수정
+	// 회원 수정
 	@RequestMapping("/updateMember")
 	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
@@ -146,8 +148,6 @@ public class MemberController {
 		} else {
 			return "redirect:member/mypage?error=1";
 		}
-			
-		
 
 	}
 
