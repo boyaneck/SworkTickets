@@ -313,61 +313,61 @@ img {
 <div class="new_title">
 <h2><span style="color:#7832f7">NEW</span> EXHIBITION</h2>
 <h3 style="color:#fff">NEW EXHIBITION</h3>
-<section>
-<div class="body">
-<!-- partial:index.partial.html -->
-<div class="hi">
-	<!-- 	<h1>Spinny Flipz</h1> -->
-</div>
-<div class="slider-section">
-	<div class="wheel">
-		<div class="wheel__card">
-			<img src="/images/아라의소설.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/이기적유전자.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/아라의소설.jpg.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/이기적유전자.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-		<div class="wheel__card">
-			<img src="/images/평면의역사.jpg" />
-		</div>
-	</div>
-</div>
+<!-- <section> -->
+<!-- <div class="body"> -->
+<!-- <!-- partial:index.partial.html --> -->
+<!-- <!-- <div class="hi"> --> -->
+<!-- <!-- 		<h1>Spinny Flipz</h1> --> -->
+<!-- <!-- </div> --> -->
+<!-- <div class="slider-section"> -->
+<!-- 	<div class="wheel"> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/아라의소설.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/이기적유전자.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/아라의소설.jpg.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/이기적유전자.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 		<div class="wheel__card"> -->
+<!-- 			<img src="/images/평면의역사.jpg" /> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
 
-<div class="scroll-down">Scroll down<div class="arrow"></div>
-</div>
-</div>
-</div>
-</section class>
+<!-- <div class="scroll-down">Scroll down<div class="arrow"></div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </section class> -->
 <div class="new_ex">
 <button type="button" class="newEx_btn" onclick = "location.href= '../getUserExhibitionList'" ><span style="color:#7832f7">+</span>more</button>
 </div>
