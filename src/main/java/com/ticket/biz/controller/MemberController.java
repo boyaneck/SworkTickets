@@ -77,6 +77,7 @@ public class MemberController {
 //		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
 //		System.out.println(memberService.getMember(vo));
+		System.out.println("패스워드"+vo.getMb_pw());
 		if (memberService.getMember(vo) != null) {
 			if (session.getAttribute("mb_Id").equals("admin")) {
 				System.out.println("어드민");
