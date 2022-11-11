@@ -156,10 +156,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</aside>
 			<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
-					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">회원목록</h2>
+					<div class="container border-bottom border-dark">
+						<h2 style="font-weight: bold;">회원목록</h2>
 					</div>
-					<br> <br> <br>
 					<div class="res_tbl_wrap">
 						<nav id="searchNav" class="navbar navbar-expand-sm"
 							style="border-bottom: none;">
@@ -174,7 +173,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								</select> <input class="form-control mr-sm-2" type="text"
 									name="searchKeyword" placeholder="검색어를 입력하세요.">
 								<button class="btn-purple" type="submit" style="margin-right: 10px;">검색</button>
-								<button type="button" class="btn-purple" onclick="location.href='/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</button>
+								<button type="button" class="btn-purple" onclick="location.href='/admin/member';">회원등록</button>
 								<br>
 							</form>
 						</nav>
@@ -183,7 +182,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<table class="table">
 							<thead>
 								<tr class="text-center">
-									<th>번호</th>
+									<th hidden="true">번호</th>
 									<th>아이디</th>
 									<th>이름</th>
 									<th>주소</th>
@@ -197,7 +196,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<c:forEach items="${memberList}" var="member">
 									<tr onclick="location.href='mypage?mb_id=${member.mb_id}'"
 										style="cursor: pointer;" class="text-center">
-										<td scope="row" data-label="번호">${member.mb_no}</td>
+										<td hidden="true" scope="row" data-label="번호">${member.mb_no}</td>
 										<td data-label="아이디">${member.mb_id}</td>
 										<td data-label="이름">${member.mb_name}</td>
 										<td data-label="주소">${member.mb_address}</td>
@@ -211,47 +210,41 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						</table>
 						<br> <br>
 					</form>
-					<div class="container text-center">
-						<nav aria-label="Page navigation example">
-							<ul class="pagination justify-content-center">
+					<!-- 		반복처리할 태그 시작 -->
+					<div class="container">
+			<div id="btnBox_parent">
+				<div id="btnBox" style="text-align: center;">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<li class="page-item "><a class="page-link"
-										href="getMemberList?nowPageBtn=1">&laquo;</a></li>
+									<a href="getMemberList?nowPageBtn=1">&laquo;</a>
 								</c:if>
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<li class="page-item "><a class="page-link"
-										href="getMemberList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
+									<a  href="getMemberList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
 								</c:if>
 
 								<!-- 반복처리 태그 -->
-								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-									step="1" var="i">
+								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
 									<c:choose>
 										<c:when test="${paging.nowPageBtn==i}">
-											<li class="page-item active"><a class="page-link"
-												href="getMemberList?nowPageBtn=${i}">${i}</a></li>
+											<a style="font-weight:400; color:#7832f7;" href="getMemberList?nowPageBtn=${i}">${i}</a>
 										</c:when>
 										<c:otherwise>
-											<li class="page-item "><a class="page-link"
-												href="getMemberList?nowPageBtn=${i}">${i}</a></li>
+											<a  href="getMemberList?nowPageBtn=${i}">${i}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<!-- 		반복 끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<li class="page-item "><a class="page-link"
-										href="getMemberList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
+									<a href="getMemberList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
 								</c:if>
 								<!-- 		맨끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<li class="page-item"><a class="page-link"
-										href="getMemberList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
+									<a href="getMemberList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
 								</c:if>
-							</ul>
-						</nav>
-
 					</div>
+					</div>
+					</div>
+			<!-- 		반복처리할 태그 끝 -->
 					<br> <br>
 					<div id="footer"></div>
 				</div>

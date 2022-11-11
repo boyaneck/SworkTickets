@@ -11,7 +11,7 @@
 	<delete id="deleteGood">
 		DELETE FROM GOOD
 		WHERE EXH_NO= #{exh_no}
-		AND MB_ID=#{mb_id};
+		AND MB_ID=#{mb_id}
 
 	</delete>
 	<select id="getGoodChk" resultType="good">
@@ -19,7 +19,7 @@
 		from GOOD
 		WHERE 1=1
 		AND EXH_NO= #{exh_no}
-		AND MB_ID=#{mb_id};
+		AND MB_ID=#{mb_id}
 
 	</select>
 	
@@ -28,7 +28,7 @@
 		from GOOD
 		WHERE 1=1
 		AND EXH_NO= #{exh_no}
-		AND MB_ID=#{mb_id};
+		AND MB_ID=#{mb_id}
 	</select>
 	
 <!-- 좋아요 랭킹 -->
@@ -39,7 +39,7 @@
 		GROUP BY e.exh_no
 		ORDER BY
 		rank_cnt DESC
-		LIMIT 10;
+		LIMIT 10
 	</select>
 
 	<!-- 내 좋아요 목록 -->
@@ -49,8 +49,8 @@
 		on e.exh_no= g.exh_no
 		WHERE 1=1
 		AND mb_id= #{mb_id}
-<!-- 		LIMIT 10 -->
-<!-- 		 OFFSET #{offset}; -->
+		LIMIT 10
+		OFFSET #{offset}
 	</select>
 
 	<!-- 내 좋아요 목록수 -->
@@ -59,6 +59,6 @@
 		LEFT outer JOIN good AS g
 		on e.exh_no= g.exh_no
 		WHERE 1=1
-		AND mb_id= #{mb_id};
+		AND mb_id= #{mb_id}
 	</select>
 </mapper>

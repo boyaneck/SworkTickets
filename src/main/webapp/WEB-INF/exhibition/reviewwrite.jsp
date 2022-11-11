@@ -29,19 +29,17 @@ textarea {
 <script>
 	$(document).ready(function(){
 	
-	const review_bno1=2;
+	const review_bno1=${exhno2};
 	var objparams={review_bno:review_bno1};
 		
 	console.log("안됨");
-				
        	$.ajax({
 		  	 	type:'post',
 		   		url:"/reviewList",
 		   		data:objparams,
-		
 				success:function(data) {
 				console.log(data);
-			 if(data.total > 0){
+				 if(data.total > 0){
 				console.log("get list 실행 중");
 				
 				var list = data.list;

@@ -70,8 +70,9 @@ public class ReviewController {
 	public String updateReview(ReviewVO vo, HttpSession session) {
 		System.out.println("updateReview 컨트롤러 타기");
 		
+		System.out.println("글번호 !!!!!!"+vo.getReview_no());
 		reviewservice.updateReview(vo);
-		
+		System.out.println("전시글번호출력!!! 댓글 수정에서 "+vo.getReview_bno());
 	
 			return "exhibition/UserExhibitionDetail";
 		
@@ -116,7 +117,7 @@ public class ReviewController {
 		
 		view.setViewName("reviewwrite");
 		System.out.println(vo.getReview_bno());
-		System.out.println("review list 가져오는 controller 다 탔음");
+		System.out.println("review list 가져오는 controller 다 탔음!!!!!!");
 		
 		
 		return map;

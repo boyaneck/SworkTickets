@@ -45,7 +45,10 @@
 	 <update id="updateMember">
       UPDATE IGNORE MEMBER
       SET
-      MB_NAME=#{mb_name}, MB_PW = #{mb_pw}
+      MB_NAME=#{mb_name} 
+      <if test="mb_pw!=null">
+      ,MB_PW = #{mb_pw}
+      </if>
       WHERE
       MB_ID = #{mb_id}
    </update>

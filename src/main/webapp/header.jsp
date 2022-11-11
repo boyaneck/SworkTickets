@@ -4,15 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-   integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-   crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+   crossorigin="anonymous"></script>
+
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
    <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/style.css">
@@ -43,13 +42,27 @@
       </div>
     
       <li class="nav-item">
+      <c:if test='${mb_Id ne NULL}'>
         <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span>
+      </c:if>
+      </li>
+      <li class="nav-item dropdown hambuger">
+      <c:if test='${mb_Id ne NULL}'>
+        <a class="nav-link hambuger" data-toggle="dropdown" role="button" 
+        style="font-size:20px; font-weight:600; color:#1f1f1f;"> 마이페이지 </a>
+        <div class="dropdown-menu header-menu" aria-labelledby="member">
+           <a class="dropdown-item header-item" id="memberUpdate" href="mypageView">&nbsp회원수정</a>
+           <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
+             <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
+             <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
+        </div>
+       </c:if>
       </li>
       <li class="nav-item">
-         <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
+         <a class="nav-link mypage hambuger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
       </li>
-      <li class="nav-item">
-        <a class="nav-link hambuger" href="/getUserExhibitionList" > 전시 </a>
+      <li class="nav-item" style="margin-top:0px;">
+        <a class="nav-link hambuger" href="/getUserExhibitionList" style="padding-top:0px;" > 전시 </a>
       </li>
       <li class="nav-item">
         <a class="nav-link hambuger" href="/ranking"> 랭킹 </a>
@@ -58,7 +71,7 @@
         <a class="nav-link hambuger" href=/local> 지역 </a>
       </li>
       <li class="nav-item hambuger">
-        <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
+        <a class="nav-link hambuger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
          <div class="dropdown-menu header-menu" aria-labelledby="coupon">
             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
             <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
@@ -72,16 +85,24 @@
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
         </div>
       </li>
-         <a class="nav-link header-logout hamburger" href="/logoutGO">로그아웃</a>
+         
     </ul>
+    <c:if test='${mb_Id eq NULL}'>
+    <a class="dropdown-item header-item-login hamburger" href="login.jsp" >&nbsp로그인</a>
+    </c:if>
+    
+    <c:if test='${mb_Id ne NULL}'>
+    <a class="nav-link header-logout hamburger" href="/logoutGO" style="margin:10px 268px 0 20px;">로그아웃</a>
+    </c:if>
   </div>
 <!--   햄버거 끝 -->
   
    <c:choose>
       <c:when test='${mb_Id eq "admin"}'>
+      
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="/getExhibitionList" > 전시 </a>
+            <a class="nav-link header" href="/getExhibitionList"> 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/ranking"> 랭킹 </a>

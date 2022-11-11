@@ -236,8 +236,8 @@ $("#all_module").click(function() {
 			</aside>
 			<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
-					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">회원결제</h2>
+					<div class="container border-bottom border-dark">
+						<h2 style="font-weight: bold;">회원결제</h2>
 					</div>
 					<div class="res_tbl_wrap">
 						<nav id="searchNav" class="navbar navbar-expand-sm navbar-dark">
@@ -306,39 +306,41 @@ $("#all_module").click(function() {
 					</c:forEach>
 					</tbody>
 				</table>
-					<div class="container ">
-						<nav aria-label="Page navigation example">
-							<ul class="pagination justify-content-center">
+					<!-- 		반복처리할 태그 시작 -->
+					<div class="container">
+			<div id="btnBox_parent">
+				<div id="btnBox"  style="text-align:center;">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<li class="page-item "><a class="page-link" href="getAllPayList?nowPageBtn=1">&laquo;</a></li>
+									<a href="getAllPayList?nowPageBtn=1">&laquo;</a>
 								</c:if>
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<li class="page-item "><a class="page-link" href="getAllPayList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
+									<a  href="getAllPayList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
 								</c:if>
 
 								<!-- 반복처리 태그 -->
 								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
 									<c:choose>
 										<c:when test="${paging.nowPageBtn==i}">
-											<li class="page-item active"><a class="page-link" href="getAllPayList?nowPageBtn=${i}">${i}</a></li>
+											<a style="font-weight:400; color:#7832f7;" href="getAllPayList?nowPageBtn=${i}">${i}</a>
 										</c:when>
 										<c:otherwise>
-											<li class="page-item "><a class="page-link" href="getAllPayList?nowPageBtn=${i}">${i}</a></li>
+											<a  href="getAllPayList?nowPageBtn=${i}">${i}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<!-- 		반복 끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<li class="page-item "><a class="page-link" href="getAllPayList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
+									<a href="getAllPayList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
 								</c:if>
 								<!-- 		맨끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<li class="page-item"><a class="page-link" href="getAllPayList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
+									<a href="getAllPayList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
 								</c:if>
-							</ul>
-						</nav>
 					</div>
+					</div>
+					</div>
+			<!-- 		반복처리할 태그 끝 -->
 					<div id="footer"></div>
 				</div>
 			</div>

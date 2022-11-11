@@ -7,100 +7,98 @@
 <head>
 <meta charset="UTF-8">
 <title>전시 목록</title>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 <!-- header -->
 <%@ include file="/header.jsp"%>
 <!-- header end -->
 <style>
+h1{font-size: 30px;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #1f1f1f;}
 </style>
 
 <body>
-	<div class="jumbotron">
-		<h1>좋아요 전시 목록</h1>
+<div class="container">
+	<div class="container" style="text-align:center;">
+		<h1 style="text-align: center;">내 좋아요 목록</h1>
 	</div>
 
-	<div class="container-fluid">
-		<table class="table table-hover">
-			<thead class="btn-primary">
-				<tr>
-					<th>번호</th>
-					<th>전시명</th>
-					<th>가격</th>
-					<th>전시일자</th>
-					<th>장소</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${getMyGoodList}" var="getMyGoodList">
-					<tr onclick="selTr(${getMyGoodList.exh_no})" style="cursor: pointer;">
-						<td class="tdCenter">${getMyGoodList.exh_no}</td>
-						<td><a href="getMyGoodList?exh_no=${getMyGoodList.exh_no}&page=${paging.nowPageBtn}">
-						${getMyGoodList.exh_title}
-						</a></td>
-						<td class="tdCenter"><fmt:formatNumber value="${getMyGoodList.exh_price}" groupingUsed="true" />원</td>
-						<td class="tdCenter">${getMyGoodList.exh_st_date}~
-							${getMyGoodList.exh_end_date}</td>
-						<td class="tdCenter">${getMyGoodList.exh_hall}</td>
-						<td class="tdCenter"> 
-						<c:choose>
-						<c:when test="">
-						<button id="good_pick" type="button" onclick="location.href='/good_pick?exh_no=${getMyGoodList.exh_no}'">♥</button>
-						 </c:when>
-						 <c:otherwise>
-						<button id="good_pick" type="button" onclick="location.href='/good_pick?exh_no=${getMyGoodList.exh_no}'">♡</button>
-						</c:otherwise>
-						</c:choose>
-						
-						</td>
-						 
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<br> <br>
+		 <div class="container rank">
+      <table class="table table-hover">
+         <thead class="btn-primary">
+            <tr>
+<!--                <th>번호</th> -->
+               <th><i class = "xi-heart good" style="color:red; margin-bottom: 0px; font-size: 25px;"></i></th>
+               <th>전시명</th>
+               <th>가격</th>
+               <th>전시일자</th>
+               <th>장소</th>
+
+            </tr>
+         </thead>
+
+         <tbody>
+
+            <c:forEach items="${getMyGoodList}" var="getMyGoodList">
+                  <tr onclick="location.href='getUserExhibition?exh_no=${getMyGoodList.exh_no}'" style="cursor: pointer;">
+<%--                   <td class="tdCenter" >${getMyGoodList.exh_no}</td> --%>
+                  <td class="tdCenter" ><img src="/images/${getMyGoodList.exh_thumbnail}" alt="이미지"
+                     style="width: 100px; height: 150px;"></td>
+                  <td class="tdCenter" >${getMyGoodList.exh_title}</td>
+                  <td class="tdCenter price" ><fmt:formatNumber
+                        value="${getMyGoodList.exh_price}" groupingUsed="true" />원</td>
+                  <td class="tdCenter date" >${getMyGoodList.exh_st_date}~
+                     ${getMyGoodList.exh_end_date}</td>
+                  <td class="tdCenter exh_hall" >${getMyGoodList.exh_hall}</td>
+               </tr>
+            </c:forEach>
+         </tbody>
+
+         
+      </table>
+		
+		
 			<!-- 		반복처리할 태그 시작 -->
-			<div class="container ">
+			<div id="btnBox_parent">
+				<div id="btnBox">
+								<!-- 		맨처음 -->
+								<c:if test="${paging.nowPageBtn > 1 }">
+									<a href="getMyGoodList?nowPageBtn=1">&laquo;</a>
+								</c:if>
+								<c:if test="${paging.nowPageBtn > 1 }">
+									<a  href="getMyGoodList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+								</c:if>
 
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-center">
-						<!-- 		맨처음 -->
-						<c:if test="${paging.nowPageBtn > 1 }">
-						<li class="page-item "><a class="page-link"
-							href="getMyGoodList?nowPageBtn=1">&laquo;</a></li>
-						</c:if>
-						<c:if test="${paging.nowPageBtn > 1 }">
-							<li class="page-item "><a class="page-link"
-								href="getMyGoodList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a></li>
-						</c:if>
-
-						<!-- 반복처리 태그				 -->
-						<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-							step="1" var="i">
-							<c:choose>
-								<c:when test="${paging.nowPageBtn==i}">
-									<li class="page-item active"><a class="page-link"
-										href="getMyGoodList?nowPageBtn=${i}">${i}</a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item "><a class="page-link"
-										href="getMyGoodList?nowPageBtn=${i}">${i}</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<!-- 		반복 끝 -->
-						<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-							<li class="page-item "><a class="page-link"
-								href="getMyGoodList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a></li>
-						</c:if>
-						<!-- 		맨끝 -->
-						<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-						<li class="page-item"><a class="page-link"
-							href="getMyGoodList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a></li>
-						</c:if>
-					</ul>
-				</nav>
-
-			</div>
+								<!-- 반복처리 태그 -->
+								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
+									<c:choose>
+										<c:when test="${paging.nowPageBtn==i}">
+											<a style="font-weight:400; color:#7832f7;" href="getMyGoodList?nowPageBtn=${i}">${i}</a>
+										</c:when>
+										<c:otherwise>
+											<a  href="getMyGoodList?nowPageBtn=${i}">${i}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- 		반복 끝 -->
+								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+									<a href="getMyGoodList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+								</c:if>
+								<!-- 		맨끝 -->
+								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+									<a href="getMyGoodList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+								</c:if>
+					</div>
+					</div>
+					
 			<!-- 		반복처리할 태그 끝 -->
+			</div>
 			</div>
 </body>
 </html>

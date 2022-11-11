@@ -136,6 +136,20 @@ input::-webkit-inner-spin-button {
    }
 }
 
+@media (min-width: 576px){
+   a.dropdown-item.header-item-login.hamburger{
+      display:none;
+   }
+}
+
+@media (min-width: 576px){
+   a.nav-link.header-logout.hamburger{
+      display:none;
+   }
+}
+
+
+ 
 
 
 
@@ -161,7 +175,7 @@ input::-webkit-inner-spin-button {
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 576px){
    .inner-addon.right-addon.main{
    display:none;
    }
@@ -215,9 +229,9 @@ a.dropdown-item.header-item-login:hover
 {
    background-color:#7832f7!important;
 }
-@media (max-width: 768px) {
-  a.dropdown-item.header-item-login{
-  font-size:14px;
+@media (max-width: 576px) {
+  a.dropdown-item.header-item-login.main{
+  display: none;
   }
 }
 
@@ -401,6 +415,11 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
 
 /* 드롭다운 */
 
+.dropdown-item.header-item-login{
+   width: 95px;
+   margin:0 0 0 20px;
+}
+
 .dropdown-item.header-item{
    font-weight:300;
 }
@@ -439,7 +458,7 @@ nav.navbar {
 /* } */
 
 li.dropdown {
-  margin: 0 40px;
+  margin: 0 20px;
 }
 /* 푸터 style */
 footer {
@@ -670,7 +689,7 @@ div.rectangle{
 } 
   .btn-coupon3{
    margin:8px;
-   border:none;
+   border: 1px solid white;
    width:100px; 
    height:37px; 
    background-color: transparent; 
@@ -725,8 +744,3 @@ span.num {
    font-size: 1.3rem; 
    color: #f90b57;"
 }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/member

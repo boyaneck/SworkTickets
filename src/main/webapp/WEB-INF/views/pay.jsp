@@ -166,7 +166,9 @@ $('#testBtn').click(function(e){
 
 </script>
 
-
+<style>
+#over{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+</style>
 
 
 </head>
@@ -322,7 +324,7 @@ $('#testBtn').click(function(e){
 	<div class="modal fade" id="staticBackdrop" data-backdrop="static"
 		data-keyboard="false" tabindex="-1"
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-md">
+		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">
@@ -348,9 +350,9 @@ $('#testBtn').click(function(e){
 									<h1 class="text-center"
 										style="transform: translate(0, 65%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
 								</div>
-								<div class="col"
+								<div class="col" id="over"
 									style="transform: translate(0, 0); text-align: left;">
-									<b id="c_name" style="font-size: 30px">${coupon.c_name}</b><br>
+									<b id="c_name" style="font-size: 30px; ">${coupon.c_name}</b><br>
 									${coupon.c_date}까지<br> <span class="text-danger"><small>
 											${endDate_N-startDate_N}일 남음</small></span>
 								</div>

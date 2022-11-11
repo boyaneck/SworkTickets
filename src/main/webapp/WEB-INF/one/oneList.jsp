@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <%@ include file="../../header.jsp" %> --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<<<<<<< HEAD
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -11,51 +10,17 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>관리자 모드</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
-	rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
 <link href="css/admin.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 </head>
-=======
-<link rel="stylesheet"
-   href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<style>
-.table tr:hover{
- background-color:#e8dbfe!important;
-
-}
-.aa{
-color:
-}
-.write{
-border-radius:4px;
-border: 1px solid #1f1f1f;
-    background-color: white;
-    width: 100px;
-    height: 40px;
-    color: #f4f4f4;
-    font-size: 18px;
-    color: black;
-}
-
-
-</style>
->>>>>>> origin/jin
 <script>
-
    function getone(val){
    location.href="getOne?one_no="+val;
 

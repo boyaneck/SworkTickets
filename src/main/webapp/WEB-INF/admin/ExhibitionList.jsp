@@ -162,8 +162,8 @@ margin-right:4%;
 			</aside>
 		<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
-					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">전시목록</h2>
+					<div class="container border-bottom border-dark mb-3">
+						<h2 style="font-weight: bold;">전시목록</h2>
 					</div>
 					<div class="table-responsive">
 						<table id="myTable" class="display table" width="100%">
