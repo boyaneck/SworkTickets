@@ -116,7 +116,7 @@ public class MemberController {
 	// 회원 수정
 	// 회원 수정
 	@RequestMapping("/updateMember")
-	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
+	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session, HttpServletRequest request) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
 				|| session.getAttribute("mb_Id").equals("admin")) {
 			System.out.println("입력받은거: "+vo.getMb_pw());
@@ -129,22 +129,17 @@ public class MemberController {
 			if(vo.getMb_pw().equals(memberService.getMember(vo).getMb_pw())) {
 				memberService.updateMember(vo);
 				return "member/mypage";
-			}else {
+			} else if(request.getParameter("mb_pw").equals("")) {
+				vo.setMb_pw(null);
+				memberService.updateMember(vo);
+				return "member/mypage";
+			}
+			else {
 				String password = pwCheck.encrypt(vo.getMb_pw());
 				vo.setMb_pw(password);
 				memberService.updateMember(vo);
 				return "member/mypage";
 			}
-//			if (vo.getMb_pw().equals((memberService.getMember(vo).getMb_pw()))) {
-//				System.out.println("이프문");
-//				return "member/mypage";
-//			} else {
-//				System.out.println("엘즈문");
-//				String password = pwCheck.encrypt(vo.getMb_pw());
-//				vo.setMb_pw(password);
-//				memberService.updateMember(vo);
-//				return "member/mypage";
-//			}
 		} else {
 			return "redirect:member/mypage?error=1";
 		}
