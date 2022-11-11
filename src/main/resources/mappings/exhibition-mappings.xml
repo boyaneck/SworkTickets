@@ -106,14 +106,14 @@
       GROUP BY EXH_NO) AS
       rk
       WHERE 1=1
-      <if test="exSearchKeyword != null">
+      <if test="eSearchKeyword != null">
          AND REPLACE(UPPER(EXH_TITLE),' ','')
          LIKE
-         REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
+         REPLACE(CONCAT('%',(UPPER(#{eSearchKeyword})),'%'),' ','')
          OR REPLACE
          (UPPER(EXH_HALL),' ','')
          LIKE
-         REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
+         REPLACE(CONCAT('%',(UPPER(#{eSearchKeyword})),'%'),' ','')
       </if>
        <if test="exh_local_name != null">
          AND exh_local_name= #{exh_local_name}
@@ -126,21 +126,20 @@
 
    <!-- 유저 전시 개수 조회 -->
    <select id="totalUserExhibitionListCnt" resultType="_int">
-      <if test="exSearchKeyword == null">
+      <if test="eSearchKeyword == null">
          SELECT COUNT(*)
          FROM
          EXHIBITION
       </if>
-      <if test="exSearchKeyword != null">
+      <if test="eSearchKeyword != null">
          SELECT COUNT(*)
       FROM
          (select ex.* from exhibition AS ex WHERE 1=1
-         AND REPLACE(UPPER(EXH_TITLE),'
-         ','') LIKE
-         REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')
+         AND REPLACE(UPPER(EXH_TITLE),' ','') LIKE
+         REPLACE(CONCAT('%',(UPPER(#{eSearchKeyword})),'%'),' ','')
          OR
          REPLACE(UPPER(EXH_HALL),' ','') LIKE
-         REPLACE(CONCAT('%',(UPPER(#{exSearchKeyword})),'%'),' ','')) AS cd
+         REPLACE(CONCAT('%',(UPPER(#{eSearchKeyword})),'%'),' ','')) AS cd
       </if>
     
       WHERE 1=1

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="../../header.jsp" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,14 @@ function deleteboard(val){
         alert('삭제가 취소되었습니다.');
     }
     }
+    
+    
+    
+function f_write(){
+   
+        location.href="/goWriteBoard";
+    
+}
 
 </script>
 <style>
@@ -136,28 +145,26 @@ cursor: pointer;
          <div class="input-group mb-3">
             <div class="input-group-prepend">
                <span class="input-group-text">등록일</span>
+               <span class="input-group-text"><fmt:formatDate value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today} </span>
             </div>
             <%--       <input type="text" class="form-control innm" name="regDate" value="${one.regdate}" readonly <%=sts %>>       --%>
          </div>
          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">조회수</span>
-            </div>
+            
             <%--       <input type="text" class="form-control innm" name="cnt" value="${one.cnt}" readonly <%=sts %>>       --%>
          </div>
          <div id="btnBox_parent">
-            <button class="btn btn-success" type="submit">글수정</button>
-            <button class="btn btn-success" href="boardwrite.jsp">글쓰기</button> 
+            <button class="btn btn-success" type="submit"<%=sts %>>글수정</button>
+            <button class="btn btn-success" onclick="f_write()">글쓰기</button> 
             <button class="btn btn-success" href="getBoardList">글목록</button>
+            <button class="btn btn-success" div class="btn btn-delete" onclick="deleteboard(${board.noti_no})" style="cursor: pointer">글삭제</button>
          </div>
       </form>
 
       <form action="deleteboard">
          <input type="hidden" name="noti_no" value="${board.noti_no}">
       </form>
-      <div id="btnBox_parent">
-      <div class="btn btn-delete" onclick="deleteboard(${board.noti_no})" style="cursor: pointer">글삭제</div>
-      </div>
+    
    </div>
    <!-- 클릭시 보이는 이미지 start -->
    <div id="imgBox" class="container-fluid">

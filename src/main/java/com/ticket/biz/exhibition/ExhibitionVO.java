@@ -30,7 +30,7 @@ public class ExhibitionVO {
 	
 
 	private String exSearchCondition;
-	private String exSearchKeyword;
+	private String eSearchKeyword;
 	
 	private MultipartFile uploadFile;	
 	private MultipartFile uploadFile_thumb;	
@@ -282,11 +282,11 @@ public class ExhibitionVO {
 	public void setExSearchCondition(String exSearchCondition) {
 		this.exSearchCondition = exSearchCondition;
 	}
-	public String getExSearchKeyword() {
-		return exSearchKeyword;
+	public String getESearchKeyword() {
+		return eSearchKeyword;
 	}
-	public void setExSearchKeyword(String exSearchKeyword) {
-		this.exSearchKeyword = exSearchKeyword;
+	public void setESearchKeyword(String exSearchKeyword) {
+		this.eSearchKeyword = exSearchKeyword;
 	}
 
 	public MultipartFile getUploadFile() {

@@ -10,13 +10,26 @@ public class ReviewVO {
 
 	private String re_review;
 	private int review_type;
-	private Timestamp review_reg;
+	private Timestamp review_reg_date;
+
+
+	public Timestamp getReview_reg_date() {
+		return review_reg_date;
+	}
+	public void setReview_reg_date(Timestamp review_reg_date) {
+		this.review_reg_date = review_reg_date;
+	}
+
+	private int offset;
 
 
 
-
-
-
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 	public int getReview_bno() {
 		return review_bno;
 	}
@@ -53,18 +66,13 @@ public class ReviewVO {
 	public void setReview_type(int review_type) {
 		this.review_type = review_type;
 	}
-	public Timestamp getReview_reg() {
-		return review_reg;
-	}
-	public void setReview_reg(Timestamp review_reg) {
-		this.review_reg = review_reg;
-	}
+	
 	@Override
 	public String toString() {
 		return "ReviewVO [review_no=" + review_no + ", review_bno=" + review_bno + ", review_writer=" + review_writer
 				+ ", review_content=" + review_content + ", re_review=" + re_review + ", review_type=" + review_type
-				+ ", review_reg=" + review_reg + "]";
+				+ ", review_reg=" + review_reg_date + "]";
 	}
-
+	
 
 }

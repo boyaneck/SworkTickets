@@ -59,6 +59,6 @@
 		LEFT outer JOIN good AS g
 		on e.exh_no= g.exh_no
 		WHERE 1=1
-		AND mb_id= #{mb_id};
+		AND mb_id= #{mb_id}
 	</select>
 </mapper>

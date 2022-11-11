@@ -28,6 +28,9 @@ public interface MemberService {
 	/*로그아웃*/
 	public void logout(HttpSession session);
 
+	// 탈퇴회원 완전 삭제
+	void deleteMember2();
+	
 	// 회원목록 조회
 	List<MemberVO> getMemberList(MemberVO vo);
 

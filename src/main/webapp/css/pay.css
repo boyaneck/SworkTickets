@@ -1,0 +1,86 @@
+@charset "UTF-8";
+.rectangle {
+	border-radius: 30px;
+	width: 430px;
+	height: 150px;
+	border: solid black;
+	background-color: white;
+	margin: 10px;
+	padding: 5px;
+}
+
+.row {
+	align: left;
+}
+input[type="button"] {
+	height: calc(1.5em + 0.75rem + 2px);
+}
+
+input[type="text"] {
+	align: left !important;
+	width: 100%;
+}
+
+h3 {
+	padding: 20px 0;
+	text-align: left;
+}
+
+#check_module {
+	color: white;
+	background-color: black;
+	width: 15%;
+	margin-top: 5%;
+}
+
+@media (max-width: 768px){
+   #ptitle{
+   	margin-left: 45px !important;
+   	margin-top: 20px !important;
+   }
+}
+@media (max-width: 768px){
+	#pamount{
+   	margin-left: 30px !important;
+   }
+}
+
+@media (max-width: 768px){
+	#check_module{
+   	width: 45% !important;
+   }
+}
+
+@media (max-width: 768px){
+	.line{
+   	border-bottom: 0px !important;
+   }
+}
+
+@media (max-width: 768px){
+	#pay{
+   	text-align: left !important;
+   	padding-left: 0px !important;
+   }
+}
+
+@media (max-width: 768px){
+	#pay2{
+   	padding-left: 30px !important;
+   }
+}
+
+@media (max-width: 768px){
+	#pay3{
+   	padding-left: 30px !important;
+   }
+}
+
+
+@media ( max-width : 768px) {
+	#thum1 {
+		width: 234px !important;
+		margin-left: 30px !important;
+		margin-bottom: 30px !important;
+	}
+}

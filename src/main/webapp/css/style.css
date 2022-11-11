@@ -444,14 +444,30 @@ li.dropdown {
 /* 푸터 style */
 footer {
    width: 100%;
-   background: #23263b;
+   background: #fff;
    padding-left:1%;
-   margin-top:50px;
-   
 }
 
+.mt-auto{
+/*    margin-top:100px!important; */
+   border-top:1px solid #1f1f1f;
+}
+
+.container.footer{
+   max-width:100%;
+}
+
+div.footer_info{
+   text-align: center;
+}
+
+div.inner{
+   display: inline-block;
+   text-align: center;
+}
 
   .footer_row {
+  
       display: flex;
       justify-content: flex-start;
       padding-top: 60px;
@@ -475,7 +491,7 @@ footer {
    }
    .footer_row {
       letter-spacing:2px;
-      margin-left:1%;
+/*       margin-left:1%; */
       color: #808080;
    }
 
@@ -536,6 +552,34 @@ footer {
   margin-bottom: 10px;
 }
 
+
+
+@media (max-width: 768px) {
+div.rectangle{
+   margin:20px 0 20px 0;
+}
+}
+
+@media (max-width: 768px) {
+.rectangle {
+  width: 300px;
+  height: 170px;
+}
+}
+
+.col.title{
+   padding-left:40px;
+   padding-right:0px;
+}
+
+@media (max-width: 768px) {
+.col.title{
+   padding-left:70px;
+}
+}
+
+
+
 /* 결제 모달창 쿠폰 버튼 */
 .btn-black{
    border:1px solid #000; 
@@ -567,6 +611,26 @@ footer {
 .btn-purple:hover{
    border:1px solid #7329f7; 
    width:100px; 
+   height:37px; 
+   background-color: #7329f7; 
+   color: #fff; 
+   font-size: 18px;
+   font-weight: bold;
+}
+
+/* 비밀번호 확인버튼 */
+.btn-purple-pw{
+   border:1px solid #7329f7; 
+/*    width:100px;  */
+   height:37px; 
+   background-color: #fff; 
+   color: #7329f7; 
+   font-size: 18px;
+    font-weight: bold;
+}
+.btn-purple-pw:hover{
+   border:1px solid #7329f7; 
+/*    width:100px;  */
    height:37px; 
    background-color: #7329f7; 
    color: #fff; 
@@ -606,14 +670,21 @@ footer {
 } 
   .btn-coupon3{
    margin:8px;
-   border:1px solid #fff;
+   border:none;
    width:100px; 
    height:37px; 
    background-color: transparent; 
    color: #fff; 
    font-size: 18px;
-
+   transform: translate(0, 85%);
 } 
+
+
+@media (max-width: 768px) {
+  .btn-coupon3{
+   transform: translate(0, 60%);
+} 
+}
 
 /* 예매율 애니메이션 */
 .circular-progress3,.circular-progress2,.circular-progress1{
@@ -641,6 +712,7 @@ footer {
 }
 
 
+
 /* 카운팅 효과 */
 span.num {
   color: #000000;
@@ -650,136 +722,10 @@ span.num {
   font-size: 1.3em;
 }
 .bi-suit-heart-fill {
-	font-size: 1.3rem; 
-	color: #f90b57;"
+   font-size: 1.3rem; 
+   color: #f90b57;"
 }
+<<<<<<< HEAD
+=======
 
-
-/* 카드 */
-
-.cd {
-    align-items: center;
-    background-color: #F3F5F7;
-    /* font-family: 'Poppins',
-        sans-serif; */
-    width: 100%;
-    min-height: 100vh;
-    color: #1B1C34;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.container {
-    /* max-width: 70%; */
-    max-width: 70%;
-    margin: 0 auto;
-    height: 100%;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    /* grid-template-columns: 2fr 2fr 2fr; */
-    gap: 3%;
-    margin: 5% 0;
-}
-
-.card {
-    overflow: hidden;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-/*     border-radius: 30px; */
-    text-align: center;
-/*     box-shadow: 10px 10px 10px rgb(206, 203, 203); */
-}
-
-
-.card_img img {
-    width: 100%;
-    height: auto;
-    /* border-radius: 20px; */
-}
-
-.card_body {
-    padding: 26px 20px 36px 20px;
-}
-
-.card_title {
-/*     font-family: 'Merriweather', */
-/*         serif; */
-/*     font-weight: 900; */
-    text-transform: capitalize;
-
-    font-size: 16px;
-    padding-bottom: 20px;
-}
-
-.card_body p {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.7;
-
-}
-
-p.card_author {
-    font-size: 15px;
-    padding-top: 15px;
-
-}
-
-p.card_author a {
-    color: #1B1C34;
-    font-style: italic;
-}
-
-p.card_author a:hover {
-    font-weight: bold;
-}
-
-a.read_more {
-    color: #FFF;
-    font-size: 13px;
-    text-decoration: none;
-    letter-spacing: 1.1px;
-    background: #0F1616;
-    margin-top: 50px;
-    padding: 24px 0px;
-    border-radius: 15px;
-    display: inline-block;
-    width: 70%;
-    transition: all .3s ease-in-out;
-}
-
-a.read_more:hover {
-    box-shadow: 0px 1px 50px rgba(0, 0, 0, 0.15);
-    background: #404040;
-}
-
-.link {
-    position: fixed;
-    background-color: #D12322;
-    padding: 23px 40px;
-    right: -106px;
-    border-radius: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    transform: rotate(-90deg);
-    font-size: 18px;
-    font-weight: 500;
-    color: #FFF;
-    text-decoration: none;
-    text-transform: capitalize;
-    transition: all .1s ease-in-out;
-}
-
-.link i {
-    padding-left: 7px;
-}
-
-.link:hover {
-    text-decoration: underline;
-    background-color: black;
-}
+>>>>>>> origin/member
