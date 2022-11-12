@@ -10,8 +10,10 @@
 </style>
 <br><br><br>
 <div class="jumbotron">
+        <h1>${exhibition.exh_no}</h1>
         <h1>${exhibition.exh_title}</h1>
         <h5>${exhibition.exh_st_date} ~ ${exhibition.exh_end_date}</h5>
+        <h5>가격 <fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</h5>
         <h6>${exhibition.exh_hall}</h6>
         <br>
         <jsp:useBean id="now" class="java.util.Date" /> 
@@ -106,6 +108,9 @@
             alert('승인이 취소되었습니다.');
          }
        }
+       
+       var tt = new Date('${exhibition.exh_mdf_date}');
+       console.log(tt);
        
       </script>
 </body>

@@ -2,11 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
-// if(session.getAttribute("userId") == null){
-// 	response.sendRedirect("login.jsp");	
-// }else{
-%>
 <%@ include file="../../header.jsp"%>
 <body>
 	<div class="jumbotron">
@@ -70,11 +65,11 @@
 					name="exh_hall" placeholder="상세주소를 입력해주세요." value="${exhibition.exh_hall}">
 			</div>
 
-<!-- 			<input type="hidden" id="exh_place_x" name="exh_place_x"> -->
-<!-- 			<input type="hidden" id="exh_place_y" name="exh_place_y"> -->
-			<input type="text" id="exh_place_x" name="exh_place_x" placeholder="x좌표" value="${exhibition.exh_place_x}">
-			<input type="text" id="exh_place_y" name="exh_place_y" placeholder="y좌표" value="${exhibition.exh_place_y}">
-			<span> - 해당 내용은 히든처리할 예정입니다.</span>
+			<input type="hidden" id="exh_place_x" name="exh_place_x">
+			<input type="hidden" id="exh_place_y" name="exh_place_y">
+<%-- 			<input type="text" id="exh_place_x" name="exh_place_x" placeholder="x좌표" value="${exhibition.exh_place_x}"> --%>
+<%-- 			<input type="text" id="exh_place_y" name="exh_place_y" placeholder="y좌표" value="${exhibition.exh_place_y}"> --%>
+<!-- 			<span> - 해당 내용은 히든처리할 예정입니다.</span> -->
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
