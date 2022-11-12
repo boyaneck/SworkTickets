@@ -34,24 +34,19 @@ textarea {
 <script>
 	$(document).ready(function(){
 	
-<<<<<<< HEAD
-	const review_bno1=${exhno2};
-=======
 	const review_bno1=${exhno2}
 // 	console.log("exhno!!!!!!!!!!"+review_bno)
->>>>>>> origin/jin2222222
 	var objparams={review_bno:review_bno1};
-		
+	
 	console.log("안됨");
        	$.ajax({
-		  	 	type:'post',
+		  	 	type:'get',
 		   		url:"/reviewList",
 		   		data:objparams,
 				success:function(data) {
 				console.log(data);
 				 if(data.total > 0){
 				console.log("get list 실행 중");
-				
 				var list = data.list;
 				var reg=data.list.review_reg_date;
 				console.log("받아온 데이터의 리스트와, 총 댓글 수 ")
@@ -91,7 +86,7 @@ textarea {
 					comment_html +="<button  class='btn_comment_update' style='background-color:white; border:1px solid black; border-radius:3px; '><i class = 'xi-check'></i></button>";
 					comment_html += "</form>";
 					comment_html +="</div>";
-										
+					
 					console.log("댓글 아래로 쭉 떠야함 ");
 				
 			if(writer === $(".review_writer").val()){

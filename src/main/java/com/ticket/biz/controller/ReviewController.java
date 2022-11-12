@@ -69,18 +69,10 @@ public class ReviewController {
 	@RequestMapping("/updateReview")
 	public String updateReview(ReviewVO vo, HttpSession session) {
 		System.out.println("updateReview 컨트롤러 타기");
-		
-<<<<<<< HEAD
-		System.out.println("글번호 !!!!!!"+vo.getReview_no());
-		reviewservice.updateReview(vo);
-		System.out.println("전시글번호출력!!! 댓글 수정에서 "+vo.getReview_bno());
-=======
 		System.out.println("전시회 상세번호");
-		
 		System.out.println("글번호 !!!!!!"+vo.getReview_no());
 		reviewservice.updateReview(vo);
 		System.out.println("전시상세번호출력!!! 댓글 수정에서 "+vo.getReview_bno());
->>>>>>> origin/jin2222222
 	
 			return "exhibition/UserExhibitionDetail";
 		
