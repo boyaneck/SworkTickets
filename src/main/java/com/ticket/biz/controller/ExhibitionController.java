@@ -208,11 +208,15 @@ public class ExhibitionController {
 			
 			int exh_no=Integer.parseInt(request.getParameter("exh_no")); 
 			rvo.setReview_bno(exh_no);
-//			System.out.println("전시회번호1!!!!!"+rvo.exh_no);
+			System.out.println("전시회번호!!!!!!!!!"+exh_no);
 			int total = reviewService.getTotal(rvo);
 			int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-			System.out.println("totalPageCnt: "+total +", nowPage: "+nowPage);
+			System.out.println("totalPageCnt:!!!!!! "+total +", nowPage:!!!!!! "+nowPage);
 
+			//ajax로 보내줄 해당전시회 번호
+			model.addAttribute("exhno2",exh_no);
+			
+			
 			//한페이지당 보여줄 목록 수
 			int onePageCnt = 5;
 
@@ -240,9 +244,10 @@ public class ExhibitionController {
 			
 			view.setViewName("reviewwrite");
 			System.out.println(rvo.getReview_bno());
-			System.out.println("review list 가져오는 controller 다 탔음");
+			System.out.println("댓글 등록일!!!!!!"+list.toString());
 			
-			
+			//reveiwwrite의 즉시실행함수에게 줄 전시회  해당 전시회 번호
+			model.addAttribute("exh_no1",exh_no);
 		
 			String id=(String)session.getAttribute("mb_Id");
 			
@@ -253,8 +258,22 @@ public class ExhibitionController {
 				model.addAttribute("good_check",goodService.getGoodYN(gvo));
 			
 			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
+			
+			System.out.println("review list 가져오는 getUserExhibition cotnroller 다 탔음!!!!!");
 			return "exhibition/UserExhibitionDetail";
 		}
+	
+		
+//		@Autowired
+//		ReviewService reviewService;
+//		@Autowired
+//		GoodService goodService;
+		//유저 전시조회 ajax 용
+//			@RequestMapping("/getUserExhibition")
+//			public String getUserExhibition(ExhibitionVO vo, Model model,HttpSession session,GoodVO gvo,ReviewVO rvo,String nowPageBtn,HttpServletRequest request)
+//		
+//			return null;
+//}
 	
 	// 유저 전시 목록 조회
 		@RequestMapping("/getUserExhibitionList")

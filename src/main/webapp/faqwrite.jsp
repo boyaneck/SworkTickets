@@ -154,7 +154,7 @@
 
 
  
- <div class="input-group mb-3">
+ <div class="input-group mb-3" style="margin-left:300px; margin-top:30px">
             <div class="input-group-prepend">
                <span class="input-group-text">제목</span>
             </div>
@@ -165,15 +165,16 @@
 
 
 
- <div class="input-group mb-3">
+ <div class="input-group mb-3" style="margin-left:300px">
             <div class="input-group-prepend">
                <span class="input-group-text">내용</span>
             </div>
 <textarea placeholder="내용을 입력하세요" name="faq_content" rows="15" cols="100"></textarea>
          </div>
 
-
-<button>새글 등록</button>
+<div class="regBtn" style="padding-left:700px; margin-top:40px;">
+<button class="btn btn-success"  style="cursor: pointer">글 등록</button>
+</div>
 </form>
 </div>
 </div>

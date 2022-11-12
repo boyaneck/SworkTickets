@@ -1,10 +1,13 @@
 
 package com.ticket.biz.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +36,7 @@ public class OneController {
 		return conditionMap;
 	}
 
-	// 이동 컨트롤러
+	// 글쓰기 이동 컨트롤러
 	@RequestMapping("/goWrite")
 	public String goOne(OneVO vo, Model model) {
 		return "redirect:write.jsp";
@@ -70,28 +73,91 @@ public class OneController {
 
 	// 글 수정
 	@RequestMapping("/updateOne")
-	public String updateOne(@ModelAttribute("one") OneVO vo, HttpSession session) {
+	public String updateOne(@ModelAttribute("one") OneVO vo, HttpSession session , HttpServletResponse response) throws IOException {
 		System.out.println("글 수정 기능 전");
+		
+		String writer=vo.getOne_writer();
 		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString()) ){
-
-
-			oneService.updateOne(vo);
+				
+			
+			
+			PrintWriter script;
+			
+			
+			try {
+				PrintWriter Script1;
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter script1 = response.getWriter();
+				script1.println("<script>");
+				script1.println("alert('삭제되었습니다.');");
+				script1.println("location.href = 'getOneList'");
+				script1.println("</script>");
+				script1.close();
+				oneService.updateOne(vo);
+				
+			} 
+			catch (IOException e){
+				e.printStackTrace();
+			}
+			
+			
+			
+			
 			return "redirect:getOneList";
 		}else {
-			return "getOne?error=1";
+			
+			try {
+				
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('작성자와 아이디가 일치하지 않습니다.');");
+				script.println("location.href = 'getOne'");
+				script.println("</script>");
+				script.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return "one/getOne?error=1";
 		}
 
 	}
 
 	// 글 삭제
 	@RequestMapping("/deleteOne")
-	public String deleteOne(OneVO vo, HttpSession session) {
+	public String deleteOne(OneVO vo, HttpSession session , HttpServletResponse response) {
+		System.out.println("delteOne"+vo.getOne_writer());
 		System.out.println("deleteOne 기능 처리 전");
-		int val=0;
-		System.out.println("val " +val);
-		String realPath = "c:/swork/ticket/src/main/webapp/img/" ;
+	
+		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString())){
+					
+			
+			
+			PrintWriter script;
+			
 			oneService.deleteOne(vo);
+			
 			return "redirect:getOneList";
+		}else {
+			
+			try {
+				
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('작성자와 아이디가 일치하지 않습니다.');");
+				script.println("location.href = 'getOne'");
+				script.println("</script>");
+				script.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return "one/getOne?error=1";
+		}
+		
 	}
 
 	// 글 상세 조회
@@ -116,7 +182,7 @@ public class OneController {
 		System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 
 		//한페이지당 보여줄 목록 수
-		int onePageCnt = 5;
+		int onePageCnt = 10;
 
 		//한 번에 보여질 버튼 수
 		int oneBtnCnt = 5;

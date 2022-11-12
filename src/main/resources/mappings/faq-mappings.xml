@@ -13,11 +13,23 @@
 	</select>
 	
 	<select id="getFaqList" resultType="faq">
-<!-- 		<if test="searchCondition == 'TITLE' "> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if> -->
-<!-- 		<if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE  CONCAT('%',#{searchKeyword},'%')</if> -->
+	<if test="searchKeyword ==null">
 		SELECT * FROM FAQ WHERE 1=1 
-		ORDER BY FAQ_NO DESC
+		 ORDER BY FAQ_NO DESC
 		LIMIT 10 OFFSET #{offset}
+		</if>
+		<if test="searchKeyword !=null">
+		SELECT * FROM FAQ WHERE 1=1 
+		AND
+	     REPLACE(UPPER(FAQ_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		
+         
+         ORDER BY FAQ_NO DESC
+		LIMIT 10 OFFSET #{offset}
+         
+		</if>
 	</select>
 	
 <!-- 	<select id="totalFaqListCnt" resultType="_int"> -->

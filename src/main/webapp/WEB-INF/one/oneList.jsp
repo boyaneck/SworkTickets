@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%@ include file="../../header.jsp" %> --%>
+<%@ include file="../../header.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/jin2222222
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -20,6 +24,36 @@
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 </head>
+<<<<<<< HEAD
+=======
+
+<link rel="stylesheet"
+   href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.table tr:hover{
+ background-color:#e8dbfe!important;
+
+}
+.aa{
+color:
+}
+.write{
+border-radius:4px;
+border: 1px solid #1f1f1f;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    color: #f4f4f4;
+    font-size: 18px;
+    color: black;
+}
+
+
+</style>
+
+>>>>>>> origin/jin2222222
 <script>
    function getone(val){
    location.href="getOne?one_no="+val;
@@ -219,11 +253,11 @@
          </tbody>
       </table>
       
-            <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer" ">글쓰기</button>
+            <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer; margin-left:100px">글쓰기</button>
       <br>
       <br>
       <div id="btnBox_parent">
-      <div id="btnBox">
+       <div id="btnBox">
          <!-- 반복처리할 태그 시작-->
          <c:if test="${paging.nowPageBtn > 1 }">
             <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
@@ -235,7 +269,7 @@
                   <a class="aSel">${i}</a>
                </c:when>
                <c:otherwise>
-                  <a href="getOneList?nowPageBtn=${i}"><Strong>${i}</Strong></a>
+                  <a href="getOneList?nowPageBtn=${i}">${i}</a>
                </c:otherwise>
             </c:choose>
          </c:forEach>

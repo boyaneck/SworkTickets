@@ -9,6 +9,7 @@
 		SELECT COUNT(*) FROM ONEONE WHERE 1=1 
 
 		ORDER BY ONE_NO DESC
+		LIMIT 10 OFFSET #{offset}
 		
 	</select>
 	

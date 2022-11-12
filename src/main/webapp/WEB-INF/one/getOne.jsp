@@ -11,22 +11,45 @@ if (session.getAttribute("mb_Id") == null) {
 }
 %>
 <script>
-function deleteone(val,mal){
+
+
+
+function list(){
+
 	
-	console.log(val);
-	console.log(mal);
+	console.log("list 로 찍혀라 !!!!!OneList!!!!");
+	location.href="/getOneList";
 	
-    var delConfirm = confirm('정말 삭제하시겠습니까?');
-    if (delConfirm == true) {
-        alert('삭제되었습니다.');
-        location.href ="deleteOne?one_no="+ val;
+}
+
+function f_write(val){
+    console.log(val);
+    if(val == ''){
+        alert("로그인이 되야 작성 가능합니다");
+        location.href="/getOneList";
+    } else{
+        location.href="/goWrite";
     }
-    else {
-        alert('삭제가 취소되었습니다.');
-    }
-    }
-    
-    
+}
+
+
+// function f_del(){
+	
+
+	
+//     var delConfirm = confirm('정말 삭제하시겠습니까?');
+//     if (delConfirm == true) {
+//         alert('삭제되었습니다.');
+//         location.href ="/deleteOne?one_no="+ val;
+//     }
+//     else {
+//         alert('삭제가 취소되었습니다.');
+//     }
+
+// }
+
+
+ 
     function answer(val){ 
     		
     	console.log(val);
@@ -50,7 +73,6 @@ function deleteone(val,mal){
     });
    	
     	
-//      else alert("관리자만 답변이 가능합니다.");
     
 
     
@@ -191,23 +213,25 @@ textarea {
 					<span class="input-group-text">등록일</span>
 					<span class="input-group-text"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today} </span>
 				</div>
-				<%--       <input type="text" class="form-control innm" name="regDate" value="${one.regdate}" readonly <%=sts %>>       --%>
 			</div>
 			
+			 <button class="btn btn-success" type="submit"  style="float:left; margin-left:610px">글수정</button>
+          </form>
+          
+             <button class="btn btn-success" onclick="list()" style="margin-left:7px;">글목록</button>
+             <button class="btn btn-success" onclick="f_write('${mb_Id}')" style="text-align:center" >글쓰기</button>
+       
+			  <div id="btnBox_parent">
+			  <form action="deleteOne">
+			  <input type="hidden" name="one_no" value="${one.one_no}">
+			  <input type="hidden" name="one_writer" value="${one.one_writer}">
+      <button class="btn btn-delete"  onclick="f_del()"style="cursor: pointer; margin-top:50px; margin-left:10px">글삭제</button>
+			  
+			  </form>
+<%-- 			  <button class="btn btn-delete" onclick="deleteone(${one.one_no},${one.one_writer })" style="cursor: pointer; margin-top:50px; margin-left:10px">글삭제</button> --%>
+      </div>
+         
 			
-					
-					
-
-			
-			<div id="btnBox_parent">
-            <button class="btn btn-success col-lg-6 col-sm-12" type="submit" <%=sts%>>글수정</button>
-            <button class="btn btn-success "  <%=sts%>><a href="write.jsp" style="color: #7832f7"> 글쓰기</a></button>
-            <button class="btn btn-success" <%=sts%>><a href="getOneList" style="color: #7832f7"  > 글목록</a></button>
-            <button class="btn btn-success" div class="btn btn-delete" onclick="deleteone(${one.one_no})" style="cursor: pointer">글삭제</button>
-            
-			</div>
-		
-			</form>
 			
 			<!-- 					1:1문의 답변 -->
 					<div style="display:none" class="answer"> 
@@ -229,16 +253,16 @@ textarea {
 			<div class="didanswer">
 								
 			<div class="regBtn" style="text-align:center; margin: 20px;">답변 </div>		
-			<div style="text-align:center; margin:30px; padding:20px; border:2px solid #cdb3fc; border-radius:4px;">${one.one_answer}</div>
+			<div style="text-align:center; margin:30px; padding:50px; border:2px solid #cdb3fc; border-radius:4px;">${one.one_answer}</div>
 					</div>
 	
 
 
 
-		<div id="btnBox_parent">
-		<form action="deleteOne">
-			<input type="hidden" name="one_no" value="${one.one_no}">
-		</form>
+<!-- 		<div id="btnBox_parent"> -->
+<!-- 		<form action="deleteOne"> -->
+<%-- 			<input type="hidden" name="one_no" value="${one.one_no}"> --%>
+<!-- 		</form> -->
 		
 
 		<!-- 클릭시 보이는 이미지 start -->
