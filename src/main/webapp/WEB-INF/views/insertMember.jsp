@@ -185,7 +185,7 @@ function numberMaxLength(e){
 }
 
 //아이디 중복체크
- function chkBtn(){
+ /* function chkBtn(){
    var idRegex = /^[0-9|a-z|A-Z|]*$/;
     $.ajax({
         url : "/idChk",
@@ -209,7 +209,7 @@ function numberMaxLength(e){
              }
         }
     })
-} 
+}  */
 /* 이메일 인증번호 일치 여부 start */
 </script>
 <style>
@@ -275,7 +275,7 @@ font-size:16px !important;
                         
                            <label for="mb_id" class="col-md-2 col-form-label">아이디</label>
                          <div class="col-md-10">
-                           <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required>
+                           <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required autocomplete="off">
                            </div>
                              </div>
                                 <div class="mb-3 row">
@@ -305,7 +305,7 @@ font-size:16px !important;
                   
                            <label for="mb_name" class="col-md-2 col-form-label">이름</label>
                              <div class="col-md-10">
-                           <input type="text" name="mb_name" id="mb_name" class="form-control" placeholder="신원정" maxlength="5" minlength="2" required>
+                           <input type="text" name="mb_name" id="mb_name" class="form-control" placeholder="이름을 입력하세요" maxlength="5" minlength="2" required autocomplete="off">
                            </div>
                            
                         </div>
@@ -319,8 +319,8 @@ font-size:16px !important;
                         
                                <div class="col-md-10">
                               <input id="mb_phone" type="number" name="mb_phone" class="form-control" title="전화번호 입력"
-                                       placeholder="010-6809-3332" maxlength="11" minlength="10"
-                                       oninput="numberMaxLength(this);" required />
+                                       placeholder="ex) 01012341234" maxlength="11" minlength="10"
+                                       oninput="numberMaxLength(this);" required autocomplete="off" />
                               </div>
                
                                </div>
@@ -358,7 +358,7 @@ font-size:16px !important;
                               
                            <div class="col-md-10">
                            <input id="mb_email" type="email" class="form-control"
-                              name="mb_email" placeholder="shinwjasdf38@gmail.com" maxlength="50"   autofocus>
+                              name="mb_email" placeholder="ex) test@test.com" maxlength="50"   autofocus autocomplete="off">
                            <!--                            <button type="button" id="sendMail" -->
                            <!--                               class="btn btn-primary btn-md">발송하기</button> -->
                            <!--                            <div class="text_box" id="cert"> -->
