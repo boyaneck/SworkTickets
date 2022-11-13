@@ -4,43 +4,26 @@ import java.sql.Timestamp;
 
 public class ReviewVO {
 	private int review_no;
-	private int review_bno;
+	private int exh_no;
 	private String review_writer;
 	private String review_content;
-
 	private String re_review;
-	private int review_type;
 	private Timestamp review_reg_date;
-
-
-	public Timestamp getReview_reg_date() {
-		return review_reg_date;
-	}
-	public void setReview_reg_date(Timestamp review_reg_date) {
-		this.review_reg_date = review_reg_date;
-	}
-
+	private int review_type;
+	private int review_bno;
 	private int offset;
-
-
-
-	public int getOffset() {
-		return offset;
-	}
-	public void setOffset(int offset) {
-		this.offset = offset;
-	}
-	public int getReview_bno() {
-		return review_bno;
-	}
-	public void setReview_bno(int review_bno) {
-		this.review_bno = review_bno;
-	}
+	
 	public int getReview_no() {
 		return review_no;
 	}
 	public void setReview_no(int review_no) {
 		this.review_no = review_no;
+	}
+	public int getExh_no() {
+		return exh_no;
+	}
+	public void setExh_no(int exh_no) {
+		this.exh_no = exh_no;
 	}
 	public String getReview_writer() {
 		return review_writer;
@@ -60,18 +43,36 @@ public class ReviewVO {
 	public void setRe_review(String re_review) {
 		this.re_review = re_review;
 	}
+	public Timestamp getReview_reg_date() {
+		return review_reg_date;
+	}
+	public void setReview_reg_date(Timestamp review_reg_date) {
+		this.review_reg_date = review_reg_date;
+	}
 	public int getReview_type() {
 		return review_type;
 	}
 	public void setReview_type(int review_type) {
 		this.review_type = review_type;
 	}
-	
+	public int getReview_bno() {
+		return review_bno;
+	}
+	public void setReview_bno(int review_bno) {
+		this.review_bno = review_bno;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 	@Override
 	public String toString() {
-		return "ReviewVO [review_no=" + review_no + ", review_bno=" + review_bno + ", review_writer=" + review_writer
-				+ ", review_content=" + review_content + ", re_review=" + re_review + ", review_type=" + review_type
-				+ ", review_reg=" + review_reg_date + "]";
+		return "ReviewVO [review_no=" + review_no + ", exh_no=" + exh_no + ", review_writer=" + review_writer
+				+ ", review_content=" + review_content + ", re_review=" + re_review + ", review_reg_date="
+				+ review_reg_date + ", review_type=" + review_type + ", review_bno=" + review_bno + ", offset=" + offset
+				+ ", toString()=" + super.toString() + "]";
 	}
 	
 

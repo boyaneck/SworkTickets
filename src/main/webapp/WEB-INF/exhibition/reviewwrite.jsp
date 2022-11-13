@@ -33,9 +33,8 @@ textarea {
 
 <script>
 	$(document).ready(function(){
-	
-	const review_bno1=${exhno2}
-// 	console.log("exhno!!!!!!!!!!"+review_bno)
+	const review_bno1=${exhno2};
+	console.log("exhno!!!!!!!!!!"+review_bno1);
 	var objparams={review_bno:review_bno1};
 	
 	console.log("안됨");
@@ -98,8 +97,8 @@ textarea {
 				var list_no=review_no;
 				console.log(list_no);
 														
-					comment_html += "<div style='text-align:right;'><button class='update1' style='cursor:pointer; background-color: white; border: none; font-size: 25px; margin-right: 20px;' onclick='updateReview("+[i]+")' ><i class = 'xi-pen-o'></i></button>";	 																																
-					comment_html += "<button id='delete' style='cursor:pointer; background-color: white; border: none; font-size: 25px;' onclick='del("+list_no+")'><i class = 'xi-trash-o'></i></button>";											
+					comment_html += "<div style='text-align:right;'><button class='update1' style='cursor:pointer; background-color: white; border: none; font-size: 25px; margin-right: 20px;' onclick='updateReview("+[i]+")' ><i class = 'xi-pen-o'></i></button>";																
+					comment_html += "<button id='delete' style='cursor:pointer; background-color: white; border: none; font-size: 25px;' onclick='del("+list_no+")'><i class = 'xi-trash-o'></i></button>";
 				    comment_html += "</div><hr>";
 					}
 					else  comment_html += "</div><hr>";
@@ -123,14 +122,12 @@ textarea {
 		
 
 	$('#Comment_regist').click(function() {
-	
 					console.log("댓글버튼 실행");
 			
 					const review_bno = 2;
 					const review_writer = $('.review_writer').val();
 					const review_content = $('.review_content').val();
-	
-	 
+					
 					console.log(review_bno);
 					console.log(review_writer);
 					console.log(review_content);
@@ -143,46 +140,45 @@ textarea {
 					alert('내용을 입력하세요');
 			}
 	
-		$.ajax({
+			$.ajax({
 				type:'post',
 				url:'/insertReview',
 				data: JSON.stringify(
 			{
-				"review_bno":review_bno,
+				/*송원선*/
+				"review_bno":review_bno1,
+				/*송원선*/
 				"review_writer":review_writer,
 				"review_content":review_content
 				
 			}		
-		),
+			),
 				contentType: 'application/json',
 				success:function(data){
 				console.log('통신성공' + data);
-			
+
 			if(data === 'InsertSuccess') {
-				
 				alert('댓글 등록이 완료되었습니다.');
 				console.log('댓글 등록 완료');
-				console.log();
-				
 				$('.review_writer').val(review_writer);
-
 					$('.review_content').val(review_content);
 						window.location.reload();
 			} else {
 				alert('로그인 이후 이용해주시기 바랍니다.');
 				console.log('댓글 등록 실패');
 			}
-		},
+			},
 				error:function(){
 				alert('통신실패');
-		}
-	   });	
-      })
-      
-      
+			}
+			});	
+      });
     });
 
 		function del(val){
+			/*송원선*/
+			const review_bno2=${exhno2};
+			/*송원선*/
 				console.log("딜리트함수 실행");
 				console.log(val);
 				console.log(val);
@@ -190,7 +186,7 @@ textarea {
     	
 		if (delConfirm == true) {
         		alert('삭제되었습니다.');
-       			location.href ="deleteReview?review_no="+val;
+       			location.href ="deleteReview?review_no="+val+"&review_bno="+review_bno2;
    		 }
    		 else {
        			 alert('삭제가 취소되었습니다.');
@@ -198,18 +194,12 @@ textarea {
          }
 
 		function updateReview(val){
-
 				console.log("updateReview 함수 실행"+val);
 				console.log(val);
-
-
 				console.log('#a'+val);
-
 				$('#a'+val).hide();
 				$('#b'+val).show();
 				$(".update1").hide();
-
-	
 		document.querySelectorAll('.btn_comment_update').forEach(function (item) {
         		item.addEventListener('click', function () { 
         	
@@ -219,16 +209,11 @@ textarea {
         });
 
     	 function commentUpdate(form) {
-        		const data = {
-            	comment: form.querySelector('.review_content').value(),
-       				 }
-        		
-        		
+        		const data = { comment: form.querySelector('.review_content').value() };
        		if (!data.comment || data.comment.trim() === "") {
            		 alert("공백 또는 입력하지 않은 부분이 있습니다.");
             		return false;
              }
-        		
                 const con_check = confirm("수정하시겠습니까?");
         
          if (con_check === true) {
@@ -240,8 +225,8 @@ textarea {
                 data: JSON.stringify(data)
                 
             }).done(function () {
+            	debugger;
                 window.location.reload();
-                
             }).fail(function (error) {
             	
                 alert(JSON.stringify(error));
