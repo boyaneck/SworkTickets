@@ -119,7 +119,7 @@
             <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
                <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
-               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/adminFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
