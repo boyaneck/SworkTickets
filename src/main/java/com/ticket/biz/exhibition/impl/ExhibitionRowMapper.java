@@ -18,8 +18,8 @@ public class ExhibitionRowMapper implements RowMapper<ExhibitionVO>{
 		exhibition.setExh_price(rs.getInt("exh_price"));
 		exhibition.setExh_st_date(rs.getDate("exh_st_date"));
 		exhibition.setExh_end_date(rs.getDate("exh_end_date"));
-		exhibition.setExh_rge_date(rs.getDate("exh_rge_date"));
-		exhibition.setExh_mdf_date(rs.getDate("exh_mdf_date"));
+		exhibition.setExh_rge_date(rs.getTimestamp("exh_rge_date"));
+		exhibition.setExh_mdf_date(rs.getTimestamp("exh_mdf_date"));
 		exhibition.setExh_location(rs.getString("exh_location"));
 		exhibition.setExh_hall(rs.getString("exh_hall"));
 		exhibition.setExh_content(rs.getString("exh_content"));

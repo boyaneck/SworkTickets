@@ -14,6 +14,7 @@ public class ReviewRowMapper implements RowMapper<ReviewVO>{
 	public ReviewVO mapRow(ResultSet rs, int rowNum) throws SQLException{
 	ReviewVO review = new ReviewVO();
 	review.setReview_no(rs.getInt("review_no"));
+	review.setExh_no(rs.getInt("exh_no"));
 	review.setReview_bno(rs.getInt("review_bno"));
 	review.setReview_writer(rs.getString("review_writer"));
 	review.setReview_content(rs.getString("review_content"));

@@ -11,8 +11,16 @@ public class FaqVO {
 	private Date faq_reg;
 	private String faq_content;
 	private int offset;
+	
+	private String searchKeyword;
 
 
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 	public int getFaq_no() {
 		return faq_no;
 	}

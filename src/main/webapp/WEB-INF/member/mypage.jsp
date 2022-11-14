@@ -54,10 +54,10 @@ if (session.getAttribute("mb_Id") == null) {
    }
    
    function editMember(mb_id) {
+// 	   let mb_name = document.getElementById('mb_name').value;
+// 	   let mb_pw = document.getElementById('pw').value;
+// 	   debugger;
          if(confirm('정말 수정하시겠습니까?')){
-         if (mb_id != null) {
-            debugger;
-         }
             location.href = "updateMember?mb_id=" + mb_id;
          } else{
             location.href= "mypage";
@@ -129,12 +129,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
          </div>
          <div class="mb-3" style="width:100%;">
             <label for="pw">*비밀번호</label> 
-              <input type="password" class="form-control" name="mb_pw" id="pw"  maxlength="20" >
+              <input type="password" class="form-control" name="mb_pw" id="pw"  maxlength="20">
          </div>
 
          <div class="mb-3" style="width:100%;">
             <label for="pw2">*비밀번호 확인</label>
-              <input type="password" class="form-control" name="mb_pw2" id="pw2"  maxlength="20" minlength="8" > 
+              <input type="password" class="form-control" name="mb_pw2" id="pw2"  maxlength="20" minlength="8"> 
                <span><font id="checkPw"  size="2">비밀번호는 4~8글자입니다</font></span>
          </div>
 
@@ -142,7 +142,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
             <div class="input-group-prepend">
                <span class="input-group-text">이름</span>
             </div>
-            <input type="text" class="form-control innm" name="mb_name" maxlength="5" minlength="2" 
+            <input type="text" class="form-control innm" id="mb_name" name="mb_name" maxlength="5" minlength="2" 
                value="${member.mb_name}" <%=sts %> required>
          </div>
 

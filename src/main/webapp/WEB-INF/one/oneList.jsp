@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%@ include file="../../header.jsp" %> --%>
+<%@ include file="../../header.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,11 +15,34 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
 <link href="css/admin.css" rel="stylesheet" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 </head>
+
+<style>
+.table tr:hover{
+ background-color:#e8dbfe!important;
+
+}
+.aa{
+color:
+}
+.write{
+border-radius:4px;
+border: 1px solid #1f1f1f;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    color: #f4f4f4;
+    font-size: 18px;
+    color: black;
+}
+
+
+</style>
 <script>
    function getone(val){
    location.href="getOne?one_no="+val;
@@ -219,11 +242,11 @@
          </tbody>
       </table>
       
-            <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer" ">글쓰기</button>
+            <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer; margin-left:100px">글쓰기</button>
       <br>
       <br>
       <div id="btnBox_parent">
-      <div id="btnBox">
+       <div id="btnBox">
          <!-- 반복처리할 태그 시작-->
          <c:if test="${paging.nowPageBtn > 1 }">
             <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
@@ -235,7 +258,7 @@
                   <a class="aSel">${i}</a>
                </c:when>
                <c:otherwise>
-                  <a href="getOneList?nowPageBtn=${i}"><Strong>${i}</Strong></a>
+                  <a href="getOneList?nowPageBtn=${i}">${i}</a>
                </c:otherwise>
             </c:choose>
          </c:forEach>

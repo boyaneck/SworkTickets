@@ -12,6 +12,26 @@ public class GoodVO {
 	
 	private int cnt;
 	
+	private int offset;
+	
+	
+	
+	public int getGood_check() {
+		return good_check;
+	}
+
+	public void setGood_check(int good_check) {
+		this.good_check = good_check;
+	}
+
+	public int getOffset() {
+		return offset;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+
 	public int getCnt() {
 		return cnt;
 	}
@@ -48,12 +68,6 @@ public class GoodVO {
 	public String toString() {
 		return "GoodVO [good_id=" + good_id + ", mb_id=" + mb_id + ", exh_no=" + exh_no + ", cnt=" + cnt + "]";
 	}
-
-	public void setOffset(int offset) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 
 }

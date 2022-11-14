@@ -42,13 +42,27 @@
       </div>
     
       <li class="nav-item">
+      <c:if test='${mb_Id ne NULL}'>
         <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span>
+      </c:if>
+      </li>
+      <li class="nav-item dropdown hambuger">
+      <c:if test='${mb_Id ne NULL}'>
+        <a class="nav-link hambuger" data-toggle="dropdown" role="button" 
+        style="font-size:20px; font-weight:600; color:#1f1f1f;"> 마이페이지 </a>
+        <div class="dropdown-menu header-menu" aria-labelledby="member">
+           <a class="dropdown-item header-item" id="memberUpdate" href="mypageView">&nbsp회원수정</a>
+           <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
+             <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
+             <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
+        </div>
+       </c:if>
       </li>
       <li class="nav-item">
-         <a class="nav-link mypage hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
+         <a class="nav-link mypage hambuger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
       </li>
-      <li class="nav-item">
-        <a class="nav-link hambuger" href="/getUserExhibitionList" > 전시 </a>
+      <li class="nav-item" style="margin-top:0px;">
+        <a class="nav-link hambuger" href="/getUserExhibitionList" style="padding-top:0px;" > 전시 </a>
       </li>
       <li class="nav-item">
         <a class="nav-link hambuger" href="/ranking"> 랭킹 </a>
@@ -57,7 +71,7 @@
         <a class="nav-link hambuger" href=/local> 지역 </a>
       </li>
       <li class="nav-item hambuger">
-        <a class="nav-link hambuger" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
+        <a class="nav-link hambuger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
          <div class="dropdown-menu header-menu" aria-labelledby="coupon">
             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
             <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
@@ -71,16 +85,24 @@
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
         </div>
       </li>
-         <a class="nav-link header-logout hamburger" href="/logoutGO">로그아웃</a>
+         
     </ul>
+    <c:if test='${mb_Id eq NULL}'>
+    <a class="dropdown-item header-item-login hamburger" href="login.jsp" >&nbsp로그인</a>
+    </c:if>
+    
+    <c:if test='${mb_Id ne NULL}'>
+    <a class="nav-link header-logout hamburger" href="/logoutGO" style="margin:10px 268px 0 20px;">로그아웃</a>
+    </c:if>
   </div>
 <!--   햄버거 끝 -->
   
    <c:choose>
       <c:when test='${mb_Id eq "admin"}'>
+      
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="/getExhibitionList" > 전시 </a>
+            <a class="nav-link header" href="/getExhibitionList"> 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
@@ -255,7 +277,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
       <!-- 검색 -->
@@ -275,14 +297,18 @@
    
 </nav>
 <script>
-//input에 keyup 이벤트 등록
-$(document).ready(function(){
-$("#exSearchKeyword").keyup(function(){
-   var skey = $(this).val();
-      location.href="getUserExhibitionList";
-console.log(skey);
-});
-});
+function searchkey() {
+    if (window.event.keyCode == 13) {
+
+ // 엔터키가 눌렸을 때 실행하는 반응
+    var exs = document.getElementById("eSearchKeyword").value;
+    	console.log(exs);
+
+    location.href="getUserExhibitionList?eSearchKeyword="+exs;
+//     location.href="getUserExhibitionList?eSearchKeyword="+exs;
+    
+    }
+}
 
 /* $(document).ready(function(){
     $("#memberUpdate").click(function(){

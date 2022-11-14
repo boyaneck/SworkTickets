@@ -20,6 +20,17 @@
    border-color: #7329f7; 
    border: solid 1px;
 }
+@media ( max-width : 576px){
+#mythum{
+    margin-bottom: 30px !important;
+}
+}
+
+@media ( max-width : 576px){
+.mythum1{
+    text-align: center;
+}
+}
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -47,10 +58,10 @@
    
    <c:forEach items="${myPayList}" var="myPayList">
    <div class="row">
-   <div class="col-3">
-   <img src="/images/${myPayList.exh_thumbnail }" alt="이미지" style="width:200px; height: 300px;">
+   <div class="col-sm-3 mythum1">
+   <img src="/images/${myPayList.exh_thumbnail }" alt="이미지" style="width:200px; height: 300px;" id="mythum">
    </div>
-   <div class="col-6" style="line-height: 200%;">
+   <div class="col-sm-6" style="line-height: 200%;">
    <h4>${myPayList.exh_title}</h4>
    금액 : ${myPayList.amount}<br>
    구매자 : ${myPayList.buyer}<br>
@@ -61,7 +72,7 @@
    전시 종료일 : ${myPayList.exh_end_date}
    </div>
 <%--    환불 여부 : ${myPayList.p_chk}<br> --%>
-<div class="col-3 align-self-center">
+<div class="col-sm-3 align-self-center">
             <c:set var="today" value="<%=new java.util.Date()%>"/>
       <c:set var="sysYear"> <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" /></c:set>
       <form action="paycan" method="POST" style="text-align: right;">

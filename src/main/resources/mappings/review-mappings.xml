@@ -19,7 +19,7 @@
 	</delete>
 
 	<select id="totalReviewListCnt" resultType="_int">
-		SELECT COUNT(*) FROM REVIEW WHERE REVIEW_BNO = #{review_bno} 
+		SELECT COUNT(*) FROM REVIEW WHERE REVIEW_BNO = #{review_bno}  ORDER BY REVIEW_NO DESC
 		
 	</select>
 

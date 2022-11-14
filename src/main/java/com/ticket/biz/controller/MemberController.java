@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -73,7 +74,8 @@ public class MemberController {
 
 	// 회원마이페이지
 	@RequestMapping(value = "/mypage")
-	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response) {
+	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
+		
 //		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
 //		System.out.println(memberService.getMember(vo));
@@ -112,8 +114,9 @@ public class MemberController {
 	}
 
 	// 회원 수정
+	// 회원 수정
 	@RequestMapping("/updateMember")
-	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session) {
+	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session, HttpServletRequest request) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
 				|| session.getAttribute("mb_Id").equals("admin")) {
 			System.out.println("입력받은거: "+vo.getMb_pw());
@@ -128,27 +131,20 @@ public class MemberController {
 				vo.setMb_pw(null);
 				memberService.updateMember(vo);
 				return "member/mypage";
-			}else {
+			} else if(request.getParameter("mb_pw").equals("")) {
+				vo.setMb_pw(null);
+				memberService.updateMember(vo);
+				return "member/mypage";
+			}
+			else {
 				String password = pwCheck.encrypt(vo.getMb_pw());
 				vo.setMb_pw(password);
 				memberService.updateMember(vo);
 				return "member/mypage";
 			}
-//			if (vo.getMb_pw().equals((memberService.getMember(vo).getMb_pw()))) {
-//				System.out.println("이프문");
-//				return "member/mypage";
-//			} else {
-//				System.out.println("엘즈문");
-//				String password = pwCheck.encrypt(vo.getMb_pw());
-//				vo.setMb_pw(password);
-//				memberService.updateMember(vo);
-//				return "member/mypage";
-//			}
 		} else {
 			return "redirect:member/mypage?error=1";
 		}
-			
-		
 
 	}
 

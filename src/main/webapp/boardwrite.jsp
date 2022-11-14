@@ -146,7 +146,7 @@
 				<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
 					<div class="container">
-						<h2 style="text-align: center; font-weight: bold;">공지사항 글 업로드</h2>
+						<h2 style="text-align: center; font-weight: bold; margin-right:200px; margin-bottom:40px">공지사항 글 업로드</h2>
 					</div>
 					<div class="container">
 					<div class="row justify-content-md-center">
@@ -172,13 +172,12 @@
             <div class="input-group-prepend">
                <span class="input-group-text">내용</span>
             </div>
-<textarea placeholder="내용을 입력하세요" name="noti_content" rows="15" cols="100"></textarea>
+<textarea placeholder="내용을 입력하세요" name="noti_content" rows="15" cols="100" style="margin-right:300px"></textarea>
          </div>
 
-<div class="regBtn" style="text-align:center; margin: 20px;">
+<div class="regBtn" style="padding-left:400px; margin-top:40px;">
 <button class="btn btn-success"  style="cursor: pointer">글 등록</button>
 </div>
-
 </div>
 </form>
 </div>

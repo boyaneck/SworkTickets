@@ -31,6 +31,7 @@ public class ReviewController {
 	@ResponseBody
 	@RequestMapping("/insertReview")
 	public String ReviewInsert(@RequestBody ReviewVO vo,HttpSession session, Model model) {
+		System.out.println(vo.getExh_no());
 		System.out.println("review_writer"+vo.getReview_writer());
 		System.out.println("review insert:컨트롤러 실행 ");
 		if(session.getAttribute("mb_Id") == null) {
@@ -52,6 +53,9 @@ public class ReviewController {
 	@RequestMapping("/deleteReview")
 	public String deleteReview(ReviewVO vo, HttpSession session, HttpServletRequest request) {
 		System.out.println("deleteReview 기능 처리 전");
+		/*송원선*/
+		System.out.println("번호:"+vo.getReview_bno());
+		/*송원선*/
 //		System.out.println(request.getParameter("review_no"));
 //		int val=0;
 //		int ser=request.getParameter(list.review_no);
@@ -59,9 +63,12 @@ public class ReviewController {
 //		System.out.println("val " +val);
 		System.out.println("삭제하기 컨트롤러에서 list_no 받기!!!!" );
 		System.out.println("컨트롤러 to string"+ vo.toString());
+		System.out.println();
 			reviewservice.deleteReview(vo);
 			System.out.println("delete 컨트롤러 다 탔음");
-			return "exhibition/UserExhibitionDetail";
+			/*송원선*/
+			return "redirect:getUserExhibition?exh_no="+vo.getReview_bno();
+			/*송원선*/
 	}
 
 	
@@ -69,15 +76,14 @@ public class ReviewController {
 	@RequestMapping("/updateReview")
 	public String updateReview(ReviewVO vo, HttpSession session) {
 		System.out.println("updateReview 컨트롤러 타기");
-		
+		System.out.println("전시회 상세번호");
+		System.out.println("글번호 !!!!!!"+vo.getReview_no());
 		reviewservice.updateReview(vo);
-		
-	
-			return "exhibition/UserExhibitionDetail";
-		
+		System.out.println("전시상세번호출력!!! 댓글 수정에서 "+vo.getReview_bno());
+	/*송원선*/
+			return "redirect:getUserExhibition?exh_no="+vo.getReview_bno();
+			/*송원선*/	
 	}
-	
-	
 	
 	
 	//댓글 목록 조회
@@ -87,6 +93,7 @@ public class ReviewController {
 		
 		
 		int total = reviewservice.getTotal(vo);
+		
 		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
 		System.out.println("totalPageCnt: "+total +", nowPage: "+nowPage);
 
@@ -116,7 +123,7 @@ public class ReviewController {
 		
 		view.setViewName("reviewwrite");
 		System.out.println(vo.getReview_bno());
-		System.out.println("review list 가져오는 controller 다 탔음");
+		System.out.println("review list 가져오는 controller 다 탔음!!!!!!");
 		
 		
 		return map;

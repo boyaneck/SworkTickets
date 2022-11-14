@@ -1,6 +1,7 @@
 package com.ticket.biz.exhibition;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,8 +12,8 @@ public class ExhibitionVO {
 	private int exh_price;
 	private Date exh_st_date; 
 	private Date exh_end_date; 
-	private Date exh_rge_date; 
-	private Date exh_mdf_date; 
+	private Timestamp exh_rge_date; 
+	private Timestamp exh_mdf_date; 
 	private String exh_location;
 	private String exh_hall;
 	private String exh_content;
@@ -147,19 +148,19 @@ public class ExhibitionVO {
 		this.exh_end_date = exh_end_date;
 	}
 
-	public Date getExh_rge_date() {
+	public Timestamp getExh_rge_date() {
 		return exh_rge_date;
 	}
 
-	public void setExh_rge_date(Date exh_rge_date) {
+	public void setExh_rge_date(Timestamp exh_rge_date) {
 		this.exh_rge_date = exh_rge_date;
 	}
 
-	public Date getExh_mdf_date() {
+	public Timestamp getExh_mdf_date() {
 		return exh_mdf_date;
 	}
 
-	public void setExh_mdf_date(Date exh_mdf_date) {
+	public void setExh_mdf_date(Timestamp exh_mdf_date) {
 		this.exh_mdf_date = exh_mdf_date;
 	}
 
@@ -285,8 +286,8 @@ public class ExhibitionVO {
 	public String getESearchKeyword() {
 		return eSearchKeyword;
 	}
-	public void setESearchKeyword(String exSearchKeyword) {
-		this.eSearchKeyword = exSearchKeyword;
+	public void setESearchKeyword(String eSearchKeyword) {
+		this.eSearchKeyword = eSearchKeyword;
 	}
 
 	public MultipartFile getUploadFile() {
