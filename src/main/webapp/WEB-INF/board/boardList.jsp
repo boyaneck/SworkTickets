@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%@ include file="../../header.jsp"%> --%>
+<%@ include file="../../header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<head>
-<title>관리자 모드</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+   href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -14,15 +14,21 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>관리자 모드</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+	rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
 <link href="css/admin.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
-</head>
 <style>
  .table tr:hover{
  background-color:#e8dbfe !important;
@@ -43,31 +49,25 @@ border: 1px solid #1f1f1f;
 
 </style>
 <script>
-	function getboard(val) {
-		location.href = "getBoard?noti_no=" + val;
 
-	}
-	function f_write(val) {
-		console.log("noti_writer 받아와야함" + val);
-		if (val == '') {
-			alert("로그인이 되야 작성 가능합니다");
-			location.href = "/getBoardList";
-		} else {
-			location.href = "/goWriteBoard";
-		}
-	}
+function getboard(val){
+   location.href="getBoard?noti_no="+val ;
+   
+}
+function f_write(val){
+    console.log("noti_writer 받아와야함"+val);
+    if(val == ''){
+        alert("로그인이 되야 작성 가능합니다");
+        location.href="/getBoardList";
+    }else{
+        location.href="/goWriteBoard";
+    }
+}
 
-	// function f_write(val){
-	//     console.log(val);
-	//     if(val == ''){
-	//         alert("로그인이 되야 작성 가능합니다");
-	//         location.href="/getOneList";
-	//     }else{
-	//         location.href="/goWrite";
-	//     }
-	// }
+
 </script>
 <body>
+   
    <div>
    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 			<!-- Navbar Brand-->
@@ -206,45 +206,24 @@ border: 1px solid #1f1f1f;
                <th style="text-align:center;">작성자</th>
                <th style="text-align:center;">등록일</th>
 
-									<a class="nav-link collapsed" href="#"
-										data-bs-toggle="collapse"
-										data-bs-target="#collapseLayouts_exh" aria-expanded="false"
-										aria-controls="collapseLayouts_exh">
-										<div class="sb-nav-link-icon">
-											<i class="fas fa-columns"></i>
-										</div> 전시관리
-										<div class="sb-sidenav-collapse-arrow">
-											<i class="fas fa-angle-down"></i>
-										</div>
-									</a>
-									<div class="collapse" id="collapseLayouts_exh"
-										aria-labelledby="headingOne"
-										data-bs-parent="#sidenavAccordion">
-										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/insertmoveExhibition">전시등록</a> <a
-												class="nav-link " href="/getExhibitionList">전시목록</a>
-										</nav>
-									</div>
+            </tr>
+         </thead>
+         <tbody>
 
-									<a class="nav-link collapsed" href="#"
-										data-bs-toggle="collapse"
-										data-bs-target="#collapseLayouts_coupon" aria-expanded="false"
-										aria-controls="collapseLayouts_coupon">
-										<div class="sb-nav-link-icon">
-											<i class="fas fa-columns"></i>
-										</div> 쿠폰관리
-										<div class="sb-sidenav-collapse-arrow">
-											<i class="fas fa-angle-down"></i>
-										</div>
-									</a>
-									<div class="collapse" id="collapseLayouts_coupon"
-										aria-labelledby="headingOne"
-										data-bs-parent="#sidenavAccordion">
-										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/insertCouponForm">쿠폰등록 </a> <a
-												class="nav-link" href="admin/CouponList">쿠폰목록</a>
-										</nav>
-									</div>
+            <c:forEach items="${boardList}" var="board">
+             
+               <tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"; style="cursor: pointer;" class="aa" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
+                  <td class="tdCenter" style="width:10%;" >${board.noti_no}</td>
+                  <td class="tdCenter" style="width:50%;" >${board.noti_title}</td>
+                  <td class="tdCenter" style="width:20%;" >${board.noti_writer}</td>
+                  <td class="tdCenter" style="width:20%;" ><fmt:formatDate
+                        value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
+                        var="today" />${today}</td>
+         
+               </tr>
+
+
+            </c:forEach>
          </tbody>
       </table>
       <div >
@@ -276,5 +255,8 @@ border: 1px solid #1f1f1f;
          <!-- 반복처리할 태그 끝 -->
          </div>
          </div>
+    
+	
+     
 </body>
 </html>
