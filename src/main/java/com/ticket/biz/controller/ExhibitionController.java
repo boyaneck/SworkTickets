@@ -211,70 +211,66 @@ public class ExhibitionController {
 	@Autowired
 	GoodService goodService;
 	// 유저 전시 상세 조회
-    @RequestMapping("/getUserExhibition")
-    public String getUserExhibition(ExhibitionVO vo, Model model,HttpSession session,GoodVO gvo,ReviewVO rvo,String nowPageBtn,HttpServletRequest request) {
-       
-       System.out.println("현제페이지 버튼 오류 잡기"+nowPageBtn);
-       System.out.println("!!!!!!!!!");
-       
-       int exh_no=Integer.parseInt(request.getParameter("exh_no")); 
-       System.out.println("exh_no!!!!!!!!"+exh_no);
-       
-       rvo.setReview_bno(exh_no);
-       System.out.println("전시회번호!!!!!!!!!"+exh_no);
-       int total = reviewService.getTotal(rvo);
-       int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-       System.out.println("totalPageCnt:!!!!!! "+total +", nowPage:!!!!!! "+nowPage);
+		@RequestMapping("/getUserExhibition")
+		public String getUserExhibition(ExhibitionVO vo, Model model,HttpSession session,GoodVO gvo,ReviewVO rvo,String nowPageBtn,HttpServletRequest request) {
+			
+			int exh_no=Integer.parseInt(request.getParameter("exh_no")); 
+			rvo.setReview_bno(exh_no);
+			System.out.println("전시회번호!!!!!!!!!"+exh_no);
+			int total = reviewService.getTotal(rvo);
+			int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+			System.out.println("totalPageCnt:!!!!!! "+total +", nowPage:!!!!!! "+nowPage);
 
-       //ajax로 보내줄 해당전시회 번호
-       model.addAttribute("exhno2",exh_no);
-       
-       
-       //한페이지당 보여줄 목록 수
-       int onePageCnt = 5;
+			//ajax로 보내줄 해당전시회 번호
+			model.addAttribute("exhno2",exh_no);
+			
+			
+			//한페이지당 보여줄 목록 수
+			int onePageCnt = 5;
 
-       //한 번에 보여질 버튼 수
-       int oneBtnCnt = 5;
-       
-       
-       System.out.println("페이징처리전 ");
-       PagingVO pvo = new PagingVO(total, onePageCnt, nowPage, oneBtnCnt);
-       vo.setOffset(pvo.getOffset());
+			//한 번에 보여질 버튼 수
+			int oneBtnCnt = 5;
+			
+			
+			System.out.println("페이징처리전 ");
+			PagingVO pvo = new PagingVO(total, onePageCnt, nowPage, oneBtnCnt);
+			vo.setOffset(pvo.getOffset());
 
-       System.out.println("nowpage 찍혀라"+pvo.getNowPageBtn());
-       System.out.println("마지막 버튼!!!!"+pvo.getEndBtn());
-       List<ReviewVO> list = reviewService.getReviewList(rvo);
-       
-       ModelAndView view = new ModelAndView();
-       
-       System.out.println("오프셋출력!!!!!"+vo.getOffset());
-       Map<String, Object> map = new HashMap<>();
-       model.addAttribute("exhno2",exh_no);
-       model.addAttribute("reviewList",list);
-       model.addAttribute("paging", pvo);
-       map.put("list", list);
-       map.put("total", total);
-       
-       view.setViewName("reviewwrite");
-       System.out.println(rvo.getReview_bno());
-       System.out.println("댓글 등록일!!!!!!"+list.toString());
-       
-       //reveiwwrite의 즉시실행함수에게 줄 전시회  해당 전시회 번호
-       model.addAttribute("exh_no1",exh_no);
-    
-       String id=(String)session.getAttribute("mb_Id");
-       
-       gvo.setExh_no(vo.getExh_no());
-       gvo.setMb_id(id);
- 
-          
-          model.addAttribute("good_check",goodService.getGoodYN(gvo));
-       
-       model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
-       
-       System.out.println("review list 가져오는 getUserExhibition cotnroller 다 탔음!!!!!");
-       return "exhibition/UserExhibitionDetail";
-    }
+			System.out.println("nowpage 찍혀라"+pvo.getNowPageBtn());
+			System.out.println("마지막 버튼!!!!"+pvo.getEndBtn());
+			System.out.println("offset" + pvo.getOffset());
+			List<ReviewVO> list = reviewService.getReviewList(rvo);
+			
+			ModelAndView view = new ModelAndView();
+			
+			System.out.println("오프셋출력!!!!!"+vo.getOffset());
+			Map<String, Object> map = new HashMap<>();
+			model.addAttribute("exhno2",exh_no);
+			model.addAttribute("reviewList",list);
+			model.addAttribute("paging", pvo);
+			map.put("list", list);
+			map.put("total", total);
+			
+			view.setViewName("reviewwrite");
+			System.out.println(rvo.getReview_bno());
+			System.out.println("댓글 등록일!!!!!!"+list.toString());
+			
+			//reveiwwrite의 즉시실행함수에게 줄 전시회  해당 전시회 번호
+			model.addAttribute("exh_no1",exh_no);
+		
+			String id=(String)session.getAttribute("mb_Id");
+			
+			gvo.setExh_no(vo.getExh_no());
+			gvo.setMb_id(id);
+	
+				
+				model.addAttribute("good_check",goodService.getGoodYN(gvo));
+			
+			model.addAttribute("exhibition", exhibitionService.getExhibition(vo));
+			
+			System.out.println("review list 가져오는 getUserExhibition cotnroller 다 탔음!!!!!");
+			return "exhibition/UserExhibitionDetail";
+		}
 	
 		
 //		@Autowired

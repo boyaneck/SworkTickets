@@ -242,6 +242,7 @@ a.nav-link.header-logout
    font-size:16px;
    background-color:#1f1f1f!important;
    color:#fff;
+   width: 95px;
 }
 a.nav-link.header-logout:hover
 {
