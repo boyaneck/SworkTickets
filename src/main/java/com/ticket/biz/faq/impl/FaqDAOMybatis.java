@@ -44,20 +44,20 @@ public class FaqDAOMybatis {
 		System.out.println("GetFaq 기능 처리 전");
 	 return (FaqVO)mybatis.selectOne("FaqDAO.getFaq", vo);
 	}
+	
+	//관리자 글 상세보기
+		public FaqVO adminFaq(FaqVO vo) {
+			System.out.println("adminFaq 기능 처리 전");
+		 return (FaqVO)mybatis.selectOne("FaqDAO.adminFaq", vo);
+		}
 
 	//글 목록 조회
 	public List<FaqVO> getFaqList(FaqVO vo){
 		System.out.println("getFaqList 기능 처리 전 ");
 
-
 		return mybatis.selectList("FaqDAO.getFaqList", vo);
 
-
-
-
-
 		}
-
 
 	//전체글 목록 갯수
 		 public int totalFaqListCnt(FaqVO vo) {
@@ -65,4 +65,9 @@ public class FaqDAOMybatis {
 			 return mybatis.selectOne("FaqDAO.totalFaqListCnt",vo);
 
 		 }
+		public List<FaqVO> adminFaqList(FaqVO vo) {
+			System.out.println("adminFaqList 기능 처리 전 ");
+
+			return mybatis.selectList("FaqDAO.adminFaqList", vo);
+		}
 }
