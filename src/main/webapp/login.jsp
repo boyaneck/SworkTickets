@@ -32,6 +32,13 @@
 	padding: 5px;
 	height: 40px;
 }
+.popup {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+}
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -44,8 +51,9 @@
 				<div class="card o-hidden border-0 shadow-lg my-5">
 						<div class="card-body p-0">
 								  <div class="row ">
-					    <div class="col-lg-5 d-none d-lg-block bg">
-					      <img src="/images/고구마.png" class="img-fluid rounded-start" alt="...">
+					    <div class="col-lg-5 d-none d-lg-block bg text-center">
+<!-- 					      <img src="/images/고구마.png" class="img-fluid rounded-start" alt="..."> -->
+					      <img class="popup" src="./images/logo.png">
 					    </div>
 						<div class="col-lg-7">
 							<div class="p-5">
@@ -93,11 +101,8 @@
 
 								<div class="row text-center otherBox">
 									<div class="col">
-										<a href="/getAuthUrl"> <img class="logo"
-											src="images/KakaoTalk_login.png" style="height: 30px">
-										</a> <a href="/getNaverAuthUrl"> <img class="logo"
-											src="images/Naver_login.png" style="height: 30px">
-										</a>
+										<img class="logo" onclick="location.href='/getAuthUrl'" src="images/KakaoTalk_login.png" style="height: 30px; cursor: pointer;"> 
+										<img class="logo" onclick="location.href='/getNaverAuthUrl'" src="images/Naver_login.png" style="height: 30px; cursor: pointer;">
 									</div>
 
 
