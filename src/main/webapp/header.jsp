@@ -13,7 +13,8 @@
    crossorigin="anonymous"></script>
 
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
-   <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
+<!--    <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/board.css">
 <link rel="stylesheet" href="./css/ranking.css">
@@ -27,9 +28,6 @@
       style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
    </a>
 <!-- 햄버거 시작-->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
      
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav hambuger">
@@ -129,10 +127,10 @@
       
       <ul class="nav navbar-nav navbar-right">
             <!-- 검색 -->
-      <div class="form-group col-xs-6 my-2">
+        <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+          <i class="xi-magnifier" style="position: absolute;left: 87%;top: 20%;"></i>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
       <!-- 검색 -->
@@ -178,10 +176,10 @@
       
       <ul class="nav navbar-nav navbar-right">
             <!-- 검색 -->
-      <div class="form-group col-xs-6 my-2">
+     <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+          <i class="xi-magnifier" style="position: absolute;left: 87%;top: 20%;"></i>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
       <!-- 검색 -->
@@ -229,9 +227,9 @@
             <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
-        </div> 
+          <i class="xi-magnifier" style="position: absolute;left: 87%;top: 20%;"></i>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+        </div>
       </div>
       <!-- 검색 -->
                <li class="nav-item">
@@ -274,9 +272,9 @@
          </li>
       </ul>
       <!-- 검색 -->
-      <div class="form-group col-xs-6 my-2">
+    <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="glyphicon fas fa-search"></i>
+          <i class="xi-magnifier" style="position: absolute;left: 87%;top: 20%;"></i>
           <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
@@ -294,7 +292,10 @@
         </ul>
       </c:otherwise>   
    </c:choose>
-   
+<!--    햄버거 버튼 -->
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 </nav>
 <script>
 function searchkey() {
@@ -302,7 +303,7 @@ function searchkey() {
 
  // 엔터키가 눌렸을 때 실행하는 반응
     var exs = document.getElementById("eSearchKeyword").value;
-    	console.log(exs);
+       console.log(exs);
 
     location.href="getUserExhibitionList?eSearchKeyword="+exs;
 //     location.href="getUserExhibitionList?eSearchKeyword="+exs;

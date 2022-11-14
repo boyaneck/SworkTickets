@@ -8,12 +8,9 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <title>전시 목록</title>
-
-
 <!-- header -->
 <%@ include file="/header.jsp"%>
 <!-- header end -->
-
 
 <style>
 /* .heart{ */
@@ -35,13 +32,11 @@
 /* } */
 </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	   <div class="board"><h1>전시</h1></div>
 	<div class="container">
 		<div class="row row-cols-1 row-cols-md-4 g-4" style="margin-bottom: 30px;">
 	<c:forEach items="${UserExhibitionList}" var="exhibition">
-
-
 			<div class="col" style="margin-bottom: 30px; cursor:pointer;" onclick="location.href='getUserExhibition?exh_no=${exhibition.exh_no}'" >
 				<div class="card h-100 heart">
 					<img src="/images/${exhibition.exh_thumbnail }"
