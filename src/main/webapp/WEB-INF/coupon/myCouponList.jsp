@@ -67,11 +67,11 @@
 <!--       맨처음 -->
                   <c:if test="${paging.nowPageBtn > 1 }">
                  <a class="page-st"
-                     href="MYCoupon?nowPageBtn=1">&laquo;</a>
+                     href="MyCoupon?nowPageBtn=1">&laquo;</a>
                      </c:if>
                      <c:if test="${paging.nowPageBtn > 1 }">
                      <a class="page-st"
-                     href="MYCoupon?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+                     href="MyCoupon?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
                      </c:if>
 
 <!-- 반복처리 태그 -->            
@@ -79,23 +79,23 @@
                         <c:choose>
                            <c:when test="${paging.nowPageBtn==i}">
                           <a class="page-st" style="font-weight: bold; color: #7329f7;"
-                           href="MYCoupon?nowPageBtn=${i}">${i}</a>
+                           href="MyCoupon?nowPageBtn=${i}">${i}</a>
                            </c:when>
                            <c:otherwise>
                           <a class="page-st"
-                           href="MYCoupon?nowPageBtn=${i}">${i}</a>
+                           href="MyCoupon?nowPageBtn=${i}">${i}</a>
                            </c:otherwise>
                         </c:choose>
                      </c:forEach>
 <!--       반복 끝 -->
                         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
                     <a class="page-st"
-                     href="MYCoupon?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+                     href="MyCoupon?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
                      </c:if>
 <!--       맨끝 -->
                      <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
                         <a class="page-st"
-                     href="MYCoupon?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+                     href="MyCoupon?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
                         </c:if>
      
             </div>

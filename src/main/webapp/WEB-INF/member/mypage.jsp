@@ -129,12 +129,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
          </div>
          <div class="mb-3" style="width:100%;">
             <label for="pw">*비밀번호</label> 
-              <input type="password" class="form-control" name="mb_pw" id="pw"  maxlength="20" required>
+              <input type="password" class="form-control" name="mb_pw" id="pw"  maxlength="20" >
          </div>
 
          <div class="mb-3" style="width:100%;">
             <label for="pw2">*비밀번호 확인</label>
-              <input type="password" class="form-control" name="mb_pw2" id="pw2"  maxlength="20" minlength="8" required> 
+              <input type="password" class="form-control" name="mb_pw2" id="pw2"  maxlength="20" minlength="8" > 
                <span><font id="checkPw"  size="2">비밀번호는 4~8글자입니다</font></span>
          </div>
 
