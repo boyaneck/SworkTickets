@@ -238,6 +238,7 @@ public class ExhibitionController {
 
 			System.out.println("nowpage 찍혀라"+pvo.getNowPageBtn());
 			System.out.println("마지막 버튼!!!!"+pvo.getEndBtn());
+			System.out.println("offset" + pvo.getOffset());
 			List<ReviewVO> list = reviewService.getReviewList(rvo);
 			
 			ModelAndView view = new ModelAndView();

@@ -309,7 +309,7 @@ textarea:focus, input:focus{ outline: none; }
                   <a class="aSel">${i}</a>
                </c:when>
                <c:otherwise>
-                  <a href="getUserExhibition?nowPageBtn=${i}">${i}</a>
+                  <a href="getUserExhibition?nowPageBtn=${i}&exh_no=${exhno2}">${i}</a>
                </c:otherwise>
             </c:choose>
          </c:forEach>
@@ -320,7 +320,6 @@ textarea:focus, input:focus{ outline: none; }
       </div>
       <br>
       <br>
-       
            
    </div>
 		시작:${paging.startBtn}

@@ -86,15 +86,16 @@ $( function() {
 </script>
 <style>
 #tabs{border: 1px solid white !important; }  
-.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {  
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {   
 border: 1px solid white !important;  
-}  
-.loc_name{background-color: white !important; border: 1px solid white !important;}  
+/* border-bottom: 1px solid white !important; */
+ }   
+.loc_name{background-color: white !important; border: 1px solid gray !important; border-bottom: 1px solid white !important;}  
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor:focus{  
 font-weight:bold; color:#7832f7 !important;  
 }  
 a {text-decoration: none;}
-li{list-style: none;}
+/* li{list-style: none;} */
 #tab li a {color: black;}
 /* #tab li.loc_name a {color: #7832f7;} */
 
