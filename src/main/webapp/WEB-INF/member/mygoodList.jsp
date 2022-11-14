@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <title>전시 목록</title>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <!-- header -->
 <%@ include file="/header.jsp"%>
@@ -29,10 +26,10 @@ h1{font-size: 30px;
 		<h1 style="text-align: center;">내 좋아요 목록</h1>
 	</div>
 
-		 <div class="container rank">
+		 <div class="container">
       <table class="table table-hover">
          <thead class="btn-primary">
-            <tr>
+            <tr class="rank_title">
 <!--                <th>번호</th> -->
                <th><i class = "xi-heart good" style="color:red; margin-bottom: 0px; font-size: 25px;"></i></th>
                <th>전시명</th>
