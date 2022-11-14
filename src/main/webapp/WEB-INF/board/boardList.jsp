@@ -87,10 +87,15 @@ function f_write(val){
          </tbody>
       </table>
       <div >
+      <c:choose>
+      <c:when test="${mb_Id eq 'admin' }">
       <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer">글쓰기</button>
+      </c:when>
+      <c:otherwise></c:otherwise>
+      </c:choose>
       </div>
    </div>
-      </div>
+      
       <br><br>
       <div id="btnBox_parent">
       <div id="btnBox">
