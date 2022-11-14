@@ -42,18 +42,14 @@
 	</select>
 	
 <insert id="insertOne">
-  INSERT INTO ONEONE (ONE_TITLE, ONE_WRITER, ONE_CONTENT, ONE_DATE, ONE_CATEGORY, ONE_MODIFY, ONE_SECRET) 
-  VALUES ( #{one_title}, #{one_writer}, #{one_content}, now(), #{one_category}, now(), #{one_secret})
+  INSERT INTO ONEONE (ONE_TITLE, ONE_WRITER, ONE_CONTENT, ONE_DATE, ONE_MODIFY, ONE_SECRET) 
+  VALUES ( #{one_title}, #{one_writer}, #{one_content}, now(), now(), #{one_secret})
 </insert>
 
 <update id="oneAnswer">
 	UPDATE ONEONE
 	SET ONE_ANSWER=#{one_answer} 
 	WHERE ONE_NO=#{one_no}
-	
-	
-	
-
 </update>
 
 <update id="updateOne">
@@ -68,10 +64,5 @@
 <delete id="deleteOne">
 	DELETE FROM ONEONE WHERE ONE_NO = #{one_no}
 </delete>
-
-
-
-
-	
 	
 </mapper>
