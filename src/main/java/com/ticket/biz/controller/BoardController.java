@@ -122,7 +122,8 @@ public class BoardController {
    @RequestMapping("/getBoardList")
    public String getBoardListPost(BoardVO vo, String nowPageBtn, Model model) {
       System.out.println("글 목록 검색 처리gg");
-      
+      String searchKeyword =vo.getSearchKeyword();
+      System.out.println(searchKeyword);
       //총 목록 수 
       int totalPageCnt = boardService.totalBoardListCnt(vo);
       System.out.println("totalboardListCnt 수행 완료");
@@ -143,6 +144,7 @@ public class BoardController {
       model.addAttribute("paging", pvo);
       System.out.println("modelAttribute getboardList");
       model.addAttribute("boardList", boardService.getBoardList(vo));
+      model.addAttribute("searchKeyword",searchKeyword);
       List<BoardVO> boardlist =boardService.getBoardList(vo);
       System.out.println("modelAttribute getBoardList 기능 실행 후 ");
       return "board/boardList";
