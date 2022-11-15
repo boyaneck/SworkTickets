@@ -25,7 +25,7 @@ public class PhoneService {
 		// coolsms의 환경설정 메뉴의 발신번호관리에 등록한 발신번호로 지정
 		params.put("from", "01065742540");
 		params.put("type", "SMS");
-		params.put("text", "[TEST] 인증번호는" + "[" + randomNumber + "]" + "입니다.");
+		params.put("text", "[NewJeonsis] 본인확인 인증번호" + "[" + randomNumber + "]" + "입니다.");
 		// 문자 내용 입력
 		try {
 			Object obj = coolsms.send(params);

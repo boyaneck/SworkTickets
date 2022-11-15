@@ -134,8 +134,5 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			<!-- 반복처리할 태그 끝 -->
 		</div>
 	</div>
-
-
-</body>
 </body>
 </html>
