@@ -203,13 +203,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					</div>
    <nav id="searchNav" class="sub_title">
       <form class="form-inline" action="adminFaqList" method="post">
-         <select class="form-control" id="sel1" name="searchCondition"
-            style="display: inline-block !important; margin-right: 10px;">
-            <c:forEach items="${conditionMap}" var="option">
-               <option value="${option.value}">${option.key}</option>
-            </c:forEach>
-         </select> <input class="form-control mr-sm-2" type="text" name="searchKeyword"
-            placeholder="검색어를 입력하세요.">
+        <input class="form-control mr-sm-2" type="text" name="searchKeyword"
+            placeholder="검색어를 입력하세요." value="${searchKeyword }">
          <button class="btn btn-success" type="submit">검색</button>
       </form>
    </nav>
@@ -244,28 +239,28 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		<div id="btnBox">
 			<!-- 반복처리할 태그 시작-->
 			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="adminFaqList?nowPageBtn=1">&laquo;</a>
+				<a href="adminFaqList?nowPageBtn=1&searchKeyword=${searchKeyword }">&laquo;</a>
 			</c:if>
 			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }">&lt;</a>
 			</c:if>
 			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
 				step="1" var="i">
 				<c:choose>
 					<c:when test="${paging.nowPageBtn == i}">
 						<a style="font-weight: 400; color: #7832f7;" class="aSel"
-							href="adminFaqList?nowPageBtn=${i}"><strong>${i}</strong></a>
+							href="adminFaqList?nowPageBtn=${i}&searchKeyword=${searchKeyword }"><strong>${i}</strong></a>
 					</c:when>
 					<c:otherwise>
-						<a href="adminFaqList?nowPageBtn=${i}">${i}</a>
+						<a href="adminFaqList?nowPageBtn=${i}&searchKeyword=${searchKeyword }">${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn +1 }&searchKeyword=${searchKeyword }">&gt;</a>
 			</c:if>
 			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="adminFaqList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+				<a href="adminFaqList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }">&raquo;</a>
 			</c:if>
 			<!-- 반복처리할 태그 끝 -->
 		</div>

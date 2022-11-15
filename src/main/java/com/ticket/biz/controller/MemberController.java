@@ -114,7 +114,6 @@ public class MemberController {
 	}
 
 	// 회원 수정
-	// 회원 수정
 	@RequestMapping("/updateMember")
 	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session, HttpServletRequest request) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
@@ -229,6 +228,10 @@ public class MemberController {
 		
 		memberService.deleteMember2();
 		
+		String searchKeyword =vo.getSearchKeyword();
+		String searchCondition = vo.getSearchCondition();
+	      model.addAttribute("searchKeyword",searchKeyword);
+	      model.addAttribute("searchCondition",searchCondition);
 		// 총 목록 수
 		int totalPageCnt = memberService.totalMemberListCnt(vo);
 
