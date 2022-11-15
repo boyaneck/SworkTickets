@@ -194,7 +194,7 @@ ${exhibition.exh_refund_info}
 			</div>
 
 			<div id="footer">
-				<button id="conComplete" type="submit" class="btn btn-primary">수정하기</button>
+				<button id="conComplete" type="submit" class="btn btn-purple">수정하기</button>
 <!-- 				<button id="conList" type="button" class="btn btn-primary">글목록</button> -->
 			</div>
 		</form>
@@ -268,6 +268,64 @@ $("#exh_local_name").val(local_name).prop("selected", true);
             }
         }).open();
     }
+    
+	var now_utc = Date.now() // 지금 날짜를 밀리초로
+	 console.log("현재 : ", now_utc);
+	var tomo = now_utc + (1000*60*60*24*1);
+	var oneyearday = now_utc + (1000*60*60*24*365);
+	var daftomopone = now_utc + (1000*60*60*24*2);
+	var oneyeardayone = now_utc + (1000*60*60*24*366);
+	
+	// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
+	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+	 console.log("timeOff : ", timeOff);
+	// new Date(now_utc-timeOff).toISOString()은 '2022-11-11T13:09:38.134Z'를 반환
+	var today = new Date(tomo-timeOff).toISOString().split("T")[0];
+	 console.log("today : ", today);
+	var oneyear = new Date(oneyearday-timeOff).toISOString().split("T")[0];
+	 console.log("oneyear : ", oneyear);
+	var todayone = new Date(daftomopone-timeOff).toISOString().split("T")[0];
+	 console.log("todayone : ", todayone);
+	var yearone = new Date(oneyeardayone-timeOff).toISOString().split("T")[0];
+	 console.log("yearone : ", yearone);
+
+	document.getElementById("exh_st_date").setAttribute("min", today);
+	document.getElementById("exh_st_date").setAttribute("max", oneyear);
+	document.getElementById("exh_end_date").setAttribute("min", todayone);
+	document.getElementById("exh_end_date").setAttribute("max", yearone);
+
+	//유효성 검사
+	function ex_st_validate() {
+		
+		console.log($("#exh_st_date").val());
+		if($("#exh_st_date").val() < today){
+		console.log("if:"+$("#exh_st_date").val());
+		alert(today+" 이후 날짜를 입력하세요.");
+		return false;
+	      }else{
+		if($("#exh_st_date").val() > oneyear){
+		console.log("if:"+$("#exh_st_date").val());
+		alert(oneyear+" 이전 날짜를 입력하세요.");
+		return false;
+	      }
+	     }
+	}
+	
+	function ex_end_validate() {
+		console.log($("#exh_end_date").val());
+		if($("#exh_end_date").val() < todayone){
+		console.log("if:"+$("#exh_end_date").val());
+		alert(todayone+" 이후 날짜를 입력하세요.");
+		return false;
+	      }else{
+		console.log($("#exh_end_date").val());
+		if($("#exh_end_date").val() > yearone){
+		console.log("if:"+$("#exh_end_date").val());
+		alert(yearone+" 이전 날짜를 입력하세요.");
+		return false;
+	      }
+	     }
+	}
 </script>
 </body>
 </html>
