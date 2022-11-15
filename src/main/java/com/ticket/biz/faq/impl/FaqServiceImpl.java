@@ -63,6 +63,11 @@ public class FaqServiceImpl implements FaqService{
 		return FaqDAO.adminFaqList(vo);
 	}
 
+	@Override
+	public int totaladminFaqListCnt(FaqVO vo) {
+		return FaqDAO.totaladminFaqListCnt(vo);
+	}
+
 
 
 
