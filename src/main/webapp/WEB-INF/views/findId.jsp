@@ -175,10 +175,10 @@ h2 {
          if (request.getAttribute("mb_Id") != null) {
          %>
          <div class="row">
-            <div class="col-4">
-               <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아이디</b>
+            <div class="col-3">
+               <b style="margin:0px; font-size:16px; font-weight:400; width:70px;">아이디</b>
             </div>
-            <div class="col-5" style="margin-bottom: 50px;">
+            <div class="col-6" style="margin-bottom: 50px;">
                <input type="text" name="mb_id" id="mb_id" value="${mb_Id}"
                   disabled>
                   <div class="col-3"></div>
