@@ -112,33 +112,36 @@ border: 1px solid #1f1f1f;
             <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer" ">글쓰기</button>
       <br>
       <br>
-      <div id="btnBox_parent">
-      <div id="btnBox">
-         <!-- 반복처리할 태그 시작-->
-         <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
-         </c:if>
-         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-            step="1" var="i">
-            <c:choose>
-               <c:when test="${paging.nowPageBtn == i}">
-                  <a class="aSel">${i}</a>
-               </c:when>
-               <c:otherwise>
-                  <a href="getOneList?nowPageBtn=${i}"><Strong>${i}</Strong></a>
-               </c:otherwise>
-            </c:choose>
-         </c:forEach>
-         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
-         </c:if>
-         <!-- 반복처리할 태그 끝 -->
-      </div>
-      <br>
-      <br>
-
-           
-   </div>
+  	<div id="btnBox_parent">
+		<div id="btnBox">
+			<!-- 반복처리할 태그 시작-->
+			<c:if test="${paging.nowPageBtn > 1 }">
+				<a href="getOneList?nowPageBtn=1">&laquo;</a>
+			</c:if>
+			<c:if test="${paging.nowPageBtn > 1 }">
+				<a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+			</c:if>
+			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
+				step="1" var="i">
+				<c:choose>
+					<c:when test="${paging.nowPageBtn == i}">
+						<a style="font-weight: 400; color: #7832f7;" class="aSel"
+							href="getOneList?nowPageBtn=${i}"><strong>${i}</strong></a>
+					</c:when>
+					<c:otherwise>
+						<a href="getOneList?nowPageBtn=${i}">${i}</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+				<a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+			</c:if>
+			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+				<a href="getOneList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+			</c:if>
+			<!-- 반복처리할 태그 끝 -->
+		</div>
+	</div>
       <br>
       <br>
 

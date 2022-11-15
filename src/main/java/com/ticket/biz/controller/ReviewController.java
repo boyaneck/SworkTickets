@@ -92,6 +92,8 @@ public class ReviewController {
 	public Map<String, Object> getReviewList(ReviewVO vo,String nowPageBtn, Model model) {
 		
 		
+		
+		System.out.println("리뷰 리스트!!!!!"+vo.getReview_bno());
 		int total = reviewservice.getTotal(vo);
 		
 		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
@@ -126,6 +128,7 @@ public class ReviewController {
 		System.out.println("review list 가져오는 controller 다 탔음!!!!!!");
 		
 		
+		System.out.println("list 댓글 등록일 가져오기"+list.toString());
 		return map;
 	}
 	

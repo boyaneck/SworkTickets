@@ -62,7 +62,7 @@
 <body>
 	<%
 	String sts = "";
-    if (session.getAttribute("mb_Id")==null ||!session.getAttribute("mb_Id").equals("admin")) {
+	if (session.getAttribute("mb_id")==null ||!session.getAttribute("mb_Id").equals("admin")) {
 		sts = "disabled";
 	}
 	%>
@@ -139,6 +139,7 @@ function f_write(){
 						<button class="btn btn-success" div class="btn btn-delete"
 							onclick="deleteboard(${board.noti_no})" style="cursor: pointer">글삭제</button>
 				</c:when>
+				<c:otherwise></c:otherwise>
 			</c:choose>
 						<button class="btn btn-success" href="getBoardList">글목록</button>
 					</div>

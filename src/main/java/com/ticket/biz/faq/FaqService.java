@@ -22,5 +22,7 @@ public interface FaqService {
 	List<FaqVO> adminFaqList(FaqVO vo);
 
 	int totalFaqListCnt(FaqVO vo);
+	
+	int totaladminFaqListCnt(FaqVO vo);
 
 }

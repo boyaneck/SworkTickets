@@ -47,24 +47,58 @@ textarea {
 				 if(data.total > 0){
 				console.log("get list 실행 중");
 				var list = data.list;
-				var reg=data.list.review_reg_date;
-				console.log("받아온 데이터의 리스트와, 총 댓글 수 ")
+				var reg=list.review_reg_date;
+				console.log("받아온 데이터의 리스트와, 총 댓글 수 ") ;
 				console.log(list);
 				console.log(data.total);
-				console.log("등록일!!!!!"+reg);
-				
+				console.log("dddddddddddddddddddddd"+${paging.nowPageBtn});
 				
 				var comment_html = "<div>";
-				
+				 
 				$('#count').html(data.total); //댓글 수 
 				$.each(list, function(i, v){
 					console.log("댓글 만들기");
-					var content  =  list[i].review_content;
-					var writer   =  list[i].review_writer;
-					var review_no=  list[i].review_no;
-					var review_bno =list[i].review_bno;
-					var date= list[i].review_reg_date;
-					console.log("등록일!!!!!!!!!!!!!!!"+ date);
+					var content    =  list[i].review_content;
+					var writer     =  list[i].review_writer;
+					var review_no  =  list[i].review_no;
+					var review_bno =  list[i].review_bno;
+					var date       =  list[i].review_reg_date;
+				
+// 					var date1=new Date();
+// 					var year=date1.getFullYear(date);
+// 					var month=date1.getMonth(date);
+// 					var day=date1.getDay(date);
+// 					var hour=date1.getHours();
+// 					var minute=date1.getMinutes(date);
+// 					var second=date1.getSeconds(date);
+// 					var date = new Date();
+					
+					
+	
+	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+	 console.log("timeOff : ", timeOff);
+	// new Date(now_utc-timeOff).toISOString()은 '2022-11-11T13:09:38.134Z'를 반환
+	var today = new Date(date-timeOff).toISOString().split("T")[0];
+	 console.log("today : !!!!!!!!!!!!!!!!!!!", today);
+
+// 	document.getElementById("exh_st_date").setAttribute("min", today);
+// 	document.getElementById("exh_st_date").setAttribute("max", oneyear);
+// 	document.getElementById("exh_end_date").setAttribute("min", todayone);
+// 	document.getElementById("exh_end_date").setAttribute("max", yearone);
+					
+					
+					
+// 					console.log("날짜 나와라!!!@!@!!@!@@"+today);
+					
+					
+					
+					console.log
+					
+// 					var date1= list[1].review_reg_date;
+
+					console.log("등록번호"+review_no);
+					console.log("등록일!!!!!!!!!!!!!!!@@@@@@@@@"+ date);
+// 					console.log("1번째 댓글의 등록일  나와라!!!!"+date1);
 					
 					
 					console.log("댓글번호받아라!!!" +review_no);
@@ -72,7 +106,8 @@ textarea {
 					
 					comment_html +="<div id='a"+[i]+"' class='aa1'>";
 					comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
-					comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ date+ "</div>";
+					comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ today+ "</div>";
+					comment_html +="<div id='exh_st_date'>${today} </div>";
 					comment_html +="</div>";
 					
 			
@@ -85,6 +120,10 @@ textarea {
 					comment_html +="<button  class='btn_comment_update' style='background-color:white; border:1px solid black; border-radius:3px; '><i class = 'xi-check'></i></button>";
 					comment_html += "</form>";
 					comment_html +="</div>";
+					
+					
+					
+					
 					
 					console.log("댓글 아래로 쭉 떠야함 ");
 				
@@ -106,8 +145,9 @@ textarea {
 					
 					});
 				
-				   console.log('99999999: '+comment_html);
+				  
 				$(".comment_Box").html(comment_html);
+				
 				
 				
 				  }
@@ -252,7 +292,7 @@ width: 200px;
 	height: 45px;
 	color: white; 
 	background-color: #7329f7; 
-	border: solid 1px;
+	border: solid 0px 0px 1px 0px;
 	font-size: 16pt;
 }
 
@@ -296,30 +336,34 @@ textarea:focus, input:focus{ outline: none; }
    </div>         
       </div>
       
+      
+      
       <div id="btnBox_parent">
       <div id="btnBox">
-         <!-- 반복처리할 태그 시작-->
+      
+         반복처리할 태그 시작
          <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+            <a href="reviewList?nowPageBtn=${paging.nowPageBtn -1 }&review_bno=${exhno2}"><strong>&lt;</strong></a>
          </c:if>
          <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-            step="1" var="i">
+           step="1" var="i"> 
             <c:choose>
                <c:when test="${paging.nowPageBtn == i}">
                   <a class="aSel">${i}</a>
                </c:when>
                <c:otherwise>
-                  <a href="getUserExhibition?nowPageBtn=${i}&exh_no=${exhno2}">${i}</a>
+                  <a href="reviewList?nowPageBtn=${i}&review_bno=${exhno2}"><strong>${i}</strong></a>
                </c:otherwise>
             </c:choose>
          </c:forEach>
          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+            <a href="reviewList?nowPageBtn=${paging.nowPageBtn +1 }&review_bno=${exhno2}"><strong>&gt;</strong></a>
          </c:if>
-         <!-- 반복처리할 태그 끝 -->
+<!--          반복처리할 태그 끝 -->
       </div>
-      <br>
-      <br>
+<!--       <br> -->
+<!--       <br> -->
+       
            
    </div>
 		시작:${paging.startBtn}
