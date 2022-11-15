@@ -70,4 +70,8 @@ public class FaqDAOMybatis {
 
 			return mybatis.selectList("FaqDAO.adminFaqList", vo);
 		}
+		public int totaladminFaqListCnt(FaqVO vo) {
+			System.out.println("===> mybatis로 getFaqListCnt() 기능 처리");
+			 return mybatis.selectOne("FaqDAO.totaladminFaqListCnt",vo);
+		}
 }

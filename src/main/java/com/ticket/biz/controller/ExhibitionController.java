@@ -214,7 +214,12 @@ public class ExhibitionController {
 		@RequestMapping("/getUserExhibition")
 		public String getUserExhibition(ExhibitionVO vo, Model model,HttpSession session,GoodVO gvo,ReviewVO rvo,String nowPageBtn,HttpServletRequest request) {
 			
+			System.out.println("현제페이지 버튼 오류 잡기"+nowPageBtn);
+			System.out.println("!!!!!!!!!");
+			
 			int exh_no=Integer.parseInt(request.getParameter("exh_no")); 
+			System.out.println("exh_no"+exh_no);
+			
 			rvo.setReview_bno(exh_no);
 			System.out.println("전시회번호!!!!!!!!!"+exh_no);
 			int total = reviewService.getTotal(rvo);
