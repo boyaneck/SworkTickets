@@ -18,9 +18,9 @@ public class ReviewRowMapper implements RowMapper<ReviewVO>{
 	review.setReview_bno(rs.getInt("review_bno"));
 	review.setReview_writer(rs.getString("review_writer"));
 	review.setReview_content(rs.getString("review_content"));
-	review.setRe_review(rs.getString("re_review"));
+	
 	review.setReview_reg_date(rs.getTimestamp("review_reg_date"));
-	review.setReview_type(rs.getInt("review_type"));
+	
 
 
 
