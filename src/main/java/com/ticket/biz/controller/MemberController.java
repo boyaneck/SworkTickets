@@ -257,7 +257,7 @@ public class MemberController {
 		vo = memberService.find(vo);
 //		System.out.println("찾은결과: " + vo);
 		if (vo != null) {
-			model.addAttribute("mb_Id", vo.getMb_id());
+			model.addAttribute("mb_Id1", vo.getMb_id());
 			return "views/findId";
 		} else {
 			return "views/findId";
@@ -270,7 +270,7 @@ public class MemberController {
 		vo = memberService.find(vo);
 		System.out.println("찾은결과: " + vo);
 		if (vo != null) {
-			model.addAttribute("mb_Id", vo.getMb_id());
+			model.addAttribute("mb_Id1", vo.getMb_id());
 			return "views/findPw";
 		} else {
 			return "views/findPw";

@@ -166,14 +166,14 @@ h2 {
 
          <!--       인증번호확인 -->
          <%
-         if (request.getAttribute("mb_Id") != null) {
+         if (request.getAttribute("mb_Id1") != null) {
          %>
          <div class="row">
             <div class="col-4">
                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아이디</b>
             </div>
             <div class="col-5" style="margin-bottom: 50px;">
-               <input type="text" name="mb_id" id="mb_id" value="${mb_Id}"
+               <input type="text" name="mb_id" id="mb_id" value="${mb_Id1}"
                   disabled>
                   <div class="col-3"></div>
                <%
