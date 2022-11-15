@@ -81,7 +81,7 @@ public class KaKaoController {
 			return "redirect:index.jsp";
 		}
 
-		REDIRECT_URI = "http://localhost:8090";
+		REDIRECT_URI = "http://hmticket.ml";
 		return "redirect:index.jsp";
 	}
 

@@ -7,19 +7,7 @@
 	<select id="totalBoardListCnt" resultType="_int">
 	
 		SELECT COUNT(*) FROM NOTICE WHERE 1=1 
-
-		ORDER BY NOTI_NO DESC
-		
-	</select>
-	
-	<select id="getBoardList" resultType="board">
-		<if test="searchKeyword ==null">
-		SELECT * FROM NOTICE WHERE 1=1 
-		 ORDER BY NOTI_NO DESC
-		LIMIT 10 OFFSET #{offset}
-		</if>
 		<if test="searchKeyword !=null">
-		SELECT * FROM NOTICE WHERE 1=1 
 		AND
 	     REPLACE(UPPER(NOTI_TITLE),' ','')
          LIKE
@@ -28,12 +16,29 @@
          (UPPER(NOTI_WRITER),' ','')
          LIKE
          REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
-         
-         ORDER BY NOTI_NO DESC
-		LIMIT 10 OFFSET #{offset}
-         
+      
 		</if>
-	    
+		ORDER BY NOTI_NO DESC
+		
+	</select>
+	
+	<select id="getBoardList" resultType="board">
+	
+		SELECT * FROM NOTICE WHERE 1=1 
+		
+		<if test="searchKeyword !=null">
+		AND
+	     REPLACE(UPPER(NOTI_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		 OR REPLACE
+         (UPPER(NOTI_WRITER),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+      
+		</if>
+	     ORDER BY NOTI_NO DESC
+		LIMIT 10 OFFSET #{offset}
 	</select>
 	
 	<select id="getBoard" resultType="board">  

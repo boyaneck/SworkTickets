@@ -7,21 +7,8 @@
 	<select id="totalOneListCnt" resultType="_int">
 	
 		SELECT COUNT(*) FROM ONEONE WHERE 1=1 
-
-		ORDER BY ONE_NO DESC
-		LIMIT 10 OFFSET #{offset}
-		
-	</select>
-	
-	<select id="getOneList" resultType="one">
-	<if test="searchKeyword ==null">
-		SELECT * FROM ONEONE WHERE 1=1 
-		ORDER BY ONE_NO DESC
-		LIMIT 10 OFFSET #{offset}
-		</if>
-		
 		<if test="searchKeyword !=null">
-		SELECT * FROM ONEONE WHERE 1=1 
+	
 		AND
 	     REPLACE(UPPER(ONE_TITLE),' ','')
          LIKE
@@ -31,10 +18,31 @@
          LIKE
          REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
          
+		</if>
+		ORDER BY ONE_NO DESC
+		LIMIT 10 OFFSET #{offset}
+		
+	</select>
+	
+	<select id="getOneList" resultType="one">
+	
+		SELECT * FROM ONEONE WHERE 1=1 
+		
+		<if test="searchKeyword !=null">
+	
+		AND
+	     REPLACE(UPPER(ONE_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		 OR REPLACE
+         (UPPER(ONE_WRITER),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+         
+		</if>
          ORDER BY ONE_NO DESC
 		LIMIT 10 OFFSET #{offset}
 		
-		</if>
 	</select>
 	
 	<select id="getOne" resultType="one">  

@@ -4,8 +4,8 @@ public class NaverVO {
 
 	//네이버 정보
 	private String client_id = "FvqDU_EOG1povZWb2YP6";
-	private String service_url = "http://localhost:8090/index";
-	private String callback_url = "http://localhost:8090";
+	private String service_url = "http://hmticket.ml/index";
+	private String callback_url = "http://hmticket.ml";
 	private String client_secret = "cisI7m8b8z";
 
 

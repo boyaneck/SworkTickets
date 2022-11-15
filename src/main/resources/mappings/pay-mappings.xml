@@ -62,10 +62,10 @@
 		SELECT *, COUNT(p.P_ID)AS rank_cnt from exhibition as e
 		LEFT outer JOIN pay AS p
 		on e.exh_no= p.exh_no
-		where e.EXH_APPROVAL=1
+		WHERE e.EXH_APPROVAL = 1
 		GROUP BY e.exh_no
 		ORDER BY
-		rank_cnt DESC
+		p.exh_no DESC
 		LIMIT 10;
 
 	</select>
@@ -75,7 +75,7 @@
 		SELECT e.*, COUNT(p.P_ID)AS rank_cnt from exhibition as e
 		LEFT outer JOIN pay AS p
 		on e.exh_no= p.exh_no
-		where e.EXH_APPROVAL=1
+		WHERE e.EXH_APPROVAL = 1
 		GROUP BY e.exh_no
 		ORDER BY
 		p.exh_no DESC

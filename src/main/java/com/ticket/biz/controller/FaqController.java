@@ -152,13 +152,14 @@ public class FaqController {
 		@RequestMapping("/adminFaqList")
 		public String adminFaqListPost(FaqVO vo, String nowPageBtn, Model model) {
 			System.out.println("글 목록 검색 처리gg");
-
+			String searchKeyword =vo.getSearchKeyword();
+		      model.addAttribute("searchKeyword",searchKeyword);
 			//총 목록 수
-			int totalPageCnt = faqService.totalFaqListCnt(vo);
-			System.out.println("totalFaqListCnt 수행 완료");
+			int totalPageCnt = faqService.totaladminFaqListCnt(vo);
+			System.out.println("totaladminFaqListCnt 수행 완료");
 			//현재 페이지 설정
 			int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-			System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+			System.out.println("totaladminPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 
 			//한페이지당 보여줄 목록 수
 			int onePageCnt = 10;

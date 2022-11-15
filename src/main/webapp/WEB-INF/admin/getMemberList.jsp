@@ -166,12 +166,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<select class="form-control" id="sel1" name="searchCondition"
 									style="display: inline-block !important; margin-right: 10px; appearance:auto;">
 									<c:forEach items="${conditionMap}" var="option">
-										<option value="${option.value}">${option.key}</option>
+										<option value="${option.value}" <c:if test ="${searchCondition eq option.value}">selected="selected"</c:if>>${option.key}</option>
 									</c:forEach>
-									<%-- 		<option value="${conditionMap['제목']}">${conditionMap['제목']}</option> --%>
-									<%-- 		<option value="${conditionMap['내용']}">${conditionMap['내용']}</option> --%>
 								</select> <input class="form-control mr-sm-2" type="text"
-									name="searchKeyword" placeholder="검색어를 입력하세요.">
+									name="searchKeyword" placeholder="검색어를 입력하세요." value="${searchKeyword }">
 								<button class="btn-purple" type="submit" style="margin-right: 10px;">검색</button>
 								<button type="button" class="btn-purple" onclick="location.href='/admin/member';">회원등록</button>
 								<br>
@@ -226,20 +224,20 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
 									<c:choose>
 										<c:when test="${paging.nowPageBtn==i}">
-											<a style="font-weight:400; color:#7832f7;" href="getMemberList?nowPageBtn=${i}">${i}</a>
+											<a style="font-weight:400; color:#7832f7;" href="getMemberList?nowPageBtn=${i}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">${i}</a>
 										</c:when>
 										<c:otherwise>
-											<a  href="getMemberList?nowPageBtn=${i}">${i}</a>
+											<a  href="getMemberList?nowPageBtn=${i}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">${i}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<!-- 		반복 끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="getMemberList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+									<a href="getMemberList?nowPageBtn=${paging.nowPageBtn+1}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">&gt;</a>
 								</c:if>
 								<!-- 		맨끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="getMemberList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+									<a href="getMemberList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">&raquo;</a>
 								</c:if>
 					</div>
 					</div>

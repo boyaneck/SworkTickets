@@ -192,7 +192,11 @@ public class PayController {
 		String exh_no = request.getParameter("exh_no");
 		String exh_thumbnail = request.getParameter("exh_thumbnail");
 		System.out.println(request.getParameter("exh_no"));
-
+		
+		String searchKeyword =vo.getSearchKeyword();
+		String searchCondition = vo.getSearchCondition();
+	      model.addAttribute("searchKeyword",searchKeyword);
+	      model.addAttribute("searchCondition",searchCondition);
 		// 총 목록 수
 		int totalPageCnt = couponBoxService.myCouponListCnt(vo);
 		// 현재 페이지 설정
@@ -234,7 +238,11 @@ public class PayController {
 		String exh_no = request.getParameter("exh_no");
 		String exh_thumbnail = request.getParameter("exh_thumbnail");
 		System.out.println(request.getParameter("exh_no"));
-
+		
+		String searchKeyword =vo.getSearchKeyword();
+		String searchCondition = vo.getSearchCondition();
+	      model.addAttribute("searchKeyword",searchKeyword);
+	      model.addAttribute("searchCondition",searchCondition);
 		// 총 목록 수
 		int totalPageCnt = couponBoxService.myCouponListCnt(cb_vo);
 		// 현재 페이지 설정
@@ -388,6 +396,10 @@ public class PayController {
 	// 회원 구매내역 보기
 		@RequestMapping("/getAllPayList")
 		public String getAllPayList(PayVO vo, String nowPageBtn, Model model, HttpSession session) {
+			String searchKeyword =vo.getSearchKeyword();
+			String searchCondition = vo.getSearchCondition();
+		      model.addAttribute("searchKeyword",searchKeyword);
+		      model.addAttribute("searchCondition",searchCondition);
 			// 총 목록 수
 			int totalPageCnt = payService.totalPayListCnt(vo);
 			// 현재 페이지 설정

@@ -244,10 +244,10 @@ $("#all_module").click(function() {
 							<form class="form-inline" action="getAllPayList" method="post">
 								<select class="form-control" id="sel1" name="searchCondition" style="display: inline-block !important; margin-right: 10px; appearance:auto;">
 									<c:forEach items="${conditionMap}" var="option">
-										<option value="${option.value}">${option.key}</option>
+										<option value="${option.value}" <c:if test ="${searchCondition eq option.value}">selected="selected"</c:if>>${option.key}</option>
 									</c:forEach>
 								</select> <input class="form-control mr-sm-2" type="text"
-									name="searchKeyword" placeholder="검색어를 입력하세요.">
+									name="searchKeyword" placeholder="검색어를 입력하세요." value="${searchKeyword }">
 								<button class="btn-purple" type="submit">검색</button>
 							</form>
 						</nav>
@@ -312,30 +312,30 @@ $("#all_module").click(function() {
 				<div id="btnBox"  style="text-align:center;">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<a href="getAllPayList?nowPageBtn=1">&laquo;</a>
+									<a href="getAllPayList?nowPageBtn=1&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">&laquo;</a>
 								</c:if>
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<a  href="getAllPayList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+									<a  href="getAllPayList?nowPageBtn=${paging.nowPageBtn-1}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">&lt;</a>
 								</c:if>
 
 								<!-- 반복처리 태그 -->
 								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
 									<c:choose>
 										<c:when test="${paging.nowPageBtn==i}">
-											<a style="font-weight:400; color:#7832f7;" href="getAllPayList?nowPageBtn=${i}">${i}</a>
+											<a style="font-weight:400; color:#7832f7;" href="getAllPayList?nowPageBtn=${i}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">${i}</a>
 										</c:when>
 										<c:otherwise>
-											<a  href="getAllPayList?nowPageBtn=${i}">${i}</a>
+											<a  href="getAllPayList?nowPageBtn=${i}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">${i}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<!-- 		반복 끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="getAllPayList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+									<a href="getAllPayList?nowPageBtn=${paging.nowPageBtn+1}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">&gt;</a>
 								</c:if>
 								<!-- 		맨끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="getAllPayList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+									<a href="getAllPayList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }&searchCondition=${searchCondition }">&raquo;</a>
 								</c:if>
 					</div>
 					</div>

@@ -214,7 +214,12 @@ public class ExhibitionController {
 		@RequestMapping("/getUserExhibition")
 		public String getUserExhibition(ExhibitionVO vo, Model model,HttpSession session,GoodVO gvo,ReviewVO rvo,String nowPageBtn,HttpServletRequest request) {
 			
+			System.out.println("현제페이지 버튼 오류 잡기"+nowPageBtn);
+			System.out.println("!!!!!!!!!");
+			
 			int exh_no=Integer.parseInt(request.getParameter("exh_no")); 
+			System.out.println("exh_no"+exh_no);
+			
 			rvo.setReview_bno(exh_no);
 			System.out.println("전시회번호!!!!!!!!!"+exh_no);
 			int total = reviewService.getTotal(rvo);
@@ -288,7 +293,8 @@ public class ExhibitionController {
 		@RequestMapping("/getUserExhibitionList")
 		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model, HttpSession session) {
 			//총 목록 수
-			
+			   String EsearchKeyword =vo.getESearchKeyword();
+			      model.addAttribute("EsearchKeyword",EsearchKeyword);
 					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
 					//현재 페이지 설정
 					int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
