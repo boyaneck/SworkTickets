@@ -15,7 +15,9 @@
       location.href = "/login.jsp"
    };
 </script>
-
+<style>
+#over{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+</style>
 <%@ include file="/header.jsp"%>
 </head>
 <body>
@@ -46,14 +48,14 @@
                      <h1 class="text-center"
                         style="transform: translate(0, 70%); font-size:50px; font-weight: bolder; padding-left: 17px">${coupon.c_per}%</h1>
                   </div>
-                  <div class="col title"
+                  <div class="col title" id="over"
                      style="font-size: 15px; transform: translate(0, 40%); text-align: left;">
                      <b id="c_name" style="font-size: 23px">${coupon.c_name}</b><br>
                      ${coupon.c_date}까지<br> <span class="text-danger"><small>
                            ${endDate_N-startDate_N}일 남음 &nbsp;</small></span>
                   </div>
 
-                  <div class="col" style="transform: translate(0, 15%);">
+                  <div class="col-md" style="transform: translate(0, 15%);">
                      <c:choose>
                         <c:when test="${mb_Id eq 'admin'}">
                            <button class="btn-coupon2"

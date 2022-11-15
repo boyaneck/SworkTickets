@@ -242,6 +242,7 @@ a.nav-link.header-logout
    font-size:16px;
    background-color:#1f1f1f!important;
    color:#fff;
+   width: 95px;
 }
 a.nav-link.header-logout:hover
 {
@@ -625,7 +626,7 @@ div.rectangle{
    background-color: #fff; 
    color: #7329f7; 
    font-size: 18px;
-    font-weight: bold;
+   font-weight: 500;
 }
 .btn-purple:hover{
    border:1px solid #7329f7; 
@@ -634,7 +635,7 @@ div.rectangle{
    background-color: #7329f7; 
    color: #fff; 
    font-size: 18px;
-   font-weight: bold;
+   font-weight: 500;
 }
 
 /* 비밀번호 확인버튼 */

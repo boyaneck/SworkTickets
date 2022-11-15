@@ -13,7 +13,8 @@
    crossorigin="anonymous"></script>
 
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
-   <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script>
+<!--    <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/board.css">
 <link rel="stylesheet" href="./css/ranking.css">
@@ -27,9 +28,6 @@
       style="width: 140px;" src="./images/logo.png">&nbsp&nbsp
    </a>
 <!-- 햄버거 시작-->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
      
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav hambuger">
@@ -121,20 +119,20 @@
             <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
                <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
-               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/adminFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
+   <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
+         <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
@@ -177,13 +175,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
+       <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
+         <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
@@ -226,13 +224,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
+   <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
-        </div> 
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+        </div>
       </div>
+     	 <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <%-- <span class="nav-hello">${kakaoId} 님 안녕하세요 </span> --%>
@@ -273,13 +271,13 @@
             </div>
          </li>
       </ul>
-      <!-- 검색 -->
+   <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="glyphicon fas fa-search"></i>
           <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
+		<button type="button" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
       
       <ul class="nav navbar-nav navbar-right">
@@ -294,7 +292,10 @@
         </ul>
       </c:otherwise>   
    </c:choose>
-   
+<!--    햄버거 버튼 -->
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 </nav>
 <script>
 function searchkey() {
@@ -302,12 +303,17 @@ function searchkey() {
 
  // 엔터키가 눌렸을 때 실행하는 반응
     var exs = document.getElementById("eSearchKeyword").value;
-    	console.log(exs);
+       console.log(exs);
 
     location.href="getUserExhibitionList?eSearchKeyword="+exs;
-//     location.href="getUserExhibitionList?eSearchKeyword="+exs;
-    
     }
+}
+function searchkeya() {
+
+    var exsu = document.getElementById("eSearchKeyword").value;
+       console.log(exsu);
+
+    location.href="getUserExhibitionList?eSearchKeyword="+exsu;
 }
 
 /* $(document).ready(function(){

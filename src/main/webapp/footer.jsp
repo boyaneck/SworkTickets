@@ -12,17 +12,12 @@
    <div class="container">
       <div class="footer_nav">
          <div class="inner">
-         <!--    <ul>
-                                           <a href="./map.jsp">오시는길 </a>
-               <button class="footer-load" onclick="window.open('./map.jsp')">오시는길</button>
-
-            </ul> -->
          </div>
 
       </div>
    </div>
    <!-- 푸터 내비 닫음 -->
-   <div class="container footer">
+   <div class="container  footer">
       <div class="footer_info">
          <div class="inner">
             <ul class="footer_row">

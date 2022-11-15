@@ -32,6 +32,36 @@
 		</if>
 	</select>
 	
+	
+<!-- 	관리자 -->
+<!-- <select id="totalFaqListCnt" resultType="_int"> -->
+<!-- 		SELECT COUNT(*) FROM FAQ WHERE 1=1  -->
+<!-- 		ORDER BY FAQ_NO DESC -->
+<!-- 		LIMIT 10 OFFSET #{offset} -->
+<!-- 	</select> -->
+	
+	<select id="adminFaqList" resultType="faq">
+	<if test="searchKeyword ==null">
+		SELECT * FROM FAQ WHERE 1=1 
+		 ORDER BY FAQ_NO DESC
+		LIMIT 10 OFFSET #{offset}
+		</if>
+		<if test="searchKeyword !=null">
+		SELECT * FROM FAQ WHERE 1=1 
+		AND
+	     REPLACE(UPPER(FAQ_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+         ORDER BY FAQ_NO DESC
+		LIMIT 10 OFFSET #{offset}
+		</if>
+	</select>
+	
+<!-- 	<select id="adminFaq" resultType="faq">   -->
+<!-- 	SELECT * FROM FAQ WHERE FAQ_NO=#{faq_no} -->
+<!-- 	</select> -->
+	
+	
 <!-- 	<select id="totalFaqListCnt" resultType="_int"> -->
 <!-- 	SELECT COUNT(*) FROM FAQ WHERE 1=1  -->
 

@@ -104,6 +104,7 @@ if(i==1){
                      style="width: 100px; height: 150px;"></td>
                   <td class="tdCenter" >
                         ${payRankList.exh_title}</td>
+                        
                   <td class="tdCenter price" ><fmt:formatNumber
                         value="${payRankList.exh_price}" groupingUsed="true" />원</td>
                   <td class="tdCenter date" >${payRankList.exh_st_date}~

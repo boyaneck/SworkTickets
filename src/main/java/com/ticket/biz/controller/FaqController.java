@@ -50,7 +50,7 @@ public class FaqController {
 //		if(vo.isNoti_secret()==true & vo.getNoti_writer()== session.getAttribute("mb_id"))
 
 		faqService.insertFaq(vo);
-		return "redirect:getFaqList";
+		return "redirect:adminFaqList";
 
 	}
 
@@ -79,7 +79,7 @@ public class FaqController {
 //		if(vo.getNoti_writer().equals(session.getAttribute("userId").toString()) ){
 //
 			faqService.updateFaq(vo);
-			return "redirect:getFaqList";
+			return "redirect:adminFaqList";
 //		}else {
 //			return "getFaq?error=1";
 //		}
@@ -102,7 +102,7 @@ public class FaqController {
 //			}
 
 			faqService.deleteFaq(vo);
-			return "redirect:getFaqList";
+			return "redirect:adminFaqList";
 //		}else {
 //			return "getFaq?error=1";
 //		}
@@ -146,7 +146,47 @@ public class FaqController {
 		System.out.println("modelAttribute getFaqList 기능 실행 후 ");
 		return "faq/faqList";
 	}
+	
+	
+	// 글 목록
+		@RequestMapping("/adminFaqList")
+		public String adminFaqListPost(FaqVO vo, String nowPageBtn, Model model) {
+			System.out.println("글 목록 검색 처리gg");
 
+			//총 목록 수
+			int totalPageCnt = faqService.totalFaqListCnt(vo);
+			System.out.println("totalFaqListCnt 수행 완료");
+			//현재 페이지 설정
+			int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+			System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
+
+			//한페이지당 보여줄 목록 수
+			int onePageCnt = 10;
+
+			//한 번에 보여질 버튼 수
+			int oneBtnCnt = 5;
+			System.out.println("페이징처리전 ");
+			PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
+			vo.setOffset(pvo.getOffset());
+
+
+			model.addAttribute("paging", pvo);
+			System.out.println("modelAttribute getFaqList");
+			model.addAttribute("adminfaqList", faqService.adminFaqList(vo));
+			List<FaqVO> faqlist =faqService.adminFaqList(vo);
+			System.out.println("modelAttribute getFaqList 기능 실행 후 ");
+			return "faq/adminfaqList";
+		}
+
+		
+		// 관리자 글 상세 조회
+		@RequestMapping("/adminFaq")
+		public String adminFaq(FaqVO vo, Model model) {
+			System.out.println("글상세조회");
+			model.addAttribute("faq", faqService.adminFaq(vo));
+			System.out.println("글상세조회 수행");
+			return "faq/adminFaq";
+		}
 	//파일다운로드
 //	@GetMapping(value="/download")
 //    public void fileDownLoad(@RequestParam(value="filename", required=false) String filename,
