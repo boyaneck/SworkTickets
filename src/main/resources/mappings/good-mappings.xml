@@ -36,6 +36,7 @@
 		SELECT e.*, COUNT(g.GOOD_CHECK)AS rank_cnt from exhibition as e
 		LEFT outer JOIN good AS g
 		on e.exh_no= g.exh_no
+		WHERE e.EXH_APPROVAL = 1
 		GROUP BY e.exh_no
 		ORDER BY
 		rank_cnt DESC
