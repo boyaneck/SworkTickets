@@ -271,9 +271,9 @@ public class MemberController {
 		System.out.println("찾은결과: " + vo);
 		if (vo != null) {
 			model.addAttribute("mb_Id1", vo.getMb_id());
-			return "redirect:login.jsp";
+			return "views/findPw";
 		} else {
-			return "redirect:login.jsp";
+			return "views/findPw";
 		}
 	}
 
