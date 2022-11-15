@@ -9,16 +9,7 @@
 <%@ include file="../../header.jsp"%>
 <style>
 .row{align: left;}
-#change{
-width: 90%;
-   height: calc(1.5em + 0.75rem + 2px);
-   color:#7329f7; 
-   background-color:white; 
-   border-color:#7329f7; 
-   border: solid 1px;
-   align: left !important;
-   margin-left:0;
-}
+
 input[type="text"]{
     width: 100%;
    height: calc(1.5em + 0.75rem + 2px);
@@ -156,6 +147,7 @@ $(function() {
 </script>
 </head>
 <body>
+<div style="background-color: #f6f5f5; height: 100vh; padding-top: 50px;">
 <div style="background-color:#f6f5f5; height:100vh">
 <form action="" method="post" id="findPwform">
       <input type="hidden" name="mb_email" id="mb_email">
@@ -172,7 +164,7 @@ $(function() {
          <br>
       </div>
 
-		<div class="row">
+      <div class="row">
          <div class="col-3"  style="width:30px;">
             <b style="margin:0px; font-size:16px; font-weight:400;">아이디</b>
          </div>
@@ -181,7 +173,7 @@ $(function() {
             </div>
              <div class="col-3" style="margin-bottom: 50px;"></div>
       
-		</div>
+      </div>
       <div class="row">
          <div class="col-3"  style="width:30px;">
             <b style="margin:0px; font-size:16px; font-weight:400;">이메일</b>
@@ -208,15 +200,15 @@ $(function() {
 <!--       인증번호확인 -->
        <%if(request.getAttribute("mb_Id1")!=null){ %>
       <div class="row">
-         <div class="col-4">
-            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</b>
+         <div class="col-3">
+            <b style="margin:0px; font-size:16px; font-weight:400; width:70px;">비밀번호</b>
          </div>
-         <div class="col-5" style="margin-bottom:50px;">
+         <div class="col-6" style="margin-bottom:50px;">
       <form action="change" id="pwchange" method="post">
       <input type="hidden" name="mb_id" id="mb_id" value="${mb_Id1}">
-      <input type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
-      <input type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
-      <div class="col-3"><button type="button" id="change" onclick="changePW()">변경하기</button></div>
+      <input style="font-size:16px; margin-bottom:10px;" type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
+      <input style="font-size:16px;" type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
+      <div class="col-3" id="send"><button class="btn-purple" type="button" id="change" onclick="changePW()">변경하기</button></div>
       </form>
       <%} %>
    </div>

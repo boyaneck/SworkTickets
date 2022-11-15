@@ -381,7 +381,7 @@ img {
 						<div class="card">
 							<h2 class="card_title">1. 나의 조랑말 선생님</h2>
 							<div class="card_img">
-								<img src="/images/아라의소설.jpg" alt="">
+								<img src="/images/exh_image1.png" alt="">
 							</div>
 							<div class="card_body-1">
 								<div>
@@ -396,7 +396,7 @@ img {
 						<div class="card">
 							<h2 class="card_title">2. 나의 팀버튼 선생님</h2>
 							<div class="card_img">
-								<img src="/images/이기적유전자.jpg" alt="">
+								<img src="/images/exh_image2.png" alt="">
 							</div>
 							<div class="card_body-1">
 								<div>
@@ -411,7 +411,7 @@ img {
 						<div class="card">
 							<h2 class="card_title">3. 평민의 역사</h2>
 							<div class="card_img">
-								<img src="/images/평면의역사.jpg" alt="">
+								<img src="/images/exh_image3.png" alt="">
 							</div>
 							<div class="card_body-1">
 								<div>
@@ -443,7 +443,7 @@ img {
 						<div class="card">
 							<h2 class="card_title">1. 나의 조랑말 선생님</h2>
 							<div class="card_img">
-								<img src="/images/아라의소설.jpg" alt="">
+								<img src="/images/exh_image4.png" alt="">
 							</div>
 							<div class="card_body-2">
 								<div class="container container-cir">
@@ -459,7 +459,7 @@ img {
 						<div class="card">
 							<h2 class="card_title">2. 나의 팀버튼 선생님</h2>
 							<div class="card_img">
-								<img src="/images/이기적유전자.jpg" alt="">
+								<img src="/images/4.jpg" alt="">
 							</div>
 							<div class="card_body-2">
 								<div class="container container-cir">
@@ -475,7 +475,7 @@ img {
 						<div class="card">
 							<h2 class="card_title">3. 평민의 역사</h2>
 							<div class="card_img">
-								<img src="/images/평면의역사.jpg" alt="">
+								<img src="/images/6.jpg" alt="">
 							</div>
 							<div class="card_body-2">
 								<div class="container container-cir">
