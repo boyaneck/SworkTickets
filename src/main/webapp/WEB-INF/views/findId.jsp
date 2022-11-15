@@ -62,10 +62,7 @@ h2 {
       var emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
       $("#sendMail").on("click", function() {
       var email = $("#email").val();
-          console.log(email);
-          console.log(email.length);
-          console.log(typeof email);
-    	  if (email == 0) {
+         if (email == 0) {
             alert("이메일을 입력하세요.");
          } else {
             if (!(emailRegex.test(email))) {
