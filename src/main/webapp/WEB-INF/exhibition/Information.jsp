@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +23,12 @@
 <body>
 
 	<div class="container"  style="padding-bottom: 300px; padding-top: 50px;" >
-		<div style="text-align: center;"><img src="/images/${exhibition.exh_thumbnail }" alt="이미지" style="width:100%;"></div>
+<%-- 		<div style="text-align: center;"><img src="/images/${exhibition.exh_thumbnail }" alt="이미지" style="width:100%;"></div> --%>
 		<div style="text-align: center;"><img src="/images/${exhibition.exh_banne }" alt="이미지" style="width:100%;"></div>
-		<div style="text-align: center;"><img src="/images/${exhibition.exh_img }" alt="이미지" style="width:100%;"></div>
+<%-- 		<div style="text-align: center;"><img src="/images/${exhibition.exh_img }" alt="이미지" style="width:100%;"></div> --%>
+		    <c:forEach items="${fn:split(exhibition.exh_img, '/') }" var="item">
+        	<div style="text-align: center;">  <img src="/images/${item}" alt="이미지" style="width:100%;"></div>
+      </c:forEach>
 <!-- 	테이블 -->	
 	<div class="container ta">
 		<div class="row row1">
