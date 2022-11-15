@@ -16,7 +16,6 @@ public class OneRowMapper implements RowMapper<OneVO>{
 	one.setOne_writer(rs.getString("one_writer"));
 	one.setOne_content(rs.getString("one_content"));
 	one.setOne_date(rs.getDate("one_date"));
-	one.setOne_category(rs.getString("one_category"));
 	one.setOne_modify(rs.getDate("one_modify"));
 	one.setOne_secret(rs.getBoolean("one_secret"));
 	one.setOne_answer(rs.getString("one_answer"));

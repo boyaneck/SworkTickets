@@ -17,7 +17,6 @@ public class BoardRowMapper implements RowMapper<BoardVO>{
 	board.setNoti_writer(rs.getString("noti_writer"));
 	board.setNoti_content(rs.getString("noti_content"));
 	board.setNoti_date(rs.getDate("noti_date"));
-	board.setNoti_category(rs.getString("noti_category"));
 	board.setNoti_modify(rs.getDate("noti_modify"));
 	board.setSearchCondition(rs.getString("noti_searchcondition"));
 	board.setSearchKeyword(rs.getString("searchKeyword"));

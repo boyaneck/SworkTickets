@@ -75,7 +75,7 @@ border: 1px solid #1f1f1f;
                
                <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                 <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter">${one.one_no}</td>
-                <td class="tdCenter">${one.one_title }<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
+                <td class="tdCenter">${one.one_title}<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
                 <td class="tdCenter">${one.one_writer }</td>
                 <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      

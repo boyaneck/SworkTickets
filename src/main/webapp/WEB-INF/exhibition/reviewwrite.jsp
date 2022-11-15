@@ -61,7 +61,7 @@ pageContext.setAttribute("replaceChar", "\n");
 				console.log("페이지현재 버튼 "+data.paging.nowPageBtn);
 				
 				var paging     =  data.paging;
-			     
+			    var bno        =data.list[1].review_bno; 
 				var comment_html = "<div>";
 				 
 				$('#count').html(data.total); //댓글 수 
@@ -92,7 +92,7 @@ pageContext.setAttribute("replaceChar", "\n");
 					
 
 					console.log("등록번호"+review_no);
-					console.log("등록일!!!!!!!!!!!!!!!@@@@@@@@@"+ date);
+					console.log("등록일!!!!!!!!!!!!!!!@@@@@@@@@"+ today);
 					
 					
 					console.log("댓글번호받아라!!!" +review_no);
@@ -101,7 +101,7 @@ pageContext.setAttribute("replaceChar", "\n");
 					comment_html +="<div id='a"+[i]+"' class='aa1'>";
 					comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
 					comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ today+ "</div>";
-					comment_html +="<div id='exh_st_date'>${today} </div>";
+					comment_html +="<div id='exh_st_date'>${today}</div>";
 					comment_html +="</div>";
 					
 			
@@ -114,39 +114,6 @@ pageContext.setAttribute("replaceChar", "\n");
 					comment_html +="<button  class='btn_comment_update' style='background-color:white; border:1px solid black; border-radius:3px; '><i class = 'xi-check'></i></button>";
 					comment_html += "</form>";
 					comment_html +="</div>";
-					
-					
-					
-					 comment_html +=  "if("+[i] % 5 ==0  + ") {";
-					 comment_html += "<div id='btnBox_parent'>";
-	 				 comment_html += "<div id='btnBox'>";
-	 			     comment_html +=  "if("+paging.nowPageBtn > 1+"){";
-	 			     comment_html +=  "<a href='getUserExhibition?nowPageBtn='"+paging.nowPageBtn -1+">&lt;</a> }";
-				          
-	 			     comment_html +=  "for(i="+paging.startBtn+";i<="+paging.endBtn+"; i++){";
-	 			     comment_html +=   "if("+paging.nowPageBtn == i+"){";
-	 			     comment_html +=   "<a class='aSel'>"+i+"</a> }";
-				             
-	 			     comment_html +=    "else <a href='getUserExhibition?nowPageBtn='"+i+"'&exh_no='"+${exhno2}+"'>"+i+"</a>";
-				           
-				 
-	 			     comment_html +=   "if("+paging.nowPageBtn < paging.totalBtnCnt+"){";
-	 			     comment_html +=   "<a href='getUserExhibition?nowPageBtn='"+paging.nowPageBtn +1 +"'>&gt;</a> }";
-				           
-	 			     comment_html +=     "else document.write('문제가 있습니다.');";
-	 		
-	 			     comment_html += "</div>";
-	 			     comment_html += "</div>";
-	 			     
-	 			     
-	 			     comment_html += "}";
-	 			     comment_html += "window.location.reload();";
-	 			     
-				     
-				     
-						
-						
-			
 					
 					
 					
@@ -170,6 +137,32 @@ pageContext.setAttribute("replaceChar", "\n");
 					
 					});  // 여기까지가 for문
 					
+						console.log("pageStartbtn!!!!!!!"+paging.startBtn);
+						console.log("pagenowtbtn!!!!!!!!"+paging.nowPageBtn);
+						console.log("pageendtbtn!!!!!!!!"+paging.endBtn);
+						console.log("reviewBno!!!!!!!! " +bno);
+					
+					 comment_html += "<div id='btnBox_parent'>";
+	 				 comment_html += "<div id='btnBox'>";
+	 			     comment_html +=  "if("+(paging.nowPageBtn) > 1+"){";
+	 			     comment_html +=  "<a href='reviewList?nowPageBtn='"+(paging.nowPageBtn -1)+" &review_bno="+bno+"}>&lt;</a> ";
+	 			     comment_html += "}";
+				          
+	 			     comment_html +=  "for(i="+(paging.startBtn)+";i<="+paging.endBtn+"; i++){";
+	 			     comment_html +=   "if("+paging.nowPageBtn == +"i"+"){";
+	 			     comment_html +=   "<a class='aSel'>"+i+"</a> }";
+	 			     //이 위의 i 값을 변수로 지정해야하는데..
+				             
+// 	 			     comment_html +=    "else <a href='reviewList?nowPageBtn=i&review_bno='"+bno+"'>i</a>";
+				           
+				 
+// 	 			     comment_html +=   "if("+paging.nowPageBtn < paging.totalBtnCnt+"){";
+// 	 			     comment_html +=   "<a href='reviewList?nowPageBtn='"+paging.nowPageBtn +1 +"">&gt;</a> }";
+				           
+// 	 			     comment_html +=     "else document.write('문제가 있습니다.');"
+	 			     
+	 			     comment_html += "</div>";
+	 			     comment_html += "</div>";
 // 				div class board에 있는 페이징 css
 // 				  if < 버튼생성
 // 				  each paging start버튼부터 end 버튼까지
@@ -177,7 +170,7 @@ pageContext.setAttribute("replaceChar", "\n");
 // 				  if > 버튼생성
 // 					지역은 버튼클릭하면 함수 호출해서 아작스 돌려서 받아온 데이터를 html에 뿌리는 방법?
 		
-			console.log("엔ㅇ드페이지버튼"+paging.endBtn);
+			
 				  
 				$(".comment_Box").html(comment_html);
 				
@@ -391,29 +384,27 @@ textarea:focus, input:focus {
 
 
 
-	<%--          <c:if test="${paging.nowPageBtn > 1 }"> --%>
-	<%--             <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a> --%>
-	<%--          </c:if> --%>
-	<%--          <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" --%>
-	<%--             step="1" var="i"> --%>
-	<%--             <c:choose> --%>
-	<%--                <c:when test="${paging.nowPageBtn == i}"> --%>
-	<%--                   <a class="aSel">${i}</a> --%>
-	<%--                </c:when> --%>
-	<%--                <c:otherwise> --%>
-	<%--                   <a href="getUserExhibition?nowPageBtn=${i}&exh_no=${exhno2}">${i}</a> --%>
-	<%--                </c:otherwise> --%>
-	<%--             </c:choose> --%>
-	<%--          </c:forEach> --%>
-	<%--          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }"> --%>
-	<%--             <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a> --%>
-	<%--          </c:if> --%>
-	<!--          반복처리할 태그 끝 -->
-	<!--       </div> -->
-	<!--       <br> -->
-	<!--       <br> -->
+<%-- 	         <c:if test="${paging.nowPageBtn > 1 }"> --%>
+<%-- 	            <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a> --%>
+<%-- 	         </c:if> --%>
+<%-- 	         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" --%>
+<%-- 	           step="1" var="i"> --%> 
+<%-- 	            <c:choose> --%> 
+<%-- 	                <c:when test="${paging.nowPageBtn == i}"> --%> 
+<%-- 	                   <a class="aSel">${i}</a> --%> 
+<%-- 	               </c:when> --%> 
+<%-- 	               <c:otherwise> --%> 
+<%-- 	                  <a href="getUserExhibition?nowPageBtn=${i}&exh_no=${exhno2}">${i}</a> --%> 
+<%-- 	               </c:otherwise> --%> 
+<%-- 	             </c:choose> --%> 
+<%-- 	      </c:forEach> --%> 
+<%-- 	          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }"> --%> 
+<%-- 	             <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a> --%> 
+<%-- 	          </c:if> --%> 
+<!-- 	         반복처리할 태그 끝 -->
+<!-- 	      <br> -->
+<!-- 	      <br> -->
 
-	<!--    </div> -->
 
 	<%-- 		시작:${paging.startBtn} --%>
 	<%--        값:${paging.nowPageBtn} --%>

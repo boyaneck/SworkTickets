@@ -10,12 +10,12 @@
 .accordion-button:not(.collapsed) {
    padding:60px;
    
-    color: white;
-    background-color: #cdb3fc !important;
+    color: #8c00ff;
+    border:none;
+    background-color: white !important; 
     box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
 }
     .accordion-button::after {
-    
       background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
       transform: scale(.7) !important;
     }
@@ -23,6 +23,7 @@
       background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
     }
     
+    //아코언 크기 
    .accordion-item{
    
    font-size:20px !important;
@@ -42,7 +43,12 @@
     } 
    
    
+   .accordion-button title collapsed{
+/*    border:1px solid #8c00ff; */
+   }
    
+   
+   //제목  hover했을때
    .accordion-item:hover{
    background-color: #f9fafa !important;
    }
@@ -54,6 +60,13 @@
    .title{
    font-weight:bold;
    font-size:22px;
+   }
+   
+   .accordion-button:hover{
+   background-color:#b13dfa
+   border-bottom:1px solid #8c00ff;
+   border-top:1px solid #8c00ff;
+   border-bottom:1px solid #8c00ff;
    }
    
 </style>
@@ -93,7 +106,7 @@ function f_write(val){
                 <div class="card-body">
                 <div>
                     <p><strong>${faq.faq_content} </strong></p>
-                    <fmt:formatDate value="${faq.faq_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}
+                    <fmt:formatDate value="${faq.faq_reg}" pattern="yyyy-MM-dd" var="today" />${today}
 
                 </div>
                      

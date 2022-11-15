@@ -12,7 +12,6 @@ public class BoardVO {
    private String noti_writer;
    private String noti_content;
    private Date noti_date;
-   private String noti_category;
    private Date noti_modify;
    
    private String searchCondition;
@@ -59,12 +58,7 @@ public class BoardVO {
    public void setSearchKeyword(String searchKeyword) {
       this.searchKeyword = searchKeyword;
    }
-   public String getNoti_category() {
-      return noti_category;
-   }
-   public void setNoti_category(String noti_category) {
-      this.noti_category = noti_category;
-   }
+  
    public int getNoti_no() {
       return noti_no;
    }
@@ -102,15 +96,14 @@ public class BoardVO {
    public void setNoti_modify(Date noti_modify) {
       this.noti_modify = noti_modify;
    }
-   @Override
-   public String toString() {
-      return "BoardVO [noti_no=" + noti_no + ", noti_title=" + noti_title + ", noti_writer=" + noti_writer
-            + ", noti_content=" + noti_content + ", noti_date=" + noti_date + ", noti_category=" + noti_category
-            + ", noti_modify=" + noti_modify + ", searchCondition=" + searchCondition + ", searchKeyword="
-            + searchKeyword + ", uploadFile=" + uploadFile + ", filename=" + filename + ", offset=" + offset
-            + ", noti_secret=" + "]";
-   }
-   
+@Override
+public String toString() {
+	return "BoardVO [noti_no=" + noti_no + ", noti_title=" + noti_title + ", noti_writer=" + noti_writer
+			+ ", noti_content=" + noti_content + ", noti_date=" + noti_date + ", noti_modify=" + noti_modify
+			+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", uploadFile=" + uploadFile
+			+ ", filename=" + filename + ", offset=" + offset + "]";
+}
+ 
    
    
 
