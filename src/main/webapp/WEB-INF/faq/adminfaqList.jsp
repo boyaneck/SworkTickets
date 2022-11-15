@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../header.jsp" %>
+<%-- <%@ include file="../../header.jsp" %> --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,6 +23,7 @@
 	rel="stylesheet" />
 <link href="css/style_admin.css" rel="stylesheet" />
 <link href="css/admin.css" rel="stylesheet" />
+<link href="css/board.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
 <script
@@ -30,36 +31,6 @@
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 <style>
-
-/* Custom style */
-.accordion-button:not(.collapsed) {
-	padding:60px;
-	
-    color: white;
-    background-color: #cdb3fc !important;
-    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
-}
-    .accordion-button::after {
-    
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
-      transform: scale(.7) !important;
-    }
-    .accordion-button:not(.collapsed)::after {
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
-    }
-    
-   .accordion-item{
-   
-   font-size:20px !important;
-   border-left:none !important;
-   border-right:none !important;
-   width:65% !important;
-   margin-left:280px !important;
-   
-   }
-   .accordion-item:hover{
-   background-color: #f9fafa !important;
-   }
    .board > h1{
    
    font-size:50px;
@@ -205,7 +176,7 @@ function f_write(val){
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/getBoardList">공지사항</a> <a
+											<a class="nav-link" href="/adminFaqList">공지사항</a> <a
 												class="nav-link" href="/getFaqList">FAQ</a> <a
 												class="nav-link" href="/getOneList">1:1 문의</a>
 										</nav>
@@ -261,27 +232,37 @@ function f_write(val){
       <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer; margin-left:100px">글쓰기</button>
       </div>
       </div>
+      
       <div id="btnBox_parent">
-      <div id="btnBox">
-         <!-- 반복처리할 태그 시작-->
-         <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="getFaqList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
-         </c:if>
-         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-            step="1" var="i">
-            <c:choose>
-               <c:when test="${paging.nowPageBtn == i}">
-                  <a class="aSel">${i}</a>
-               </c:when>
-               <c:otherwise>
-                  <a href="getFaqList?nowPageBtn=${i}">${i}</a>
-               </c:otherwise>
-            </c:choose>
-         </c:forEach>
-         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="getFaqList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
-         </c:if>
-         <!-- 반복처리할 태그 끝 -->
+		<div id="btnBox">
+			<!-- 반복처리할 태그 시작-->
+			<c:if test="${paging.nowPageBtn > 1 }">
+				<a href="adminFaqList?nowPageBtn=1">&laquo;</a>
+			</c:if>
+			<c:if test="${paging.nowPageBtn > 1 }">
+				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+			</c:if>
+			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
+				step="1" var="i">
+				<c:choose>
+					<c:when test="${paging.nowPageBtn == i}">
+						<a style="font-weight: 400; color: #7832f7;" class="aSel"
+							href="adminFaqList?nowPageBtn=${i}"><strong>${i}</strong></a>
+					</c:when>
+					<c:otherwise>
+						<a href="adminFaqList?nowPageBtn=${i}">${i}</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+			</c:if>
+			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+				<a href="adminFaqList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+			</c:if>
+			<!-- 반복처리할 태그 끝 -->
+		</div>
+	</div>
       </div>
 
 </body>
