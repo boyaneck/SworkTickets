@@ -17,7 +17,7 @@
       </div>
    </div>
    <!-- 푸터 내비 닫음 -->
-   <div class="container footer">
+   <div class="container  footer">
       <div class="footer_info">
          <div class="inner">
             <ul class="footer_row">

@@ -41,6 +41,12 @@ public class FaqServiceImpl implements FaqService{
 	}
 
 	@Override
+	public FaqVO adminFaq(FaqVO vo) {
+
+		return FaqDAO.adminFaq(vo);
+	}
+	
+	@Override
 	public List<FaqVO> getFaqList(FaqVO vo) {
 
 		return FaqDAO.getFaqList(vo);
@@ -49,6 +55,12 @@ public class FaqServiceImpl implements FaqService{
 	@Override
 	public int totalFaqListCnt(FaqVO vo) {
 				return FaqDAO.totalFaqListCnt(vo);
+	}
+
+	@Override
+	public List<FaqVO> adminFaqList(FaqVO vo) {
+		
+		return FaqDAO.adminFaqList(vo);
 	}
 
 

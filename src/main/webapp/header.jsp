@@ -119,20 +119,20 @@
             <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
                <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
-               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/adminFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
-        <div class="form-group col-xs-6 my-2">
+   <!-- 검색 -->
+      <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="xi-magnifier" style="position: absolute;left: 87%;top: 20%;"></i>
           <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
+         <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
@@ -175,13 +175,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
-     <div class="form-group col-xs-6 my-2">
+       <!-- 검색 -->
+      <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="xi-magnifier" style="position: absolute;left: 87%;top: 20%;"></i>
           <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
+         <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
@@ -224,13 +224,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-            <!-- 검색 -->
+   <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="xi-magnifier" style="position: absolute;left: 87%;top: 20%;"></i>
           <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
+     	 <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <%-- <span class="nav-hello">${kakaoId} 님 안녕하세요 </span> --%>
@@ -271,13 +271,13 @@
             </div>
          </li>
       </ul>
-      <!-- 검색 -->
-    <div class="form-group col-xs-6 my-2">
+   <!-- 검색 -->
+      <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <i class="xi-magnifier" style="position: absolute;left: 87%;top: 20%;"></i>
           <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
         </div>
       </div>
+		<button type="button" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
       
       <ul class="nav navbar-nav navbar-right">
@@ -306,9 +306,14 @@ function searchkey() {
        console.log(exs);
 
     location.href="getUserExhibitionList?eSearchKeyword="+exs;
-//     location.href="getUserExhibitionList?eSearchKeyword="+exs;
-    
     }
+}
+function searchkeya() {
+
+    var exsu = document.getElementById("eSearchKeyword").value;
+       console.log(exsu);
+
+    location.href="getUserExhibitionList?eSearchKeyword="+exsu;
 }
 
 /* $(document).ready(function(){

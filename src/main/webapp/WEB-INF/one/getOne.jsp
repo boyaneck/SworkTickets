@@ -132,9 +132,9 @@ textarea {
 </style>
 
 <body>
-	<div class="jumbotron">
-		<h1>상세 보기</h1>
-	</div>
+   <div class="board">
+      <h1>상세 보기</h1>
+   </div>
 	<%-- <%@ include file="../../menu.jsp" %>   --%>
 	<div class="container-fluid">
 		<%

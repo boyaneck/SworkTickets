@@ -114,35 +114,6 @@ cursor: pointer;
             <textarea class="form-control innm" rows="10" id="faq_content"
                name="faq_content" <%=sts%>>${faq.faq_content}</textarea>
          </div>
-         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">파일</span>
-            </div>
-            <c:if test="${one.filename ne NULL}">
-               <span style="cursor: pointer; padding: 0 20px;" onclick="seeImg()">[파일보기]</span>
-               <script>
-              function seeImg(){
-                 $("#imgBox").show();
-              }
-<!--            </script> 
-<%--             <span style="cursor:pointer;" onclick="downloadFile('${one.filename}')">[파일다운]</span> --%>
-                           <script>
-               function downloadFile(filename){
-                   window.location ='download.do?filename='+filename;
-               }
-         </script>
-            </c:if>
-         </div>
-         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">등록일</span>
-            </div>
-            <%--       <input type="text" class="form-control innm" name="regDate" value="${one.regdate}" readonly <%=sts %>>       --%>
-         </div>
-         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">조회수</span>
-            </div>
             <%--       <input type="text" class="form-control innm" name="cnt" value="${one.cnt}" readonly <%=sts %>>       --%>
          </div>
          <div>

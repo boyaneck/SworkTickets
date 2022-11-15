@@ -14,8 +14,12 @@ public interface FaqService {
 	void updateFaq(FaqVO vo);
 	// 상세보기
 	FaqVO getFaq(FaqVO vo);
-
+	// 관리자 상세보기
+	FaqVO adminFaq(FaqVO vo);
+	
 	List<FaqVO> getFaqList(FaqVO vo);
+	
+	List<FaqVO> adminFaqList(FaqVO vo);
 
 	int totalFaqListCnt(FaqVO vo);
 
