@@ -120,6 +120,7 @@ public class ReviewController {
 		Map<String, Object> map = new HashMap<>();
 		model.addAttribute("reviewList",list);
 		model.addAttribute("paging", pvo);
+		map.put("paging",pvo);
 		map.put("list", list);
 		map.put("total", total);
 		
