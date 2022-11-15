@@ -65,7 +65,9 @@
 	<!-- 아이디, 비번찾기 -->
 	<select id="find" resultType="member">
 		SELECT * FROM MEMBER WHERE 1=1
+		<if test="mb_id != null">AND MB_ID = #{mb_id}</if>
 		AND MB_EMAIL = #{mb_email}
+		AND MB_YN = 'Y'
 	</select>
 	
 	<!-- 비밀번호 변경 -->
