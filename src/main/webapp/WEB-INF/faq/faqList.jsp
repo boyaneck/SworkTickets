@@ -74,6 +74,13 @@ function f_write(val){
 }
 </script>
 <body class="d-flex flex-column min-vh-100">
+<%    
+response.setHeader("Cache-Control","no-store");    
+response.setHeader("Pragma","no-cache");    
+response.setDateHeader("Expires",0);    
+if (request.getProtocol().equals("HTTP/1.1"))  
+        response.setHeader("Cache-Control", "no-cache");  
+%>
    <div class="board">
       <h1>FAQ</h1>
    </div>
