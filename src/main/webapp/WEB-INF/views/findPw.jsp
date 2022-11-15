@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,33 +12,33 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
 .row{align: left;}
-#sendMail, #check, #change{
+#change{
 width: 90%;
-	height: calc(1.5em + 0.75rem + 2px);
-	color:#7329f7; 
-	background-color:white; 
-	border-color:#7329f7; 
-	border: solid 1px;
-	align: left !important;
-	margin-left:0;
+   height: calc(1.5em + 0.75rem + 2px);
+   color:#7329f7; 
+   background-color:white; 
+   border-color:#7329f7; 
+   border: solid 1px;
+   align: left !important;
+   margin-left:0;
 }
 input[type="text"]{
     width: 100%;
-	height: calc(1.5em + 0.75rem + 2px);
-	align: left !important;
-	margin-right:0;
+   height: calc(1.5em + 0.75rem + 2px);
+   align: left !important;
+   margin-right:0;
 }
 input[type="password"]{
     width: 100%;
-	height: calc(1.5em + 0.75rem + 2px);
-	align: left !important;
-	margin-right:0;
+   height: calc(1.5em + 0.75rem + 2px);
+   align: left !important;
+   margin-right:0;
 }
 input[type="hidden"]{
     width: 400px;
-	height: calc(1.5em + 0.75rem + 2px);
-	align: left !important;
-	margin-right:0;
+   height: calc(1.5em + 0.75rem + 2px);
+   align: left !important;
+   margin-right:0;
 }
 h2{margin-top: 30px; 
     width: 100%;
@@ -48,21 +48,25 @@ h2{margin-top: 30px;
 .col-3{text-align: right;}
 @media (max-width: 768px){
 #sendMail, #check, #change{
-	width: 90% !important;
-	align: left !important;
+   width: 100px !important;
+   align: left !important;
    }
 }
 @media (max-width: 768px){
 #fluid-height{
-	text-align: center !important;
-	width: 100% !important;
-	margin: 0 0 !important;
+   text-align: center !important;
+   width: 100% !important;
+   margin: 0 0 !important;
    }
+}
+
+#send {
+   text-align: left!important;
 }
 
 @media (max-width: 768px){
 .row{
-	padding: 0 30px !important;
+   padding: 0 30px !important;
    }
 }
 </style>
@@ -83,12 +87,12 @@ $(function() {
               url : 'email_Send',
               data : {email : email.val()},
               success : function(data) {
-            	  if(data=='ok'){
-            		  alert("인증번호를 발송했습니다.");
-            		  $("#emailCheck").removeAttr("disabled");
-            	  }else{
-            		  alert("인증번호가 발송되지 않았습니다.");
-            	  }
+                 if(data=='ok'){
+                    alert("인증번호를 발송했습니다.");
+                    $("#emailCheck").removeAttr("disabled");
+                 }else{
+                    alert("인증번호가 발송되지 않았습니다.");
+                 }
               },
               error : function(request, status) {
                  alert("오류가 발생했습니다.");
@@ -111,8 +115,8 @@ $(function() {
              if (data == true) {
                 alert("인증되었습니다.");
                 $('#mb_email').val($("#email").val());
-				$("#findPwform").attr("action", "findPwform?find=email");
-				$('#findPwform').submit();
+            $("#findPwform").attr("action", "findPwform?find=email");
+            $('#findPwform').submit();
              } else {
                 alert("인증번호가 일치하지 않습니다.");
              }
@@ -124,87 +128,88 @@ $(function() {
     }
  }
  
-	//비밀번호 재확인
-	$(function() {
-		$('#mb_pw2').focusout(function() {
-			console.log($('#mb_pw2').val());
-			if ($('#mb_pw2').val() != $('#mb_pw').val()) {
-				alert("비밀번호를 재확인 해주세요");
-			} else {
-				passwordCheck = true;
-			}
-		});
+   //비밀번호 재확인
+   $(function() {
+      $('#mb_pw2').focusout(function() {
+         console.log($('#mb_pw2').val());
+         if ($('#mb_pw2').val() != $('#mb_pw').val()) {
+            alert("비밀번호를 재확인 해주세요");
+         } else {
+            passwordCheck = true;
+         }
+      });
 
-	});
-	function changePW(){
-		console.log("aa");
-		if(passwordCheck){
-			$('#pwchange').submit();
-			alert("변경이 완료되었습니다.")
-		}
-	}
-	
+   });
+   function changePW(){
+      console.log("aa");
+      if(passwordCheck){
+         $('#pwchange').submit();
+         alert("변경이 완료되었습니다.")
+      }
+   }
+   
 
-	
+   
 </script>
 <%@ include file="../../header.jsp"%>
 </head>
 <body>
-<div style="background-color:lightgray; height:100vh">
+<div style="background-color: #f6f5f5; height: 100px;"></div>
+<div style="background-color:#f6f5f5; height:100vh">
 <form action="" method="post" id="findPwform">
-		<input type="hidden" name="mb_email" id="mb_email">
-	</form>
-	
-<h2 style="text-align:center; font-weight:bolder;padding:50px">비밀번호 찾기</h2>
+      <input type="hidden" name="mb_email" id="mb_email">
+   </form>
+   
+<h2 style="font-size: 30px; padding:0; margin-bottom: 40px; text-align: center;">비밀번호 찾기</h2>
 
-	<div class="container-fluid" id="fluid-height"
-		style="text-align: -webkit-center; background-color: white; padding: 0; width: 50%">
-		<div class="row">
-				<h3 style="margin:50px 0; margin-left: 10%;">
-					&nbsp;&nbsp;&nbsp;&nbsp;E-mail 인증
-				</h3>
-			<br>
-		</div>
+   <div class="container-fluid" id="fluid-height"
+      style="text-align: -webkit-center; background-color: white; padding: 0; width: 50%">
+      <div class="row">
+            <h3 style="margin: 50px 0; margin-left: 5%; font-size:20px;">
+               &nbsp;&nbsp;&nbsp;&nbsp;E-mail 인증
+            </h3>
+         <br>
+      </div>
 
-		<div class="row">
-			<div class="col-4">
-				<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이메일</b>
-			</div>
-			
-			<div class="col-5">
-				<input id="email" name="email" class="text_box" type="text" placeholder="이메일 입력" required autofocus>
-				</div>
-				<div class="col-3">
-				<button id="sendMail" >발송하기</button> 
-				</div>
-		</div><br>
-		
-		<div class="row">
-			<div class="col-4">
-				<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인증번호</b>
-			</div>
-			<div class="col-5" style="margin-bottom:50px;">
-				<input id='emailCheck' class='text_box' type='text' required disabled></div>
-				<div class="col-3"><button id='check' onclick='emailCheck()'>인증확인</button>
-			</div>
-		</div>
-		
-<!-- 		인증번호확인 -->
-		 <%if(request.getAttribute("mb_Id")!=null){ %>
-		<div class="row">
-			<div class="col-4">
-				<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</b>
-			</div>
-			<div class="col-5" style="margin-bottom:50px;">
-		<form action="change" id="pwchange" method="post">
-		<input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
-		<input type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
-		<input type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
-		<div class="col-3"><button type="button" id="change" onclick="changePW()">변경하기</button></div>
-		</form>
-		<%} %>
-	</div>
-	</div>
-	</div>
+      <div class="row">
+         <div class="col-3"  style="width:30px;">
+            <b style="margin:0px; font-size:16px; font-weight:400;">이메일</b>
+         </div>
+         
+         <div class="col-6">
+            <input  style="font-size:16px;" id="email" name="email" class="text_box" type="text" placeholder="이메일 입력" required autofocus>
+            </div>
+            <div class="col-3"  id="send">
+            <button class="btn-purple"  id="sendMail" >발송하기</button> 
+            </div>
+      </div><br>
+      
+      <div class="row">
+         <div class="col-3" style="padding-left:0px;">
+            <b style="margin:0px; font-size:16px; font-weight:400; width:70px;">인증번호</b>
+         </div>
+         <div class="col-6" style="margin-bottom:50px;">
+            <input style="font-size:16px;" id='emailCheck' class='text_box' type='text' required disabled></div>
+            <div class="col-3" id="send"><button class="btn-purple" id='check' onclick='emailCheck()'>인증확인</button>
+         </div>
+      </div>
+      
+<!--       인증번호확인 -->
+       <%if(request.getAttribute("mb_Id")!=null){ %>
+      <div class="row">
+         <div class="col-4">
+            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</b>
+         </div>
+         <div class="col-5" style="margin-bottom:50px;">
+      <form action="change" id="pwchange" method="post">
+      <input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
+      <input type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
+      <input type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
+      <div class="col-3"><button type="button" id="change" onclick="changePW()">변경하기</button></div>
+      </form>
+      <%} %>
+   </div>
+   </div>
+   </div>
 </body>
 </html>
