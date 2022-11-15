@@ -206,14 +206,14 @@ $(function() {
       </div>
       
 <!--       인증번호확인 -->
-       <%if(request.getAttribute("mb_Id")!=null){ %>
+       <%if(request.getAttribute("mb_Id1")!=null){ %>
       <div class="row">
          <div class="col-4">
             <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</b>
          </div>
          <div class="col-5" style="margin-bottom:50px;">
       <form action="change" id="pwchange" method="post">
-      <input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
+      <input type="hidden" name="mb_id" id="mb_id" value="${mb_Id1}">
       <input type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
       <input type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
       <div class="col-3"><button type="button" id="change" onclick="changePW()">변경하기</button></div>
