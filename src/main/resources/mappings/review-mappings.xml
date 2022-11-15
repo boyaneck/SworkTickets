@@ -6,9 +6,9 @@
 
 	<insert id="insertReview">
 		INSERT INTO
-      REVIEW(REVIEW_WRITER,REVIEW_CONTENT,EXH_NO,RE_REVIEW,REVIEW_TYPE,REVIEW_REG_DATE,REVIEW_BNO)
+      REVIEW(REVIEW_WRITER,REVIEW_CONTENT,EXH_NO,REVIEW_REG_DATE,REVIEW_BNO)
       VALUES 
-      (#{review_writer}, #{review_content}, 1, 'A', 1, now(), #{review_bno})
+      (#{review_writer}, #{review_content}, 1, now(), #{review_bno})
 		
 	</insert>
 

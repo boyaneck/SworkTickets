@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../header.jsp" %>
+<%-- <%@ include file="../../header.jsp" %> --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -251,8 +251,7 @@ border: 1px solid #1f1f1f;
          <c:if test="${paging.nowPageBtn > 1 }">
             <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
          </c:if>
-         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-            step="1" var="i">
+         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
             <c:choose>
                <c:when test="${paging.nowPageBtn == i}">
                   <a class="aSel">${i}</a>
