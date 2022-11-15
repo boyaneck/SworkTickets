@@ -64,41 +64,24 @@ textarea {
 					var review_bno =  list[i].review_bno;
 					var date       =  list[i].review_reg_date;
 				
-// 					var date1=new Date();
-// 					var year=date1.getFullYear(date);
-// 					var month=date1.getMonth(date);
-// 					var day=date1.getDay(date);
-// 					var hour=date1.getHours();
-// 					var minute=date1.getMinutes(date);
-// 					var second=date1.getSeconds(date);
-// 					var date = new Date();
-					
 					
 	
 	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
 	 console.log("timeOff : ", timeOff);
-	// new Date(now_utc-timeOff).toISOString()은 '2022-11-11T13:09:38.134Z'를 반환
 	var today = new Date(date-timeOff).toISOString().split("T")[0];
 	 console.log("today : !!!!!!!!!!!!!!!!!!!", today);
 
-// 	document.getElementById("exh_st_date").setAttribute("min", today);
-// 	document.getElementById("exh_st_date").setAttribute("max", oneyear);
-// 	document.getElementById("exh_end_date").setAttribute("min", todayone);
-// 	document.getElementById("exh_end_date").setAttribute("max", yearone);
 					
 					
 					
-// 					console.log("날짜 나와라!!!@!@!!@!@@"+today);
 					
 					
 					
 					console.log
 					
-// 					var date1= list[1].review_reg_date;
 
 					console.log("등록번호"+review_no);
 					console.log("등록일!!!!!!!!!!!!!!!@@@@@@@@@"+ date);
-// 					console.log("1번째 댓글의 등록일  나와라!!!!"+date1);
 					
 					
 					console.log("댓글번호받아라!!!" +review_no);
@@ -121,6 +104,31 @@ textarea {
 					comment_html += "</form>";
 					comment_html +="</div>";
 					
+					
+						comment_html += "<div id='btnBox_parent'>";
+						comment_html += " <div id='btnBox'>";
+						comment_html += "<c:if test='"+${paging.nowPageBtn > 1 }+"'>";
+						comment_html +=     "<a href='reviewList?nowPageBtn='"+${paging.nowPageBtn -1 }+"' >&lt;</a>";
+						comment_html +=   "</c:if>";
+						comment_html +=   "<c:forEach begin='"+${paging.startBtn}+"' end='"+${paging.endBtn }+"' step='1' var='i'>";
+						comment_html +=   " <c:choose>"
+						comment_html +=       "<c:when test='"+${paging.nowPageBtn == i}+"'>";
+						comment_html +=      " <a style='font-weight:400; color:#7832f7;' class='aSel'>"+${i}+"</a>";
+					    comment_html +=     " </c:when>";
+					    comment_html +=     " <c:otherwise>";
+						comment_html +=        "<a href='reviewList?nowPageBtn='"+${i}+"'>'"+${i}+"'</a>";
+						comment_html +=       "</c:otherwise>";
+						comment_html +=    " </c:choose>"
+						comment_html +=    " </c:forEach>";
+						comment_html +=    " <c:if test='"+${paging.nowPageBtn < paging.totalBtnCnt }+"'>";
+						comment_html +=    " <a href='reviewList?nowPageBtn='"+${paging.nowPageBtn +1 }+"'>&gt;</a>";
+						comment_html +=   "</c:if>";
+						
+						
+						
+					         
+						comment_html +=    " </div>";
+						comment_html +=    " </div>";
 					
 					
 					
@@ -338,34 +346,30 @@ textarea:focus, input:focus{ outline: none; }
       
       
       
-      <div id="btnBox_parent">
-      <div id="btnBox">
+<!--       <div id="btnBox_parent"> -->
+<!--       <div id="btnBox"> -->
       
-         반복처리할 태그 시작
-         <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="reviewList?nowPageBtn=${paging.nowPageBtn -1 }&review_bno=${exhno2}"><strong>&lt;</strong></a>
-         </c:if>
-         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-           step="1" var="i"> 
-            <c:choose>
-               <c:when test="${paging.nowPageBtn == i}">
-                  <a class="aSel">${i}</a>
-               </c:when>
-               <c:otherwise>
-                  <a href="reviewList?nowPageBtn=${i}&review_bno=${exhno2}"><strong>${i}</strong></a>
-               </c:otherwise>
-            </c:choose>
-         </c:forEach>
-         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="reviewList?nowPageBtn=${paging.nowPageBtn +1 }&review_bno=${exhno2}"><strong>&gt;</strong></a>
-         </c:if>
-<!--          반복처리할 태그 끝 -->
-      </div>
-<!--       <br> -->
-<!--       <br> -->
-       
-           
-   </div>
+<!--          반복처리할 태그 시작 -->
+<%--          <c:if test="${paging.nowPageBtn > 1 }"> --%>
+<%--             <a href="reviewList?nowPageBtn=${paging.nowPageBtn -1 }&review_bno=${exhno2}"><strong>&lt;</strong></a> --%>
+<%--          </c:if> --%>
+<%--          <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" --%>
+<%--            step="1" var="i">  --%>
+<%--             <c:choose> --%>
+<%--                <c:when test="${paging.nowPageBtn == i}"> --%>
+<%--                   <a class="aSel">${i}</a> --%>
+<%--                </c:when> --%>
+<%--                <c:otherwise> --%>
+<%--                   <a href="reviewList?nowPageBtn=${i}&review_bno=${exhno2}"><strong>${i}</strong></a> --%>
+<%--                </c:otherwise> --%>
+<%--             </c:choose> --%>
+<%--          </c:forEach> --%>
+<%--          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }"> --%>
+<%--             <a href="reviewList?nowPageBtn=${paging.nowPageBtn +1 }&review_bno=${exhno2}"><strong>&gt;</strong></a> --%>
+<%--          </c:if> --%>
+         
+<!--       </div> -->
+<!--    </div> -->
 		시작:${paging.startBtn}
        값:${paging.nowPageBtn}
      
