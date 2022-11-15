@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ticket.biz.member.MemberService;
+import com.ticket.biz.member.MemberVO;
+
 @Controller
 public class MemberEmailController {
 
@@ -20,11 +23,14 @@ public class MemberEmailController {
 	MailSender sender;
 	@Autowired
 	HttpSession session;
-
+	@Autowired
+	private MemberService memberService;
 	// 인증번호 이메일 전송 Ajax
 	@ResponseBody
 	@RequestMapping(value = "/email_Send", method = RequestMethod.POST)
-	public String mail_Send(@RequestParam String email) {
+	public String mail_Send(@RequestParam String email,MemberVO vo) {
+		vo.setMb_email(email);
+		if(memberService.find(vo)!=null) {
 		System.out.println("email_Send이동");
 		Random random = new Random();
 		String key = "";
@@ -53,6 +59,10 @@ public class MemberEmailController {
 		session.setAttribute("emailKey", key);
 		System.out.println("key :" + key);
 		return "ok";
+				}
+		else {
+			return "error";
+		}
 	}
 
 	// 이메일 인증번호 체크 Ajax

@@ -1,35 +1,40 @@
-   <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <link rel="stylesheet"
-   href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <head>
 <meta charset="UTF-8">
 <style>
 textarea {
-			margin-top:30px;
-			width: 100%;
-			height: 200px;
-			padding: 10px;
-			box-sizing: border-box;
-			border: solid 2px #1E90FF;
-			border-radius: 5px;
-			font-size: 16px;
-			resize: both;
-		}
-		
-		.btn_comment_update:hover{
-		
-		color:red;
-		}
+	margin-top: 30px;
+	width: 100%;
+	height: 200px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: solid 2px #1E90FF;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: both;
+}
+
+.btn_comment_update:hover {
+	color: red;
+}
 </style>
 </head>
-<% pageContext.setAttribute("replaceChar", "\n"); %>
+<%
+pageContext.setAttribute("replaceChar", "\n");
+%>
 
 <script>
 	$(document).ready(function(){
@@ -48,6 +53,7 @@ textarea {
 				console.log("get list 실행 중");
 				var list = data.list;
 				var reg=data.list.review_reg_date;
+				var paging=data.paging;
 				console.log("받아온 데이터의 리스트와, 총 댓글 수 ")
 				console.log(list);
 				console.log(data.total);
@@ -56,7 +62,14 @@ textarea {
 				
 				var comment_html = "<div>";
 				
+			 
+		      
+				
 				$('#count').html(data.total); //댓글 수 
+				$.each(paging, function(paging.startBtn, v){
+				
+				}
+				
 				$.each(list, function(i, v){
 					console.log("댓글 만들기");
 					var content  =  list[i].review_content;
@@ -106,6 +119,11 @@ textarea {
 					
 					});
 				
+				   
+				     if(paging.nowPageBtn>1){
+				    		console.log(paging.nowPageBtn);
+				    	 comment_html += "<a href='getUserExhibition?nowPageBtn=${paging.nowPageBtn -1 }'>&lt;</a>";
+				     }
 				   console.log('99999999: '+comment_html);
 				$(".comment_Box").html(comment_html);
 				
@@ -116,8 +134,11 @@ textarea {
 				   var comment_html = "<div>등록된 댓글이 없습니다.</div>";
 				   $(".comment_Box").html(comment_html);
 				   
-			}
+					}
 		}
+       	
+   
+        
    });	
 		
 
@@ -239,93 +260,99 @@ textarea {
 
 </script>
 <style>
-#Comment_regist{
+#Comment_regist {
 	width: 200px;
 	height: 45px;
-	color: #7329f7; 
-	background-color: white; 
-	border: solid 1px;
-	font-size: 16pt;
-	}
-#Comment_regist:hover{
-width: 200px;
-	height: 45px;
-	color: white; 
-	background-color: #7329f7; 
+	color: #7329f7;
+	background-color: white;
 	border: solid 1px;
 	font-size: 16pt;
 }
 
-textarea:focus, input:focus{ outline: none; }
+#Comment_regist:hover {
+	width: 200px;
+	height: 45px;
+	color: white;
+	background-color: #7329f7;
+	border: solid 1px;
+	font-size: 16pt;
+}
+
+textarea:focus, input:focus {
+	outline: none;
+}
 </style>
 <body>
-<div class="container" >
-	<div class="comment-box" >
-                    
-   		              <div class="comment-count" style="margin-top: 30px;">댓글 <span id="count">0</span></div>
-   		          
-					  <input type="hidden" id="review_no" name="review_no" value="2">
-	                  <div class="row">
-	                  <div class="col" style="font-size: 15px;">
-	                  <small>
-	                 <span class="text-danger">매매, 욕설</span>  등 게시판 운영 규정에 위반되는 글은 사전 통보없이 삭제될 수 있습니다.<br>
- 					<span class="text-danger">개인정보</span>가 포함된 내용은 삼가 주시기 바라며, 게시물로 인해 발생하는 문제는 작성자  <span class="text-danger">본인</span>에게 책임이 있습니다.
-	                  </small>
-	                  </div>
-	            
-	   		              <div class="comment-name ">
-		                        <span class="anonym">  
-		                        <input type="hidden" class="form-control review_writer"  placeholder="아이디" name ="review_writer" value="${mb_Id}" readonly style="width: 300px; border:none;">
-		                        </span>
-		                  </div>   
-		                  
-	                  </div>
-	                  <div class="container" style="border:1px solid lightgray;">
-	                  <div class="content" style="font-size: 13px;">
-	                   <span><textarea class="review_content"   name="review_content" placeholder="관람후기를 남겨주세요" style="resize:none; width: 100%; height: 8em;  border:none;"></textarea></span>
-	                   </div>
-	                   <hr>
-	                   <div class="regBtn" style="text-align:right; margin: 20px;">
-                    	   <button id="Comment_regist">등록</button>
-                       </div>
-					</div>
-             
-                         <div class="comment_Box"></div> 
-        
-                    	
-   </div>         
-      </div>
-      
-      <div id="btnBox_parent">
-      <div id="btnBox">
-         <!-- 반복처리할 태그 시작-->
-         <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
-         </c:if>
-         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-            step="1" var="i">
-            <c:choose>
-               <c:when test="${paging.nowPageBtn == i}">
-                  <a class="aSel">${i}</a>
-               </c:when>
-               <c:otherwise>
-                  <a href="getUserExhibition?nowPageBtn=${i}&exh_no=${exhno2}">${i}</a>
-               </c:otherwise>
-            </c:choose>
-         </c:forEach>
-         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
-         </c:if>
-         <!-- 반복처리할 태그 끝 -->
-      </div>
-      <br>
-      <br>
-           
-   </div>
-		시작:${paging.startBtn}
-       값:${paging.nowPageBtn}
-     
-     끝:${paging.endBtn }
-                   	 
+	<div class="container">
+		<div class="comment-box">
+
+			<div class="comment-count" style="margin-top: 30px;">
+				댓글 <span id="count">0</span>
+			</div>
+
+			<input type="hidden" id="review_no" name="review_no" value="2">
+			<div class="row">
+				<div class="col" style="font-size: 15px;">
+					<small> <span class="text-danger">매매, 욕설</span> 등 게시판 운영
+						규정에 위반되는 글은 사전 통보없이 삭제될 수 있습니다.<br> <span class="text-danger">개인정보</span>가
+						포함된 내용은 삼가 주시기 바라며, 게시물로 인해 발생하는 문제는 작성자 <span class="text-danger">본인</span>에게
+						책임이 있습니다.
+					</small>
+				</div>
+
+				<div class="comment-name ">
+					<span class="anonym"> <input type="hidden"
+						class="form-control review_writer" placeholder="아이디"
+						name="review_writer" value="${mb_Id}" readonly
+						style="width: 300px; border: none;">
+					</span>
+				</div>
+
+			</div>
+			<div class="container" style="border: 1px solid lightgray;">
+				<div class="content" style="font-size: 13px;">
+					<span><textarea class="review_content" name="review_content"
+							placeholder="관람후기를 남겨주세요"
+							style="resize: none; width: 100%; height: 8em; border: none;"></textarea></span>
+				</div>
+				<hr>
+				<div class="regBtn" style="text-align: right; margin: 20px;">
+					<button id="Comment_regist">등록</button>
+				</div>
+			</div>
+
+			<div class="comment_Box"></div>
+
+
+		</div>
+	</div>
+
+	<div id="btnBox_parent">
+		<div id="btnBox">
+			<!-- 반복처리할 태그 시작-->
+			<c:if test="${paging.nowPageBtn > 1 }">
+				<a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+			</c:if>
+			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
+				step="1" var="i">
+				<c:choose>
+					<c:when test="${paging.nowPageBtn == i}">
+						<a class="aSel">${i}</a>
+					</c:when>
+					<c:otherwise>
+						<a href="reviewList?nowPageBtn=${i}&exh_no=${exhno2}">${i}</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+				<a href="reviewList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+			</c:if>
+			<!-- 반복처리할 태그 끝 -->
+		</div>
+		<br> <br>
+
+	</div>
+	시작:${paging.startBtn} 값:${paging.nowPageBtn} 끝:${paging.endBtn }
+
 </body>
 </html>

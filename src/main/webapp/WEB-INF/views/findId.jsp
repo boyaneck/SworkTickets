@@ -6,14 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<%@ include file="../../header.jsp"%>
+
 <style>
 .row {
    align: left;
@@ -29,9 +23,9 @@ input[type="text"] {
 }
 
 h2 {
-   margin-top: 30px;
+/*    margin-top: 30px; */
    width: 100%;
-   margin: 50px 0;
+/*    margin: 50px 0; */
    padding-right: 380px;
 }
 
@@ -66,27 +60,30 @@ h2 {
 <script>
    $(function() {
       var emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-      var email = $("#email");
       $("#sendMail").on("click", function() {
-         if (email == "") {
-            alert("이메일을 입력하지 않았습니다.");
+      var email = $("#email").val();
+          console.log(email);
+          console.log(email.length);
+          console.log(typeof email);
+    	  if (email == 0) {
+            alert("이메일을 입력하세요.");
          } else {
-            if (!(emailRegex.test(email.val()))) {
-               alert("이메일 입력이 제대로 되지 않았습니다.");
+            if (!(emailRegex.test(email))) {
+               alert("이메일 형식이 맞지 않습니다.");
                return false;
             }
             $.ajax({
                type : 'POST',
                url : 'email_Send',
                data : {
-                  email : email.val()
+                  email : $("#email").val()
                },
                success : function(data) {
                   if (data == 'ok') {
                      alert("인증번호를 발송했습니다.");
                      $("#emailCheck").removeAttr("disabled");
                   } else {
-                     alert("인증번호가 발송되지 않았습니다.");
+                     alert("존재하지 않는 이메일입니다");
                   }
                },
                error : function(request, status) {
@@ -127,15 +124,15 @@ h2 {
       }
    }
 </script>
-<%@ include file="../../header.jsp"%>
+
 </head>
 <body>
-   <div style="background-color: #f6f5f5; height: 100px;"></div>
-   <div style="background-color: #f6f5f5; height: 100vh">
-      <form action="" method="post" id="findIdform">
+   
+   <div style="background-color: #f6f5f5; height: 100vh; padding-top: 50px;">
+      <form action="" method="post" id="findIdform" style="display: none;">
          <input type="hidden" name="mb_email" id="mb_email">
       </form>
-      <h2 style = " font-size: 30px; padding:0; margin-bottom: 40px; text-align: center;">아이디찾기</h2>
+      <h2 style = "background-color: #f6f5f5;  font-size: 30px; padding:0; margin-bottom: 40px; text-align: center;">아이디찾기</h2>
 
       <div class="container-fluid" id="fluid-height" style="text-align: -webkit-center; background-color: white; padding: 0; width: 700px;">
          <div class="row">
@@ -150,7 +147,7 @@ h2 {
             </div>
 
             <div class="col-6">
-               <input style="font-size:16px;" id="email" name="email" class="text_box" type="text" placeholder="이메일 입력" required autofocus>
+               <input style="font-size:16px;" id="email" name="mb_email" class="text_box" type="text" placeholder="이메일 입력" required autofocus>
             </div>
             <div class="col-3" id="send">
                <button class="btn-purple" id="sendMail">발송하기</button>

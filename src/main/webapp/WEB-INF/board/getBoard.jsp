@@ -62,7 +62,7 @@
 <body>
 	<%
 	String sts = "";
-	if (session.getAttribute("mb_id")==null ||!session.getAttribute("mb_Id").equals("admin")) {
+	if (session.getAttribute("mb_Id")==null ||!session.getAttribute("mb_Id").equals("admin")) {
 		sts = "disabled";
 	}
 	%>
