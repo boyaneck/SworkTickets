@@ -173,7 +173,8 @@ public class OneController {
 	@RequestMapping("/getOneList")
 	public String getOneListPost(OneVO vo, String nowPageBtn, Model model) {
 		System.out.println("글 목록 검색 처리gg");
-
+		   String searchKeyword =vo.getSearchKeyword();
+		      model.addAttribute("searchKeyword",searchKeyword);
 		//총 목록 수
 		int totalPageCnt = oneService.totalOneListCnt(vo);
 		System.out.println("totaloneListCnt 수행 완료");

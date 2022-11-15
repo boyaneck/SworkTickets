@@ -152,7 +152,8 @@ public class FaqController {
 		@RequestMapping("/adminFaqList")
 		public String adminFaqListPost(FaqVO vo, String nowPageBtn, Model model) {
 			System.out.println("글 목록 검색 처리gg");
-
+			String searchKeyword =vo.getSearchKeyword();
+		      model.addAttribute("searchKeyword",searchKeyword);
 			//총 목록 수
 			int totalPageCnt = faqService.totaladminFaqListCnt(vo);
 			System.out.println("totaladminFaqListCnt 수행 완료");

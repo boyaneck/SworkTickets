@@ -38,7 +38,7 @@
     
       <div class="form-group col-xs-5 my-2">
         <div class="inner-addon right-addon main" name="addonMain" ">
-          <input style="float:left; position:relative;" type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+          <input style="float:left; position:relative;" type="text" class="form-control main" placeholder="검색"  name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
            <button style="float:right; position:absolute; background:none; border:none;right:4%;" class="searchbtn" onclick="searchkeya()"
             > <i class="xi-magnifier"></i></button>
         </div>
