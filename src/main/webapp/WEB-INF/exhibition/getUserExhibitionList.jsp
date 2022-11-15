@@ -58,30 +58,30 @@
 				<div id="btnBox">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<a href="getUserExhibitionList?nowPageBtn=1">&laquo;</a>
+									<a href="getUserExhibitionList?nowPageBtn=1&EsearchKeyword=${EsearchKeyword }">&laquo;</a>
 								</c:if>
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<a  href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+									<a  href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn-1}&EsearchKeyword=${EsearchKeyword }">&lt;</a>
 								</c:if>
 
 								<!-- 반복처리 태그 -->
 								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
 									<c:choose>
 										<c:when test="${paging.nowPageBtn==i}">
-											<a style="font-weight:400; color:#7832f7;" href="getUserExhibitionList?nowPageBtn=${i}">${i}</a>
+											<a style="font-weight:400; color:#7832f7;" href="getUserExhibitionList?nowPageBtn=${i}&EsearchKeyword=${EsearchKeyword }">${i}</a>
 										</c:when>
 										<c:otherwise>
-											<a  href="getUserExhibitionList?nowPageBtn=${i}">${i}</a>
+											<a  href="getUserExhibitionList?nowPageBtn=${i}&EsearchKeyword=${EsearchKeyword }">${i}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<!-- 		반복 끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+									<a href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn+1}&EsearchKeyword=${EsearchKeyword }">&gt;</a>
 								</c:if>
 								<!-- 		맨끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="getUserExhibitionList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+									<a href="getUserExhibitionList?nowPageBtn=${paging.totalBtnCnt}&EsearchKeyword=${EsearchKeyword }">&raquo;</a>
 								</c:if>
 					</div>
 					</div>

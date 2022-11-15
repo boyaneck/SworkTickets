@@ -35,7 +35,7 @@ public class BoardController {
    //이동 컨트롤러
    @RequestMapping("/goWriteBoard")
    public String goBoard(BoardVO vo , Model model) {
-	   
+      
       System.out.println("noti_writer"+vo.getNoti_writer());
 //      model.addAttribute("boardList", boardService.getBoardList(vo));
       return "redirect:boardwrite.jsp";
@@ -111,7 +111,7 @@ public class BoardController {
    // 글 상세 조회
    @RequestMapping("/getBoard")
    public String getBoard(BoardVO vo, Model model) {
-	  System.out.println("noti_no  상세조회 컨트롤러"+vo.getNoti_no());
+     System.out.println("noti_no  상세조회 컨트롤러"+vo.getNoti_no());
       System.out.println("글상세조회");
       model.addAttribute("board", boardService.getBoard(vo));
       System.out.println("글상세조회 수행");
@@ -122,7 +122,8 @@ public class BoardController {
    @RequestMapping("/getBoardList")
    public String getBoardListPost(BoardVO vo, String nowPageBtn, Model model) {
       System.out.println("글 목록 검색 처리gg");
-      
+      String searchKeyword =vo.getSearchKeyword();
+      model.addAttribute("searchKeyword",searchKeyword);
       //총 목록 수 
       int totalPageCnt = boardService.totalBoardListCnt(vo);
       System.out.println("totalboardListCnt 수행 완료");
@@ -143,6 +144,7 @@ public class BoardController {
       model.addAttribute("paging", pvo);
       System.out.println("modelAttribute getboardList");
       model.addAttribute("boardList", boardService.getBoardList(vo));
+     
       List<BoardVO> boardlist =boardService.getBoardList(vo);
       System.out.println("modelAttribute getBoardList 기능 실행 후 ");
       return "board/boardList";
