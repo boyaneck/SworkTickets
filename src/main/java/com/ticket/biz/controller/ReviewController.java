@@ -87,46 +87,48 @@ public class ReviewController {
 	
 	
 	//댓글 목록 조회
-	@ResponseBody
-	@RequestMapping("/reviewList")
-	public Map<String, Object> getReviewList(ReviewVO vo,String nowPageBtn, Model model) {
-		
-		
-		int total = reviewservice.getTotal(vo);
-		
-		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-		System.out.println("totalPageCnt: "+total +", nowPage: "+nowPage);
+	   @ResponseBody
+	   @RequestMapping("/reviewList")
+	   public Map<String, Object> getReviewList(ReviewVO vo,String nowPageBtn, Model model) {
+	      
+	      System.out.println("test"+vo.getReview_bno());
+	      
+//	      System.out.println("리뷰 리스트!!!!!"+vo.getExh_no());
+	      int total = reviewservice.getTotal(vo);
+	      
+	      int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
+	      System.out.println("totalPageCnt: "+total +", nowPage: "+nowPage);
 
-		//한페이지당 보여줄 목록 수
-		int onePageCnt = 5;
+	      //한페이지당 보여줄 목록 수
+	      int onePageCnt = 5;
 
-		//한 번에 보여질 버튼 수
-		int oneBtnCnt = 5;
-		
-		
-		System.out.println("페이징처리전 ");
-		PagingVO pvo = new PagingVO(total, onePageCnt, nowPage, oneBtnCnt);
-		vo.setOffset(pvo.getOffset());
+	      //한 번에 보여질 버튼 수
+	      int oneBtnCnt = 5;
+	      
+	      
+//	      System.out.println("페이징처리전 ");
+	      PagingVO pvo = new PagingVO(total, onePageCnt, nowPage, oneBtnCnt);
+	      vo.setOffset(pvo.getOffset());
 
-		System.out.println("nowpage 찍혀라"+pvo.getNowPageBtn());
-		List<ReviewVO> list = reviewservice.getReviewList(vo);
-		
-		
-		ModelAndView view = new ModelAndView();
-		
-		System.out.println("오프셋출력!!!!!"+vo.getOffset());
-		Map<String, Object> map = new HashMap<>();
-		model.addAttribute("reviewList",list);
-		model.addAttribute("paging", pvo);
-		map.put("list", list);
-		map.put("total", total);
-		
-		view.setViewName("reviewwrite");
-		System.out.println(vo.getReview_bno());
-		System.out.println("review list 가져오는 controller 다 탔음!!!!!!");
-		
-		
-		return map;
-	}
+	      System.out.println("nowpage 찍혀라"+pvo.getNowPageBtn());
+	      List<ReviewVO> list = reviewservice.getReviewList(vo);
+	      
+	      
+	      ModelAndView view = new ModelAndView();
+	      
+//	      System.out.println("오프셋출력!!!!!"+vo.getOffset());
+	      Map<String, Object> map = new HashMap<>();
+//	      model.addAttribute("reviewList",list);
+//	      model.addAttribute("paging", pvo);
+	      map.put("list", list);
+	      map.put("total", total);
+	      map.put("paging", pvo);
+	      view.setViewName("reviewwrite");
+//	      System.out.println(vo.getReview_bno());
+//	      System.out.println("review list 가져오는 controller 다 탔음!!!!!!");
+	      
+//	      System.out.println("list 댓글 등록일 가져오기"+list.toString());
+	      return map;
+	   }
 	
 }
