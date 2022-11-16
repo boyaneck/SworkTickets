@@ -35,7 +35,6 @@ public class MemberEmailController {
    public String mail_Send(@RequestParam String email,MemberVO vo) {
       vo.setMb_email(email);
       if(memberService.find(vo)!=null) {
-      System.out.println("email_Send이동");
       Random random = new Random();
       String key = "";
       SimpleMailMessage message = new SimpleMailMessage();
@@ -74,13 +73,10 @@ public class MemberEmailController {
    public String mail_Send1(@RequestParam String email, @RequestParam String mb_id, MemberVO vo) {
       vo.setMb_email(email);
 //      vo.setMb_id(mb_id);
-      System.out.println(mb_id);
       if(mb_id!=null) {
     	  vo.setMb_id(mb_id);
       }
-      System.out.println(vo.toString());
       if(memberService.find(vo)!=null) {
-      System.out.println("email_Send이동");
       Random random = new Random();
       String key = "";
       SimpleMailMessage message = new SimpleMailMessage();

@@ -76,7 +76,6 @@ public class CouponController {
 			int totalPageCnt = couponService.totalCouponListCnt(vo);
 			//현재 페이지 설정
 			int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-			System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 			//한페이지당 보여줄 목록 수
 			int onePageCnt = 10;
 			//한 번에 보여질 버튼 수
@@ -103,7 +102,6 @@ public class CouponController {
 		int totalPageCnt = couponService.totalCouponListCnt(vo);
 		//현재 페이지 설정
 		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-		System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 		//한페이지당 보여줄 목록 수
 		int onePageCnt = 10;
 		//한 번에 보여질 버튼 수

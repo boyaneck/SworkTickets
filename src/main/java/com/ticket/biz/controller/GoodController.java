@@ -61,32 +61,25 @@ public class GoodController {
 	      //총 목록 수
 	            ExhibitionVO evo= new ExhibitionVO();
 	            vo.setMb_id((String)session.getAttribute("mb_Id"));
-	            System.out.println("컨트롤 아이디: "+vo.getMb_id());
 	            int totalPageCnt = goodService.getMyGoodListCnt(vo);
-	            System.out.println("totalpageCnt: "+totalPageCnt);
 	            //현재 페이지 설정
 	            int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-	            System.out.println("nowPage: "+nowPage);
 	            //한페이지당 보여줄 목록 수
 	            int onePageCnt = 10;
 	        
 	            //한 번에 보여질 버튼 수
 	            int oneBtnCnt = 5;
-	            System.out.println("oneBtnCnt: " +oneBtnCnt);
 	            PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 	            vo.setOffset(pvo.getOffset());
 	            model.addAttribute("paging", pvo);
-	            System.out.println("여기까지 실행완료");
 	            
 	            List<ExhibitionVO> a= goodService.getMyGoodList(vo);
 	            for(ExhibitionVO k  :a) {
-	            	System.out.println("k: "+k);
 	            }
 	            
 	            
 	            model.addAttribute("getMyGoodList",a);
 	           
-	            System.out.println("여기까지 실행되길바람");
 	            return "member/mygoodList";
 	   }
 }

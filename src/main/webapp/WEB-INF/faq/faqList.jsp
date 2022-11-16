@@ -9,7 +9,7 @@
 /* Custom style */
 .accordion-button:not(.collapsed) {
    padding:60px;
-   
+
     color: #8c00ff;
     border:none;
     background-color: white !important; 
@@ -29,7 +29,7 @@
    font-size:20px !important;
    border-left:none !important;
    border-right:none !important;
-   width:60% !important;
+   width:60%!important;
    margin-left:20% !important;
    margin-right:20% !important;
    
@@ -42,9 +42,12 @@
     } 
     } 
    
+   .accordion-button collapsed title{
+    border:none !important;
    
+   }
    .accordion-button title collapsed{
-/*    border:1px solid #8c00ff; */
+      border-bottom
    }
    
    
@@ -63,7 +66,6 @@
    }
    
    .accordion-button:hover{
-   background-color:#b13dfa
    border-bottom:1px solid #8c00ff;
    border-top:1px solid #8c00ff;
    border-bottom:1px solid #8c00ff;
@@ -102,7 +104,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <div class="m-4">
 <c:forEach items="${faqList}" var="faq">
 
-    <div class="accordion" id="myAccordion">
+   <div class="accordion" id="myAccordion" style=" width:60%!important; margin-left:20% !important;">
         <div class="accordion-item" >
         
             <h1 class="accordion-header" id="headingOne">
@@ -110,7 +112,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
                 <button type="button"  style="padding:40px;"  class="accordion-button collapsed title" data-bs-toggle="collapse" data-bs-target="#collapseOne${faq.faq_no }">Q. ${faq.faq_title}</button>                           
             </h1>
             <div id="collapseOne${faq.faq_no }" class="accordion-collapse collapse panel-violet" data-bs-parent="#myAccordion">
-                <div class="card-body">
+                 <div class="card-body" style="background-color:#eff0f0 !important;">
                 <div>
                     <p><strong>${faq.faq_content} </strong></p>
                     <fmt:formatDate value="${faq.faq_reg}" pattern="yyyy-MM-dd" var="today" />${today}

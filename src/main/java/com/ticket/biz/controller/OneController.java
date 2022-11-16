@@ -47,7 +47,6 @@ public class OneController {
 
 	public String insertOne(OneVO vo ,Model model , HttpSession session) {
 //		if(vo.isOne_secret()==true & vo.getOne_writer()== session.getAttribute("mb_id"))
-		System.out.println("확인" + vo.toString());
 
 		oneService.insertOne(vo);
 		return "redirect:getOneList";
@@ -74,7 +73,6 @@ public class OneController {
 	// 글 수정
 	@RequestMapping("/updateOne")
 	public String updateOne(@ModelAttribute("one") OneVO vo, HttpSession session , HttpServletResponse response) throws IOException {
-		System.out.println("글 수정 기능 전");
 		
 		String writer=vo.getOne_writer();
 		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString()) ){
@@ -128,8 +126,6 @@ public class OneController {
 	// 글 삭제
 	@RequestMapping("/deleteOne")
 	public String deleteOne(OneVO vo, HttpSession session , HttpServletResponse response) {
-		System.out.println("delteOne"+vo.getOne_writer());
-		System.out.println("deleteOne 기능 처리 전");
 	
 		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString())){
 					
@@ -163,40 +159,32 @@ public class OneController {
 	// 글 상세 조회
 	@RequestMapping("/getOne")
 	public String getOne(OneVO vo, Model model) {
-		System.out.println("글상세조회");
 		model.addAttribute("one", oneService.getOne(vo));
-		System.out.println("글상세조회 수행");
 		return "one/getOne";
 	}
 
 	// 글 목록
 	@RequestMapping("/getOneList")
 	public String getOneListPost(OneVO vo, String nowPageBtn, Model model) {
-		System.out.println("글 목록 검색 처리gg");
 		   String searchKeyword =vo.getSearchKeyword();
 		      model.addAttribute("searchKeyword",searchKeyword);
 		//총 목록 수
 		int totalPageCnt = oneService.totalOneListCnt(vo);
-		System.out.println("totaloneListCnt 수행 완료");
 		//현재 페이지 설정
 		int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
-		System.out.println("totalPageCnt: "+totalPageCnt +", nowPage: "+nowPage);
 
 		//한페이지당 보여줄 목록 수
 		int onePageCnt = 10;
 
 		//한 번에 보여질 버튼 수
 		int oneBtnCnt = 5;
-		System.out.println("페이징처리전 ");
 		PagingVO pvo = new PagingVO(totalPageCnt, onePageCnt, nowPage, oneBtnCnt);
 		vo.setOffset(pvo.getOffset());
 
 
 		model.addAttribute("paging", pvo);
-		System.out.println("modelAttribute getoneList");
 		model.addAttribute("oneList", oneService.getOneList(vo));
 		List<OneVO> onelist =oneService.getOneList(vo);
-		System.out.println("modelAttribute getOneList 기능 실행 후 ");
 		return "one/oneList";
 	}
 	
@@ -205,11 +193,8 @@ public class OneController {
 	//관리자가 1:1문의 댓글 달아주기
 	@RequestMapping("/oneAnswer")
 	public String oneAnswer(OneVO vo, Model model) {
-		System.out.println("관리자가 1:1문의 글 답변 해주는 controller 타기 ");
 		oneService.doAnswer(vo);
 		
-		System.out.println("1:1문의 답변 기능 수행 컨트롤러 끝");
-//		System.out.println("one_answer"+vo.getOne_answer());
 //		model.addAttribute("answer",vo);
 		return "forward:getOne";
 	}
@@ -219,7 +204,6 @@ public class OneController {
 //	@GetMapping(value="/download")
 //    public void fileDownLoad(@RequestParam(value="filename", required=false) String filename,
 //    		HttpServletRequest request, HttpServletResponse response) throws IOException {
-//		System.out.println("파일 다운로드");
 //		if (!(filename == null || filename.equals(""))) {
 //	        //요청파일 정보 불러오기
 //	        String realPath = "c:/swork/eleven/src/main/webapp/img/" ;

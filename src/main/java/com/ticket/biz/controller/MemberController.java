@@ -68,26 +68,18 @@ public class MemberController {
 		return "member/mypageConfirm";
 	}
 
-//			System.out.println(session.getAttribute("mb_Id"));
-//			System.out.println(vo.getMb_pw());
-//			System.out.println("aaaa");
 
 	// 회원마이페이지
 	@RequestMapping(value = "/mypage")
 	public String getMyPage(MemberVO vo, Model model, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
 		
-//		System.out.println("회원정보가져오기");
 		model.addAttribute("member", memberService.getMember(vo));
-//		System.out.println(memberService.getMember(vo));
 		if (memberService.getMember(vo) != null) {
 			if (session.getAttribute("mb_Id").equals("admin")) {
-				System.out.println("어드민");
 				return "member/mypage";
 			} else {
-//				System.out.println("엘즈문");
 				boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
 				if (login == true) {
-					System.out.println("마이페이지접근");
 					session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
 					return "member/mypage";
 				} else {
@@ -118,15 +110,8 @@ public class MemberController {
 	public String updateMember(@ModelAttribute("member") MemberVO vo, HttpSession session, HttpServletRequest request) {
 		if (vo.getMb_id().equals(session.getAttribute("mb_Id").toString())
 				|| session.getAttribute("mb_Id").equals("admin")) {
-			System.out.println("입력받은거: "+vo.getMb_pw());
-			System.out.println("DB값: "+memberService.getMember(vo).getMb_pw());
 //			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
-//			System.out.println("로그인"+login);
-			System.out.println("Match: "+pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw()));
-			System.out.println("Match222: "+vo.getMb_pw().equals(memberService.getMember(vo).getMb_pw()));
-			System.out.println(vo.getMb_pw());
 			if(vo.getMb_pw().equals("")&& vo.getMb_pw()!=null) {
-				System.out.println("pass");
 				vo.setMb_pw(null);
 				memberService.updateMember(vo);
 				return "member/mypage";
@@ -150,8 +135,6 @@ public class MemberController {
 //	// 멤버등록
 //	@RequestMapping(value = "/insertMember", method = RequestMethod.POST)
 //	public String insertMember(MemberVO vo) throws IllegalStateException {
-////		System.out.println("11111111111111111111"+ session.getAttribute("kakaoLogin"));
-//		System.out.println("2222222222222"+vo.getMb_id());
 //		return "redirect:index.jsp";
 //	}
 	// 창일 추가
@@ -224,7 +207,6 @@ public class MemberController {
 	// 관리자 회원조회
 	@RequestMapping("/getMemberList")
 	public String getMemberListPost(MemberVO vo, String nowPageBtn, Model model) {
-		System.out.println("회원목록 검색 처리");
 		
 		memberService.deleteMember2();
 		
@@ -237,7 +219,6 @@ public class MemberController {
 
 		// 현재 페이지 설정
 		int nowPage = Integer.parseInt(nowPageBtn == null || nowPageBtn.equals("") ? "1" : nowPageBtn);
-		System.out.println("totalPageCnt: " + totalPageCnt + ", nowPage: " + nowPage);
 
 		// 한페이지당 보여줄 목록 수
 		int onePageCnt = 10;
@@ -256,9 +237,7 @@ public class MemberController {
 	// 아이디찾기폼
 	@RequestMapping("/findIdform")
 	public String find(MemberVO vo, Model model) {
-//		System.out.println(vo.getMb_email());	
 		vo = memberService.find(vo);
-//		System.out.println("찾은결과: " + vo);
 		if (vo != null) {
 			model.addAttribute("mb_Id1", vo.getMb_id());
 			return "views/findId";
@@ -271,7 +250,6 @@ public class MemberController {
 	@RequestMapping("/findPwform")
 	public String findPw(MemberVO vo, Model model) {
 		vo = memberService.find(vo);
-		System.out.println("찾은결과: " + vo);
 		if (vo != null) {
 			model.addAttribute("mb_Id1", vo.getMb_id());
 			return "views/findPw";
@@ -283,21 +261,17 @@ public class MemberController {
 //	// 비밀번호 변경하기
 //	@RequestMapping("/change")
 //	public String change(MemberVO vo, Model model) {
-//		System.out.println("비밀번호변경" + vo);
 //		int a = memberService.change(vo);
-//		System.out.println("변경여부:" + a);
 //		return "redirect:login.jsp";
 //	}
 	// 비밀번호 변경하기
 	@RequestMapping("/change")
 	public String change(MemberVO vo, Model model) {
-		System.out.println("비밀번호변경" + vo);
 		// 창일 추가
 		String password = pwCheck.encrypt(vo.getMb_pw());
 		vo.setMb_pw(password);
 		// ---
 		int a = memberService.change(vo);
-		System.out.println("변경여부:" + a);
 		return "redirect:login.jsp";
 	}
 	
