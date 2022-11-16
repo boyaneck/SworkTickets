@@ -39,25 +39,28 @@
     left: 50%;
     transform: translate(-40%, -50%);
 }
+@media (max-width: 768px) {
+ .col-4{
+ padding: 0;
+ }
+}
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-	<div class="container" style="margin-top: 50px;">
-		<div class="row justify-content-center">
+	<div class="container d-flex justify-content-center" >
+		<div class="row  d-flex justify-content-center" style="margin-top: 50px;" >
 		
-			  <div class="col-xl-10 col-lg-12 col-md-9">
-			  
+			  <div class="col-xl-10 col-lg-12 col-md-9" style="margin: 0 auto;">		  
 				<div class="card o-hidden border-0 shadow-lg my-5">
 						<div class="card-body p-0">
-								  <div class="row ">
+								  <div class="row" style="margin: 0 auto;">
 					    <div class="col-lg-5 d-none d-lg-block bg text-center">
-<!-- 					      <img src="/images/고구마.png" class="img-fluid rounded-start" alt="..."> -->
 					      <img class="popup" src="./images/logo.png">
 					    </div>
-						<div class="col-lg-7">
-							<div class="p-5">
-								<div class="text-center">
+						<div class="col-lg-7 ">
+							<div class="p-4 text-center ">
+								<div >
 									<h1 class="h4 text-gray-900 md-4">로그인</h1>
 								</div>
 								<%
@@ -88,13 +91,13 @@
 								</form>
 
 								<div class="row text-center otherBox">
-									<div class="col-sm-4">
+									<div class="col-4 ">
 										<a class="a_oth" href="/step1">회원가입 </a>
 									</div>
-									<div class="col-sm-4">
+									<div class="col-4">
 										<a class="a_oth" href="/findIdform">아이디찾기</a>
 									</div>
-									<div class="col-sm-4">
+									<div class="col-4">
 										<a class="a_oth" href="/findPwform">비밀번호찾기</a>
 									</div>
 								</div>
@@ -117,7 +120,7 @@
 				</div>
 			</div>
 
-		</div>
+<!-- 		</div> -->
 
 	</div>
 
