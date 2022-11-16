@@ -73,20 +73,12 @@ pageContext.setAttribute("replaceChar", "\n");
 					var review_bno =  list[i].review_bno;
 					var date       =  list[i].review_reg_date;
 					
-					
-				
-					
 	
 	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
 	 console.log("timeOff : ", timeOff);
 	var today = new Date(date-timeOff).toISOString().split("T")[0];
 	 console.log("today : !!!!!!!!!!!!!!!!!!!", today);
 
-					
-					
-					
-					
-					
 					
 					console.log("시작버튼 !!!!!"+paging.nowPageBtn);
 					
