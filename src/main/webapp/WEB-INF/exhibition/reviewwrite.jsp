@@ -102,7 +102,7 @@ pageContext.setAttribute("replaceChar", "\n");
 					comment_html +="<form action ='/updateReview'>"	;
 					comment_html +="<div><input type='hidden' name='review_bno' value='"+review_bno+"'></div>";
 					comment_html +="<div><input type='hidden' name='review_no' value='"+review_no+"'></div>";
-					comment_html +="<div><textarea name='review_content' class='reveiw_content' >"+content+"</textarea></div>";
+					comment_html +="<div><textarea name='review_content' class='reveiw_content' required >"+content+"</textarea></div>";
 					comment_html +="<button  class='btn_comment_update' style='background-color:white; border:1px solid black; border-radius:3px; '><i class = 'xi-check'></i></button>";
 					comment_html += "</form>";
 					comment_html +="</div>";
@@ -137,21 +137,23 @@ pageContext.setAttribute("replaceChar", "\n");
 					 comment_html += "<div id='btnBox_parent'>";
 	 				 comment_html += "<div id='btnBox'>";
 	 			     comment_html +=  "if("+(paging.nowPageBtn) > 1+"){";
-	 			     comment_html +=  "<a href='reviewList?nowPageBtn='"+(paging.nowPageBtn -1)+" &review_bno="+bno+"}>&lt;</a> ";
-	 			     comment_html += "}";
+	 			     comment_html +=  "<a href='reviewList?nowPageBtn='"+(paging.nowPageBtn -1)+" &review_bno="+bno+"}>&lt;</a> }";
+// 	 			     comment_html += "";
 				          
 	 			     comment_html +=  "for(i="+(paging.startBtn)+";i<="+paging.endBtn+"; i++){";
 	 			     comment_html +=   "if("+paging.nowPageBtn == +"i"+"){";
-	 			     comment_html +=   "<a class='aSel'>"+i+"</a> }";
+	 			     comment_html +=   "<a href='reviewList?nowPageBtn=i class='aSel'>i</a> }";
 	 			     //이 위의 i 값을 변수로 지정해야하는데..
 				             
-// 	 			     comment_html +=    "else <a href='reviewList?nowPageBtn=i&review_bno='"+bno+"'>i</a>";
+	 			     comment_html +=    "else <a href='reviewList?nowPageBtn=i&review_bno='"+bno+"'>i</a>";
 				           
 				 
-// 	 			     comment_html +=   "if("+paging.nowPageBtn < paging.totalBtnCnt+"){";
-// 	 			     comment_html +=   "<a href='reviewList?nowPageBtn='"+paging.nowPageBtn +1 +"">&gt;</a> }";
+	 			     comment_html +=   "if("+paging.nowPageBtn < paging.totalBtnCnt+"){";
+	 			     comment_html +=   "<a href='reviewList?nowPageBtn='"+paging.nowPageBtn +1 +"'>&gt;</a> }";
 				           
-// 	 			     comment_html +=     "else document.write('문제가 있습니다.');"
+// 	 			     comment_html +=     "else {document.write('문제가 있습니다.')};"
+	 			     comment_html +=   "if("+paging.nowPageBtn < paging.totalBtnCnt +"){" ;
+	 			     comment_html +=   "<a href=reviewList?nowPageBtn="+paging.totalBtnCnt+">&raquo;</a>";
 	 			     
 	 			     comment_html += "</div>";
 	 			     comment_html += "</div>";
@@ -181,58 +183,7 @@ pageContext.setAttribute("replaceChar", "\n");
    });	
 		
 
-	$('#Comment_regist').click(function() {
-					console.log("댓글버튼 실행");
-			
-					const review_bno = 2;
-					const review_writer = $('.review_writer').val();
-					const review_content = $('.review_content').val();
-					
-					console.log(review_bno);
-					console.log(review_writer);
-					console.log(review_content);
-
-			if(review_writer == ''){
-					alert('로그인 후 이용해주세요');
-					return;
-			
-			}else if(review_content == '') {
-					alert('내용을 입력하세요');
-			}
 	
-			$.ajax({
-				type:'post',
-				url:'/insertReview',
-				data: JSON.stringify(
-			{
-				/*송원선*/
-				"review_bno":review_bno1,
-				/*송원선*/
-				"review_writer":review_writer,
-				"review_content":review_content
-				
-			}		
-			),
-				contentType: 'application/json',
-				success:function(data){
-				console.log('통신성공' + data);
-
-			if(data === 'InsertSuccess') {
-				alert('댓글 등록이 완료되었습니다.');
-				console.log('댓글 등록 완료');
-				$('.review_writer').val(review_writer);
-					$('.review_content').val(review_content);
-						window.location.reload();
-			} else {
-				alert('로그인 이후 이용해주시기 바랍니다.');
-				console.log('댓글 등록 실패');
-			}
-			},
-				error:function(){
-				alert('통신실패');
-			}
-			});	
-      });
     });
 
 		function del(val){
@@ -297,6 +248,60 @@ pageContext.setAttribute("replaceChar", "\n");
 			
 }
 
+		
+		
+		$('#Comment_regist').click(function() {
+			console.log("댓글버튼 실행");
+	
+			const review_bno = 2;
+			const review_writer = $('.review_writer').val();
+			const review_content = $('.review_content').val();
+			
+			console.log(review_bno);
+			console.log(review_writer);
+			console.log(review_content);
+
+	if(review_writer == ''){
+			alert('로그인 후 이용해주세요');
+			return;
+	
+	}else if(review_content == '') {
+			alert('내용을 입력하세요');
+	}
+
+	$.ajax({
+		type:'post',
+		url:'/insertReview',
+		data: JSON.stringify(
+	{
+		/*송원선*/
+		"review_bno":review_bno1,
+		/*송원선*/
+		"review_writer":review_writer,
+		"review_content":review_content
+		
+	}		
+	),
+		contentType: 'application/json',
+		success:function(data){
+		console.log('통신성공' + data);
+
+	if(data === 'InsertSuccess') {
+		alert('댓글 등록이 완료되었습니다.');
+		console.log('댓글 등록 완료');
+		$('.review_writer').val(review_writer);
+			$('.review_content').val(review_content);
+				window.location.reload();
+	} else {
+		alert('로그인 이후 이용해주시기 바랍니다.');
+		console.log('댓글 등록 실패');
+	}
+	},
+		error:function(){
+		alert('통신실패');
+	}
+	});	
+});
 </script>
 <style>
 #Comment_regist {
@@ -367,41 +372,6 @@ textarea:focus, input:focus {
 	</div>
 
 
-
-
-
-
-
-
-
-
-
-<%-- 	         <c:if test="${paging.nowPageBtn > 1 }"> --%>
-<%-- 	            <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a> --%>
-<%-- 	         </c:if> --%>
-<%-- 	         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" --%>
-<%-- 	           step="1" var="i"> --%> 
-<%-- 	            <c:choose> --%> 
-<%-- 	                <c:when test="${paging.nowPageBtn == i}"> --%> 
-<%-- 	                   <a class="aSel">${i}</a> --%> 
-<%-- 	               </c:when> --%> 
-<%-- 	               <c:otherwise> --%> 
-<%-- 	                  <a href="getUserExhibition?nowPageBtn=${i}&exh_no=${exhno2}">${i}</a> --%> 
-<%-- 	               </c:otherwise> --%> 
-<%-- 	             </c:choose> --%> 
-<%-- 	      </c:forEach> --%> 
-<%-- 	          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }"> --%> 
-<%-- 	             <a href="getUserExhibition?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a> --%> 
-<%-- 	          </c:if> --%> 
-<!-- 	         반복처리할 태그 끝 -->
-<!-- 	      <br> -->
-<!-- 	      <br> -->
-
-
-	<%-- 		시작:${paging.startBtn} --%>
-	<%--        값:${paging.nowPageBtn} --%>
-
-	<%--      끝:${paging.endBtn } --%>
 
 </body>
 </html>
