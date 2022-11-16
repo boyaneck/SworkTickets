@@ -200,7 +200,7 @@ ${exhibition.exh_refund_info}
 		</form>
 	</div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75fb178f353ce628ee79e97732a582fc&libraries=services"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ea44200cb8cf7bb0a768d9c219c84a0&libraries=services"></script>
 <script>
 console.log("${exhibition.exh_rating}");
 console.log("${exhibition.exh_local_name}");

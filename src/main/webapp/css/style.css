@@ -214,7 +214,7 @@ input::-webkit-inner-spin-button {
 
 /* 헤더 로그인 시작 */
 ul.nav.navbar-nav.navbar-right {
-  margin-right: -28px;
+  /* margin-right: -28px; */
   
 }
 /* a{color:black !important;} */

@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/board.css">
 <link rel="stylesheet" href="./css/ranking.css">
-<title>헤더입니다.</title>
+<title>뉴전시스</title>
 </head>
 
 <!-- 회원 -->
@@ -29,7 +29,7 @@
    </a>
 <!-- 햄버거 시작-->
      
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse" id="collapsibleNavbar">
     <ul class="navbar-nav hambuger">
     
       <div class="form-group col-xs-6 my-2">

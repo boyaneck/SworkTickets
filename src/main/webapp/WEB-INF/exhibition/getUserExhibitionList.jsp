@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-<title>전시 목록</title>
+<title>뉴전시스</title>
 <!-- header -->
 <%@ include file="/header.jsp"%>
 <!-- header end -->
