@@ -183,7 +183,7 @@ color:white !important;
 					<span class="input-group-text" >제목</span>
 				</div>
 				<input type="text" class="form-control innm" name="one_title"
-					value="${one.one_title}"  style="background-color:white !important;">
+					value="${one.one_title}"  style="background-color:white !important;" required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -196,7 +196,7 @@ color:white !important;
 				<div class="input-group-prepend">
 					<span class="input-group-text" >내용</span>
 				</div>
-				<textarea class="form-control innm" rows="10" cols="10" id="one_comment"
+				<textarea class="form-control innm" rows="10" cols="10" id="one_comment" 
 					name="one_content" <%=sts%> style="background-color:white !important;">${one.one_content}</textarea>
 			</div>
 			

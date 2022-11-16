@@ -57,7 +57,7 @@ input
             <div class="input-group-prepend">
                <span class="input-group-text">제목</span>
             </div>
-         <input type="text" placeholder="제목을 입력하세요" name="one_title" >
+         <input type="text" placeholder="제목을 입력하세요" name="one_title" required >
          </div>
          
          
@@ -68,7 +68,7 @@ input
             <div class="input-group-prepend">
                <span class="input-group-text">내용</span>
             </div>
-<textarea placeholder="내용을 입력하세요" name="one_content" rows="15" cols="100" ></textarea>
+<textarea placeholder="내용을 입력하세요" name="one_content" rows="15" cols="100" required ></textarea>
          </div>
 
 
