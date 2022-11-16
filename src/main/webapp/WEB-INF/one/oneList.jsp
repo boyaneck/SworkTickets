@@ -25,8 +25,27 @@ border: 1px solid #1f1f1f;
     font-size: 18px;
     color: black;
 }
+@media (max-width: 768px) {
+  .tb {
+  display:none;
+}
+.searchNav{
+text-align:center;
+width:100%;
 
 
+}
+.sub_title{
+float:none;
+margin-bottom: 20px;
+}
+.btn-success{
+width:100%;
+margin-top: 10px;
+}
+.container-fluid{
+padding:0;}
+}
 </style>
 <script>
 
@@ -44,14 +63,21 @@ border: 1px solid #1f1f1f;
     }
  }
 </script>
-<body>
+<body class="d-flex flex-column min-vh-100">
+<%    
+response.setHeader("Cache-Control","no-store");    
+response.setHeader("Pragma","no-cache");    
+response.setDateHeader("Expires",0);    
+if (request.getProtocol().equals("HTTP/1.1"))  
+        response.setHeader("Cache-Control", "no-cache");  
+%>
    <div class="board">
       <h1>1:1문의 </h1>
    </div>
    <nav id="searchNav" class="sub_title">
-      <form class="form-inline" action="getOneList" method="post">
+      <form class="form-inline justify-content-end" action="getOneList" method="post">
           <input class="form-control mr-sm-2" type="text" name="searchKeyword"
-            placeholder="검색어를 입력하세요.">
+            placeholder="검색어를 입력하세요." value="${searchKeyword }">
          <button class="btn btn-success" type="submit" style="border-radius:4px">검색</button>
       </form>
    </nav>
@@ -59,10 +85,10 @@ border: 1px solid #1f1f1f;
       <table class="table table-hover">
          <thead class="btn-primary">
             <tr>
-               <th style="width:10%; text-align:center;">번호</th>
+               <th class="tb"  style="width:10%; text-align:center;">번호</th>
                <th style="width:50%; text-align:center;">제목</th>
                <th style="width:20%; text-align:center;">작성자</th>
-               <th style="width:20%; text-align:center;">등록일</th>
+               <th class="tb" style="width:20%; text-align:center;">등록일</th>
                
             </tr>
          </thead>
@@ -74,18 +100,18 @@ border: 1px solid #1f1f1f;
                <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}">
                
                <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
-                <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter">${one.one_no}</td>
+                <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter tb">${one.one_no}</td>
                 <td class="tdCenter">${one.one_title}<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
                 <td class="tdCenter">${one.one_writer }</td>
-                <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      
                      </c:when>
                      <c:otherwise>
                      
-                        <tr><td class="tdCenter" >${one.one_no}</td>
+                        <tr><td class="tdCenter tb" >${one.one_no}</td>
                            <td class="tdCenter aa">비밀게시글은 작성자와 관리자만 볼 수 있습니다.<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
                            <td class="tdCenter">${one.one_writer }</td>
-                           <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                           <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                         </tr>
                      </c:otherwise>
                   </c:choose>
@@ -95,10 +121,10 @@ border: 1px solid #1f1f1f;
                <c:if test="${one.one_secret eq 'false'}">
 
                   <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
-                     <td class="tdCenter">${one.one_no}</td>
+                     <td class="tdCenter tb">${one.one_no}</td>
                      <td class="tdCenter">${one.one_title}</td>
                      <td class="tdCenter">${one.one_writer}</td>
-                     <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                     <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      
 
                   </tr>
@@ -112,43 +138,43 @@ border: 1px solid #1f1f1f;
             <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer" ">글쓰기</button>
       <br>
       <br>
-  	<div id="btnBox_parent">
-		<div id="btnBox">
-			<!-- 반복처리할 태그 시작-->
-			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="getOneList?nowPageBtn=1">&laquo;</a>
-			</c:if>
-			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
-			</c:if>
-			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-				step="1" var="i">
-				<c:choose>
-					<c:when test="${paging.nowPageBtn == i}">
-						<a style="font-weight: 400; color: #7832f7;" class="aSel"
-							href="getOneList?nowPageBtn=${i}"><strong>${i}</strong></a>
-					</c:when>
-					<c:otherwise>
-						<a href="getOneList?nowPageBtn=${i}">${i}</a>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
-			</c:if>
-			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="getOneList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
-			</c:if>
-			<!-- 반복처리할 태그 끝 -->
-		</div>
-	</div>
+     <div id="btnBox_parent">
+      <div id="btnBox">
+         <!-- 반복처리할 태그 시작-->
+         <c:if test="${paging.nowPageBtn > 1 }">
+            <a href="getOneList?nowPageBtn=1&searchKeyword=${searchKeyword }">&laquo;</a>
+         </c:if>
+         <c:if test="${paging.nowPageBtn > 1 }">
+            <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }">&lt;</a>
+         </c:if>
+         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
+            step="1" var="i">
+            <c:choose>
+               <c:when test="${paging.nowPageBtn == i}">
+                  <a style="font-weight: 400; color: #7832f7;" class="aSel"
+                     href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }"><strong>${i}</strong></a>
+               </c:when>
+               <c:otherwise>
+                  <a href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }">${i}</a>
+               </c:otherwise>
+            </c:choose>
+         </c:forEach>
+         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+            <a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }&searchKeyword=${searchKeyword }">&gt;</a>
+         </c:if>
+         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+            <a href="getOneList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }">&raquo;</a>
+         </c:if>
+         <!-- 반복처리할 태그 끝 -->
+      </div>
+   </div>
       <br>
       <br>
 
    
    </div>
 
-
+<%@ include file="/footer.jsp"%>
 
 </body>
 </html>

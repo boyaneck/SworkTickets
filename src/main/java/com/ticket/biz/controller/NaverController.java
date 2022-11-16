@@ -123,7 +123,7 @@ public class NaverController {
 			e.printStackTrace();
 		}
 
-		REDIRECT_URL = "http://hmticket.ml";
+		REDIRECT_URL = "http://newjeonsis.ml";
 		return tokenChk;
 
 	}

@@ -97,12 +97,20 @@ input-group mb-3{width: 70% !important;}
 }
 .btn2{
    height: 38px;
-   color: red; 
+   color: red;
    background-color: white; 
    border-color: red; 
    border: solid 1px;
    padding: 3px 10px;
 }
+@media (max-width: 768px) {
+.container{
+width:100% !important;
+margin:0;
+
+}
+}
+
 </style>
 </head>
 <body>
@@ -171,5 +179,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
    </div>
       </form>
 </div>
+<%@ include file="../../footer.jsp"%>
 </body>
 </html>

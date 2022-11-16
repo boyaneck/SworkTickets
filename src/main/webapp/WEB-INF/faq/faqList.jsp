@@ -70,14 +70,14 @@ body {
   </div>
 
 
-  <div class="row" style="width:80%;">
+  <div class="row">
 <c:forEach items="${faqList}" var="faq">
-    <div class="col-lg-9 mx-auto" s>
+    <div class="col-lg-9 mx-auto">
       <!-- Accordion -->
-      <div id="accordionExample" class="accordion shadow" >
+      <div id="accordionExample" class="accordion shadow">
         <!-- Accordion item 1 -->
         <div class="card">
-          <div id="headingTwo" class="card-header bg-white shadow-sm border-0" style="padding:20px; ">
+          <div id="headingTwo" class="card-header bg-white shadow-sm border-0">
             <h6 class="mb-0 font-weight-bold" style="text-decoration:none;"><a href="#" data-toggle="collapse" data-target="#collapseTwo${faq.faq_no }" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">${faq.faq_title }</a></h6>
           </div>
           <div id="collapseTwo${faq.faq_no }" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">

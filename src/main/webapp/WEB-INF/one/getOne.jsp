@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../header.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="../../header.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%
 
@@ -12,10 +12,6 @@ if (session.getAttribute("mb_Id") == null) {
 %>
 <script>
 function deleteone(val,mal){
-	
-	console.log("22222222"+val);
-	console.log("333333333"+mal);
-	
 	
 	if(`${mb_Id}` == mal){
 		  var delConfirm = confirm('정말 삭제하시겠습니까?');
@@ -95,10 +91,7 @@ function deleteone(val,mal){
 </script>
 <style>
 
-
-
-textarea {
-			
+textarea {		
 			width: 100%;
 			height: 200px;
 			padding: 10px;
@@ -133,17 +126,31 @@ text-decoration:none;
 .btn btn-success:hover{
 background-color:#7832f7 !important;
 color:white !important;
-/* cursor:pointer; */
 }    
 
-</style>
+.btn-success{
+margin:5px;
+}
 
-<body>
-	<div class="jumbotron">
-		<h1>상세 보기</h1>
-	</div>
-	<%-- <%@ include file="../../menu.jsp" %>   --%>
-	<div class="container-fluid">
+.span{
+   width: 72px;
+    }
+    
+ 
+.span2{
+   width: 72px;
+ 	padding-left: 19px;
+    }
+    
+    @media (max-width: 768px) {
+  .fff {
+	width:100%;
+}
+
+
+</style>
+<body class="d-flex flex-column min-vh-100">
+<div class="board" ><h1 >상세보기</h1></div>
 		<%
 		if (request.getParameter("error") != null) {
 			out.println("<div class='alert alert-danger'>");
@@ -151,86 +158,83 @@ color:white !important;
 			out.println("</div>");
 		}
 		%>
+	<div class="container-fluid">
 		<form name="update" action="updateOne" method="post">
 			<input type="hidden" name="one_no" value="${one.one_no}">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text" style="padding-left:19.5px; padding-right:19.5px">제목</span>
+					<span class="span2 input-group-text text-center" >제목</span>
 				</div>
 				<input type="text" class="form-control innm" name="one_title"
 					value="${one.one_title}"  style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text">작성자</span>
+				<div class="input-group-prepend text-center">
+					<span class="span input-group-text">작성자</span>
 				</div>
 				<input type="text" class="form-control innm" name="one_writer"
 					value="${one.one_writer}" readonly <%=sts %> style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
-				<div class="input-group-prepend" >
-					<span class="input-group-text" style="padding-left:19.5px; padding-right:19.5px;">내용</span>
+				<div class="input-group-prepend">
+					<span class="span2 input-group-text" >내용</span>
 				</div>
-				<textarea class="form-control innm" rows="10" cols="10" id="one_comment"
-					name="one_content" <%=sts%> style="background-color:white !important;">${one.one_content}</textarea>
+				<textarea class="form-control innm" rows="10" cols="10" id="one_comment" 
+					name="one_content" <%=sts%> style="background-color:white !important; resize:none;">${one.one_content}</textarea>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text">등록일</span>
-					<span class="input-group-text" style="background-color:white !important;"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today} </span>
+					<span class="span input-group-text">등록일</span>
 				</div>
-				<%--       <input type="text" class="form-control innm" name="regDate" value="${one.regdate}" readonly <%=sts %>>       --%>
+					<span class="input-group-text" style="background-color:white !important;"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today} </span>
 			</div>
+			<div class="container" style="text-align: center;">
 			
-			
-					
-					
+		<c:if test="${one.one_writer eq mb_Id}">			
+            <button class="btn btn-success t" type="submit" <%=sts%>>글수정</button>
+            <button  type="button" class="btn btn-success t" onclick="deleteone(${one.one_no},`${one.one_writer}`)"  <%=sts%> >글삭제</button>
 
+		</c:if>
+            <a href="getOneList"  style="color:#7832f7 !important;">
+            <button type="button" class="btn btn-success t" <%=sts%>  onclick="location.href='getOneList';">글목록</button></a>
 			
-			<div id="btnBox_parent">
-            <button class="btn btn-success t" type="submit" <%=sts%> style="float:left; margin-left:550px; ">글수정</button>
 			</div>
-			
 			</form>
-            <button class="btn btn-success t" onclick="deleteone(${one.one_no},`${one.one_writer}`)" style=" float:left; margin-left:5px;" <%=sts%> >글삭제</button>
-			
-			
-            <a href="getOneList"  style="color:#7832f7 !important; "><button class="btn btn-success t" style="margin-left:5px;"<%=sts%>>글목록</button></a>
-			<a href="write.jsp" style="color:#7832f7 !important; "><button class="btn btn-success t" onclick="f_write('${mb_Id}')" >글쓰기</button></a>
-			
+			</div>
 			<!-- 					1:1문의 답변 -->
+			<div class="container-fluid">
 					<div style="display:none" class="answer"> 
 					<form action="/oneAnswer">
 					<div><input type='hidden' name='one_no' value='${one.one_no}'></div>
-					<div class="regBtn"><textarea name='one_answer' class="one_answer" cols="70" rows="4">${one.one_answer}</textarea></div>
+					<div class="regBtn">
+					<textarea name='one_answer' class="one_answer" cols="70" rows="4" style="resize: none;" >${one.one_answer}</textarea></div>
 					<div class="regBtn" style="text-align:center; margin: 20px;">
 					<button class="btn btn-success"  style="cursor: pointer">답변하기</button>
-				
 					</div>
 					</form>
 					</div>
 				<div class="regBtn" style="text-align:right; margin: 20px;">
-			<button class="btn btn-success"  id="oneanswer" onclick="answer(${one.one_no})">답변달기</button>
-		</div>
+					<button class="fff btn btn-success"  id="oneanswer" onclick="answer(${one.one_no})">답변달기</button>
+				</div>
 			
 			<!-- 		답변한것 보여주기 -->
 			
 			<div class="didanswer">
 								
-			<div class="regBtn ttt" style="text-align:center; margin-top: 20px; margin-bottom:20px; display:none; ">답변<i class = "xi-kakaotalk" style="padding-top:px; font-size: 26px; " ></i> </div>	
+			<div class="regBtn ttt" style="text-align:center; margin-top: 20px; margin-bottom:20px; display:none; ">답변<i class = "xi-kakaotalk" style="font-size: 26px; " ></i> </div>	
 			
 				
-	<div class="input-group mb-3 " id="answered"style="display:none; style="margin-left:20px;">
-				<div class="input-group-prepend">
-					<span class="input-group-text" >답변 내용</span>
+
+	<div class="input-group mb-3 " id="answered" style="display:none;">
+			
+				<div class="col" style="width: 100%;">
+				<textarea class=" form-control innm a_content" rows="10" cols="70" id="one_comment" 
+					name="one_content" readonly style="background-color:white !important; resize: none;" >${one.one_answer}</textarea>
 				</div>
-				<textarea class="form-control innm a_content" rows="10" cols="10" id="one_comment"
-					name="one_content" readonly style="background-color:white !important; " >${one.one_answer}</textarea>
 			</div>
 
-
-
-		
-
+</div>
+</div>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쿠폰 목록</title>
+<title>뉴전시스</title>
 
 <script>
    function notlogin() {

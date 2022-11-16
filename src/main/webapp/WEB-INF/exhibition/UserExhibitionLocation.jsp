@@ -15,7 +15,7 @@
 			<div id="map" style="width: 800px; height: 700px; margin: 0 auto; margin-bottom: 50px;"></div>
 			
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75fb178f353ce628ee79e97732a582fc&libraries=services"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ea44200cb8cf7bb0a768d9c219c84a0&libraries=services"></script>
 	<script>
 				var lx = ${exhibition.exh_place_x};
 				var ly = ${exhibition.exh_place_y};
@@ -44,8 +44,10 @@
 		});
 
 		// 마커가 지도 위에 표시되도록 설정합니다
+		
 		marker.setMap(map);
-
+		map.setCenter(markerPosition);
+		 map.relayout();
 		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 		// marker.setMap(null);
 	</script>

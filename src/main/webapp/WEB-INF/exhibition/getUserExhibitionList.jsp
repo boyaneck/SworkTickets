@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-<title>전시 목록</title>
+<title>뉴전시스</title>
 <!-- header -->
 <%@ include file="/header.jsp"%>
 <!-- header end -->
@@ -30,12 +30,13 @@
 /* height:73%; */
 /* width:100%; */
 /* } */
+
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
 	   <div class="board"><h1>전시</h1></div>
-	<div class="container">
-		<div class="row row-cols-1 row-cols-md-4 g-4" style="margin-bottom: 30px;">
+	<div class="container" >
+		<div class="row row-cols-1 row-cols-md-4 g-4" style="margin: auto;" >
 	<c:forEach items="${UserExhibitionList}" var="exhibition">
 			<div class="col" style="margin-bottom: 30px; cursor:pointer;" onclick="location.href='getUserExhibition?exh_no=${exhibition.exh_no}'" >
 				<div class="card h-100 heart">
@@ -58,30 +59,30 @@
 				<div id="btnBox">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<a href="getUserExhibitionList?nowPageBtn=1">&laquo;</a>
+									<a href="getUserExhibitionList?nowPageBtn=1&eSearchKeyword=${eSearchKeyword }">&laquo;</a>
 								</c:if>
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<a  href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+									<a  href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn-1}&eSearchKeyword=${eSearchKeyword }">&lt;</a>
 								</c:if>
 
 								<!-- 반복처리 태그 -->
 								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
 									<c:choose>
 										<c:when test="${paging.nowPageBtn==i}">
-											<a style="font-weight:400; color:#7832f7;" href="getUserExhibitionList?nowPageBtn=${i}">${i}</a>
+											<a style="font-weight:400; color:#7832f7;" href="getUserExhibitionList?nowPageBtn=${i}&eSearchKeyword=${eSearchKeyword }">${i}</a>
 										</c:when>
 										<c:otherwise>
-											<a  href="getUserExhibitionList?nowPageBtn=${i}">${i}</a>
+											<a  href="getUserExhibitionList?nowPageBtn=${i}&eSearchKeyword=${eSearchKeyword }">${i}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<!-- 		반복 끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+									<a href="getUserExhibitionList?nowPageBtn=${paging.nowPageBtn+1}&eSearchKeyword=${eSearchKeyword }">&gt;</a>
 								</c:if>
 								<!-- 		맨끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="getUserExhibitionList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+									<a href="getUserExhibitionList?nowPageBtn=${paging.totalBtnCnt}&eSearchKeyword=${eSearchKeyword }">&raquo;</a>
 								</c:if>
 					</div>
 					</div>

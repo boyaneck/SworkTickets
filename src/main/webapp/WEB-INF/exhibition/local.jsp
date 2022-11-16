@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>지역</title>
+<title>뉴전시스</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ include file="/header.jsp"%>
 <link rel="stylesheet"
@@ -156,7 +156,7 @@ li {
 
 <body class="d-flex flex-column min-vh-100">
 
-	<div class="container" style="text-align: center;">
+	<div class="container justify-content-center" style="text-align: center;">
 
 		<div class="board">
 			<h1>지역</h1>
@@ -172,9 +172,9 @@ li {
 						href="#tabs-1" id="tabs${status.count }">${loc_name}</a></li>
 				</c:forEach>
 			</ul>
-			<div id="tabs-1" class="container">
+			<div id="tabs-1" class="container justify-content-center">
 				<div id="tab-r" class="row row-cols-1 row-cols-md-4 g-4"
-					style="margin-bottom: 30px;">
+					style="margin-bottom: 30px; margin-left:0; margin-right: 0;">
 					<c:forEach items="${UserExhibitionList}" var="exhibition"
 						varStatus="status">
 						<div class="col" style="margin-bottom: 30px; cursor: pointer;"

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 쿠폰함</title>
+<title>뉴전시스</title>
 
  <script>
   
@@ -62,30 +62,30 @@
 				<div id="btnBox">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<a href="MYCoupon?nowPageBtn=1">&laquo;</a>
+									<a href="MyCoupon?nowPageBtn=1">&laquo;</a>
 								</c:if>
 								<c:if test="${paging.nowPageBtn > 1 }">
-									<a  href="MYCoupon?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
+									<a  href="MyCoupon?nowPageBtn=${paging.nowPageBtn-1}">&lt;</a>
 								</c:if>
 
 								<!-- 반복처리 태그 -->
 								<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }" step="1" var="i">
 									<c:choose>
 										<c:when test="${paging.nowPageBtn==i}">
-											<a style="font-weight:400; color:#7832f7;" href="MYCoupon?nowPageBtn=${i}">${i}</a>
+											<a style="font-weight:400; color:#7832f7;" href="MyCoupon?nowPageBtn=${i}">${i}</a>
 										</c:when>
 										<c:otherwise>
-											<a  href="MYCoupon?nowPageBtn=${i}">${i}</a>
+											<a  href="MyCoupon?nowPageBtn=${i}">${i}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<!-- 		반복 끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="MYCoupon?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
+									<a href="MyCoupon?nowPageBtn=${paging.nowPageBtn+1}">&gt;</a>
 								</c:if>
 								<!-- 		맨끝 -->
 								<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-									<a href="MYCoupon?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+									<a href="MyCoupon?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
 								</c:if>
 					</div>
 					</div>

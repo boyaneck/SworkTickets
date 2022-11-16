@@ -359,7 +359,7 @@ textarea {
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-<div class="container" style="text-align:center; padding: 50px 0;">
+<div class="container" id="exh_detail" style="text-align:center; padding: 50px 0;">
 	<div class="row">
 	<div class="col-md-5"> 
 	<img src="/images/${exhibition.exh_thumbnail }" id="thum1" alt="이미지" style="width:400px; height: 500px;">
@@ -375,7 +375,7 @@ textarea {
 	<div class="col-3">관람등급</div> <div class="col-9" id="col"> ${exhibition.exh_rating}</div>
 	<div class="col-3">관람시간</div> <div class="col-9" id="col"> ${exhibition.exh_time}</div>
 	<div class="col-3">발권정보</div> <div class="col-9" id="col"> ${exhibition.exh_shipping_info}</div>
-	<div class="col-3">예매수수료</div> <div class="col-9" id="col"><fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</div>
+	<div class="col-3">수수료</div> <div class="col-9" id="col"><fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</div>
 	<div class="col-3">가격</div> <div class="col-9" id="col1"><fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</div>
 	
 	<div class="col-3"></div> 
@@ -417,7 +417,7 @@ textarea {
 	</div>
 	</div>
 <!-- 하단 -->
-<div class="container">
+<div class="container" id="userdetail">
   <div class="row a" style="padding-top: 50px; margin-left: 0; margin-right: 0;">
     <div class="col tabDiv pt-3 pb-2" id="menu1"><h5>상세정보</h5></div>
     <div class="col tabDiv pt-3 pb-2" id="menu2"><h5>관람후기</h5></div>

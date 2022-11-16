@@ -55,11 +55,6 @@ border: 1px solid #1f1f1f;
  background-color:#e8dbfe!important;
 
 }
-
-.aa:hover{
-background-color:#7832f7 !important;
-color:white !important;
-}
 </style>
 <script>
 
@@ -78,9 +73,28 @@ function f_write(val){
 }
 </script>
 <body>
-
-<div>
-		
+<%    
+response.setHeader("Cache-Control","no-store");    
+response.setHeader("Pragma","no-cache");    
+response.setDateHeader("Expires",0);    
+if (request.getProtocol().equals("HTTP/1.1"))  
+        response.setHeader("Cache-Control", "no-cache");  
+%>
+		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+			<!-- Navbar Brand-->
+			<a class="navbar-brand logoimg" href="index.jsp" style="text-align: center;"> <img style="width: 140px;"
+				src="./images/logo.png">&nbsp&nbsp
+			</a>
+			<!-- Sidebar Toggle-->
+			<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+				<i class="fas fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link header-logout" href="/logoutGO">로그아웃</a></li>
+				</ul>
+			</div>
+		</nav>
 		<section id="container">
 			<aside>
 				<div id="layoutSidenav" style="text-align: center;">
@@ -168,8 +182,8 @@ function f_write(val){
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/adminFaqList">공지사항</a> <a
-												class="nav-link" href="/getFaqList">FAQ</a> <a
+											<a class="nav-link" href="/getBoardList">공지사항</a> <a
+												class="nav-link" href="/adminFaqList">FAQ</a> <a
 												class="nav-link" href="/getOneList">1:1 문의</a>
 										</nav>
 									</div>
@@ -188,14 +202,9 @@ function f_write(val){
 					</div>
    <nav id="searchNav" class="sub_title">
       <form class="form-inline" action="adminFaqList" method="post">
-         <select class="form-control" id="sel1" name="searchCondition"
-            style="display: inline-block !important; margin-right: 10px;">
-            <c:forEach items="${conditionMap}" var="option">
-               <option value="${option.value}">${option.key}</option>
-            </c:forEach>
-         </select> <input class="form-control mr-sm-2" type="text" name="searchKeyword"
-            placeholder="검색어를 입력하세요.">
-         <button class="btn btn-success aa" type="submit">검색</button>
+        <input class="form-control mr-sm-2" type="text" name="searchKeyword"
+            placeholder="검색어를 입력하세요." value="${searchKeyword }">
+         <button class="btn btn-success" type="submit">검색</button>
       </form>
    </nav>
    <div class="container-fluid">
@@ -204,7 +213,7 @@ function f_write(val){
             <tr>
                <th>번호</th>
                <th>제목</th>
-               <th>카테고리</th>
+<!--                <th>카테고리</th> -->
                <th>등록일</th>
             </tr>
          </thead>
@@ -212,10 +221,10 @@ function f_write(val){
 
             <c:forEach items="${adminfaqList}" var="adminfaqList">
                      <tr onclick="getfaq(${adminfaqList.faq_no})" style="cursor: pointer;">
-                     <td class="tdCenter" style="width:10%;" >${adminfaqList.faq_no}</td>
-                     <td class="tdCenter" style="width:60%;"  onclick="getfaq(${adminfaqList.faq_no}")">${adminfaqList.faq_title}</td>
-                     <td class="tdCenter" style="width:15%;" >${adminfaqList.cate_name}</td>
-                     <td class="tdCenter" style="width:15%;" ><fmt:formatDate value="${adminfaqList.faq_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                     <td class="tdCenter" style="width:15%;" >${adminfaqList.faq_no}</td>
+                     <td class="tdCenter" style="width:65%;"  onclick="getfaq(${adminfaqList.faq_no}")">${adminfaqList.faq_title}</td>
+<%--                      <td class="tdCenter" style="width:15%;" >${adminfaqList.cate_name}</td> --%>
+                     <td class="tdCenter" style="width:20%;" ><fmt:formatDate value="${adminfaqList.faq_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                   </tr>
             </c:forEach>
          </tbody>
@@ -229,28 +238,28 @@ function f_write(val){
 		<div id="btnBox">
 			<!-- 반복처리할 태그 시작-->
 			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="adminFaqList?nowPageBtn=1">&laquo;</a>
+				<a href="adminFaqList?nowPageBtn=1&searchKeyword=${searchKeyword }">&laquo;</a>
 			</c:if>
 			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn -1 }">&lt;</a>
+				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }">&lt;</a>
 			</c:if>
 			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
 				step="1" var="i">
 				<c:choose>
 					<c:when test="${paging.nowPageBtn == i}">
 						<a style="font-weight: 400; color: #7832f7;" class="aSel"
-							href="adminFaqList?nowPageBtn=${i}"><strong>${i}</strong></a>
+							href="adminFaqList?nowPageBtn=${i}&searchKeyword=${searchKeyword }"><strong>${i}</strong></a>
 					</c:when>
 					<c:otherwise>
-						<a href="adminFaqList?nowPageBtn=${i}">${i}</a>
+						<a href="adminFaqList?nowPageBtn=${i}&searchKeyword=${searchKeyword }">${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn +1 }">&gt;</a>
+				<a href="adminFaqList?nowPageBtn=${paging.nowPageBtn +1 }&searchKeyword=${searchKeyword }">&gt;</a>
 			</c:if>
 			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="adminFaqList?nowPageBtn=${paging.totalBtnCnt}">&raquo;</a>
+				<a href="adminFaqList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }">&raquo;</a>
 			</c:if>
 			<!-- 반복처리할 태그 끝 -->
 		</div>

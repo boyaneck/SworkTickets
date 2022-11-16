@@ -18,7 +18,8 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/board.css">
 <link rel="stylesheet" href="./css/ranking.css">
-<title>헤더입니다.</title>
+<link rel="shortcut icon" href="./images/favicon.ico">
+<title>뉴전시스</title>
 </head>
 
 <!-- 회원 -->
@@ -29,13 +30,13 @@
    </a>
 <!-- 햄버거 시작-->
      
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse" id="collapsibleNavbar">
     <ul class="navbar-nav hambuger">
     
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon" name="addonHambuger">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control hambuger" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" />
+          <input type="text" class="form-control hambuger" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }" />
         </div>
       </div>
     
@@ -68,12 +69,8 @@
       <li class="nav-item">
         <a class="nav-link hambuger" href=/local> 지역 </a>
       </li>
-      <li class="nav-item hambuger">
-        <a class="nav-link hambuger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
-         <div class="dropdown-menu header-menu" aria-labelledby="coupon">
-            <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
-            <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link hambuger" href=/getCouponList> 쿠폰 </a>
       </li>
       <li class="nav-item">
         <a class="nav-link hambuger" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
@@ -109,7 +106,7 @@
             <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
+            <a class="nav-link header" data-toggle="dropdown" href="/getCouponList" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="coupon">
             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
             <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
@@ -126,24 +123,23 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-   <!-- 검색 -->
+        <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
-         <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
-               <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 회원관리 </a>
+               <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/admin" role="button" aria-haspopup="true" aria-expanded="false"> 관리자 </a>
                <div class="dropdown-menu header-menu" aria-labelledby="member">
                <!-- <a class="nav-link header-logout" href="/logoutGO">로그아웃</a> -->
                <!-- <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a> -->
-               <a class="dropdown-item header-item" href="/admin" >관리자페이지 이동</a>
-               <a class="dropdown-item header-item" href="/getAllPayList">&nbsp회원결제내역</a>
+               <a class="dropdown-item header-item" href="/admin" >관리자페이지</a>
                </div>
                </li>
             </ul>
@@ -175,13 +171,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-       <!-- 검색 -->
+         <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
-         <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
@@ -224,13 +220,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-   <!-- 검색 -->
+        <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
-     	 <button class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
                <li class="nav-item">
                      <%-- <span class="nav-hello">${kakaoId} 님 안녕하세요 </span> --%>
@@ -271,13 +267,13 @@
             </div>
          </li>
       </ul>
-   <!-- 검색 -->
+        <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
-		<button type="button" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
       <!-- 검색 -->
       
       <ul class="nav navbar-nav navbar-right">

@@ -5,23 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<title>뉴전시스</title>
+<%@ include file="../../header.jsp"%>
 <style>
 .row{align: left;}
-#change{
-width: 90%;
-   height: calc(1.5em + 0.75rem + 2px);
-   color:#7329f7; 
-   background-color:white; 
-   border-color:#7329f7; 
-   border: solid 1px;
-   align: left !important;
-   margin-left:0;
-}
+
 input[type="text"]{
     width: 100%;
    height: calc(1.5em + 0.75rem + 2px);
@@ -71,35 +59,41 @@ h2{margin-top: 30px;
 }
 </style>
 <script>
+
+
 $(function() {
     var emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-    var email = $("#email");
-    $("#sendMail").on( "click", function() {
-        if (email == "") {
-           alert("이메일을 입력하지 않았습니다.");
-        } else {
-           if (!(emailRegex.test(email.val()))) {
-              alert("이메일 입력이 제대로 되지 않았습니다.");
-              return false;
-           }
-           $.ajax({
-              type : 'POST',
-              url : 'email_Send',
-              data : {email : email.val()},
-              success : function(data) {
-                 if(data=='ok'){
-                    alert("인증번호를 발송했습니다.");
-                    $("#emailCheck").removeAttr("disabled");
-                 }else{
-                    alert("인증번호가 발송되지 않았습니다.");
-                 }
-              },
-              error : function(request, status) {
-                 alert("오류가 발생했습니다.");
-              }
-           });
-        }
-     });
+    $("#sendMail").on("click", function() {
+    var email = $("#email").val();
+    var mb_id = $("#mb_id").val();
+       if (email == 0) {
+          alert("이메일을 입력하세요.");
+       } else {
+          if (!(emailRegex.test(email))) {
+             alert("이메일 형식이 맞지 않습니다.");
+             return false;
+          }
+          $.ajax({
+             type : 'POST',
+             url : 'email_Send1',
+             data : {
+                email : $("#email").val(),
+                mb_id : $("#mb_id").val()
+             },
+             success : function(data) {
+                if (data == 'ok') {
+                   alert("인증번호를 발송했습니다.");
+                   $("#emailCheck").removeAttr("disabled");
+                } else {
+                   alert("아이디와 이메일이 일치하지 않습니다.");
+                }
+             },
+             error : function(request, status) {
+                alert("오류가 발생했습니다.");
+             }
+          });
+       }
+    });
  });
  
  function emailCheck() {
@@ -151,10 +145,9 @@ $(function() {
 
    
 </script>
-<%@ include file="../../header.jsp"%>
 </head>
 <body>
-<div style="background-color: #f6f5f5; height: 100px;"></div>
+<div style="background-color: #f6f5f5; height: 100vh; padding-top: 50px;">
 <div style="background-color:#f6f5f5; height:100vh">
 <form action="" method="post" id="findPwform">
       <input type="hidden" name="mb_email" id="mb_email">
@@ -173,11 +166,21 @@ $(function() {
 
       <div class="row">
          <div class="col-3"  style="width:30px;">
+            <b style="margin:0px; font-size:16px; font-weight:400;">아이디</b>
+         </div>
+         <div class="col-6">
+            <input  style="font-size:16px;" id="mb_id" name="mb_id" class="text_box" type="text" placeholder="아이디 입력" required autofocus>
+            </div>
+             <div class="col-3" style="margin-bottom: 50px;"></div>
+      
+      </div>
+      <div class="row">
+         <div class="col-3"  style="width:30px;">
             <b style="margin:0px; font-size:16px; font-weight:400;">이메일</b>
          </div>
          
          <div class="col-6">
-            <input  style="font-size:16px;" id="email" name="email" class="text_box" type="text" placeholder="이메일 입력" required autofocus>
+            <input  style="font-size:16px;" id="email" name="email" class="text_box" type="text" placeholder="이메일 입력" required >
             </div>
             <div class="col-3"  id="send">
             <button class="btn-purple"  id="sendMail" >발송하기</button> 
@@ -195,17 +198,17 @@ $(function() {
       </div>
       
 <!--       인증번호확인 -->
-       <%if(request.getAttribute("mb_Id")!=null){ %>
+       <%if(request.getAttribute("mb_Id1")!=null){ %>
       <div class="row">
-         <div class="col-4">
-            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</b>
+         <div class="col-3">
+            <b style="margin:0px; font-size:16px; font-weight:400; width:70px;">비밀번호</b>
          </div>
-         <div class="col-5" style="margin-bottom:50px;">
+         <div class="col-6" style="margin-bottom:50px;">
       <form action="change" id="pwchange" method="post">
-      <input type="hidden" name="mb_id" id="mb_id" value="${mb_Id}">
-      <input type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
-      <input type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
-      <div class="col-3"><button type="button" id="change" onclick="changePW()">변경하기</button></div>
+      <input type="hidden" name="mb_id" id="mb_id" value="${mb_Id1}">
+      <input style="font-size:16px; margin-bottom:10px;" type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
+      <input style="font-size:16px;" type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
+      <div class="col-3" id="send"><button class="btn-purple" type="button" id="change" onclick="changePW()">변경하기</button></div>
       </form>
       <%} %>
    </div>

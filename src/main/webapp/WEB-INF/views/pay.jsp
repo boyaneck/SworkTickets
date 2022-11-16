@@ -7,7 +7,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>뉴전시스</title>
 <%@ include file="../../header.jsp"%>
 
 
@@ -38,7 +38,7 @@ $(document).ready(function(){
          paid_at: $("#p_date").val() ,
 //          buyer_addr: $("#uaddr").val() ,//주소
 //          buyer_postcode: '123-456',//우편번호
-         m_redirect_url: "http://localhost:8090/payUserM?formValues="+formValues//내 url 
+         m_redirect_url: "http://newjeonsis.ml/payUserM?formValues="+formValues//내 url 
          }, function (rsp) {
             console.log(rsp);
             if (rsp.success) {
@@ -175,7 +175,7 @@ $('#testBtn').click(function(e){
 <body class="d-flex flex-column min-vh-100">
 <form name="fm" style="text-align:-webkit-center;">
 	<!-- 타이틀 -->
-	<div class="container"
+	<div class="container" id="paytitle"
 		style="background-color: lightgray; width: 50%; padding: 30px;">
 		<h2 style="text-align: center; font-weight: bolder; padding: 30px 0;">결제하기</h2>
 
@@ -347,7 +347,7 @@ $('#testBtn').click(function(e){
 
 							<div class="row">
 								<div class="col-3">
-									<h1 class="text-center"
+									<h1 class="text-center" id="c_per"
 										style="transform: translate(0, 65%); color: #7329f7; font-weight: bolder;">${coupon.c_per}%</h1>
 								</div>
 								<div class="col" id="over"

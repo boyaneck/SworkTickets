@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>뉴전시스</title>
 <%@ include file="../../header.jsp"%>
 
 
@@ -124,6 +124,7 @@ $(function() {
 //       });
 //    }
 // }
+
 });
 
 
@@ -185,7 +186,7 @@ function numberMaxLength(e){
 }
 
 //아이디 중복체크
- /* function chkBtn(){
+function chkBtn(){
    var idRegex = /^[0-9|a-z|A-Z|]*$/;
     $.ajax({
         url : "/idChk",
@@ -209,8 +210,7 @@ function numberMaxLength(e){
              }
         }
     })
-}  */
-/* 이메일 인증번호 일치 여부 start */
+}  
 </script>
 <style>
 input{ width: 100%;
@@ -263,7 +263,7 @@ font-size:16px !important;
 
 </head>
 <body class="d-flex flex-column min-vh-100">
-<div class="container" style="margin: 50px auto; width:780px;">
+<div class="container" style="margin: 50px auto; ">
       <h3 style="text-align: left; font-weight: bold;  ">회원가입</h3>
       <hr style=" border:solid 1px gray;">
 <!--                      <p>정보입력</p> -->
