@@ -97,7 +97,7 @@ input-group mb-3{width: 70% !important;}
 }
 .btn2{
    height: 38px;
-   color: red; 
+   color: red;
    background-color: white; 
    border-color: red; 
    border: solid 1px;
