@@ -91,7 +91,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
             <tr>
                <th class="tb" style="text-align: center;">번호</th>
                <th style="text-align: center;">제목</th>
-               <th style="text-align: center;">작성자</th>
+               <th class="tb" style="text-align: center;">작성자</th>
                <th class="tb" style="text-align: center;">등록일</th>
 
             </tr>
@@ -105,8 +105,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
                   onmouseover="this.style.fontWeight='bold'"
                   onmouseout="this.style.fontWeight=''">
                   <td class="tdCenter tb" style="width: 10%;">${board.noti_no}</td>
-                  <td class="tdCenter" style="width: 50%;">${board.noti_title}</td>
-                  <td class="tdCenter" style="width: 20%;">${board.noti_writer}</td>
+                  <td class="tdCenter" style="width: 50%; padding: 20px 15px;">${board.noti_title}</td>
+                  <td class="tdCenter tb" style="width: 20%;">${board.noti_writer}</td>
                   <td class="tdCenter tb" style="width: 20%;"><fmt:formatDate
                         value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
                         var="today" />${today}</td>

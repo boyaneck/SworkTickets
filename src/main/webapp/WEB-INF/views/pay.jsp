@@ -38,7 +38,7 @@ $(document).ready(function(){
          paid_at: $("#p_date").val() ,
 //          buyer_addr: $("#uaddr").val() ,//주소
 //          buyer_postcode: '123-456',//우편번호
-         m_redirect_url: "http://localhost:8090/payUserM?formValues="+formValues//내 url 
+         m_redirect_url: "http://newjeonsis.ml/payUserM?formValues="+formValues//내 url 
          }, function (rsp) {
             console.log(rsp);
             if (rsp.success) {
