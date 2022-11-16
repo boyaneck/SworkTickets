@@ -28,10 +28,8 @@ public class LoginController {
 	public String login(MemberVO vo, HttpSession session, HttpServletResponse response) {
 		String password = vo.getMb_pw();
 
-		System.out.println("로그인 인증 처리...");
 		if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
 //			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
-			System.out.println("실패");
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter script;
@@ -49,7 +47,6 @@ public class LoginController {
 		if (memberService.getMember(vo) != null) {
 			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
 //			if((login == true)&&memberService.getMember(vo).getMb_id().equals("admin")) {
-//				System.out.println("로그인");
 //				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
 //			
 //				return "admin/admin_index";
@@ -57,13 +54,11 @@ public class LoginController {
 //			}
 //			else
 				if (login == true) {
-				System.out.println("로그인");
 				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
 			
 				return "redirect:index.jsp";
 				
 			} else {
-				System.out.println("실패");
 				response.setCharacterEncoding("utf-8");
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter script;
@@ -98,7 +93,6 @@ public class LoginController {
 
 	@RequestMapping(value = "/logoutGO")
 	public String logout(HttpSession session) {
-		System.out.println("로그아웃실행");
 		session.invalidate();
 		return "redirect:login.jsp";
 	}
