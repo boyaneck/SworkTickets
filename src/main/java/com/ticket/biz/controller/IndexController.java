@@ -44,7 +44,6 @@ public class IndexController {
 		Map<String, Object> map = new HashMap<>();
 		
 		
-System.out.println("4545454554");
 //		model.addAttribute("total",total);
 		model.addAttribute("payRankList", payService.getPayRank());
 		model.addAttribute("getGoodList", goodService.getGoodList());

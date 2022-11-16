@@ -30,12 +30,13 @@
 /* height:73%; */
 /* width:100%; */
 /* } */
+
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
 	   <div class="board"><h1>전시</h1></div>
-	<div class="container">
-		<div class="row row-cols-1 row-cols-md-4 g-4" style="margin-bottom: 30px;">
+	<div class="container" >
+		<div class="row row-cols-1 row-cols-md-4 g-4" style="margin: auto;" >
 	<c:forEach items="${UserExhibitionList}" var="exhibition">
 			<div class="col" style="margin-bottom: 30px; cursor:pointer;" onclick="location.href='getUserExhibition?exh_no=${exhibition.exh_no}'" >
 				<div class="card h-100 heart">
