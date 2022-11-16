@@ -54,22 +54,6 @@ public class OneController {
 
 	}
 
-	//"uploadFile" 추가시
-//	@PostMapping(value = "/insertOne")
-////	public String insertOne(MultipartHttpServletRequest request, OneVO vo) throws IllegalStateException, IOException {
-//	public String insertOne(OneVO vo) throws IllegalStateException, IOException {
-//		MultipartFile uplodFile = vo.getUploadFile();
-//		//realPath 추가
-////	    String realPath = request.getSession().getServletContext().getRealPath("/img/");
-//		String realPath = "c:/swork/eleven/src/main/webapp/img/" ;
-//	    String fileName = uplodFile.getOriginalFilename();
-//		if(!uplodFile.isEmpty()) {
-//			vo.setFilename(fileName);
-//			uplodFile.transferTo(new File(realPath+fileName));
-//		}
-//		oneService.insertOne(vo);
-//		return "getOneList";
-//	}
 
 	// 글 수정
 	@RequestMapping("/updateOne")

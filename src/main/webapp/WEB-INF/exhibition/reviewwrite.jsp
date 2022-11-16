@@ -137,39 +137,6 @@ pageContext.setAttribute("replaceChar", "\n");
 					
 					});  // 여기까지가 for문
 					
-						console.log("pageStartbtn!!!!!!!"+paging.startBtn);
-						console.log("pagenowtbtn!!!!!!!!"+paging.nowPageBtn);
-						console.log("pageendtbtn!!!!!!!!"+paging.endBtn);
-						console.log("reviewBno!!!!!!!! " +bno);
-					
-// 					 comment_html += "<div id='btnBox_parent'>";
-// 	 				 comment_html += "<div id='btnBox'>";
-// 	 			     comment_html +=  "if("+(paging.nowPageBtn) > 1+"){";
-// 	 			     comment_html +=  "<a href='reviewList?nowPageBtn='"+(paging.nowPageBtn -1)+" &review_bno="+bno+"}>&lt;</a> }";
-				          
-// 	 			     comment_html +=  "for(i="+(paging.startBtn)+";i<="+paging.endBtn+"; i++){";
-// 	 			     comment_html +=   "if("+paging.nowPageBtn == +"i"+"){";
-// 	 			     comment_html +=   "<a href='reviewList?nowPageBtn=i class='aSel'>i</a> }";
-// 	 			     //이 위의 i 값을 변수로 지정해야하는데..
-				             
-// 	 			     comment_html +=    "else <a href='reviewList?nowPageBtn=i&review_bno='"+bno+"'>i</a>";
-				           
-				 
-// 	 			     comment_html +=   "if("+paging.nowPageBtn < paging.totalBtnCnt+"){";
-// 	 			     comment_html +=   "<a href='reviewList?nowPageBtn='"+paging.nowPageBtn +1 +"'>&gt;</a> }";
-				           
-// 	 			     comment_html +=     "else {document.write('문제가 있습니다.')};"
-// 	 			     comment_html +=   "if("+paging.nowPageBtn < paging.totalBtnCnt +"){" ;
-// 	 			     comment_html +=   "<a href=reviewList?nowPageBtn="+paging.totalBtnCnt+">&raquo;</a>";
-	 			     
-// 	 			     comment_html += "</div>";
-// 	 			     comment_html += "</div>";
-// 				div class board에 있는 페이징 css
-// 				  if < 버튼생성
-// 				  each paging start버튼부터 end 버튼까지
-// 				  버튼생성
-// 				  if > 버튼생성
-// 					지역은 버튼클릭하면 함수 호출해서 아작스 돌려서 받아온 데이터를 html에 뿌리는 방법?
 		
 			
 				  
@@ -377,16 +344,6 @@ textarea:focus, input:focus {
 
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
 
 
 </body>

@@ -3,127 +3,97 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../../header.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-/* Custom style */
-.accordion-button:not(.collapsed) {
-   padding:60px;
-
-    color: #8c00ff;
-    border:none;
-    background-color: white !important; 
-    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+.collapsible-link::before {
+  content: '';
+  width: 14px;
+  height: 2px;
+  background: #333;
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 1rem;
+  display: block;
+  transition: all 0.5s;
 }
-    .accordion-button::after {
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
-      transform: scale(.7) !important;
-    }
-    .accordion-button:not(.collapsed)::after {
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
-    }
-    
-    //아코언 크기 
-   .accordion-item{
-   
-   font-size:20px !important;
-   border-left:none !important;
-   border-right:none !important;
-   width:60%!important;
-   margin-left:20% !important;
-   margin-right:20% !important;
-   
-   }
- @media (max-width:768px){ 
-   .accordion-item{ 
-   width:90% !important;
-   margin-left:5%!important; 
-   margin-right:5%!important; 
-    } 
-    } 
-   
-   .accordion-button collapsed title{
-    border:none !important;
-   
-   }
-   .accordion-button title collapsed{
-      border-bottom
-   }
-   
-   
-   //제목  hover했을때
-   .accordion-item:hover{
-   background-color: #f9fafa !important;
-   }
-   .board > h1{
-   
-   font-size:50px;
-   
-   }
-   .title{
-   font-weight:bold;
-   font-size:22px;
-   }
-   
-   .accordion-button:hover{
-   background-color:#b13dfa
-   border-bottom:1px solid #8c00ff;
-   border-top:1px solid #8c00ff;
-   border-bottom:1px solid #8c00ff;
-   }
-   
+
+/* Vertical line */
+.collapsible-link::after {
+  content: '';
+  width: 2px;
+  height: 14px;
+  background: #333;
+  position: absolute;
+  top: calc(50% - 7px);
+  right: calc(1rem + 6px);
+  display: block;
+  transition: all 0.5s;
+}
+
+.collapsible-link[aria-expanded='true']::after {
+  transform: rotate(90deg) translateX(-1px);
+}
+
+.collapsible-link[aria-expanded='true']::before {
+  transform: rotate(180deg);
+}
+
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+body {
+/*   background: #dd5e89; */
+/*   background: -webkit-linear-gradient(to left, #dd5e89, #f7bb97); */
+/*   background: linear-gradient(to left, #dd5e89, #f7bb97); */
+/*   min-height: 100vh; */
+}
+
+ 
 </style>
-<script>
 
-function getfaq(val){
-   location.href="getFaq?faq_no="+val;
 
-}
-function f_write(val){
-    console.log(val);
-    if(val == ''){
-        alert("로그인이 되야 작성 가능합니다");
-        location.href="/getFaqList";
-    }else{
-        location.href="/goWriteFaq";
-    }
-}
-</script>
+</head>
 <body class="d-flex flex-column min-vh-100">
-   <div class="board">
-      <h1>FAQ</h1>
-   </div>
-<div class="faqP">
-<div class="faqC">
-<div class="m-4">
-<c:forEach items="${faqList}" var="faq">
 
-    <div class="accordion" id="myAccordion" style=" width:60%!important; margin-left:20% !important; border:none;">
-        <div class="accordion-item" >
-        
-            <h1 class="accordion-header" id="headingOne">
-            
-                <button type="button"  style="padding:40px;"  class="accordion-button collapsed title" data-bs-toggle="collapse" data-bs-target="#collapseOne${faq.faq_no }">Q. ${faq.faq_title}</button>                           
-            </h1>
-            <div id="collapseOne${faq.faq_no }" class="accordion-collapse collapse panel-violet" data-bs-parent="#myAccordion">
-                <div class="card-body" style="background-color:#eff0f0 !important;">
-                <div>
-                    <p><strong>${faq.faq_content} </strong></p>
-                    <fmt:formatDate value="${faq.faq_reg}" pattern="yyyy-MM-dd" var="today" />${today}
-
-                </div>
-                     
-                </div> 
-               
-            </div>
-        </div>
+<div class="container">
+  <!-- For demo purpose -->
+  <div class="row py-5">
+    <div class="col-lg-9 mx-auto text-white text-center">
+      <h1 class="display-4" style="color:black !important;">FAQ</h1>
     </div>
-    </c:forEach>
-</div>
-</div>
-</div>
+  </div>
 
 
+  <div class="row" style="width:80%;">
+<c:forEach items="${faqList}" var="faq">
+    <div class="col-lg-9 mx-auto" s>
+      <!-- Accordion -->
+      <div id="accordionExample" class="accordion shadow" >
+        <!-- Accordion item 1 -->
+        <div class="card">
+          <div id="headingTwo" class="card-header bg-white shadow-sm border-0" style="padding:20px; ">
+            <h6 class="mb-0 font-weight-bold" style="text-decoration:none;"><a href="#" data-toggle="collapse" data-target="#collapseTwo${faq.faq_no }" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">${faq.faq_title }</a></h6>
+          </div>
+          <div id="collapseTwo${faq.faq_no }" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
+            <div class="card-body p-5">
+              <p class="font-weight-light m-0">${faq.faq_content }</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+        </c:forEach>
+  </div>
+  
+</div>
 
 <%@ include file="../../footer.jsp" %>
 </body>
