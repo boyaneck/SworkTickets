@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/board.css">
 <link rel="stylesheet" href="./css/ranking.css">
+<link rel="shortcut icon" href="./images/favicon.ico">
 <title>뉴전시스</title>
 </head>
 
