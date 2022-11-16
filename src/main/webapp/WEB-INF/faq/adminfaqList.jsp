@@ -214,7 +214,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
             <tr>
                <th>번호</th>
                <th>제목</th>
-               <th>카테고리</th>
+<!--                <th>카테고리</th> -->
                <th>등록일</th>
             </tr>
          </thead>
@@ -222,10 +222,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
             <c:forEach items="${adminfaqList}" var="adminfaqList">
                      <tr onclick="getfaq(${adminfaqList.faq_no})" style="cursor: pointer;">
-                     <td class="tdCenter" style="width:10%;" >${adminfaqList.faq_no}</td>
-                     <td class="tdCenter" style="width:60%;"  onclick="getfaq(${adminfaqList.faq_no}")">${adminfaqList.faq_title}</td>
-                     <td class="tdCenter" style="width:15%;" >${adminfaqList.cate_name}</td>
-                     <td class="tdCenter" style="width:15%;" ><fmt:formatDate value="${adminfaqList.faq_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                     <td class="tdCenter" style="width:15%;" >${adminfaqList.faq_no}</td>
+                     <td class="tdCenter" style="width:65%;"  onclick="getfaq(${adminfaqList.faq_no}")">${adminfaqList.faq_title}</td>
+<%--                      <td class="tdCenter" style="width:15%;" >${adminfaqList.cate_name}</td> --%>
+                     <td class="tdCenter" style="width:20%;" ><fmt:formatDate value="${adminfaqList.faq_reg}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                   </tr>
             </c:forEach>
          </tbody>

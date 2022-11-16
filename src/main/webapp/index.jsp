@@ -36,7 +36,7 @@
 	/* grid-template-columns: 2fr 2fr 2fr; */
 	gap: 3%;
 	margin: 5% 0;
-	/*     justify-content: center; */
+	justify-content: center; 
 }
 
 .grid-card2 {
@@ -58,6 +58,16 @@
 	border-radius: 0px;
 }
 
+.card1 {
+	overflow: hidden;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.1);
+	/*     border-radius: 30px; */
+	text-align: center;
+	/*     box-shadow: 10px 10px 10px rgb(206, 203, 203); */
+	border-radius: 0px;
+}
+
 .card_img img {
 	width: 100%;
 	height: 25rem;
@@ -70,7 +80,7 @@
 }
 
 .card_body-2 {
-	padding: 34px 20px 35px 20px;
+	padding: 29px 20px 30px 20px;
 	text-align: -webkit-center;
 }
 /* .card_body-2 { */
@@ -104,6 +114,11 @@ p.card_author a {
 
 p.card_author a:hover {
 	font-weight: bold;
+}
+
+.card:hover {
+box-shadow : 10px 10px 3px #ddd;
+cursor : pointer;
 }
 
 a.read_more {
@@ -235,30 +250,6 @@ img {
 	max-width: 500px;
 }
 
-/* SCROLL DOWN */
-.scroll-down {
-	position: fixed;
-	bottom: 20px;
-	left: 50%;
-	transform: translate(-50%, 0);
-	color: white;
-	font-weight: 400;
-	text-transform: uppercase;
-	font-size: 14px;
-	overflow: visible;
-}
-
-.scroll-down .arrow {
-	position: relative;
-	top: 0px;
-	margin: 0 auto;
-	width: 15px;
-	height: 15px;
-	filter: invert(1);
-	background-image:
-		url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZmlsbD0iYmxhY2siIGQ9Ik00ODMuMiwxOTIuMmMtMjAuNS0yMC41LTUzLjUtMjAuOC03My43LTAuNkwyNTcsMzQ0LjFMMTA0LjUsMTkxLjZjLTIwLjItMjAuMi01My4yLTE5LjktNzMuNywwLjYKCWMtMjAuNSwyMC41LTIwLjgsNTMuNS0wLjYsNzMuN2wxOTAsMTkwYzEwLjEsMTAuMSwyMy40LDE1LjEsMzYuOCwxNWMxMy4zLDAuMSwyNi43LTQuOSwzNi44LTE1bDE5MC0xOTAKCUM1MDMuOSwyNDUuNyw1MDMuNywyMTIuNyw0ODMuMiwxOTIuMnoiLz4KPC9zdmc+);
-	background-size: contain;
-}
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -303,61 +294,6 @@ img {
 			<span style="color: #7832f7">NEW</span> EXHIBITION
 		</h2>
 		<h3 style="color: #fff">NEW EXHIBITION</h3>
-		<!-- <section> -->
-		<!-- <div class="body"> -->
-		<!-- <!-- partial:index.partial.html -->
-		<!-- <!-- <div class="hi"> -->
-		<!-- <!-- 		<h1>Spinny Flipz</h1> -->
-		<!-- <!-- </div> -->
-		<!-- <div class="slider-section"> -->
-		<!-- 	<div class="wheel"> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/아라의소설.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/이기적유전자.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/아라의소설.jpg.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/이기적유전자.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="wheel__card"> -->
-		<!-- 			<img src="/images/평면의역사.jpg" /> -->
-		<!-- 		</div> -->
-		<!-- 	</div> -->
-		<!-- </div> -->
-
-		<!-- <div class="scroll-down">Scroll down<div class="arrow"></div> -->
-		<!-- </div> -->
-		<!-- </div> -->
-		<!-- </div> -->
-		<!-- </section class> -->
 		</div>
 		<div class="new_ex">
 			<button type="button" class="newEx_btn" onclick="location.href= '../getUserExhibitionList'">
@@ -375,122 +311,27 @@ img {
 				<i class="bi bi-suit-heart-fill"></i> 좋아요<br>
 				<br>
 
-					  <div class="cd">
-				<div class="container container-card">
-					<div class="grid-card">
-						<div class="card">
-							<h2 class="card_title">1. 나의 조랑말 선생님</h2>
-							<div class="card_img">
-								<img src="/images/아라의소설.jpg" alt="">
-							</div>
-							<div class="card_body-1">
-								<div>
-									<i class="bi bi-suit-heart-fill"></i> <span class="num"
-										data-val="300">000</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="grid-card2">
-						<div class="card">
-							<h2 class="card_title">2. 나의 팀버튼 선생님</h2>
-							<div class="card_img">
-								<img src="/images/이기적유전자.jpg" alt="">
-							</div>
-							<div class="card_body-1">
-								<div>
-									<i class="bi bi-suit-heart-fill"></i> 
-									   <span class="num" data-val="230">000</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="grid-card">
-						<div class="card">
-							<h2 class="card_title">3. 평민의 역사</h2>
-							<div class="card_img">
-								<img src="/images/평면의역사.jpg" alt="">
-							</div>
-							<div class="card_body-1">
-								<div>
-									<i class="bi bi-suit-heart-fill"></i> <span class="num"
-										data-val="150">000</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+					  <!-- 	  <div class="cd"> -->
+			<div class="container container-card">
+				
 			</div>
+<!-- 		</div> -->
 
-			<c:forEach items="${getGoodList}" var="getGoodList" varStatus="status">
-			               <div class="row "><div class="col">
-			                  <a href="getUserExhibition?exh_no=${getGoodList.exh_no}">
-			                  ${status.count} 
-			                     ${getGoodList.exh_title}</a> ${getGoodList.rank_cnt }<br>
-			               </div></div>
-			</c:forEach>
+		</div>
+		
+		<div class="rank2">
+			<span style="color: #7832f7">%</span>예매율<br>
+			<br>
+
+			<!-- 	  <div class="cd"> -->
+			<div class="container-card2">
+
+			
 			</div>
-			<div class="rank2">
-				<span style="color: #7832f7">%</span>예매율<br>
-				<br>
-
-					  <div class="cd">
-				<div class="container-card">
-
-					<div class="grid-card">
-						<div class="card">
-							<h2 class="card_title">1. 나의 조랑말 선생님</h2>
-							<div class="card_img">
-								<img src="/images/아라의소설.jpg" alt="">
-							</div>
-							<div class="card_body-2">
-								<div class="container container-cir">
-									<div class="circular-progress1">
-										<div class="value-container1">0%</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="grid-card2">
-						<div class="card">
-							<h2 class="card_title">2. 나의 팀버튼 선생님</h2>
-							<div class="card_img">
-								<img src="/images/이기적유전자.jpg" alt="">
-							</div>
-							<div class="card_body-2">
-								<div class="container container-cir">
-									<div class="circular-progress2">
-										<div class="value-container2">0%</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="grid-card">
-						<div class="card">
-							<h2 class="card_title">3. 평민의 역사</h2>
-							<div class="card_img">
-								<img src="/images/평면의역사.jpg" alt="">
-							</div>
-							<div class="card_body-2">
-								<div class="container container-cir">
-									<div class="circular-progress3">
-										<div class="value-container3">0%</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
+<!-- 		</div> -->
 
 			</div>
+			
 		</section>
 		<div class="rank_ex">
 			<button type="button" onclick="location.href= '../ranking'">
@@ -502,12 +343,125 @@ img {
 
 
 		<!-- Script -->
-		<script src="js/circular-progress.js"></script>
 		<script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
 		<script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
 		<script src='https://unpkg.com/gsap@3/dist/MotionPathPlugin.min.js'></script>
 		<script src='https://assets.codepen.io/16327/Flip.min.js'></script>
-		<script src="js/semicircle-script.js"></script>
+		<script type="text/javascript">
+		
+			
+		function rink(a){
+			console.log("!!!!!!!!!: "+a);
+			location.href='getUserExhibition?exh_no='+a;
+			
+		}
+		
+ 		$.ajax({
+  	 		type:'get',
+   			url:"/index",
+			
+   			success:function(data) {
+			console.log("성공");
+			console.log(data.ptotal);
+			console.log("data:");
+			console.log(data);
+ 			
+ 			var rlist = data.rlist;
+ 			console.log("rlist:");
+ 			console.log(rlist);
+ 			var elist = data.elist;
+ 			console.log("elist:");
+ 			console.log(elist);
+ 			var glist = data.glist;
+ 			console.log("glist:");
+ 			console.log(glist);
+ 			var timeOff = new Date().getTimezoneOffset()*60000;
+ 		
+ 			
+ 			$.each(glist, function(i, v){
+ 				if(i < 3){
+ 				console.log("좋아요");
+ 				var rank_cnt  =  glist[i].rank_cnt;
+ 				console.log(glist[i].exh_no);
+ 				
+ 				var g_exno = glist[i].exh_no;
+ 				var g_title = glist[i].exh_title;
+ 				var g_thumb = glist[i].exh_thumbnail;
+ 				var g_cnt = glist[i].rank_cnt;
+ 				var g_st_date = glist[i].exh_st_date;
+ 				var g_end_date = glist[i].exh_end_date;
+ 				var g_local_name = glist[i].exh_local_name;
+ 				
+ 				var g_stdate = new Date(g_st_date-timeOff).toISOString().split("T")[0];
+ 				var g_enddate = new Date(g_end_date-timeOff).toISOString().split("T")[0];
+ 				
+ 				var glist_html = `<div class="grid-card">`;
+
+ 				glist_html += "<div class='card' onclick='rink("+g_exno+")'>";
+ 				glist_html += `<h2 class="card_title">`;
+ 				glist_html += (i+1)+". "+g_title+" </h2>";
+ 				glist_html += `<div class="card_img">`;
+ 				glist_html += "<img src='/images/"+g_thumb+"' alt='"+g_thumb+"'>";
+ 				glist_html += `</div>`;
+ 				glist_html += `<div class="card_body-1">`;
+ 				glist_html += "<p style='font-size:16px;'>"+g_stdate+" ~ "+g_enddate+"</p>";
+ 				glist_html += `<div>`;
+ 				glist_html += "<span style='font-size:16px;'>"+g_local_name+"</span>";
+ 				glist_html += `</div>`;
+ 				glist_html += `</div>`;
+ 				glist_html += `</div>`;
+ 				glist_html += `</div>`;
+ 				glist_html += `<br>`;
+ 				
+ 				$(".container-card").append(glist_html);
+			}
+ 			
+			});
+ 	
+ 				
+ 			$.each(rlist, function(i, v){
+ 				if(i < 3){
+ 				console.log("랭킹");
+ 				var rank_cnt  =  rlist[i].rank_cnt;
+ 				console.log(rlist[i].exh_no);
+			
+			var r_exno = rlist[i].exh_no;
+			var r_title = rlist[i].exh_title;
+			var r_thumb = rlist[i].exh_thumbnail;
+			var r_st_date = rlist[i].exh_st_date;
+			var r_end_date = rlist[i].exh_end_date;
+			var r_local_name = rlist[i].exh_local_name;
+				
+			var r_stdate = new Date(r_st_date-timeOff).toISOString().split("T")[0];
+			var r_enddate = new Date(r_end_date-timeOff).toISOString().split("T")[0];
+
+			var rlist_html = `<div class="grid-card">`;
+
+			rlist_html += "<div class='card' onclick='rink("+r_exno+")'>";
+			rlist_html += `<h2 class="card_title">`;
+			rlist_html += (i+1)+". "+r_title+" </h2>";
+			rlist_html += `<div class="card_img">`;
+			rlist_html += "<img src='/images/"+r_thumb+"' alt='"+r_thumb+"'>";
+			rlist_html += `</div>`;
+			rlist_html += `<div class="card_body-2">`;
+			rlist_html += "<p style='font-size:16px;'>"+r_stdate+" ~ "+r_enddate+"</p>";
+			rlist_html += `<div>`;
+			rlist_html += "<span style='font-size:16px;'>"+r_local_name+"</span>";
+			rlist_html += `</div>`;
+			rlist_html += `</div>`;
+			rlist_html += `</div>`;
+			rlist_html += `</div>`;
+			rlist_html += `<br>`;
+			
+				$(".container-card2").append(rlist_html);
+			
+			}
+ 			});
+			}
+			})
+			
+		</script>
+<!-- 		<script src="js/circular-progress.js"></script> -->
 				<!-- footer start -->
 		<%@ include file="footer.jsp"%>
 		<!-- footer end -->

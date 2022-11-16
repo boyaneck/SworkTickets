@@ -11,7 +11,7 @@ public class OneVO {
 	private String one_writer;
 	private String one_content;
 	private Date one_date;
-	private String one_category;
+	
 	private Date one_modify;
 	private String one_answer;
 	
@@ -76,12 +76,7 @@ public class OneVO {
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
-	public String getOne_category() {
-		return one_category;
-	}
-	public void setOne_category(String one_category) {
-		this.one_category = one_category;
-	}
+
 	public int getOne_no() {
 		return one_no;
 	}

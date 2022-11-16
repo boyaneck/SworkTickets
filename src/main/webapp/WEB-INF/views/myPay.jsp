@@ -46,7 +46,7 @@
             <select class="form-control" id="sel1" name="searchCondition"
                style="display: inline-block !important; margin-right: 10px;">
                <c:forEach items="${conditionMap}" var="option">
-                  <option value="${option.value}">${option.key}</option>
+                 <option value="${option.value}" <c:if test ="${searchCondition eq option.value}">selected="selected"</c:if>>${option.key}</option>
                </c:forEach>
             </select> <input class="form-control mr-sm-2" type="text"
                name="searchKeyword" placeholder="검색어를 입력하세요.">

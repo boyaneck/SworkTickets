@@ -342,6 +342,9 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
 
 .rank_box {
    margin-top: 10px;
+   display: flex;
+/*    display: grid !important; */
+/*    grid-template-columns: 1fr 1fr !important; */
 }
 
 .rank_box > div {

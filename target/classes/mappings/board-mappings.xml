@@ -47,10 +47,10 @@
 	
 <insert id="insertBoard">
   INSERT INTO NOTICE (NOTI_TITLE, NOTI_WRITER, NOTI_CONTENT,
-  NOTI_DATE, NOTI_CATEGORY, NOTI_MODIFY) 
+  NOTI_DATE, NOTI_MODIFY) 
   VALUES ( #{noti_title}, #{noti_writer},
              #{noti_content}, now(),
-  			1111, now())
+  			 now())
 </insert>
 
 <update id="updateBoard">
