@@ -35,7 +35,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon" name="addonHambuger">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control hambuger" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }" />
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
         </div>
       </div>
     
