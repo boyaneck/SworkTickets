@@ -115,9 +115,9 @@ function f_write(){
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text">내용</span>
+					<span class="input-group-text"> 내용</span>
 				</div>
-				<textarea class="form-control innm" rows="10" id="board_comment"
+				<textarea class="form-control innm" rows="20" cols="10" id="board_comment"
 					name="noti_comment" <%=sts%> style="background-color:white !important;">${board.noti_content}</textarea>
 			</div>
 

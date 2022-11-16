@@ -15,7 +15,6 @@ function deleteone(val,mal){
 	
 	console.log("22222222"+val);
 	console.log("333333333"+mal);
-	console.log("ddadaasd"+typeof(${mb_Id}));
 	
 	
 	if(`${mb_Id}` == mal){
@@ -70,57 +69,33 @@ function deleteone(val,mal){
         }
     }
     
+    $(document).ready(function tt(){
+    	
+    if($(".a_content").val() != ''){
+    	$("#answered").show();
+    	$(".ttt").show();
+    	
+    }
+    else document.getElementById("answered").innerHTML="등록된 댓글이 없습니다.";
+    	
+    
+    
+    
+    if(`${mb_Id}` != 'admin'){
+    	
+    console.log("mbid!!!!"+`${mb_Id}`);
+    $("#oneanswer").hide();
+    }
+    
+    });
+  
+    
+    
+    
 </script>
 <style>
-#imgBox { 
-display: none; 
-position: absolute; 
-top: 0; 
-left: 0; 
-height: 100vh !important; 
-background-color: rgba(0, 0, 0, 0.5); 
-z-index: 9999999; 
-}
 
-#imgContentBox { 
-width: 600px; 
-max-height: 550px; 
-overflow: auto; 
-position: absolute; 
-top: 30%; 
-left: 30%; 
-border-radius: 5px; 
-z-index: 9999999; 
-} 
 
-#imgBoxTitleBar { 
-border-bottom: 1px solid #777; 
-border-radius: 5px 5px 0 0; 
-background-color: #ddd; 
-width: 100%; 
-padding: 10px; 
-text-align: right; 
-font-size: 20px; 
-font-weight: bolder; 
-} 
-
-#imgBoxImg { 
-width: 100%; 
-border-radius: 0 0 5px 5px; 
-} 
-
-#closeX { 
-padding: 5px 20px; 
-border-radius: 5px; 
-border: 1px solid #777; 
-background-color: red; 
-color: #fff; 
-} 
-
-#closeX:hover { 
-background-color: #777; 
-cursor: pointer; 
-} 
 
 textarea {
 			
@@ -180,7 +155,7 @@ color:white !important;
 			<input type="hidden" name="one_no" value="${one.one_no}">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text" >제목</span>
+					<span class="input-group-text" style="padding-left:19.5px; padding-right:19.5px">제목</span>
 				</div>
 				<input type="text" class="form-control innm" name="one_title"
 					value="${one.one_title}"  style="background-color:white !important;">
@@ -193,30 +168,11 @@ color:white !important;
 					value="${one.one_writer}" readonly <%=sts %> style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text" >내용</span>
+				<div class="input-group-prepend" >
+					<span class="input-group-text" style="padding-left:19.5px; padding-right:19.5px;">내용</span>
 				</div>
 				<textarea class="form-control innm" rows="10" cols="10" id="one_comment"
 					name="one_content" <%=sts%> style="background-color:white !important;">${one.one_content}</textarea>
-			</div>
-			<div class="input-group mb-3">
-<!-- 				<div class="input-group-prepend"> -->
-<!-- 					<span class="input-group-text">파일</span> -->
-<!-- 				</div> -->
-				<c:if test="${one.filename ne NULL}">
-					<span style="cursor: pointer; padding: 0 20px;" onclick="seeImg()">[파일보기]</span>
-					<script>
-	        	function seeImg(){
-	        		$("#imgBox").show();
-	        	}
-<!-- 	        </script> 
-<%--    			<span style="cursor:pointer;" onclick="downloadFile('${one.filename}')">[파일다운]</span> --%>
-					   			<script>
-	   			function downloadFile(filename){
-	   			    window.location ='download.do?filename='+filename;
-	   			}
-			</script>
-				</c:if>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -261,34 +217,20 @@ color:white !important;
 			
 			<div class="didanswer">
 								
-			<div class="regBtn" style="text-align:center; margin: 20px;">답변<i class = "xi-kakaotalk" style="padding-top:px; font-size: 26px; cursor:pointer;"></i> </div>	
+			<div class="regBtn ttt" style="text-align:center; margin-top: 20px; margin-bottom:20px; display:none; ">답변<i class = "xi-kakaotalk" style="padding-top:px; font-size: 26px; " ></i> </div>	
+			
 				
-			<div style="text-align:center; margin:30px; padding:20px; border:2px solid #cdb3fc; border-radius:4px;">${one.one_answer}</div>
-					</div>
-	
+	<div class="input-group mb-3 " id="answered"style="display:none; style="margin-left:20px;">
+				<div class="input-group-prepend">
+					<span class="input-group-text" >답변 내용</span>
+				</div>
+				<textarea class="form-control innm a_content" rows="10" cols="10" id="one_comment"
+					name="one_content" readonly style="background-color:white !important; " >${one.one_answer}</textarea>
+			</div>
 
 
 
-		<div id="btnBox_parent">
-<!-- 		<form action="deleteOne"> -->
-<%-- 			<input type="hidden" name="one_no" value="${one.one_no}"> --%>
-		</form>
 		
 
-		<!-- 클릭시 보이는 이미지 start -->
-		<div id="imgBox" class="container-fluid">
-		<div id="imgContentBox">
-		<div id="imgBoxTitleBar">
-			<span id="closeX" onclick="closeX()">X</span>
-			<script>
-        	function closeX(){
-        		$("#imgBox").hide();
-        	}
-        </script>
-			</div>
-			<img id="imgBoxImg" src="img/${one.filename}">
-		</div>
-	</div>
-	<!-- 클릭시 보이는 이미지 end -->
 </body>
 </html>
