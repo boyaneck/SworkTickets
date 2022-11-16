@@ -103,6 +103,14 @@ input-group mb-3{width: 70% !important;}
    border: solid 1px;
    padding: 3px 10px;
 }
+@media (max-width: 768px) {
+.container{
+width:100% !important;
+margin:0;
+
+}
+}
+
 </style>
 </head>
 <body>
