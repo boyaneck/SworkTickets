@@ -11,7 +11,7 @@
    crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
    crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
 <!--    <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
@@ -35,7 +35,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon" name="addonHambuger">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control hambuger" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }" />
         </div>
       </div>
     
@@ -105,9 +105,10 @@
             <a class="nav-link header" href="/local"> 지역 </a>
          </li>
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
+            <a class="nav-link header" data-toggle="dropdown" href="/getCouponList" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="coupon">
             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
+            <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
             </div>
          </li>
          <li class="nav-item dropdown header-title">
@@ -133,8 +134,13 @@
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="/admin"> 관리자 페이지 </a>
-        		 </li>
+               <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/admin" role="button" aria-haspopup="true" aria-expanded="false"> 관리자 </a>
+               <div class="dropdown-menu header-menu" aria-labelledby="member">
+               <!-- <a class="nav-link header-logout" href="/logoutGO">로그아웃</a> -->
+               <!-- <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a> -->
+               <a class="dropdown-item header-item" href="/admin" >관리자페이지</a>
+               </div>
+               </li>
             </ul>
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
       </c:when>
