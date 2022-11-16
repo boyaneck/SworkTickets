@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전시 목록</title>
+<title>뉴전시스</title>
 <!-- header -->
 <%@ include file="/header.jsp"%>
 <!-- header end -->

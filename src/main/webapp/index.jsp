@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>뉴전시스</title>
 
 <%@ include file="header.jsp"%>
 <!-- @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap"); -->

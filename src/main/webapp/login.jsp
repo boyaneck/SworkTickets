@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>뉴전시스</title>
 <%@ include file="header.jsp"%>
 <style>
 .a_oth {

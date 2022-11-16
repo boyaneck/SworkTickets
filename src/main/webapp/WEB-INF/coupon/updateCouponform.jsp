@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쿠폰 수정</title>
+<title>뉴전시스</title>
 <%@ include file="../../header.jsp"%>
 </head>
 <body>

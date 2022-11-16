@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 쿠폰함</title>
+<title>뉴전시스</title>
 
  <script>
   
