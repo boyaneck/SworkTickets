@@ -64,14 +64,14 @@ padding:0;}
 		}
 	}
 </script>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<div class="board">
 		<h1>공 지 사 항</h1>
 	</div>
 
 
 	<nav id="searchNav" class="sub_title">
-		<form class="form-inline" action="getBoardList" method="post">
+		<form class="form-inline justify-content-end" action="getBoardList" method="post">
 			<input class="form-control mr-sm-2" type="text" name="searchKeyword"
 				placeholder="검색어를 입력하세요" value="${searchKeyword }">
 			<button class="btn btn-success search" type="submit"
