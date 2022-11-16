@@ -25,8 +25,27 @@ border: 1px solid #1f1f1f;
     font-size: 18px;
     color: black;
 }
+@media (max-width: 768px) {
+  .tb {
+  display:none;
+}
+.searchNav{
+text-align:center;
+width:100%;
 
 
+}
+.sub_title{
+float:none;
+margin-bottom: 20px;
+}
+.btn-success{
+width:100%;
+margin-top: 10px;
+}
+.container-fluid{
+padding:0;}
+}
 </style>
 <script>
 
@@ -59,10 +78,10 @@ border: 1px solid #1f1f1f;
       <table class="table table-hover">
          <thead class="btn-primary">
             <tr>
-               <th style="width:10%; text-align:center;">번호</th>
+               <th class="tb"  style="width:10%; text-align:center;">번호</th>
                <th style="width:50%; text-align:center;">제목</th>
                <th style="width:20%; text-align:center;">작성자</th>
-               <th style="width:20%; text-align:center;">등록일</th>
+               <th class="tb" style="width:20%; text-align:center;">등록일</th>
                
             </tr>
          </thead>
@@ -74,18 +93,18 @@ border: 1px solid #1f1f1f;
                <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}">
                
                <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
-                <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter">${one.one_no}</td>
+                <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter tb">${one.one_no}</td>
                 <td class="tdCenter">${one.one_title}<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
                 <td class="tdCenter">${one.one_writer }</td>
-                <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      
                      </c:when>
                      <c:otherwise>
                      
-                        <tr><td class="tdCenter" >${one.one_no}</td>
+                        <tr><td class="tdCenter tb" >${one.one_no}</td>
                            <td class="tdCenter aa">비밀게시글은 작성자와 관리자만 볼 수 있습니다.<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
                            <td class="tdCenter">${one.one_writer }</td>
-                           <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                           <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                         </tr>
                      </c:otherwise>
                   </c:choose>
@@ -95,10 +114,10 @@ border: 1px solid #1f1f1f;
                <c:if test="${one.one_secret eq 'false'}">
 
                   <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
-                     <td class="tdCenter">${one.one_no}</td>
+                     <td class="tdCenter tb">${one.one_no}</td>
                      <td class="tdCenter">${one.one_title}</td>
                      <td class="tdCenter">${one.one_writer}</td>
-                     <td class="tdCenter"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                     <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      
 
                   </tr>
@@ -148,7 +167,7 @@ border: 1px solid #1f1f1f;
    
    </div>
 
-
+<%@ include file="/footer.jsp"%>
 
 </body>
 </html>

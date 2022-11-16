@@ -26,6 +26,28 @@
 background-color:#7832f7 !important;
 color:white;
 }
+
+@media (max-width: 768px) {
+  .tb {
+  display:none;
+}
+.searchNav{
+text-align:center;
+width:100%;
+
+
+}
+.sub_title{
+float:none;
+margin-bottom: 20px;
+}
+.btn-success{
+width:100%;
+margin-top: 10px;
+}
+.container-fluid{
+padding:0;}
+}
 </style>
 <script>
 	function getboard(val) {
@@ -58,12 +80,12 @@ color:white;
 	</nav>
 	<div class="container-fluid">
 		<table class="table table-hover">
-			<thead class="btn-primary" style="background-color: blue;">
+			<thead >
 				<tr>
-					<th style="text-align: center;">번호</th>
+					<th class="tb" style="text-align: center;">번호</th>
 					<th style="text-align: center;">제목</th>
 					<th style="text-align: center;">작성자</th>
-					<th style="text-align: center;">등록일</th>
+					<th class="tb" style="text-align: center;">등록일</th>
 
 				</tr>
 			</thead>
@@ -75,10 +97,10 @@ color:white;
 						; style="cursor: pointer;" class="aa"
 						onmouseover="this.style.fontWeight='bold'"
 						onmouseout="this.style.fontWeight=''">
-						<td class="tdCenter" style="width: 10%;">${board.noti_no}</td>
+						<td class="tdCenter tb" style="width: 10%;">${board.noti_no}</td>
 						<td class="tdCenter" style="width: 50%;">${board.noti_title}</td>
 						<td class="tdCenter" style="width: 20%;">${board.noti_writer}</td>
-						<td class="tdCenter" style="width: 20%;"><fmt:formatDate
+						<td class="tdCenter tb" style="width: 20%;"><fmt:formatDate
 								value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
 								var="today" />${today}</td>
 
@@ -132,7 +154,7 @@ color:white;
 		</div>
 	</div>
 
+<%@ include file="/footer.jsp"%>
 
-</body>
 </body>
 </html>
