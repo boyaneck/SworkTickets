@@ -68,12 +68,8 @@
       <li class="nav-item">
         <a class="nav-link hambuger" href=/local> 지역 </a>
       </li>
-      <li class="nav-item hambuger">
-        <a class="nav-link hambuger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
-         <div class="dropdown-menu header-menu" aria-labelledby="coupon">
-            <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
-            <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link hambuger" href=/getCouponList> 쿠폰 </a>
       </li>
       <li class="nav-item">
         <a class="nav-link hambuger" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
@@ -112,14 +108,13 @@
             <a class="nav-link header" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="coupon">
             <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
-            <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
             </div>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>
             <div class="dropdown-menu header-menu" aria-labelledby="cs">
                <a class="dropdown-item header-item" href="/getBoardList">공지사항</a>
-               <a class="dropdown-item header-item" href="/getFaqList">자주묻는질문</a>
+               <a class="dropdown-item header-item" href="/adminFaqList">자주묻는질문</a>
                <a class="dropdown-item header-item" href="/getOneList">1:1 문의</a>
             </div>
          </li>
@@ -138,14 +133,8 @@
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
-               <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 회원관리 </a>
-               <div class="dropdown-menu header-menu" aria-labelledby="member">
-               <!-- <a class="nav-link header-logout" href="/logoutGO">로그아웃</a> -->
-               <!-- <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a> -->
-               <a class="dropdown-item header-item" href="/admin" >관리자페이지 이동</a>
-               <a class="dropdown-item header-item" href="/getAllPayList">&nbsp회원결제내역</a>
-               </div>
-               </li>
+            <a class="nav-link header" href="/admin"> 관리자 페이지 </a>
+        		 </li>
             </ul>
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
       </c:when>
@@ -178,7 +167,7 @@
          <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()"/>
+          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
