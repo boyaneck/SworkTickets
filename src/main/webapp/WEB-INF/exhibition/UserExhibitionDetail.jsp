@@ -417,7 +417,7 @@ textarea {
 	</div>
 	</div>
 <!-- 하단 -->
-<div class="container">
+<div class="container" id="userdetail">
   <div class="row a" style="padding-top: 50px; margin-left: 0; margin-right: 0;">
     <div class="col tabDiv pt-3 pb-2" id="menu1"><h5>상세정보</h5></div>
     <div class="col tabDiv pt-3 pb-2" id="menu2"><h5>관람후기</h5></div>
