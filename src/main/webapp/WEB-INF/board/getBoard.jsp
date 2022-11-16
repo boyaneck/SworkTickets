@@ -60,9 +60,24 @@
 .btn-success:hover {
     background-color: #7832f7 !important;
     color: white;
+}
+#span{
+	width: 72px;
+    }
+#span2{
+	width: 72px;
+    padding-left: 19px;
+}
 </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+<%    
+response.setHeader("Cache-Control","no-store");    
+response.setHeader("Pragma","no-cache");    
+response.setDateHeader("Expires",0);    
+if (request.getProtocol().equals("HTTP/1.1"))  
+        response.setHeader("Cache-Control", "no-cache");  
+%>
 	<%
 	String sts = "";
 	if (session.getAttribute("mb_Id")==null ||!session.getAttribute("mb_Id").equals("admin")) {
@@ -101,30 +116,30 @@ function f_write(){
 			<input type="hidden" name="noti_no" value="${board.noti_no}">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text">제목</span>
+					<span class="input-group-text" id="span2">제목</span>
 				</div>
 				<input type="text" class="form-control innm" name="noti_title"
 					maxlength="40" value="${board.noti_title}" <%=sts %> style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text">작성자</span>
+					<span class="input-group-text" id="span">작성자</span>
 				</div>
 				<input type="text" class="form-control innm" name="noti_writer"
 					value="${board.noti_writer}" readonly <%=sts %> style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text">내용</span>
+				<div class="input-group-prepend" style="vertical-align:center;">
+					<span class="input-group-text" id="span2">내용</span>
 				</div>
-				<textarea class="form-control innm" rows="10" id="board_comment"
+				<textarea class="form-control innm" cols="10" rows="20" id="board_comment"
 					name="noti_comment" <%=sts%> style="background-color:white !important;">${board.noti_content}</textarea>
 			</div>
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text" >등록일</span> <span
-						class="input-group-text" style="background-color:white !important;"><fmt:formatDate
+					<span class="input-group-text" id="span">등록일</span> 
+					<span class="input-group-text" style="background-color:white !important;"><fmt:formatDate
 							value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
 							var="today"  />${today} </span>
 				</div>

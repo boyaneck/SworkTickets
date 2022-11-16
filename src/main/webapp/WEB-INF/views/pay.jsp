@@ -7,7 +7,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>뉴전시스</title>
 <%@ include file="../../header.jsp"%>
 
 

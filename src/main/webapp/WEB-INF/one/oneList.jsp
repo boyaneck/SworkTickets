@@ -63,7 +63,14 @@ padding:0;}
     }
  }
 </script>
-<body>
+<body class="d-flex flex-column min-vh-100">
+<%    
+response.setHeader("Cache-Control","no-store");    
+response.setHeader("Pragma","no-cache");    
+response.setDateHeader("Expires",0);    
+if (request.getProtocol().equals("HTTP/1.1"))  
+        response.setHeader("Cache-Control", "no-cache");  
+%>
    <div class="board">
       <h1>1:1문의 </h1>
    </div>
@@ -131,36 +138,36 @@ padding:0;}
             <button class="write" onclick="f_write('${mb_Id}')" style="cursor:pointer" ">글쓰기</button>
       <br>
       <br>
-  	<div id="btnBox_parent">
-		<div id="btnBox">
-			<!-- 반복처리할 태그 시작-->
-			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="getOneList?nowPageBtn=1&searchKeyword=${searchKeyword }">&laquo;</a>
-			</c:if>
-			<c:if test="${paging.nowPageBtn > 1 }">
-				<a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }">&lt;</a>
-			</c:if>
-			<c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
-				step="1" var="i">
-				<c:choose>
-					<c:when test="${paging.nowPageBtn == i}">
-						<a style="font-weight: 400; color: #7832f7;" class="aSel"
-							href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }"><strong>${i}</strong></a>
-					</c:when>
-					<c:otherwise>
-						<a href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }">${i}</a>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }&searchKeyword=${searchKeyword }">&gt;</a>
-			</c:if>
-			<c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-				<a href="getOneList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }">&raquo;</a>
-			</c:if>
-			<!-- 반복처리할 태그 끝 -->
-		</div>
-	</div>
+     <div id="btnBox_parent">
+      <div id="btnBox">
+         <!-- 반복처리할 태그 시작-->
+         <c:if test="${paging.nowPageBtn > 1 }">
+            <a href="getOneList?nowPageBtn=1&searchKeyword=${searchKeyword }">&laquo;</a>
+         </c:if>
+         <c:if test="${paging.nowPageBtn > 1 }">
+            <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }">&lt;</a>
+         </c:if>
+         <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
+            step="1" var="i">
+            <c:choose>
+               <c:when test="${paging.nowPageBtn == i}">
+                  <a style="font-weight: 400; color: #7832f7;" class="aSel"
+                     href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }"><strong>${i}</strong></a>
+               </c:when>
+               <c:otherwise>
+                  <a href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }">${i}</a>
+               </c:otherwise>
+            </c:choose>
+         </c:forEach>
+         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+            <a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }&searchKeyword=${searchKeyword }">&gt;</a>
+         </c:if>
+         <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
+            <a href="getOneList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }">&raquo;</a>
+         </c:if>
+         <!-- 반복처리할 태그 끝 -->
+      </div>
+   </div>
       <br>
       <br>
 
