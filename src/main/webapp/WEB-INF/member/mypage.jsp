@@ -179,5 +179,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
    </div>
       </form>
 </div>
+<%@ include file="../../footer.jsp"%>
 </body>
 </html>
