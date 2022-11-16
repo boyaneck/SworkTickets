@@ -256,7 +256,7 @@ public class MemberController {
 	// 아이디찾기폼
 	@RequestMapping("/findIdform")
 	public String find(MemberVO vo, Model model) {
-//		System.out.println("아이디찾기" + vo);
+//		System.out.println(vo.getMb_email());	
 		vo = memberService.find(vo);
 //		System.out.println("찾은결과: " + vo);
 		if (vo != null) {
