@@ -17,7 +17,6 @@ public class ExhibitionDAO {
 	// CRUD 기능의 메소드 구현
 	// 전시 등록
 	public void insertExhibition(ExhibitionVO vo) {
-		System.out.println("insertExhibition mybatis");
 		mybatis.insert("ExhibitionDAO.insertExhibition", vo);
 	}
 

@@ -168,7 +168,21 @@ input::-webkit-inner-spin-button {
    background-color: #7832f7!important;
 }
 
+@media(max-width:768px){
+	.carousel .carousel-item{
+    height: 200px;
+	}
+}
 
+@media(max-width:768px){
+.carousel-item img {
+		position: absolute;
+		top: 0;
+		left: -70px;
+		min-width: 500px;
+		min-height: 190px;
+	}
+}
 /* 헤더검색 시작 */
 .form-control.search{
    border-radius:20px!important;

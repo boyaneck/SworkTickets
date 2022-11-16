@@ -28,7 +28,6 @@ public class MemberDAO {
 
 	/* 회원가입 */
 	public void insertMember(MemberVO vo) {
-//		System.out.println(vo);
 		mybatis.insert("MemberDAO.insertMember", vo);
 	}
 
@@ -39,15 +38,12 @@ public class MemberDAO {
 
 	/* 회원조회 */
 	public MemberVO getMember(MemberVO vo) {
-//		System.out.println("mybatis getMember() 기능");
 		return mybatis.selectOne("MemberDAO.getMember", vo);
 	}
 
 	/* 회원수정 */
 	public void updateMember(MemberVO vo) {
-		System.out.println("mybatis회원정보수정 기능");
 		mybatis.update("MemberDAO.updateMember", vo);
-		System.out.println("회원수정" + vo);
 	}
 
 	public MemberVO loginCheck(MemberVO vo) {
