@@ -28,7 +28,7 @@
 		WHERE
 		REVIEW_BNO=#{review_bno}
 		ORDER BY REVIEW_NO DESC
-		LIMIT 5 OFFSET #{offset}
+		
 	</select>
 
 <update id="updateReview">

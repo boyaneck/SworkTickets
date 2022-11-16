@@ -76,6 +76,10 @@ color: #fff;
 background-color: #777; 
 cursor: pointer; 
 } 
+#span{
+	width: 72px;
+    text-align: center !important;
+    }
 </style>
 
 <body>
