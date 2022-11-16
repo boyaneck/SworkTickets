@@ -189,7 +189,7 @@
 													style="transform: translate(0, 80%); font-weight: bolder; padding-left: 17px">${coupon.c_per}%</h1>
 											</div>
 											<div class="col"
-												style="font-size: 18px; padding-left: 15px; transform: translate(0, 30%); text-align: left;">
+												style="font-size: 18px; padding-left: 15px; transform: translate(0, 30%); text-align: left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
 												<b id="c_name" style="font-size: 23px">${coupon.c_name}</b><br>
 												${coupon.c_date}까지<br> <span class="text-danger"><small>
 														${endDate_N-startDate_N}일 남음 &nbsp;</small></span>
