@@ -90,7 +90,7 @@ public class OneController {
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter script1 = response.getWriter();
 				script1.println("<script>");
-				script1.println("alert('삭제되었습니다.');");
+				script1.println("alert('수정되었습니다.');");
 				script1.println("location.href = 'getOneList'");
 				script1.println("</script>");
 				script1.close();
