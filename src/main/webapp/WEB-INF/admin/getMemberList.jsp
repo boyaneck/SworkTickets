@@ -142,7 +142,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
 											<a class="nav-link" href="/getBoardList">공지사항</a> <a
-												class="nav-link" href="/getFaqList">FAQ</a> <a
+												class="nav-link" href="/adminFaqList">FAQ</a> <a
 												class="nav-link" href="/getOneList">1:1 문의</a>
 										</nav>
 									</div>

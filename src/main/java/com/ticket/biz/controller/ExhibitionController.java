@@ -293,8 +293,9 @@ public class ExhibitionController {
 		@RequestMapping("/getUserExhibitionList")
 		public String getUserExhibitionList(ExhibitionVO vo, String nowPageBtn, Model model, HttpSession session) {
 			//총 목록 수
-			   String EsearchKeyword =vo.getESearchKeyword();
-			      model.addAttribute("EsearchKeyword",EsearchKeyword);
+			   String eSearchKeyword =vo.getESearchKeyword();
+//			      model.addAttribute("eSearchKeyword",eSearchKeyword);
+			      session.setAttribute("eSearchKeyword", eSearchKeyword);
 					int totalPageCnt = exhibitionService.totalUserExhibitionListCnt(vo);
 					//현재 페이지 설정
 					int nowPage = Integer.parseInt(nowPageBtn==null || nowPageBtn.equals("") ? "1" :nowPageBtn);
