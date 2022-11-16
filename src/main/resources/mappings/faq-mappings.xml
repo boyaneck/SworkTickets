@@ -83,9 +83,9 @@
 	</select>
 	
 <insert id="insertFaq">
-  INSERT INTO FAQ (FAQ_TITLE, CATE_NAME, FAQ_CONTENT,
+  INSERT INTO FAQ (FAQ_TITLE, FAQ_CONTENT,
   FAQ_REG) 
-  VALUES ( #{faq_title}, 111,
+  VALUES ( #{faq_title}, 
              #{faq_content}, now()
   )
 </insert>

@@ -57,6 +57,9 @@
 	background-color: #777;
 	cursor: pointer;
 }
+.btn-success:hover {
+    background-color: #7832f7 !important;
+    color: white;
 </style>
 </head>
 <body>
@@ -108,29 +111,29 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<span class="input-group-text">제목</span>
 				</div>
 				<input type="text" class="form-control innm" name="noti_title"
-					maxlength="40" value="${board.noti_title}" <%=sts %>>
+					maxlength="40" value="${board.noti_title}" <%=sts %> style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">작성자</span>
 				</div>
 				<input type="text" class="form-control innm" name="noti_writer"
-					value="${board.noti_writer}" readonly <%=sts %>>
+					value="${board.noti_writer}" readonly <%=sts %> style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">내용</span>
 				</div>
 				<textarea class="form-control innm" rows="10" id="board_comment"
-					name="noti_comment" <%=sts%>>${board.noti_content}</textarea>
+					name="noti_comment" <%=sts%> style="background-color:white !important;">${board.noti_content}</textarea>
 			</div>
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text">등록일</span> <span
-						class="input-group-text"><fmt:formatDate
+					<span class="input-group-text" >등록일</span> <span
+						class="input-group-text" style="background-color:white !important;"><fmt:formatDate
 							value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
-							var="today" />${today} </span>
+							var="today"  />${today} </span>
 				</div>
 				<%--       <input type="text" class="form-control innm" name="regDate" value="${one.regdate}" readonly <%=sts %>>       --%>
 			</div>

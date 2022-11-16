@@ -80,26 +80,10 @@ public class OneController {
 		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString()) ){
 				
 			
-			
+			oneService.updateOne(vo);
 			PrintWriter script;
 			
 			
-			try {
-				PrintWriter Script1;
-				response.setCharacterEncoding("utf-8");
-				response.setContentType("text/html; charset=utf-8");
-				PrintWriter script1 = response.getWriter();
-				script1.println("<script>");
-				script1.println("alert('삭제되었습니다.');");
-				script1.println("location.href = 'getOneList'");
-				script1.println("</script>");
-				script1.close();
-				oneService.updateOne(vo);
-				
-			} 
-			catch (IOException e){
-				e.printStackTrace();
-			}
 			
 			
 			
@@ -166,6 +150,7 @@ public class OneController {
 		System.out.println("글상세조회");
 		model.addAttribute("one", oneService.getOne(vo));
 		System.out.println("글상세조회 수행");
+//		model.addAttribute("oneList", oneService.getOneList(vo));
 		return "one/getOne";
 	}
 

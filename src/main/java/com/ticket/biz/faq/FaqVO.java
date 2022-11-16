@@ -7,7 +7,6 @@ public class FaqVO {
 	private int faq_no;
 
 	private String faq_title;
-	private String cate_name;
 	private Date faq_reg;
 	private String faq_content;
 	private int offset;
@@ -40,12 +39,7 @@ public class FaqVO {
 	public void setFaq_title(String faq_title) {
 		this.faq_title = faq_title;
 	}
-	public String getCate_name() {
-		return cate_name;
-	}
-	public void setCate_name(String cate_name) {
-		this.cate_name = cate_name;
-	}
+
 
 
 	public Date getFaq_reg() {
@@ -60,13 +54,14 @@ public class FaqVO {
 	public void setFaq_content(String faq_content) {
 		this.faq_content = faq_content;
 	}
-
 	@Override
 	public String toString() {
-		return "FaqVO [faq_title=" + faq_title + ", cate_name=" + cate_name + ", faq_reg=" + faq_reg + ", faq_content="
-				+ faq_content + ", offset=" + offset + "]";
+		return "FaqVO [faq_no=" + faq_no + ", faq_title=" + faq_title + ", faq_reg=" + faq_reg + ", faq_content="
+				+ faq_content + ", offset=" + offset + ", searchKeyword=" + searchKeyword + "]";
 	}
 
+
+		
 
 
 
