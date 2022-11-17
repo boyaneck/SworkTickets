@@ -173,7 +173,9 @@ display: none;
 }
 
 }
-
+.normal{
+font-weight: normal;
+}
 
 
 </style>
@@ -185,11 +187,11 @@ display: none;
 		  <div class="board" style="margin-top: 50px;">
 		 <a href="#" onclick="showID('m-menu');" style="cursor: pointer; text-align: center;  text-decoration: none;"><h1>지역 선택 <i class="xi-caret-down-square"></i></h1></a> 
 		 </div>
- 			<div id="m-menu" style="display: none;">
+ 			<div id="m-menu" style="display: none; margin: 5px;">
       			<c:forEach items="${loc}" var="loc_name" varStatus="status">
 					<div class="loc_name  " id="${status.count }"
 						onclick="local_func('${loc_name}','${status.count}')" style="text-align: center;">
-						<a  href="#tabs-1" id="tabs${status.count }">
+						<a class="normal" href="#tabs-1" id="tabs${status.count }">
 						${loc_name}
 						</a>
 						</div>
