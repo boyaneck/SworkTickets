@@ -124,6 +124,7 @@ public class NaverController {
 		}
 
 		REDIRECT_URL = "http://newjeonsis.ml";
+//		REDIRECT_URL = "http://localhost:8090";
 		return tokenChk;
 
 	}

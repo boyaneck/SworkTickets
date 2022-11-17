@@ -6,9 +6,12 @@ public class NaverVO {
 	private String client_id = "FvqDU_EOG1povZWb2YP6";
 	private String service_url = "http://newjeonsis.ml/index";
 	private String callback_url = "http://newjeonsis.ml";
+	private String client_secret = "cisI7m8b8z";
+	
+//	private String client_id = "Ufl_yap8C4lhpikzFVu0";
 //	private String service_url = "http://localhost:8090/index";
 //	private String callback_url = "http://localhost:8090";
-	private String client_secret = "cisI7m8b8z";
+//	private String client_secret = "TEnPKtM2MT";
 
 
 
