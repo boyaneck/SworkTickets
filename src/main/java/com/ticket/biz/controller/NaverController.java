@@ -67,7 +67,7 @@ public class NaverController {
 		vo.setAccess_token(asToken);
 		HashMap<String, Object> userInfo = getProfile(vo);
 
-		String id = (String) userInfo.get("id");
+		String id = (String) userInfo.get("email");
 		String email = (String) userInfo.get("email");
 		// 핸드폰번호 하이픈 제거
 		String phone = userInfo.get("mobile").toString().replaceAll(Pattern.quote("-"), "");
