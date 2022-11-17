@@ -391,14 +391,18 @@ textarea {
     <div class="col tabDiv pt-3 pb-2" id="menu2"><h5>관람후기</h5></div>
     <div class="col tabDiv pt-3 pb-2" id="menu3"><h5>장소정보</h5></div>
   </div>
-  <div id="con1" class="conBox p-3" style="background-color: white; text-align:left !important;"><%@ include file="Information.jsp"%></div>
-  <div id="con2" class="conBox p-3" style="background-color: white; text-align:left !important;"> <%@ include file="reviewwrite.jsp"%></div>
-  <div id="con3" class="conBox p-3" style="background-color: white;"><%@ include file="UserExhibitionLocation.jsp"%></div>
 </div>
 	<br>
 	</div>
+	  <div id="con1" class="conBox" style="background-color: white; text-align:left !important;">
+  	<%@ include file="Information.jsp"%>
+   </div>
+  <div id="con2" class="conBox" style="background-color: white; text-align:left !important;">
+    <%@ include file="reviewwrite.jsp"%>
+    </div>
+  <div id="con3" class="conBox" style="background-color: white;">
+    <%@ include file="UserExhibitionLocation.jsp"%>
+    </div>
 	<br>
-<%@ include file="../../footer.jsp" %>
 </body>
-
 </html>
