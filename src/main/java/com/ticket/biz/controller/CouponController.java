@@ -42,7 +42,7 @@ public class CouponController {
 	@RequestMapping("/updateCoupon")
 	public String updateCoupon(@ModelAttribute("coupon") CouponVO vo, HttpSession session) {
 			couponService.updateCoupon(vo);
-			return "redirect:getCouponList";
+			return "redirect:/admin/CouponList";
 
 	}
 
