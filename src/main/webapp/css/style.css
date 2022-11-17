@@ -33,6 +33,7 @@ body {
 .rank_ex {
    text-align: center;
    position: relative;
+   margin-bottom: 3.5rem;
 }
 .row{
    width:100%!important;
@@ -368,7 +369,7 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
    position:relative;
    display: inline-block;
    text-align: center;
-    height: 3000px;
+    height: 2800px;
     line-height: 100px;
 }
 
@@ -740,42 +741,3 @@ div.rectangle{
 } 
 }
 
-/* 예매율 애니메이션 */
-.circular-progress3,.circular-progress2,.circular-progress1{
-  position: relative;
-  height: 90px;
-  width: 90px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-}
-.circular-progress3:before,.circular-progress2:before,.circular-progress1:before{
-  content: "";
-  position: absolute;
-  height: 80%;
-  width: 80%;
-  background-color: #ffffff;
-  border-radius: 50%;
-}
-.value-container3,.value-container2,.value-container1{
-  position: relative;
-  /* font-family: "Poppins", sans-serif; */
-  font-weight: bold;
-  font-size: 20px;
-  color: #231c3d;
-}
-
-
-
-/* 카운팅 효과 */
-span.num {
-  color: #000000;
-/*   display: grid; */
-  place-items: center;
-/*   font-weight: 550; */
-  font-size: 1.3em;
-}
-.bi-suit-heart-fill {
-   font-size: 1.3rem; 
-   color: #f90b57;"
-}

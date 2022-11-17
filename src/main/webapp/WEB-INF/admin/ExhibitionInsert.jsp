@@ -24,6 +24,25 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
+<style type="text/css">
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+#exh_location{
+	    cursor: pointer;
+}
+
+
+</style>
 </head>
 <%-- <%@ include file="../../header.jsp"%> --%>
 <body>
@@ -88,8 +107,9 @@
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/insertmoveExhibition">전시등록</a> <a class="nav-link "
-												href="/getExhibitionList">전시목록</a>
+											<a class="nav-link" href="/insertmoveExhibition">전시등록</a> 
+											<a class="nav-link" href="/getExhibitionList">전시목록</a>
+											<a class="nav-link" href="/getUserExhibitionList">유저전시목록</a>
 										</nav>
 									</div>
 
@@ -185,7 +205,7 @@
 				<div class="input-group-prepend">
 					<label for="exh_location" class="input-group-text"><i class="fas fa-location"></i></label>
 				</div>
-				<input type="text" class="form-control innm mr-3" id="exh_location" name="exh_location" placeholder="주소검색 버튼으로 검색하세요." required> 
+				<input type="text" class="form-control innm mr-3" id="exh_location" name="exh_location" onclick="sample5_execDaumPostcode()" placeholder="주소를 검색하세요." required> 
 					<input class="btn-purple" type="button" onclick="sample5_execDaumPostcode()" value="주소검색"><br>
 			</div>
 			
@@ -325,8 +345,7 @@
 				</div>
 				<textarea class="form-control" rows="10" id="exh_refund_info"
 					id="exh_refund_info" name="exh_refund_info" required>
-취소수수료 없음
-마이페이지 -> 나의 결제내역에서 취소 가능합니다.
+마이페이지 -> 나의 결제내역에서 취소 가능합니다. [취소수수료 없음] 
 문의사항은 고객문의처로 문의바랍니다.
 				</textarea>
 			</div>

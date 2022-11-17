@@ -37,7 +37,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon" name="addonHambuger">
           <i class="glyphicon fas fa-search"></i>
-         <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+         <input type="text" class="form-control main" placeholder="전시 및 전시장검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
   </div>
       </div>
@@ -102,7 +102,7 @@
       
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="/getExhibitionList"> 전시 </a>
+            <a class="nav-link header" href="/getUserExhibitionList"> 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
@@ -131,7 +131,7 @@
         <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control main" placeholder="전시 및 전시장검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
@@ -179,7 +179,7 @@
          <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control main" placeholder="전시 및 전시장검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
@@ -228,7 +228,7 @@
         <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control main" placeholder="전시 및 전시장검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
@@ -275,7 +275,7 @@
         <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control main" placeholder="전시 및 전시장검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
