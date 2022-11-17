@@ -233,7 +233,6 @@ cursor : pointer;
       
          
       function rink(a){
-         console.log("!!!!!!!!!: "+a);
          location.href='getUserExhibition?exh_no='+a;
          
       }
@@ -243,28 +242,16 @@ cursor : pointer;
             url:"/index",
          
             success:function(data) {
-         console.log("성공");
-         console.log(data.ptotal);
-         console.log("data:");
-         console.log(data);
           
           var rlist = data.rlist;
-          console.log("rlist:");
-          console.log(rlist);
           var elist = data.elist;
-          console.log("elist:");
-          console.log(elist);
           var glist = data.glist;
-          console.log("glist:");
-          console.log(glist);
           var timeOff = new Date().getTimezoneOffset()*60000;
        
           
           $.each(glist, function(i, v){
              if(i < 3){
-             console.log("좋아요");
              var rank_cnt  =  glist[i].rank_cnt;
-             console.log(glist[i].exh_no);
              
              var g_exno = glist[i].exh_no;
              var g_title = glist[i].exh_title;
@@ -303,9 +290,7 @@ cursor : pointer;
              
           $.each(rlist, function(i, v){
              if(i < 3){
-             console.log("랭킹");
              var rank_cnt  =  rlist[i].rank_cnt;
-             console.log(rlist[i].exh_no);
          
          var r_exno = rlist[i].exh_no;
          var r_title = rlist[i].exh_title;

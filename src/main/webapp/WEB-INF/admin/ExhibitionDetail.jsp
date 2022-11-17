@@ -81,7 +81,6 @@ else {
 }
 
 var tt = new Date('${exhibition.exh_mdf_date}');
-console.log(tt);
 </script>
 </head>
 <body class="d-flex flex-column min-vh-100">

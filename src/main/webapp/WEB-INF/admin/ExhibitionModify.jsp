@@ -202,8 +202,6 @@ ${exhibition.exh_refund_info}
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ea44200cb8cf7bb0a768d9c219c84a0&libraries=services"></script>
 <script>
-console.log("${exhibition.exh_rating}");
-console.log("${exhibition.exh_local_name}");
 var rating = "${exhibition.exh_rating}";
 var local_name = "${exhibition.exh_local_name}";
 
@@ -240,21 +238,16 @@ $("#exh_local_name").val(local_name).prop("selected", true);
                     if (status === daum.maps.services.Status.OK) {
 
                         var result = results[0]; //첫번째 결과의 값을 활용
-                        console.log(result);
 
                         var ady = result.y;
                         document.getElementById("exh_place_x").value = ady;
-                        console.log("adx : "+ady);
                         
                         var adx = result.x;
                         document.getElementById("exh_place_y").value = adx;
-                        console.log("ady : "+adx);
                         
                         
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
-                        console.log(coords);
-                        console.log("result.x :"+result.x);
                         
                         // 지도를 보여준다.
 //                         mapContainer.style.display = "block";
@@ -270,7 +263,6 @@ $("#exh_local_name").val(local_name).prop("selected", true);
     }
     
 	var now_utc = Date.now() // 지금 날짜를 밀리초로
-	 console.log("현재 : ", now_utc);
 	var tomo = now_utc + (1000*60*60*24*1);
 	var oneyearday = now_utc + (1000*60*60*24*365);
 	var daftomopone = now_utc + (1000*60*60*24*2);
@@ -278,16 +270,11 @@ $("#exh_local_name").val(local_name).prop("selected", true);
 	
 	// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
 	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
-	 console.log("timeOff : ", timeOff);
 	// new Date(now_utc-timeOff).toISOString()은 '2022-11-11T13:09:38.134Z'를 반환
 	var today = new Date(tomo-timeOff).toISOString().split("T")[0];
-	 console.log("today : ", today);
 	var oneyear = new Date(oneyearday-timeOff).toISOString().split("T")[0];
-	 console.log("oneyear : ", oneyear);
 	var todayone = new Date(daftomopone-timeOff).toISOString().split("T")[0];
-	 console.log("todayone : ", todayone);
 	var yearone = new Date(oneyeardayone-timeOff).toISOString().split("T")[0];
-	 console.log("yearone : ", yearone);
 
 	document.getElementById("exh_st_date").setAttribute("min", today);
 	document.getElementById("exh_st_date").setAttribute("max", oneyear);
@@ -297,14 +284,11 @@ $("#exh_local_name").val(local_name).prop("selected", true);
 	//유효성 검사
 	function ex_st_validate() {
 		
-		console.log($("#exh_st_date").val());
 		if($("#exh_st_date").val() < today){
-		console.log("if:"+$("#exh_st_date").val());
 		alert(today+" 이후 날짜를 입력하세요.");
 		return false;
 	      }else{
 		if($("#exh_st_date").val() > oneyear){
-		console.log("if:"+$("#exh_st_date").val());
 		alert(oneyear+" 이전 날짜를 입력하세요.");
 		return false;
 	      }
@@ -312,15 +296,11 @@ $("#exh_local_name").val(local_name).prop("selected", true);
 	}
 	
 	function ex_end_validate() {
-		console.log($("#exh_end_date").val());
 		if($("#exh_end_date").val() < todayone){
-		console.log("if:"+$("#exh_end_date").val());
 		alert(todayone+" 이후 날짜를 입력하세요.");
 		return false;
 	      }else{
-		console.log($("#exh_end_date").val());
 		if($("#exh_end_date").val() > yearone){
-		console.log("if:"+$("#exh_end_date").val());
 		alert(yearone+" 이전 날짜를 입력하세요.");
 		return false;
 	      }

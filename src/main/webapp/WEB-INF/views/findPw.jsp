@@ -125,7 +125,6 @@ $(function() {
    //비밀번호 재확인
    $(function() {
       $('#mb_pw2').focusout(function() {
-         console.log($('#mb_pw2').val());
          if ($('#mb_pw2').val() != $('#mb_pw').val()) {
             alert("비밀번호를 재확인 해주세요");
          } else {
@@ -135,7 +134,6 @@ $(function() {
 
    });
    function changePW(){
-      console.log("aa");
       if(passwordCheck){
          $('#pwchange').submit();
          alert("변경이 완료되었습니다.")

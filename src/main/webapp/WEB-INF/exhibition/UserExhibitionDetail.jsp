@@ -101,41 +101,29 @@ function is_checked(eno) {//eno=3
 
 $(document).ready(function(){
 	const review_bno1=${exhno2};
-	console.log("exhno!!!!!!!!!!"+review_bno1);
 	var objparams={review_bno:review_bno1};
 	
-	console.log("안됨");
        	$.ajax({
 		  	 	type:'get',
 		   		url:"/reviewList",
 		   		data:objparams,
 				success:function(data) {
-				console.log(data);
 				 if(data.total > 0){
-				console.log("get list 실행 중");
 				var list = data.list;
 				var reg=data.list.review_reg_date;
-				console.log("받아온 데이터의 리스트와, 총 댓글 수 ")
-				console.log(list);
-				console.log(data.total);
-				console.log("등록일!!!!!"+reg);
 				
 				
 				var comment_html = "<div>";
 				
 				$('#count').html(data.total); //댓글 수 
 				$.each(list, function(i, v){
-					console.log("댓글 만들기");
 					var content  =  list[i].review_content;
 					var writer   =  list[i].review_writer;
 					var review_no=  list[i].review_no;
 					var review_bno =list[i].review_bno;
 					var date= list[i].review_reg_date;
-					console.log("등록일!!!!!!!!!!!!!!!"+ date);
 					
 					
-					console.log("댓글번호받아라!!!" +review_no);
-					console.log("writer!!!" +writer);
 					
 					comment_html +="<div id='a"+[i]+"' class='aa1'>";
 					comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
@@ -153,16 +141,11 @@ $(document).ready(function(){
 					comment_html += "</form>";
 					comment_html +="</div>";
 					
-					console.log("댓글 아래로 쭉 떠야함 ");
 				
 			if(writer === $(".review_writer").val()){
 							
 				var writer_d = $(".review_writer").val()
-				console.log("세션 아이디 값");
-				console.log(writer_d);
-				console.log("review 값은 무엇일까요?"+review_no);
 				var list_no=review_no;
-				console.log(list_no);
 														
 					comment_html += "<div style='text-align:right;'><button class='update1' style='cursor:pointer; background-color: white; border: none; font-size: 25px; margin-right: 20px;' onclick='updateReview("+[i]+")' ><i class = 'xi-pen-o'></i></button>";																
 					comment_html += "<button id='delete' style='cursor:pointer; background-color: white; border: none; font-size: 25px;' onclick='del("+list_no+")'><i class = 'xi-trash-o'></i></button>";
@@ -173,13 +156,11 @@ $(document).ready(function(){
 					
 					});
 				
-				   console.log('99999999: '+comment_html);
 				$(".comment_Box").html(comment_html);
 				
 				
 				  }
 					else{
-			       console.log("total 이 0 일때 ");
 				   var comment_html = "<div>등록된 댓글이 없습니다.</div>";
 				   $(".comment_Box").html(comment_html);
 				   
@@ -189,15 +170,11 @@ $(document).ready(function(){
 		
 
 	$('#Comment_regist').click(function() {
-					console.log("댓글버튼 실행");
 			
 					const review_bno = 2;
 					const review_writer = $('.review_writer').val();
 					const review_content = $('.review_content').val();
 					
-					console.log(review_bno);
-					console.log(review_writer);
-					console.log(review_content);
 
 			if(review_writer == ''){
 					alert('로그인 후 이용해주세요');
@@ -222,17 +199,14 @@ $(document).ready(function(){
 			),
 				contentType: 'application/json',
 				success:function(data){
-				console.log('통신성공' + data);
 
 			if(data === 'InsertSuccess') {
 				alert('댓글 등록이 완료되었습니다.');
-				console.log('댓글 등록 완료');
 				$('.review_writer').val(review_writer);
 					$('.review_content').val(review_content);
 						window.location.reload();
 			} else {
 				alert('로그인 이후 이용해주시기 바랍니다.');
-				console.log('댓글 등록 실패');
 			}
 			},
 				error:function(){
@@ -246,9 +220,6 @@ $(document).ready(function(){
 			/*송원선*/
 			const review_bno2=${exhno2};
 			/*송원선*/
-				console.log("딜리트함수 실행");
-				console.log(val);
-				console.log(val);
 				var delConfirm = confirm('정말 삭제하시겠습니까?');
     	
 		if (delConfirm == true) {
@@ -261,9 +232,6 @@ $(document).ready(function(){
          }
 
 		function updateReview(val){
-				console.log("updateReview 함수 실행"+val);
-				console.log(val);
-				console.log('#a'+val);
 				$('#a'+val).hide();
 				$('#b'+val).show();
 				$(".update1").hide();

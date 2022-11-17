@@ -30,13 +30,11 @@ function deleteone(val,mal){
     
     function answer(val){ 
     		
-    	console.log(val);
     	
 		$("#oneanswer").hide();
     	$(".answer").show();
     	$(".didanswer").hide();
   
-    	console.log("답글달기 콘솔");	
     		
      }
   
@@ -55,8 +53,6 @@ function deleteone(val,mal){
     
 
     function f_write(val){
-        console.log(val);
-        console.log("이게 되면안됨");
         if(val == ''){
             alert("로그인이 되야 작성 가능합니다");
             location.href="/getOne";
@@ -79,7 +75,6 @@ function deleteone(val,mal){
     
     if(`${mb_Id}` != 'admin'){
     	
-    console.log("mbid!!!!"+`${mb_Id}`);
     $("#oneanswer").hide();
     }
     

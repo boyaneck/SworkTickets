@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>뉴전시스</title>
 <style>
 input[id="box"]{
  display:none;

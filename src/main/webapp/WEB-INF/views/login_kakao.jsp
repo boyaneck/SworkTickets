@@ -40,7 +40,6 @@
 //         async: false,
 //         dataType: 'text',
 //         success: function (res) {
-//         	console.log(res);
 //             location.href = res;
 //         }
 //     });
