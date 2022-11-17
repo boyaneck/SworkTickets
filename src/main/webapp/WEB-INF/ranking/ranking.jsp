@@ -37,36 +37,7 @@ if(i==1){
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-   <!--    <div class="jumbotron"> -->
-   <!--       <h1 class="text-center">RANK</h1> -->
-   <!--    </div> -->
-
-   <!--    <div class="container-fluid"> -->
-   <!--       <div class="row text-center"> -->
-   <!--          <div class="col"> -->
-   <!--             좋아요 -->
-   <%--             <c:forEach items="${getGoodList}" var="getGoodList" varStatus="status"> --%>
-   <!--                <div class="row "><div class="col"> -->
-   <%--                   <a href="getUserExhibition?exh_no=${getGoodList.exh_no}">${status.count} ${getGoodList.exh_title}</a> --%>
-   <%--                    ${getGoodList.rank_cnt }<br> --%>
-   <!--                </div></div> -->
-   <%--             </c:forEach> --%>
-   <!--          </div> -->
-   <!--          <div class="col"> -->
-   <!--             예매율 -->
-   <%--             <c:forEach items="${payRankList}" var="payRankList" varStatus="status"> --%>
-   <!--                <div class="row "><div class="col"> -->
-   <%--                   <a href="getUserExhibition?exh_no=${payRankList.exh_no}"> --%>
-   <%--                   ${status.count} --%>
-   <%--                      ${payRankList.exh_title} </a>  --%>
-   <%--                   <fmt:formatNumber value="${(payRankList.rank_cnt / total)*100 }" /> --%>
-   <!--                   % -->
-   <!--                </div></div> -->
-   <%--             </c:forEach> --%>
-   <!--          </div> -->
-   <!--       </div> -->
-
-   <!--    </div> -->
+ 
 
    <div class="board">
       <h1>랭킹</h1>
@@ -78,7 +49,7 @@ if(i==1){
             onclick="rank_btn(2)">예매율</button>
       </div>
    </div>
-   <div class="container rank">
+   <div class="container rank" style="margin-bottom: 50px;">
       <table class="table table-hover">
          <thead class="btn-primary">
             <tr class="rank_title">
@@ -92,12 +63,12 @@ if(i==1){
             </tr>
          </thead>
 
-         <tbody id="pay_tab" style="display: none;">
+         <tbody id="pay_tab" style="display: none; border-top: 1.5px solid #1f1f1f;">
 
             <c:forEach items="${payRankList}" var="payRankList"
                varStatus="status">
                   <tr onclick="location.href='getUserExhibition?exh_no=${payRankList.exh_no}'" style="cursor: pointer;">
-                  <td class="tdCenter rank" >${status.count}</td>
+                  <td class="tdCenter mb" >${status.count}</td>
                   <td class="tdCenter" ><img src="/images/${payRankList.exh_thumbnail}"
                      <%--                   '${payRankList.exh_thumbnail}' --%>
                   alt="이미지"
@@ -105,11 +76,11 @@ if(i==1){
                   <td class="tdCenter" >
                         ${payRankList.exh_title}</td>
                         
-                  <td class="tdCenter price" ><fmt:formatNumber
+                  <td class="tdCenter mb" ><fmt:formatNumber
                         value="${payRankList.exh_price}" groupingUsed="true" />원</td>
-                  <td class="tdCenter date" >${payRankList.exh_st_date}~
+                  <td class="tdCenter mb" >${payRankList.exh_st_date}~
                      ${payRankList.exh_end_date}</td>
-                  <td class="tdCenter exh_hall" >${payRankList.exh_hall}</td>
+                  <td class="tdCenter mb" >${payRankList.exh_hall}</td>
                </tr>
             </c:forEach>
          </tbody>
@@ -118,7 +89,7 @@ if(i==1){
             <c:forEach items="${getGoodList}" var="getGoodList"
                varStatus="status">
                <tr onclick="location.href='getUserExhibition?exh_no=${getGoodList.exh_no}'" style="cursor: pointer;">
-                  <td class="tdCenter rank">${status.count}</td>
+                  <td class="tdCenter mb">${status.count}</td>
                   <div></div>
                      <td class="tdCenter"><img src="/images/${getGoodList.exh_thumbnail}"
                      <%--                   '${getGoodList.exh_thumbnail}' --%>
@@ -126,11 +97,11 @@ if(i==1){
                      style="width: 100px; height: 150px;"></td>
                   <td class="tdCenter">
                         ${getGoodList.exh_title}</td>
-                  <td class="tdCenter price"><fmt:formatNumber
+                  <td class="tdCenter mb"><fmt:formatNumber
                         value="${getGoodList.exh_price}" groupingUsed="true" />원</td>
-                  <td class="tdCenter date">${getGoodList.exh_st_date}~
+                  <td class="tdCenter mb">${getGoodList.exh_st_date}~
                      ${getGoodList.exh_end_date}</td>
-                  <td class="tdCenter exh_hall">${getGoodList.exh_hall}</td>
+                  <td class="tdCenter mb">${getGoodList.exh_hall}</td>
 
                </tr>
             </c:forEach>
@@ -138,11 +109,8 @@ if(i==1){
          </tbody>
       </table>
    </div>
-   <br>
-   <br>
-<!--    <div class="jumbotron"> -->
-<!--       <a href="getUserExhibitionList"><h1 class="text-center">+more</h1></a> -->
-<!--    </div> -->
+
+ 
    <%@ include file="/footer.jsp"%>
 </body>
 </html>
