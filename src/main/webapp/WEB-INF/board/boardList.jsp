@@ -50,6 +50,14 @@ margin-top: 10px;
 .container-fluid{
 padding:0;}
 }
+
+
+
+/* .tt{ */
+/*  font-size:25px; */
+/* } */
+
+
 </style>
 <script>
    function getboard(val) {
@@ -81,7 +89,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
    <nav id="searchNav" class="sub_title">
       <form class="form-inline justify-content-end" action="getBoardList" method="post">
          <input class="form-control mr-sm-2" type="text" name="searchKeyword"
-            placeholder="검색어를 입력하세요" value="${searchKeyword }">
+            placeholder="제목 또는 작성자 검색" value="${searchKeyword }">
          <button class="btn btn-success search" type="submit"
             style="border-radius: 4px">검색</button>
       </form>
@@ -132,17 +140,17 @@ if (request.getProtocol().equals("HTTP/1.1"))
       <div id="btnBox">
          <!-- 반복처리할 태그 시작-->
          <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="getBoardList?nowPageBtn=1&searchKeyword=${searchKeyword }"><strong>&laquo;</strong></a>
+            <a href="getBoardList?nowPageBtn=1&searchKeyword=${searchKeyword }"  ><strong>&laquo;</strong></a>
          </c:if>
          <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="getBoardList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }"><strong>&lt;</strong></a>
+            <a href="getBoardList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }"  class="tt" ><strong>&lt;</strong></a>
          </c:if>
          <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
             step="1" var="i">
             <c:choose>
                <c:when test="${paging.nowPageBtn == i}">
-                  <a style="font-weight: 400; color: #7832f7;" class="aSel"
-                     href="getBoardList?nowPageBtn=${i}&searchKeyword=${searchKeyword }"><strong>${i}</strong></a>
+                  <a style=" color: #7832f7; font-size:21px;" class="aSel"
+                     href="getBoardList?nowPageBtn=${i}&searchKeyword=${searchKeyword }" ><strong>${i}</strong></a>
                </c:when>
                <c:otherwise>
                   <a href="getBoardList?nowPageBtn=${i}&searchKeyword=${searchKeyword }">${i}</a>
@@ -153,7 +161,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
             <a href="getBoardList?nowPageBtn=${paging.nowPageBtn +1 }&searchKeyword=${searchKeyword }"><strong>&gt;</strong></a>
          </c:if>
          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="getBoardList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }">&raquo;</a>
+            <a href="getBoardList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }"><strong>&raquo;</strong></a>
          </c:if>
          <!-- 반복처리할 태그 끝 -->
       </div>

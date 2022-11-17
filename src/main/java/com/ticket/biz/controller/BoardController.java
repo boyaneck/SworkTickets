@@ -73,7 +73,7 @@ public class BoardController {
    @RequestMapping("/updateBoard")
    public String updateBoard(@ModelAttribute("board") BoardVO vo, HttpSession session) {
       
-          
+         System.out.println("공지사항 수정일"+vo.getNoti_date());
          boardService.updateBoard(vo);
          return "redirect:getBoardList";
       

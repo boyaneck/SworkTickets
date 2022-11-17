@@ -82,8 +82,6 @@
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<!-- 											<a class="nav-link" -->
-											<!-- 												href="/registerTerm?agree1=true&agree2=true&agreeAll=true';">회원등록</a> -->
 											<a class="nav-link" href="/admin/member">회원등록</a> <a
 												class="nav-link" href="/getMemberList">회원목록</a> <a
 												class="nav-link" href="/getAllPayList">회원결제</a>
@@ -157,6 +155,7 @@
 					</div>
 				</div>
 			</aside>
+			
 			<div id="container_box">
 				<div class="wrap" style="padding: 40px;">
 					<div class="container border-bottom border-dark">

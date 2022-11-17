@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"	%>
 <%@ include file="../../header.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%
@@ -81,11 +82,50 @@ function deleteone(val,mal){
     });
   
     
-    
+    $(document).ready(function aa() {
+    	if(${one.one_secret} == true){
+    		$("#box").prop("checked",true);
+    		
+    	}
+    	else {
+    		
+    		
+    	}
+    	
+//    	if($("#box").prop("checked",true)){
+   	
+//    		 $("#box").prop("checked",false);
+   		
+//    	} else{}
+   	
+    });
+    	
     
 </script>
 <style>
 
+input[id="box"]{
+ display:none;
+}
+
+input[id="box"] + label em {
+display:inline-block;
+width:25px;
+height:25px;
+margin-right:5px;
+background:url(images/bg_chkbox.gif) 0 0 no-repeat;
+vertical-align:middle;
+}
+
+input[id="box"]:checked + label em{
+background-position:-38px 0;
+
+}
+
+.btn-success.disabled, .btn-success:disabled
+{
+ color:#7832f7 !important;
+}
 textarea {		
 			width: 100%;
 			height: 200px;
@@ -106,7 +146,7 @@ text-decoration:none;
 }
 
  a:hover{
- color:white !important;
+/*  color:white !important; */
  text-decoration:none;
 }
 .btn-success:hover {
@@ -155,6 +195,18 @@ margin:5px;
 		%>
 	<div class="container-fluid">
 		<form name="update" action="updateOne" method="post">
+		
+
+<div class="input-group mb-3">
+            <div class="input-group-prepend"> 
+<%-- 			<input id="box" type="checkbox" name="one_secret" id="box" style="margin-top:50px;" <c:if test="${one.one_secret == true}">checked</c:if>> --%>
+			<input id="box" type="checkbox" name="one_secret" onclick="secretChk()" id="box" style="margin-top:50px;">
+			<label for="box" style="margin-top:50px;"><em></em>비밀글 설정</label>
+            </div>
+            </div>
+            
+         
+        
 			<input type="hidden" name="one_no" value="${one.one_no}">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -185,13 +237,26 @@ margin:5px;
 			</div>
 			<div class="container" style="text-align: center;">
 			
-		<c:if test="${one.one_writer eq mb_Id}">			
-            <button class="btn btn-success t" type="submit" <%=sts%>>글수정</button>
+			<a href="getOneList"  style="color:#7832f7 !important;">
+            <button type="button" class="btn btn-success t"  onclick="location.href='getOneList';">글목록</button></a>
+			
+			
+		<c:if test="${one.one_writer eq mb_Id or admin}">			
+            <button class="btn btn-success t" <%=sts%>>글수정</button>
             <button  type="button" class="btn btn-success t" onclick="deleteone(${one.one_no},`${one.one_writer}`)"  <%=sts%> >글삭제</button>
 
 		</c:if>
-            <a href="getOneList"  style="color:#7832f7 !important;">
-            <button type="button" class="btn btn-success t" <%=sts%>  onclick="location.href='getOneList';">글목록</button></a>
+		<script>
+		function secretChk(){
+			if ($("#box").is(":checked")){
+				$("#box").val(true);
+			}else{
+				$("#box").val(false);
+			}
+		}
+		
+		</script>
+            
 			
 			</div>
 			</form>
@@ -202,7 +267,7 @@ margin:5px;
 					<form action="/oneAnswer">
 					<div><input type='hidden' name='one_no' value='${one.one_no}'></div>
 					<div class="regBtn">
-					<textarea name='one_answer' class="one_answer" cols="70" rows="4" style="resize: none;" >${one.one_answer}</textarea></div>
+					<textarea name='one_answer' class="one_answer" cols="" rows="4" style="resize: none;" >${one.one_answer}</textarea></div>
 					<div class="regBtn" style="text-align:center; margin: 20px;">
 					<button class="btn btn-success"  style="cursor: pointer">답변하기</button>
 					</div>
@@ -223,7 +288,7 @@ margin:5px;
 	<div class="input-group mb-3 " id="answered" style="display:none;">
 			
 				<div class="col" style="width: 100%;">
-				<textarea class=" form-control innm a_content" rows="10" cols="70" id="one_comment" 
+				<textarea class=" form-control innm a_content" rows="15" cols="10" id="one_comment" 
 					name="one_content" readonly style="background-color:white !important; resize: none;" >${one.one_answer}</textarea>
 				</div>
 			</div>
