@@ -236,7 +236,6 @@ cursor : pointer;
       <script src='https://unpkg.com/gsap@3/dist/MotionPathPlugin.min.js'></script>
       <script src='https://assets.codepen.io/16327/Flip.min.js'></script>
       <script type="text/javascript">
-      
          
       function rink(a){
          location.href='getUserExhibition?exh_no='+a;
