@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="./css/board.css">
 <link rel="stylesheet" href="./css/ranking.css">
 <link rel="shortcut icon" href="./images/favicon.ico">
+<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 <title>뉴전시스</title>
 </head>
 
@@ -196,7 +197,7 @@
             
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
       </c:when>
-        <c:when test="${kakaoId ne NULL || naverLogin ne NULL}">
+        <c:when test="${mb_Id ne NULL || mb_Id ne NULL}">
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
