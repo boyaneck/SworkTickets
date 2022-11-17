@@ -182,7 +182,7 @@
 												</div>
 												<div class="card-footer text-center py-3">
 													<div class="small">
-														<a href="/getCouponList" style="font-size:1.25rem;text-decoration: none;color: #7329f7;">쿠폰
+														<a href="admin/CouponList" style="font-size:1.25rem;text-decoration: none;color: #7329f7;">쿠폰
 															목록으로</a>
 													</div>
 												</div>
