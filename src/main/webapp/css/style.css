@@ -30,7 +30,10 @@ body {
     z-index: 999;
 }
 
-
+.rank_ex {
+   text-align: center;
+   position: relative;
+}
 .row{
    width:100%!important;
 }

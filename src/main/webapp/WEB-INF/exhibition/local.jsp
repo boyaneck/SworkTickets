@@ -109,6 +109,16 @@
 				});
 
 	}
+	
+	function showID(id)
+	{
+	obj=document.getElementById(id);
+
+	if(obj.style.display == "none") 
+	  obj.style.display="block";
+	else
+	  obj.style.display="none";
+	}
 </script>
 <style>
 #tabs {
@@ -148,20 +158,52 @@ li {
 #tab li a {
 	color: #000;
 }
-/*  #tab li.loc_name a {color: #000;}  */
+
+
+@media ( max-width : 768px) {
+#tab{
+display: none;
+}
+
+}
+@media ( min-width : 769px) {
+.tabs-m{
+display: none;
+
+}
+
+}
+.normal{
+font-weight: normal;
+}
+
+
 </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 
-	<div class="container justify-content-center" style="text-align: center;">
+<div class=" tabs-m">
+		  <div class="board" style="margin-top: 50px;">
+		 <a href="#" onclick="showID('m-menu');" style="cursor: pointer; text-align: center;  text-decoration: none;"><h1>지역 선택 <i class="xi-caret-down-square"></i></h1></a> 
+		 </div>
+ 			<div id="m-menu" style="display: none; margin: 5px;">
+      			<c:forEach items="${loc}" var="loc_name" varStatus="status">
+					<div class="loc_name  " id="${status.count }"
+						onclick="local_func('${loc_name}','${status.count}')" style="text-align: center;">
+						<a class="normal" href="#tabs-1" id="tabs${status.count }">
+						${loc_name}
+						</a>
+						</div>
+				</c:forEach>
+			</div>
+      </div>
 
-		<div class="board">
-			<h1>지역</h1>
-		</div>
 
+	<div class="container justify-content-center" style="text-align: center; margin-top: 70px;">
 
 		<div id="tabs">
+		
 			<ul id="tab"
 				style="background-color: white; border-bottom: 1px solid white !important;">
 				<c:forEach items="${loc}" var="loc_name" varStatus="status">
@@ -170,7 +212,7 @@ li {
 						href="#tabs-1" id="tabs${status.count }">${loc_name}</a></li>
 				</c:forEach>
 			</ul>
-			<div id="tabs-1" class="container justify-content-center">
+			<div id="tabs-1" class="container justify-content-center" style="padding:20px 0px;">
 				<div id="tab-r" class="row row-cols-1 row-cols-md-4 g-4"
 					style="margin-bottom: 30px; margin-left:0; margin-right: 0;">
 					<c:forEach items="${UserExhibitionList}" var="exhibition"

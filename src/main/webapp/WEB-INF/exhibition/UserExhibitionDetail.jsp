@@ -326,7 +326,7 @@ textarea {
 		}
 </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" >
 <div class="container" id="exh_detail" style="text-align:center; padding: 50px 0;">
 	<div class="row">
 	<div class="col-md-5"> 
