@@ -74,7 +74,7 @@ function is_checked(eno) {//eno=3
 				},
 				// ajax가 실패했을때 실행됨
 				error :  function(){
-					alert("로그인 하십시오.");
+					alert("로그인 후 이용 가능합니다.");
 					
 				}
 		  });
