@@ -47,30 +47,30 @@ color:white !important;
 
 
 <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">아이디</span>
-            </div>
-<input type="text" name="one_writer" placeholder="작성자 아이디값 받아오기" value="<%= session.getAttribute("mb_Id") %>" readonly>
-         </div>
- 
- 
- <div class="input-group mb-3" >
-            <div class="input-group-prepend">
-               <span class="input-group-text">제목</span>
-            </div>
-         <input type="text" placeholder="제목을 입력하세요" name="one_title" required >
-         </div>
-  
- <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">내용</span>
-            </div>
-<textarea placeholder="내용을 입력하세요" name="one_content" rows="15" cols="100" required ></textarea>
-         </div>
+				<div class="input-group-prepend">
+					<label for="exh_cs_phone" class="input-group-text">아이디</label>
+				</div>
+				<input type="text" class="form-control innm" id="one_writer"
+					name="one_writer" value="<%= session.getAttribute("mb_Id") %>" readonly required style="background-color:white!important">
+			</div>
+         <div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<label for="exh_cs_phone" class="input-group-text" style="padding-left: 20px; padding-right: 20px;">제목</label>
+				</div>
+				<input type="text" class="form-control innm" id="one_title"
+					name="one_title" value="제목을 작성해주세요" required>
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<label for="exh_content" class="input-group-text"style="padding-left: 18px; padding-right: 18px;" >내 용</label>
+				</div>
+				<textarea class="form-control" rows="10" id="comment"
+					id="one_content" name="one_content" placeholder="내용을 입력해주세요." required></textarea>
+			</div>
 
 
-<div class="regBtn" style="margin-top:40px;">
-<button class="btn btn-success"  style="cursor: pointer">글 등록</button>
+<div class="regBtn" style="margin-top:40px; text-align:center;">
+<button class="btn btn-success"  style="cursor: pointer;">글 등록</button>
 </div>
 </div>
 </form>
