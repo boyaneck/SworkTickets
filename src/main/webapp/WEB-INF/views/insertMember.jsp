@@ -27,7 +27,6 @@ $(function() {
          url : "phoneCheck?mb_phone=" + phone,
          cache : false,
          success : function(data) {
-            console.log(data);
             if (data == "error") {
                alert("휴대폰 번호가 올바르지 않습니다.")
                $(".successPhoneChk").text("유효한 번호를 입력해주세요.");
@@ -78,7 +77,6 @@ $(function() {
 //                email : email.val()
 //             },
 //             success : function(data) {
-//                console.log(data);
 //                if (data == 'ok') {
 //                   alert("인증번호를 발송했습니다.");
 //                   $("#emailCheck").removeAttr("disabled");
@@ -87,8 +85,6 @@ $(function() {
 //                }
 //             },
 //             error : function(request, status, error) {
-//                console.log(data);
-//                console.log(request, status, error);
 //                alert("오류가 발생했습니다.");
 
 //             }
@@ -111,7 +107,6 @@ $(function() {
 //             emailCheck : emailCheck
 //          },
 //          success : function(data) {
-//             console.log(data);
 //             if (data == true) {
 //                alert("인증되었습니다.");
 //             } else {

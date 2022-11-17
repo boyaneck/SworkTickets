@@ -33,7 +33,6 @@ $(document).ready(function() {
 			},
 			method : "POST",
 			success : function(val) {
-				console.log(val);
 				if (val == 1)
 					alert("취소 완료");
 				else
@@ -51,7 +50,6 @@ $("#list_module").click(function(){
 		method : "GET",
 		contentType : 'application/json; charset=UTF-8',
 		success : function(val) {
-			console.log(val);
 			$("#paylist").empty();
 			if (val.msg != null) {
 				$("#paylist").append(val.msg);
@@ -78,7 +76,6 @@ $("#all_module").click(function() {
 		method : "GET",
 		contentType : 'application/json; charset=UTF-8',
 		success : function(val) {
-		console.log(val);
 		$("#paylist").empty();
 		$.each(val,function(i,v) {
 			$("#paylist").append("고유ID: "+ v.imp_uid);

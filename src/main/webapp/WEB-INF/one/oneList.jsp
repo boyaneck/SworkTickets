@@ -54,7 +54,6 @@ padding:0;}
 
  }
    function f_write(val){
-    console.log(val);
     if(val == ''){
         alert("로그인이 되야 작성 가능합니다");
         location.href="/getOneList";

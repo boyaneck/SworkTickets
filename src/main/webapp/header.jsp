@@ -299,7 +299,6 @@ function searchkey() {
 
  // 엔터키가 눌렸을 때 실행하는 반응
     var exs = document.getElementById("eSearchKeyword").value;
-       console.log(exs);
 
     location.href="getUserExhibitionList?eSearchKeyword="+exs;
     }
@@ -307,7 +306,6 @@ function searchkey() {
 function searchkeya() {
 
     var exsu = document.getElementById("eSearchKeyword").value;
-       console.log(exsu);
 
     location.href="getUserExhibitionList?eSearchKeyword="+exsu;
 }
