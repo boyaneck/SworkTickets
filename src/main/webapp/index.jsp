@@ -109,28 +109,34 @@ cursor : pointer;
 }
 
 
-
 </style>
 <link rel="stylesheet" href="./css/owl.carousel.css">
 <link rel="stylesheet" href="./css/owl.theme.default.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
    <!-- <img class="picture" src="./images/main_image.png" /> -->
-   <div id="carousel" class="carousel slide" data-ride="carousel">
+
+   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="false">
       <ol class="carousel-indicators">
-         <li data-target="#carousel" data-slide-to="0" class="active"></li>
-         <li data-target="#carousel" data-slide-to="1"></li>
-         <li data-target="#carousel" data-slide-to="2"></li>
+         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
-         <div class="carousel-item active">
-            <img src="./images/main_image.png" class="d-block w-100" alt="배경이미지1">
-         </div>
-         <div class="carousel-item">
-            <img src="./images/main_image2.png" class="d-block w-100" alt="배경이미지2">
-         </div>
-         <div class="carousel-item">
-            <img src="./images/main_image3.png" class="d-block w-100" alt="배경이미지3">
+<!--          <div class="carousel-item active"> -->
+<!--             <img src="./images/main_image.png" class="d-block w-100" alt="배경이미지1"> -->
+<!--             <div class="carousel-caption d-none d-md-block"> -->
+<!--             </div> -->
+<!--          </div> -->
+<!--          <div class="carousel-item"> -->
+<!--             <img src="./images/main_image2.png" class="d-block w-100" alt="배경이미지2"> -->
+<!--             <div class="carousel-caption d-none d-md-block"> -->
+<!--             </div> -->
+<!--          </div> -->
+<!--          <div class="carousel-item"> -->
+<!--             <img src="./images/main_image3.png" class="d-block w-100" alt="배경이미지3"> -->
+<!--             <div class="carousel-caption d-none d-md-block"> -->
+<!--             </div> -->
          </div>
       </div>
       <!--  <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
@@ -144,41 +150,41 @@ cursor : pointer;
    </div>
 
    <!-- 전시버튼 -->
-   <div class="new_title">
-      <h2>
-         <span style="color: #7832f7">NEW</span> EXHIBITION
-      </h2>
-      <h3 style="color: #fff">NEW EXHIBITION</h3>
-      </div>
+<!--    <div class="new_title"> -->
+<!--       <h2> -->
+<!--          <span style="color: #7832f7">NEW</span> EXHIBITION -->
+<!--       </h2> -->
+<!--       <h3 style="color: #fff">NEW EXHIBITION</h3> -->
+<!--       </div> -->
       
-      <div id="carousel-wrapper">
-         <div class="owl-carousel owl-theme">
-            <div class="item">
-               <img src="./images/1.jpg">
-            </div>
-            <div class="item">
-               <img src="./images/2.jpg">
-            </div>
-            <div class="item">
-               <img src="./images/3.jpg">
-            </div>
-            <div class="item">
-               <img src="./images/4.jpg">
-            </div>
-            <div class="item">
-               <img src="./images/exh_image1.png">
-            </div>
-            <div class="item">
-               <img src="./images/6.jpg">
-            </div>
-         </div>
-      </div>
+<!--       <div id="carousel-wrapper"> -->
+<!--          <div class="owl-carousel owl-theme"> -->
+<!--             <div class="item"> -->
+<!--                <img src="./images/1.jpg"> -->
+<!--             </div> -->
+<!--             <div class="item"> -->
+<!--                <img src="./images/2.jpg"> -->
+<!--             </div> -->
+<!--             <div class="item"> -->
+<!--                <img src="./images/3.jpg"> -->
+<!--             </div> -->
+<!--             <div class="item"> -->
+<!--                <img src="./images/4.jpg"> -->
+<!--             </div> -->
+<!--             <div class="item"> -->
+<!--                <img src="./images/exh_image1.png"> -->
+<!--             </div> -->
+<!--             <div class="item"> -->
+<!--                <img src="./images/6.jpg"> -->
+<!--             </div> -->
+<!--          </div> -->
+<!--       </div> -->
       
-      <div class="new_ex">
-         <button type="button" class="newEx_btn" onclick="location.href= '../getUserExhibitionList'">
-            <span style="color: #7832f7">+</span>more
-         </button>
-      </div>
+<!--       <div class="new_ex"> -->
+<!--          <button type="button" class="newEx_btn" onclick="location.href= '../getUserExhibitionList'"> -->
+<!--             <span style="color: #7832f7">+</span>more -->
+<!--          </button> -->
+<!--       </div> -->
       <!-- 센터 시작 -->
 
       <div class="rank_center">
@@ -230,13 +236,13 @@ cursor : pointer;
       <script src='https://unpkg.com/gsap@3/dist/MotionPathPlugin.min.js'></script>
       <script src='https://assets.codepen.io/16327/Flip.min.js'></script>
       <script type="text/javascript">
-      
          
       function rink(a){
          location.href='getUserExhibition?exh_no='+a;
          
       }
       
+        $(document).ready(function() {
        $.ajax({
             type:'get',
             url:"/index",
@@ -248,6 +254,57 @@ cursor : pointer;
           var glist = data.glist;
           var timeOff = new Date().getTimezoneOffset()*60000;
        
+//           $.each(elist, function(i, v){
+//              if(i < 5){
+//              console.log("캐러셀 썸네일");
+             
+//              var e_exno = elist[i].exh_no;
+//              var e_title = elist[i].exh_title;
+//              var e_thumb = elist[i].exh_thumbnail;
+             
+//              var elist_html = "<div class='item'>";
+
+//              elist_html += "<img src='./images/"+e_thumb+"'>";
+//              elist_html += "</div>"
+             
+                
+//              $(".owl-theme").append(elist_html);
+// //              document.querySelector(".owl-theme").append(elist_html);
+//          }
+          
+//          });
+          
+          
+          $.each(elist, function(i, v){
+             if(i < 3){
+             console.log("배너");
+             
+             var e_exno = elist[i].exh_no;
+             var e_title = elist[i].exh_title;
+             var e_banne = elist[i].exh_banne;
+             
+             var elist_html = "<div class='carousel-item'>";
+                                                            
+             elist_html += "<img src='./images/"+e_banne+"'class='d-block w-100' alt='"+e_banne+"'>";
+             elist_html += "<div class='carousel-caption d-none d-md-block'>";
+             elist_html += "</div>";
+             elist_html += "</div>";
+             
+             
+                
+             $(".carousel-inner").append(elist_html);
+             
+             var e = "<div class='carousel-item active'>";
+             
+             $(".carousel-item").eq(0).addClass("carousel-item active");
+             
+             
+//       $(".carousel-").removeClass("carousel-item0").addClass("carousel-item active");
+//              document.querySelector(".owl-theme").append(elist_html);
+         }
+          
+         });
+          
           
           $.each(glist, function(i, v){
              if(i < 3){
@@ -325,33 +382,34 @@ cursor : pointer;
          }
           });
          }
-         })
+         });
+        });
          
          
       </script>
             <script>
-            $(document).ready(function() {
-              var owl = $('.owl-carousel');
-              owl.owlCarousel({
-                margin: 10,
-                nav: true,
-                loop: true,
-//                 autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                responsive: {
-                  0: {
-                    items: 1
-                  },
-                  600: {
-                    items: 3
-                  },
-                  1000: {
-                    items: 5
-                  }
-                }
-              })
-            })
+//             $(document).ready(function() {
+//               var owl = $('.owl-carousel');
+//               owl.owlCarousel({
+//                 margin: 10,
+//                 nav: true,
+//                 loop: true,
+// //                 autoplay: true,
+//                 autoplayTimeout: 3000,
+//                 autoplayHoverPause: true,
+//                 responsive: {
+//                   0: {
+//                     items: 1
+//                   },
+//                   600: {
+//                     items: 3
+//                   },
+//                   1000: {
+//                     items: 5
+//                   }
+//                 }
+//               })
+//             })
           </script>
 <!--       <script src="js/circular-progress.js"></script> -->
             <!-- footer start -->

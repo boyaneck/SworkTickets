@@ -17,7 +17,7 @@ a:hover {
   color : #7832f7;
 }
 </style>
-<footer class="mt-5 footer-head">
+<footer class="mt-auto footer-head">
      <div class="row">
         <div class="col mt-3 mb-3">
            <a href="/getBoardList">고객센터</a>

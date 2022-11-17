@@ -100,7 +100,7 @@ input::-webkit-inner-spin-button {
 /* 목록 */
 .nav-link.header{
    color:#1f1f1f!important;
-   font-weight:300;
+   font-weight:400;
 }
 
 .nav-link.header:hover{

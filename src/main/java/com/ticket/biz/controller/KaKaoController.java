@@ -73,7 +73,7 @@ public class KaKaoController {
 		member.setMb_email(email);
 		member.setMb_name(nickname);
 		model.addAttribute("kakaoInfo", userInfo);
-		session.setAttribute("kakaoId", userInfo.get("id"));
+		session.setAttribute("mb_Id", userInfo.get("id"));
 		if (member.getMb_id() != null) {
 			memberService.insertMember(member);
 		} else {
