@@ -26,7 +26,7 @@
 </style>
 <body>
 
-   <div class="container"  style="padding-bottom: 300px; padding-top: 50px;" >
+   <div class="container"  style="padding-bottom: 100px; padding-top: 50px;" >
 <%--       <div style="text-align: center;"><img src="/images/${exhibition.exh_thumbnail }" alt="이미지" style="width:100%;"></div> --%>
       <div style="text-align: center;"><img src="/images/${exhibition.exh_banne }" alt="이미지" style="width:100%;"></div>
 <%--       <div style="text-align: center;"><img src="/images/${exhibition.exh_img }" alt="이미지" style="width:100%;"></div> --%>
@@ -69,5 +69,6 @@
       </div>
    </div>
    </div>
+<%--    <%@ include file="../../footer.jsp" %> --%>
 </body>
 </html>
