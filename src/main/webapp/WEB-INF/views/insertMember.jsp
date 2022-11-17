@@ -21,13 +21,13 @@ $(function() {
    $("#phoneChk").click(function() {
       
       var phone = $("#mb_phone").val();
-      if(!phone_chk(콜)){
-         alert("휴대폰 번호가 올바르지 않습니다.");
-          return false;
-      } else {
-         alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-      }
-      
+		if(!phone_chk(phone)){
+			alert("휴대폰 번호가 올바르지 않습니다.");
+			 return false;
+		} else {
+			alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
+		}
+		
       $.ajax({
          type : "GET",
          url : "phoneCheck?mb_phone=" + phone,
@@ -35,8 +35,8 @@ $(function() {
          success : function(data) {
             if (data == "error") {
                alert("휴대폰 번호가 올바르지 않습니다.");
-               $(콜).text("유효한 번호를 입력해주세요.");
-               $(콜).css("color", "red");
+               $(phone).text("유효한 번호를 입력해주세요.");
+               $(phone).css("color", "red");
                $("#mb_phone").attr("autofocus", true);
             } else {
                $("#phone2").attr("disabled", false);
@@ -60,15 +60,15 @@ $(function() {
 //          $(".successPhoneChk").text("인증번호가 일치합니다.");
 //          $(".successPhoneChk").css("color", "green");
 //          $("#phoneDoubleChk").val("true");
-         alert("인증번호가 일치합니다.") 
+			alert("인증번호가 일치합니다.") 
          $("#phone2").attr("disabled", true);
-         $("#conRegister").attr("disabled", false);
-         
+			$("#conRegister").attr("disabled", false);
+			
       } else {
 //          $(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
 //          $(".successPhoneChk").css("color", "red");
 //          $("#phoneDoubleChk").val("false");
-         alert("인증번호가 일치하지않습니다.")
+			alert("인증번호가 일치하지않습니다.")
          $(this).attr("autofocus", true);
       }
    });
@@ -241,28 +241,28 @@ small{margin-left: 15px; margin-bottom: 0px !important;}
 span{
 font-size: 13px;}
 @media (max-width:768px) {
-      .container{
-      /*  margin: 0 !important;   */
-               } 
-      .btn-purple{
-      margin-top: 10px !important;
-      }
-      hr{
-      width:100%;
-      }
-      input{
-      width:100%;
-      padding:0;
-      }
-      .lb-emp{
-      display: none;
-      }
-      .btn-black{
-      width:100%;
-      }
-      .btn-black:hover{
-      width:100%;
-      }
+		.container{
+		/*  margin: 0 !important;   */
+					} 
+		.btn-purple{
+		margin-top: 10px !important;
+		}
+		hr{
+		width:100%;
+		}
+		input{
+		width:100%;
+		padding:0;
+		}
+		.lb-emp{
+		display: none;
+		}
+		.btn-black{
+		width:100%;
+		}
+		.btn-black:hover{
+		width:100%;
+		}
 }
 .col-form-label{
 font-size:16px !important;
@@ -386,9 +386,9 @@ font-size:16px !important;
                   </div>
    <script>
    function phone_chk(obj){
-       var regex=/^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/i;
-       return (regex.test(obj));
-   }
+	    var regex=/^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/i;
+	    return (regex.test(obj));
+	}
    
       /* 휴대폰 인증번호 보내고 타이머 스크립트 시작 */
       var timer;
@@ -399,9 +399,9 @@ font-size:16px !important;
          // 남은시간 3분으로 타이머 시작
          var leftTime = 180, display = document.querySelector('#timer');
          var phone = $("#mb_phone").val();
-        if(!phone_chk(콜)){
-           return false;
-       } 
+ 		 if(!phone_chk(phone)){
+ 			 return false;
+ 		} 
 
          // 이미 타이머가 작동중이면 정지
          if (isRunning) {
