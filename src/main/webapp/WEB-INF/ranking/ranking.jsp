@@ -140,9 +140,9 @@ if(i==1){
    </div>
    <br>
    <br>
-   <div class="jumbotron">
-      <a href="getUserExhibitionList"><h1 class="text-center">+more</h1></a>
-   </div>
+<!--    <div class="jumbotron"> -->
+<!--       <a href="getUserExhibitionList"><h1 class="text-center">+more</h1></a> -->
+<!--    </div> -->
    <%@ include file="/footer.jsp"%>
 </body>
 </html>

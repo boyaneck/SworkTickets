@@ -107,7 +107,11 @@
 box-shadow : 10px 10px 3px #ddd;
 cursor : pointer;
 }
-
+@media (max-width: 576px) {
+.card_img img {
+      width: 100%;
+}
+}
 
 </style>
 <link rel="stylesheet" href="./css/owl.carousel.css">
@@ -216,8 +220,7 @@ cursor : pointer;
 <!--       </div> -->
 
          </div>
-         
-      </section>
+   </section><br><br>
       <div class="rank_ex">
          <button type="button" onclick="location.href= '../ranking'">
             <span style="color: #7832f7">+</span>more
