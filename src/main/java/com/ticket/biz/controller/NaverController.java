@@ -81,7 +81,7 @@ public class NaverController {
 		member.setMb_phone(phone);
 
 		model.addAttribute("naverInfo", userInfo);
-		session.setAttribute("mb_Id", userInfo.get("id"));
+		session.setAttribute("mb_Id", userInfo.get("email"));
 
 		if (member.getMb_id() != null) {
 			memberService.insertMember(member);
