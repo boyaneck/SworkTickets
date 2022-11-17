@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+#span{
+	width: 72px;
+    text-align: center !important;
+    }
+    .btn-success:hover{
+    background-color:#7832f7 !important;
+    }
+</style>
+
 </head>
 <body>
 <%
@@ -26,61 +37,6 @@ function deletefaq(val){
     }
     }
 </script>
-<style>
-#imgBox { 
-display: none; 
-position: absolute; 
-top: 0; 
-left: 0; 
-height: 100vh !important; 
-background-color: rgba(0, 0, 0, 0.5); 
-z-index: 9999999; 
-}
-
-#imgContentBox { 
-width: 600px; 
-max-height: 550px; 
-overflow: auto; 
-position: absolute; 
-top: 30%; 
-left: 30%; 
-border-radius: 5px; 
-z-index: 9999999; 
-} 
-
-#imgBoxTitleBar { 
-border-bottom: 1px solid #777; 
-border-radius: 5px 5px 0 0; 
-background-color: #ddd; 
-width: 100%; 
-padding: 10px; 
-text-align: right; 
-font-size: 20px; 
-font-weight: bolder; 
-} 
-
-#imgBoxImg { 
-width: 100%; 
-border-radius: 0 0 5px 5px; 
-} 
-
-#closeX { 
-padding: 5px 20px; 
-border-radius: 5px; 
-border: 1px solid #777; 
-background-color: red; 
-color: #fff; 
-} 
-
-#closeX:hover { 
-background-color: #777; 
-cursor: pointer; 
-} 
-#span{
-	width: 72px;
-    text-align: center !important;
-    }
-</style>
 
 <body>
 <%    
@@ -111,52 +67,33 @@ if (request.getProtocol().equals("HTTP/1.1"))
             <input type="text" class="form-control innm" name="faq_title"
                value="${faq.faq_title}" <%=sts %>>
          </div>
-<!--          <div class="input-group mb-3"> -->
-<!--             <div class="input-group-prepend"> -->
-<!--                <span class="input-group-text">작성자</span> -->
-<!--             </div> -->
-<!--             <input type="text" class="form-control innm" name="faq_writer" -->
-<%--                value="관리자" readonly <%=sts %>> --%>
-<!--          </div> -->
+         
          <div class="input-group mb-3">
             <div class="input-group-prepend">
                <span class="input-group-text">내용</span>
             </div>
             <textarea class="form-control innm" rows="10" id="faq_content"
                name="faq_content" <%=sts%>>${faq.faq_content}</textarea>
-         </div>
-            <%--       <input type="text" class="form-control innm" name="cnt" value="${one.cnt}" readonly <%=sts %>>       --%>
-         </div>
-         <div>
+         </div> 
+         </div> 
+         <div>  
          <div id="btnBox_parent">
-            <button class="btn btn-success" type="submit">글수정</button>
-            <button class="btn btn-success" href="faqwrite.jsp" >글쓰기</button> 
             <button class="btn btn-success" href="getFaqList">글목록</button>
+            <button class="btn btn-success" type="submit">글수정</button>
+            <button class="btn btn-success" onclick="deletefaq(${faq.faq_no})" style="cursor: pointer">글삭제</button>
+             </form> 
          </div>
          </div>
-      </form>
+    
+   			
       
       <form action="deleteOne">
          <input type="hidden" name="one_no" value="${one.one_no}">
       </form>
       <div id="btnBox_parent">
-      <button class="btn btn-delete" onclick="deletefaq(${faq.faq_no})" style="cursor: pointer">글삭제</button>
+      
       </div>
    </div>
-   <!-- 클릭시 보이는 이미지 start -->
-   <div id="imgBox" class="container-fluid">
-      <div id="imgContentBox">
-         <div id="imgBoxTitleBar">
-            <span id="closeX" onclick="closeX()">X</span>
-            <script>
-           function closeX(){
-              $("#imgBox").hide();
-           }
-        </script>
-         </div>
-         <img id="imgBoxImg" src="img/${one.filename}">
-      </div>
-   </div>
-   <!-- 클릭시 보이는 이미지 end -->
+   
 </body>
 </html>

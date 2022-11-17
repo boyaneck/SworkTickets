@@ -84,7 +84,7 @@ pageContext.setAttribute("replaceChar", "\n");
 
                
                
-               
+               $("#.")
                
                
                
@@ -265,7 +265,8 @@ pageContext.setAttribute("replaceChar", "\n");
       console.log('댓글 등록 완료');
       $('.review_writer').val(review_writer);
          $('.review_content').val(review_content);
-            window.location.reload();
+            $('#con2').load(location.href + '#con2');
+            $(".tabDiv").eq(1).click();	
    } else {
       alert('로그인 이후 이용해주시기 바랍니다.');
       console.log('댓글 등록 실패');

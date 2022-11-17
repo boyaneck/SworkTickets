@@ -10,7 +10,7 @@
 
 a{
   color : black;
-  font-weight: bold;
+/*   font-weight: bold; */
 }
 a:hover {
   color : #7832f7;
