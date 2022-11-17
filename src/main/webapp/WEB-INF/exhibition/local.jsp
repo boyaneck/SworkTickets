@@ -32,7 +32,6 @@
 					type : "GET",
 					url : "local_search?exh_local_name=" + name,
 					success : function(data) {
-						console.log(data);
 						if (data == null) {
 
 							alert("시스템에 문제가 발생했습니다")
@@ -40,7 +39,6 @@
 						} else {
 							var UserExhibitionList = data.UserExhibitionList;
 							var error = data.error;
-							console.log(UserExhibitionList);
 
 							const element = document.getElementById('tab-r');
 							var comment_html = "";

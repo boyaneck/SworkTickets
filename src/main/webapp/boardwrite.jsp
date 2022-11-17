@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>관리자 모드</title>
+<title>뉴전시스</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script
@@ -148,44 +148,46 @@
 					<div class="container">
 						<h2 style="text-align: center; font-weight: bold; margin-right:200px; margin-bottom:40px">공지사항 글 업로드</h2>
 					</div>
-					<div class="container">
-					<div class="row justify-content-md-center">
+					
 <form action="insertBoard">
-<div class="float-right">
 
 
- <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">아이디</span>
-            </div>
-<input type="text" name="noti_writer" placeholder="작성자 아이디값 받아오기" value="<%= session.getAttribute("mb_Id") %>" readonly>
-         </div>
+
  
  
- <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">제목</span>
-            </div>
-         <input type="text" placeholder="제목을 입력하세요" name="noti_title" >
-         </div>
- <div class="input-group mb-3">
-            <div class="input-group-prepend">
-               <span class="input-group-text">내용</span>
-            </div>
-<textarea placeholder="내용을 입력하세요" name="noti_content" rows="15" cols="100" style="margin-right:300px"></textarea>
-         </div>
 
-<div class="regBtn" style="padding-left:400px; margin-top:40px;">
+         <div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<label for="exh_cs_phone" class="input-group-text">아이디</label>
+				</div>
+				<input type="text" class="form-control innm" id="exh_cs_phone"
+					name="noti_writer" value="<%= session.getAttribute("mb_Id") %>" readonly required style="background-color:white!important">
+			</div>
+         <div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<label for="exh_cs_phone" class="input-group-text" style="padding-left: 20px; padding-right: 20px;">제목</label>
+				</div>
+				<input type="text" class="form-control innm" id="exh_cs_phone"
+					name="noti_title" value="제목을 작성해주세요" required>
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<label for="exh_content" class="input-group-text"style="padding-left: 18px; padding-right: 18px;" >내 용</label>
+				</div>
+				<textarea class="form-control" rows="10" id="comment"
+					id="noti_content" name="noti_content" placeholder="내용을 입력해주세요." required></textarea>
+			</div>
+			
+
+<div class="regBtn" style="text-align:center;">
 <button class="btn btn-success"  style="cursor: pointer">글 등록</button>
-</div>
 </div>
 </form>
 </div>
 </div>
 </div>
 </div>
-</section>
-</div>
+
 
 </body>
 </html>

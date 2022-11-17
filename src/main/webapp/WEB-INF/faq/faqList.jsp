@@ -70,6 +70,7 @@ body {
   </div>
 
 
+
   <div class="row">
 <c:forEach items="${faqList}" var="faq">
     <div class="col-lg-9 mx-auto">

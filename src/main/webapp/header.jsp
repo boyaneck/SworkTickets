@@ -36,8 +36,9 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon" name="addonHambuger">
           <i class="glyphicon fas fa-search"></i>
-          <input type="text" class="form-control hambuger" placeholder="검색" name="exSearchKeyword" id="exSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }" />
-        </div>
+         <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
+  </div>
       </div>
     
       <li class="nav-item">
@@ -299,7 +300,6 @@ function searchkey() {
 
  // 엔터키가 눌렸을 때 실행하는 반응
     var exs = document.getElementById("eSearchKeyword").value;
-       console.log(exs);
 
     location.href="getUserExhibitionList?eSearchKeyword="+exs;
     }
@@ -307,7 +307,6 @@ function searchkey() {
 function searchkeya() {
 
     var exsu = document.getElementById("eSearchKeyword").value;
-       console.log(exsu);
 
     location.href="getUserExhibitionList?eSearchKeyword="+exsu;
 }

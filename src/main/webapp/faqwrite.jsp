@@ -11,7 +11,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>관리자 모드</title>
+<title>뉴전시스</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script
@@ -153,24 +153,26 @@
 <form action="insertFaq">
 
 
- 
- <div class="input-group mb-3" style="margin-left:300px; margin-top:30px">
-            <div class="input-group-prepend">
-               <span class="input-group-text">제목</span>
-            </div>
-         <input type="text" placeholder="제목을 입력하세요" name="faq_title" >
-         </div>
+
+         <div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<label for="exh_cs_phone" class="input-group-text" style="padding-left: 20px; padding-right: 20px;">제목</label>
+				</div>
+				<input type="text" class="form-control innm" id="faq_title"
+					name="faq_title" value="제목을 작성해주세요" required>
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<label for="exh_content" class="input-group-text"style="padding-left: 18px; padding-right: 18px;" >내 용</label>
+				</div>
+				<textarea class="form-control" rows="10" id="comment"
+					id="faq_content" name="faq_content" placeholder="내용을 입력해주세요." required></textarea>
+			</div>
+
          
-         
 
 
 
- <div class="input-group mb-3" style="margin-left:300px">
-            <div class="input-group-prepend">
-               <span class="input-group-text">내용</span>
-            </div>
-<textarea placeholder="내용을 입력하세요" name="faq_content" rows="15" cols="100"></textarea>
-         </div>
 
 <div class="regBtn" style="padding-left:700px; margin-top:40px;">
 <button class="btn btn-success"  style="cursor: pointer">글 등록</button>
