@@ -31,6 +31,12 @@
    
    
    </script>
+   <style>
+   @media (max-width:768px) {
+   .btn-purple{
+   width:100%;
+   }
+   </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
   <div class="container">
@@ -93,9 +99,9 @@
          </div>
          
         </div>
-       <div class="col-xs-6"></div>
+       <div class="col-xs-6" style="text-align: center;">
       <button type="submit" class="btn-purple text-center" style="width:300px; height: 50px;">확인</button>
-      
+      </div>
       </div>
       <br />         
       <!--    <form role="form" action="registerForm">
