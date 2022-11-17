@@ -49,7 +49,7 @@
       <c:if test='${mb_Id ne NULL}'>
         <a class="nav-link hambuger" data-toggle="dropdown" role="button" 
         style="font-size:20px; font-weight:600; color:#1f1f1f;"> 마이페이지 </a>
-        <div class="dropdown-menu header-menu" aria-labelledby="member">
+        <div class="dropdown-menu header-menu" aria-labelledby="member" style="margin-right:20px;">
            <a class="dropdown-item header-item" id="memberUpdate" href="mypageView">&nbsp회원수정</a>
            <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
              <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>

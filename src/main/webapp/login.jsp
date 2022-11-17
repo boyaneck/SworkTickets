@@ -11,7 +11,7 @@
 .a_oth {
 	text-decoration: none;
 	color: #000;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .a_oth:hover {
