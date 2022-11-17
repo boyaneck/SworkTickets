@@ -46,14 +46,11 @@ $(document).ready(function(){
 //                $('#mb_id').val(userId);
                $('#p_date').val(rsp.paid_at);
                $('#exh_title').val(rsp.name);
-               msg += '\n고유ID : ' + rsp.imp_uid;
-               msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-               msg += '\n결제 금액 : ' + rsp.paid_amount;
-               
+               msg += '\n결제 금액 : ' + rsp.paid_amount + '원';
                chk = true;               
             } else {
                var msg = '결제에 실패하였습니다.';
-               msg += '\n에러내용 : ' + rsp.error_msg;
+               msg += '\n' + rsp.error_msg;
             }
             alert(msg);
             if(chk==true) orderList();
@@ -61,7 +58,6 @@ $(document).ready(function(){
    });
    
    function orderList(){
-      alert('주문내역 처리할 곳. 컨트롤러 호출');
       let fm = document.fm;
       fm.action ="payUserDB";
       fm.method="post";
@@ -74,7 +70,7 @@ $(document).ready(function(){
          data : {"mid": $("#merchant_uid").val()},
          method : "POST",
          success : function(val){
-            if(val==1) alert("취소 완료");
+            if(val==1) alert("취소 완료\n사용하신 쿠폰은 돌려받을 수 없습니다.");
             else alert("취소 실패\n이미 취소되었거나 잘못된 정보입니다.");
          },
          error :  function(request, status){
@@ -171,7 +167,7 @@ $('#testBtn').click(function(e){
 <form name="fm" style="text-align:-webkit-center;">
 	<!-- 타이틀 -->
 	<div class="container" id="paytitle"
-		style="background-color: lightgray; width: 50%; padding: 30px;">
+		style="background-color: lightgray; width: 50%; padding: 30px; margin-bottom: 50px;">
 		<h2 style="text-align: center; font-weight: bolder; padding: 30px 0;">결제하기</h2>
 
 		<!-- 이미지, 제목, 가격 -->
@@ -221,7 +217,7 @@ $('#testBtn').click(function(e){
 						<b>이름</b>
 					</div>
 					<div class="col-md-9">
-						<input type="text" name="buyer" id="buyer" placeholder="이름 입력"
+						<input type="text" name="buyer" id="buyer" placeholder="이름 입력" required
 							value="${member.mb_name}" style="width: 100%">
 					</div>
 				</div>
@@ -233,7 +229,7 @@ $('#testBtn').click(function(e){
 						<b>전화번호</b>
 					</div>
 					<div class="col-md-9">
-						<input type="text" name="buyer_tel" id="buyer_tel"
+						<input type="text" name="buyer_tel" id="buyer_tel" required
 							placeholder="예시: 010-1111-2222" value='${member.mb_phone}'>
 					</div>
 				</div>
@@ -245,7 +241,7 @@ $('#testBtn').click(function(e){
 						<b>이메일</b>
 					</div>
 					<div class="col-md-9">
-						<input type="text" name="buyer_email" id="buyer_email"
+						<input type="text" name="buyer_email" id="buyer_email" required
 							placeholder="이메일 입력" value='${member.mb_email}'>
 					</div>
 				</div>
@@ -323,7 +319,8 @@ $('#testBtn').click(function(e){
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">
-						<b>쿠폰 목록</b>
+						<b>쿠폰 목록</b> <small style="color: red; font-size: small; margin-left: 20px;">
+						*환불 시 사용하신 쿠폰을 돌려받지 못합니다.</small>
 					</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
