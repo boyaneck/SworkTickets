@@ -499,9 +499,9 @@ footer {
    padding-left:1%;
 }
 
-.mt-auto{
+.footer-head{
 /*    margin-top:100px!important; */
-   border-top:1px solid #1f1f1f;
+   border-top:1px solid #1f1f1f!important;
 }
 
 .container.footer{
