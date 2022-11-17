@@ -1,88 +1,66 @@
 @charset "UTF-8";
-:root {
-  --text-color: #000;
-  /* --background-color1: #fcfcfd; */
-  --background-color2: #f5f5fa;
-  --backgorund-color3: #7832f7;
-  --button-color: #23263b;
-  --menubar-color: #4B5563;
+
+:root { -
+	-text-color: #000;
+	/* --background-color1: #fcfcfd; */ -
+	-background-color2: #f5f5fa; -
+	-backgorund-color3: #7832f7; -
+	-button-color: #23263b; -
+	-menubar-color: #4B5563;
 }
 
-@media (max-width: 768px) {
-   .container.rank {
-   padding:0px;
-}
+@media ( max-width : 768px) {
+	.container.rank {
+		padding: 0px;
+	}
 }
 
-
-  .btn-ranking{
-   margin:8px;
-   border:none;
-   width:100px; 
-   height:37px; 
-   background-color: transparent; 
-   color: #fff; 
-   font-size: 18px;
-} 
+.btn-ranking {
+	margin: 8px;
+	border: none;
+	width: 100px;
+	height: 37px;
+	background-color: transparent;
+	color: #fff;
+	font-size: 18px;
+}
 
 .table thead th {
-   background-color: #fff;
-   border-top: 0px;
-   border-bottom:1.5px solid #1f1f1f;
-   padding-bottom: 5px;
-   color: #1f1f1f;
-   font-size: 18px;
-   text-align:center;
+	background-color: #fff;
+	border-top: 0px;
+	border-bottom: 1.5px solid #1f1f1f;
+	padding-bottom: 5px;
+	color: #1f1f1f;
+	font-size: 18px;
+	text-align: center;
 }
 
- 
-@media (max-width: 768px) {
-  .rank_title {
-  display:none;
-}
+@media ( max-width : 768px) {
+	.rank_title {
+		display: none;
+	}
 }
 
 .tdCenter {
-   text-align:center;
-   font-size: 16px;
-   border-bottom: 1px solid #dbdbdb;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 1px solid #dbdbdb;
 }
 
-@media (max-width: 768px) {
-   .tdCenter {
-   font-weight:500;
-}
-}
-
-@media (max-width: 768px) {
-   .tdCenter.rank {
-   font-size:30px;
-}
+@media ( max-width : 768px) {
+	.tdCenter {
+		font-weight: 500;
+	}
 }
 
-@media (max-width: 768px) {
-   .tdCenter.exh_hall {
-   display:none;
-}
-}
-
-@media (max-width: 768px) {
-      .tdCenter.date {
-   display:none;
-}
+@media ( max-width : 768px) {
+	.tdCenter.rank {
+		font-size: 30px;
+	}
 }
 
-@media (max-width: 768px) {
-      .tdCenter.date {
-   display:none;
+@media ( max-width : 768px) {
+	.tdCenter.mb {
+		display: none;
+	}
 }
-}
-
-@media (max-width: 768px) {
-      .tdCenter.price {
-   display:none;
-}
-}
-
-
-

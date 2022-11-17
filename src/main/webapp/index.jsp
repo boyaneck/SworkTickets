@@ -154,12 +154,12 @@ cursor : pointer;
    </div>
 
    <!-- 전시버튼 -->
-<!--    <div class="new_title"> -->
-<!--       <h2> -->
-<!--          <span style="color: #7832f7">NEW</span> EXHIBITION -->
-<!--       </h2> -->
-<!--       <h3 style="color: #fff">NEW EXHIBITION</h3> -->
-<!--       </div> -->
+<div class="new_title">
+      <h2>
+         <span style="color: #7832f7">NEW</span> EXHIBITION
+      </h2>
+      <h3 style="color: #fff">NEW EXHIBITION</h3>
+      </div>
       
 <!--       <div id="carousel-wrapper"> -->
 <!--          <div class="owl-carousel owl-theme"> -->
@@ -184,11 +184,11 @@ cursor : pointer;
 <!--          </div> -->
 <!--       </div> -->
       
-<!--       <div class="new_ex"> -->
-<!--          <button type="button" class="newEx_btn" onclick="location.href= '../getUserExhibitionList'"> -->
-<!--             <span style="color: #7832f7">+</span>more -->
-<!--          </button> -->
-<!--       </div> -->
+      <div class="new_ex">
+         <button type="button" class="newEx_btn" onclick="location.href= '../getUserExhibitionList'">
+            <span style="color: #7832f7">+</span>more
+         </button>
+      </div>
       <!-- 센터 시작 -->
 
       <div class="rank_center">
@@ -209,7 +209,7 @@ cursor : pointer;
       </div>
       
       <div class="rank2">
-         <span style="color: #7832f7">%</span>예매율<br>
+         <span style="color: #7832f7"></span>예매율<br>
          <br>
 
          <!--      <div class="cd"> -->
@@ -221,9 +221,9 @@ cursor : pointer;
 
          </div>
    </section><br><br>
-      <div class="rank_ex">
+      <div class="rank_ex mb-5">
          <button type="button" onclick="location.href= '../ranking'">
-            <span style="color: #7832f7">+</span>more
+            <span style="color: #7832f7">+</span>&nbsp더보기
          </button>
       </div>
 

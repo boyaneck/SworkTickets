@@ -74,7 +74,7 @@ function is_checked(eno) {//eno=3
 				},
 				// ajax가 실패했을때 실행됨
 				error :  function(){
-					alert("로그인 하십시오.");
+					alert("로그인 후 이용 가능합니다.");
 					
 				}
 		  });
@@ -347,7 +347,7 @@ textarea {
 		<div class="row" style="line-height: 300%;">
 	<div class="col-3">작가</div> <div class="col-9" id="col">${exhibition.exh_artist}</div>
 	<div class="col-3">관람등급</div> <div class="col-9" id="col"> ${exhibition.exh_rating}</div>
-	<div class="col-3">관람시간</div> <div class="col-9" id="col"> ${exhibition.exh_time}</div>
+	<div class="col-3">관람시간</div> <div class="col-9" id="col" style="word-break: keep-all;"> ${exhibition.exh_time}</div>
 	<div class="col-3">발권정보</div> <div class="col-9" id="col"> ${exhibition.exh_shipping_info}</div>
 	<div class="col-3">수수료</div> <div class="col-9" id="col"><fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</div>
 	<div class="col-3">가격</div> <div class="col-9" id="col1"><fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</div>
@@ -405,14 +405,18 @@ textarea {
     <div class="col tabDiv pt-3 pb-2" id="menu2"><h5>관람후기</h5></div>
     <div class="col tabDiv pt-3 pb-2" id="menu3"><h5>장소정보</h5></div>
   </div>
-  <div id="con1" class="conBox p-3" style="background-color: white; text-align:left !important;"><%@ include file="Information.jsp"%></div>
-  <div id="con2" class="conBox p-3" style="background-color: white; text-align:left !important;"> <%@ include file="reviewwrite.jsp"%></div>
-  <div id="con3" class="conBox p-3" style="background-color: white;"><%@ include file="UserExhibitionLocation.jsp"%></div>
 </div>
 	<br>
 	</div>
+	  <div id="con1" class="conBox" style="background-color: white; text-align:left !important;">
+  	<%@ include file="Information.jsp"%>
+   </div>
+  <div id="con2" class="conBox" style="background-color: white; text-align:left !important;">
+    <%@ include file="reviewwrite.jsp"%>
+    </div>
+  <div id="con3" class="conBox" style="background-color: white;">
+    <%@ include file="UserExhibitionLocation.jsp"%>
+    </div>
 	<br>
-<%-- <%@ include file="../../footer.jsp" %> --%>
 </body>
-
 </html>

@@ -260,7 +260,7 @@ textarea:focus, input:focus {
 </style>
 <body class="d-flex flex-column min-vh-100">
    <div class="container">
-      <div class="comment-box">
+      <div class="mb-5 comment-box">
 
          <div class="comment-count" style="margin-top: 30px;">
             댓글 <span id="count">0</span>
@@ -303,6 +303,6 @@ textarea:focus, input:focus {
       </div>
    </div>
 
-
+	<%@ include file="../../footer.jsp" %>
 </body>
 </html>

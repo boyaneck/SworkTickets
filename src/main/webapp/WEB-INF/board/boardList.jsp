@@ -11,7 +11,9 @@
 .table tr:hover {
    background-color: #e8dbfe !important;
 }
-
+.tdCenter{
+word-break:keep-all;
+}
 .write {
    border-radius: 4px;
    border: 1px solid #1f1f1f;
@@ -98,9 +100,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
          <tbody>
 
             <c:forEach items="${boardList}" var="board">
-
-               <tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"
-                  ; style="cursor: pointer;" class="aa"
+               <tr onclick="location.href='getBoard?noti_no=${board.noti_no }'"; style="cursor: pointer;" class="aa"
                   onmouseover="this.style.fontWeight='bold'"
                   onmouseout="this.style.fontWeight=''">
                   <td class="tdCenter tb" style="width: 10%;">${board.noti_no}</td>
@@ -109,7 +109,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
                   <td class="tdCenter tb" style="width: 20%;"><fmt:formatDate
                         value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"
                         var="today" />${today}</td>
-
                </tr>
 
 
