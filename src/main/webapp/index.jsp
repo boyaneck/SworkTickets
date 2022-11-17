@@ -221,9 +221,9 @@ cursor : pointer;
 
          </div>
    </section><br><br>
-      <div class="rank_ex">
+      <div class="rank_ex mb-5">
          <button type="button" onclick="location.href= '../ranking'">
-            <span style="color: #7832f7">+</span>more
+            <span style="color: #7832f7">+</span>&nbsp더보기
          </button>
       </div>
 

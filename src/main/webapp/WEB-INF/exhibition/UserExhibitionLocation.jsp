@@ -1,12 +1,13 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" --%>
-<%-- 	pageEncoding="UTF-8"%> --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%-- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> --%>
-<!-- <head> -->
+<head>
 <%-- <title>${exhibition.exh_title}</title> --%>
-<!-- </head> -->
-<!-- <body> -->
 <link rel="stylesheet" href="./css/exhibitionDetail.css">
-<div class="container" style="text-align: center; padding-top: 30px;">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div class="container mb-5" style="text-align: center; padding-top: 30px;">
 		<h3 style="font-weight: bold;">${exhibition.exh_title}</h3>
 		<br>
 		<h6>${exhibition.exh_location}</h6>
@@ -46,5 +47,6 @@
 		// marker.setMap(null);
 	</script>
 	</div>
-<!-- </body> -->
-<!-- </html> -->
+	<%@ include file="../../footer.jsp" %>
+</body>
+</html>

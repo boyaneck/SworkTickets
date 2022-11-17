@@ -81,7 +81,7 @@ public class NaverController {
 		member.setMb_phone(phone);
 
 		model.addAttribute("naverInfo", userInfo);
-		session.setAttribute("mb_Id", userInfo);
+		session.setAttribute("mb_Id", userInfo.get("id"));
 
 		if (member.getMb_id() != null) {
 			memberService.insertMember(member);
@@ -123,7 +123,7 @@ public class NaverController {
 			e.printStackTrace();
 		}
 
-		REDIRECT_URL = "http://newjeonsis.ml";
+		REDIRECT_URL = "http://localhost:8090";
 		return tokenChk;
 
 	}
