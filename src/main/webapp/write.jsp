@@ -59,11 +59,7 @@ color:white !important;
 					<label for="exh_cs_phone" class="input-group-text" style="padding-left: 20px; padding-right: 20px;">제목</label>
 				</div>
 				<input type="text" class="form-control innm" id="one_title"
-<<<<<<< HEAD
-					name="one_title" value="제목을 작성해주세요" required>
-=======
 					name="one_title" placeholder="제목을 작성해주세요" required>
->>>>>>> origin/jin.final
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
