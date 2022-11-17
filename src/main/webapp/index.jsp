@@ -205,7 +205,7 @@ cursor : pointer;
       </div>
       
       <div class="rank2">
-         <span style="color: #7832f7">%</span>예매율<br>
+         <span style="color: #7832f7"></span>예매율<br>
          <br>
 
          <!--      <div class="cd"> -->
@@ -218,9 +218,9 @@ cursor : pointer;
          </div>
          
       </section>
-      <div class="rank_ex">
+      <div class="mb-5 rank_ex">
          <button type="button" onclick="location.href= '../ranking'">
-            <span style="color: #7832f7">+</span>more
+            <span style="color: #7832f7">+</span>&nbsp더보기
          </button>
       </div>
 

@@ -398,7 +398,7 @@ textarea {
 	<br>
 	</div>
 	<br>
-<%-- <%@ include file="../../footer.jsp" %> --%>
+<%@ include file="../../footer.jsp" %>
 </body>
 
 </html>

@@ -69,7 +69,7 @@ if(i==1){
    <!--    </div> -->
 
    <div class="board">
-      <h1>랭킹</h1>
+      <h1>Top10 랭킹</h1>
       <div class="text-center">
          <button class="btn-ranking"
             style="color: #7329f7; font-weight: bold;" id="good_btn"

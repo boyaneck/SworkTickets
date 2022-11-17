@@ -238,6 +238,7 @@ public class ExhibitionController {
 		
 			String id=(String)session.getAttribute("mb_Id");
 			
+			
 			gvo.setExh_no(vo.getExh_no());
 			gvo.setMb_id(id);
 	
