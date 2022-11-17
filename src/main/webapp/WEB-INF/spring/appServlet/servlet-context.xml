@@ -20,26 +20,43 @@
 	<resources mapping="/images/**" location="/images/" />
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/js/**" location="/js/" />
-	
+
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan base-package="com.ticket.biz.*" />
+	<context:component-scan
+		base-package="com.ticket.biz.*" />
 
 
 <!-- 	<interceptors> -->
 <!-- 		<interceptor> -->
-<!-- 			<mapping path="/*"/> -->
-<!-- 			<exclude-mapping path="/login"/> -->
-<!-- 			<exclude-mapping path="/insertMember"/> -->
-<!-- 			<exclude-mapping path="/images/**"/> -->
-<!-- 			<exclude-mapping path="/css/**"/> -->
-<!-- 	<beans:bean class="com.ticket.biz.interceptor.Interceptor" /> -->
+<!-- 			<mapping path="/*" /> -->
+<!-- 			<exclude-mapping path="/images/**" /> -->
+<!-- 			<exclude-mapping path="/css/**" /> -->
+<!-- 			<exclude-mapping path="/js/**" /> -->
+<!-- 			<exclude-mapping path="/login" /> -->
+<!-- 			<exclude-mapping path="/local" /> -->
+<!-- 			<exclude-mapping path="/step1" /> -->
+<!-- 			<exclude-mapping path="/insertMember" /> -->
+<!-- 			<exclude-mapping path="/index" /> -->
+<!-- 			<exclude-mapping path="/ranking" /> -->
+<!-- 			<exclude-mapping path="/getUserExhibitionList" /> -->
+<!-- 			<exclude-mapping path="/getUserExhibition"/> -->
+<!-- 			<exclude-mapping path="/getCouponList" /> -->
+<!-- 			<exclude-mapping path="/getBoardList" /> -->
+<!-- 			<exclude-mapping path="/getBoard" /> -->
+<!-- 			<exclude-mapping path="/getFaqList" /> -->
+<!-- 			<exclude-mapping path="/getOneList" /> -->
+<!-- 			<exclude-mapping path="/getOne" /> -->
+<!-- 			<exclude-mapping path="/findIdform" /> -->
+<!-- 			<exclude-mapping path="/findPwform" /> -->
+<!-- 			<beans:bean class="com.ticket.biz.interceptor.Interceptor" /> -->
 <!-- 		</interceptor> -->
 <!-- 	</interceptors> -->
 

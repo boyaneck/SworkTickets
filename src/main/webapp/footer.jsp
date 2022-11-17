@@ -9,7 +9,6 @@
 }
 
 a{
-  padding-top:0px !important;
   color : black;
 }
 a:hover {
