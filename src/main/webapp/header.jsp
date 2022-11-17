@@ -43,6 +43,9 @@
       </div>
     
       <li class="nav-item">
+      <c:if test='${mb_Id eq "admin"}'>
+        <span class="nav-hello hambuger" style="font-size: 11pt;">모바일에서는 관리자페이지 접근이 불가능합니다.<br></span>
+      </c:if>
       <c:if test='${mb_Id ne NULL}'>
         <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span>
       </c:if>
