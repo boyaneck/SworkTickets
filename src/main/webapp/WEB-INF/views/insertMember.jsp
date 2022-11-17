@@ -19,21 +19,28 @@ $(function() {
       
    /* 핸드폰 인증번호 발송 start */
    $("#phoneChk").click(function() {
-      alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
+      
       var phone = $("#mb_phone").val();
-
+      if(!phone_chk(콜)){
+         alert("휴대폰 번호가 올바르지 않습니다.");
+          return false;
+      } else {
+         alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
+      }
+      
       $.ajax({
          type : "GET",
          url : "phoneCheck?mb_phone=" + phone,
          cache : false,
          success : function(data) {
             if (data == "error") {
-               alert("휴대폰 번호가 올바르지 않습니다.")
-               $(".successPhoneChk").text("유효한 번호를 입력해주세요.");
-               $(".successPhoneChk").css("color", "red");
+               alert("휴대폰 번호가 올바르지 않습니다.");
+               $(콜).text("유효한 번호를 입력해주세요.");
+               $(콜).css("color", "red");
                $("#mb_phone").attr("autofocus", true);
             } else {
                $("#phone2").attr("disabled", false);
+//                $("#conRegister").attr("disabled", true);
                $("#phoneChk2").css("display", "inline-block");
                $(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
                $(".successPhoneChk").css("color", "green");
@@ -44,18 +51,24 @@ $(function() {
       });
    });
    /* 핸드폰 인증번호 발송 end */
+   
+
 
    /* 핸드폰 인증번호 일치 여부 start */
    $("#phoneChk2").click(function() {
       if ($("#phone2").val() == code2) {
-         $(".successPhoneChk").text("인증번호가 일치합니다.");
-         $(".successPhoneChk").css("color", "green");
-         $("#phoneDoubleChk").val("true");
+//          $(".successPhoneChk").text("인증번호가 일치합니다.");
+//          $(".successPhoneChk").css("color", "green");
+//          $("#phoneDoubleChk").val("true");
+         alert("인증번호가 일치합니다.") 
          $("#phone2").attr("disabled", true);
+         $("#conRegister").attr("disabled", false);
+         
       } else {
-         $(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
-         $(".successPhoneChk").css("color", "red");
-         $("#phoneDoubleChk").val("false");
+//          $(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
+//          $(".successPhoneChk").css("color", "red");
+//          $("#phoneDoubleChk").val("false");
+         alert("인증번호가 일치하지않습니다.")
          $(this).attr("autofocus", true);
       }
    });
@@ -228,28 +241,28 @@ small{margin-left: 15px; margin-bottom: 0px !important;}
 span{
 font-size: 13px;}
 @media (max-width:768px) {
-		.container{
-		/*  margin: 0 !important;   */
-					} 
-		.btn-purple{
-		margin-top: 10px !important;
-		}
-		hr{
-		width:100%;
-		}
-		input{
-		width:100%;
-		padding:0;
-		}
-		.lb-emp{
-		display: none;
-		}
-		.btn-black{
-		width:100%;
-		}
-		.btn-black:hover{
-		width:100%;
-		}
+      .container{
+      /*  margin: 0 !important;   */
+               } 
+      .btn-purple{
+      margin-top: 10px !important;
+      }
+      hr{
+      width:100%;
+      }
+      input{
+      width:100%;
+      padding:0;
+      }
+      .lb-emp{
+      display: none;
+      }
+      .btn-black{
+      width:100%;
+      }
+      .btn-black:hover{
+      width:100%;
+      }
 }
 .col-form-label{
 font-size:16px !important;
@@ -270,7 +283,7 @@ font-size:16px !important;
                         
                            <label for="mb_id" class="col-md-2 col-form-label">아이디</label>
                          <div class="col-md-10">
-                           <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 숫자 조합 12자리 이내" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required autocomplete="off">
+                           <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="영문 또는 영문 숫자 조합 8~12자리" maxlength="12" minlength="8" pattern="^[0-9|a-z|A-Z|]*$" required autocomplete="off">
                            </div>
                              </div>
                                 <div class="mb-3 row">
@@ -289,7 +302,7 @@ font-size:16px !important;
                          
                            <label for="mb_pw" class="col-md-2 col-form-label">비밀번호</label>
                             <div class="col-md-10">
-                           <input type="password" name="mb_pw" id="mb_pw" class="form-control" placeholder="비밀번호를 입력하세요" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+                           <input type="password" name="mb_pw" id="mb_pw" class="form-control" placeholder="8~20자리의 비밀번호를 입력하세요" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
                               required>
                               </div>
                            <div class="valid-feedback"><span>사용할 수 있는 패스워드입니다.</span></div>
@@ -314,7 +327,7 @@ font-size:16px !important;
                         
                                <div class="col-md-10">
                               <input id="mb_phone" type="number" name="mb_phone" class="form-control" title="전화번호 입력"
-                                       placeholder="ex) 01012341234" maxlength="11" minlength="10"
+                                       pattern="[0-9]+" placeholder="ex) 01012341234" maxlength="11" minlength="10"
                                        oninput="numberMaxLength(this);" required autocomplete="off" />
                               </div>
                
@@ -327,6 +340,7 @@ font-size:16px !important;
                                        class="btn-purple doubleChk" 
                                        onclick="javascript:sendAuthNum()">인증번호 받기</button><span id="timer"></span>
                                  </div>
+                                 
                         </div>
                                     
                                      <div class="mb-3 row">
@@ -366,11 +380,16 @@ font-size:16px !important;
                            </div>
                         </div>
                         <div class="class="d-grid gap-2 d-md-block " style="text-align: center;" >
-                           <button id="conRegister" type="submit" class=" btn-black">회원가입</button>
+                           <button id="conRegister" type="submit" class=" btn-black" disabled>회원가입</button>
                         </div>
                      </form>
                   </div>
    <script>
+   function phone_chk(obj){
+       var regex=/^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/i;
+       return (regex.test(obj));
+   }
+   
       /* 휴대폰 인증번호 보내고 타이머 스크립트 시작 */
       var timer;
       var isRunning = false;
@@ -379,6 +398,10 @@ font-size:16px !important;
       function sendAuthNum() {
          // 남은시간 3분으로 타이머 시작
          var leftTime = 180, display = document.querySelector('#timer');
+         var phone = $("#mb_phone").val();
+        if(!phone_chk(콜)){
+           return false;
+       } 
 
          // 이미 타이머가 작동중이면 정지
          if (isRunning) {

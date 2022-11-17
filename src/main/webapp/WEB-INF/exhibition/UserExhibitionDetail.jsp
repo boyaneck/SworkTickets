@@ -341,7 +341,7 @@ textarea {
 		<div class="row" style="line-height: 300%;">
 	<div class="col-3">작가</div> <div class="col-9" id="col">${exhibition.exh_artist}</div>
 	<div class="col-3">관람등급</div> <div class="col-9" id="col"> ${exhibition.exh_rating}</div>
-	<div class="col-3">관람시간</div> <div class="col-9" id="col"> ${exhibition.exh_time}</div>
+	<div class="col-3">관람시간</div> <div class="col-9" id="col" style="word-break: keep-all;"> ${exhibition.exh_time}</div>
 	<div class="col-3">발권정보</div> <div class="col-9" id="col"> ${exhibition.exh_shipping_info}</div>
 	<div class="col-3">수수료</div> <div class="col-9" id="col"><fmt:formatNumber value="${exhibition.exh_fee}" groupingUsed="true" />원</div>
 	<div class="col-3">가격</div> <div class="col-9" id="col1"><fmt:formatNumber value="${exhibition.exh_price}" groupingUsed="true" />원</div>
