@@ -64,13 +64,15 @@
    </div>
    <div class="col-sm-6" style="line-height: 200%;">
    <h4>${myPayList.exh_title}</h4>
-   금액 : ${myPayList.amount}<br>
+   금액 : ${myPayList.amount}원<br>
    구매자 : ${myPayList.buyer}<br>
    전화번호 : ${myPayList.buyer_tel}<br>
    결제일시 : ${myPayList.p_date}<br>
 <%--    결제고유ID : ${myPayList.p_id} --%>
 <%--    상점거래ID : ${myPayList.p_mer} --%>
-   전시 종료일 : ${myPayList.exh_end_date}
+   전시 종료일 : ${myPayList.exh_end_date}<br>
+   <small style="color: red; font-size: small;}">
+						*환불 시 사용하신 쿠폰을 돌려받지 못합니다.</small>
    </div>
 <%--    환불 여부 : ${myPayList.p_chk}<br> --%>
 <div class="col-sm-3 align-self-center">

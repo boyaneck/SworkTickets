@@ -130,14 +130,14 @@ h2 {
          <input type="hidden" name="mb_email" id="mb_email">
       </form>
       <h2 style = "background-color: #f6f5f5;  font-size: 30px; padding:0; margin-bottom: 40px; text-align: center;">아이디찾기</h2>
-
       <div class="container-fluid" id="fluid-height" style="text-align: -webkit-center; background-color: white; padding: 0; width: 700px;">
          <div class="row">
+<%if(request.getAttribute("mb_Id1")==null){ %>
             <h3 style="margin: 50px 0; margin-left: 5%; font-size:20px;">
                &nbsp;&nbsp;&nbsp;&nbsp;E-mail 인증</h3>
             <br>
          </div>
-
+         
          <div class="row">
             <div class="col-3" style="width:30px;">
                <b style="margin:0px; font-size:16px; font-weight:400;">이메일</b>
@@ -163,25 +163,26 @@ h2 {
                <button class="btn-purple" id='check' onclick='emailCheck()'>인증확인</button>
             </div>
          </div>
-
+			<%} %>
          <!--       인증번호확인 -->
          <%
-         if (request.getAttribute("mb_Id1") != null) {
-         %>
-         <div class="row">
+	String pullid = (String) request.getAttribute("mb_Id1");
+	String subid;//보여질아이디
+	String sub;//별처리될아이디
+	int length;//보여질갯수
+	if (pullid != null) {
+		 length = pullid.length() / 2;
+		subid=pullid.substring(0,length);
+	%>
+	<div class="row" style="margin-top: 50px !important;">
             <div class="col-4">
                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아이디</b>
             </div>
             <div class="col-5" style="margin-bottom: 50px;">
-               <input type="text" name="mb_id" id="mb_id" value="${mb_Id1}"
-                  disabled>
-                  <div class="col-3"></div>
-               <%
-               }
-               %>
-            </div>
-         </div>
+	<%=subid%><%for(int i=0;i<length;i++){%>*<%} %>
+	<% } %>
       </div>
+       <div class="col-3"></div>
    </div>
 </body>
 </html>

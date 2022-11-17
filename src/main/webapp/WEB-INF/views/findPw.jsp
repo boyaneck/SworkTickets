@@ -108,9 +108,10 @@ $(function() {
           success : function(data) {
              if (data == true) {
                 alert("인증되었습니다.");
-                $('#mb_email').val($("#email").val());
+            $('#mb_email').val($("#email").val());
             $("#findPwform").attr("action", "findPwform?find=email");
             $('#findPwform').submit();
+            	
              } else {
                 alert("인증번호가 일치하지 않습니다.");
              }
@@ -156,18 +157,20 @@ $(function() {
    <div class="container-fluid" id="fluid-height"
       style="text-align: -webkit-center; background-color: white; padding: 0; width: 50%">
       <div class="row">
+      <%if(request.getAttribute("mb_Id1")==null){ %>
             <h3 style="margin: 50px 0; margin-left: 5%; font-size:20px;">
                &nbsp;&nbsp;&nbsp;&nbsp;E-mail 인증
             </h3>
          <br>
       </div>
 
+
       <div class="row">
          <div class="col-3"  style="width:30px;">
             <b style="margin:0px; font-size:16px; font-weight:400;">아이디</b>
          </div>
          <div class="col-6">
-            <input  style="font-size:16px;" id="mb_id" name="mb_id" class="text_box" type="text" placeholder="아이디 입력" required autofocus>
+            <input  style="font-size:16px;" id="mb_id" name="mb_id" class="text_box" type="text" placeholder="아이디 입력" required>
             </div>
              <div class="col-3" style="margin-bottom: 50px;"></div>
       
@@ -194,10 +197,10 @@ $(function() {
             <div class="col-3" id="send"><button class="btn-purple" id='check' onclick='emailCheck()'>인증확인</button>
          </div>
       </div>
-      
+       <%} %>
 <!--       인증번호확인 -->
        <%if(request.getAttribute("mb_Id1")!=null){ %>
-      <div class="row">
+      <div class="row" style="margin-top: 50px !important;">
          <div class="col-3">
             <b style="margin:0px; font-size:16px; font-weight:400; width:70px;">비밀번호</b>
          </div>

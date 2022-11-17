@@ -9,8 +9,8 @@
 }
 
 a{
+  padding-top:0px !important;
   color : black;
-  font-weight: bold;
 }
 a:hover {
   color : #7832f7;

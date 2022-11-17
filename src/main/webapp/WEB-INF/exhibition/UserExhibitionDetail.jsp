@@ -271,7 +271,13 @@ $(document).ready(function(){
 	 }
 			
 }
-
+		function login1(){
+			var login1Confirm = confirm('로그인 페이지로 이동하시겠습니까?');
+		if (login1Confirm == true) {
+        		location.href ="login.jsp";
+   		 }
+ 	}
+		
 </script>
 <script>
 $(function(){
@@ -378,8 +384,16 @@ textarea {
 			<input type="hidden" name="exh_title" value="${exhibition.exh_title}">
 			<input type="hidden" name="amount" value="${exhibition.exh_price}">
 			<input type="hidden" name="exh_thumbnail" value="${exhibition.exh_thumbnail}">
+			<c:choose>
+				<c:when test="${mb_Id ne null}">
 			<button type="submit" class="btn11">예매하기</button>
+				</c:when>
+				<c:otherwise>
+			<button type="button" class="btn11" onclick='login1()'>예매하기</button>
+				</c:otherwise>
+			</c:choose>
 		</form>
+		
 </div>
 	</div>
 	</div>
