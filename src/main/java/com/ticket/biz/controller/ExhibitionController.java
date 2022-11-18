@@ -66,6 +66,8 @@ public class ExhibitionController {
 		String fileName_thumb = uploadFile_thumb.getOriginalFilename();
 		
 		String realPath = "C:/swork/tickets/src/main/webapp/images/";
+		realPath=mRequest.getSession().getServletContext().getRealPath("/images/");
+
 		String fileName="";
 		
 		List<MultipartFile> fileList = mRequest.getFiles("uploadFile");
