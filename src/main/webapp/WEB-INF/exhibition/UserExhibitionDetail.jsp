@@ -124,11 +124,12 @@ $(document).ready(function(){
 					var review_bno =list[i].review_bno;
 					var date= list[i].review_reg_date;
 					
-					
+					   var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+					   var today = new Date(date-timeOff).toISOString().split("T")[0];
 					
 					comment_html +="<div id='a"+[i]+"' class='aa1'>";
 					comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
-					comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ date+ "</div>";
+					comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ today + "</div>";
 					comment_html +="</div>";
 					
 			
