@@ -27,6 +27,11 @@ public class PayServiceImpl implements PayService {
 	}
 
 	@Override
+	public void updatePay1(PayVO vo) {
+		payDAO.updatePay1(vo);
+	}
+	
+	@Override
 	public void deletePay(PayVO vo) {
 		payDAO.deletePay(vo);
 	}
