@@ -282,29 +282,28 @@ $("#all_module").click(function() {
 						</c:set>
 						<form action="paycan" method="POST">
 							<input type="hidden" name="mid" id="merchant_uid" value="${allPayList.p_mer}">
-
-							<c:choose>
-							<c:when test="${allPayList.exh_st_date < sysYear}">
-							<c:choose>
-									<c:when test="${allPayList.p_chk eq 1}">
-									<button type="button" class="btn btn-outline-success">환불완료</button>
+							<c:if test="${allPayList.exh_st_date < sysYear}">
+								<c:choose>
+									<c:when test="${allPayList.p_chk eq 0}">
+										<button id="cancel_module" type="submit" class="btn-cancel">취소하기</button><br>
+										<span><small style="color: red;">시작된 전시입니다.</small></span>
 									</c:when>
 									<c:otherwise>
-										<button class="btn btn-outline-danger" onclick="" type="button">환불불가</button>
+										<button type="button" class="btn btn-outline-success">환불완료</button>
 									</c:otherwise>
-							</c:choose>
-							</c:when>
-							<c:otherwise>
-							<c:choose>
-							<c:when test="${allPayList.p_chk eq 0}">
-									<button id="cancel_module" type="submit" class="btn-cancel">취소하기</button>
-							</c:when>
-							<c:otherwise>
-								<button type="button" class="btn btn-outline-success">환불완료</button>
-							</c:otherwise>
-							</c:choose>
-							</c:otherwise>
-							</c:choose>
+								</c:choose>
+							</c:if>
+
+							<c:if test="${allPayList.exh_st_date > sysYear}">
+								<c:choose>
+									<c:when test="${allPayList.p_chk eq 0}">
+										<button id="cancel_module" type="submit" class="btn-cancel">취소하기</button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="btn btn-outline-success">환불완료</button>
+									</c:otherwise>
+								</c:choose>
+							</c:if>
 						</form>
 						</td>
 						</tr>
