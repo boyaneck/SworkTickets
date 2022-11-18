@@ -150,6 +150,7 @@ public class PayController {
 			} else {
 				payService.updatePay(vo);
 				PayVO ch= payService.getPay(vo);
+				if(ch.getCb_id()>0) {
 				int cb_id= ch.getCb_id();
 				String c_mb_id=ch.getMb_id();
 			
@@ -157,6 +158,8 @@ public class PayController {
 				cb_vo.setCb_id(cb_id);
 				cb_vo.setCb_check(0);
 				couponBoxService.updateCouponBox(cb_vo);
+				System.out.println("쿠폰 취소");
+				}
 				System.err.println("환불성공");
 				return "redirect:getAllPayList";
 			}
@@ -166,6 +169,17 @@ public class PayController {
 				return "redirect:getPayList";
 			} else {
 				payService.updatePay(vo);
+				PayVO ch= payService.getPay(vo);
+				if(ch.getCb_id()>0) {
+				int cb_id= ch.getCb_id();
+				String c_mb_id=ch.getMb_id();
+			
+				cb_vo.setMb_id(c_mb_id);
+				cb_vo.setCb_id(cb_id);
+				cb_vo.setCb_check(0);
+				couponBoxService.updateCouponBox(cb_vo);
+				System.out.println("쿠폰 취소");
+				}
 				System.err.println("환불성공");
 				return "redirect:getPayList";
 		}
