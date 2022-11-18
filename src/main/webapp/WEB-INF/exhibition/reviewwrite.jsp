@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -61,13 +60,9 @@ pageContext.setAttribute("replaceChar", "\n");
                var review_no  =  list[i].review_no;
                var review_bno =  list[i].review_bno;
                var date       =  list[i].review_reg_date;
-               
-               
-            
-               
    
-   var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
-   var today = new Date(date-timeOff).toISOString().split("T")[0];
+			   var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+			   var today = new Date(date-timeOff).toISOString().split("T")[0];
                $("#.")
                
                comment_html +="<div id='a"+[i]+"' class='aa1'>";
