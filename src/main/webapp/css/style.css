@@ -173,19 +173,19 @@ input::-webkit-inner-spin-button {
 }
 
 @media(max-width:768px){
-	.carousel .carousel-item{
+   .carousel .carousel-item{
     height: 200px;
-	}
+   }
 }
 
 @media(max-width:768px){
 .carousel-item img {
-		position: absolute;
-		top: 0;
-		left: -70px;
-		min-width: 500px;
-		min-height: 190px;
-	}
+      position: absolute;
+      top: 0;
+      left: -70px;
+      min-width: 500px;
+      min-height: 190px;
+   }
 }
 /* 헤더검색 시작 */
 .form-control.search{
@@ -369,10 +369,13 @@ a.nav-link.dropdown-toggle.header-toggle-login::after{
    position:relative;
    display: inline-block;
    text-align: center;
-    height: 2800px;
-    line-height: 100px;
+/*     height: 2800px; */
+/*     line-height: 100px; */
+      line-height: 55px !important;
 }
-
+.card_body-1, .card_body-2{
+  margin-top: 17px !important;
+}
 .rank_box > img {
    position:relative;
    display: inline-block;
@@ -740,4 +743,3 @@ div.rectangle{
    transform: translate(0, 60%);
 } 
 }
-
