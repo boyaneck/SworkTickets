@@ -44,14 +44,15 @@
     
       <li class="nav-item">
       <c:if test='${mb_Id eq "admin"}'>
-        <span class="nav-hello hambuger" style="font-size: 11pt;">모바일에서는 관리자페이지 접근이 불가능합니다.<br></span>
+        <span class="nav-hello hambuger" style="font-size: 11pt; color: red;">모바일에서는 관리자페이지 접근이 불가능합니다.<br></span>
       </c:if>
       <c:if test='${mb_Id ne NULL}'>
         <span class="nav-hello hambuger">${mb_Id}님 안녕하세요</span>
       </c:if>
       </li>
       <li class="nav-item dropdown hambuger">
-      <c:if test='${mb_Id ne NULL}'>
+      <c:if test='${mb_Id ne NULL && mb_Id ne "admin" }'>
+     
         <a class="nav-link hambuger" data-toggle="dropdown" role="button" 
         style="font-size:20px; font-weight:600; color:#1f1f1f;"> 마이페이지 </a>
         <div class="dropdown-menu header-menu" aria-labelledby="member" style="margin-right:20px;">
@@ -110,12 +111,8 @@
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/local"> 지역 </a>
          </li>
-         <li class="nav-item dropdown header-title">
-            <a class="nav-link header" data-toggle="dropdown" href="/getCouponList" role="button" aria-haspopup="true" aria-expanded="false"> 쿠폰 </a>
-            <div class="dropdown-menu header-menu" aria-labelledby="coupon">
-            <a class="dropdown-item header-item" href="/getCouponList">쿠폰목록</a>
-            <a class="dropdown-item header-item" href="/insertCouponForm">쿠폰등록</a>
-            </div>
+         <li class="nav-item dropdown header-title">        
+            <a class="nav-link header" href="/getCouponList">쿠폰</a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" data-toggle="dropdown" href="/getOneList" role="button" aria-haspopup="true" aria-expanded="false"> 고객센터 </a>

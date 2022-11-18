@@ -57,21 +57,14 @@
 
                   <div class="col-md" style="transform: translate(0, 15%);">
                      <c:choose>
-                        <c:when test="${mb_Id eq 'admin'}">
-                           <button class="btn-coupon2"
-                              onclick="location.href='/getCoupon?c_num=${coupon.c_num}'">수정</button>
-                           <button class="btn-coupon1"
-                              onclick="location.href='/deleteCoupon?c_num=${coupon.c_num}'">삭제
-                           </button>
-                        </c:when>
-                        <c:when test="${mb_Id ne null}">
-                           <c:choose>
-                              <c:when test="${error!=1}">
-                                 <button class="btn-coupon3" 
-                                    onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
+                            <c:when test="${mb_Id eq 'admin'}">   
+                             
                               </c:when>
-                           </c:choose>
-
+                        <c:when test="${mb_Id ne null}">
+              
+                               <button class="btn-coupon3" 
+                                    onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
+                          
                         </c:when>
                         <c:otherwise>
                            <button class="btn-coupon3"  onclick="notlogin()">쿠폰받기</button>
