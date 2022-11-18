@@ -95,18 +95,11 @@ pageContext.setAttribute("replaceChar", "\n");
                 comment_html += "</div><hr>";
                }
                else  comment_html += "</div><hr>";
-               
-               
-               });  // 여기까지가 for문
-               
-      
-         
               
+               }); 
+            
             $(".comment_Box").html(comment_html);
-            
-            
-               
-            
+       
               } // 컨트롤러로 부터 받은 값=댓글이 있다면 if 문 여기서 끝 
                else{
                var comment_html = "<div style='margin-left:440px; margin-top:100px;'><strong>등록된 댓글이 없습니다.</strong></div>";
@@ -121,9 +114,7 @@ pageContext.setAttribute("replaceChar", "\n");
     });
 
       function del(val){
-         /*송원선*/
          const review_bno2=${exhno2};
-         /*송원선*/
             var delConfirm = confirm('정말 삭제하시겠습니까?');
        
       if (delConfirm == true) {
@@ -198,9 +189,7 @@ pageContext.setAttribute("replaceChar", "\n");
       url:'/insertReview',
       data: JSON.stringify(
    {
-      /*송원선*/
       "review_bno":review_bno1,
-      /*송원선*/
       "review_writer":review_writer,
       "review_content":review_content
       
@@ -210,7 +199,7 @@ pageContext.setAttribute("replaceChar", "\n");
       success:function(data){
 
    if(data === 'InsertSuccess') {
-      alert('댓글 등록이 완료되었습니다.');
+   
       $('.review_writer').val(review_writer);
          $('.review_content').val(review_content);
             $('#con2').load(location.href + '#con2');
