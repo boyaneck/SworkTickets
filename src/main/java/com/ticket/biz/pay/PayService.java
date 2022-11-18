@@ -20,7 +20,7 @@ public interface PayService {
 
 		PayVO getPay(PayVO vo);
 
-
+		
 		//예매율 조회
 		List<GoodVO> getPayRank();
 		//예매 전체 카운트

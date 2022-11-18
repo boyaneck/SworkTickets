@@ -10,8 +10,8 @@
 <!-- 	</insert> -->
 	
 	<insert id="insertPay">
-		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT, EXH_NO, EXH_THUMBNAIL) 
-		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no}, #{exh_thumbnail})
+		INSERT INTO PAY(P_ID, P_MER, MB_ID, P_DATE, EXH_TITLE, BUYER, BUYER_EMAIL, BUYER_TEL, AMOUNT, EXH_NO, EXH_THUMBNAIL, CB_ID) 
+		VALUES( #{p_id}, #{p_mer}, #{mb_id}, #{p_date}, #{exh_title}, #{buyer}, #{buyer_email}, #{buyer_tel}, #{amount}, #{exh_no}, #{exh_thumbnail}, #{cb_id})
 	</insert>
 
 	<select id="getPayList" resultType="pay">
@@ -46,6 +46,11 @@
 		<if test="searchCondition == 'BUYER_TEL' "> AND buyer_tel LIKE CONCAT('%', #{searchKeyword},'%')</if>
 		<if test="searchCondition == 'P_DATE' "> AND p_date LIKE CONCAT('%', #{searchKeyword},'%')</if>
 		
+	</select>
+	
+	<select id="getPay" resultType="pay">
+		SELECT *FROM pay
+		WHERE p_mer=#{p_mer}
 	</select>
 
 	<update id="updatePay">

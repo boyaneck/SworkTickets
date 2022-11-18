@@ -20,9 +20,15 @@ public class PayVO {
 
 	private int offset;
 
-
+	private int cb_id;//쿠폰번호
 	
 
+	public int getCb_id() {
+		return cb_id;
+	}
+	public void setCb_id(int cb_id) {
+		this.cb_id = cb_id;
+	}
 	public String getExh_thumbnail() {
 		return exh_thumbnail;
 	}
