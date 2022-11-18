@@ -34,25 +34,33 @@
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-	   <div class="board"><h1>전시</h1></div>
-	<div class="container" >
-		<div class="row row-cols-1 row-cols-md-4 g-4" style="margin: auto;" >
-	<c:forEach items="${UserExhibitionList}" var="exhibition">
-			<div class="col" style="margin-bottom: 30px; cursor:pointer;" onclick="location.href='getUserExhibition?exh_no=${exhibition.exh_no}'" >
-				<div class="card h-100 heart">
-					<img src="/images/${exhibition.exh_thumbnail }"
-						class="card-img-top" alt="이미지" style="height: 300px;">
-					<div class="card-body" >
-						<b class="card-title">${exhibition.exh_title}</b>
-						<p class="card-text" style="font-size: 14px; color: gray;">${exhibition.exh_hall }<br>
-						${exhibition.exh_st_date}~${exhibition.exh_end_date}
-						<span style="text-align: right;"><i class = "xi-heart good" style="color:red;"></i> 
-					<b style="color: black; text-align: center;">${exhibition.rank_cnt}</b></span></p>
-					</div>
-				</div>
-			</div>
-	</c:forEach>
-		</div>
+      <div class="board"><h1>전시</h1></div>
+   <div class="container" >
+   <c:choose>
+      <c:when test="${paging.totalPageCnt eq 0}">
+      <br>
+      <h4 class="text-center">검색결과가 없습니다.</h4>
+      </c:when>
+      <c:otherwise>
+      <div class="row row-cols-1 row-cols-md-4 g-4" style="margin: auto;" >
+   <c:forEach items="${UserExhibitionList}" var="exhibition">
+         <div class="col" style="margin-bottom: 30px; cursor:pointer;" onclick="location.href='getUserExhibition?exh_no=${exhibition.exh_no}'" >
+            <div class="card h-100 heart">
+               <img src="/images/${exhibition.exh_thumbnail }"
+                  class="card-img-top" alt="이미지" style="height: 300px;">
+               <div class="card-body" >
+                  <b class="card-title">${exhibition.exh_title}</b>
+                  <p class="card-text" style="font-size: 14px; color: gray;">${exhibition.exh_hall }<br>
+                  ${exhibition.exh_st_date}~${exhibition.exh_end_date}
+                  <span style="text-align: right;"><i class = "xi-heart good" style="color:red;"></i> 
+               <b style="color: black; text-align: center;">${exhibition.rank_cnt}</b></span></p>
+               </div>
+            </div>
+         </div>
+   </c:forEach>
+      </div>
+         </c:otherwise>
+   </c:choose>
 </div>
 	<!-- 		반복처리할 태그 시작 -->
 			<div id="btnBox_parent">
