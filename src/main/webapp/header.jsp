@@ -51,7 +51,7 @@
       </c:if>
       </li>
       <li class="nav-item dropdown hambuger">
-      <c:if test='${mb_Id ne NULL && mb_Id ne "admin" }'>
+      <c:if test='${mb_Id ne NULL && mb_Id ne "admin" && social ne 1}'>
      
         <a class="nav-link hambuger" data-toggle="dropdown" role="button" 
         style="font-size:20px; font-weight:600; color:#1f1f1f;"> 마이페이지 </a>

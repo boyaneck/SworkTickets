@@ -80,7 +80,7 @@
          </div>
 </div>
    	<!-- 		반복처리할 태그 시작 -->
-			<div id="btnBox_parent">
+			<div id="btnBox_parent" >
 				<div id="btnBox">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">

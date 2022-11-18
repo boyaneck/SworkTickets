@@ -107,7 +107,7 @@ cursor : pointer;
 /* rank시작 */
 
 .rank-semititle {
-	padding-left: 25px;
+   padding-left: 25px;
 }
 
 .rank_box {
@@ -174,7 +174,7 @@ cursor : pointer;
       width: 100%;
 }
 .container-card {
-	max-width: 100%;
+   max-width: 100%;
    width: 100%;
    height: 90%;
    box-sizing: initial;
@@ -210,8 +210,8 @@ cursor : pointer;
 /* 카드 끝*/
 
 body, html {
-	width: 100%;
-	overflow-x: hidden;
+   width: 100%;
+   overflow-x: hidden;
 }
 }
 
@@ -232,7 +232,7 @@ body, html {
          </div>
       </div>
       
-		<div class="new_title">
+      <div class="new_title">
       <h2>
          <span style="color: #7832f7">NEW</span> EXHIBITION
       </h2>

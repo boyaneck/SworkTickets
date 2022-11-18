@@ -74,8 +74,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				<div class="input-group-prepend">
 					<span class="input-group-text"> 내용</span>
 				</div>
+
 				<textarea class="form-control innm" rows="20" cols="10" id="board_comment"
 					name="noti_content" style="background-color:white !important;">${board.noti_content}</textarea>
+
 			</div>
 
 			<div class="input-group mb-3">

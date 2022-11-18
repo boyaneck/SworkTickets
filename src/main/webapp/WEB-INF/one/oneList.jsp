@@ -46,6 +46,10 @@ margin-top: 10px;
 .container-fluid{
 padding:0;}
 }
+
+.container-fluid{
+ padding:0 8% 0 8%;
+}
 </style>
 <script>
 
@@ -94,7 +98,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
          <button class="btn btn-success" type="submit" style="border-radius:4px">검색</button>
       </form>
    </nav>
-   <div class="container-fluid">
+   <div class="container-fluid" >
       <table class="table table-hover">
          <thead class="btn-primary">
             <tr>
@@ -118,7 +122,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
                
                <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                 <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter tb">${one.one_no}</td>
-                <td class="tdCenter"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> ${one.one_title} <c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i> </c:if></td>
+                <td class="tdCenter"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> ${one.one_title}  <c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i> </c:if></td>
                 <td class="tdCenter">${one.one_writer }</td>
                 <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      </tr>
@@ -128,7 +132,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
                      <c:otherwise>
                      
                         <tr><td class="tdCenter tb" >${one.one_no}</td>
-                           <td class="tdCenter aa"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i>비밀게시글은 작성자와 관리자만 볼 수 있습니다.<c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i></c:if></td>
+                           <td class="tdCenter aa"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> 비밀게시글은 작성자와 관리자만 볼 수 있습니다.<c:if test="${one.one_answer ne NULL}">  <i class ="xi-wechat" style="font-size: 24px; " ></i></c:if></td>
                            <td class="tdCenter">${one.one_writer }</td>
                            <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                         </tr>
@@ -141,7 +145,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
                   <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                      <td class="tdCenter tb">${one.one_no}</td>
-                     <td class="tdCenter">${one.one_title} <c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i></c:if></td>
+                     <td class="tdCenter">${one.one_title} <c:if test="${one.one_answer ne NULL}">  <i class ="xi-wechat" style="font-size: 24px; " > </i></c:if></td>
                      <td class="tdCenter">${one.one_writer}</td>
                      <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      
@@ -152,47 +156,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
                </c:if>
                
                
-<%--                 <c:if test="${one.one_answer eq null}"> --%>
-<%--                 <c:if test="${one.one_secret eq 'true'}"> --%>
-<%--                <c:choose> --%>
-<%--                <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin' }"> --%>
-               
-               
-<%--                <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''"> --%>
-<%--                 <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter tb">${one.one_no}</td> --%>
-<%--                 <td class="tdCenter"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> ${one.one_title}</td> --%>
-<%--                 <td class="tdCenter">${one.one_writer }</td> --%>
-<%--                 <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td> --%>
-<!--                      </tr> -->
-                     
-                    
-<%--                      </c:when> --%>
-<%--                      <c:otherwise> --%>
-                     
-<%--                         <tr><td class="tdCenter tb" >${one.one_no}</td> --%>
-<!--                            <td class="tdCenter aa"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td> -->
-<%--                            <td class="tdCenter">${one.one_writer }</td> --%>
-<%--                            <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td> --%>
-<!--                         </tr> -->
-<%--                      </c:otherwise> --%>
-<%--                   </c:choose> --%>
-
-<%--                </c:if> --%>
-
-<%--                <c:if test="${one.one_secret eq 'false'}"> --%>
-
-<%--                   <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''"> --%>
-<%--                      <td class="tdCenter tb">${one.one_no}</td> --%>
-<%--                      <td class="tdCenter">${one.one_title}</td> --%>
-<%--                      <td class="tdCenter">${one.one_writer}</td> --%>
-<%--                      <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td> --%>
-                     
-
-<!--                   </tr> -->
-                 
-
-<%--                </c:if> --%>
-<%--                 </c:if> --%>
               
 			
             </c:forEach>

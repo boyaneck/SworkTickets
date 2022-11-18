@@ -25,46 +25,29 @@
 var edate = new Date('${exhibition.exh_end_date}');
 var sdate = new Date('${exhibition.exh_st_date}');
 var ndate = new Date();
-// var mond = document.getElementById("modify"); 	
-// var dond = document.getElementById("del");
-// var aond = document.getElementById("approval"); 	
 
 $(function() {
 	let approval = "${exhibition.exh_approval}";
-   console.log(approval);
+	var banne = "${exhibition.exh_banne}";
+   
    if (approval == 1 && edate <= ndate) {
-//    	$(#modify).attr("disabled", true);
-//    	$(#del).attr("disabled", true);
-//    	$(#approval).attr("disabled", true);
-//    	mond.style.display = 'none';
-//    	dond.style.display = 'none';
-//    	aond.style.display = 'none';
-//    	$('#modify').style.display = 'none';
-//    	$('#del').style.display = 'none';
-//    	$('#approval').style.display = 'none';
-	console.log("123");
-//    	document.getElementById("modify").style.display = "none";
-//    	document.getElementById("del").style.display = "none";
-//    	document.getElementById("approval").style.display = "none";
+	   	$("#modify").hide();
+	   	$("#del").hide();
+	 	$("#approval").hide();
    } else if (approval == 1) {
-	console.log("1234");
 	 	$("#del").hide();
-// 	 	document.getElementById("del").style.display = "none";
-// 	   	document.getElementById("approval").style.display = "none";
-//    	$('#del').style.display = 'none';
-//    	$('#approval').style.display = 'none';
-//    	dond.style.display = 'none';
-//    	aond.style.display = 'none';
-//    	$(#del).attr("disabled", true);
-//    	$(#approval).attr("disabled", true);
+	 	$("#approval").hide();
    } else if (approval == 0 && sdate <= ndate) {
-	console.log("12345");
-	   	document.getElementById("approval").style.display = "none";
-//    	$('#approval').style.display = 'none';
-//    	aond.style.display = 'none';
+	   $("#approval").hide();
    } else{
-	console.log("123456");
    }
+   
+   if (banne != '' ) {
+   } else{
+	   $("#exh_banne").css("display", "none");
+	   $(".img").html(" 배너 없음");
+   }
+   
 });
 
 
@@ -94,7 +77,6 @@ function approval(){
 }
 
 var tt = new Date('${exhibition.exh_mdf_date}');
-console.log(tt);
 </script>
 </head>
 <body>
@@ -118,7 +100,7 @@ console.log(tt);
 			<aside>
 				<div id="layoutSidenav" style="text-align: center;">
 					<div id="layoutSidenav_nav">
-						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 5000px;">
+						<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="height: 4100px;">
 							<div class="sb-sidenav-menu">
 								<div class="nav">
 									<div class="sb-sidenav-menu-heading"></div>
@@ -303,9 +285,6 @@ console.log(tt);
 
 			<input type="hidden" id="exh_place_x" name="exh_place_x">
 			<input type="hidden" id="exh_place_y" name="exh_place_y">
-<%-- 			<input type="text" id="exh_place_x" name="exh_place_x" placeholder="x좌표" value="${exhibition.exh_place_x}"> --%>
-<%-- 			<input type="text" id="exh_place_y" name="exh_place_y" placeholder="y좌표" value="${exhibition.exh_place_y}"> --%>
-<!-- 			<span> - 해당 내용은 히든처리할 예정입니다.</span> -->
 
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -320,21 +299,16 @@ console.log(tt);
 				<div class="input-group-prepend">
 					<label for="exh_thumbnail" class="input-group-text">썸네일</label>
 				</div>
-<!-- 				<input type="text" class="form-control innm" id="exh_thumbnail" -->
-<%-- 					name="exh_thumbnail" value="${exhibition.exh_thumbnail}" readonly> --%>
-				<div img><img src="/images/${exhibition.exh_thumbnail}" alt="${exhibition.exh_thumbnail}" style="width:100%;">
+				<div><img src="/images/${exhibition.exh_thumbnail}" alt="${exhibition.exh_thumbnail}" style="width:500px;height: 400px;">
 				</div>
 				${exhibition.exh_thumbnail}
 			</div>
-
-			<div class="input-group mb-3">
+			
+					<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<label for="exh_banne" class="input-group-text">배너</label>
+					<label for="exh_banne" class="input-group-text"> 배 너 </label>
 				</div>
-<!-- 				<input type="text" class="form-control innm" id="exh_banne" -->
-<%-- 					name="exh_banne" value="${exhibition.exh_banne}" readonly> --%>
-				<div style="text-align: center;"> 
-				<img src="/images/${exhibition.exh_banne}" alt="${exhibition.exh_banne}" style="width:100%;">
+				<div class="img" style="align-self:center; margin-left: 10px;"><img src="/images/${exhibition.exh_banne}" alt="${exhibition.exh_banne}" id="exh_banne" style="width:500px;height: 400px;">
 				</div>
 				${exhibition.exh_banne}
 			</div>
@@ -344,10 +318,8 @@ console.log(tt);
 				<div class="input-group-prepend">
 					<label for="exh_img" class="input-group-text">이미지</label>
 				</div>
-<!-- 				<input type="text" class="form-control innm" id="exh_img" -->
-<%-- 					name="exh_img" value="${exhibition.exh_img}" readonly> --%>
     	       <div style="text-align: center;"> 
-    	       <img src="/images/${item}" alt="${item}" style="width:100%;">
+    	       <img src="/images/${item}" alt="${item}" style="width:500px;height:400px;">
     	       </div>
     	       ${item}
 				</div>
@@ -430,7 +402,7 @@ ${exhibition.exh_refund_info}
 				</textarea>
 			</div>
 
-			<div id="footer">
+			<div id="footer" style="margin-top: 50px;">
 				 <div>
 			<a href="modifymoveExhibition?"><button type="button" id="modify" class="btn btn-dark">수정</button></a>
 			<button type="button" id="del" class="btn btn-dark" onclick="del('${page}')">삭제</button>

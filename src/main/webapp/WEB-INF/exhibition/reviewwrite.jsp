@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -60,10 +61,14 @@ pageContext.setAttribute("replaceChar", "\n");
                var review_no  =  list[i].review_no;
                var review_bno =  list[i].review_bno;
                var date       =  list[i].review_reg_date;
+               
+               
+            
+               
    
-			   var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
-			   var today = new Date(date-timeOff).toISOString().split("T")[0];
-               $("#.")
+   var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+   var today = new Date(date-timeOff).toISOString().split("T")[0];
+
                
                comment_html +="<div id='a"+[i]+"' class='aa1'>";
                comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
@@ -95,12 +100,19 @@ pageContext.setAttribute("replaceChar", "\n");
                 comment_html += "</div><hr>";
                }
                else  comment_html += "</div><hr>";
+               
+               
+               });  
+               
+      
+         
               
-               }); 
-            
             $(".comment_Box").html(comment_html);
-       
-              } // 컨트롤러로 부터 받은 값=댓글이 있다면 if 문 여기서 끝 
+            
+            
+               
+            
+              }
                else{
                var comment_html = "<div style='margin-left:440px; margin-top:100px;'><strong>등록된 댓글이 없습니다.</strong></div>";
                $(".comment_Box").html(comment_html);
@@ -114,7 +126,9 @@ pageContext.setAttribute("replaceChar", "\n");
     });
 
       function del(val){
+         /*송원선*/
          const review_bno2=${exhno2};
+         /*송원선*/
             var delConfirm = confirm('정말 삭제하시겠습니까?');
        
       if (delConfirm == true) {
@@ -189,7 +203,9 @@ pageContext.setAttribute("replaceChar", "\n");
       url:'/insertReview',
       data: JSON.stringify(
    {
+      /*송원선*/
       "review_bno":review_bno1,
+      /*송원선*/
       "review_writer":review_writer,
       "review_content":review_content
       
@@ -199,7 +215,7 @@ pageContext.setAttribute("replaceChar", "\n");
       success:function(data){
 
    if(data === 'InsertSuccess') {
-   
+      alert('댓글 등록이 완료되었습니다.');
       $('.review_writer').val(review_writer);
          $('.review_content').val(review_content);
             $('#con2').load(location.href + '#con2');

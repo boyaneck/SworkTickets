@@ -71,30 +71,29 @@
 	<!-- SELECT COUNT(*) FROM COUPON WHERE 1=1 -->
 	<!-- </select> -->
 
-	<select id="getPayRank" resultType="exhibition">
-		SELECT *, COUNT(p.P_ID)AS rank_cnt from exhibition as e
-		LEFT outer JOIN pay AS p
-		on e.exh_no= p.exh_no
-		WHERE 1=1
-		AND e.EXH_APPROVAL=1
-		AND e.EXH_ST_DATE >= NOW()
-		GROUP BY e.exh_no
-		ORDER BY
-		rank_cnt DESC
-		LIMIT 10;
+<select id="getPayRank" resultType="exhibition">
+      SELECT *, COUNT(p.P_ID)AS rank_cnt from exhibition as e
+      LEFT outer JOIN pay AS p
+      on e.exh_no= p.exh_no
+      WHERE 1=1
+      AND e.EXH_APPROVAL=1
+      AND e.EXH_END_DATE >= NOW()
+      GROUP BY e.exh_no
+      ORDER BY
+      rank_cnt DESC
+      LIMIT 10;
 
-	</select>
+   </select>
 
-	<select id="getPayCnt" resultType="_int">
-		SELECT SUM(rank_cnt)FROM(
-		SELECT e.*, COUNT(p.P_ID)AS rank_cnt from exhibition as e
-		LEFT outer JOIN pay AS p
-		on e.exh_no= p.exh_no
-		WHERE 1=1
-		AND e.EXH_APPROVAL=1
-		AND e.EXH_ST_DATE >= NOW()
-		GROUP BY e.exh_no
-		)a;
-	</select>
-
+   <select id="getPayCnt" resultType="_int">
+      SELECT SUM(rank_cnt)FROM(
+      SELECT e.*, COUNT(p.P_ID)AS rank_cnt from exhibition as e
+      LEFT outer JOIN pay AS p
+      on e.exh_no= p.exh_no
+      WHERE 1=1
+      AND e.EXH_APPROVAL=1
+      AND e.EXH_END_DATE >= NOW()
+      GROUP BY e.exh_no
+      )a;
+   </select>
 </mapper>
