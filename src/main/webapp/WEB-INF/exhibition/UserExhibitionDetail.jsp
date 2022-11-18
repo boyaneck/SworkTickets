@@ -64,6 +64,7 @@ function is_checked(eno) {//eno=3
 			  // val() : 값을 가져오라는 의미. val(5) : 값을 5로 설정하라는 의미. 
 				data : {exh_no : $('#my_checkbox'+eno).val()},
 				//type : data전송방식 = method type => post, get
+				
 				type : "POST",
 				//success : ajax가 성공적으로 처리되었을때 실행됨
 				success : function(res){ //res : 처리한곳에서 보내는 데이터

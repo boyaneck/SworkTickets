@@ -257,7 +257,7 @@ $("#all_module").click(function() {
 									<th>구매자</th>
 									<th>전화번호</th>
 									<th>결제일시</th>
-									<th>전시종료일</th>
+									<th>전시시작일</th>
 									<th>취소여부</th>
 								</tr>
 							</thead>
@@ -273,7 +273,7 @@ $("#all_module").click(function() {
 						<td data-label="결제일시"> ${allPayList.p_date}</td>
 						<%-- 결제고유ID : ${allPayList.p_id}<br> --%>
 				<%-- 		상점거래ID : ${allPayList.p_mer}<br> --%>
-						<td data-label="전시 종료일">${allPayList.exh_end_date}</td>
+						<td data-label="전시 시작일">${allPayList.exh_st_date}</td>
 						<%-- 	환불 여부 : ${myPayList.p_chk}<br> --%>
 						<td data-label="취소여부">
 						<c:set var="today" value="<%=new java.util.Date()%>" />
@@ -282,21 +282,29 @@ $("#all_module").click(function() {
 						</c:set>
 						<form action="paycan" method="POST">
 							<input type="hidden" name="mid" id="merchant_uid" value="${allPayList.p_mer}">
-							<c:if test="${allPayList.exh_end_date < sysYear}">
-								<button class="btn btn-outline-danger" onclick="" type="button">종료된
-									전시</button>
-							</c:if>
 
-							<c:if test="${allPayList.exh_end_date > sysYear}">
-								<c:choose>
-									<c:when test="${allPayList.p_chk eq 0}">
-										<button id="cancel_module" type="submit" class="btn-cancel">취소하기</button>
+							<c:choose>
+							<c:when test="${allPayList.exh_st_date < sysYear}">
+							<c:choose>
+									<c:when test="${allPayList.p_chk eq 1}">
+									<button type="button" class="btn btn-outline-success">환불완료</button>
 									</c:when>
 									<c:otherwise>
-										<button type="button" class="btn btn-outline-success">환불완료</button>
+										<button class="btn btn-outline-danger" onclick="" type="button">환불불가</button>
 									</c:otherwise>
-								</c:choose>
-							</c:if>
+							</c:choose>
+							</c:when>
+							<c:otherwise>
+							<c:choose>
+							<c:when test="${allPayList.p_chk eq 0}">
+									<button id="cancel_module" type="submit" class="btn-cancel">취소하기</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button" class="btn btn-outline-success">환불완료</button>
+							</c:otherwise>
+							</c:choose>
+							</c:otherwise>
+							</c:choose>
 						</form>
 						</td>
 						</tr>

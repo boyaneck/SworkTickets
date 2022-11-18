@@ -25,7 +25,7 @@ public class PayRowMapper implements RowMapper<PayVO> {
 		pay.setP_chk(rs.getInt("p_chk"));
 		pay.setExh_no(rs.getInt("exh_no"));
 		pay.setExh_thumbnail(rs.getString("exh_thumbnail"));
-
+		
 		return pay;
 	}
 
