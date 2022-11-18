@@ -16,9 +16,9 @@
    };
    
    function addCoupon(c_num){
-	   alert("쿠폰이 발급되었습니다");
+// 	   alert("쿠폰이 발급되었습니다");
 	   location.href='/insertCouponBox?c_num='+c_num;
-   }
+   };
 </script>
 <style>
 #over{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}

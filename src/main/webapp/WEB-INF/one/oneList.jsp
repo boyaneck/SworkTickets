@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../../header.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet"
    href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
 <script
@@ -111,50 +112,54 @@ if (request.getProtocol().equals("HTTP/1.1"))
          </thead>
          <tbody>
 
-
             <c:forEach items="${oneList}" var="one">
-          
-            
-               <c:if test="${one.one_secret eq 'true'}">
-               <c:choose>
-               <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin' }">
-               
-               
-               <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
-                <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter tb">${one.one_no}</td>
-                <td class="tdCenter"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> ${one.one_title}  <c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i> </c:if></td>
-                <td class="tdCenter">${one.one_writer }</td>
-                <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
-                     </tr>
-                     
-                    
-                     </c:when>
-                     <c:otherwise>
-                     
-                        <tr><td class="tdCenter tb" >${one.one_no}</td>
-                           <td class="tdCenter aa"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> 비밀게시글은 작성자와 관리자만 볼 수 있습니다.<c:if test="${one.one_answer ne NULL}">  <i class ="xi-wechat" style="font-size: 24px; " ></i></c:if></td>
-                           <td class="tdCenter">${one.one_writer }</td>
-                           <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
-                        </tr>
-                     </c:otherwise>
-                  </c:choose>
+         
+			
+	    	 <c:choose>
+	               <c:when test="${one.one_secret eq 'true'}">
+	               <c:choose>
+			               <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin' }">
+			                
+						               <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
+						                <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter tb">${one.one_no}</td>
+						                <td class="tdCenter"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> ${one.one_title}  <c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i> </c:if></td>
+						                <td class="tdCenter">${one.one_writer}</td>
+						                <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+			                     </tr>
+	                 
+	                     </c:when>
+	                     <c:otherwise>
+	                     
+	                        <tr><td class="tdCenter tb" >${one.one_no}</td>
+	                           <td class="tdCenter aa"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> 비밀게시글은 작성자와 관리자만 볼 수 있습니다.<c:if test="${one.one_answer ne NULL}">  <i class ="xi-wechat" style="font-size: 24px; " ></i></c:if></td>
+	                           <td class="tdCenter">****</td>             
+	                           <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+	                        </tr>
+	                     </c:otherwise>
+	                  </c:choose>
 
-               </c:if>
+               </c:when>
 
-               <c:if test="${one.one_secret eq 'false'}">
+               <c:otherwise>
 
                   <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                      <td class="tdCenter tb">${one.one_no}</td>
                      <td class="tdCenter">${one.one_title} <c:if test="${one.one_answer ne NULL}">  <i class ="xi-wechat" style="font-size: 24px; " > </i></c:if></td>
-                     <td class="tdCenter">${one.one_writer}</td>
-                     <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
-                     
-
-                  </tr>
+                  					   <c:set var="index" value='${fn:indexOf(one.one_writer, "@")}'/>
+								         	<c:choose>
+										        <c:when test="${index ne -1 }">
+										         	 <c:set var="sub" value='${fn:substring(one.one_writer,0,index+1) }***'/>
+										         	 <td class="tdCenter">${sub}</td>
+												</c:when>
+												<c:otherwise>
+												  <td class="tdCenter">${one.one_writer }</td>
+												</c:otherwise>			
+											</c:choose>
                  
-
-               </c:if>
-               
+                     <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                  </tr>
+               </c:otherwise>
+               </c:choose>
                
               
 			

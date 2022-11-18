@@ -48,23 +48,15 @@ color:white !important;
 
 
 
-<div class="input-group mb-3">
+			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_cs_phone" class="input-group-text">아이디</label>
 				</div>
 			
-				
-				<c:choose>
-					<c:when test="${social eq 1 }">
-						<c:set var="TextValue" value="${mb_Id}"/>
-				<input type="text" class="form-control innm" id="one_writer"
-					name="one_writer" value="${fn:substring(TextValue,0,5) }****" readonly required style="background-color:white!important">
-					</c:when>
-					<c:otherwise>
 						<input type="text" class="form-control innm" id="one_writer"
 					name="one_writer" value="${mb_Id}" readonly required style="background-color:white!important">
-					</c:otherwise>
-					</c:choose>
+					
+					
 			</div>
          <div class="input-group mb-3">
 				<div class="input-group-prepend">
