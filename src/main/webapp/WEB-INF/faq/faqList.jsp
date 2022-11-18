@@ -29,6 +29,7 @@
   right: calc(1rem + 6px);
   display: block;
   transition: all 0.5s;
+  
 }
 
 .collapsible-link[aria-expanded='true']::after {
@@ -69,8 +70,8 @@ body {
 <div class="container" style="margin-bottom:60px;">
   <!-- For demo purpose -->
   <div class="row py-5">
-    <div class="col-lg-9 mx-auto text-white text-center">
-      <h1 class="display-4" style="color:black !important;">자주 묻는 질문</h1>
+    <div class="col-lg-9 mx-auto text-white text-center" style="margin-left:300px;" >
+      <h1 class="display-4" style="color:black !important; margin-left:20px;">자주 묻는 질문</h1>
     </div>
   </div>
 
@@ -78,7 +79,7 @@ body {
 
   <div class="row">
 <c:forEach items="${faqList}" var="faq">
-    <div class="col-lg-9 mx-auto">
+    <div class="col-lg-9 mx-auto" style="left:3.8%">
       <!-- Accordion -->
       <div id="accordionExample" class="accordion shadow">
         <!-- Accordion item 1 -->

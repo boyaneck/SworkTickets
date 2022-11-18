@@ -48,7 +48,7 @@ width:100%;
 margin-top: 10px;
 }
 .container-fluid{
-padding:0;}
+/* padding:0 8% 0 8%;} */
 }
 
 
