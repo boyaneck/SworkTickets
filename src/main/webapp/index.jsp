@@ -77,12 +77,12 @@
 }
 
 .card_body-1 {
-   padding: 29px 20px 30px 20px;
+/*    padding: 29px 20px 30px 20px; */
    text-align: -webkit-center;
 }
 
 .card_body-2 {
-   padding: 29px 20px 30px 20px;
+/*    padding: 29px 20px 30px 20px; */
    text-align: -webkit-center;
 }
 
@@ -121,7 +121,7 @@ cursor : pointer;
 /*    position:relative; */
 /*    display: inline-block; */
 /*    text-align: center; */
-     height: 1900px; 
+/*      height: 1900px;  */
      line-height: 20px; 
  } 
 
@@ -357,10 +357,10 @@ body, html {
              glist_html += "<img src='/images/"+g_thumb+"' alt='"+g_thumb+"'>";
              glist_html += `</div>`;
              glist_html += `<div class="card_body-1">`;
-             glist_html += "<p style='font-size:16px;'>"+g_stdate+" ~ "+g_enddate+"</p>";
-             glist_html += `<div>`;
-             glist_html += "<span style='font-size:16px;'>"+g_local_name+"</span>";
-             glist_html += `</div>`;
+             glist_html += "<a style='font-size:16px;'>"+g_stdate+" ~ "+g_enddate+"</a><br>";
+//              glist_html += `<div>`;
+             glist_html += "<a style='font-size:16px;'>"+g_local_name+"</a>";
+//              glist_html += `</div>`;
              glist_html += `</div>`;
              glist_html += `</div>`;
              glist_html += `</div>`;
@@ -396,10 +396,10 @@ body, html {
          rlist_html += "<img src='/images/"+r_thumb+"' alt='"+r_thumb+"'>";
          rlist_html += `</div>`;
          rlist_html += `<div class="card_body-2">`;
-         rlist_html += "<p style='font-size:16px;'>"+r_stdate+" ~ "+r_enddate+"</p>";
-         rlist_html += `<div>`;
-         rlist_html += "<span style='font-size:16px;'>"+r_local_name+"</span>";
-         rlist_html += `</div>`;
+         rlist_html += "<a style='font-size:16px;'>"+r_stdate+" ~ "+r_enddate+"</a><br>";
+//          rlist_html += `<div>`;
+         rlist_html += "<a style='font-size:16px;'>"+r_local_name+"</a>";
+//          rlist_html += `</div>`;
          rlist_html += `</div>`;
          rlist_html += `</div>`;
          rlist_html += `</div>`;
