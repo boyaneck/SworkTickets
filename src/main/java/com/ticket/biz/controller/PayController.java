@@ -59,7 +59,11 @@ public class PayController {
 	public static final String SECRET = "kRywHQTLmybRtsInkq7tGfHTJnJmNd0DaAP9aCcimZnrUrq17DBgyhvHi00KOKY8BOhiDBZ7G0ud9Xz1";
 	@Autowired
 	private PayService payService;
-
+	@Autowired
+	private CouponBoxService couponBoxService;
+	@Autowired
+	private MemberService memberService;
+	
 	// 아임포트 인증(토큰)을 받아주는 함수
 	public String getImportToken() {
 		String result = "";
@@ -112,9 +116,10 @@ public class PayController {
 		}
 	}
 
+	
 	// 결제취소
 	@RequestMapping(value = "/paycan", method = RequestMethod.POST)
-	public String cancelPayment(@RequestParam String mid, PayVO vo, HttpSession session) {
+	public String cancelPayment(@RequestParam String mid, PayVO vo, HttpSession session ,CouponBoxVO cb_vo) {
 		String token = getImportToken();
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(IMPORT_CANCEL_URL);
@@ -124,6 +129,7 @@ public class PayController {
 		System.out.println(mid);
 		map.put("merchant_uid", mid);
 		String asd = "";
+		
 		try {
 			post.setEntity(new UrlEncodedFormEntity(convertParameter(map)));
 			HttpResponse res = client.execute(post);
@@ -137,12 +143,23 @@ public class PayController {
 			e.printStackTrace();
 		}
 		if(session.getAttribute("mb_Id").equals("admin")) {
-			System.out.println("찍힐려나 "+vo.getMb_id());
+		
 			if (asd.equals("null")) {
 				System.err.println("환불실패");
 				return "redirect:getAllPayList";
 			} else {
 				payService.updatePay(vo);
+				PayVO ch= payService.getPay(vo);
+				if(ch.getCb_id()>0) {
+				int cb_id= ch.getCb_id();
+				String c_mb_id=ch.getMb_id();
+			
+				cb_vo.setMb_id(c_mb_id);
+				cb_vo.setCb_id(cb_id);
+				cb_vo.setCb_check(0);
+				couponBoxService.updateCouponBox(cb_vo);
+				System.out.println("쿠폰 취소");
+				}
 				System.err.println("환불성공");
 				return "redirect:getAllPayList";
 			}
@@ -152,6 +169,17 @@ public class PayController {
 				return "redirect:getPayList";
 			} else {
 				payService.updatePay(vo);
+				PayVO ch= payService.getPay(vo);
+				if(ch.getCb_id()>0) {
+				int cb_id= ch.getCb_id();
+				String c_mb_id=ch.getMb_id();
+			
+				cb_vo.setMb_id(c_mb_id);
+				cb_vo.setCb_id(cb_id);
+				cb_vo.setCb_check(0);
+				couponBoxService.updateCouponBox(cb_vo);
+				System.out.println("쿠폰 취소");
+				}
 				System.err.println("환불성공");
 				return "redirect:getPayList";
 		}
@@ -178,10 +206,7 @@ public class PayController {
 	}
 
 	// 상품결제 폼 호출 (회원 결제)
-	@Autowired
-	private CouponBoxService couponBoxService;
-	@Autowired
-	private MemberService memberService;
+
 
 	@RequestMapping(value = { "/payUser" }, method = RequestMethod.POST)
 	public String pay1(HttpServletRequest request, Model model, String nowPageBtn, HttpSession session, CouponBoxVO vo,
@@ -285,6 +310,7 @@ public class PayController {
 //	      cb_id = Integer.parseInt(request.getParameter("cb_id"));
 	      cb_vo.setCb_id(cb_id);
 	      if(cb_id!=0) {
+	    	  cb_vo.setCb_check(1);  
 	      couponBoxService.updateCouponBox(cb_vo);
 	      }
 	      LocalDateTime  now1 = LocalDateTime.now();
@@ -353,6 +379,7 @@ public class PayController {
 		      cb_id = Integer.parseInt(request.getParameter("cb_id"));
 		      cb_vo.setCb_id(cb_id);
 		      if(cb_id!=0) {
+		    	  cb_vo.setCb_check(1);  
 		      couponBoxService.updateCouponBox(cb_vo);
 		      }
 		      String unixTimeStamp = p_date;
@@ -375,7 +402,7 @@ public class PayController {
 		vo.setMb_id(mb_id);
 		vo.setP_id(p_id);
 		vo.setP_mer(p_mer);
-
+		vo.setCb_id(cb_id);
 		String token = getImportToken();
 		setHackCheck(amount, mid, token);
 

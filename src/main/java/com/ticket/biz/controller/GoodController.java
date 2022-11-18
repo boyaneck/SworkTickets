@@ -36,6 +36,7 @@ public class GoodController {
 	@ResponseBody
 	public int md(GoodVO vo, HttpSession session) {
 		String id = (String) session.getAttribute("mb_Id");
+		
 		vo.setMb_id(id);
 		int row = goodService.insertGood(vo);
 		return row;

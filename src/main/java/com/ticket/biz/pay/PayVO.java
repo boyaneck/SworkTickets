@@ -14,21 +14,20 @@ public class PayVO {
 	private int exh_no; // 전시 번호
 	private String exh_end_date; // 종료 날짜
 	private String exh_thumbnail; // 전시 썸네일
-	private int s_chk; // 관람 유무
 
 	private String searchCondition;
 	private String searchKeyword;
 
 	private int offset;
 
-
+	private int cb_id;//쿠폰번호
 	
 
-	public int getS_chk() {
-		return s_chk;
+	public int getCb_id() {
+		return cb_id;
 	}
-	public void setS_chk(int s_chk) {
-		this.s_chk = s_chk;
+	public void setCb_id(int cb_id) {
+		this.cb_id = cb_id;
 	}
 	public String getExh_thumbnail() {
 		return exh_thumbnail;

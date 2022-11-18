@@ -64,7 +64,7 @@ public class KaKaoController {
 		HashMap<String, Object> userInfo = getUserInfo(access_Token);
 		
 //        System.out.println("access_Token : " + access_Token);
-		String id = (String) userInfo.get("id");
+		String id = (String) userInfo.get("email");
 		String email = (String) userInfo.get("email");
 		String nickname = (String) userInfo.get("nickname");
 //        System.out.println("userInfo : " + userInfo.get("email"));
@@ -73,7 +73,7 @@ public class KaKaoController {
 		member.setMb_email(email);
 		member.setMb_name(nickname);
 		model.addAttribute("kakaoInfo", userInfo);
-		session.setAttribute("mb_Id", userInfo.get("id"));
+		session.setAttribute("mb_Id", userInfo.get("email"));
 		if (member.getMb_id() != null) {
 			memberService.insertMember(member);
 		} else {

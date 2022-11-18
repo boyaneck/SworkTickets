@@ -37,11 +37,10 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon" name="addonHambuger">
           <i class="glyphicon fas fa-search"></i>
-         <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
-          <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
-  </div>
+                   <input type="text" class="form-control main hambuger" placeholder="검색" name="eSearchKeyword" id="eSearchKeywordHam" onkeyup="searchkeyHam()" value="${eSearchKeyword }" />
+          <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeyaHam()"> <i class="xi-magnifier"></i></button>
+        </div>
       </div>
-    
     
       <li class="nav-item">
       <c:if test='${mb_Id eq "admin"}'>
@@ -132,7 +131,7 @@
         <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
@@ -180,13 +179,13 @@
          <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
       <!-- 검색 -->
                <li class="nav-item">
-                     <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
+                     <%-- <span class="nav-hello-main">${mb_Id}님 안녕하세요</span> --%>
                </li>
                <li class="nav-item dropdown header-title">
                <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
@@ -201,7 +200,7 @@
             
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
       </c:when>
-        <c:when test="${mb_Id ne NULL || mb_Id ne NULL}">
+        <c:when test="${mb_Id ne NULL}">
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/getUserExhibitionList" > 전시 </a>
@@ -229,7 +228,7 @@
         <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
@@ -276,7 +275,7 @@
         <!-- 검색 -->
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon main" name="addonMain">
-          <input type="text" class="form-control main" placeholder="검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
+          <input type="text" class="form-control main" placeholder="전시검색" name="eSearchKeyword" id="eSearchKeyword" onkeyup="searchkey()" value="${eSearchKeyword }"/>
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeya()"> <i class="xi-magnifier"></i></button>
         </div>
       </div>
@@ -305,15 +304,33 @@ function searchkey() {
 
  // 엔터키가 눌렸을 때 실행하는 반응
     var exs = document.getElementById("eSearchKeyword").value;
-
     location.href="getUserExhibitionList?eSearchKeyword="+exs;
+    
     }
 }
+
+function searchkeyHam() {
+    if (window.event.keyCode == 13) {
+
+ // 엔터키가 눌렸을 때 실행하는 반응
+    var exsHam = document.getElementById("eSearchKeywordHam").value;
+    location.href="getUserExhibitionList?eSearchKeyword="+exsHam;
+    
+    }
+}
+
 function searchkeya() {
-
+   
     var exsu = document.getElementById("eSearchKeyword").value;
-
     location.href="getUserExhibitionList?eSearchKeyword="+exsu;
+    
+}
+
+function searchkeyaHam() {
+   
+    var exsuHam = document.getElementById("eSearchKeywordHam").value;
+    location.href="getUserExhibitionList?eSearchKeyword="+exsuHam;
+    
 }
 
 /* $(document).ready(function(){
