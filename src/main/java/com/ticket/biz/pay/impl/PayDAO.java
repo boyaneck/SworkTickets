@@ -20,8 +20,13 @@ public class PayDAO {
 			public void insertPay(PayVO vo) {
 				mybatis.insert("PayDAO.insertPay",vo);
 			}
+			// 취소 여부
 			public void updatePay(PayVO vo) {
 				mybatis.update("PayDAO.updatePay",vo);
+			}
+			// 관람여부
+			public void updatePay1(PayVO vo) {
+				mybatis.update("PayDAO.updatePay1",vo);
 			}
 
 			public void deletePay(PayVO vo) {

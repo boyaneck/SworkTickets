@@ -10,6 +10,8 @@
 <script type="text/javascript"
    src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
    <link rel="stylesheet" href="./css/pay.css">
+   <link href="css/style_admin.css" rel="stylesheet" />
+<link href="css/admin.css" rel="stylesheet" />
 
 <%@ include file="../../header.jsp"%>
 <style>
@@ -51,7 +53,7 @@
                </c:forEach>
             </select> <input class="form-control mr-sm-2" type="text"
                name="searchKeyword" placeholder="검색어를 입력하세요.">
-            <button class="btn1" type="submit">검색</button><br>
+            <button class="btn-cancel" type="submit">검색</button><br>
          </form>
       </nav>
    
@@ -70,9 +72,9 @@
    결제일시 : ${myPayList.p_date}<br>
 <%--    결제고유ID : ${myPayList.p_id} --%>
 <%--    상점거래ID : ${myPayList.p_mer} --%>
-   전시 종료일 : ${myPayList.exh_end_date}<br>
+   전시 시작일 : ${myPayList.exh_st_date}<br>
    <small style="color: red; font-size: small;}">
-						*환불 시 사용하신 쿠폰을 돌려받지 못합니다.</small>
+						*전시가 시작되면 환불이 불가능합니다.</small>
    </div>
 <%--    환불 여부 : ${myPayList.p_chk}<br> --%>
 <div class="col-sm-3 align-self-center">
@@ -82,21 +84,28 @@
          <input type="hidden" name="mid" id="merchant_uid"
             value="${myPayList.p_mer}">
             
-            <c:if test="${myPayList.exh_end_date < sysYear}">
-               <button class="btn btn-outline-aqua" onclick="" type="button">종료된 전시</button>
-               
-               </c:if>
-            
-            <c:if test="${myPayList.exh_end_date > sysYear}">
             <c:choose>
-               <c:when test="${myPayList.p_chk eq 0}">
-                  <button id="cancel_module" type="submit" class="btn btn-outline-danger">취소하기</button>
-               </c:when>
-               <c:otherwise>
-                  <button type="button" class="btn btn-outline-success">환불완료</button>
-               </c:otherwise>
-            </c:choose>
-            </c:if>
+							<c:when test="${myPayList.exh_st_date < sysYear}">
+							<c:choose>
+									<c:when test="${myPayList.p_chk eq 1}">
+									<button type="button" class="btn btn-outline-success">환불완료</button>
+									</c:when>
+									<c:otherwise>
+										<button class="btn btn-outline-danger" onclick="" type="button">환불불가</button>
+									</c:otherwise>
+							</c:choose>
+							</c:when>
+							<c:otherwise>
+							<c:choose>
+							<c:when test="${myPayList.p_chk eq 0}">
+									<button id="cancel_module" type="submit" class="btn-cancel">취소하기</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button" class="btn btn-outline-success">환불완료</button>
+							</c:otherwise>
+							</c:choose>
+							</c:otherwise>
+							</c:choose>
       </form>
 </div>
       </div>

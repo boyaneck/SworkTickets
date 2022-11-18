@@ -15,7 +15,7 @@
 	</insert>
 
 	<select id="getPayList" resultType="pay">
-		SELECT p.*,e.exh_end_date
+		SELECT p.*,e.exh_st_date
 		FROM PAY P, MEMBER MB, exhibition e
 		WHERE 1=1 
 		<if test="searchCondition == 'BUYER' "> AND buyer LIKE CONCAT('%', #{searchKeyword},'%')</if>
@@ -53,9 +53,17 @@
 		WHERE p_mer=#{p_mer}
 	</select>
 
+<!-- 	취소여부 -->
 	<update id="updatePay">
 		UPDATE Pay
 		SET P_CHK = 1
+		WHERE P_MER = #{p_mer}
+	</update>
+	
+<!-- 	관람여부 -->
+	<update id="updatePay1">
+		UPDATE Pay
+		SET S_CHK = 1
 		WHERE P_MER = #{p_mer}
 	</update>
 
@@ -69,7 +77,7 @@
 		on e.exh_no= p.exh_no
 		WHERE 1=1
 		AND e.EXH_APPROVAL=1
-		AND e.EXH_END_DATE >= NOW()
+		AND e.EXH_ST_DATE >= NOW()
 		GROUP BY e.exh_no
 		ORDER BY
 		rank_cnt DESC
@@ -84,7 +92,7 @@
 		on e.exh_no= p.exh_no
 		WHERE 1=1
 		AND e.EXH_APPROVAL=1
-		AND e.EXH_END_DATE >= NOW()
+		AND e.EXH_ST_DATE >= NOW()
 		GROUP BY e.exh_no
 		)a;
 	</select>

@@ -7,8 +7,10 @@ import com.ticket.biz.good.GoodVO;
 public interface PayService {
 	//CRUD 기능의 메소드 구현
 		void insertPay(PayVO vo);
-
+		// 취소여부
 		void updatePay(PayVO vo);
+		// 관람여부
+		void updatePay1(PayVO vo);
 
 		void deletePay(PayVO vo);
 
