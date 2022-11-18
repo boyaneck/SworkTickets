@@ -110,7 +110,7 @@ margin:0;
 
 </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <%    
 response.setHeader("Cache-Control","no-store");    
 response.setHeader("Pragma","no-cache");    
