@@ -82,7 +82,7 @@ public class NaverController {
 
 		model.addAttribute("naverInfo", userInfo);
 		session.setAttribute("mb_Id", userInfo.get("email"));
-
+		session.setAttribute("social", 1);
 		if (member.getMb_id() != null) {
 			memberService.insertMember(member);
 		} else {

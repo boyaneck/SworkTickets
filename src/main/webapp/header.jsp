@@ -51,21 +51,26 @@
       </c:if>
       </li>
       <li class="nav-item dropdown hambuger">
-      <c:if test='${mb_Id ne NULL && mb_Id ne "admin" }'>
-     
+      <c:if test='${mb_Id ne NULL && mb_Id ne "admin"}'>
+   
         <a class="nav-link hambuger" data-toggle="dropdown" role="button" 
         style="font-size:20px; font-weight:600; color:#1f1f1f;"> 마이페이지 </a>
+        
         <div class="dropdown-menu header-menu" aria-labelledby="member" style="margin-right:20px;">
+         <c:if test='${social ne 1}'>
            <a class="dropdown-item header-item" id="memberUpdate" href="mypageView">&nbsp회원수정</a>
+           </c:if>
            <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
              <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
              <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
         </div>
        </c:if>
       </li>
+       
       <li class="nav-item">
          <a class="nav-link mypage hambuger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>            
       </li>
+    
       <li class="nav-item" style="margin-top:0px;">
         <a class="nav-link hambuger" href="/getUserExhibitionList" style="padding-top:0px;" > 전시 </a>
       </li>
@@ -137,12 +142,7 @@
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
-               <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/admin" role="button" aria-haspopup="true" aria-expanded="false"> 관리자 </a>
-               <div class="dropdown-menu header-menu" aria-labelledby="member">
-               <!-- <a class="nav-link header-logout" href="/logoutGO">로그아웃</a> -->
-               <!-- <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a> -->
-               <a class="dropdown-item header-item" href="/admin" >관리자페이지</a>
-               </div>
+             	  <a class="nav-link header-item" href="/admin" >관리자페이지</a> 
                </li>
             </ul>
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
@@ -184,15 +184,19 @@
                <li class="nav-item">
                      <%-- <span class="nav-hello-main">${mb_Id}님 안녕하세요</span> --%>
                </li>
+              
                <li class="nav-item dropdown header-title">
                <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
-               <div class="dropdown-menu header-menu" aria-labelledby="member">
+               <div class="dropdown-menu header-menu" aria-labelledby="member"> 
+                <c:if test='${social ne 1}'>
                <a class="dropdown-item header-item" id="memberUpdate" href="mypageView">&nbsp회원수정</a>
+               </c:if>
                <a class="dropdown-item header-item" href="/getPayList">&nbsp나의구매내역</a>
                <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
                   <a class="dropdown-item header-item" href="/getMyGoodList">&nbsp내 좋아요 목록</a>
                </div>
                </li>
+               
             </ul>
             
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
@@ -233,6 +237,7 @@
                <li class="nav-item">
                      <%-- <span class="nav-hello">${kakaoId} 님 안녕하세요 </span> --%>
                </li>
+               
                <li class="nav-item dropdown header-title">
                <a class="nav-link mypage" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 마이페이지 </a>
                <div class="dropdown-menu header-menu" aria-labelledby="member">
@@ -241,6 +246,7 @@
                <a class="dropdown-item header-item" href="/MyCoupon">&nbsp내 쿠폰함</a>
                </div>
                </li>
+             
             </ul>
             
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>

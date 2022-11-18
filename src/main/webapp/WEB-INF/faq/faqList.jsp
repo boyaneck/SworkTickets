@@ -29,6 +29,7 @@
   right: calc(1rem + 6px);
   display: block;
   transition: all 0.5s;
+  
 }
 
 .collapsible-link[aria-expanded='true']::after {
@@ -69,8 +70,8 @@ body {
 <div class="container" style="margin-bottom:60px;">
   <!-- For demo purpose -->
   <div class="row py-5">
-    <div class="col-lg-9 mx-auto text-white text-center">
-      <h1 class="display-4" style="color:black !important;">자주 묻는 질문</h1>
+    <div class="col-lg-9 mx-auto text-white text-center" style="margin-left:300px;" >
+      <h1 class="display-4" style="color:black !important; margin-left:20px;">자주 묻는 질문</h1>
     </div>
   </div>
 
@@ -78,13 +79,13 @@ body {
 
   <div class="row">
 <c:forEach items="${faqList}" var="faq">
-    <div class="col-lg-9 mx-auto">
+    <div class="col-lg-9 mx-auto" style="left:3.8%">
       <!-- Accordion -->
       <div id="accordionExample" class="accordion shadow">
         <!-- Accordion item 1 -->
         <div class="card">
           <div id="headingTwo" class="card-header bg-white shadow-sm border-0" style="border-radius:5px; padding:20px;" >
-            <h6 class="mb-0 font-weight-bold" style="text-decoration:none;"><a href="#" data-toggle="collapse" data-target="#collapseTwo${faq.faq_no }" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">${faq.faq_title }</a></h6>
+            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" style="text-decoration: none;" data-target="#collapseTwo${faq.faq_no }" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">${faq.faq_title }</a></h6>
           </div>
           <div id="collapseTwo${faq.faq_no }" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
             <div class="card-body p-5">

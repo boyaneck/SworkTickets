@@ -86,6 +86,11 @@ h3 {
 		margin-bottom: 30px !important;
 	}
 }
+@media ( max-width : 576px) {
+	.line {
+		border-bottom: 0px !important;
+	}
+}
 
 @media ( max-width : 576px) {
 	#paytitle {
@@ -115,5 +120,116 @@ h3 {
 @media ( max-width : 576px) {
 	#sel1 {
 		margin-right: 0px !important;
+	}
+}
+
+@media ( max-width : 768px) {
+	#paytitle {
+		width: 100% !important;
+	}
+}
+
+@media ( max-width : 768px) {
+	#c_per {
+		font-size: 24pt !important;
+	}
+}
+
+@media ( max-width : 768px) {
+	.align-middle {
+		width: 100px !important;
+	}
+}
+
+@media ( max-width : 768px) {
+	#amount {
+		padding: 0 0 !important;
+		font-size: large;
+	}
+}
+
+@media ( max-width : 768px) {
+	#sel1 {
+		margin-right: 0px !important;
+	}
+}
+
+@media ( max-width : 992px) {
+	.line {
+		border-bottom: 0px !important;
+	}
+}
+
+@media ( max-width : 992px) {
+	#paytitle {
+		width: 100% !important;
+	}
+}
+
+@media ( max-width : 992px) {
+	#c_per {
+		font-size: 24pt !important;
+	}
+}
+
+@media ( max-width : 992px) {
+	.align-middle {
+		width: 100px !important;
+	}
+}
+
+@media ( max-width : 992px) {
+	#amount {
+		padding: 0 0 !important;
+		font-size: large;
+	}
+}
+
+@media ( max-width : 992px) {
+	#sel1 {
+		margin-right: 0px !important;
+	}
+}
+
+
+@media ( max-width : 1200px) {
+	.line {
+		border-bottom: 0px !important;
+	}
+}
+@media ( max-width : 1200px) {
+	#paytitle {
+		width: 100% !important;
+	}
+}
+
+@media ( max-width : 1200px) {
+	#c_per {
+		font-size: 24pt !important;
+	}
+}
+
+@media ( max-width : 1200px) {
+	.align-middle {
+		width: 100px !important;
+	}
+}
+
+@media ( max-width : 1200px) {
+	#amount {
+		padding: 0 0 !important;
+		font-size: large;
+	}
+}
+
+@media ( max-width : 1200px) {
+	#sel1 {
+		margin-right: 0px !important;
+	}
+}
+
+@media ( max-width : 1400px) {
+	.bttn {
+		font-size: 17px;
 	}
 }

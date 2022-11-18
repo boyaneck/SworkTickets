@@ -166,7 +166,7 @@
 					<label for="exh_content" class="input-group-text"style="padding-left: 18px; padding-right: 18px;" >내 용</label>
 				</div>
 				<textarea class="form-control" rows="10" id="comment"
-					id="faq_content" name="faq_content" placeholder="내용을 입력해주세요." required></textarea>
+					id="faq_content" name="faq_content" placeholder="내용을 입력해주세요." required style="resize: none;"></textarea>
 			</div>
 
          
