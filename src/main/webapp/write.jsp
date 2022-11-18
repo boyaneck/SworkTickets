@@ -47,28 +47,12 @@ color:white !important;
 
 
 
-
-
 <div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_cs_phone" class="input-group-text">아이디</label>
 				</div>
-				       <%
-				       String pullid=null;
-				       if((Integer)request.getAttribute("social")==1){
-					    pullid = (String) request.getAttribute("mb_Id");
-					    }
-				       String subid;//보여질아이디
-					   String sub;//별처리될아이디
-					   int length;//보여질갯수
-					   if (pullid != null) { 
-						   length=4;
-					      subid=pullid.substring(0,length);
-					   %>
 				<input type="text" class="form-control innm" id="one_writer"
-					name="one_writer" value="<%=subid%><%for(int i=0;i<length;i++){%>*<%} %>" readonly required style="background-color:white!important">
-					   
-			   <% } %>
+					name="one_writer" value="<%= session.getAttribute("mb_Id") %>" readonly required style="background-color:white!important">
 			</div>
          <div class="input-group mb-3">
 				<div class="input-group-prepend">
