@@ -53,14 +53,28 @@ padding:0;}
    location.href="getOne?one_no="+val;
 
  }
+//    function f_write(val){
+//     console.log(val);
+//     if(val == ''){
+//         alert("로그인이 되야 작성 가능합니다");
+//         location.href="/getOneList";
+//     }else{
+//         location.href="/goWrite";
+//     }
+//  }
    function f_write(val){
-    if(val == ''){
-        alert("로그인이 되야 작성 가능합니다");
-        location.href="/getOneList";
-    }else{
-        location.href="/goWrite";
-    }
- }
+		
+		  if(val ==''){
+			  var delConfirm = confirm(' 회원만 작성 가능합니다. 로그인 하시겠습니까?');
+			    if (delConfirm == true) {
+			        
+			        location.href ="login.jsp";
+			    }
+			    else {}
+			
+		}
+		else location.href="/goWrite";
+	    }
 </script>
 <body class="d-flex flex-column min-vh-100">
 <%    
@@ -75,8 +89,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
    </div>
    <nav id="searchNav" class="sub_title">
       <form class="form-inline justify-content-end" action="getOneList" method="post">
-          <input class="form-control mr-sm-2" type="text" name="searchKeyword"
-            placeholder="검색어를 입력하세요." value="${searchKeyword }">
+          <input  class="form-control mr-sm-2" type="text" name="searchKeyword"
+            placeholder="제목 또는 작성자 검색" value="${searchKeyword }">
          <button class="btn btn-success" type="submit" style="border-radius:4px">검색</button>
       </form>
    </nav>
@@ -93,22 +107,28 @@ if (request.getProtocol().equals("HTTP/1.1"))
          </thead>
          <tbody>
 
+
             <c:forEach items="${oneList}" var="one">
+          
+            
                <c:if test="${one.one_secret eq 'true'}">
                <c:choose>
-               <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin'}">
+               <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin' }">
+               
                
                <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                 <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter tb">${one.one_no}</td>
-                <td class="tdCenter">${one.one_title}<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
+                <td class="tdCenter"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> ${one.one_title} <c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i> </c:if></td>
                 <td class="tdCenter">${one.one_writer }</td>
                 <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
+                     </tr>
                      
+                    
                      </c:when>
                      <c:otherwise>
                      
                         <tr><td class="tdCenter tb" >${one.one_no}</td>
-                           <td class="tdCenter aa">비밀게시글은 작성자와 관리자만 볼 수 있습니다.<i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i></td>
+                           <td class="tdCenter aa"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i>비밀게시글은 작성자와 관리자만 볼 수 있습니다.<c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i></c:if></td>
                            <td class="tdCenter">${one.one_writer }</td>
                            <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                         </tr>
@@ -121,15 +141,60 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
                   <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''">
                      <td class="tdCenter tb">${one.one_no}</td>
-                     <td class="tdCenter">${one.one_title}</td>
+                     <td class="tdCenter">${one.one_title} <c:if test="${one.one_answer ne NULL}"><i class ="xi-wechat" style="font-size: 24px; " ></i></c:if></td>
                      <td class="tdCenter">${one.one_writer}</td>
                      <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td>
                      
 
                   </tr>
+                 
 
                </c:if>
+               
+               
+<%--                 <c:if test="${one.one_answer eq null}"> --%>
+<%--                 <c:if test="${one.one_secret eq 'true'}"> --%>
+<%--                <c:choose> --%>
+<%--                <c:when test="${one.one_writer eq mb_Id || mb_Id eq 'admin' }"> --%>
+               
+               
+<%--                <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''"> --%>
+<%--                 <td onclick="getone(${one.one_no})" style="cursor: pointer" class="tdCenter tb">${one.one_no}</td> --%>
+<%--                 <td class="tdCenter"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i> ${one.one_title}</td> --%>
+<%--                 <td class="tdCenter">${one.one_writer }</td> --%>
+<%--                 <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td> --%>
+<!--                      </tr> -->
+                     
+                    
+<%--                      </c:when> --%>
+<%--                      <c:otherwise> --%>
+                     
+<%--                         <tr><td class="tdCenter tb" >${one.one_no}</td> --%>
+<!--                            <td class="tdCenter aa"><i class = "xi-lock-o" style="padding-top:px; font-size: 17.5px; cursor:pointer;"></i>비밀게시글은 작성자와 관리자만 볼 수 있습니다.</td> -->
+<%--                            <td class="tdCenter">${one.one_writer }</td> --%>
+<%--                            <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td> --%>
+<!--                         </tr> -->
+<%--                      </c:otherwise> --%>
+<%--                   </c:choose> --%>
 
+<%--                </c:if> --%>
+
+<%--                <c:if test="${one.one_secret eq 'false'}"> --%>
+
+<%--                   <tr onclick="getone(${one.one_no})" style="cursor: pointer;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight=''"> --%>
+<%--                      <td class="tdCenter tb">${one.one_no}</td> --%>
+<%--                      <td class="tdCenter">${one.one_title}</td> --%>
+<%--                      <td class="tdCenter">${one.one_writer}</td> --%>
+<%--                      <td class="tdCenter tb"><fmt:formatDate value="${one.one_date}" pattern="yyyy-MM-dd HH:mm-ss" var="today" />${today}</td> --%>
+                     
+
+<!--                   </tr> -->
+                 
+
+<%--                </c:if> --%>
+<%--                 </c:if> --%>
+              
+			
             </c:forEach>
          </tbody>
       </table>
@@ -141,17 +206,17 @@ if (request.getProtocol().equals("HTTP/1.1"))
       <div id="btnBox">
          <!-- 반복처리할 태그 시작-->
          <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="getOneList?nowPageBtn=1&searchKeyword=${searchKeyword }">&laquo;</a>
+            <a href="getOneList?nowPageBtn=1&searchKeyword=${searchKeyword }"  ><strong>&laquo;</strong></a>
          </c:if>
          <c:if test="${paging.nowPageBtn > 1 }">
-            <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }">&lt;</a>
+            <a href="getOneList?nowPageBtn=${paging.nowPageBtn -1 }&searchKeyword=${searchKeyword }"  class="tt" ><strong>&lt;</strong></a>
          </c:if>
          <c:forEach begin="${paging.startBtn}" end="${paging.endBtn }"
             step="1" var="i">
             <c:choose>
                <c:when test="${paging.nowPageBtn == i}">
-                  <a style="font-weight: 400; color: #7832f7;" class="aSel"
-                     href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }"><strong>${i}</strong></a>
+                  <a style=" color: #7832f7; font-size:21px;" class="aSel"
+                     href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }" ><strong>${i}</strong></a>
                </c:when>
                <c:otherwise>
                   <a href="getOneList?nowPageBtn=${i}&searchKeyword=${searchKeyword }">${i}</a>
@@ -159,10 +224,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
             </c:choose>
          </c:forEach>
          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }&searchKeyword=${searchKeyword }">&gt;</a>
+            <a href="getOneList?nowPageBtn=${paging.nowPageBtn +1 }&searchKeyword=${searchKeyword }"><strong>&gt;</strong></a>
          </c:if>
          <c:if test="${paging.nowPageBtn < paging.totalBtnCnt }">
-            <a href="getOneList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }">&raquo;</a>
+            <a href="getOneList?nowPageBtn=${paging.totalBtnCnt}&searchKeyword=${searchKeyword }"><strong>&raquo;</strong></a>
          </c:if>
          <!-- 반복처리할 태그 끝 -->
       </div>

@@ -19,7 +19,7 @@
 
 <%@ include file="/header.jsp"%>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <fmt:parseDate var="startDate_D"  value="${today }" pattern="yyyy-MM-dd"/>
 <fmt:parseNumber var="startDate_N" value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
  

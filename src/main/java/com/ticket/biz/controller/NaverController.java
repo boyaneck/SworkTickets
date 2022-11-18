@@ -125,6 +125,7 @@ public class NaverController {
 
 		REDIRECT_URL = "http://newjeonsis.ml";
 //		REDIRECT_URL = "http://localhost:8090";
+//		REDIRECT_URL="http://hmticket.ml";
 		return tokenChk;
 
 	}

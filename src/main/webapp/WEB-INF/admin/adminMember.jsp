@@ -195,6 +195,7 @@ function numberMaxLength(e){
 					</div>
 				</div>
 			</aside>
+			
 <div id="container_box">
 	<div class="wrap" style="padding: 40px;">
 		<div class="container border-bottom border-dark">

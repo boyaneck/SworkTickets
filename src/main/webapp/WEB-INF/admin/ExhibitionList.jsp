@@ -106,8 +106,9 @@ margin-right:4%;
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordion">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="/insertmoveExhibition">전시등록</a> <a class="nav-link "
-												href="/getExhibitionList">전시목록</a>
+											<a class="nav-link" href="/insertmoveExhibition">전시등록</a> 
+											<a class="nav-link" href="/getExhibitionList">전시목록</a>
+												<a class="nav-link" href="/getUserExhibitionList">유저전시목록</a>
 										</nav>
 									</div>
 

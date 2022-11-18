@@ -56,7 +56,7 @@
 
 <update id="oneAnswer">
 	UPDATE ONEONE
-	SET ONE_ANSWER=#{one_answer} 
+	SET ONE_ANSWER=#{one_answer}
 	WHERE ONE_NO=#{one_no}
 </update>
 
@@ -64,7 +64,8 @@
 	UPDATE ONEONE 
 	SET ONE_TITLE=#{one_title},
 	ONE_CONTENT=#{one_content}, 
-	ONE_MODIFY =now()
+	ONE_MODIFY =now(),
+	ONE_SECRET =#{one_secret}
 	WHERE ONE_NO=#{one_no}
 
 </update>
