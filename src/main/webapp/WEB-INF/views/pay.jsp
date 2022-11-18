@@ -178,11 +178,11 @@ $('#testBtn').click(function(e){
 				<b>주문 상세 정보</b>
 			</h3>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-xl-6">
 				<img src="/images/${exh_thumbnail }" alt="이미지" style="width: 200px; height: 250px;" id="thum1">
 <!-- 					<img src="/images/2.png" alt="이미지" style="width: 200px; height: 250px;"> -->
 				</div>
-				<div class="col-md-6">
+				<div class="col-xl-6">
 					<div class="row">
 						<h4>
 							<b id="ptitle">${exh_title}</b>
@@ -201,22 +201,22 @@ $('#testBtn').click(function(e){
 				style="text-align: left; padding: 20px 0; background-color: white;">
 
 				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-5">
+					<div class="col-xl-1"></div>
+					<div class="col-xl-5">
 						<h3 style="padding: 0 0;">주문자 정보</h3>
 					</div>
-					<div class="col-md-6">
+					<div class="col-xl-6">
 						<input type="hidden" style="width: 100%">
 					</div>
 				</div>
 				<br>
 
 				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-2">
+					<div class="col-xl-1"></div>
+					<div class="col-xl-2">
 						<b>이름</b>
 					</div>
-					<div class="col-md-9">
+					<div class="col-xl-9">
 						<input type="text" name="buyer" id="buyer" placeholder="이름 입력" required
 							value="${member.mb_name}" style="width: 100%">
 					</div>
@@ -224,11 +224,11 @@ $('#testBtn').click(function(e){
 				<br>
 
 				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-2">
+					<div class="col-xl-1"></div>
+					<div class="col-xl-2">
 						<b>전화번호</b>
 					</div>
-					<div class="col-md-9">
+					<div class="col-xl-9">
 						<input type="text" name="buyer_tel" id="buyer_tel" required
 							placeholder="예시: 010-1111-2222" value='${member.mb_phone}'>
 					</div>
@@ -236,11 +236,11 @@ $('#testBtn').click(function(e){
 				<br>
 
 				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-2">
+					<div class="col-xl-1"></div>
+					<div class="col-xl-2">
 						<b>이메일</b>
 					</div>
-					<div class="col-md-9">
+					<div class="col-xl-9">
 						<input type="text" name="buyer_email" id="buyer_email" required
 							placeholder="이메일 입력" value='${member.mb_email}'>
 					</div>
@@ -255,7 +255,7 @@ $('#testBtn').click(function(e){
 			<div class="container"
 				style="text-align: center; background-color: white;">
 				<div class="row">
-					<div class="col-md-1"></div>
+					<div class="col-xl-1"></div>
 					<div class="col-5 line" style="border-bottom: 2px solid black; text-align:left; padding-right: 0px;">
 						<b>결제금액</b>
 					</div>
@@ -264,8 +264,8 @@ $('#testBtn').click(function(e){
 							style="font-weight: bold; text-align: right !important; color: #7329f7; border: none;"
 							readonly="readonly">
 					</div>
-					<div class="col-md-2">
-						<button type="button"
+					<div class="col-xl-2">
+						<button type="button" class="bttn"
 							style="color: #7329f7; width: 100%; background-color: white; border-color: #7329f7; border: solid 1px;"
 							data-toggle="modal" data-target="#staticBackdrop">쿠폰적용</button>
 					</div>
@@ -293,7 +293,7 @@ $('#testBtn').click(function(e){
 				<div class="container" id="pay"
 					style="text-align: center; background-color: white;">
 					<div style="text-align: center;">
-						<button id="check_module"
+						<button id="check_module" class="bttn"
 							style="color: white; background-color: black; margin-top: 0px; margin-bottom: 20px;"
 							type="button">결제하기</button>
 					</div>
