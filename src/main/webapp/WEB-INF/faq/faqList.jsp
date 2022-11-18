@@ -85,7 +85,7 @@ body {
         <!-- Accordion item 1 -->
         <div class="card">
           <div id="headingTwo" class="card-header bg-white shadow-sm border-0" style="border-radius:5px; padding:20px;" >
-            <h6 class="mb-0 font-weight-bold" style="text-decoration:none;"><a href="#" data-toggle="collapse" data-target="#collapseTwo${faq.faq_no }" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">${faq.faq_title }</a></h6>
+            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" style="text-decoration: none;" data-target="#collapseTwo${faq.faq_no }" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">${faq.faq_title }</a></h6>
           </div>
           <div id="collapseTwo${faq.faq_no }" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
             <div class="card-body p-5">

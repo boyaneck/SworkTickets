@@ -221,7 +221,7 @@ pageContext.setAttribute("replaceChar", "\n");
             $('#con2').load(location.href + '#con2');
             $(".tabDiv").eq(1).click();	
    } else {
-      alert('로그인 이후 이용해주시기 바랍니다.');
+      alert('예매 후 이용가능합니다.');
    }
    },
       error:function(){
