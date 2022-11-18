@@ -9,11 +9,7 @@
 <style>
 
 #span{
-<<<<<<< HEAD
-   width: 72px;
-=======
 	width: 72px;
->>>>>>> origin/jin.final
     text-align: center !important;
     }
     .btn-success:hover{
@@ -82,24 +78,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
          </div> 
          <div>  
          <div id="btnBox_parent">
-<<<<<<< HEAD
-            <button class="btn btn-success" type="submit">글수정</button>
-            <button class="btn btn-success" href="getFaqList">글목록</button>
-=======
             <button class="btn btn-success" href="getFaqList">글목록</button>
             <button class="btn btn-success" type="submit">글수정</button>
             <button class="btn btn-success" onclick="deletefaq(${faq.faq_no})" style="cursor: pointer">글삭제</button>
->>>>>>> origin/jin.final
              </form> 
          </div>
          </div>
-    
-<<<<<<< HEAD
-            
-=======
-   			
->>>>>>> origin/jin.final
-      
       <form action="deleteOne">
          <input type="hidden" name="one_no" value="${one.one_no}">
       </form>

@@ -66,6 +66,7 @@ public class ReviewController {
 	
 	
 	//댓글 목록 조회
+	
 	@ResponseBody
 	@RequestMapping("/reviewList")
 	public Map<String, Object> getReviewList(ReviewVO vo,String nowPageBtn, Model model) {

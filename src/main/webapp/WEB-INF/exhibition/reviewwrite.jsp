@@ -70,12 +70,6 @@ pageContext.setAttribute("replaceChar", "\n");
    var today = new Date(date-timeOff).toISOString().split("T")[0];
 
                
-               
-               $("#.")
-               
-               
-               
-               
                comment_html +="<div id='a"+[i]+"' class='aa1'>";
                comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
                comment_html +="<div style='font-size:13px; color:gray;'>"+writer+'&nbsp;'+ today+ "</div>";
@@ -108,7 +102,7 @@ pageContext.setAttribute("replaceChar", "\n");
                else  comment_html += "</div><hr>";
                
                
-               });  // 여기까지가 for문
+               });  
                
       
          
@@ -118,7 +112,7 @@ pageContext.setAttribute("replaceChar", "\n");
             
                
             
-              } // 컨트롤러로 부터 받은 값=댓글이 있다면 if 문 여기서 끝 
+              }
                else{
                var comment_html = "<div style='margin-left:440px; margin-top:100px;'><strong>등록된 댓글이 없습니다.</strong></div>";
                $(".comment_Box").html(comment_html);

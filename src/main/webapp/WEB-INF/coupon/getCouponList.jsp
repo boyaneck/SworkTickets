@@ -20,7 +20,7 @@
 </style>
 <%@ include file="/header.jsp"%>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
    <fmt:parseDate var="startDate_D" value="${today }" pattern="yyyy-MM-dd" />
    <fmt:parseNumber var="startDate_N"
       value="${startDate_D.time / (1000*60*60*24)}" integerOnly="true" />
@@ -87,7 +87,7 @@
          </div>
 </div>
    	<!-- 		반복처리할 태그 시작 -->
-			<div id="btnBox_parent">
+			<div id="btnBox_parent" >
 				<div id="btnBox">
 								<!-- 		맨처음 -->
 								<c:if test="${paging.nowPageBtn > 1 }">
