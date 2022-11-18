@@ -14,6 +14,11 @@
       alert("로그인 후 진행 해 주시기 바랍니다.");
       location.href = "/login.jsp"
    };
+   
+   function addCoupon(c_num){
+	   alert("쿠폰이 발급되었습니다");
+	   location.href='/insertCouponBox?c_num='+c_num;
+   }
 </script>
 <style>
 #over{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
@@ -63,7 +68,7 @@
                         <c:when test="${mb_Id ne null}">
               
                                <button class="btn-coupon3" 
-                                    onclick="location.href='/insertCouponBox?c_num=${coupon.c_num}'">쿠폰받기</button>
+                                    onclick="addCoupon('${coupon.c_num}')">쿠폰받기</button>
                           
                         </c:when>
                         <c:otherwise>

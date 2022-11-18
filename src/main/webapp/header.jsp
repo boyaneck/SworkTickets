@@ -142,12 +142,7 @@
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
                <li class="nav-item dropdown header-title">
-               <a class="nav-link dropdown-toggle header-toggle" data-toggle="dropdown" href="/admin" role="button" aria-haspopup="true" aria-expanded="false"> 관리자 </a>
-               <div class="dropdown-menu header-menu" aria-labelledby="member">
-               <!-- <a class="nav-link header-logout" href="/logoutGO">로그아웃</a> -->
-               <!-- <a class="dropdown-item header-item" href="/getMemberList">&nbsp회원목록</a> -->
-               <a class="dropdown-item header-item" href="/admin" >관리자페이지</a>
-               </div>
+             	  <a class="nav-link header-item" href="/admin" >관리자페이지</a> 
                </li>
             </ul>
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>

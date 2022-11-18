@@ -78,7 +78,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</div>
 
 				<textarea class="form-control innm" rows="20" cols="10" id="board_comment"
-					name="noti_content" <%=ro %>  style="background-color:white !important;">${board.noti_content}</textarea>
+					name="noti_content" <%=ro %>  style="background-color:white !important; resize: none;">${board.noti_content}</textarea>
 
 			</div>
 

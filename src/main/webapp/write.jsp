@@ -78,7 +78,7 @@ color:white !important;
 					<label for="exh_content" class="input-group-text"style="padding-left: 18px; padding-right: 18px;" >내 용</label>
 				</div>
 				<textarea class="form-control" rows="10" id="comment"
-					id="one_content" name="one_content" placeholder="내용을 입력해주세요." required></textarea>
+					id="one_content" name="one_content" placeholder="내용을 입력해주세요." required style="resize: none;"></textarea>
 			</div>
 
 
