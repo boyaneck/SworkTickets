@@ -112,7 +112,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
                   onmouseover="this.style.fontWeight='bold'"
                   onmouseout="this.style.fontWeight=''">
                   <td class="tdCenter tb" style="width: 10%;">${board.noti_no}</td>
-                  <td class="tdCenter" style="width: 50%; padding: 20px 15px;">${board.noti_title}</td>
+                  <td class="tdCenter" style="width: 50%; padding: 20px 15px; word-break:keep-all;">${board.noti_title}</td>
                   <td class="tdCenter tb" style="width: 20%;">${board.noti_writer}</td>
                   <td class="tdCenter tb" style="width: 20%;"><fmt:formatDate
                         value="${board.noti_date}" pattern="yyyy-MM-dd HH:mm-ss"

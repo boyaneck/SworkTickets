@@ -14,8 +14,9 @@
 <!-- 	쿠폰사용 -->
    <update id="updateCouponBox">
       UPDATE C_BOX
-      SET CB_CHECK=1
+      SET CB_CHECK= #{cb_check}
       WHERE CB_ID=#{cb_id}
+      <if test="mb_id !=null">AND MB_id=#{mb_id}</if>
   </update>
 
 <select id="getCouponBox" resultType="_integer">

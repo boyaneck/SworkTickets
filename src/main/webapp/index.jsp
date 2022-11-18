@@ -85,14 +85,8 @@
    padding: 29px 20px 30px 20px;
    text-align: -webkit-center;
 }
-/* .card_body-2 { */
-/*     padding: 38px 20px 24px 20px; */
-/*     text-align: -webkit-center; */
-/* } */
+
 .card_title {
-   /*     font-family: 'Merriweather', */
-   /*         serif; */
-   /*     font-weight: 900; */
    text-transform: capitalize;
    font-size: 16px;
    padding-bottom: 10px;
@@ -109,11 +103,73 @@ box-shadow : 10px 10px 3px #ddd;
 cursor : pointer;
 }
 
-.carousel-item:hover {
-cursor : pointer;
+@media (max-width: 576px) {
+/* rank시작 */
+
+.rank-semititle {
+	padding-left: 25px;
 }
 
-@media (max-width: 576px) {
+.rank_box {
+   margin-top: 5px;
+   display: flex;
+/*    display: grid !important; */
+/*    grid-template-columns: 1fr 1fr !important; */
+}
+
+ .rank_box > div { 
+/*    position:relative; */
+/*    display: inline-block; */
+/*    text-align: center; */
+     height: 1900px; 
+     line-height: 20px; 
+ } 
+
+/* .rank_box > img { */
+/*    position:relative; */
+/*    display: inline-block; */
+   
+/* } */
+
+
+.rank1 {
+   width: 100%;
+}
+
+.rank2 {
+   width: 100%;
+}
+
+
+.rank-title {
+   text-align: center;
+    position: sticky;
+/*     margin-top: 50px;  */
+}
+
+
+.rank-title {
+   font-size: 50px;
+/*    top:40%; */
+}
+
+.rank_ex {
+   text-align: center;
+}
+
+.rank_ex > button {
+   height: 50px;
+   width: 120px;
+   font-size: 25px;
+   background-color: #fff;
+   border-width: 1px;
+   border-color: #1f1f1f;
+}
+
+/* rank 끝 */
+
+
+/* 카드 시작*/
 .card_img img {
       width: 100%;
 }
@@ -125,12 +181,38 @@ cursor : pointer;
 }
 .grid-card {
    display: grid;
-   grid-template-columns: 300px;
+   grid-template-columns: 350px;
    gap: 2%;
 /*    margin: 2% 0; */
    justify-content: center; 
 }
+.card_title {
+/*    text-transform: capitalize; */
+   font-size: 16px;
+/*    padding-bottom: 10px; */
+}
 
+.card_body p {
+   font-weight: 400;
+   font-size: 18px;
+/*    line-height: 1.7; */
+}
+
+.card_body-1 {
+   padding: 20px 20px 20px 20px;
+   text-align: -webkit-center;
+}
+
+.card_body-2 {
+   padding: 20px 20px 20px 20px;
+   text-align: -webkit-center;
+}
+/* 카드 끝*/
+
+body, html {
+	width: 100%;
+	overflow-x: hidden;
+}
 }
 
 </style>
@@ -169,7 +251,7 @@ cursor : pointer;
 
       <section class="rank_box row row-cols-1 row-cols-md-2 g-3">
          <div class="rank1">
-         <span>좋아요</span><br>
+         <span class="rank-semititle">좋아요</span><br>
             <br>
 
          <div class="container container-card  container-card1">
@@ -179,7 +261,7 @@ cursor : pointer;
       </div>
       
       <div class="rank2">
-         <span>예매율</span><br>
+         <span class="rank-semititle">예매율</span><br>
          <br>
 
          <div class="container container-card container-card2">
@@ -231,7 +313,7 @@ cursor : pointer;
              var e_title = elist[i].exh_title;
              var e_banne = elist[i].exh_banne;
              
-             var elist_html = "<div class='carousel-item' onclick='rink("+e_exno+")'>";
+             var elist_html = "<div class='carousel-item'>";
                                                             
              elist_html += "<img src='./images/"+e_banne+"'class='d-block w-100' alt='"+e_banne+"'>";
              elist_html += "<div class='carousel-caption d-none d-md-block'>";

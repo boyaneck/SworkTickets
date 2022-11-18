@@ -63,15 +63,6 @@ padding:0;}
 //     }
 //  }
    function f_write(val){
-<<<<<<< HEAD
-    if(val == ''){
-        alert("로그인이 되야 작성 가능합니다");
-        location.href="/getOneList";
-    }else{
-        location.href="/goWrite";
-    }
- }
-=======
 		
 		  if(val ==''){
 			  var delConfirm = confirm(' 회원만 작성 가능합니다. 로그인 하시겠습니까?');
@@ -84,7 +75,6 @@ padding:0;}
 		}
 		else location.href="/goWrite";
 	    }
->>>>>>> origin/jin.final
 </script>
 <body class="d-flex flex-column min-vh-100">
 <%    

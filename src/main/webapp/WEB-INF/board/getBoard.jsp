@@ -74,13 +74,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				<div class="input-group-prepend">
 					<span class="input-group-text"> 내용</span>
 				</div>
-<<<<<<< HEAD
-				<textarea class="form-control innm" cols="10" rows="20" id="board_comment"
-					name="noti_content" <%=sts%> style="background-color:white !important;">${board.noti_content}</textarea>
-=======
 				<textarea class="form-control innm" rows="20" cols="10" id="board_comment"
 					name="noti_content" style="background-color:white !important;">${board.noti_content}</textarea>
->>>>>>> origin/jin.final
 			</div>
 
 			<div class="input-group mb-3">

@@ -103,5 +103,6 @@
       <hr style="margin: 30px 0;">
    </c:forEach>
 </div>
+			<%@ include file="../../footer.jsp" %>
 </body>
 </html>
