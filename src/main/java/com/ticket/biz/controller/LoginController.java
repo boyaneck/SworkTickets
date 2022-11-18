@@ -90,6 +90,7 @@ public class LoginController {
 		}
 		return "redirect:login.jsp";
 	}
+	
 
 	@RequestMapping(value = "/logoutGO")
 	public String logout(HttpSession session) {

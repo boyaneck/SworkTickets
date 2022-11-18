@@ -114,6 +114,13 @@ public class OneVO {
 	public void setOne_modify(Date one_modify) {
 		this.one_modify = one_modify;
 	}
+	@Override
+	public String toString() {
+		return "OneVO [one_no=" + one_no + ", one_title=" + one_title + ", one_writer=" + one_writer + ", one_content="
+				+ one_content + ", one_date=" + one_date + ", one_modify=" + one_modify + ", one_answer=" + one_answer
+				+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", uploadFile="
+				+ uploadFile + ", filename=" + filename + ", offset=" + offset + ", one_secret=" + one_secret + "]";
+	}
 
 
 

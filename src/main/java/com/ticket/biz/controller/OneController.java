@@ -44,8 +44,8 @@ public class OneController {
 
 	//글 등록
 	@RequestMapping("/insertOne")
-
 	public String insertOne(OneVO vo ,Model model , HttpSession session) {
+		System.out.println("vo: "+vo);
 //		if(vo.isOne_secret()==true & vo.getOne_writer()== session.getAttribute("mb_id"))
 
 		oneService.insertOne(vo);
@@ -53,27 +53,12 @@ public class OneController {
 
 	}
 
-	//"uploadFile" 추가시
-//	@PostMapping(value = "/insertOne")
-////	public String insertOne(MultipartHttpServletRequest request, OneVO vo) throws IllegalStateException, IOException {
-//	public String insertOne(OneVO vo) throws IllegalStateException, IOException {
-//		MultipartFile uplodFile = vo.getUploadFile();
-//		//realPath 추가
-////	    String realPath = request.getSession().getServletContext().getRealPath("/img/");
-//		String realPath = "c:/swork/eleven/src/main/webapp/img/" ;
-//	    String fileName = uplodFile.getOriginalFilename();
-//		if(!uplodFile.isEmpty()) {
-//			vo.setFilename(fileName);
-//			uplodFile.transferTo(new File(realPath+fileName));
-//		}
-//		oneService.insertOne(vo);
-//		return "getOneList";
-//	}
 
 	// 글 수정
 	@RequestMapping("/updateOne")
-	public String updateOne(@ModelAttribute("one") OneVO vo, HttpSession session , HttpServletResponse response) throws IOException {
-		
+	public String updateOne(OneVO vo, HttpSession session , HttpServletResponse response) throws IOException {
+//	public String updateOne(@ModelAttribute("one") OneVO vo, HttpSession session , HttpServletResponse response) throws IOException {
+		System.out.println("!!!!!!jklflksf"+vo.toString());
 		String writer=vo.getOne_writer();
 		if( vo.getOne_writer().equals(session.getAttribute("mb_Id").toString()) ){
 				
@@ -98,9 +83,6 @@ public class OneController {
 			catch (IOException e){
 				e.printStackTrace();
 			}
-			
-			
-			
 			
 			return "redirect:getOneList";
 		}else {

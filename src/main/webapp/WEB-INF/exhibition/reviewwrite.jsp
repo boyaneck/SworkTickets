@@ -68,13 +68,7 @@ pageContext.setAttribute("replaceChar", "\n");
    
    var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
    var today = new Date(date-timeOff).toISOString().split("T")[0];
-
-               
-               
-               
-               
-               
-               
+               $("#.")
                
                comment_html +="<div id='a"+[i]+"' class='aa1'>";
                comment_html +="<div style='font-size:14px; color:#000; font-weight:bold; margin-top: 20px;'><span class='review_writer'>"+ content + "</div><br/>";
@@ -224,7 +218,8 @@ pageContext.setAttribute("replaceChar", "\n");
       alert('댓글 등록이 완료되었습니다.');
       $('.review_writer').val(review_writer);
          $('.review_content').val(review_content);
-            window.location.reload();
+            $('#con2').load(location.href + '#con2');
+            $(".tabDiv").eq(1).click();	
    } else {
       alert('로그인 이후 이용해주시기 바랍니다.');
    }

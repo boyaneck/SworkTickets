@@ -8,10 +8,18 @@ public class NaverVO {
 	private String callback_url = "http://newjeonsis.ml";
 	private String client_secret = "cisI7m8b8z";
 	
+	
+	//로컬호스트
 //	private String client_id = "Ufl_yap8C4lhpikzFVu0";
 //	private String service_url = "http://localhost:8090/index";
 //	private String callback_url = "http://localhost:8090";
 //	private String client_secret = "TEnPKtM2MT";
+	
+	
+//	private String client_id = "WUxQD9ADxsDv22L8muAv";
+//	private String service_url = "http://hmticket.ml/index";
+//	private String callback_url = "http://hmticket.ml";
+//	private String client_secret = "N7KLebYj0V";
 
 
 

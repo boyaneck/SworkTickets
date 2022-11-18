@@ -39,7 +39,7 @@
           <i class="glyphicon fas fa-search"></i>
                    <input type="text" class="form-control main hambuger" placeholder="검색" name="eSearchKeyword" id="eSearchKeywordHam" onkeyup="searchkeyHam()" value="${eSearchKeyword }" />
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeyaHam()"> <i class="xi-magnifier"></i></button>
-        </div>
+  		</div>
       </div>
     
       <li class="nav-item">
@@ -102,7 +102,7 @@
       
          <ul class="nav navbar-nav mr-auto ml-3">
          <li class="nav-item dropdown header-title">
-            <a class="nav-link header" href="/getExhibitionList"> 전시 </a>
+            <a class="nav-link header" href="/getUserExhibitionList"> 전시 </a>
          </li>
          <li class="nav-item dropdown header-title">
             <a class="nav-link header" href="/ranking"> 랭킹 </a>
@@ -320,14 +320,14 @@ function searchkeyHam() {
 }
 
 function searchkeya() {
-   
+	
     var exsu = document.getElementById("eSearchKeyword").value;
     location.href="getUserExhibitionList?eSearchKeyword="+exsu;
     
 }
 
 function searchkeyaHam() {
-   
+	
     var exsuHam = document.getElementById("eSearchKeywordHam").value;
     location.href="getUserExhibitionList?eSearchKeyword="+exsuHam;
     

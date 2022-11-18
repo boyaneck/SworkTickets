@@ -58,7 +58,7 @@
 	SET 
 	NOTI_TITLE=#{noti_title},
 	NOTI_CONTENT=#{noti_content},
-	NOTI_MODIFY =now()
+	NOTI_DATE =now()
 	WHERE NOTI_NO=#{noti_no}
 	
 </update>

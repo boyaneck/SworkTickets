@@ -20,7 +20,7 @@ h1{font-size: 30px;
     color: #1f1f1f;}
 </style>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 <div class="container">
 	<div class="container" style="text-align:center;">
 		<h1 style="text-align: center;">내 좋아요 목록</h1>
@@ -97,5 +97,6 @@ h1{font-size: 30px;
 			<!-- 		반복처리할 태그 끝 -->
 			</div>
 			</div>
+			<%@ include file="../../footer.jsp" %>
 </body>
 </html>

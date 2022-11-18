@@ -26,7 +26,7 @@ public class OneDAOMybatis {
 	}
 
 	// 글 수정
-	public void updateOne(OneVO vo) {
+	public void updateOne(OneVO vo) { 
 		mybatis.update("OneDAO.updateOne",vo);
 	}
 
