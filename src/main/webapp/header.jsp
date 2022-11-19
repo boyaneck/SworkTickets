@@ -141,7 +141,7 @@
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
-               <li class="nav-item dropdown header-title">
+               <li id="admin-menu" class="nav-item dropdown header-title">
              	  <a class="nav-link header-item" href="/admin" >관리자페이지</a> 
                </li>
             </ul>
