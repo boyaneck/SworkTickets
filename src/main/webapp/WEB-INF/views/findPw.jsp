@@ -75,7 +75,7 @@ h2 {
 		var emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 		$("#sendMail").on("click", function() {
 			var email = $("#email").val();
-			var mb_id = $("#mb_id").val();
+			var mb_id = $("#id").val();
 			if (email == 0) {
 				alert("이메일을 입력하세요.");
 			} else {
@@ -88,7 +88,7 @@ h2 {
 					url : 'email_Send1',
 					data : {
 						email : $("#email").val(),
-						mb_id : $("#mb_id").val()
+						mb_id : $("#id").val()
 					},
 					success : function(data) {
 						if (data == 'ok') {
@@ -121,7 +121,7 @@ h2 {
 					if (data == true) {
 						alert("인증되었습니다.");
 						$('#mb_email').val($("#email").val());
-						$('#mb_id').val($("#mb_id").val());
+						$('#mb_id').val($("#id").val());
 						$("#findPwform").attr("action", "findPwform?find=email");
 						$('#findPwform').submit();
 
@@ -160,6 +160,7 @@ h2 {
 		style="background-color: #f6f5f5; height: 100vh; padding-top: 50px;">
 		<div style="background-color: #f6f5f5; height: 100vh">
 			<form action="" method="post" id="findPwform">
+				<input type="hidden" name="mb_id" id="mb_id">
 				<input type="hidden" name="mb_email" id="mb_email">
 			</form>
 			<h2 style="font-size: 30px; padding: 0; margin-bottom: 40px; text-align: center;">비밀번호
@@ -181,7 +182,7 @@ h2 {
 							<b style="margin: 0px; font-size: 16px; font-weight: 400;">아이디</b>
 						</div>
 						<div class="col-6">
-							<input style="font-size: 16px;" id="mb_id" name="mb_id"
+							<input style="font-size: 16px;" id="id" name="id"
 								class="text_box" type="text" placeholder="아이디 입력" required>
 						</div>
 						<div class="col-3" style="margin-bottom: 50px;"></div>

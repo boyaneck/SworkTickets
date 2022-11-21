@@ -248,16 +248,24 @@ public class MemberController {
 
 	// 비밀번호찾기폼
 	@RequestMapping("/findPwform")
-	public String findPw(MemberVO vo, Model model) {
-		System.out.println(vo.toString());
-		System.out.println("test"+ memberService.findpw(vo));	
-		if (memberService.findpw(vo) != null) {
-			model.addAttribute("member", memberService.findpw(vo));
+	public String findPw(MemberVO vo, Model model, HttpServletRequest request) {
+		System.out.println("테스트111"+request.getParameter("mb_id"));
+		System.out.println("테스트222"+request.getParameter("mb_email"));
+		System.out.println("test"+ memberService.find(vo));	
+		if (memberService.find(vo) != null) {
+			System.out.println("테스트33333333333");
+			model.addAttribute("memberList", memberService.find(vo));
+			System.out.println("테스트444444444");
 			return "views/findPw";
 		} else {
+			System.out.println("테스트55555555");
 			return "views/findPw";
 		}
 	}
+//	@RequestMapping("/findPwView")
+//	public String findPwView() {
+//		return "views/findPw";
+//	}
 
 //	// 비밀번호 변경하기
 //	@RequestMapping("/change")
@@ -268,15 +276,20 @@ public class MemberController {
 	// 비밀번호 변경하기
 	@PostMapping("/change")
 	public String change(MemberVO vo, Model model,HttpServletRequest request) {
-		System.out.println(request.getAttribute("mb_pw"));
-		System.out.println(request.getAttribute("mb_id"));
-		
-		String password = pwCheck.encrypt((String)request.getAttribute("mb_pw"));
-		vo.setMb_id((String)request.getAttribute("mb_id")); 
+		System.out.println("테스트");
+//		System.out.println(request.getParameter("mb_id"));
+		System.out.println(request.getParameter("mb_email"));
+		System.out.println("패스워드111111111:"+vo.getMb_pw());
+		String password = pwCheck.encrypt(vo.getMb_pw());
+		vo.setMb_id(request.getParameter("mb_id")); 
 		vo.setMb_pw(password);
-		vo.setMb_email((String)request.getAttribute("mb_email"));
+		System.out.println("vo:"+vo.toString());
+		System.out.println("패스워드22222222:"+password);
+		vo.setMb_email(request.getParameter("mb_email"));
 
 		int a = memberService.change(vo);
+		System.out.println(a);
+		
 		return "redirect:login.jsp";
 	}
 	
