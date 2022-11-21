@@ -140,9 +140,18 @@ public class OneController {
 
 	// 글 상세 조회
 	@RequestMapping("/getOne")
-	public String getOne(OneVO vo, Model model) {
-		model.addAttribute("one", oneService.getOne(vo));
-		return "one/getOne";
+	public String getOne(OneVO vo, Model model, HttpSession session) {
+		if(oneService.getOne(vo).isOne_secret()==true) {
+			if((oneService.getOne(vo).getOne_writer()).equals(session.getAttribute("mb_Id"))||session.getAttribute("mb_Id").equals("admin")) {
+				model.addAttribute("one", oneService.getOne(vo));
+				return "one/getOne";				
+			}else {
+				return "/getOneList";
+			}
+			
+		}else {
+			model.addAttribute("one", oneService.getOne(vo));
+		return "one/getOne";}
 	}
 
 	// 글 목록

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,9 +109,10 @@ $(function() {
              if (data == true) {
                 alert("인증되었습니다.");
             $('#mb_email').val($("#email").val());
+            $('#mb_id').val($("#mb_id").val());
             $("#findPwform").attr("action", "findPwform?find=email");
             $('#findPwform').submit();
-            	
+               
              } else {
                 alert("인증번호가 일치하지 않습니다.");
              }
@@ -147,7 +147,6 @@ $(function() {
 </script>
 </head>
 <body>
-<div style="background-color: #f6f5f5; height: 100vh; padding-top: 50px;">
 <div style="background-color:#f6f5f5; height:100vh">
 <form action="" method="post" id="findPwform">
       <input type="hidden" name="mb_email" id="mb_email">
@@ -158,8 +157,7 @@ $(function() {
    <div class="container-fluid" id="fluid-height"
       style="text-align: -webkit-center; background-color: white; padding: 0; width: 50%">
       <div class="row">
- 
-<c:if test="${empty memberList}">
+      <%if(request.getAttribute("member")==null){ %>
             <h3 style="margin: 50px 0; margin-left: 5%; font-size:20px;">
                &nbsp;&nbsp;&nbsp;&nbsp;E-mail 인증
             </h3>
@@ -199,23 +197,22 @@ $(function() {
             <div class="col-3" id="send"><button class="btn-purple" id='check' onclick='emailCheck()'>인증확인</button>
          </div>
       </div>
-    </c:if>
-     
+       <%} %>
 <!--       인증번호확인 -->
-<c:if test="${!empty memberList}">
+       <%if(request.getAttribute("member")!=null){ %>
       <div class="row" style="margin-top: 50px !important;">
          <div class="col-3">
             <b style="margin:0px; font-size:16px; font-weight:400; width:70px;">비밀번호</b>
          </div>
          <div class="col-6" style="margin-bottom:50px;">
       <form action="change" id="pwchange" method="post">
-      <input type="hidden" name="mb_id" id="mb_id" value="${mb_Id1}">
+<%--       <input type="hidden" name="mb_id" id="mb_id" value="${member.mb_id}"> --%>
       <input style="font-size:16px; margin-bottom:10px;" type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
       <input style="font-size:16px;" type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
       <div class="col-3" id="send"><button class="btn-purple" type="button" id="change" onclick="changePW()">변경하기</button></div>
       </form>
+      <%} %>
    </div>
-      </c:if>
    </div>
    </div>
 </body>
