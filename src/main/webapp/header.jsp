@@ -142,7 +142,7 @@
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
                <li id="admin-menu" class="nav-item dropdown header-title">
-             	  <a class="nav-link header-item" href="/admin" >관리자페이지</a> 
+             	  <a class="nav-link header-item" href="/getExhibitionList" >관리자페이지</a> 
                </li>
             </ul>
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>
