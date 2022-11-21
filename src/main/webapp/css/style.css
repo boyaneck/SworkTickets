@@ -743,3 +743,10 @@ div.rectangle{
    transform: translate(0, 60%);
 } 
 }
+
+@media (max-width: 768px) {
+ #admin-menu{
+  display: none;
+} 
+}
+

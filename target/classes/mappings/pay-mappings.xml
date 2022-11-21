@@ -96,4 +96,12 @@
       GROUP BY e.exh_no
       )a;
    </select>
+   
+   <select id="reviewPayCheck" resultType="_int">
+		SELECT COUNT(*) FROM pay
+		WHERE MB_ID= #{mb_id}
+		AND EXH_NO=#{exh_no}
+		AND P_CHK=0;
+   </select>
+   
 </mapper>

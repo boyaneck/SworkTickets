@@ -67,4 +67,10 @@ public class PayServiceImpl implements PayService {
 		return payDAO.getPayCnt();
 	}
 
+	@Override
+	public int reviewPayCheck(PayVO vo) {
+		
+		return payDAO.reviewPayCheck(vo);
+	}
+
 }

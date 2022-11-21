@@ -51,7 +51,7 @@ $(function() {
 });
 
 
-function del(page){
+function dele(page){
 	var delConfirm = confirm('정말 삭제하시겠습니까?');
 	var page= page;
 	if (delConfirm == true) {
@@ -64,7 +64,7 @@ function del(page){
 	}
 }
 
-function approval(){
+function approva(){
 	var approvalConfirm = confirm('정말 승인하시겠습니까?');
 	if (approvalConfirm == true) {
 	
@@ -321,7 +321,7 @@ var tt = new Date('${exhibition.exh_mdf_date}');
     	       <div style="text-align: center;"> 
     	       <img src="/images/${item}" alt="${item}" style="width:500px;height:400px;">
     	       </div>
-    	       ${item}
+    	       
 				</div>
       		</c:forEach>
 
@@ -405,8 +405,8 @@ ${exhibition.exh_refund_info}
 			<div id="footer" style="margin-top: 50px;">
 				 <div>
 			<a href="modifymoveExhibition?"><button type="button" id="modify" class="btn btn-dark">수정</button></a>
-			<button type="button" id="del" class="btn btn-dark" onclick="del('${page}')">삭제</button>
-			<button type="button" id="approval" class="btn btn-dark" onclick="approval()">승인</button></a>
+			<button type="button" id="del" class="btn btn-dark" onclick="dele('${page}')">삭제</button>
+			<button type="button" id="approval" class="btn btn-dark" onclick="approva()">승인</button></a>
 			<a href="getExhibitionList"><button type="button" id="exh_List" class="btn btn-dark">목록</button></a>
 		</div>
 			</div>
@@ -420,7 +420,7 @@ ${exhibition.exh_refund_info}
 	
 	
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75fb178f353ce628ee79e97732a582fc&libraries=services"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ea44200cb8cf7bb0a768d9c219c84a0&libraries=services"></script>
 <script>
 
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div

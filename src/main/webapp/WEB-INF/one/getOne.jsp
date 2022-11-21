@@ -7,8 +7,10 @@
 <%
 
 String sts = "";
+String ro = "";
 if (session.getAttribute("mb_Id") == null) {
 	sts = "disabled";
+	ro= "readonly";
 }
 %>
 <script>
@@ -203,11 +205,13 @@ margin:5px;
 		
 
 <div class="input-group mb-3">
+			<c:if test="${one.one_writer eq mb_Id}">
             <div class="input-group-prepend"> 
 <%-- 			<input id="box" type="checkbox" name="one_secret" id="box" style="margin-top:50px;" <c:if test="${one.one_secret == true}">checked</c:if>> --%>
-			<input id="box" type="checkbox" name="one_secret" onclick="secretChk()" id="box" style="margin-top:50px;">
+			<input id="box" type="checkbox" name="one_secret"   onclick="secretChk()" id="box" style="margin-top:50px;">
 			<label for="box" style="margin-top:50px;"><em></em>비밀글 설정</label>
             </div>
+            </c:if>
             </div>
             
          
@@ -218,7 +222,7 @@ margin:5px;
 					<span class="span2 input-group-text text-center" >제목</span>
 				</div>
 				<input type="text" class="form-control innm" name="one_title"
-					value="${one.one_title}"  style="background-color:white !important;">
+					value="${one.one_title}" <%=ro %> style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend text-center">
@@ -232,7 +236,7 @@ margin:5px;
 					<span class="span2 input-group-text" >내용</span>
 				</div>
 				<textarea class="form-control innm" rows="10" cols="10" id="one_comment" 
-					name="one_content" <%=sts%> style="background-color:white !important; resize:none;">${one.one_content}</textarea>
+					name="one_content" <%=sts%> <%=ro %> style="background-color:white !important; resize:none;">${one.one_content}</textarea>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">

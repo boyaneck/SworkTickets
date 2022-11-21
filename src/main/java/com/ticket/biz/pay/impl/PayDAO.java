@@ -54,5 +54,9 @@ public class PayDAO {
 			public int getPayCnt() {
 				return mybatis.selectOne("PayDAO.getPayCnt");
 			}
+			//리뷰 예매 체크
+			public int reviewPayCheck(PayVO vo) {
+				return mybatis.selectOne("PayDAO.reviewPayCheck",vo);
+			}
 
 }

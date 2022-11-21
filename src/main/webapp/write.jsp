@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
    <%@ include file="../../header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -47,12 +48,15 @@ color:white !important;
 
 
 
-<div class="input-group mb-3">
+			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label for="exh_cs_phone" class="input-group-text">아이디</label>
 				</div>
-				<input type="text" class="form-control innm" id="one_writer"
-					name="one_writer" value="<%= session.getAttribute("mb_Id") %>" readonly required style="background-color:white!important">
+			
+						<input type="text" class="form-control innm" id="one_writer"
+					name="one_writer" value="${mb_Id}" readonly required style="background-color:white!important">
+					
+					
 			</div>
          <div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -66,7 +70,7 @@ color:white !important;
 					<label for="exh_content" class="input-group-text"style="padding-left: 18px; padding-right: 18px;" >내 용</label>
 				</div>
 				<textarea class="form-control" rows="10" id="comment"
-					id="one_content" name="one_content" placeholder="내용을 입력해주세요." required></textarea>
+					id="one_content" name="one_content" placeholder="내용을 입력해주세요." required style="resize: none;"></textarea>
 			</div>
 
 

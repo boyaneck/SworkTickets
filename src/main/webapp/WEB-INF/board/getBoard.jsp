@@ -17,8 +17,10 @@
 <body>
 	<%
 	String sts = "";
+	String ro = "";
 	if (session.getAttribute("mb_id")==null ||!session.getAttribute("mb_Id").equals("admin")) {
 		sts = "disabled";
+		ro= "readonly";
 	}
 	%>
 	<script>
@@ -61,7 +63,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<span class="input-group-text">제목</span>
 				</div>
 				<input type="text" class="form-control innm" name="noti_title"
-					maxlength="40" value="${board.noti_title}"  style="background-color:white !important;">
+					maxlength="40" value="${board.noti_title}"  <%=ro %> style="background-color:white !important;">
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -76,7 +78,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</div>
 
 				<textarea class="form-control innm" rows="20" cols="10" id="board_comment"
-					name="noti_content" style="background-color:white !important;">${board.noti_content}</textarea>
+					name="noti_content" <%=ro %>  style="background-color:white !important; resize: none;">${board.noti_content}</textarea>
 
 			</div>
 

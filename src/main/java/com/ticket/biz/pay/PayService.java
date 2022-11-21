@@ -20,6 +20,8 @@ public interface PayService {
 
 		int totalPayListCnt (PayVO vo);
 
+		int reviewPayCheck(PayVO vo);
+		
 		PayVO getPay(PayVO vo);
 
 		
