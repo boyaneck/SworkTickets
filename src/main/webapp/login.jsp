@@ -98,7 +98,7 @@
 										<a class="a_oth" href="/findIdform">아이디찾기</a>
 									</div>
 									<div class="col-4">
-										<a class="a_oth" href="/findPwform">비밀번호찾기</a>
+										<a class="a_oth" href="/findPwView">비밀번호찾기</a>
 									</div>
 								</div>
 

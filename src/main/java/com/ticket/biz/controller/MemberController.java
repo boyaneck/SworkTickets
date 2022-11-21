@@ -247,7 +247,9 @@ public class MemberController {
 
 	// 비밀번호찾기폼
 	@RequestMapping("/findPwform")
-	public String findPw(MemberVO vo, Model model) {
+	public String findPw(MemberVO vo, Model model, HttpServletRequest request) {
+		String mb_id = request.getParameter("mb_id");
+		System.out.println(mb_id);
 		System.out.println(memberService.find(vo));
 		if (memberService.find(vo) != null) {
 			model.addAttribute("memberList", memberService.find(vo));
@@ -255,6 +257,10 @@ public class MemberController {
 		} else {
 			return "views/findPw";
 		}
+	}
+	@RequestMapping("/findPwView")
+	public String findPwView() {
+		return "views/findPw";
 	}
 
 //	// 비밀번호 변경하기
