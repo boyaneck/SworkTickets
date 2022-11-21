@@ -179,7 +179,7 @@ $(document).ready(function(){
 					
 
 			if(review_writer == ''){
-					alert('로그인 후 이용해주세요');
+				alert(' 댓글은, 해당 전시회 예매 후 이용하실수 있습니다.');
 					return;
 			
 			}else if(review_content == '') {
@@ -208,7 +208,7 @@ $(document).ready(function(){
 					$('.review_content').val(review_content);
 						window.location.reload();
 			} else {
-				alert('로그인 이후 이용해주시기 바랍니다.');
+				alert(' 댓글은, 해당 전시회 예매 후 이용하실수 있습니다.');
 			}
 			},
 				error:function(){

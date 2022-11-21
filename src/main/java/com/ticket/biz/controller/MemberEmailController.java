@@ -72,6 +72,8 @@ public class MemberEmailController {
    @RequestMapping(value = "/email_Send1", method = RequestMethod.POST)
    public String mail_Send1(@RequestParam String email, @RequestParam String mb_id, MemberVO vo) {
       vo.setMb_email(email);
+      System.out.println(email);
+      System.out.println(mb_id);
 //      vo.setMb_id(mb_id);
       if(mb_id!=null) {
     	  vo.setMb_id(mb_id);

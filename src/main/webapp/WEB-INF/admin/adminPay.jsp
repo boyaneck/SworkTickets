@@ -33,10 +33,13 @@ $(document).ready(function() {
 			},
 			method : "POST",
 			success : function(val) {
-				if (val == 1)
-					alert("취소 완료");
-				else
-					alert("취소 실패\n이미 취소되었거나 잘못된 정보입니다.");
+				var can1 = confirm('취소하시겠습니까?');
+				if (can1 == true) {
+						alert("취소 완료");
+					location.href ="/getAllPayList";
+		   		 }else{
+		   			alert("취소 완료");
+		   		 }
 			},
 			error : function(request, status) {
 				alert("취소가 실패하였습니다.");
@@ -280,7 +283,7 @@ $("#all_module").click(function() {
 						<c:set var="sysYear">
 							<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />
 						</c:set>
-						<form action="paycan" method="POST">
+<!-- 						<form action="paycan" method="POST"> -->
 							<input type="hidden" name="mid" id="merchant_uid" value="${allPayList.p_mer}">
 							<c:if test="${allPayList.exh_st_date < sysYear}">
 								<c:choose>
@@ -304,7 +307,7 @@ $("#all_module").click(function() {
 									</c:otherwise>
 								</c:choose>
 							</c:if>
-						</form>
+<!-- 						</form> -->
 						</td>
 						</tr>
 					</c:forEach>

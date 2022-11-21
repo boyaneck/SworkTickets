@@ -40,6 +40,7 @@ $(function() {
                $("#mb_phone").attr("autofocus", true);
             } else {
                $("#phone2").attr("disabled", false);
+               $("#phoneChk2").attr("disabled", false);
 //                $("#conRegister").attr("disabled", true);
                $("#phoneChk2").css("display", "inline-block");
                $(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
@@ -61,7 +62,7 @@ $(function() {
 //          $(".successPhoneChk").css("color", "green");
 //          $("#phoneDoubleChk").val("true");
 			alert("인증번호가 일치합니다.") 
-         $("#phone2").attr("disabled", true);
+         $("#phone2").attr("disabled", true); 
 			$("#conRegister").attr("disabled", false);
 			
       } else {
@@ -140,6 +141,7 @@ $(function() {
 function validate() {
 //    var mb_id = document.getElementById("mb_id");
    var mb_pw = document.getElementById("mb_pw");
+   var mb_pw2 = document.getElementById("mb_pw2");
    var mb_name = document.getElementById("mb_name");
    var mb_phone = document.getElementById("mb_phone");
    var mb_email = document.getElementById("mb_email");
@@ -151,6 +153,11 @@ function validate() {
       alert("비밀번호를 입력하세요");
       return false;
    }
+    if(document.insertMember.mb_pw.value == document.insertMember.mb_pw2.value) {
+    } else {
+    	alert("비밀번호를 일치시켜주세요");
+        return false;
+    }
     if (document.insertMember.mb_name.value == "") {
       alert("이름을 입력하세요");
       return false;
@@ -177,7 +184,7 @@ function validate() {
 
 
 function email_chk(obj){
-    var regex=/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    var regex=/^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
     return (regex.test(obj));
 }
 
@@ -309,6 +316,15 @@ font-size:16px !important;
                            <div class="invalid-feedback"><span>패스워드가 적합히 입력해주세요</span></div>
                         </div>
                         
+                                 <div class="mb-3 row">
+                         
+                           <label for="mb_pw" class="col-md-2 col-form-label">비밀번호 확인</label>
+                            <div class="col-md-10">
+                           <input type="password" name="mb_pw2" id="mb_pw2" class="form-control" placeholder="8~20자리의 비밀번호를 입력하세요" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+                              required>
+                              </div>
+                        </div>
+                        
                       <div class="mb-3 row">
                   
                            <label for="mb_name" class="col-md-2 col-form-label">이름</label>
@@ -349,7 +365,7 @@ font-size:16px !important;
                                     <input id="phone2" type="text" class="form-control" name="phone2" title="인증번호 입력" disabled required /></div>
                                        <div class="col-md-7">
                                     <button type="button" id="phoneChk2"
-                                       class="btn-purple doubleChk">인증확인</button></div>
+                                       class="btn-purple doubleChk" disabled>인증확인</button></div>
                                        </div>
                                      <div class="mb-3 row">
                                        

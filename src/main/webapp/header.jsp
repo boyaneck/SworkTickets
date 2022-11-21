@@ -15,7 +15,7 @@
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
 <!--    <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style.css?after">
 <link rel="stylesheet" href="./css/board.css">
 <link rel="stylesheet" href="./css/ranking.css">
 <link rel="shortcut icon" href="./images/favicon.ico">
@@ -37,7 +37,7 @@
       <div class="form-group col-xs-6 my-2">
         <div class="inner-addon right-addon" name="addonHambuger">
           <i class="glyphicon fas fa-search"></i>
-                   <input type="text" class="form-control main hambuger" placeholder="검색" name="eSearchKeyword" id="eSearchKeywordHam" onkeyup="searchkeyHam()" value="${eSearchKeyword }" />
+                   <input type="text" class="form-control main hambuger" placeholder="전시 및 전시장 검색" name="eSearchKeyword" id="eSearchKeywordHam" onkeyup="searchkeyHam()" value="${eSearchKeyword }" />
           <button style="float:right; position:absolute; background:none; border:none;right:2%;top:2%;" class="searchbtn" onclick="searchkeyaHam()"> <i class="xi-magnifier"></i></button>
   		</div>
       </div>
@@ -141,8 +141,8 @@
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
-               <li class="nav-item dropdown header-title">
-             	  <a class="nav-link header-item" href="/admin" >관리자페이지</a> 
+               <li id="admin-menu" class="nav-item dropdown header-title">
+             	  <a class="nav-link header-item" href="/getExhibitionList" >관리자페이지</a> 
                </li>
             </ul>
                <a class="nav-link header-logout main" href="/logoutGO">로그아웃</a>

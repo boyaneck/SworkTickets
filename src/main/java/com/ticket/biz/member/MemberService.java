@@ -40,9 +40,12 @@ public interface MemberService {
 	/*회원 마이페이지*/
 	MemberVO getMember(MemberVO vo);
 
-	// 아이디, 비번 찾기
-	MemberVO find(MemberVO vo);
+	// 아이디  찾기
+	List<MemberVO> find(MemberVO vo);
 
+	//비번 찾기
+	MemberVO findpw(MemberVO vo);
+	
 	// 비번 변경
 	int change(MemberVO vo);
 

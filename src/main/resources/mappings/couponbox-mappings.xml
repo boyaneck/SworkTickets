@@ -29,6 +29,7 @@ AND MB_ID=#{mb_id};
  <select id="myCouponList" resultType="couponBox">
       SELECT * FROM C_BOX cb, COUPON c
 		 WHERE 1=1
+		  <if test="mb_id != 'admin' ">and DATE(C.C_DATE) >= DATE(NOW())</if>
 		 AND CB.C_NUM= C.C_NUM 
 		 AND CB.MB_ID=#{mb_id}
 		 AND CB.CB_CHECK=0
@@ -39,6 +40,7 @@ AND MB_ID=#{mb_id};
  <select id="myCouponListCnt" resultType="_int">
       SELECT COUNT(*) FROM C_BOX cb,COUPON c
 		 WHERE 1=1
+		  <if test="mb_id != 'admin' ">and DATE(C.C_DATE) >= DATE(NOW())</if>
 		 AND CB.C_NUM= C.C_NUM 
 		 AND CB.MB_ID=#{mb_id}
 		 AND CB.CB_CHECK=0
