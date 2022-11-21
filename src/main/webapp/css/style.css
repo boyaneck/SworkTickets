@@ -749,4 +749,10 @@ div.rectangle{
   display: none;
 } 
 }
+@media (max-width: 576px) {
+li #admin-menu{
+  display: none;
+} 
+}
+
 
