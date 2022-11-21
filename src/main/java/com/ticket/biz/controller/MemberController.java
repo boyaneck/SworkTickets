@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -248,7 +249,7 @@ public class MemberController {
 	// 비밀번호찾기폼
 	@RequestMapping("/findPwform")
 	public String findPw(MemberVO vo, Model model) {
-		System.out.println(memberService.find(vo));
+		System.out.println("test"+ memberService.find(vo));	
 		if (memberService.find(vo) != null) {
 			model.addAttribute("memberList", memberService.find(vo));
 			return "views/findPw";
@@ -264,12 +265,16 @@ public class MemberController {
 //		return "redirect:login.jsp";
 //	}
 	// 비밀번호 변경하기
-	@RequestMapping("/change")
-	public String change(MemberVO vo, Model model) {
-		// 창일 추가
-		String password = pwCheck.encrypt(vo.getMb_pw());
+	@PostMapping("/change")
+	public String change(MemberVO vo, Model model,HttpServletRequest request) {
+		System.out.println(request.getAttribute("mb_pw"));
+		System.out.println(request.getAttribute("mb_id"));
+		
+		String password = pwCheck.encrypt((String)request.getAttribute("mb_pw"));
+		vo.setMb_id((String)request.getAttribute("mb_id")); 
 		vo.setMb_pw(password);
-		// ---
+		vo.setMb_email((String)request.getAttribute("mb_email"));
+
 		int a = memberService.change(vo);
 		return "redirect:login.jsp";
 	}
