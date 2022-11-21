@@ -38,7 +38,7 @@ $(document).ready(function() {
 						alert("취소 완료");
 					location.href ="/getAllPayList";
 		   		 }else{
-		   			alert("취소 완료");
+		   			alert("취소 실패");
 		   		 }
 			},
 			error : function(request, status) {
