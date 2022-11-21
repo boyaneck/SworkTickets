@@ -41,7 +41,7 @@ public interface MemberService {
 	MemberVO getMember(MemberVO vo);
 
 	// 아이디, 비번 찾기
-	MemberVO find(MemberVO vo);
+	List<MemberVO> find(MemberVO vo);
 
 	// 비번 변경
 	int change(MemberVO vo);

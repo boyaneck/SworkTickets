@@ -44,11 +44,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.insertMember(vo);
 	}
 
-	// 회원목록
-	@Override
-	public List<MemberVO> getMemberList(MemberVO vo) {
-		return memberDAO.getMemberList(vo);
-	}
 
 	@Override
 	public int totalMemberListCnt(MemberVO vo) {
@@ -69,13 +64,18 @@ public class MemberServiceImpl implements MemberService {
 	      return memberDAO.getMember(vo);
 	   }
 
+	   // 회원목록
+	   @Override
+	   public List<MemberVO> getMemberList(MemberVO vo) {
+		   return memberDAO.getMemberList(vo);
+	   }
 	@Override
 	public void updateMember(MemberVO vo) {
 		memberDAO.updateMember(vo);
 	}
 
 	@Override
-	public MemberVO find(MemberVO vo) {
+	public List<MemberVO> find(MemberVO vo) {
 		return memberDAO.find(vo);
 	}
 

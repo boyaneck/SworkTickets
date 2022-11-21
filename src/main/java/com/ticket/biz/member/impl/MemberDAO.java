@@ -66,8 +66,8 @@ public class MemberDAO {
 	}
 
 	// 아이디, 비번찾기
-	public MemberVO find(MemberVO vo) {
-		return mybatis.selectOne("MemberDAO.find", vo);
+	public List<MemberVO> find(MemberVO vo) {
+		return mybatis.selectList("MemberDAO.find", vo);
 	}
 
 	// 비번 변경
