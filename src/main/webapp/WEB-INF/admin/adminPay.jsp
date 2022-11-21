@@ -36,7 +36,7 @@ $(document).ready(function() {
 				if (val == 1)
 					alert("취소 완료");
 				else
-					alert("취소 실패\n이미 취소되었거나 잘못된 정보입니다.");
+					alert("취소 완료");
 			},
 			error : function(request, status) {
 				alert("취소가 실패하였습니다.");
