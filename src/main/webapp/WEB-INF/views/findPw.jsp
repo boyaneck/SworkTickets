@@ -218,6 +218,7 @@ h2 {
 				</c:if>
 
 				<!--       인증번호확인 -->
+		<form action="change" id="pwchange" method="post">
 				<c:if test="${!empty memberList}">
 					<div class="row" style="margin-top: 50px !important;">
 						<div class="col-3">
@@ -225,9 +226,9 @@ h2 {
 								style="margin: 0px; font-size: 16px; font-weight: 400; width: 70px;">비밀번호</b>
 						</div>
 						<div class="col-6" style="margin-bottom: 50px;">
-							<form action="change" id="pwchange" method="post">
-								<input type="text" name="mb_id" id="mb_id" value="">
-								<input type="text" name="mb_email" id="mb_email" value="">
+							
+								<input type="hidden" name="mb_id" id="mb_id" value="${memberList[0].mb_id}">
+								<input type="hidden" name="mb_email" id="email" value="${memberList[0].mb_email}">
 								<input style="font-size: 16px; margin-bottom: 10px;"
 									type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호'
 									required><br> <input style="font-size: 16px;"
@@ -237,10 +238,11 @@ h2 {
 									<button class="btn-purple" type="button" id="change"
 										onclick="changePW()">변경하기</button>
 								</div>
-							</form>
+							
 						</div>
 					</div>
 				</c:if>
+				</form>
 			</div>
 		</div>
 	</div>

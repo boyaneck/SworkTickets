@@ -17,18 +17,18 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 
-	//패스워드찾기
-    @Override
-    public int pwChk(Map<String, Object> param) {
-        return memberDAO.pwChk(param);
-    }
-    
-	   //아이디 중복체크
-    @Override
-    public int idChk(Map<String, Object> param) {
-        return memberDAO.idChk(param);
-    }
-    
+	// 패스워드찾기
+	@Override
+	public int pwChk(Map<String, Object> param) {
+		return memberDAO.pwChk(param);
+	}
+
+	// 아이디 중복체크
+	@Override
+	public int idChk(Map<String, Object> param) {
+		return memberDAO.idChk(param);
+	}
+
 	@Override
 	public MemberVO loginCheck(MemberVO vo) {
 		return memberDAO.loginCheck(vo);
@@ -44,7 +44,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.insertMember(vo);
 	}
 
-
 	@Override
 	public int totalMemberListCnt(MemberVO vo) {
 		return memberDAO.totalMemberListCnt(vo);
@@ -59,16 +58,18 @@ public class MemberServiceImpl implements MemberService {
 	public void deleteMember2() {
 		memberDAO.deleteMember2();
 	}
-	   @Override
-	   public MemberVO getMember(MemberVO vo) {
-	      return memberDAO.getMember(vo);
-	   }
 
-	   // 회원목록
-	   @Override
-	   public List<MemberVO> getMemberList(MemberVO vo) {
-		   return memberDAO.getMemberList(vo);
-	   }
+	@Override
+	public MemberVO getMember(MemberVO vo) {
+		return memberDAO.getMember(vo);
+	}
+
+	// 회원목록
+	@Override
+	public List<MemberVO> getMemberList(MemberVO vo) {
+		return memberDAO.getMemberList(vo);
+	}
+
 	@Override
 	public void updateMember(MemberVO vo) {
 		memberDAO.updateMember(vo);
