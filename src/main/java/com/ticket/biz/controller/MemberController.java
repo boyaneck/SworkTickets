@@ -237,9 +237,8 @@ public class MemberController {
 	// 아이디찾기폼
 	@RequestMapping("/findIdform")
 	public String find(MemberVO vo, Model model) {
-		vo = memberService.find(vo);
-		if (vo != null) {
-			model.addAttribute("mb_Id1", vo.getMb_id());
+		if (memberService.find(vo) != null) {
+			model.addAttribute("memberList", memberService.find(vo));
 			return "views/findId";
 		} else {
 			return "views/findId";
@@ -249,9 +248,9 @@ public class MemberController {
 	// 비밀번호찾기폼
 	@RequestMapping("/findPwform")
 	public String findPw(MemberVO vo, Model model) {
-		vo = memberService.find(vo);
-		if (vo != null) {
-			model.addAttribute("mb_Id1", vo.getMb_id());
+		System.out.println(memberService.find(vo));
+		if (memberService.find(vo) != null) {
+			model.addAttribute("memberList", memberService.find(vo));
 			return "views/findPw";
 		} else {
 			return "views/findPw";

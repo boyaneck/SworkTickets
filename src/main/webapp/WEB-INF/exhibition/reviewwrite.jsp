@@ -191,7 +191,7 @@ pageContext.setAttribute("replaceChar", "\n");
          
 
    if(review_writer == ''){
-         alert('로그인 후 이용해주세요');
+	   alert(' 댓글은, 해당 전시회 예매 후 이용하실수 있습니다.');
          return;
    
    }else if(review_content == '') {
@@ -221,7 +221,7 @@ pageContext.setAttribute("replaceChar", "\n");
             $('#con2').load(location.href + '#con2');
             $(".tabDiv").eq(1).click();	
    } else {
-      alert('예매 후 이용가능합니다.');
+	   alert(' 댓글은, 해당 전시회 예매 후 이용하실수 있습니다.');
    }
    },
       error:function(){

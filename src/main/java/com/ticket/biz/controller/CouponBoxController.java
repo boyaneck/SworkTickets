@@ -38,6 +38,10 @@ public class CouponBoxController {
 
 		}
 		else {
+			response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('쿠폰이 발급되었습니다');history.back();</script>");
+            out.flush();
 		couponBoxService.insertCouponBox(vo);
 		return "redirect:getCouponList";
 		}

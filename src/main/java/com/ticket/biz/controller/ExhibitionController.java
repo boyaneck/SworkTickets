@@ -65,8 +65,8 @@ public class ExhibitionController {
 		MultipartFile uploadFile_thumb = vo.getUploadFile_thumb();
 		String fileName_thumb = uploadFile_thumb.getOriginalFilename();
 		
-		String realPath = "C:/swork/tickets/src/main/webapp/images/";
-		realPath=mRequest.getSession().getServletContext().getRealPath("/images/");
+//		String realPath = "C:/swork/tickets/src/main/webapp/images/";
+		String realPath=mRequest.getSession().getServletContext().getRealPath("/images/");
 
 		String fileName="";
 		

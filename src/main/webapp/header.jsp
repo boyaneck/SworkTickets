@@ -15,7 +15,7 @@
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
 <!--    <script src="https://kit.fontawesome.com/22152c116a.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style.css?after">
 <link rel="stylesheet" href="./css/board.css">
 <link rel="stylesheet" href="./css/ranking.css">
 <link rel="shortcut icon" href="./images/favicon.ico">
@@ -141,7 +141,7 @@
                <li class="nav-item">
                      <span class="nav-hello-main">${mb_Id}님 안녕하세요</span>
                </li>
-               <li class="nav-item dropdown header-title">
+               <li id="admin-menu" class="nav-item dropdown header-title">
              	  <a class="nav-link header-item" href="/admin" >관리자페이지</a> 
                </li>
             </ul>

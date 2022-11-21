@@ -758,3 +758,16 @@ div.rectangle{
    transform: translate(0, 60%);
 } 
 }
+
+@media (max-width: 768px) {
+ #admin-menu{
+  display: none;
+} 
+}
+@media (max-width: 576px) {
+li #admin-menu{
+  display: none;
+} 
+}
+
+
