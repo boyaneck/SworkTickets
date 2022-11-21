@@ -46,18 +46,6 @@
 	<error-page>
 		<error-code>408</error-code>
 		<location>/ErrorMessage.jsp</location>
-<<<<<<< HEAD
-=======
-	</error-page>
-	<error-page>
-		<error-code>500</error-code>
-		<location>/ErrorMessage.jsp</location>
-	</error-page>
-	
-		<error-page>
-		<exception-type>java.lang.Exception</exception-type>
-		<location>/ErrorMessage.jsp</location>
->>>>>>> origin/ch1
 	</error-page>
     <error-page>
          <error-code>500</error-code>

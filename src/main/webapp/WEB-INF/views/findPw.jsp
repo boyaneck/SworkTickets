@@ -156,26 +156,13 @@ h2 {
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-<div style="background-color: #f6f5f5; height: 100vh; padding-top: 50px;">
-<div style="background-color:#f6f5f5; height:100vh">
-<form action="findPwform" method="post" id="findPwform">
-      <input type="hidden" name="mb_email" id="mb_email">
-      <input type="hidden" name="mb_id" id="mb_id">
-   </form>
-   
-<h2 style="font-size: 30px; padding:0; margin-bottom: 40px; text-align: center;">비밀번호 찾기</h2>
-=======
 	<div
 		style="background-color: #f6f5f5; height: 100vh; padding-top: 50px;">
 		<div style="background-color: #f6f5f5; height: 100vh">
 			<form action="" method="post" id="findPwform">
 				<input type="hidden" name="mb_email" id="mb_email">
 			</form>
->>>>>>> origin/ch1
-
-			<h2
-				style="font-size: 30px; padding: 0; margin-bottom: 40px; text-align: center;">비밀번호
+			<h2 style="font-size: 30px; padding: 0; margin-bottom: 40px; text-align: center;">비밀번호
 				찾기</h2>
 
 			<div class="container-fluid" id="fluid-height"

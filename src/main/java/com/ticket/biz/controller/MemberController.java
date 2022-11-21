@@ -248,15 +248,10 @@ public class MemberController {
 
 	// 비밀번호찾기폼
 	@RequestMapping("/findPwform")
-<<<<<<< HEAD
 	public String findPw(MemberVO vo, Model model, HttpServletRequest request) {
-		String mb_id = request.getParameter("mb_id");
-		System.out.println(mb_id);
-		System.out.println(memberService.find(vo));
-=======
-	public String findPw(MemberVO vo, Model model) {
+		System.out.println("test11"+ request.getParameter("mb_id"));	
+		System.out.println("test22"+ request.getParameter("mb_email"));	
 		System.out.println("test"+ memberService.find(vo));	
->>>>>>> origin/ch1
 		if (memberService.find(vo) != null) {
 			model.addAttribute("memberList", memberService.find(vo));
 			return "views/findPw";
