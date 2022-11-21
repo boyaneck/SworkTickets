@@ -11,20 +11,31 @@ public class OneVO {
 	private String one_writer;
 	private String one_content;
 	private Date one_date;
-	private String one_category;
+	
 	private Date one_modify;
+	private String one_answer;
+	
 	
 	private String searchCondition;
 	private String searchKeyword;
-	
-	
-	
+
+
+
 	private MultipartFile uploadFile;
 	private String filename;
 
 	private int offset;
-	
+
 	private boolean one_secret;
+
+	
+	public String getOne_answer() {
+		return one_answer;
+	}
+	public void setOne_answer(String one_answer) {
+		this.one_answer = one_answer;
+	}
+	
 	
 	
 	public boolean isOne_secret() {
@@ -33,8 +44,8 @@ public class OneVO {
 	public void setOne_secret(boolean one_secret) {
 		this.one_secret = one_secret;
 	}
-	
-	
+
+
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
@@ -65,12 +76,7 @@ public class OneVO {
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
-	public String getOne_category() {
-		return one_category;
-	}
-	public void setOne_category(String one_category) {
-		this.one_category = one_category;
-	}
+
 	public int getOne_no() {
 		return one_no;
 	}
@@ -101,14 +107,21 @@ public class OneVO {
 	public void setOne_date(Date one_date) {
 		this.one_date = one_date;
 	}
-	
+
 	public Date getOne_modify() {
 		return one_modify;
 	}
 	public void setOne_modify(Date one_modify) {
 		this.one_modify = one_modify;
 	}
-	
-	
-	
+	@Override
+	public String toString() {
+		return "OneVO [one_no=" + one_no + ", one_title=" + one_title + ", one_writer=" + one_writer + ", one_content="
+				+ one_content + ", one_date=" + one_date + ", one_modify=" + one_modify + ", one_answer=" + one_answer
+				+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", uploadFile="
+				+ uploadFile + ", filename=" + filename + ", offset=" + offset + ", one_secret=" + one_secret + "]";
+	}
+
+
+
 }

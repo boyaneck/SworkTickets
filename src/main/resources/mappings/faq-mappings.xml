@@ -13,12 +13,62 @@
 	</select>
 	
 	<select id="getFaqList" resultType="faq">
-<!-- 		<if test="searchCondition == 'TITLE' "> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if> -->
-<!-- 		<if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE  CONCAT('%',#{searchKeyword},'%')</if> -->
+	<if test="searchKeyword ==null">
 		SELECT * FROM FAQ WHERE 1=1 
+		 ORDER BY FAQ_NO DESC
+		LIMIT 10 OFFSET #{offset}
+		</if>
+		<if test="searchKeyword !=null">
+		SELECT * FROM FAQ WHERE 1=1 
+		AND
+	     REPLACE(UPPER(FAQ_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		
+         
+         ORDER BY FAQ_NO DESC
+		LIMIT 10 OFFSET #{offset}
+         
+		</if>
+	</select>
+	
+	
+<!-- 	관리자 -->
+<select id="totaladminFaqListCnt" resultType="_int">
+		SELECT COUNT(*) FROM FAQ WHERE 1=1 
+		
+		<if test="searchKeyword !=null">
+		AND
+	     REPLACE(UPPER(FAQ_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		</if>
+		
 		ORDER BY FAQ_NO DESC
 		LIMIT 10 OFFSET #{offset}
 	</select>
+	
+	<select id="adminFaqList" resultType="faq">
+	<if test="searchKeyword ==null">
+		SELECT * FROM FAQ WHERE 1=1 
+		 ORDER BY FAQ_NO DESC
+		LIMIT 10 OFFSET #{offset}
+		</if>
+		<if test="searchKeyword !=null">
+		SELECT * FROM FAQ WHERE 1=1 
+		AND
+	     REPLACE(UPPER(FAQ_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+         ORDER BY FAQ_NO DESC
+		LIMIT 10 OFFSET #{offset}
+		</if>
+	</select>
+	
+<!-- 	<select id="adminFaq" resultType="faq">   -->
+<!-- 	SELECT * FROM FAQ WHERE FAQ_NO=#{faq_no} -->
+<!-- 	</select> -->
+	
 	
 <!-- 	<select id="totalFaqListCnt" resultType="_int"> -->
 <!-- 	SELECT COUNT(*) FROM FAQ WHERE 1=1  -->
@@ -33,9 +83,9 @@
 	</select>
 	
 <insert id="insertFaq">
-  INSERT INTO FAQ (FAQ_TITLE, CATE_NAME, FAQ_CONTENT,
+  INSERT INTO FAQ (FAQ_TITLE, FAQ_CONTENT,
   FAQ_REG) 
-  VALUES ( #{faq_title}, 111,
+  VALUES ( #{faq_title}, 
              #{faq_content}, now()
   )
 </insert>

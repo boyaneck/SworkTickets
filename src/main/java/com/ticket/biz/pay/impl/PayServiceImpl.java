@@ -27,6 +27,11 @@ public class PayServiceImpl implements PayService {
 	}
 
 	@Override
+	public void updatePay1(PayVO vo) {
+		payDAO.updatePay1(vo);
+	}
+	
+	@Override
 	public void deletePay(PayVO vo) {
 		payDAO.deletePay(vo);
 	}
@@ -40,7 +45,7 @@ public class PayServiceImpl implements PayService {
 	public List<PayVO> getAllPayList(PayVO vo) {
 		return payDAO.getAllPayList(vo);
 	}
-	
+
 	@Override
 	public int totalPayListCnt(PayVO vo) {
 
@@ -60,6 +65,12 @@ public class PayServiceImpl implements PayService {
 	@Override
 	public int getPayCnt() {
 		return payDAO.getPayCnt();
+	}
+
+	@Override
+	public int reviewPayCheck(PayVO vo) {
+		
+		return payDAO.reviewPayCheck(vo);
 	}
 
 }

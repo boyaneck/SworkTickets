@@ -4,12 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>뉴전시스</title>
 </head>
 <body>
-<form action="/findId">
-<input type="text" class="form-control" placeholder=""
-						name="mb_id" required autofocus>
-</form>
+권한이 없거나 존재하지 않는 페이지입니다.
 </body>
 </html>

@@ -7,17 +7,42 @@
 	<select id="totalOneListCnt" resultType="_int">
 	
 		SELECT COUNT(*) FROM ONEONE WHERE 1=1 
-
+		<if test="searchKeyword !=null">
+	
+		AND
+	     REPLACE(UPPER(ONE_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		 OR REPLACE
+         (UPPER(ONE_WRITER),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+         
+		</if>
 		ORDER BY ONE_NO DESC
+		LIMIT 10 OFFSET #{offset}
 		
 	</select>
 	
 	<select id="getOneList" resultType="one">
+	
 		SELECT * FROM ONEONE WHERE 1=1 
-<!-- 		<if test="searchCondition == 'TITLE' "> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if> -->
-<!-- 		<if test="searchCondition == 'CONTENT' "> AND CONTENT LIKE  CONCAT('%',#{searchKeyword},'%')</if> -->
-		ORDER BY ONE_NO DESC
+		
+		<if test="searchKeyword !=null">
+	
+		AND
+	     REPLACE(UPPER(ONE_TITLE),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+		 OR REPLACE
+         (UPPER(ONE_WRITER),' ','')
+         LIKE
+         REPLACE(CONCAT('%',(UPPER(#{searchKeyword})),'%'),' ','')
+         
+		</if>
+         ORDER BY ONE_NO DESC
 		LIMIT 10 OFFSET #{offset}
+		
 	</select>
 	
 	<select id="getOne" resultType="one">  
@@ -25,15 +50,23 @@
 	</select>
 	
 <insert id="insertOne">
-  INSERT INTO ONEONE (ONE_TITLE, ONE_WRITER, ONE_CONTENT, ONE_DATE, ONE_CATEGORY, ONE_MODIFY, ONE_SECRET) 
-  VALUES ( #{one_title}, #{one_writer}, #{one_content}, now(), #{one_category}, now(), #{one_secret})
+  INSERT INTO ONEONE (ONE_TITLE, ONE_WRITER, ONE_CONTENT, ONE_DATE, ONE_MODIFY, ONE_SECRET) 
+  VALUES ( #{one_title}, #{one_writer}, #{one_content}, now(), now(), #{one_secret})
 </insert>
+
+<update id="oneAnswer">
+	UPDATE ONEONE
+	SET ONE_ANSWER=#{one_answer}
+	WHERE ONE_NO=#{one_no}
+</update>
 
 <update id="updateOne">
 	UPDATE ONEONE 
 	SET ONE_TITLE=#{one_title},
 	ONE_CONTENT=#{one_content}, 
-	ONE_MODIFY =now()
+	ONE_DATE= now(),
+	ONE_MODIFY =now(),
+	ONE_SECRET =#{one_secret}
 	WHERE ONE_NO=#{one_no}
 
 </update>
@@ -41,10 +74,5 @@
 <delete id="deleteOne">
 	DELETE FROM ONEONE WHERE ONE_NO = #{one_no}
 </delete>
-
-
-
-
-	
 	
 </mapper>

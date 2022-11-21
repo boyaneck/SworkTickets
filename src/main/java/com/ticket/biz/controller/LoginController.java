@@ -19,34 +19,59 @@ import com.ticket.biz.pwtest.PwCheck;
 @Controller
 @SessionAttributes("login")
 public class LoginController {
-	// 창일추가
 	@Autowired
 	private PwCheck pwCheck;
-	// ---
 	@Autowired
 	private MemberService memberService;
 
 	@RequestMapping(value = "/logincheck", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpSession session, HttpServletResponse response) {
-		// 창일-추가
 		String password = vo.getMb_pw();
-		// ---
 
-		System.out.println("로그인 인증 처리...");
 		if (vo.getMb_id() == null || vo.getMb_id().equals("")) {
-			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+//			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter script;
+			try {
+				script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('아이디와 비밀번호를 입력해주세요');");
+				script.println("location.href = 'login.jsp'");
+				script.println("</script>");
+				script.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		// 창일 추가
 		if (memberService.getMember(vo) != null) {
 			boolean login = pwCheck.isMatch(vo.getMb_pw(), memberService.getMember(vo).getMb_pw());
-			if (login == true) {
-				System.out.println("로그인");
-				System.out.println(memberService.getMember(vo).getMb_id());
+//			if((login == true)&&memberService.getMember(vo).getMb_id().equals("admin")) {
+//				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+//			
+//				return "admin/admin_index";
+//				
+//			}
+//			else
+				if (login == true) {
 				session.setAttribute("mb_Id", memberService.getMember(vo).getMb_id());
+			
 				return "redirect:index.jsp";
+				
 			} else {
-				System.out.println("실패");
-				return "redirect:login.jsp";
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter script;
+				try {
+					script = response.getWriter();
+					script.println("<script>");
+					script.println("alert('비밀번호가 다르거나 비밀번호를 입력해주세요');");
+					script.println("location.href = 'login.jsp'");
+					script.println("</script>");
+					script.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		} else {
 			response.setCharacterEncoding("utf-8");
@@ -60,27 +85,15 @@ public class LoginController {
 				script.println("</script>");
 				script.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
-
 		return "redirect:login.jsp";
-		// ---
-//		if (memberService.loginCheck(vo) != null) {
-//			session.setAttribute("mb_Id", memberService.loginCheck(vo).getMb_id());
-//			
-//			System.out.println("아이디: " + memberService.loginCheck(vo).getMb_id());
-//			return "redirect:index.jsp";
-//		} else {
-//			return "redirect:login.jsp";
-//		}
 	}
+	
 
 	@RequestMapping(value = "/logoutGO")
 	public String logout(HttpSession session) {
-		System.out.println("로그아웃실행");
 		session.invalidate();
 		return "redirect:login.jsp";
 	}

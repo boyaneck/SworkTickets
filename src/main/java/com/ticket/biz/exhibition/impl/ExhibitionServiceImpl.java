@@ -18,6 +18,11 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	public void insertExhibition(ExhibitionVO vo) {
 		exhibitionDAO.insertExhibition(vo);
 	}
+	
+	@Override
+	public void approvalExhibition(ExhibitionVO vo) {
+		exhibitionDAO.approvalExhibition(vo);
+	}
 
 	@Override
 	public void updateExhibition(ExhibitionVO vo) {
@@ -45,12 +50,17 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	}
 
 	@Override
+	public int getMaxExhibition(ExhibitionVO vo) {
+		return exhibitionDAO.getMaxExhibition(vo);
+	}
+
+	@Override
 	public List<ExhibitionVO> getUserExhibitionList(ExhibitionVO vo) {
 		return exhibitionDAO.getUserExhibitionList(vo);
 	}
 
 	@Override
-	public int totalUSerExhibitionListCnt(ExhibitionVO vo) {
+	public int totalUserExhibitionListCnt(ExhibitionVO vo) {
 		return exhibitionDAO.totalUserExhibitionListCnt(vo);
 	}
 

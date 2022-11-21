@@ -5,11 +5,17 @@
 <%-- <title>${exhibition.exh_title}</title> --%>
 <!-- </head> -->
 <!-- <body> -->
-			<div id="map" style="width: 500px; height: 500px;"></div>
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75fb178f353ce628ee79e97732a582fc&libraries=services"></script>
+<link rel="stylesheet" href="./css/exhibitionDetail.css">
+<div class="container" style="text-align: center; padding-top: 30px;">
+		<h3 style="font-weight: bold;">${exhibition.exh_title}</h3>
+		<br>
+		<h6>${exhibition.exh_location}</h6>
+		<h5>${exhibition.exh_hall}</h5>
+
+			<div id="map" style="width: 800px; height: 500px; margin: 0 auto; margin-bottom: 110px;"></div>
+			
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ea44200cb8cf7bb0a768d9c219c84a0&libraries=services"></script>
 	<script>
 				var lx = ${exhibition.exh_place_x};
 				var ly = ${exhibition.exh_place_y};
@@ -43,5 +49,7 @@
 		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 		// marker.setMap(null);
 	</script>
+	</div>
+		<%@ include file="../../footer.jsp" %>
 <!-- </body> -->
 <!-- </html> -->

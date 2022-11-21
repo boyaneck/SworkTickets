@@ -1,6 +1,7 @@
 package com.ticket.biz.member.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,18 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 
+	//패스워드찾기
+    @Override
+    public int pwChk(Map<String, Object> param) {
+        return memberDAO.pwChk(param);
+    }
+    
+	   //아이디 중복체크
+    @Override
+    public int idChk(Map<String, Object> param) {
+        return memberDAO.idChk(param);
+    }
+    
 	@Override
 	public MemberVO loginCheck(MemberVO vo) {
 		return memberDAO.loginCheck(vo);
@@ -31,11 +44,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.insertMember(vo);
 	}
 
-	// 회원목록
-	@Override
-	public List<MemberVO> getMemberList(MemberVO vo) {
-		return memberDAO.getMemberList(vo);
-	}
 
 	@Override
 	public int totalMemberListCnt(MemberVO vo) {
@@ -47,19 +55,27 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.deleteMember(vo);
 	}
 
+	@Override
+	public void deleteMember2() {
+		memberDAO.deleteMember2();
+	}
 	   @Override
 	   public MemberVO getMember(MemberVO vo) {
-	      System.out.println(vo.getMb_id());
 	      return memberDAO.getMember(vo);
 	   }
 
+	   // 회원목록
+	   @Override
+	   public List<MemberVO> getMemberList(MemberVO vo) {
+		   return memberDAO.getMemberList(vo);
+	   }
 	@Override
 	public void updateMember(MemberVO vo) {
 		memberDAO.updateMember(vo);
 	}
 
 	@Override
-	public MemberVO find(MemberVO vo) {
+	public List<MemberVO> find(MemberVO vo) {
 		return memberDAO.find(vo);
 	}
 

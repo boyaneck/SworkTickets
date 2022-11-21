@@ -7,7 +7,10 @@ public interface ExhibitionService {
 	// CRUD 기능의 메소드 구현
 			// 전시 등록
 			void insertExhibition(ExhibitionVO vo);
-
+			
+			// 전시 승인
+			void approvalExhibition(ExhibitionVO vo);
+			
 			// 전시 수정
 			void updateExhibition(ExhibitionVO vo);
 
@@ -23,10 +26,13 @@ public interface ExhibitionService {
 			// 전시 목록 개수 조회
 			int totalExhibitionListCnt(ExhibitionVO vo);
 
+			// 전시 번호 최대값
+			int getMaxExhibition(ExhibitionVO vo);
+
 			// 유저 전시 목록 조회
 			List<ExhibitionVO> getUserExhibitionList(ExhibitionVO vo);
 
 			// 유저 전시 목록 개수 조회
-			int totalUSerExhibitionListCnt(ExhibitionVO vo);
-
+			int totalUserExhibitionListCnt(ExhibitionVO vo);
+			
 	}

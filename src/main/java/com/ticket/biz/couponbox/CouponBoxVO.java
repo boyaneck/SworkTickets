@@ -9,21 +9,21 @@ public class CouponBoxVO {
 	private String c_num;
 	private String mb_id;
 	private int cb_check;
-	
+
 	private String searchCondition;
 	private String searchKeyword;
-	
+
 	private int offset;
-	
-	
+
+
 	private String c_name;
 	private int c_per;
 	private String c_date;
-	
+
 	@Autowired
 	private CouponVO couponvo;
-	
-	
+
+
 	public CouponVO getCouponvo() {
 		return couponvo;
 	}
@@ -72,7 +72,7 @@ public class CouponBoxVO {
 	public void setCb_id(int cb_id) {
 		this.cb_id = cb_id;
 	}
-	
+
 	public String getC_num() {
 		return c_num;
 	}
@@ -92,6 +92,6 @@ public class CouponBoxVO {
 		this.cb_check = cb_check;
 	}
 
-	
+
 
 }
