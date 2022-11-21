@@ -140,6 +140,7 @@ $(function() {
 function validate() {
 //    var mb_id = document.getElementById("mb_id");
    var mb_pw = document.getElementById("mb_pw");
+   var mb_pw2 = document.getElementById("mb_pw2");
    var mb_name = document.getElementById("mb_name");
    var mb_phone = document.getElementById("mb_phone");
    var mb_email = document.getElementById("mb_email");
@@ -151,6 +152,11 @@ function validate() {
       alert("비밀번호를 입력하세요");
       return false;
    }
+    if(document.insertMember.mb_pw.value == document.insertMember.mb_pw2.value) {
+    } else {
+    	alert("비밀번호를 일치시켜주세요");
+        return false;
+    }
     if (document.insertMember.mb_name.value == "") {
       alert("이름을 입력하세요");
       return false;
@@ -177,7 +183,7 @@ function validate() {
 
 
 function email_chk(obj){
-    var regex=/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    var regex=/^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
     return (regex.test(obj));
 }
 
@@ -307,6 +313,15 @@ font-size:16px !important;
                               </div>
                            <div class="valid-feedback"><span>사용할 수 있는 패스워드입니다.</span></div>
                            <div class="invalid-feedback"><span>패스워드가 적합히 입력해주세요</span></div>
+                        </div>
+                        
+                                 <div class="mb-3 row">
+                         
+                           <label for="mb_pw" class="col-md-2 col-form-label">비밀번호 확인</label>
+                            <div class="col-md-10">
+                           <input type="password" name="mb_pw2" id="mb_pw2" class="form-control" placeholder="8~20자리의 비밀번호를 입력하세요" maxlength="20" minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+                              required>
+                              </div>
                         </div>
                         
                       <div class="mb-3 row">

@@ -42,6 +42,7 @@ public class ReviewController {
 			pvo.setExh_no(exh_no);
 			pvo.setMb_id((String) session.getAttribute("mb_Id"));
 			System.out.println(pvo.toString());
+			System.out.println(payService.reviewPayCheck(pvo));
 			if (payService.reviewPayCheck(pvo) > 0) {
 				
 				reviewservice.insertReview(vo);

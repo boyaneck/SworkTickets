@@ -191,7 +191,7 @@ pageContext.setAttribute("replaceChar", "\n");
          
 
    if(review_writer == ''){
-         alert('로그인 후 이용해주세요');
+         alert('예매 후 이용가능합니다');
          return;
    
    }else if(review_content == '') {
