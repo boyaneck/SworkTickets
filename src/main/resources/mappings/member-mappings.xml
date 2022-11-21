@@ -75,6 +75,7 @@
 		UPDATE MEMBER 
 		SET MB_PW =#{mb_pw}
 		WHERE MB_ID=#{mb_id}
+		AND MB_EMAIL = #{mb_email}
 	</update>
 	
 	   <!--    아이디 중복체크 -->

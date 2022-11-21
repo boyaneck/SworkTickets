@@ -146,7 +146,7 @@ public class OneController {
 				model.addAttribute("one", oneService.getOne(vo));
 				return "one/getOne";				
 			}else {
-				return "getOneList";
+				return "/getOneList";
 			}
 			
 		}else {
