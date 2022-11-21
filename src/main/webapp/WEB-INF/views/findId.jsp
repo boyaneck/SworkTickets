@@ -106,8 +106,7 @@ h2 {
                if (data == true) {
                   alert("인증되었습니다.");
                   $('#mb_email').val($("#email").val());
-                  $("#findIdform")
-                        .attr("action", "findIdform?find=email");
+                  $("#findIdform").attr("action", "findIdform");
                   $('#findIdform').submit();
                   $('#fluid-height').css("display", "none");
                } else {

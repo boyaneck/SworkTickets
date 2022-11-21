@@ -67,7 +67,7 @@
 		SELECT * FROM MEMBER WHERE 1=1
 		<if test="mb_id != null">AND MB_ID = #{mb_id}</if>
 		AND MB_EMAIL = #{mb_email}
-		AND MB_YN = 'Y'
+		AND MB_YN = 'Y' LIMIT 1
 	</select>
 	
 	<!-- 비밀번호 변경 -->
