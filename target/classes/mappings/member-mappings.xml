@@ -62,10 +62,18 @@
 		SELECT * FROM MEMBER WHERE MB_ID = #{mb_id} AND MB_YN = 'Y'
 	</select>
 	
-	<!-- 아이디, 비번찾기 -->
+	<!-- 아이디찾기 -->
 	<select id="find" resultType="member">
 		SELECT * FROM MEMBER WHERE 1=1
 		<if test="mb_id != null">AND MB_ID = #{mb_id}</if>
+		AND MB_EMAIL = #{mb_email}
+		AND MB_YN = 'Y'
+	</select>
+	
+		<!-- 비번찾기 -->
+	<select id="findpw" resultType="member">
+		SELECT * FROM MEMBER WHERE 1=1
+		AND MB_ID = #{mb_id}
 		AND MB_EMAIL = #{mb_email}
 		AND MB_YN = 'Y'
 	</select>

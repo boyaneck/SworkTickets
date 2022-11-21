@@ -79,7 +79,10 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> find(MemberVO vo) {
 		return memberDAO.find(vo);
 	}
-
+	@Override
+	public MemberVO findpw(MemberVO vo) {
+		return memberDAO.findpw(vo);
+	}
 	@Override
 	public int change(MemberVO vo) {
 		return memberDAO.change(vo);
