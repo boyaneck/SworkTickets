@@ -40,6 +40,7 @@ $(function() {
                $("#mb_phone").attr("autofocus", true);
             } else {
                $("#phone2").attr("disabled", false);
+               $("#phoneChk2").attr("disabled", false);
 //                $("#conRegister").attr("disabled", true);
                $("#phoneChk2").css("display", "inline-block");
                $(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
@@ -61,7 +62,7 @@ $(function() {
 //          $(".successPhoneChk").css("color", "green");
 //          $("#phoneDoubleChk").val("true");
 			alert("인증번호가 일치합니다.") 
-         $("#phone2").attr("disabled", true);
+         $("#phone2").attr("disabled", true); 
 			$("#conRegister").attr("disabled", false);
 			
       } else {
@@ -364,7 +365,7 @@ font-size:16px !important;
                                     <input id="phone2" type="text" class="form-control" name="phone2" title="인증번호 입력" disabled required /></div>
                                        <div class="col-md-7">
                                     <button type="button" id="phoneChk2"
-                                       class="btn-purple doubleChk">인증확인</button></div>
+                                       class="btn-purple doubleChk" disabled>인증확인</button></div>
                                        </div>
                                      <div class="mb-3 row">
                                        
