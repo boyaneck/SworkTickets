@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: hi
 Build-Jdk: 11.0.15.1
-=======
-Built-By: Song
-Build-Jdk: 11.0.16.1
->>>>>>> origin/member
 Created-By: Maven Integration for Eclipse
 
