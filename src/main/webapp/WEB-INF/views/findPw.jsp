@@ -133,8 +133,8 @@ $(function() {
             passwordCheck = true;
          }
       });
-
    });
+   
    function changePW(){
       if(passwordCheck){
          $('#pwchange').submit();
