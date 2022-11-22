@@ -206,7 +206,7 @@ $(function() {
          </div>
          <div class="col-6" style="margin-bottom:50px;">
       <form action="change" id="pwchange" method="post">
-<%--       <input type="hidden" name="mb_id" id="mb_id" value="${member.mb_id}"> --%>
+      <input type="hidden" name="mb_id" id="mb_id" value="${member.mb_id}">
       <input style="font-size:16px; margin-bottom:10px;" type="password" name="mb_pw" id="mb_pw" placeholder='비밀번호' required><br>
       <input style="font-size:16px;" type="password" name="mb_pw2" id="mb_pw2" placeholder='비밀번호재확인' required><br></div>
       <div class="col-3" id="send"><button class="btn-purple" type="button" id="change" onclick="changePW()">변경하기</button></div>
