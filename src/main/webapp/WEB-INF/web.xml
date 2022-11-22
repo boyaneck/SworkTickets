@@ -47,15 +47,14 @@
 		<error-code>408</error-code>
 		<location>/ErrorMessage.jsp</location>
 	</error-page>
-	<error-page>
-		<error-code>500</error-code>
-		<location>/ErrorMessage.jsp</location>
-	</error-page>
-	
-		<error-page>
-		<exception-type>java.lang.Exception</exception-type>
-		<location>/ErrorMessage.jsp</location>
-	</error-page>
+    <error-page>
+         <error-code>500</error-code>
+    <location>/ErrorMessage.jsp</location>
+    </error-page>
+    <error-page>
+     <exception-type>java.lang.Exception</exception-type>
+     <location>/ErrorMessage.jsp</location>
+    </error-page>
 
 	<!-- Processes application requests -->
 	<servlet>
