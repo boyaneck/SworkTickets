@@ -98,14 +98,17 @@
 
 #### 
 
+
+#### 메인 시연 영상
 <div align="center">
-#### 메인
+
 <img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%EB%A9%94%EC%9D%B81.gif?raw=true" style="width:600px"></img>
 </div>
 #### 로그인
 <div align="center">
 <img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif?raw=true" style="width:600px"></img>
 </div>
+
 #### 1:1문의
 <div align="center">
 <img src="https://github.com/boyaneck/SworkTickets/blob/master/video/1%EB%8C%801%20%EB%AC%B8%EC%9D%98.gif?raw=true" style="width:600px"></img>
