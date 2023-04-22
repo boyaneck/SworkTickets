@@ -96,5 +96,7 @@
 
 # 📹주요기능 시연 
 
-<img src="https://github.com/boyaneck/boyaneck/blob/main/%EB%85%B9%ED%99%94_2023_04_21_12_42_39_170.gif?raw=true"></img>
+#### 
+
+<img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%EB%A9%94%EC%9D%B81.gif?raw=true"></img>
 
