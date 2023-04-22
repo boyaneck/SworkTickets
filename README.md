@@ -112,7 +112,7 @@
 </div>
 #### 전시등록
 <div align="center">
-<img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif?raw=true" style="width:600px"></img>
+<img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%EC%A0%84%EC%8B%9C%20%EB%93%B1%EB%A1%9D.gif?raw=true" style="width:600px"></img>
 </div>
 #### 회원관리&쿠폰등록
 <div align="center">
