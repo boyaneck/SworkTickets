@@ -94,30 +94,66 @@
 
 <br>
 
-# 📹주요기능 시연 
+# 📹프로젝트 주요기능 시연 
 
 #### 
+<br>
+<div align ="center">
 
-
-#### 메인 시연 영상
+### ⏯️메인 배너 및 전시&좋아요 예약(용량으로 인해 잠시 기다려주시면 감사하겠습니다.)
+ 
+ </div>
+ <br>
 <div align="center">
 
 <img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%EB%A9%94%EC%9D%B81.gif?raw=true" style="width:600px"></img>
 </div>
-#### 로그인
+<br>
+
+<div align ="center">
+
+### ⏯️로그인(회원 가입시 전화번호 인증&소셜로그인)
+
+ </div>
+ <br>
 <div align="center">
 <img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif?raw=true" style="width:600px"></img>
 </div>
+<br>
+<div align ="center">
+ 
+### ⏯️1:1문의(비밀글 작성 및 관리자 답변)
 
-#### 1:1문의
+ </div>
+ <br>
+ 
 <div align="center">
 <img src="https://github.com/boyaneck/SworkTickets/blob/master/video/1%EB%8C%801%20%EB%AC%B8%EC%9D%98.gif?raw=true" style="width:600px"></img>
 </div>
-#### 전시등록
+
+<br>
+
+<div align ="center">
+ 
+### ⏯️전시등록
+ 
+ </div>
+
+<br>
+
 <div align="center">
 <img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%EC%A0%84%EC%8B%9C%20%EB%93%B1%EB%A1%9D.gif?raw=true" style="width:600px"></img>
 </div>
-#### 회원관리&쿠폰등록
+
+<br>
+
+<div align ="center">
+ 
+### ⏯️회원관리&쿠폰등록
+ 
+ </div>
+
+<br>
 <div align="center">
 <img src="https://github.com/boyaneck/SworkTickets/blob/master/video/%ED%9A%8C%EC%9B%90&%EC%BF%A0%ED%8F%B0.gif?raw=true" style="width:600px"></img>
 
